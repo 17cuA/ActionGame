@@ -13,6 +13,7 @@ public class CinemaControll : MonoBehaviour, ITimeControl
 	}
 	public void OnControlTimeStart()
 	{
+		Debug.Log("きどう");
 	}
 	public void SetTime(double time)
 	{
