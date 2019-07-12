@@ -104,7 +104,7 @@ public class TestMover : MonoBehaviour
 		// 登場シーンが終わるまで動かせない
 		if (UIManager_Game.instance.call_Once)
 		{
-			transform.position = new Vector3(Mathf.Clamp(transform.position.x, CameraControll.instance.lBottom.x + 1.0f, CameraControll.instance.rTop.x - 1.0f), transform.position.y, 0);
+			transform.position = new Vector3(Mathf.Clamp(transform.position.x, CameraController.instance.lBottom.x + 1.0f, CameraController.instance.rTop.x - 1.0f), transform.position.y, 0);
 		}
     }
 }

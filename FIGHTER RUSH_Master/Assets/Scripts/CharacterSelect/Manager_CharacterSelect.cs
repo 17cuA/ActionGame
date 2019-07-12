@@ -24,11 +24,13 @@ public class Manager_CharacterSelect : MonoBehaviour
 	public CharacterStatus_CharacterSelect[] characterStatuses; //	ロードしたキャラクターオブジェクトのキャラクターステータス保持
 	public GameObject[] targetPoint;        //	キャラクターのオブジェクトを生成するためのポイント(GameObject)
 
+	// 時間
+	public float timer;                     //	キャラクターを選べる残り時間
+	private float timerMax;             //	キャラクターを選べる時間
+
 	//	フラグ関係
 	public bool activeCharaselect;      //	操作できる状態か
-	public float timer;                     //	キャラクターを選べる残り時間
 	[SerializeField]
-	private float timerMax;             //	キャラクターを選べる時間
 	public bool[] playerDecision;       //	プレイヤーがキャラクターを選んだかのフラグ
 	public int[] playerObn;             //	プレイヤーが選んだキャラクターのオブジェクト保持するための変数
 	public GameObject[] playerOb;   //	プレイヤーが選んだキャラクターのオブジェクト保持

@@ -16,7 +16,7 @@ public class MovingMaskManager : MonoBehaviour
 	//	フラグ関係
 	public float fadeInSpeed;
 	public float fadeOutSpeed;
-	float red, green, blue, alfa;					//	パネルの色、不透明度を管理
+	private float red, green, blue, alfa;					//	パネルの色、不透明度を管理
 	bool isFadeOut = false;						//	フェードアウト処理の開始、完了を管理するフラグ
 	public bool isFadeIn = false;				//	フェードイン処理の開始、完了を管理するフラグ
 	Image fadeImage;								//	透明度を変更するパネルのイメージ

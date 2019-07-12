@@ -32,7 +32,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class CameraControll : MonoBehaviour
+public class CameraController : MonoBehaviour
 {
 	#region 変数宣言
 	private GameObject Player1;
@@ -54,13 +54,13 @@ public class CameraControll : MonoBehaviour
 
 	public Vector3 lBottom, rTop;					// 画面左下、右上の座標
 
-	public static CameraControll instance;
+	public static CameraController instance;
 	#endregion
 
 	#region 初期化
 	private void Awake()
 	{
-		instance = GetComponent<CameraControll>();
+		instance = GetComponent<CameraController>();
 		Player1 = GameObject.Find("Player01");
 		Player2 = GameObject.Find("Player02");
 	}

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Timeline;
 using Cinemachine;
 
-public class CinemaControll : MonoBehaviour, ITimeControl
+public class CinemaController : MonoBehaviour, ITimeControl
 {
 	public void OnControlTimeStop()
 	{
@@ -13,6 +13,7 @@ public class CinemaControll : MonoBehaviour, ITimeControl
 	}
 	public void OnControlTimeStart()
 	{
+		Debug.Log("きどう");
 	}
 	public void SetTime(double time)
 	{
