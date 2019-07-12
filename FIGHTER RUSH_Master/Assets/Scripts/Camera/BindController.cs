@@ -13,7 +13,7 @@
 // MEMO
 // 再生中のTimeLineは動的に更新できない
 // よって再生前に上書きする必要がある
-// 
+// 一応完成。キャラセレが完成次第、確認し修正 
 //----------------------------------------------------
 // 現在判明しているバグ
 //----------------------------------------------------
@@ -27,7 +27,7 @@ using UnityEngine.Playables;
 using System.Linq;
 using UnityEngine.Timeline;
 
-public class BindControll : MonoBehaviour
+public class BindController : MonoBehaviour
 {
 	//[SerializeField] PlayableDirector directer;
 	//Coroutine coroutine;	// コルーチン
@@ -59,5 +59,4 @@ public class BindControll : MonoBehaviour
 		// 値を登録
 		directer.SetReferenceValue(exposeName, ob);
 	}
-
 }

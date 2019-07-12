@@ -146,7 +146,7 @@ public class InputManager : MonoBehaviour
 					mC.PlayerSelectMove(0, "Right");
 					break;
 				case "Game":
-					PlayerMover.instance.moveInput = Input.GetAxis("Horizontal");
+					//PlayerMover.instance.moveInput = Input.GetAxis("Horizontal");
 					break;
 			}
 			Debug.Log("Right");
@@ -162,7 +162,7 @@ public class InputManager : MonoBehaviour
 					mC.PlayerSelectMove(0, "Left");
 					break;
 				case "Game":
-					PlayerMover.instance.moveInput = Input.GetAxis("Horizontal");
+					//PlayerMover.instance.moveInput = Input.GetAxis("Horizontal");
 					break;
 			}
 			Debug.Log("Left");
