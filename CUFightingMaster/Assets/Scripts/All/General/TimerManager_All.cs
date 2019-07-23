@@ -10,9 +10,6 @@ public class TimerManager_All : MonoBehaviour
 
 	public Sprite[] numSprite=new Sprite[10];
 
-//
-//
-//
 	public void Display(int count)
 	{
 		firstDigit.sprite = numSprite[count % 10];

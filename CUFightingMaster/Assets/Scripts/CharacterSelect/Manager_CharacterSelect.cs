@@ -17,20 +17,18 @@ public class Manager_CharacterSelect : MonoBehaviour
 {
 	//	画面のマスク関係
 	public GameObject maskOb;   //	マスク用のイメージが入ってるオブジェクト
-	MovingMaskManager mMM;      //	マスク用スクリプトをロードするため
+	//MovingMaskManager mMM;      //	マスク用スクリプトをロードするため
 
 	//	キャラクターオブジェクト表示関係
 	public GameObject[] characterOb;    //	キャラクターオブジェクトを保持
 	public CharacterStatus_CharacterSelect[] characterStatuses; //	ロードしたキャラクターオブジェクトのキャラクターステータス保持
 	public GameObject[] targetPoint;        //	キャラクターのオブジェクトを生成するためのポイント(GameObject)
 
-	// 時間
-	public float timer;                     //	キャラクターを選べる残り時間
-	private float timerMax;             //	キャラクターを選べる時間
-
 	//	フラグ関係
 	public bool activeCharaselect;      //	操作できる状態か
+	public float timer;                     //	キャラクターを選べる残り時間
 	[SerializeField]
+	private float timerMax;             //	キャラクターを選べる時間
 	public bool[] playerDecision;       //	プレイヤーがキャラクターを選んだかのフラグ
 	public int[] playerObn;             //	プレイヤーが選んだキャラクターのオブジェクト保持するための変数
 	public GameObject[] playerOb;   //	プレイヤーが選んだキャラクターのオブジェクト保持
@@ -42,7 +40,7 @@ public class Manager_CharacterSelect : MonoBehaviour
 	private void Awake()
 	{
 		//	オブジェクトに付属しているplayerStatusを参照
-		for (int i = 0; i < 7; i++)
+		for (int i = 0; i < 6; i++)
 		{
 			characterStatuses[i] = characterOb[i].GetComponent<CharacterStatus_CharacterSelect>();
 		}
@@ -54,7 +52,7 @@ public class Manager_CharacterSelect : MonoBehaviour
 	void Start()
 	{
 		//	マスク用のデータロード
-		mMM = maskOb.GetComponent<MovingMaskManager>();
+		//mMM = maskOb.GetComponent<MovingMaskManager>();
 
 		//	フラグなどの初期化
 		activeCharaselect = false;
@@ -80,7 +78,7 @@ public class Manager_CharacterSelect : MonoBehaviour
 		if((playerDecision[0]&&playerDecision[1])||(timer<=0))
 		{
 			activeCharaselect = false;
-			mMM.FadeOut(0);
+			//mMM.FadeOut(0);
 		}
 
 		//	プレイヤーが選んだキャラのオブジェクトを表示する

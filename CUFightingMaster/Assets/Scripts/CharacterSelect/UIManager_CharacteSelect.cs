@@ -33,8 +33,8 @@ public class UIManager_CharacteSelect : MonoBehaviour
 	void Start()
 	{
 		mC = managerObject.GetComponent<Manager_CharacterSelect>();     //mCにCharacterSelectマネージャーをロード
-		tMA = timerCV.GetComponent<TimerManager_All>();
-		for (int i = 0; i < 7; i++)
+		//tMA = timerCV.GetComponent<TimerManager_All>();
+		for (int i = 0; i < 6; i++)
 		{
 			characterImage[i].sprite = mC.characterStatuses[i].characterIcon;
 		}
@@ -45,7 +45,7 @@ public class UIManager_CharacteSelect : MonoBehaviour
 	//	--------------------
 	void Update()
 	{
-		tMA.Display((int)mC.timer);
+		//tMA.Display((int)mC.timer);
 
 		for (int i = 0; i < 2; i++)
 		{

@@ -20,14 +20,14 @@ public class Manager_Title : MonoBehaviour
 
 	//	画面のマスク関係
 	public GameObject maskOb;           //	マスク用のイメージが入ってるオブジェクト
-	public MovingMaskManager mMM;   //	マスク用スクリプトをロードするため
+	//public MovingMaskManager mMM;   //	マスク用スクリプトをロードするため
 
 	//	--------------------
 	//	スタート
 	//	--------------------
 	void Start()
 	{
-		mMM = maskOb.GetComponent<MovingMaskManager>();
+		//mMM = maskOb.GetComponent<MovingMaskManager>();
 
 		activeTitle = false;
 		demoMovie = false;
@@ -40,10 +40,14 @@ public class Manager_Title : MonoBehaviour
 	//	--------------------
 	void Update()
 	{
-		// TitleシーンがActiveなら
-		if (activeTitle)
-		{
-			movie -= Time.deltaTime;        // ムービー再生まで待機
+        if(Input.GetKeyDown("b"))
+         {
+            SceneManager.LoadScene("CharacterSelect");
+        }
+		//// TitleシーンがActiveなら
+		//if (activeTitle)
+		//{
+		//	movie -= Time.deltaTime;        // ムービー再生まで待機
 											// ムービーの再生
 			//if (movie <= 0)
 			//{
@@ -52,5 +56,5 @@ public class Manager_Title : MonoBehaviour
 			//}
 		}
 	}
-}
+
 //write by Miyajima Kodai

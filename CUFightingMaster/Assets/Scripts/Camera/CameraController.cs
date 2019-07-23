@@ -35,17 +35,18 @@ using UnityEngine.SceneManagement;
 public class CameraController : MonoBehaviour
 {
 	#region 変数宣言
-	private GameObject Player1;
-	private GameObject Player2;
+	//private GameObject Player1;
+	//private GameObject Player2;
 	private float offsetY;								// カメラのY座標の基準値
-	private float speed_Zoom;						// カメラのズーム時の速度
+	private float speed_ZoomIn;					// カメラのズーム時の速度
+	private float speed_ZoomOut;				// カメラのズームアウト時の速度
 	private bool call_Once;							// 一度だけ呼び出す用
 
 	private float distance_CamToPlayer;			// カメラからキャラまでの距離
-	private float distanceOfPlayers_Start;		// ゲーム開始時のプレイヤー同士の距離
+	private float distanceOfPlayers_Start;			// ゲーム開始時のプレイヤー同士の距離
 	private float distanceOfPLayers_Current;	// 現在のプレイヤー同士の距離
 
-	private Vector3 cameraPos_Max;				// カメラの最大座標
+	private Vector3 cameraPos_Max;			// カメラの最大座標
 	private Vector3 cameraPos_Min;				// カメラの最小座標
 
 	private Vector3 pCentorPos;					// プレイヤー同士のセンターを取得
@@ -55,27 +56,32 @@ public class CameraController : MonoBehaviour
 	public Vector3 lBottom, rTop;					// 画面左下、右上の座標
 
 	public static CameraController instance;
+
+	// 統合のため追加
+	public GameObject Fighter1;
+	public GameObject Fighter2;
 	#endregion
 
 	#region 初期化
 	private void Awake()
 	{
 		instance = GetComponent<CameraController>();
-		Player1 = GameObject.Find("Player01");
-		Player2 = GameObject.Find("Player02");
+		//Player1 = GameObject.Find("Player01");
+		//Player2 = GameObject.Find("Player02");
 	}
 
 
 	void Start()
 	{
 		offsetY = transform.position.y;
-		speed_Zoom = 5.0f;
+		speed_ZoomIn = 5.0f;
+		speed_ZoomOut = 15.0f;
 		call_Once = true;
-		stageWidth = 21.0f;				// ステージの横幅
+		stageWidth = 20.0f;				// ステージの横幅
 		cameraPos_Max.z = -8.5f;		// ズームアウトの最大値
-		cameraPos_Min.z = -15.0f;		// ズームインの最小値
+		cameraPos_Min.z = -10.0f;		// ズームインの最小値
 		//distanceOfPlayers_Start = Vector3.Distance(Camera.main.WorldToViewportPoint(Player1.transform.position), Camera.main.WorldToViewportPoint(Player2.transform.position));
-		distanceOfPlayers_Start = 0.4f;	// ゲーム開始時のプレイヤー同士の距離
+		distanceOfPlayers_Start = 0.4f; // ゲーム開始時のプレイヤー同士の距離
 	}
 	#endregion
 
@@ -116,8 +122,8 @@ public class CameraController : MonoBehaviour
 	// ターゲットの中心を求める
 	void TargetPos()
 	{
-		pCentorPos = (Player1.transform.position + Player2.transform.position) / 2;
-		distanceOfPLayers_Current = Vector3.Distance(Camera.main.WorldToViewportPoint(Player1.transform.position), Camera.main.WorldToViewportPoint(Player2.transform.position));
+		pCentorPos = (Fighter1.transform.position + Fighter2.transform.position) / 2;
+		distanceOfPLayers_Current = Vector3.Distance(Camera.main.WorldToViewportPoint(Fighter1.transform.position), Camera.main.WorldToViewportPoint(Fighter2.transform.position));
 	}
 
 	// カメラに関する座標を求める
@@ -146,11 +152,11 @@ public class CameraController : MonoBehaviour
 	{
 		float zoomRatio = 0.0f;
 
-		// カメラのZ座標が最大値より小さいかつプレイヤー間の距離が0.5未満の時
-		if (transform.position.z < cameraPos_Max.z && distanceOfPLayers_Current < 0.5)
+		// カメラのZ座標が最大値より小さいかつプレイヤー間の距離が0.55未満の時
+		if (transform.position.z < cameraPos_Max.z && distanceOfPLayers_Current < 0.55)
 		{
 			// プレイヤー間の距離によって速度を変更
-			zoomRatio += distanceOfPlayers_Start / distanceOfPLayers_Current / speed_Zoom;
+			zoomRatio += distanceOfPlayers_Start / distanceOfPLayers_Current / speed_ZoomIn;
 		}
 		return zoomRatio;
 	}
@@ -167,7 +173,7 @@ public class CameraController : MonoBehaviour
 			// ズームインと被らないようにするため、0.6にしている
 			if (distanceOfPLayers_Current > 0.6)
 			{
-				zoomRatio -= distanceOfPLayers_Current / distanceOfPlayers_Start / speed_Zoom;
+				zoomRatio -= distanceOfPLayers_Current / distanceOfPlayers_Start / speed_ZoomOut;
 			}
 		}
 		return zoomRatio;

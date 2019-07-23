@@ -51,7 +51,6 @@ fixed4 frag(VertexOutput i) : SV_Target
 	//diffuseの値を0~1にクランプする（0以下の値を0に、1以上の値を1にする）
 	float  diffuse = min(max((dot(normal, light)), -_DarknessShadow), 1);
 	
-
 	//法線から環境光を計算する（ShadeSH9は、ForwardBaceのみ動作する）
 	float3 ambient = ShadeSH9(half4(normal, 1));
 
