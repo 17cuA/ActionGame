@@ -38,7 +38,8 @@ public class InGameManager : MonoBehaviour
     [SerializeField] private CharacterStatus characterStatus_P1;
     [SerializeField] private CharacterStatus characterStatus_P2;
 
-    public int playerMaxhp = 100;
+	public GameObject player1;
+	public GameObject player2;
     /// <summary>
     /// 試合開始 
     /// </summary>
@@ -189,7 +190,9 @@ public class InGameManager : MonoBehaviour
             //ラウンドカウンターの更新
             inGameUIController.UpdateWinCounter(getRoundCount_p1, getRoundCount_p2);
 
-            //キャラクターポジションのリセット
+			//キャラクターポジションのリセット(何故か1追加されたり減るため3.5f)
+			player1.transform.position = new Vector3(-3.5f, 0, 0);
+			player2.transform.position = new Vector3(3.5f, 0, 0);
 
             currentUpdate = StartRound;
         }

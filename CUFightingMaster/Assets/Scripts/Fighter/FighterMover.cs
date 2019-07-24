@@ -94,7 +94,7 @@ public class FighterMover
         //移動
         transform.Translate(move * 0.1f);
 		// 三沢が追加(プレイヤーの移動制限)
-		transform.position = new Vector3(Mathf.Clamp(transform.position.x, CameraController.instance.lBottom.x + 1.0f, CameraController.instance.rTop.x - 1.0f), transform.position.y, 0);
+		transform.position = new Vector3(Mathf.Clamp(transform.position.x, CameraController.instance.lBottom.x + 1.5f, CameraController.instance.rTop.x - 1.5f), transform.position.y, 0);
     }
     //重力移動
     private void GravityMovementSkill()
@@ -123,7 +123,9 @@ public class FighterMover
         }
         move.x *= xDirection;
         transform.Translate(move * 0.1f);
-    }
-    #endregion
-	
+		// 三沢が追加(プレイヤーの移動制限)
+		transform.position = new Vector3(Mathf.Clamp(transform.position.x, CameraController.instance.lBottom.x + 1.5f, CameraController.instance.rTop.x - 1.5f), transform.position.y, 0);
+	}
+	#endregion
+
 }
