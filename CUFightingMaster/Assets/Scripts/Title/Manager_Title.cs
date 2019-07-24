@@ -12,23 +12,20 @@ using UnityEngine.SceneManagement;
 
 public class Manager_Title : MonoBehaviour
 {
-	public bool activeTitle;        // TitleがActiveかどうか
+	public bool activeTitle;	// TitleがActiveかどうか
 	public bool demoMovie;  // デモムービーを再生するかどうか
-	private float movie;            // ムービー再生までの時間を引く
-	private float movieMax; // ムービーが流れるまでの待ち時間
+	private float movie;		// ムービー再生までの時間を引く
+	private float movieMax;	// ムービーが流れるまでの待ち時間
 
 
 	//	画面のマスク関係
-	public GameObject maskOb;           //	マスク用のイメージが入ってるオブジェクト
-	//public MovingMaskManager mMM;   //	マスク用スクリプトをロードするため
+	public GameObject maskOb;	//	マスク用のイメージが入ってるオブジェクト
 
 	//	--------------------
 	//	スタート
 	//	--------------------
 	void Start()
 	{
-		//mMM = maskOb.GetComponent<MovingMaskManager>();
-
 		activeTitle = false;
 		demoMovie = false;
 		movieMax = 10;
@@ -40,7 +37,7 @@ public class Manager_Title : MonoBehaviour
 	//	--------------------
 	void Update()
 	{
-        if(Input.GetKeyDown("b"))
+        if (Input.anyKeyDown)
          {
             SceneManager.LoadScene("CharacterSelect");
         }
@@ -56,5 +53,3 @@ public class Manager_Title : MonoBehaviour
 			//}
 		}
 	}
-
-//write by Miyajima Kodai

@@ -35,7 +35,7 @@ public class CharacterSelectInputManager : MonoBehaviour
         //}
         else if(Input.GetKeyDown("b"))
         {
-            SceneManager.LoadScene("SampleScene");
+            SceneManager.LoadScene("Battle");
         }
     }
 }
