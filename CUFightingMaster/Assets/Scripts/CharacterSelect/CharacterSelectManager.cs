@@ -40,11 +40,10 @@ public class CharacterSelectManager : MonoBehaviour
 			}
 		}
 		//決定(シーン移動)
-		if (Input.GetKeyDown("b"))
+		if (Input.GetButtonDown(string.Format("Player{0}_Attack1", playerNum)))
 		{
-			SceneManager.LoadScene(string.Format("Player{0}_Attack1", playerNum));
+			SceneManager.LoadScene("Battle");
 		}
-		CreateCharacter();
 	}
 	public void SelectChara(float _dir)
 	{
