@@ -321,7 +321,7 @@ public class InputManagerSetter
 			//縦方向
 			{
 				var name = string.Format("Player{0}_Vertical", playerIndex);
-				inputManagerGenerator.AddAxis(InputAxis.CreateKeyAxis(name, downKey, upKey, "", ""));
+				inputManagerGenerator.AddAxis(InputAxis.CreateKeyAxis(name, upKey, downKey,  "", ""));
 			}
 
 
