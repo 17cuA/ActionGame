@@ -22,7 +22,7 @@ public class CharacterSelectManager : MonoBehaviour
 
 	void Start()
 	{
-		CreateCharacter();
+		CreateCharacter(character[0]);
 	}
 
 	void Update()
@@ -40,11 +40,10 @@ public class CharacterSelectManager : MonoBehaviour
 			}
 		}
 		//決定(シーン移動)
-		if (Input.GetKeyDown("b"))
+		if (Input.GetButtonDown(string.Format("Player{0}_Attack1", playerNum)))
 		{
-			SceneManager.LoadScene(string.Format("Player{0}_Attack1", playerNum));
+			SceneManager.LoadScene("Battle");
 		}
-		CreateCharacter();
 	}
 	public void SelectChara(float _dir)
 	{
@@ -60,13 +59,14 @@ public class CharacterSelectManager : MonoBehaviour
 			else currentSelectNumber = 0;
 		}
 		selectCursor.transform.position = characterPanels[currentSelectNumber].transform.position;
-		CreateCharacter();
+		if (currentSellectCharacter != character[currentSelectNumber]) CreateCharacter(character[currentSelectNumber]);
 	}
 
 	//表示するキャラクターを生成
-	public void CreateCharacter()
+	public void CreateCharacter(GameObject _obj)
 	{
 		if (currentSellectCharacter != null) Destroy(currentSellectCharacter);
-		currentSellectCharacter = Instantiate(character[currentSelectNumber]);
+		currentSellectCharacter = Instantiate(_obj);
+		currentSellectCharacter.transform.parent = gameObject.transform;
 	}
 }
