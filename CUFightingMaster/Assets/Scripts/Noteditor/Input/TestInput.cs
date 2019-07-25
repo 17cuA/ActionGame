@@ -46,7 +46,7 @@ public class TestInput : MonoBehaviour {
 		float nowDir = 5 + inputDirection.x + (inputDirection.y * 3);
 		//方向を調べる
 		switch (nowDir) {
-			case ((int) DirJS.d1):
+			case (int) DirJS.d1:
 				lastDir = (int) DirJS.d1;
 				playerDirection = "1";
 				break;

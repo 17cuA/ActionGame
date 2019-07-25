@@ -6,14 +6,19 @@ using UnityEngine.SceneManagement;
 
 public class CharacterSelectManager : MonoBehaviour
 {
-	public int currentSelectNumber = 0;     //0が左
+	//プレイヤー番号
+	public int playerNum;
 
 	private const int maxChara = 6;
 	public GameObject[] character = new GameObject[maxChara];               //キャラクターゲームオブジェクト
 	public GameObject[] characterPanels = new GameObject[maxChara];    //キャラクターパネル
 	public GameObject currentSellectCharacter = null;
 	private GameObject currentSellectPanel;
-	public GameObject selectCursor;     //カーソル
+	public int currentSelectNumber = 0;	//0が左
+	public float selectDir = 0;						//カーソル入力方向
+	public GameObject selectCursor;		//カーソル
+	public float limitCursorFrame;				//カーソル移動
+	public float moveCursorFrames = 0;	//カーソル移動後フレーム
 
 	void Start()
 	{
@@ -22,27 +27,29 @@ public class CharacterSelectManager : MonoBehaviour
 
 	void Update()
 	{
-		//カーソル左移動
-		if (Input.GetKeyDown("a"))
+		//カーソル移動
+		selectDir = Input.GetAxisRaw(string.Format("Player{0}_Horizontal", playerNum));
+		moveCursorFrames += Time.deltaTime;
+		if (selectDir != 0)
 		{
-			SelectChara(0);
-		}
-		//カーソル右移動
-		else if (Input.GetKeyDown("s"))
-		{
-			SelectChara(1);
+			if (moveCursorFrames >= limitCursorFrame)
+			{
+				//左右移動（-1が左、1が右）
+				SelectChara(selectDir);
+				moveCursorFrames = 0;
+			}
 		}
 		//決定(シーン移動)
-		else if (Input.GetKeyDown("b"))
+		if (Input.GetKeyDown("b"))
 		{
-			SceneManager.LoadScene("Battle");
+			SceneManager.LoadScene(string.Format("Player{0}_Attack1", playerNum));
 		}
 		CreateCharacter();
 	}
-	public void SelectChara(int _dir)
+	public void SelectChara(float _dir)
 	{
 		//カーソルの移動を判定
-		if (_dir == 0)
+		if (_dir == -1)
 		{
 			if (currentSelectNumber > 0) currentSelectNumber--;
 			else currentSelectNumber = 5;

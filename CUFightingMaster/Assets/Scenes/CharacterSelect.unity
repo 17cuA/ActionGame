@@ -218,7 +218,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef5cd91700d82b54085d57efc15ae0e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentSelectNumber: 0
+  playerNum: 1
   character:
   - {fileID: 3953424999440523916, guid: a374678ab65b62b4aa5a9305cc2d1373, type: 3}
   - {fileID: 1350880535265606877, guid: f69e677fb0298324aa2cddb515214fc0, type: 3}
@@ -234,7 +234,11 @@ MonoBehaviour:
   - {fileID: 117799951}
   - {fileID: 769456290}
   currentSellectCharacter: {fileID: 0}
+  currentSelectNumber: 0
+  selectDir: 0
   selectCursor: {fileID: 1503264303}
+  limitCursorFrame: 0.2
+  moveCursorFrames: 0
 --- !u!114 &114821730
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1439,7 +1443,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef5cd91700d82b54085d57efc15ae0e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentSelectNumber: 0
+  playerNum: 0
   character:
   - {fileID: 3953424999440523916, guid: a374678ab65b62b4aa5a9305cc2d1373, type: 3}
   - {fileID: 1350880535265606877, guid: f69e677fb0298324aa2cddb515214fc0, type: 3}
@@ -1455,7 +1459,11 @@ MonoBehaviour:
   - {fileID: 1844550762}
   - {fileID: 1172396109}
   currentSellectCharacter: {fileID: 0}
+  currentSelectNumber: 0
+  selectDir: 0
   selectCursor: {fileID: 1719836349}
+  limitCursorFrame: 0.2
+  moveCursorFrames: 0
 --- !u!1 &1358896433
 GameObject:
   m_ObjectHideFlags: 0
@@ -1624,7 +1632,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: c0d6ea7b3f137634b813e4b50a36f6e7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c4d80e1f23ce5d84b87c65d3f99773b6, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1953,7 +1961,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1618172206
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1966,7 +1974,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef5cd91700d82b54085d57efc15ae0e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentSelectNumber: 0
+  playerNum: 0
   character:
   - {fileID: 3953424999440523916, guid: a374678ab65b62b4aa5a9305cc2d1373, type: 3}
   - {fileID: 1350880535265606877, guid: f69e677fb0298324aa2cddb515214fc0, type: 3}
@@ -1982,7 +1990,11 @@ MonoBehaviour:
   - {fileID: 1844550762}
   - {fileID: 1172396109}
   currentSellectCharacter: {fileID: 0}
+  currentSelectNumber: 0
+  selectDir: 0
   selectCursor: {fileID: 1719836349}
+  limitCursorFrame: 0
+  moveCursorFrames: 0
 --- !u!4 &1618172208
 Transform:
   m_ObjectHideFlags: 0
