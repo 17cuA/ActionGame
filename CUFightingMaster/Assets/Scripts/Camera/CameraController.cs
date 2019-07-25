@@ -100,7 +100,7 @@ public class CameraController : MonoBehaviour
 		}
 		if (Input.GetKeyDown(KeyCode.Escape))
 		{
-			SceneManager.LoadScene("Title(仮)");
+			RessetPos();
 		}
 		#endregion
 	}
@@ -177,5 +177,10 @@ public class CameraController : MonoBehaviour
 			}
 		}
 		return zoomRatio;
+	}
+	public void RessetPos()
+	{
+		Debug.Log("unkokokokokokoko");
+		gameObject.transform.position = new Vector3(0.0f, 3.0f, -8.5f);
 	}
 }
