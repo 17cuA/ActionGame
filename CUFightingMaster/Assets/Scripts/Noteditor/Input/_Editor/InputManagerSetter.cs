@@ -6,6 +6,14 @@ using UnityEngine;
 /// </summary>
 public class InputManagerSetter
 {
+
+	public void ClearInputManager()
+	{
+		InputManagerGenerator inputManagerGenerator = new InputManagerGenerator();
+
+		Debug.Log("設定を全てクリアします。");
+		inputManagerGenerator.Clear();
+	}
 	/// <summary>
 	/// インプットマネージャーを設定します。
 	/// </summary>
@@ -16,8 +24,6 @@ public class InputManagerSetter
 		Debug.Log("インプットマネージャーの設定を開始します。");
 		InputManagerGenerator inputManagerGenerator = new InputManagerGenerator();
 
-		Debug.Log("設定を全てクリアします。");
-		inputManagerGenerator.Clear();
 		for (int i = 0; i < 2 /*controllerNames.Length*/; ++i)
 		{
 			if (i < controllerNames.Length)
