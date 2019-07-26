@@ -36,21 +36,23 @@ MonoBehaviour:
         localPosition: {x: 2, y: 2, z: -0.5}
       startFrame: 8
       endFrame: 14
-    hitStop: 0
+    hitStop: 10
     hitPoint: 0
     hitStrength: 0
-    damage: 0
+    damage: 15
     stanDamage: 0
     knockBack: 0
     hitEffects: []
     isDown: 0
     isFaceDown: 0
     isPassiveNotPossible: 0
-    hitRigor: 0
+    hitRigor: 25
     guardHitRigor: 0
     plusGauge: 0
-  isContinue: 0
-  movements: []
+  isContinue: 1
+  movements:
+  - movement: {x: 0, y: 4.89, z: 0}
+    startFrame: 0
   gravityMoves: []
   headFlag: 1
   bodyFlag: 1

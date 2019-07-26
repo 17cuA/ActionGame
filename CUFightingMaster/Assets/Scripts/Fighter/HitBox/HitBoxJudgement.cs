@@ -41,6 +41,14 @@ public class HitBoxJudgement
 
     private int RightLeft = 1;
     private bool attackHit = false;//技が当たってるかどうか
+
+	//ノックバック
+	private float knockBackMinus = 0;
+	private const int Knock_Back_Count = 4;
+	private float knockBackPower = 0;
+	private PlayerNumber DamageEnemyNumber = 0;
+	private float wallX = 0;
+
     #region 初期化
     public HitBoxJudgement(FighterCore fighter)
 	{
@@ -116,7 +124,7 @@ public class HitBoxJudgement
 		
 		if (core.NowPlaySkill != null)
 		{
-            CheckDefaultPushingWall(pushingCollider);
+            wallX = CheckDefaultPushingWall(pushingCollider);
             if (core.NowPlaySkill.pushingFlag)
 			{
 				CheckDefaultPushingBox(pushingCollider);
@@ -399,14 +407,12 @@ public class HitBoxJudgement
                         if (core.Direction == PlayerDirection.Right)
                         {
                             Object.Instantiate(_cHit.hitEffects[i].effect, new Vector3(t.position.x + _bCol.center.x + _cHit.hitEffects[i].position.x, t.position.y + _bCol.center.y + _cHit.hitEffects[i].position.y, t.position.z + _bCol.center.z + _cHit.hitEffects[i].position.z), Quaternion.identity);
-							Sound.PlaySe("HitW", 1, 0.5f, 1);
-						}
+                        }
                         else if (core.Direction == PlayerDirection.Left)
                         {
                             Object.Instantiate(_cHit.hitEffects[i].effect, new Vector3(t.position.x + _bCol.center.x + _cHit.hitEffects[i].position.x, t.position.y + _bCol.center.y + _cHit.hitEffects[i].position.y, t.position.z + _bCol.center.z + _cHit.hitEffects[i].position.z), Quaternion.Euler(0,180,0));
-							Sound.PlaySe("HitW", 1, 0.5f, 1);
-						}
-					}
+                        }
+                    }
                 }
 
                 attackHit = true;
@@ -448,8 +454,9 @@ public class HitBoxJudgement
 			}
 		}
 	}
-    public void CheckDefaultPushingWall(BoxCollider _col)
+    public float CheckDefaultPushingWall(BoxCollider _col)
     {
+		Debug.Log(_col);
         Transform t = _col.gameObject.transform;
         float posX = t.position.x + _col.center.x;
         float posY = t.position.y + _col.center.y;
@@ -459,8 +466,9 @@ public class HitBoxJudgement
         Collider[] col = Physics.OverlapBox(new Vector3(posX, posY, posZ), siz, Quaternion.identity, (1 << LayerMask.NameToLayer(CommonConstants.Layers.Wall)));
 		if(col.Length<=0)
 		{
-            return;
+            return 0;
         }
+		float x = 0;
         foreach (Collider c in col)
         {
             int i = 1;
@@ -468,21 +476,46 @@ public class HitBoxJudgement
             {
                 i = -1;
             }
-            float x = ((c.transform.position.x+((BoxCollider)c).center.x))+((((BoxCollider)c).size.x/2)*i)+((_col.center.x*-1+(siz.x*i)));
-            float checkX = x - c.gameObject.transform.parent.transform.position.x;
+            x = ((c.transform.position.x+((BoxCollider)c).center.x))+((((BoxCollider)c).size.x/2)*i)+((_col.center.x*-1+(siz.x*i)));
+			//プラスかマイナスか
+			float checkX = x - c.gameObject.transform.position.x;
             if (i == 1 && checkX > 0)
             {
-                continue;
+				Debug.Log("aa");
+				continue;
             }
             else if (i == -1 && checkX < 0)
             {
-                continue;
+				continue;
             }
+			float xTmp = t.parent.transform.position.x - x;
             t.parent.transform.position = new Vector3(x, t.transform.position.y, t.transform.position.z);
-        }
-    }
-    public void CheckHalfPushingBox()
+			x = xTmp;
+		}
+		return  x;
+	}
+	public void KnockBackPushing()
 	{
-		
+		//ノックバックがあれば
+		if(knockBackPower <= 0)
+		{
+			return;
+		}
+		Transform t = pushingCollider.gameObject.transform;
+		t.parent.transform.position += new Vector3(knockBackPower*(RightLeft*-1), 0, 0);
+		float x = CheckDefaultPushingWall(pushingCollider);
+		if (Mathf.Abs(x) >0)
+		{
+			GameManager.Instance.GetPlayFighterCore(DamageEnemyNumber).SetKnockBack(knockBackPower -(knockBackPower - Mathf.Abs(x)), core.PlayerNumber);
+			knockBackPower = 0;
+		}
+		knockBackPower -= knockBackMinus;
+	}
+	//ノックバックの初期化
+	public void SetKnockBack(float _power,PlayerNumber _number)
+	{
+		knockBackPower = _power;
+		knockBackMinus = knockBackPower / Knock_Back_Count;
+		DamageEnemyNumber = _number;
 	}
 }

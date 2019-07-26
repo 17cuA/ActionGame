@@ -18,7 +18,7 @@ public class FighterStateMove : StateBaseScriptMonoBehaviour
     /* ステートに入った時 */
     public void MoveStart()
     {
-        beforeInput = GetPlayerMoveDirection();
+        beforeInput = stateBase.input.GetPlayerMoveDirection(stateBase);
         ChangeMove(beforeInput);
     }
     /* ステート中 */
@@ -70,7 +70,7 @@ public class FighterStateMove : StateBaseScriptMonoBehaviour
                 }
             }
         }
-        Direction inp = GetPlayerMoveDirection();
+        Direction inp = stateBase.input.GetPlayerMoveDirection(stateBase);
         if (inp == beforeInput) return;
         ChangeMove(inp);
         beforeInput = inp;
@@ -87,111 +87,57 @@ public class FighterStateMove : StateBaseScriptMonoBehaviour
         switch (_dir)
         {
             case Direction.Neutral:
-				stateBase.core.SetIsCrouching(false);
-				stateBase.ChangeSkillConstant(SkillConstants.Idle, 5);
+                stateBase.core.SetIsCrouching(false);
+                stateBase.ChangeSkillConstant(SkillConstants.Idle, 5);
+                stateBase.core.SetPlayerMoveState(PlayerMoveState.Idle);
                 break;
             case Direction.Front:
-				stateBase.core.SetIsCrouching(false);
-				stateBase.ChangeSkillConstant(SkillConstants.Front_Walk, 5);
+                stateBase.core.SetIsCrouching(false);
+                stateBase.ChangeSkillConstant(SkillConstants.Front_Walk, 5);
+                stateBase.core.SetPlayerMoveState(PlayerMoveState.Front_Walk);
                 break;
             case Direction.Back:
-				stateBase.core.SetIsCrouching(false);
-				stateBase.ChangeSkillConstant(SkillConstants.Back_Walk, 5);
+                stateBase.core.SetIsCrouching(false);
+                stateBase.ChangeSkillConstant(SkillConstants.Back_Walk, 5);
+                stateBase.core.SetPlayerMoveState(PlayerMoveState.Back_Walk);
                 break;
             case Direction.Down:
-				stateBase.core.SetIsCrouching(true);
+                stateBase.core.SetIsCrouching(true);
                 stateBase.ChangeSkillConstant(SkillConstants.Crouching, 5);
+                stateBase.core.SetPlayerMoveState(PlayerMoveState.Crouching);
                 break;
             case Direction.DownBack:
-				stateBase.core.SetIsCrouching(true);
-				stateBase.ChangeSkillConstant(SkillConstants.Crouching, 5);
+                stateBase.core.SetIsCrouching(true);
+                stateBase.ChangeSkillConstant(SkillConstants.Crouching, 5);
+                stateBase.core.SetPlayerMoveState(PlayerMoveState.Crouching);
+
                 break;
             case Direction.DownFront:
-				stateBase.core.SetIsCrouching(true);
-				stateBase.ChangeSkillConstant(SkillConstants.Crouching, 5);
+                stateBase.core.SetIsCrouching(true);
+                stateBase.ChangeSkillConstant(SkillConstants.Crouching, 5);
+                stateBase.core.SetPlayerMoveState(PlayerMoveState.Crouching);
+
                 break;
             case Direction.Up:
-				stateBase.core.SetIsCrouching(false);
-				stateBase.ChangeSkillConstant(SkillConstants.Jump, 0);
+                stateBase.core.SetIsCrouching(false);
+                stateBase.ChangeSkillConstant(SkillConstants.Jump, 0);
+                stateBase.core.SetPlayerMoveState(PlayerMoveState.Jump);
+
                 break;
             case Direction.UpFront:
-				stateBase.core.SetIsCrouching(false);
-				stateBase.ChangeSkillConstant(SkillConstants.Front_Jump, 0);
+                stateBase.core.SetIsCrouching(false);
+                stateBase.ChangeSkillConstant(SkillConstants.Front_Jump, 0);
+                stateBase.core.SetPlayerMoveState(PlayerMoveState.Front_Jump);
+
                 break;
             case Direction.UpBack:
-				stateBase.core.SetIsCrouching(false);
-				stateBase.ChangeSkillConstant(SkillConstants.Back_Jump, 0);
+                stateBase.core.SetIsCrouching(false);
+                stateBase.ChangeSkillConstant(SkillConstants.Back_Jump, 0);
+                stateBase.core.SetPlayerMoveState(PlayerMoveState.Back_Jump);
+
                 break;
         }
 
-    }
-    //移動の取得
-    private Direction GetPlayerMoveDirection()
-    {
-        switch (stateBase.input.playerDirection)
-        {
-            case "1":
-                if (stateBase.core.Direction == PlayerDirection.Right)
-                {
-                    return Direction.DownBack;
-                }
-                else
-                {
-                    return Direction.DownFront;
-                }
-            case "2":
-                return Direction.Down;
-            case "3":
-                if (stateBase.core.Direction == PlayerDirection.Right)
-                {
-                    return Direction.DownFront;
-                }
-                else
-                {
-                    return Direction.DownBack;
-                }
-            case "4":
-                if (stateBase.core.Direction == PlayerDirection.Right)
-                {
-                    return Direction.Back;
-                }
-                else
-                {
-                    return Direction.Front;
-                }
-            case "5":
-                return Direction.Neutral;
-            case "6":
-                if (stateBase.core.Direction == PlayerDirection.Right)
-                {
-                    return Direction.Front;
-                }
-                else
-                {
-                    return Direction.Back;
-                }
-            case "7":
-                if (stateBase.core.Direction == PlayerDirection.Right)
-                {
-                    return Direction.UpBack;
-                }
-                else
-                {
-                    return Direction.UpFront;
-                }
-            case "8":
-                return Direction.Up;
-            case "9":
-                if (stateBase.core.Direction == PlayerDirection.Right)
-                {
-                    return Direction.UpFront;
-                }
-                else
-                {
-                    return Direction.UpBack;
-                }
-        }
-        return Direction.Neutral;
     }
     #endregion
 }

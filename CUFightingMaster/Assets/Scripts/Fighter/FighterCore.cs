@@ -22,6 +22,8 @@ public class FighterCore : MonoBehaviour
     private int changeWeightFrame = 0;
     public bool changeSkill { get; private set; }//技が入れ替わったかどうか
     public int HP = 0;
+    //現在のプレイヤーの移動の状況、状態
+    private PlayerMoveState playerMoveState = PlayerMoveState.Idle;
     #region Getter
     public GameObject PlayerModel
     {
@@ -55,6 +57,10 @@ public class FighterCore : MonoBehaviour
 	{
 		get { return enemyNumber; }
 	}
+    public PlayerMoveState PlayerMoveStates
+    {
+        get { return playerMoveState; }
+    }
     #endregion
     private void Start()
     {
@@ -94,6 +100,10 @@ public class FighterCore : MonoBehaviour
 		//当たり判定のアップデート
 		hitJudgement.UpdateGame();
 	}
+	public void KnockBackUpdate()
+	{
+		hitJudgement.KnockBackPushing();
+	}
 
 	#region publid メソッド
 	//技の設定
@@ -126,6 +136,15 @@ public class FighterCore : MonoBehaviour
 	public void SetDirection(PlayerDirection _dir)
 	{
 		direction = _dir;
+	}
+    public void SetPlayerMoveState(PlayerMoveState _state)
+    {
+        playerMoveState = _state;
+    }
+
+	public void SetKnockBack(float _backCount,PlayerNumber _number)
+	{
+		hitJudgement.SetKnockBack(_backCount,_number);
 	}
     #endregion
 
