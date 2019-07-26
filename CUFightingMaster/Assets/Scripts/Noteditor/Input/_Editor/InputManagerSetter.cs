@@ -6,11 +6,13 @@ using UnityEngine;
 /// </summary>
 public class InputManagerSetter
 {
-
+	/// <summary>
+	/// インプットマネージャーの設定をクリアします。
+	/// </summary>
 	public void ClearInputManager()
 	{
 		InputManagerGenerator inputManagerGenerator = new InputManagerGenerator();
-
+		
 		Debug.Log("設定を全てクリアします。");
 		inputManagerGenerator.Clear();
 	}
@@ -24,7 +26,7 @@ public class InputManagerSetter
 		Debug.Log("インプットマネージャーの設定を開始します。");
 		InputManagerGenerator inputManagerGenerator = new InputManagerGenerator();
 
-		for (int i = 0; i < 2 /*controllerNames.Length*/; ++i)
+		for (int i = 0; i < 2; ++i)
 		{
 			if (i < controllerNames.Length)
 			{
@@ -412,24 +414,6 @@ public class InputManagerSetter
 				attackKey3 = "h";
 				break;
 			case 1:
-				upKey = "up";
-				downKey = "down";
-				leftKey = "left";
-				rightKey = "right";
-				attackKey1 = "[1]";
-				attackKey2 = "[2]";
-				attackKey3 = "[3]";
-				break;
-			case 2:
-				upKey = "w";
-				downKey = "c";
-				leftKey = "q";
-				rightKey = "e";
-				attackKey1 = "f";
-				attackKey2 = "g";
-				attackKey3 = "h";
-				break;
-			case 3:
 				upKey = "up";
 				downKey = "down";
 				leftKey = "left";
