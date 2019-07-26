@@ -14,28 +14,29 @@ public class CharacterSelectManager : MonoBehaviour
 	public GameObject[] characterPanels = new GameObject[maxChara];    //キャラクターパネル
 	public GameObject currentSellectCharacter = null;
 	private GameObject currentSellectPanel;
-	public int currentSelectNumber = 0;	//0が左
-	public float selectDir = 0;						//カーソル入力方向
+	public Vector2 inputDir = Vector2.zero;//カーソル入力方向
+	public int selectDir = 0;			//現在のカーソル位置
 	public GameObject selectCursor;		//カーソル
-	public float limitCursorFrame;				//カーソル移動
+	public float limitCursorFrame;		//カーソル移動
 	public float moveCursorFrames = 0;	//カーソル移動後フレーム
 
 	void Start()
 	{
-		CreateCharacter(character[0]);
+
 	}
 
 	void Update()
 	{
 		//カーソル移動
-		selectDir = Input.GetAxisRaw(string.Format("Player{0}_Horizontal", playerNum));
+		inputDir.x = Input.GetAxisRaw(string.Format("Player{0}_Horizontal", playerNum));
+		inputDir.y = Input.GetAxisRaw(string.Format("Player{0}_Vertical", playerNum));
 		moveCursorFrames += Time.deltaTime;
-		if (selectDir != 0)
+		if (inputDir != Vector2.zero)
 		{
 			if (moveCursorFrames >= limitCursorFrame)
 			{
 				//左右移動（-1が左、1が右）
-				SelectChara(selectDir);
+				SelectChara(inputDir);
 				moveCursorFrames = 0;
 			}
 		}
@@ -45,28 +46,36 @@ public class CharacterSelectManager : MonoBehaviour
 			SceneManager.LoadScene("Battle");
 		}
 	}
-	public void SelectChara(float _dir)
+	public void SelectChara(Vector2 _dir)
 	{
+		int x = selectDir % 3,y = selectDir / 3;
 		//カーソルの移動を判定
-		if (_dir == -1)
+		//x軸
+		if (_dir.x == -1)
 		{
-			if (currentSelectNumber > 0) currentSelectNumber--;
-			else currentSelectNumber = 5;
+			if (x > 0) x--;
+			else x = 2;
 		}
-		else
+		else if(_dir.x == 1)
 		{
-			if (currentSelectNumber < 5) currentSelectNumber++;
-			else currentSelectNumber = 0;
+			if (x < 2) x++;
+			else x = 0;
 		}
-		selectCursor.transform.position = characterPanels[currentSelectNumber].transform.position;
-		if (currentSellectCharacter != character[currentSelectNumber]) CreateCharacter(character[currentSelectNumber]);
-	}
-
-	//表示するキャラクターを生成
-	public void CreateCharacter(GameObject _obj)
-	{
-		if (currentSellectCharacter != null) Destroy(currentSellectCharacter);
-		currentSellectCharacter = Instantiate(_obj);
-		currentSellectCharacter.transform.parent = gameObject.transform;
+		//y軸
+		if (_dir.y == -1)
+		{
+			Debug.Log("w");
+			if (y > 0) y--;
+			else y = 1;
+		}
+		else if (_dir.y == 1)
+		{
+			Debug.Log("s");
+			if (y < 1) y ++;
+			else y = 0;
+		}
+		Debug.Log(y);
+		selectDir = x + (3 * y);
+		selectCursor.transform.position = characterPanels[selectDir].transform.position;
 	}
 }
