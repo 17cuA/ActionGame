@@ -163,6 +163,7 @@ public class InGameManager : MonoBehaviour
         if (getRoundCount_p1 >= winRound || getRoundCount_p2 >= winRound)
         {
             currentUpdate = GameVictory;
+			Sound.StopBgm();
         }
         else
         {
