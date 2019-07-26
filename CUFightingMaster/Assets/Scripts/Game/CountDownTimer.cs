@@ -25,8 +25,7 @@ public class CountDownTimer : MonoBehaviour
 
     public int displayTime;
 
-    public bool isPlayCountDown = false;
-
+    bool isPlayCountDown = false;
 
     public Image firstDigit;    //一桁目のimage
     public Image secondDigit;   //二桁目のimage
@@ -43,11 +42,20 @@ public class CountDownTimer : MonoBehaviour
         UpdateDisplay((int)currentTime);
     }
 
-    /// <summary>
-    /// カウントダウンの終了を通知
-    /// </summary>
-    /// <returns></returns>
-    public bool isEndCountDown()
+	/// <summary>
+	/// カウントダウンを開始・終了する
+	/// </summary>
+	public void PlayCountDown(bool isPlay)
+	{
+		if (isPlay) isPlayCountDown = true;
+		else	isPlayCountDown = false;
+	}
+
+	/// <summary>
+	/// カウントダウンの終了を通知
+	/// </summary>
+	/// <returns></returns>
+	public bool isEndCountDown()
     {
         return isPlayCountDown;
     }

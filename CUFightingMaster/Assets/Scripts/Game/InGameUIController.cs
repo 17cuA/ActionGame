@@ -15,6 +15,9 @@
 //
 // UIの参照について 0718 
 // UIの表示非表示を、setActiveでやってるので、参照のタイミングが違うものがある
+//
+// 参照先について (0726 金沢) 
+// 2画面対応のために親のCanvas取得、そのCanvasから他Component取得
 //----------------------------------------
 using System.Collections;
 using System.Collections.Generic;
@@ -32,17 +35,20 @@ public class InGameUIController : MonoBehaviour
 
     [SerializeField] UI_RoundWinCounter uI_RoundWinCounter;
     [SerializeField] UI_StartRound uI_StartRound;
-    [SerializeField] UI_BatlleRound uI_BatlleRound;
+    [SerializeField] UI_BattleRound uI_BatlleRound;
     [SerializeField] UI_FinishRound_KO uI_FinishRound_KO;
     [SerializeField] UI_FinishRound_TimeOver uI_FinishRound_TimeOver;
     [SerializeField] UI_GameVictory uI_GameVictory;
 
-    /// <summary>
-    /// ラウンド開始時のUIの再生。再生が終わったら、falseを返す
-    /// </summary>
-    /// <param name="roundCount">ラウンド数</param>
-    /// <returns>再生が終了したか( 再生中:true 終了:false )</returns>
-    public bool PlayStartRound(int roundCount)
+	[SerializeField] GameObject currentCanvas;	// このInGameUIControllerの親のCanvas
+	[SerializeField] GameObject uI_InGameUI;
+
+	/// <summary>
+	/// ラウンド開始時のUIの再生。再生が終わったら、falseを返す
+	/// </summary>
+	/// <param name="roundCount">ラウンド数</param>
+	/// <returns>再生が終了したか( 再生中:true 終了:false )</returns>
+	public bool PlayStartRound(int roundCount)
     {
         return uI_StartRound.PlayStartRound(roundCount);
     }
@@ -50,21 +56,21 @@ public class InGameUIController : MonoBehaviour
     /// <summary>
     /// ラウンド開始後のUIの表示
     /// </summary>
-	public void PlayBatlleRound()
+	public void PlayBattleRound()
     {
         uI_BatlleRound.DisplayBatlleUI();
-        uI_countDownTimer = GameObject.Find("UI_CountDownTimer").GetComponent<CountDownTimer>();
+        uI_countDownTimer = uI_InGameUI.transform.Find("UI_CountDownTimer").GetComponent<CountDownTimer>();
 
         //一時的
-        uI_hp_P1 = GameObject.Find("UI_HP_P1").GetComponent<UI_Gauge>();
-        uI_hp_P2 = GameObject.Find("UI_HP_P2").GetComponent<UI_Gauge>();
+        uI_hp_P1 = uI_InGameUI.transform.Find("UI_HP_P1").GetComponent<UI_Gauge>();
+        uI_hp_P2 = uI_InGameUI.transform.Find("UI_HP_P2").GetComponent<UI_Gauge>();
     }
 
     /// <summary>
     /// KOでラウンドが終わった時のUIの再生
     /// </summary>
     /// <returns></returns>
-	public bool PlayFinishRound__KO()
+	public bool PlayFinishRound_KO()
     {
         return uI_FinishRound_KO.PlayFinishRound_KO();
     }
@@ -106,10 +112,10 @@ public class InGameUIController : MonoBehaviour
     /// <summary>
     /// カウントダウン開始
     /// </summary>
-    public void StartCoundDouwn()
+    public void StartCountDown()
     {
         uI_countDownTimer.ResetTimer();
-        uI_countDownTimer.isPlayCountDown = true;
+		uI_countDownTimer.PlayCountDown(true);
     }
 
     /// <summary>
@@ -117,7 +123,7 @@ public class InGameUIController : MonoBehaviour
     /// </summary>
     public void StopCountDown()
     {
-        uI_countDownTimer.isPlayCountDown = false;
+		uI_countDownTimer.PlayCountDown(false);
     }
 
     /// <summary>
@@ -144,7 +150,7 @@ public class InGameUIController : MonoBehaviour
     /// </summary>
     public void ResetUIParameter()
     {
-        uI_StartRound.isCalled = false;
+        uI_StartRound.Reset_isCalled();
         uI_FinishRound_KO.isCalled = false;
         uI_FinishRound_TimeOver.isCalled = false;
         uI_GameVictory.isCalled = false;
@@ -153,13 +159,15 @@ public class InGameUIController : MonoBehaviour
 
     private void Awake()
     {
-        //参照
-        uI_StartRound = GameObject.Find("RoundStart").GetComponent<UI_StartRound>();
-        uI_BatlleRound = GameObject.Find("BatlleRound").GetComponent<UI_BatlleRound>();
-        uI_FinishRound_KO = GameObject.Find("FinishRound_KO").GetComponent<UI_FinishRound_KO>();
-        uI_GameVictory = GameObject.Find("FinishGame_Victory").GetComponent<UI_GameVictory>();
-        uI_FinishRound_TimeOver = GameObject.Find("FinishRound_TimeOver").GetComponent<UI_FinishRound_TimeOver>();
-        uI_RoundWinCounter = GameObject.Find("RoundWinCounter").GetComponent<UI_RoundWinCounter>();
+		//参照
+		currentCanvas = transform.root.gameObject;
+		uI_InGameUI = currentCanvas.transform.Find("InGameUI").gameObject;
+        uI_StartRound = currentCanvas.transform.Find("RoundStart").GetComponent<UI_StartRound>();
+        uI_BatlleRound = currentCanvas.transform.Find("BatlleRound").GetComponent<UI_BattleRound>();
+        uI_FinishRound_KO = currentCanvas.transform.Find("FinishRound_KO").GetComponent<UI_FinishRound_KO>();
+        uI_GameVictory = currentCanvas.transform.Find("FinishGame_Victory").GetComponent<UI_GameVictory>();
+        uI_FinishRound_TimeOver = currentCanvas.transform.Find("FinishRound_TimeOver").GetComponent<UI_FinishRound_TimeOver>();
+        uI_RoundWinCounter = currentCanvas.transform.Find("RoundWinCounter").GetComponent<UI_RoundWinCounter>();
 
     }
 }

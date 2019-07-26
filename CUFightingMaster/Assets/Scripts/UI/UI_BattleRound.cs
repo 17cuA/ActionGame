@@ -13,16 +13,20 @@
 //----------------------------------------
 // MEMO 
 // 制御するUIの参照は手動です
+// 
+// 参照先について (0726 金沢)
+// プログラムで取得するように変更
 //----------------------------------------
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UI_BatlleRound : MonoBehaviour
+public class UI_BattleRound : MonoBehaviour
 {
 	//参照
-	public GameObject inGameUI;
+	[SerializeField] private GameObject inGameUI;
+	[SerializeField] private GameObject currentCanvas;
 
 	public void DisplayBatlleUI()
 	{
@@ -33,5 +37,10 @@ public class UI_BatlleRound : MonoBehaviour
 	{
 		inGameUI.SetActive(false);
 	}
-	
+
+	public void Awake()
+	{
+		currentCanvas = transform.root.gameObject;
+		inGameUI = currentCanvas.transform.Find("InGameUI").gameObject;
+	}
 }

@@ -21,7 +21,7 @@ public class ScreenFade : MonoBehaviour
 {
     public float fadeSpeed;
 
-    public float red, green, blue, alfa;
+    float red, green, blue, alfa;
 
     //public bool iscalled;
 
@@ -34,8 +34,8 @@ public class ScreenFade : MonoBehaviour
     {
             if (alfa >= 1)
             {
-                return true;
-            }
+				return true;
+			}
             image.color = new Color(red, green, blue, alfa);
             alfa += fadeSpeed;
             return false;

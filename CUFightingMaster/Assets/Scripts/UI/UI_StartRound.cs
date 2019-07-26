@@ -51,6 +51,11 @@ public class UI_StartRound : MonoBehaviour
         fight.GetComponent<Image>().enabled = true;
 	}
 
+	public void Reset_isCalled()
+	{
+		isCalled = false;
+	}
+
 	public bool PlayStartRound(int roundCount)
 	{
         if (isCalled == false)

@@ -12,6 +12,9 @@
 // その関数を、デリゲードでcurrentUpdateに委託しています。
 //----------------------------------------
 // MEMO 
+// 2画面対応について (0726 金沢)
+// Canvasをまとめて操作するCanvasControllerの関数を呼び出し
+// 各Canvasに表示・切り替えするように変更
 //----------------------------------------
 using UnityEngine;
 using System;
@@ -30,16 +33,16 @@ public class InGameManager : MonoBehaviour
 
     //参照先
     [SerializeField] private CinemaController cinemaController;
-    [SerializeField] private InGameUIController inGameUIController;
     [SerializeField] private CharacterCreater characterCreater;
-    [SerializeField] private ScreenFade screenFade;
-    [SerializeField] private SceneController sceneController;
+	//[SerializeField] private SceneController sceneController;
+	[SerializeField] private CanvasController canvasController;
 
-    [SerializeField] private CharacterStatus characterStatus_P1;
+	[SerializeField] private CharacterStatus characterStatus_P1;
     [SerializeField] private CharacterStatus characterStatus_P2;
 
 	public GameObject player1;
 	public GameObject player2;
+
     /// <summary>
     /// 試合開始 
     /// </summary>
@@ -58,7 +61,7 @@ public class InGameManager : MonoBehaviour
 		//カットシーンの再生（未実装）
 
 		//カットシーンの再生が終わり、暗くなったら
-		if (cinemaController.isPlay == false && screenFade.StartFadeOut() == true)
+		if (cinemaController.isPlay == false && canvasController.Check_StartFadeOut() == true)
             currentUpdate = StartRound;
     }
 
@@ -68,16 +71,16 @@ public class InGameManager : MonoBehaviour
     private void StartRound()
     {
         //ゲーム中のUI生成
-        inGameUIController.PlayBatlleRound();
+        canvasController.Start_PlayBattleRound();
 
         //画面が明るくなったら
-        if (screenFade.StartFadeIn() == true)
+        if (canvasController.Check_StartFadeIn() == true)
         {
             //ラウンド開始時のUI生成
-            if (inGameUIController.PlayStartRound(gameRoundCount) == false)
+            if (canvasController.Start_PlayStartRound(gameRoundCount) == false)
             {
                 //タイマーの開始
-                inGameUIController.StartCoundDouwn();
+                canvasController.Start_CountDown();
                 currentUpdate = BatlleRound;
             }
         }
@@ -89,7 +92,7 @@ public class InGameManager : MonoBehaviour
     private void BatlleRound()
     {
         //UIのhp表示の更新
-        inGameUIController.DisplayPlayerHp(GameManager.Instance.Player_one.HP, GameManager.Instance.Player_two.HP);
+        canvasController.Display_PlayerHP(GameManager.Instance.Player_one.HP, GameManager.Instance.Player_two.HP);
 
         //(どちらかのHPが0になったら
         if (GameManager.Instance.Player_one.HP <= 0 || GameManager.Instance.Player_two.HP <= 0)
@@ -111,7 +114,7 @@ public class InGameManager : MonoBehaviour
         }
 
         //TimeOverになったら
-        else if (inGameUIController.DoEndCountDown() == false)
+        else if (canvasController.Check_EndCountDown() == false)
         {
             //勝敗判定
             if (GameManager.Instance.Player_one.HP == GameManager.Instance.Player_two.HP)
@@ -137,7 +140,7 @@ public class InGameManager : MonoBehaviour
     private void FinishRound_KO()
     {
         Debug.Log("FinishRound_KO");
-        if (inGameUIController.PlayFinishRound__KO() == false)
+        if (canvasController.Play_FinishRound_KO() == false)
         {
             currentUpdate = DoGameFinish;
         }
@@ -148,7 +151,7 @@ public class InGameManager : MonoBehaviour
     /// </summary>
     private void FinishRound_TimeOver()
     {
-        if (inGameUIController.PlayFinishRound_TimeOver() == false)
+        if (canvasController.Play_FinishRound_TimeOver() == false)
         {
             currentUpdate = DoGameFinish;
         }
@@ -178,18 +181,18 @@ public class InGameManager : MonoBehaviour
     private void ResetParameter()
     {
         //画面を暗くする
-        if (screenFade.StartFadeOut() == true)
+        if (canvasController.Check_StartFadeOut() == true)
         {
             //キャラクターのHPのリセット
             GameManager.Instance.Player_one.HP = 100;
             GameManager.Instance.Player_two.HP = 100;
-            inGameUIController.ResetUIParameter();
+            canvasController.Reset_UIParameter();
 
             //hpの初期化
-            inGameUIController.DisplayPlayerHp(GameManager.Instance.Player_one.HP, GameManager.Instance.Player_two.HP);
+            canvasController.Display_PlayerHP(GameManager.Instance.Player_one.HP, GameManager.Instance.Player_two.HP);
 
             //ラウンドカウンターの更新
-            inGameUIController.UpdateWinCounter(getRoundCount_p1, getRoundCount_p2);
+            canvasController.Update_WinCounter(getRoundCount_p1, getRoundCount_p2);
 
 			//キャラクターポジションのリセット(何故か1追加されたり減るため3.5f)
 			player1.transform.position = new Vector3(-3.5f, 0, 0);
@@ -205,16 +208,16 @@ public class InGameManager : MonoBehaviour
     private void GameVictory()
     {
         //ラウンドカウンターの更新
-        inGameUIController.UpdateWinCounter(getRoundCount_p1, getRoundCount_p2);
+        canvasController.Update_WinCounter(getRoundCount_p1, getRoundCount_p2);
 
         if (getRoundCount_p1 > getRoundCount_p2)
         {
-            if (inGameUIController.DisplayVictory_winP1() == false)
+            if (canvasController.Display_Victory_winP1() == false)
                 currentUpdate = GameFinish;
         }
         else
         {
-            if(inGameUIController.DisplayVictory_winP2() == false)
+            if(canvasController.Display_Victory_winP2() == false)
                 currentUpdate = GameFinish;
         }
     }
@@ -230,10 +233,8 @@ public class InGameManager : MonoBehaviour
     private void Awake()
     {
 		cinemaController = GameObject.Find("CinemaControll").GetComponent<CinemaController>();
-        inGameUIController = GameObject.Find("InGameUIController").GetComponent<InGameUIController>();
-        screenFade = GameObject.Find("ScreenFade").GetComponent<ScreenFade>();
-        //sceneController = GameObject.Find("SceneController").GetComponent<SceneController>();
-
+		//sceneController = GameObject.Find("SceneController").GetComponent<SceneController>();
+		canvasController = GameObject.Find("CanvasController").GetComponent<CanvasController>();
         //一時的
         //characterStatus_P1 = GameObject.Find("Temp_Player01").GetComponent<CharacterStatus>();
         //characterStatus_P2 = GameObject.Find("Temp_Player02").GetComponent<CharacterStatus>();
