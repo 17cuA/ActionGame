@@ -38,8 +38,6 @@ public class InGameManager : MonoBehaviour
     [SerializeField] private CharacterStatus characterStatus_P1;
     [SerializeField] private CharacterStatus characterStatus_P2;
 
-	[SerializeField] private CameraController cameraController;
-
 	public GameObject player1;
 	public GameObject player2;
     /// <summary>
@@ -192,14 +190,11 @@ public class InGameManager : MonoBehaviour
             //ラウンドカウンターの更新
             inGameUIController.UpdateWinCounter(getRoundCount_p1, getRoundCount_p2);
 
-			cameraController.RessetPos();
-
 			//キャラクターポジションのリセット(何故か1追加されたり減るため3.5f)
 			player1.transform.position = new Vector3(-3.5f, 0, 0);
 			player2.transform.position = new Vector3(3.5f, 0, 0);
 
-
-			currentUpdate = StartRound;
+            currentUpdate = StartRound;
         }
     }
 
@@ -236,7 +231,6 @@ public class InGameManager : MonoBehaviour
 		cinemaController = GameObject.Find("CinemaControll").GetComponent<CinemaController>();
         inGameUIController = GameObject.Find("InGameUIController").GetComponent<InGameUIController>();
         screenFade = GameObject.Find("ScreenFade").GetComponent<ScreenFade>();
-		cameraController = GameObject.Find("BattleCamera").GetComponent<CameraController>();
         //sceneController = GameObject.Find("SceneController").GetComponent<SceneController>();
 
         //一時的
