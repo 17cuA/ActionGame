@@ -43,7 +43,7 @@ public class TestInput : MonoBehaviour {
 	}
 	public void SetDirection () {
 		SetAxis ();
-		float nowDir = 5 + inputDirection.x + (inputDirection.y * 3);
+		float nowDir = 5 + inputDirection.x + (inputDirection.y * -3);
 		//方向を調べる
 		switch (nowDir) {
 			case (int) DirJS.d1:

@@ -65,7 +65,7 @@ public class InputManagerSetter
 			{
 				var name = string.Format("Player{0}_Vertical", playerIndex);
 				inputManagerGenerator.AddAxis(InputAxis.CreatePadAxis(name, controllerName, joystickNum, 2));
-				inputManagerGenerator.AddAxis(InputAxis.CreateKeyAxis(name, downKey, upKey, "", ""));
+				inputManagerGenerator.AddAxis(InputAxis.CreateKeyAxis(name, upKey, downKey, "", ""));
 			}
 
 
@@ -129,7 +129,7 @@ public class InputManagerSetter
 			{
 				var name = string.Format("Player{0}_Vertical", playerIndex);
 				inputManagerGenerator.AddAxis(InputAxis.CreatePadAxis(name, controllerName, joystickNum, 2));
-				inputManagerGenerator.AddAxis(InputAxis.CreateKeyAxis(name, downKey, upKey, "", ""));
+				inputManagerGenerator.AddAxis(InputAxis.CreateKeyAxis(name, upKey, downKey, "", ""));
 			}
 
 
@@ -194,7 +194,7 @@ public class InputManagerSetter
 			{
 				var name = string.Format("Player{0}_Vertical", playerIndex);
 				inputManagerGenerator.AddAxis(InputAxis.CreatePadAxis(name, controllerName, joystickNum, 2));
-				inputManagerGenerator.AddAxis(InputAxis.CreateKeyAxis(name, downKey, upKey, "", ""));
+				inputManagerGenerator.AddAxis(InputAxis.CreateKeyAxis(name,upKey, downKey, "", ""));
 			}
 
 
@@ -258,7 +258,7 @@ public class InputManagerSetter
 			{
 				var name = string.Format("Player{0}_Vertical", playerIndex);
 				inputManagerGenerator.AddAxis(InputAxis.CreatePadAxis(name, controllerName, joystickNum, 2));
-				inputManagerGenerator.AddAxis(InputAxis.CreateKeyAxis(name, downKey, upKey, "", ""));
+				inputManagerGenerator.AddAxis(InputAxis.CreateKeyAxis(name, upKey, downKey, "", ""));
 			}
 
 
@@ -321,7 +321,7 @@ public class InputManagerSetter
 			//縦方向
 			{
 				var name = string.Format("Player{0}_Vertical", playerIndex);
-				inputManagerGenerator.AddAxis(InputAxis.CreateKeyAxis(name, downKey, upKey, "", ""));
+				inputManagerGenerator.AddAxis(InputAxis.CreateKeyAxis(name, upKey, downKey,  "", ""));
 			}
 
 
