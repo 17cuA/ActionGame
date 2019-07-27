@@ -61,7 +61,7 @@ public class InGameManager : MonoBehaviour
 		//カットシーンの再生（未実装）
 
 		//カットシーンの再生が終わり、暗くなったら
-		if (cinemaController.isPlay == false && canvasController.Check_StartFadeOut() == true)
+		if (cinemaController.isPlay == false && canvasController.Call_StartFadeOut() == true)
             currentUpdate = StartRound;
     }
 
@@ -71,16 +71,16 @@ public class InGameManager : MonoBehaviour
     private void StartRound()
     {
         //ゲーム中のUI生成
-        canvasController.Start_PlayBattleRound();
+        canvasController.Call_PlayBattleRound();
 
         //画面が明るくなったら
-        if (canvasController.Check_StartFadeIn() == true)
+        if (canvasController.Call_StartFadeIn() == true)
         {
             //ラウンド開始時のUI生成
-            if (canvasController.Start_PlayStartRound(gameRoundCount) == false)
+            if (canvasController.Call_PlayStartRound(gameRoundCount) == false)
             {
                 //タイマーの開始
-                canvasController.Start_CountDown();
+                canvasController.Call_StartCountDown();
                 currentUpdate = BatlleRound;
             }
         }
@@ -92,7 +92,7 @@ public class InGameManager : MonoBehaviour
     private void BatlleRound()
     {
         //UIのhp表示の更新
-        canvasController.Display_PlayerHP(GameManager.Instance.Player_one.HP, GameManager.Instance.Player_two.HP);
+        canvasController.Call_DisplayPlayerHp(GameManager.Instance.Player_one.HP, GameManager.Instance.Player_two.HP);
 
         //(どちらかのHPが0になったら
         if (GameManager.Instance.Player_one.HP <= 0 || GameManager.Instance.Player_two.HP <= 0)
@@ -114,7 +114,7 @@ public class InGameManager : MonoBehaviour
         }
 
         //TimeOverになったら
-        else if (canvasController.Check_EndCountDown() == false)
+        else if (canvasController.Call_DoEndCountDown() == false)
         {
             //勝敗判定
             if (GameManager.Instance.Player_one.HP == GameManager.Instance.Player_two.HP)
@@ -140,7 +140,7 @@ public class InGameManager : MonoBehaviour
     private void FinishRound_KO()
     {
         Debug.Log("FinishRound_KO");
-        if (canvasController.Play_FinishRound_KO() == false)
+        if (canvasController.Call_PlayFinishRound_KO() == false)
         {
             currentUpdate = DoGameFinish;
         }
@@ -151,7 +151,7 @@ public class InGameManager : MonoBehaviour
     /// </summary>
     private void FinishRound_TimeOver()
     {
-        if (canvasController.Play_FinishRound_TimeOver() == false)
+        if (canvasController.Call_PlayFinishRound_TimeOver() == false)
         {
             currentUpdate = DoGameFinish;
         }
@@ -181,18 +181,18 @@ public class InGameManager : MonoBehaviour
     private void ResetParameter()
     {
         //画面を暗くする
-        if (canvasController.Check_StartFadeOut() == true)
+        if (canvasController.Call_StartFadeOut() == true)
         {
             //キャラクターのHPのリセット
             GameManager.Instance.Player_one.HP = 100;
             GameManager.Instance.Player_two.HP = 100;
-            canvasController.Reset_UIParameter();
+            canvasController.Call_ResetUIParameter();
 
             //hpの初期化
-            canvasController.Display_PlayerHP(GameManager.Instance.Player_one.HP, GameManager.Instance.Player_two.HP);
+            canvasController.Call_DisplayPlayerHp(GameManager.Instance.Player_one.HP, GameManager.Instance.Player_two.HP);
 
             //ラウンドカウンターの更新
-            canvasController.Update_WinCounter(getRoundCount_p1, getRoundCount_p2);
+            canvasController.Call_UpdateWinCounter(getRoundCount_p1, getRoundCount_p2);
 
 			//キャラクターポジションのリセット(何故か1追加されたり減るため3.5f)
 			player1.transform.position = new Vector3(-3.5f, 0, 0);
@@ -208,16 +208,16 @@ public class InGameManager : MonoBehaviour
     private void GameVictory()
     {
         //ラウンドカウンターの更新
-        canvasController.Update_WinCounter(getRoundCount_p1, getRoundCount_p2);
+        canvasController.Call_UpdateWinCounter(getRoundCount_p1, getRoundCount_p2);
 
         if (getRoundCount_p1 > getRoundCount_p2)
         {
-            if (canvasController.Display_Victory_winP1() == false)
+            if (canvasController.Call_DisplayVictory_winP1() == false)
                 currentUpdate = GameFinish;
         }
         else
         {
-            if(canvasController.Display_Victory_winP2() == false)
+            if(canvasController.Call_DisplayVictory_winP2() == false)
                 currentUpdate = GameFinish;
         }
     }

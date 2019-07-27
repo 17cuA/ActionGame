@@ -60,7 +60,8 @@ public class ScreenFade : MonoBehaviour
     private void Awake()
     {
         red = gameObject.GetComponent<Image>().color.r;
-        green = gameObject.GetComponent<Image>().color.g;
-        alfa = gameObject.GetComponent<Image>().color.b;
+		green = gameObject.GetComponent<Image>().color.g;
+		blue = gameObject.GetComponent<Image>().color.b;
+		alfa = gameObject.GetComponent<Image>().color.a;
     }
 }
