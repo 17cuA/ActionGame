@@ -2329,7 +2329,7 @@ PrefabInstance:
     - target: {fileID: 1762971140861464047, guid: a458a5e4093c7514c946c20c5aec4d07,
         type: 3}
       propertyPath: m_Name
-      value: Canvas (1)
+      value: Canvas_2
       objectReference: {fileID: 0}
     - target: {fileID: 1762971140861464047, guid: a458a5e4093c7514c946c20c5aec4d07,
         type: 3}
@@ -5901,6 +5901,8 @@ MonoBehaviour:
   rTop: {x: 0, y: 0, z: 0}
   Fighter1: {fileID: 1925899303}
   Fighter2: {fileID: 1865372483}
+  Collider1: {fileID: 1892517124}
+  Collider2: {fileID: 1127803688}
 --- !u!1 &1085984943
 GameObject:
   m_ObjectHideFlags: 0
@@ -5952,6 +5954,50 @@ MonoBehaviour:
   lastDir: 5
   playerDirection: 
   atkBotton: 
+--- !u!1 &1127803688
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1127803690}
+  - component: {fileID: 1127803689}
+  m_Layer: 15
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!65 &1127803689
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1127803688}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3, y: 15, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &1127803690
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1127803688}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 5.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 22
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1166636033
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10351,7 +10397,7 @@ PrefabInstance:
     - target: {fileID: 1762971140861464047, guid: a458a5e4093c7514c946c20c5aec4d07,
         type: 3}
       propertyPath: m_Name
-      value: Canvas
+      value: Canvas_1
       objectReference: {fileID: 0}
     - target: {fileID: 1762971140861464047, guid: a458a5e4093c7514c946c20c5aec4d07,
         type: 3}
@@ -11887,7 +11933,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1863628292}
   - component: {fileID: 1863628295}
-  - component: {fileID: 1863628294}
   - component: {fileID: 1863628293}
   m_Layer: 0
   m_Name: Camera_P2
@@ -11941,14 +11986,6 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: Cinemachine.CinemachineBrain+VcamEvent, Assembly-CSharp, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
---- !u!81 &1863628294
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1863628291}
-  m_Enabled: 1
 --- !u!20 &1863628295
 Camera:
   m_ObjectHideFlags: 0
@@ -12059,6 +12096,50 @@ Transform:
   - {fileID: 1057983153}
   m_Father: {fileID: 1038537584}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1892517124
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1892517126}
+  - component: {fileID: 1892517125}
+  m_Layer: 15
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!65 &1892517125
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1892517124}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3, y: 15, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &1892517126
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1892517124}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 5.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1925899303
 GameObject:
