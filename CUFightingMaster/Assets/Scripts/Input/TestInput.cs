@@ -106,7 +106,7 @@ public class TestInput : MonoBehaviour {
 	public void SetAtkBotton () 
 	{
 		atkBotton = "";
-		if (Input.GetButtonDown (controllerName + player + "Attack1")) atkBotton += "_Atk1";
+	
 		if (Input.GetButtonDown (controllerName + player + "Attack2")) atkBotton += "_Atk2";
 		if (Input.GetButtonDown (controllerName + player + "Attack3")) atkBotton += "_Atk3";
 	}

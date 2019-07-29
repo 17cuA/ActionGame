@@ -6,6 +6,7 @@
 //--------------------------------------
 // 更新履歴
 // 2019.07.12 作成
+// 2019.07.29 
 //--------------------------------------
 // 仕様 
 // 試合中にある場面を、区切って関数にしています。
@@ -43,10 +44,11 @@ public class InGameManager : MonoBehaviour
 	public GameObject player1;
 	public GameObject player2;
 
-    /// <summary>
-    /// 試合開始 
-    /// </summary>
-    private void StartGame()
+	#region 試合開始
+	/// <summary>
+	/// 試合開始 
+	/// </summary>
+	private void StartGame()
     {
 		Sound.AllSoundLod();
 		Sound.PlayBgm("Bgm01", 0.5f, 1);
@@ -64,7 +66,9 @@ public class InGameManager : MonoBehaviour
 		if (cinemaController.isPlay == false && canvasController.Call_StartFadeOut() == true)
             currentUpdate = StartRound;
     }
+	#endregion
 
+	#region ラウンド開始
     /// <summary>
     /// ラウンド開始
     /// </summary>
@@ -85,7 +89,9 @@ public class InGameManager : MonoBehaviour
             }
         }
     }
+	#endregion
 
+	#region 試合中
     /// <summary>
     /// ラウンド中
     /// </summary>
@@ -105,10 +111,12 @@ public class InGameManager : MonoBehaviour
             else if (GameManager.Instance.Player_one.HP > GameManager.Instance.Player_two.HP)
             {
                 getRoundCount_p1++;
+				gameRoundCount++;
             }
             else
             {
                 getRoundCount_p2++;
+				gameRoundCount++;
             }
             currentUpdate = FinishRound_KO;
         }
@@ -125,15 +133,19 @@ public class InGameManager : MonoBehaviour
             else if (GameManager.Instance.Player_one.HP > GameManager.Instance.Player_two.HP)
             {
                 getRoundCount_p1++;
+				gameRoundCount++;
             }
             else
             {
                 getRoundCount_p2++;
+				gameRoundCount++;
             }
             currentUpdate = FinishRound_TimeOver;
         }
     }
+	#endregion
 
+	#region KOで試合終了
     /// <summary>
     /// KOラウンド終了
     /// </summary>
@@ -145,22 +157,26 @@ public class InGameManager : MonoBehaviour
             currentUpdate = DoGameFinish;
         }
     }
+	#endregion
 
-    /// <summary>
-    /// TimeOverでラウンド終了
-    /// </summary>
-    private void FinishRound_TimeOver()
+	#region TimeOverで試合終了
+	/// <summary>
+	/// TimeOverでラウンド終了
+	/// </summary>
+	private void FinishRound_TimeOver()
     {
         if (canvasController.Call_PlayFinishRound_TimeOver() == false)
         {
             currentUpdate = DoGameFinish;
         }
     }
+	#endregion
 
-    /// <summary>
-    /// ゲームを終了するか、次のラウンドへ進むかの判定
-    /// </summary>
-    private void DoGameFinish()
+	#region ゲームを終了するか、次ラウンドへ進むかの判定
+	/// <summary>
+	/// ゲームを終了するか、次のラウンドへ進むかの判定
+	/// </summary>
+	private void DoGameFinish()
     {
         //ゲームが終了するか判定
         if (getRoundCount_p1 >= winRound || getRoundCount_p2 >= winRound)
@@ -170,15 +186,16 @@ public class InGameManager : MonoBehaviour
         }
         else
         {
-            gameRoundCount++;
             currentUpdate = ResetParameter;
         }
     }
+	#endregion
 
-    /// <summary>
-    /// 各パラメータのリセット
-    /// </summary>
-    private void ResetParameter()
+	#region 各パラメータのリセット
+	/// <summary>
+	/// 各パラメータのリセット
+	/// </summary>
+	private void ResetParameter()
     {
         //画面を暗くする
         if (canvasController.Call_StartFadeOut() == true)
@@ -201,7 +218,9 @@ public class InGameManager : MonoBehaviour
             currentUpdate = StartRound;
         }
     }
+	#endregion
 
+	#region 勝敗判定
     /// <summary>
     /// 勝敗判定
     /// </summary>
@@ -221,14 +240,17 @@ public class InGameManager : MonoBehaviour
                 currentUpdate = GameFinish;
         }
     }
+	#endregion
 
-    /// <summary>
-    ///  試合終了
-    /// </summary>
-    private void GameFinish()
+	#region 試合終了
+	/// <summary>
+	///  試合終了
+	/// </summary>
+	private void GameFinish()
     {
         SceneManager.LoadScene("Title");
     }
+	#endregion
 
     private void Awake()
     {
@@ -256,14 +278,16 @@ public class InGameManager : MonoBehaviour
         }
         if (Input.GetKeyDown("x"))
         {
-            GameManager.Instance.Player_one.HP -= 5;
+            GameManager.Instance.Player_two.HP -= 5;
         }
         if(Input.GetKeyDown("c"))
         {
-            currentUpdate = ResetParameter;
             gameRoundCount = 0;
             getRoundCount_p1 = 0;
             getRoundCount_p2 = 0;
+			canvasController.ResetWinCounter();
+
+			currentUpdate = ResetParameter;
         }
     }
 }

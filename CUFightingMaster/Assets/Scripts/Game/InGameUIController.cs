@@ -6,6 +6,7 @@
 //--------------------------------------
 // 更新履歴
 // 2019.07.12 作成
+// 2019.07.29 ResetRoundCounter()の追加
 //--------------------------------------
 // 仕様
 //----------------------------------------
@@ -144,6 +145,14 @@ public class InGameUIController : MonoBehaviour
     {
         uI_RoundWinCounter.UpdateRoundCounter(p1Value, p2Value);
     }
+
+	/// <summary>
+	/// ラウンドカウンターをリセット（0729現在、デバッグでしか使っていない）
+	/// </summary>
+	public void ResetWinCounter()
+	{
+		uI_RoundWinCounter.ResetWinCounter();
+	}
 
     /// <summary>
     ///UIのパラメータのリセット

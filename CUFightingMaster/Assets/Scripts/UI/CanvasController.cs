@@ -168,6 +168,15 @@ public class CanvasController : MonoBehaviour
 		inGameUIController_1.UpdateWinCounter(p1Value, p2Value);
 		inGameUIController_2.UpdateWinCounter(p1Value, p2Value);
 	}
+
+	/// <summary>
+	/// ラウンドカウンターをリセット（0729現在、デバッグでしか使っていない）
+	/// </summary>
+	public void ResetWinCounter()
+	{
+		inGameUIController_1.ResetWinCounter();
+		inGameUIController_2.ResetWinCounter();
+	}
 	#endregion
 
 	/// <summary>
