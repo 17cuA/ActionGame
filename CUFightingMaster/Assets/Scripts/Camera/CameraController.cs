@@ -60,6 +60,10 @@ public class CameraController : MonoBehaviour
 	// 統合のため追加
 	public GameObject Fighter1;
 	public GameObject Fighter2;
+
+	// 仮で作成(07/29)
+	public GameObject Collider1;
+	public GameObject Collider2;
 	#endregion
 
 	#region 初期化
@@ -85,7 +89,6 @@ public class CameraController : MonoBehaviour
 	}
 	#endregion
 
-
 	void Update()
 	{
 		if (call_Once)
@@ -93,16 +96,6 @@ public class CameraController : MonoBehaviour
 			GetCameraPos_X();
 			call_Once = false;
 		}
-		#region デバッグ
-		if (Input.GetKeyDown(KeyCode.K))
-		{
-			SceneManager.LoadScene("CinemachineTest");
-		}
-		if (Input.GetKeyDown(KeyCode.Escape))
-		{
-			SceneManager.LoadScene("Title(仮)");
-		}
-		#endregion
 	}
 
 	void FixedUpdate()
@@ -134,8 +127,10 @@ public class CameraController : MonoBehaviour
 		#region 座標を求める
 		// カメラの左下座標を求める
 		lBottom = Camera.main.ViewportToWorldPoint(new Vector3(0, 0, distance_CamToPlayer));
+		Collider1.transform.position = new Vector3(lBottom.x, transform.position.y, 0);
 		// カメラの右上座標を求める
 		rTop = Camera.main.ViewportToWorldPoint(new Vector3(1, 1, distance_CamToPlayer));
+		Collider2.transform.position = new Vector3(rTop.x, transform.position.y, 0);
 		#endregion
 	}
 
