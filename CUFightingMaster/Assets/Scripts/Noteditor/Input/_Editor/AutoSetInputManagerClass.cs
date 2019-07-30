@@ -69,11 +69,10 @@ public class InputAxis
 	/// <param name="name">Name.</param>
 	/// <param name="joystickNum">Joystick number.</param>
 	/// <param name="axisNum">Axis number.</param>
-	public static InputAxis CreatePadAxis(string name, string descriptiveName, int joystickNum, int axisNum)
+	public static InputAxis CreatePadAxis(string name, int joystickNum, int axisNum)
 	{
 		var axis = new InputAxis();
 		axis.name = name;
-		axis.descriptiveName = descriptiveName;
 		axis.dead = 0.2f;
 		axis.sensitivity = 1;
 		axis.type = AxisType.JoystickAxis;

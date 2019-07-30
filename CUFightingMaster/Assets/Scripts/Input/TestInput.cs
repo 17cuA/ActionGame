@@ -31,6 +31,7 @@ public class TestInput : MonoBehaviour {
 	}
 
 	void Start () {
+		Application.targetFrameRate = 60;
 		player = string.Format ("Player{0}_", playerIndex);
 		//プレイヤー番号に対応した現在接続されているコントローラーを設定
 		controllerName = string.Format ("{0}_", Input.GetJoystickNames()[playerIndex]);
@@ -40,15 +41,16 @@ public class TestInput : MonoBehaviour {
 	}
 
 	public void SetAxis () {
-		inputDirection.x = Input.GetAxisRaw (player + "Horizontal");
-		inputDirection.y = Input.GetAxisRaw (player + "Vertical");
+		inputDirection.x = Input.GetAxisRaw (controllerName + player + "Horizontal");
+		inputDirection.y = Input.GetAxisRaw (controllerName + player + "Vertical");
 	}
 	public void SetDirection () {
 		SetAxis ();
 		float nowDir = 5 + inputDirection.x + (inputDirection.y * -3);
+		Debug.Log(player + nowDir);
 		//方向を調べる
 		switch (nowDir) {
-			case ((int) DirJS.d1):
+			case (int) DirJS.d1:
 				lastDir = (int) DirJS.d1;
 				playerDirection = "1";
 				break;
@@ -106,7 +108,8 @@ public class TestInput : MonoBehaviour {
 	public void SetAtkBotton () 
 	{
 		atkBotton = "";
-	
+
+		if (Input.GetButtonDown(controllerName + player + "Attack1")) atkBotton += "_Atk1";
 		if (Input.GetButtonDown (controllerName + player + "Attack2")) atkBotton += "_Atk2";
 		if (Input.GetButtonDown (controllerName + player + "Attack3")) atkBotton += "_Atk3";
 	}

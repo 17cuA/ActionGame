@@ -48,12 +48,12 @@ public class InputManagerSetter
 
 
 		}
-		//キーボードのみの設定
-		for (int i = 0; i < 2;i++)
-		{
-			AddPlayerInputSettings(inputManagerGenerator, i, "");
-			Debug.Log(string.Format("キーボード入力を設定しました。", i));
-		}
+		////キーボードのみの設定
+		//for (int i = 0; i < 2;i++)
+		//{
+		//	AddPlayerInputSettings(inputManagerGenerator, i, "");
+		//	Debug.Log(string.Format("キーボード入力を設定しました。", i));
+		//}
 
 		Debug.Log("インプットマネージャーの設定が完了しました。");
 	}
@@ -76,19 +76,18 @@ public class InputManagerSetter
 		#region BSGPAC02 Series
 		if (controllerName == "BSGPAC02 Series")
 		{
-			var conName = "PAC02";
 			//スティック
 			//横方向
 			{
 				var name = string.Format("{0}_Player{1}_Horizontal", controllerName, playerIndex);
-				inputManagerGenerator.AddAxis(InputAxis.CreatePadAxis(name, controllerName, joystickNum, 1));
+				inputManagerGenerator.AddAxis(InputAxis.CreatePadAxis(name, joystickNum, 1));
 				inputManagerGenerator.AddAxis(InputAxis.CreateKeyAxis(name, leftKey, rightKey, "", ""));
 			}
 
 			//縦方向
 			{
 				var name = string.Format("{0}_Player{1}_Vertical", controllerName, playerIndex);
-				inputManagerGenerator.AddAxis(InputAxis.CreatePadAxis(name, controllerName, joystickNum, 2));
+				inputManagerGenerator.AddAxis(InputAxis.CreatePadAxis(name, joystickNum, 2));
 				inputManagerGenerator.AddAxis(InputAxis.CreateKeyAxis(name, upKey, downKey, "", ""));
 			}
 
@@ -141,19 +140,18 @@ public class InputManagerSetter
 		#region RAP.N3
 		else if (controllerName == "RAP.N3")
 		{
-			var conName = "RAPN3";
 			//スティック
 			//横方向
 			{
 				var name = string.Format("{0}_Player{1}_Horizontal", controllerName, playerIndex);
-				inputManagerGenerator.AddAxis(InputAxis.CreatePadAxis(name, controllerName, joystickNum, 1));
+				inputManagerGenerator.AddAxis(InputAxis.CreatePadAxis(name, joystickNum, 1));
 				inputManagerGenerator.AddAxis(InputAxis.CreateKeyAxis(name, leftKey, rightKey, "", ""));
 			}
 
 			//縦方向
 			{
 				var name = string.Format("{0}_Player{1}_Vertical", controllerName, playerIndex);
-				inputManagerGenerator.AddAxis(InputAxis.CreatePadAxis(name, controllerName, joystickNum, 2));
+				inputManagerGenerator.AddAxis(InputAxis.CreatePadAxis(name, joystickNum, 2));
 				inputManagerGenerator.AddAxis(InputAxis.CreateKeyAxis(name, upKey, downKey, "", ""));
 			}
 
@@ -207,19 +205,18 @@ public class InputManagerSetter
 		#region Logicool Dual Action
 		else if (controllerName == "Logicool Dual Action")
 		{
-			var conName = "LGCLA";
 			//スティック
 			//横方向
 			{
 				var name = string.Format("{0}_Player{1}_Horizontal", controllerName, playerIndex);
-				inputManagerGenerator.AddAxis(InputAxis.CreatePadAxis(name, controllerName, joystickNum, 1));
+				inputManagerGenerator.AddAxis(InputAxis.CreatePadAxis(name, joystickNum, 1));
 				inputManagerGenerator.AddAxis(InputAxis.CreateKeyAxis(name, leftKey, rightKey, "", ""));
 			}
 
 			//縦方向
 			{
 				var name = string.Format("{0}_Player{1}_Vertical", controllerName, playerIndex);
-				inputManagerGenerator.AddAxis(InputAxis.CreatePadAxis(name, controllerName, joystickNum, 2));
+				inputManagerGenerator.AddAxis(InputAxis.CreatePadAxis(name, joystickNum, 2));
 				inputManagerGenerator.AddAxis(InputAxis.CreateKeyAxis(name,upKey, downKey, "", ""));
 			}
 
@@ -272,19 +269,18 @@ public class InputManagerSetter
 		#region Controller (Gamepad F310)
 		else if (controllerName == "Controller (Gamepad F310)")
 		{
-			var conName = "GP310";
 			//スティック
 			//横方向
 			{
 				var name = string.Format("{0}_Player{1}_Horizontal", controllerName, playerIndex);
-				inputManagerGenerator.AddAxis(InputAxis.CreatePadAxis(name, controllerName, joystickNum, 1));
+				inputManagerGenerator.AddAxis(InputAxis.CreatePadAxis(name, joystickNum, 1));
 				inputManagerGenerator.AddAxis(InputAxis.CreateKeyAxis(name, leftKey, rightKey, "", ""));
 			}
 
 			//縦方向
 			{
 				var name = string.Format("{0}_Player{1}_Vertical", controllerName, playerIndex);
-				inputManagerGenerator.AddAxis(InputAxis.CreatePadAxis(name, controllerName, joystickNum, 2));
+				inputManagerGenerator.AddAxis(InputAxis.CreatePadAxis(name, joystickNum, 2));
 				inputManagerGenerator.AddAxis(InputAxis.CreateKeyAxis(name, upKey, downKey, "", ""));
 			}
 
@@ -396,7 +392,6 @@ public class InputManagerSetter
 				}
 			}
 			#endregion
-			Debug.Log("***player" + playerIndex + " -> " + controllerName + " の入力が設定されていません キーボードのみ設定します***");
 		}
 	}
 
