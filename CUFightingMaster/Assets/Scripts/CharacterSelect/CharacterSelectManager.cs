@@ -8,6 +8,7 @@ public class CharacterSelectManager : MonoBehaviour
 {
 	//プレイヤー番号
 	public int playerNum;
+	public string controllerName = ""; //使用するコントローラーの名前
 
 	private const int maxChara = 6;
 	public GameObject[] character = new GameObject[maxChara];               //キャラクターゲームオブジェクト
@@ -22,14 +23,15 @@ public class CharacterSelectManager : MonoBehaviour
 
 	void Start()
 	{
-
+		//プレイヤー番号に対応した現在接続されているコントローラーを設定
+		controllerName = string.Format("{0}_", Input.GetJoystickNames()[playerNum]);
 	}
 
 	void Update()
 	{
 		//カーソル移動
-		inputDir.x = Input.GetAxisRaw(string.Format("Player{0}_Horizontal", playerNum));
-		inputDir.y = Input.GetAxisRaw(string.Format("Player{0}_Vertical", playerNum));
+		inputDir.x = Input.GetAxisRaw(string.Format("{0}Player{1}_Horizontal", controllerName, playerNum));
+		inputDir.y = Input.GetAxisRaw(string.Format("{0}Player{1}_Vertical", controllerName, playerNum));
 		moveCursorFrames += Time.deltaTime;
 		if (inputDir != Vector2.zero)
 		{
@@ -41,7 +43,7 @@ public class CharacterSelectManager : MonoBehaviour
 			}
 		}
 		//決定(シーン移動)
-		if (Input.GetButtonDown(string.Format("Player{0}_Attack1", playerNum)))
+		if (Input.GetButtonDown(string.Format("{0}Player{1}_Attack1", controllerName, playerNum)))
 		{
 			SceneManager.LoadScene("Battle");
 		}
