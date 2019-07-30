@@ -64,6 +64,7 @@ public class CameraController : MonoBehaviour
 	// 仮で作成(07/29)
 	public GameObject Collider1;
 	public GameObject Collider2;
+	public bool roundCheck;
 	#endregion
 
 	#region 初期化
@@ -81,6 +82,7 @@ public class CameraController : MonoBehaviour
 		speed_ZoomIn = 5.0f;
 		speed_ZoomOut = 15.0f;
 		call_Once = true;
+		roundCheck = false;
 		stageWidth = 20.0f;				// ステージの横幅
 		cameraPos_Max.z = -8.5f;		// ズームアウトの最大値
 		cameraPos_Min.z = -10.0f;		// ズームインの最小値
@@ -105,11 +107,14 @@ public class CameraController : MonoBehaviour
 
 	void LateUpdate()
 	{
-		TargetPos();
-		// カメラの移動・ズーム
-		transform.Translate(pCentorPos.x - transform.position.x, 0, ZoomIn() + ZoomOut());
-		// カメラの座標を制限(現在Y軸移動はここで行っている)
-		transform.position = new Vector3(Mathf.Clamp(transform.position.x, cameraPos_Min.x, cameraPos_Max.x), pCentorPos.y + offsetY, transform.position.z);
+		if (!roundCheck)
+		{
+			TargetPos();
+			// カメラの移動・ズーム
+			transform.Translate(pCentorPos.x - transform.position.x, 0, ZoomIn() + ZoomOut());
+			// カメラの座標を制限(現在Y軸移動はここで行っている)
+			transform.position = new Vector3(Mathf.Clamp(transform.position.x, cameraPos_Min.x, cameraPos_Max.x), pCentorPos.y + offsetY, transform.position.z);
+		}
 	}
 
 	// ターゲットの中心を求める

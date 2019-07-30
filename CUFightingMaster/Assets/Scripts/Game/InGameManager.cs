@@ -18,8 +18,10 @@
 // 各Canvasに表示・切り替えするように変更
 //----------------------------------------
 using UnityEngine;
-using System;
 using UnityEngine.SceneManagement;
+using System;
+using System.Collections;
+
 
 public class InGameManager : MonoBehaviour
 {
@@ -32,10 +34,10 @@ public class InGameManager : MonoBehaviour
     //Updateする場面
     private Action currentUpdate;
 
-    //参照先
+	//参照先
+	[SerializeField] private CameraController cameraController;
     [SerializeField] private CinemaController cinemaController;
     [SerializeField] private CharacterCreater characterCreater;
-	//[SerializeField] private SceneController sceneController;
 	[SerializeField] private CanvasController canvasController;
 
 	[SerializeField] private CharacterStatus characterStatus_P1;
@@ -43,8 +45,11 @@ public class InGameManager : MonoBehaviour
 
 	public int debug;
 
+	// 三沢が追加(後できれいにしてください)
 	public GameObject player1;
 	public GameObject player2;
+	public GameObject BattleCamera;
+	public GameObject[] targetPoint = new GameObject[2];
 
 	#region 試合開始
 	/// <summary>
@@ -203,6 +208,9 @@ public class InGameManager : MonoBehaviour
         //画面を暗くする
         if (canvasController.Call_StartFadeOut() == true)
         {
+			//
+			cameraController.roundCheck = true;
+			Debug.Log(cameraController.roundCheck);
             //キャラクターのHPのリセット
             GameManager.Instance.Player_one.HP = 100;
             GameManager.Instance.Player_two.HP = 100;
@@ -215,10 +223,10 @@ public class InGameManager : MonoBehaviour
             canvasController.Call_UpdateWinCounter(getRoundCount_p1, getRoundCount_p2);
 
 			//キャラクターポジションのリセット(何故か1追加されたり減るため3.5f)
-			player1.transform.position = new Vector3(-3.5f, 0, 0);
-			player2.transform.position = new Vector3(3.5f, 0, 0);
+			StartCoroutine("Test");
 
-            currentUpdate = StartRound;
+			cameraController.roundCheck = false;
+			currentUpdate = StartRound;
         }
     }
 	#endregion
@@ -245,6 +253,25 @@ public class InGameManager : MonoBehaviour
     }
 	#endregion
 
+	#region プレイヤー位置リセット
+	private IEnumerator Test()
+	{
+		Debug.Log(cameraController.roundCheck);
+		Debug.Log("ポジションチェック" + BattleCamera.transform.position);
+		Debug.Log("ポジションチェック" + player1.transform.position);
+		Debug.Log("ポジションチェック" + player2.transform.position);
+		BattleCamera.transform.position = new Vector3(0, 3.0f, -8.5f);
+		player1.transform.position = targetPoint[0].transform.position;
+		player2.transform.position = targetPoint[1].transform.position;
+		Debug.Log("ポジション変更" + BattleCamera.transform.position);
+		Debug.Log("ポジション変更" + player1.transform.position);
+		Debug.Log("ポジション変更" + player2.transform.position);
+
+		yield return null;
+	}
+	#endregion
+
+
 	#region 試合終了
 	/// <summary>
 	///  試合終了
@@ -257,12 +284,9 @@ public class InGameManager : MonoBehaviour
 
     private void Awake()
     {
+		cameraController = GameObject.Find("BattleCamera").GetComponent<CameraController>();
 		cinemaController = GameObject.Find("CinemaControll").GetComponent<CinemaController>();
-		//sceneController = GameObject.Find("SceneController").GetComponent<SceneController>();
 		canvasController = GameObject.Find("CanvasController").GetComponent<CanvasController>();
-        //一時的
-        //characterStatus_P1 = GameObject.Find("Temp_Player01").GetComponent<CharacterStatus>();
-        //characterStatus_P2 = GameObject.Find("Temp_Player02").GetComponent<CharacterStatus>();
     }
 
     void Start()
