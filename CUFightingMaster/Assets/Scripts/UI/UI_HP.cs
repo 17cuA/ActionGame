@@ -1,5 +1,5 @@
 ﻿//---------------------------------------
-// ゲージ系のUI
+// HPバー
 //---------------------------------------
 // 作成者:高野
 // 作成日:2019.07.14
@@ -8,28 +8,20 @@
 // 2019.07.17 作成
 //--------------------------------------
 // 仕様
+// 子オブジェクトに必要なもの
+// ・Mask
+// ・1:ダメージを受けたときにHpバーの色が変わるやつ
+// ・2:Hpバーの緑のところ
+// ・3:ブロックした時に色が変わるところ
+// ・4:ダメージの赤
+// ・5:一番後ろのbackground
 //----------------------------------------
 // MEMO
-//※一時的なプログラムです※
-// スライダーを使う場合は使える
 // 参照は手動です
 //----------------------------------------
-//using System.Collections;
-//using System.Collections.Generic;
-//using UnityEngine;
-//using UnityEngine.UI;
-//public class UI_HP : MonoBehaviour
-//{
-//    public int gaugeMax = 0;
-//    public int currentGuageValue = 0;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
 
-//    public Slider mySlider;
-//    public void SetSliderMaxValue(int maxValie)
-//    {
-//        mySlider.maxValue = maxValie;
-//    }
-//    public void UpdateSliderValue(int currentValue)
-//    {
-//        mySlider.value = currentValue;
-//    }
-//}
+public 

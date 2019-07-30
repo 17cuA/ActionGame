@@ -6,6 +6,7 @@
 //--------------------------------------
 // 更新履歴
 // 2019.07.26 作成
+// 2019.07.30 Call_DisplayPlayerSp()を追加
 //--------------------------------------
 // 仕様 
 // InGameManagerにて呼び出しているバトル画面のUIの表示・切り替えなどの関数を
@@ -156,6 +157,17 @@ public class CanvasController : MonoBehaviour
 	{
 		inGameUIController_1.DisplayPlayerHp(currentHp_P1, currentHp_P2);
 		inGameUIController_2.DisplayPlayerHp(currentHp_P1, currentHp_P2);
+	}
+
+	/// <summary>
+	/// PlayerのSp表示
+	/// </summary>
+	/// <param name="currentSp_P1">Player1の現在のSp</param>
+	/// <param name="currentSp_P2">Player2の現在のSp</param>
+	public void Call_DisplayPlayerSp(int currentSp_P1, int currentSp_P2)
+	{
+		inGameUIController_1.DisplayPlayerSp(currentSp_P1, currentSp_P2);
+		inGameUIController_2.DisplayPlayerSp(currentSp_P1, currentSp_P2);
 	}
 
 	/// <summary>
