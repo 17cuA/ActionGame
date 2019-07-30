@@ -7,6 +7,7 @@
 // 更新履歴
 // 2019.07.12 作成
 // 2019.07.29 ResetRoundCounter()の追加
+// 2019.07.30 必殺技ゲージ（SP）の追加
 //--------------------------------------
 // 仕様
 //----------------------------------------
@@ -33,6 +34,8 @@ public class InGameUIController : MonoBehaviour
     [SerializeField] CountDownTimer uI_countDownTimer;
     [SerializeField] UI_Gauge uI_hp_P1;
     [SerializeField] UI_Gauge uI_hp_P2;
+	[SerializeField] UI_Gauge uI_sp_P1;
+	[SerializeField] UI_Gauge uI_sp_P2;
 
     [SerializeField] UI_RoundWinCounter uI_RoundWinCounter;
     [SerializeField] UI_StartRound uI_StartRound;
@@ -65,7 +68,9 @@ public class InGameUIController : MonoBehaviour
         //一時的
         uI_hp_P1 = uI_InGameUI.transform.Find("UI_HP_P1").GetComponent<UI_Gauge>();
         uI_hp_P2 = uI_InGameUI.transform.Find("UI_HP_P2").GetComponent<UI_Gauge>();
-    }
+		//uI_sp_P1 = uI_InGameUI.transform.Find("UI_SP_P1").GetComponent<UI_Gauge>();
+		//uI_sp_P2 = uI_InGameUI.transform.Find("UI_SP_P2").GetComponent<UI_Gauge>();
+	}
 
     /// <summary>
     /// KOでラウンドが終わった時のUIの再生
@@ -93,6 +98,15 @@ public class InGameUIController : MonoBehaviour
         uI_hp_P1.UpdateSliderValue(currentHp_P1);
         uI_hp_P2.UpdateSliderValue(currentHp_P2);
     }
+
+	/// <summary>
+	/// プレイヤーのsp表示
+	/// </summary>
+	public void DisplayPlayerSp(int currentSp_P1, int currentSp_P2)
+	{
+		uI_sp_P1.UpdateSliderValue(currentSp_P1);
+		uI_sp_P1.UpdateSliderValue(currentSp_P2);
+	}
 
     /// <summary>
     /// プレイヤー1が勝ったときのUI表示
