@@ -23,16 +23,55 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 public class UI_HP : MonoBehaviour
 {
 	public GameObject[] hpObjects = new GameObject[5];
 
-	public float hp = 100.0f; //debug
+	private Action update;
+
+	public Image redImage;
+	public RectTransform green, red, gray;
+
+	public float alpha;
+	private float transparentSpeed;
+
+	public int autoHealLimist;	//この時間中にダメージを受けなければ灰色(3)が緑(4)になる
+
+
 
 	public float hpBarWidth; //hpバーの長さ
 
+	//debug------------------
+	public float hp = 100.0f;
 	public int damage;
+
+	/// <summary>
+	/// Hpゲージを更新する
+	/// </summary>
+	/// <param name="damage"></param>
+	public void UpdateHpGuage(int damage)
+	{
+		update = LowerHP;
+	}
+
+	/// <summary>
+	/// 減らす
+	/// </summary>
+	private void LowerHP()
+	{
+		
+	}
+
+	/// <summary>
+	/// 赤いところを徐々に透明にする
+	/// </summary>
+	private void TransparentRedImage()
+	{
+		redImage.color = new Color(1.0f, 1.0f, 1.0f, alpha);
+		alpha -= transparentSpeed;
+	}
 
 	/// <summary>
 	/// ダメージを受けたときに減らすHPバーの量を計算
@@ -42,6 +81,12 @@ public class UI_HP : MonoBehaviour
 	{
 		float temp = hp - (float)damage;
 		return hpBarWidth * (100 - temp) / 100;
+	}
+	
+
+	private void Awake()
+	{
+		redImage = hpObjects[1].GetComponent<Image>();
 	}
 
 	private void Start()
@@ -58,6 +103,8 @@ public class UI_HP : MonoBehaviour
 
 	private void Update()
 	{
-		hpObjects[0].GetComponent<RectTransform>().localPosition = new Vector3(CalcMove(hp , damage), 0, 0);
+		update();
+
+		hpObjects[4].GetComponent<RectTransform>().localPosition = new Vector3(CalcMove(hp , damage), 0, 0);
 	}
 }
