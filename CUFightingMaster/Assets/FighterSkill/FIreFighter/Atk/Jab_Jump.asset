@@ -56,7 +56,10 @@ MonoBehaviour:
   movements:
   - movement: {x: 0, y: 4.89, z: 0}
     startFrame: 0
-  gravityMoves: []
+  gravityMoves:
+  - movement: {x: 0, y: -0.24, z: 0}
+    limitMove: {x: 0, y: -22.36, z: 0}
+    startFrame: 0
   headFlag: 1
   bodyFlag: 1
   footFlag: 1
