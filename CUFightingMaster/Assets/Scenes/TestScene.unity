@@ -310,17 +310,19 @@ MonoBehaviour:
   - {fileID: 2060953751}
   redImage: {fileID: 2130590748}
   greenRect: {fileID: 1816473502}
-  redRrct: {fileID: 2130590746}
+  redRect: {fileID: 2130590746}
   grayRect: {fileID: 160978112}
-  isHit: 0
-  alpha: 1
+  isUpdate: 0
+  isTransparentRed: 0
+  isDeleteRed: 0
+  redAlphaValue: 0
   transparentSpeed: 0.006
-  redDeleteLimit: 0
-  autoHealLimit: 0
   hpBarWidth: 0
   hp: 100
-  damage: 0
-  tempDamage: 0
+  totalDamage: 0
+  beforeDamage: 0
+  cnt: 0
+  cntMax: 200
 --- !u!1 &1496044492
 GameObject:
   m_ObjectHideFlags: 0
