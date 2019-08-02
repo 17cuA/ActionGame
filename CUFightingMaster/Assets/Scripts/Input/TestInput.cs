@@ -47,6 +47,7 @@ public class TestInput : MonoBehaviour {
 	public void SetDirection () {
 		SetAxis ();
 		float nowDir = 5 + inputDirection.x + (inputDirection.y * -3);
+		Debug.Log(player + nowDir);
 		//方向を調べる
 		switch (nowDir) {
 			case (int) DirJS.d1:
@@ -99,7 +100,7 @@ public class TestInput : MonoBehaviour {
 			//ジョイスティックまたはキーボードでの方向
 
 			//攻撃ボタン
-			//if (atkBotton != "") Debug.Log (atkBotton);
+			if (atkBotton != "") Debug.Log (atkBotton);
 		}
 
 	}

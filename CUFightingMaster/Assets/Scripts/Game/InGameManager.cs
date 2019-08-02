@@ -18,10 +18,8 @@
 // 各Canvasに表示・切り替えするように変更
 //----------------------------------------
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using System;
-using System.Collections;
-
+using UnityEngine.SceneManagement;
 
 public class InGameManager : MonoBehaviour
 {
@@ -34,20 +32,19 @@ public class InGameManager : MonoBehaviour
     //Updateする場面
     private Action currentUpdate;
 
-	//参照先
-	[SerializeField] private CameraController cameraController;
+    //参照先
     [SerializeField] private CinemaController cinemaController;
     [SerializeField] private CharacterCreater characterCreater;
+	//[SerializeField] private SceneController sceneController;
 	[SerializeField] private CanvasController canvasController;
 
 	[SerializeField] private CharacterStatus characterStatus_P1;
     [SerializeField] private CharacterStatus characterStatus_P2;
 
-	// 三沢が追加(後できれいにしてください)
+	public int debug;
+
 	public GameObject player1;
 	public GameObject player2;
-	public GameObject BattleCamera;
-	public GameObject[] targetPoint = new GameObject[2];
 
 	#region 試合開始
 	/// <summary>
@@ -80,13 +77,11 @@ public class InGameManager : MonoBehaviour
     /// </summary>
     private void StartRound()
     {
-		//ゲーム中のUI生成
-		canvasController.Call_PlayBattleRound();
-		//キャラクターポジションの設定
-		StartCoroutine("Test");
+        //ゲーム中のUI生成
+        canvasController.Call_PlayBattleRound();
 
-		//画面が明るくなったら
-		if (canvasController.Call_StartFadeIn() == true)
+        //画面が明るくなったら
+        if (canvasController.Call_StartFadeIn() == true)
         {
             //ラウンド開始時のUI生成
             if (canvasController.Call_PlayStartRound(gameRoundCount) == false)
@@ -219,11 +214,13 @@ public class InGameManager : MonoBehaviour
             //ラウンドカウンターの更新
             canvasController.Call_UpdateWinCounter(getRoundCount_p1, getRoundCount_p2);
 
-			// キャラクターリセットができないため、StartRoundに設定として書いた
+			//キャラクターポジションのリセット(何故か1追加されたり減るため3.5f)
+			player1.transform.position = new Vector3(-3.5f, 0, 0);
+			player2.transform.position = new Vector3(3.5f, 0, 0);
 
-			currentUpdate = StartRound;
-		}
-	}
+            currentUpdate = StartRound;
+        }
+    }
 	#endregion
 
 	#region 勝敗判定
@@ -248,17 +245,6 @@ public class InGameManager : MonoBehaviour
     }
 	#endregion
 
-	#region プレイヤー位置リセット
-	private IEnumerator Test()
-	{
-		BattleCamera.transform.position = new Vector3(0, 3.0f, -8.5f);
-		player1.transform.position = targetPoint[0].transform.position;
-		player2.transform.position = targetPoint[1].transform.position;
-		yield return null;
-	}
-	#endregion
-
-
 	#region 試合終了
 	/// <summary>
 	///  試合終了
@@ -271,9 +257,12 @@ public class InGameManager : MonoBehaviour
 
     private void Awake()
     {
-		cameraController = GameObject.Find("BattleCamera").GetComponent<CameraController>();
 		cinemaController = GameObject.Find("CinemaControll").GetComponent<CinemaController>();
+		//sceneController = GameObject.Find("SceneController").GetComponent<SceneController>();
 		canvasController = GameObject.Find("CanvasController").GetComponent<CanvasController>();
+        //一時的
+        //characterStatus_P1 = GameObject.Find("Temp_Player01").GetComponent<CharacterStatus>();
+        //characterStatus_P2 = GameObject.Find("Temp_Player02").GetComponent<CharacterStatus>();
     }
 
     void Start()
@@ -283,7 +272,7 @@ public class InGameManager : MonoBehaviour
 
     void Update()
     {
-		currentUpdate();
+        currentUpdate();
 
         //DebugKey
         if (Input.GetKeyDown("z"))

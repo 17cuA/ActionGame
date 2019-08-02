@@ -456,7 +456,7 @@ public class HitBoxJudgement
 	}
     public float CheckDefaultPushingWall(BoxCollider _col)
     {
-		//Debug.Log(_col);
+		Debug.Log(_col);
         Transform t = _col.gameObject.transform;
         float posX = t.position.x + _col.center.x;
         float posY = t.position.y + _col.center.y;
