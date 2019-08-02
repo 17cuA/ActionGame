@@ -43,8 +43,6 @@ public class InGameManager : MonoBehaviour
 	[SerializeField] private CharacterStatus characterStatus_P1;
     [SerializeField] private CharacterStatus characterStatus_P2;
 
-	public int debug;
-
 	// 三沢が追加(後できれいにしてください)
 	public GameObject player1;
 	public GameObject player2;
@@ -82,11 +80,13 @@ public class InGameManager : MonoBehaviour
     /// </summary>
     private void StartRound()
     {
-        //ゲーム中のUI生成
-        canvasController.Call_PlayBattleRound();
+		//ゲーム中のUI生成
+		canvasController.Call_PlayBattleRound();
+		//キャラクターポジションの設定
+		StartCoroutine("Test");
 
-        //画面が明るくなったら
-        if (canvasController.Call_StartFadeIn() == true)
+		//画面が明るくなったら
+		if (canvasController.Call_StartFadeIn() == true)
         {
             //ラウンド開始時のUI生成
             if (canvasController.Call_PlayStartRound(gameRoundCount) == false)
@@ -208,9 +208,6 @@ public class InGameManager : MonoBehaviour
         //画面を暗くする
         if (canvasController.Call_StartFadeOut() == true)
         {
-			//
-			cameraController.roundCheck = true;
-			Debug.Log(cameraController.roundCheck);
             //キャラクターのHPのリセット
             GameManager.Instance.Player_one.HP = 100;
             GameManager.Instance.Player_two.HP = 100;
@@ -222,13 +219,11 @@ public class InGameManager : MonoBehaviour
             //ラウンドカウンターの更新
             canvasController.Call_UpdateWinCounter(getRoundCount_p1, getRoundCount_p2);
 
-			//キャラクターポジションのリセット(何故か1追加されたり減るため3.5f)
-			StartCoroutine("Test");
+			// キャラクターリセットができないため、StartRoundに設定として書いた
 
-			cameraController.roundCheck = false;
 			currentUpdate = StartRound;
-        }
-    }
+		}
+	}
 	#endregion
 
 	#region 勝敗判定
@@ -256,17 +251,9 @@ public class InGameManager : MonoBehaviour
 	#region プレイヤー位置リセット
 	private IEnumerator Test()
 	{
-		Debug.Log(cameraController.roundCheck);
-		Debug.Log("ポジションチェック" + BattleCamera.transform.position);
-		Debug.Log("ポジションチェック" + player1.transform.position);
-		Debug.Log("ポジションチェック" + player2.transform.position);
 		BattleCamera.transform.position = new Vector3(0, 3.0f, -8.5f);
 		player1.transform.position = targetPoint[0].transform.position;
 		player2.transform.position = targetPoint[1].transform.position;
-		Debug.Log("ポジション変更" + BattleCamera.transform.position);
-		Debug.Log("ポジション変更" + player1.transform.position);
-		Debug.Log("ポジション変更" + player2.transform.position);
-
 		yield return null;
 	}
 	#endregion
@@ -296,7 +283,7 @@ public class InGameManager : MonoBehaviour
 
     void Update()
     {
-        currentUpdate();
+		currentUpdate();
 
         //DebugKey
         if (Input.GetKeyDown("z"))
