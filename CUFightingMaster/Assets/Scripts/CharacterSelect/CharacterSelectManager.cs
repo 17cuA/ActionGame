@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class CharacterSelectManager : MonoBehaviour
 {
 	//プレイヤー番号
-	public int playerNum;
+	public int playerNum = 0;
 	public string controllerName = ""; //使用するコントローラーの名前
 
 	private const int maxChara = 6;
@@ -23,22 +23,29 @@ public class CharacterSelectManager : MonoBehaviour
 
 	void Start()
 	{
-		//プレイヤー番号に対応した現在接続されているコントローラーを設定
-		controllerName = string.Format("{0}_", Input.GetJoystickNames()[playerNum]);
+        //プレイヤー番号に対応した現在接続されているコントローラーを設定
+        var controllerNames = Input.GetJoystickNames();
+        if (playerNum < controllerNames.Length)
+        {
+            if (controllerNames[playerNum] != "")
+            {
+                controllerName = string.Format("{0}_", controllerNames[playerNum]);
+            }
+        }
 	}
 
 	void Update()
 	{
-		//カーソル移動
-		inputDir.x = Input.GetAxisRaw(string.Format("{0}Player{1}_Horizontal", controllerName, playerNum));
+        //カーソル移動
+        inputDir.x = Input.GetAxisRaw(string.Format("{0}Player{1}_Horizontal", controllerName, playerNum));
 		inputDir.y = Input.GetAxisRaw(string.Format("{0}Player{1}_Vertical", controllerName, playerNum));
 		moveCursorFrames += Time.deltaTime;
 		if (inputDir != Vector2.zero)
 		{
 			if (moveCursorFrames >= limitCursorFrame)
 			{
-				//左右移動（-1が左、1が右）
-				SelectChara(inputDir);
+                //左右移動（-1が左、1が右）
+                SelectChara(inputDir);
 				moveCursorFrames = 0;
 			}
 		}

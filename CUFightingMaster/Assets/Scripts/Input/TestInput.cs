@@ -33,9 +33,19 @@ public class TestInput : MonoBehaviour {
 	void Start () {
 		Application.targetFrameRate = 60;
 		player = string.Format ("Player{0}_", playerIndex);
-		//プレイヤー番号に対応した現在接続されているコントローラーを設定
-		controllerName = string.Format ("{0}_", Input.GetJoystickNames()[playerIndex]);
-	}
+        void Start()
+        {
+            //プレイヤー番号に対応した現在接続されているコントローラーを設定
+            var controllerNames = Input.GetJoystickNames();
+            if (playerIndex < controllerNames.Length)
+            {
+                if (controllerNames[playerIndex] != "")
+                {
+                    controllerName = string.Format("{0}_", controllerNames[playerIndex]);
+                }
+            }
+        }
+    }
 	public void UpdateGame () {
 		DownKeyCheck ();
 	}
