@@ -47,11 +47,10 @@ public class InputAxis
 	/// <param name="name">Name.</param>
 	/// <param name="positiveButton">Positive button.</param>
 	/// <param name="altPositiveButton">Alternate positive button.</param>
-	public static InputAxis CreateButton(string name, string descriptiveName, string positiveButton, string altPositiveButton)
+	public static InputAxis CreateButton(string name, string positiveButton, string altPositiveButton)
 	{
 		var axis = new InputAxis();
 		axis.name = name;
-		axis.descriptiveName = descriptiveName;
 		axis.positiveButton = positiveButton;
 		axis.altPositiveButton = altPositiveButton;
 		axis.gravity = 1000;
