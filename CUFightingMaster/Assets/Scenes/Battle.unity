@@ -6137,7 +6137,6 @@ MonoBehaviour:
   Fighter2: {fileID: 1865372483}
   Collider1: {fileID: 1892517124}
   Collider2: {fileID: 1127803688}
-  roundCheck: 0
 --- !u!1 &1085984943
 GameObject:
   m_ObjectHideFlags: 0
@@ -8041,6 +8040,11 @@ PrefabInstance:
       propertyPath: core
       value: 
       objectReference: {fileID: 1925899304}
+    - target: {fileID: 6942710479481081786, guid: e3bd4bf71c60665408fe0eeb710abb8b,
+        type: 3}
+      propertyPath: input
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e3bd4bf71c60665408fe0eeb710abb8b, type: 3}
 --- !u!4 &1273997395 stripped
@@ -10543,7 +10547,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1326219562}
-  - component: {fileID: 1326219564}
+  - component: {fileID: 1326219563}
   m_Layer: 0
   m_Name: InputManager2
   m_TagString: Untagged
@@ -10565,7 +10569,7 @@ Transform:
   m_Father: {fileID: 1435219477}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1326219564
+--- !u!114 &1326219563
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -12049,7 +12053,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1435219477}
-  - component: {fileID: 1435219476}
+  - component: {fileID: 1435219474}
   m_Layer: 0
   m_Name: InputManager
   m_TagString: Untagged
@@ -12057,7 +12061,7 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1435219476
+--- !u!114 &1435219474
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -12066,13 +12070,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1435219473}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26d881684babee74f8a1ec40b15d9e3e, type: 3}
+  m_Script: {fileID: 11500000, guid: 397b0af4a486f9c43b5ce4b32937372b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   dontDs: 0
   testInput:
   - {fileID: 1085984945}
-  - {fileID: 1326219564}
+  - {fileID: 1326219563}
 --- !u!4 &1435219477
 Transform:
   m_ObjectHideFlags: 0
@@ -12346,6 +12350,11 @@ PrefabInstance:
       propertyPath: core
       value: 
       objectReference: {fileID: 1865372484}
+    - target: {fileID: 6942710479481081786, guid: e3bd4bf71c60665408fe0eeb710abb8b,
+        type: 3}
+      propertyPath: input
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e3bd4bf71c60665408fe0eeb710abb8b, type: 3}
 --- !u!1 &1660738366
@@ -12381,7 +12390,7 @@ MonoBehaviour:
   Player_one: {fileID: 1925899304}
   Player_two: {fileID: 1865372484}
   input_one: {fileID: 1085984945}
-  input_two: {fileID: 1326219564}
+  input_two: {fileID: 1326219563}
 --- !u!4 &1660738368
 Transform:
   m_ObjectHideFlags: 0
