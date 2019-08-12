@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fbd35985d310504d81036cc55356454, type: 3}
   m_Name: Middle_Jump
   m_EditorClassIdentifier: 
-  animationClip: {fileID: 7400050, guid: 45d0c2131161db7469374b144384d420, type: 3}
+  animationClip: {fileID: 7400022, guid: 9914cfd4555541142b030b96093003a3, type: 3}
   animationSpeed: 1
   status: 1
   hitMode: 0
@@ -32,18 +32,23 @@ MonoBehaviour:
   - mode: 0
     frameHitBoxes:
     - hitBox:
-        size: {x: 1, y: 1.28, z: 1}
-        localPosition: {x: 2.2, y: 2.49, z: -0.5}
-      startFrame: 6
-      endFrame: 12
+        size: {x: 2, y: 1.28, z: 1}
+        localPosition: {x: 2.2, y: 1.8, z: -0.5}
+      startFrame: 5
+      endFrame: 7
     hitStop: 5
     hitPoint: 0
     hitStrength: 0
     damage: 15
     stanDamage: 0
     knockBack: 0
+    airKnockBack: 0
+    guardKnockBack: 0
     hitEffects: []
     isDown: 0
+    isContinue: 0
+    movements: []
+    gravityMoves: []
     isFaceDown: 0
     isPassiveNotPossible: 0
     hitRigor: 20

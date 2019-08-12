@@ -32,8 +32,8 @@ public class InGameUIController : MonoBehaviour
     [SerializeField] GameObject Player02;
 
     [SerializeField] CountDownTimer uI_countDownTimer;
-    [SerializeField] UI_Gauge uI_hp_P1;
-    [SerializeField] UI_Gauge uI_hp_P2;
+    [SerializeField] UI_HP uI_hp_P1;
+    [SerializeField] UI_HP uI_hp_P2;
 	[SerializeField] UI_Gauge uI_sp_P1;
 	[SerializeField] UI_Gauge uI_sp_P2;
 
@@ -66,8 +66,8 @@ public class InGameUIController : MonoBehaviour
         uI_countDownTimer = uI_InGameUI.transform.Find("UI_CountDownTimer").GetComponent<CountDownTimer>();
 
         //一時的
-        uI_hp_P1 = uI_InGameUI.transform.Find("UI_HP_P1").GetComponent<UI_Gauge>();
-        uI_hp_P2 = uI_InGameUI.transform.Find("UI_HP_P2").GetComponent<UI_Gauge>();
+        uI_hp_P1 = uI_InGameUI.transform.Find("UI_HP_P1").GetComponent<UI_HP>();
+        uI_hp_P2 = uI_InGameUI.transform.Find("UI_HP_P2").GetComponent<UI_HP>();
 		//uI_sp_P1 = uI_InGameUI.transform.Find("UI_SP_P1").GetComponent<UI_Gauge>();
 		//uI_sp_P2 = uI_InGameUI.transform.Find("UI_SP_P2").GetComponent<UI_Gauge>();
 	}
@@ -95,8 +95,8 @@ public class InGameUIController : MonoBehaviour
     /// </summary>
     public void DisplayPlayerHp(int currentHp_P1, int currentHp_P2)
     {
-        uI_hp_P1.UpdateSliderValue(currentHp_P1);
-        uI_hp_P2.UpdateSliderValue(currentHp_P2);
+        uI_hp_P1.Call_UpdateHpGuage(currentHp_P1);
+        uI_hp_P2.Call_UpdateHpGuage(currentHp_P2);
     }
 
 	/// <summary>
