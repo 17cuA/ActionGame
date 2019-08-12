@@ -45,7 +45,7 @@ public class FighterSkill : ScriptableObject
         public float knockBack;           //ノックバック値
         public float airKnockBack;
         public float guardKnockBack;
-        public List<HitEffects> hitEffects;//TODO::ヒットエフェクト
+        public List<HitEffects> hitEffects = new List<HitEffects>();//TODO::ヒットエフェクト
         public bool isDown = false;     //ダウンするかどうか
         //ダウン時の移動
         public bool isContinue = false;
