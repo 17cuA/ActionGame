@@ -48,7 +48,7 @@ public class JECLogo : MonoBehaviour
 
 		if ((fade_1 && fade_2) && timeCurrent >= timeMax)
 		{
-			SceneManager.LoadScene("CharacterSelect");
+			SceneManager.LoadScene("Title");
 		}
 	}
 }
