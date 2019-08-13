@@ -425,7 +425,7 @@ public class HitBoxJudgement
     }
 	//デフォルト(+技ごとのデフォルト拡張)の押し合い判定
 	//TODO 壁判定
-	public void CheckDefaultPushingBox(BoxCollider _col)
+	public void CheckDefaulddddddtPushingBox(BoxCollider _col)
 	{
         Transform t = _col.gameObject.transform;
 		float posX = t.position.x + _col.center.x;

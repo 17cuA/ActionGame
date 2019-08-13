@@ -313,11 +313,15 @@ public class InputManagerSetter
 			var name = "OK";
 			_inputManagerGenerator.AddAxis(InputAxis.CreateButton(name, "z", "joystick button 0"));
 		}
-
 		// キャンセル
 		{
 			var name = "Cancel";
 			_inputManagerGenerator.AddAxis(InputAxis.CreateButton(name, "x", "joystick button 1"));
+		}
+		// サブ
+		{
+			var name = "Submit";
+			_inputManagerGenerator.AddAxis(InputAxis.CreateButton(name, "y", "joystick button 2"));
 		}
 	}
 
