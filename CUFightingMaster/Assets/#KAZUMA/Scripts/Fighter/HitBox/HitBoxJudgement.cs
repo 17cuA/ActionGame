@@ -425,7 +425,7 @@ public class HitBoxJudgement
     }
 	//デフォルト(+技ごとのデフォルト拡張)の押し合い判定
 	//TODO 壁判定
-	public void CheckDefaulddddddtPushingBox(BoxCollider _col)
+	public void CheckDefaultPushingBox(BoxCollider _col)
 	{
         Transform t = _col.gameObject.transform;
 		float posX = t.position.x + _col.center.x;
@@ -442,15 +442,16 @@ public class HitBoxJudgement
 				if(t.position.x>=c.transform.position.x)
 				{
 					i = -1;
-					if(t.position.x == c.transform.position.x)
-					{
-							if(core.Direction == PlayerDirection.Right)
-							{
-								i = 1;
-							}
-					}
-				}
-				float x = (pos.x + (siz.x * i)) + ((((BoxCollider)c).size.x / 2.0f) * i) + (((BoxCollider)c).center.x);
+                    if (t.position.x == c.transform.position.x)
+                    {
+                        if (core.Direction == PlayerDirection.Right)
+                        {
+                            i = 1;
+                        }
+                    }
+                }
+                float oppoX = ((((BoxCollider)c).size.x / 2.0f) * i) + ((((BoxCollider)c).center.x)*-1);//相手のコライダのX座標
+                float x = (pos.x + (siz.x * i)) + oppoX;
 				float checkX = x - c.gameObject.transform.parent.transform.position.x;
 				if(i==1&&checkX<0)
 				{
@@ -535,13 +536,20 @@ public class HitBoxJudgement
             if (Mathf.Abs(x) > 0)
             {
                 Debug.Log((int)(Knock_Back_Count - ((knockBackMinus * Knock_Back_Count) - knockBackPower) / knockBackMinus));
-				if(knockBackDir == PlayerDirection.Right)
-				{
-                    GameManager.Instance.GetPlayFighterCore(DamageEnemyNumber).SetKnockBack(knockBackPower - (knockBackMinus - Mathf.Abs(x)), PlayerNumber.None,PlayerDirection.Left, Knock_Back_Count - countKnockBack);
+                if (knockBackDir == PlayerDirection.Right)
+                {
+                    if (GameManager.Instance.GetPlayFighterCore(DamageEnemyNumber).GroundCheck() == true)
+                    {
+                        GameManager.Instance.GetPlayFighterCore(DamageEnemyNumber).SetKnockBack(knockBackPower - (knockBackMinus - Mathf.Abs(x)), PlayerNumber.None, PlayerDirection.Left, Knock_Back_Count - countKnockBack);
+                    }
                 }
-				else
-				{
-                    GameManager.Instance.GetPlayFighterCore(DamageEnemyNumber).SetKnockBack(knockBackPower - (knockBackMinus - Mathf.Abs(x)), PlayerNumber.None, PlayerDirection.Right, Knock_Back_Count - countKnockBack);
+                else
+                {
+                    if (GameManager.Instance.GetPlayFighterCore(DamageEnemyNumber).GroundCheck() == true)
+                    {
+
+                        GameManager.Instance.GetPlayFighterCore(DamageEnemyNumber).SetKnockBack(knockBackPower - (knockBackMinus - Mathf.Abs(x)), PlayerNumber.None, PlayerDirection.Right, Knock_Back_Count - countKnockBack);
+                    }
                 }
                 GameManager.Instance.GetPlayFighterCore(DamageEnemyNumber).KnockBackUpdate();
 

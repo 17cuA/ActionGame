@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4fbd35985d310504d81036cc55356454, type: 3}
-  m_Name: Idle
+  m_Name: Light_Jab
   m_EditorClassIdentifier: 
-  animationClip: {fileID: 7400000, guid: d0314d2359184a446baf2bcb1002b678, type: 2}
-  animationSpeed: 1
+  animationClip: {fileID: 7400000, guid: 9e70d0b7b43f6114e821f6c468548b7e, type: 2}
+  animationSpeed: 0.6
   status: 1
   hitMode: 0
   throwMotion: {fileID: 0}
@@ -25,10 +25,40 @@ MonoBehaviour:
   outBlend: 0
   plusHeadHitBox: []
   plusBodyHitBox: []
-  plusFootHitBox: []
+  plusFootHitBox:
+  - hitBox:
+      size: {x: -1.17, y: 0, z: 0}
+      localPosition: {x: 0.45, y: 0, z: 0}
+    startFrame: 0
+    endFrame: 11
   plusGrabHitBox: []
   plusPushingHitBox: []
-  customHitBox: []
+  customHitBox:
+  - mode: 0
+    frameHitBoxes:
+    - hitBox:
+        size: {x: 1.46, y: 1.59, z: 1}
+        localPosition: {x: 1.52, y: 1.65, z: 0}
+      startFrame: 3
+      endFrame: 7
+    hitStop: 5
+    hitPoint: 0
+    hitStrength: 0
+    damage: 5
+    stanDamage: 0
+    knockBack: 0.7
+    airKnockBack: 0.8
+    guardKnockBack: 1
+    hitEffects: []
+    isDown: 0
+    isContinue: 0
+    movements: []
+    gravityMoves: []
+    isFaceDown: 0
+    isPassiveNotPossible: 0
+    hitRigor: 8
+    guardHitRigor: 5
+    plusGauge: 0
   isContinue: 0
   movements: []
   gravityMoves:

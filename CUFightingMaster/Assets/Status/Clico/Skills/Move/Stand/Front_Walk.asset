@@ -28,25 +28,25 @@ MonoBehaviour:
       size: {x: -0.41, y: 0, z: 0}
       localPosition: {x: -0.53, y: 0.91, z: 0}
     startFrame: 0
-    endFrame: 59
+    endFrame: 39
   plusBodyHitBox:
   - hitBox:
       size: {x: -0.57, y: 0.93, z: 0}
       localPosition: {x: -0.43, y: 0.27, z: 0}
     startFrame: 0
-    endFrame: 59
+    endFrame: 39
   plusFootHitBox:
   - hitBox:
       size: {x: -1.32, y: 0, z: 0}
       localPosition: {x: 0.1, y: 0, z: 0}
     startFrame: 0
-    endFrame: 59
+    endFrame: 39
   plusGrabHitBox:
   - hitBox:
       size: {x: -0.12, y: 0.22, z: 0}
       localPosition: {x: -0.42, y: 0.59, z: 0}
     startFrame: 0
-    endFrame: 59
+    endFrame: 39
   plusPushingHitBox:
   - hitBox:
       size: {x: -0.12, y: 0.22, z: 0}
@@ -58,7 +58,10 @@ MonoBehaviour:
   movements:
   - movement: {x: 2, y: 0, z: 0}
     startFrame: 0
-  gravityMoves: []
+  gravityMoves:
+  - movement: {x: 0, y: -2, z: 0}
+    limitMove: {x: 0, y: -20, z: 0}
+    startFrame: 0
   headFlag: 1
   bodyFlag: 1
   footFlag: 1

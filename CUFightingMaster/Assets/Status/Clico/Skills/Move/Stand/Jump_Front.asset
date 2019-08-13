@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4fbd35985d310504d81036cc55356454, type: 3}
-  m_Name: Back_Walk
+  m_Name: Jump_Front
   m_EditorClassIdentifier: 
-  animationClip: {fileID: 7400000, guid: bc58677b2228faa48b006cc484294259, type: 2}
-  animationSpeed: 1
+  animationClip: {fileID: 7400000, guid: fee1bbddbe8eb5548a292ff40b4f0f51, type: 2}
+  animationSpeed: 0.5
   status: 1
   hitMode: 0
   throwMotion: {fileID: 0}
@@ -25,42 +25,42 @@ MonoBehaviour:
   outBlend: 0
   plusHeadHitBox:
   - hitBox:
-      size: {x: -0.36, y: 0, z: 0}
-      localPosition: {x: -0.63, y: 1.07, z: 0}
+      size: {x: -0.54, y: 0.09, z: 0}
+      localPosition: {x: 0.09, y: 0.15, z: 0}
     startFrame: 0
-    endFrame: 26
+    endFrame: 58
   plusBodyHitBox:
   - hitBox:
-      size: {x: -0.33, y: 0, z: 0}
-      localPosition: {x: -0.5, y: 1.2, z: 0}
+      size: {x: -0.7, y: 0.16, z: 0}
+      localPosition: {x: -0.23, y: 0.09, z: 0}
     startFrame: 0
-    endFrame: 26
+    endFrame: 58
   plusFootHitBox:
   - hitBox:
-      size: {x: -1.39, y: 1.39, z: 0}
-      localPosition: {x: 0.44, y: 0.54, z: 0}
+      size: {x: -0.95, y: -0.51, z: 0}
+      localPosition: {x: 0.13, y: 0.57, z: 0}
     startFrame: 0
-    endFrame: 26
+    endFrame: 58
   plusGrabHitBox:
   - hitBox:
-      size: {x: -0.21, y: 1, z: 0}
-      localPosition: {x: -0.36, y: 0.36, z: 0}
+      size: {x: -0.25, y: -1.02, z: 0}
+      localPosition: {x: -0.21, y: 0.31, z: 0}
     startFrame: 0
-    endFrame: 26
+    endFrame: 58
   plusPushingHitBox:
   - hitBox:
-      size: {x: -0.21, y: 1, z: 0}
-      localPosition: {x: -0.36, y: 0.36, z: 0}
+      size: {x: -0.25, y: -1.02, z: 0}
+      localPosition: {x: -0.21, y: 0.31, z: 0}
     startFrame: 0
-    endFrame: 26
+    endFrame: 58
   customHitBox: []
   isContinue: 0
   movements:
-  - movement: {x: -1.5, y: 0, z: 0}
+  - movement: {x: 0, y: 4, z: 0}
     startFrame: 0
   gravityMoves:
-  - movement: {x: 0, y: -2, z: 0}
-    limitMove: {x: 0, y: -20, z: 0}
+  - movement: {x: 1.3, y: -0.2, z: 0}
+    limitMove: {x: 1.3, y: -20, z: 0}
     startFrame: 0
   headFlag: 1
   bodyFlag: 1

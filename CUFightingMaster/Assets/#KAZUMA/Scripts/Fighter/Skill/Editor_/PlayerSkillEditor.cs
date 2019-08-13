@@ -278,9 +278,9 @@ public class PlayerSkillEditor : EditorWindow
                         {
                             EditorGUILayout.BeginHorizontal();
                             box.hitRigor = EditorGUILayout.IntField("ヒット硬直", box.hitRigor);
-                            box.guardHitRigor = EditorGUILayout.IntField("ガード硬直", box.guardHitRigor);
-                            EditorGUILayout.EndHorizontal();
                         }
+                        box.guardHitRigor = EditorGUILayout.IntField("ガード硬直", box.guardHitRigor);
+                        EditorGUILayout.EndHorizontal();
                     }
                 }
                 if ((foldOutFlags[i].foldOutFlag) && (foldOutFlags[i].effectFlag = CustomUI.Foldout("エフェクト", foldOutFlags[i].effectFlag)))

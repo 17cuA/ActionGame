@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4fbd35985d310504d81036cc55356454, type: 3}
-  m_Name: Back_Walk
+  m_Name: Strike
   m_EditorClassIdentifier: 
-  animationClip: {fileID: 7400000, guid: bc58677b2228faa48b006cc484294259, type: 2}
+  animationClip: {fileID: 7400000, guid: dd53af02b6335d243a5269d374605c7c, type: 2}
   animationSpeed: 1
   status: 1
   hitMode: 0
@@ -25,45 +25,33 @@ MonoBehaviour:
   outBlend: 0
   plusHeadHitBox:
   - hitBox:
-      size: {x: -0.36, y: 0, z: 0}
-      localPosition: {x: -0.63, y: 1.07, z: 0}
+      size: {x: 0, y: 0, z: 0}
+      localPosition: {x: 0, y: 0, z: 0}
     startFrame: 0
-    endFrame: 26
-  plusBodyHitBox:
-  - hitBox:
-      size: {x: -0.33, y: 0, z: 0}
-      localPosition: {x: -0.5, y: 1.2, z: 0}
-    startFrame: 0
-    endFrame: 26
+    endFrame: 0
+  plusBodyHitBox: []
   plusFootHitBox:
   - hitBox:
-      size: {x: -1.39, y: 1.39, z: 0}
-      localPosition: {x: 0.44, y: 0.54, z: 0}
+      size: {x: -0.91, y: 0, z: 0}
+      localPosition: {x: -0.07, y: 0, z: 0}
     startFrame: 0
-    endFrame: 26
-  plusGrabHitBox:
-  - hitBox:
-      size: {x: -0.21, y: 1, z: 0}
-      localPosition: {x: -0.36, y: 0.36, z: 0}
-    startFrame: 0
-    endFrame: 26
+    endFrame: 44
+  plusGrabHitBox: []
   plusPushingHitBox:
   - hitBox:
-      size: {x: -0.21, y: 1, z: 0}
-      localPosition: {x: -0.36, y: 0.36, z: 0}
+      size: {x: 0.54, y: -0.7, z: 0}
+      localPosition: {x: -0.9, y: -0.44, z: 0}
     startFrame: 0
-    endFrame: 26
+    endFrame: 44
   customHitBox: []
   isContinue: 0
-  movements:
-  - movement: {x: -1.5, y: 0, z: 0}
-    startFrame: 0
+  movements: []
   gravityMoves:
   - movement: {x: 0, y: -2, z: 0}
     limitMove: {x: 0, y: -20, z: 0}
     startFrame: 0
-  headFlag: 1
-  bodyFlag: 1
-  footFlag: 1
-  grabFlag: 1
+  headFlag: 0
+  bodyFlag: 0
+  footFlag: 0
+  grabFlag: 0
   pushingFlag: 1

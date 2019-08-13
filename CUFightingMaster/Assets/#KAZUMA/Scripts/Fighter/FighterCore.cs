@@ -17,9 +17,9 @@ public class FighterCore : MonoBehaviour
     [SerializeField] private FighterSkill nextAnimation = null;//ここにいれればアニメーションが再生される
     [SerializeField] private FighterSkill nowPlaySkill = null;
     [SerializeField] private FighterSkill.CustomHitBox applyDamageSkill = null;//ダメージを食らった時に入る
-	[SerializeField] private BoxCollider applyDamageCollider = null;
-	private PlayerNumber enemyNumber;
-	[SerializeField] private bool isCrouching = false;
+    [SerializeField] private BoxCollider applyDamageCollider = null;
+    private PlayerNumber enemyNumber;
+    [SerializeField] private bool isCrouching = false;
     private int changeWeightFrame = 0;
     public bool changeSkill { get; private set; }//技が入れ替わったかどうか
     public int HP = 0;
@@ -54,14 +54,14 @@ public class FighterCore : MonoBehaviour
     {
         get { return applyDamageSkill; }
     }
-	public BoxCollider GetDamageCollider
-	{
-		get { return applyDamageCollider; }
-	}
-	public PlayerNumber EnemyNumber
-	{
-		get { return enemyNumber; }
-	}
+    public BoxCollider GetDamageCollider
+    {
+        get { return applyDamageCollider; }
+    }
+    public PlayerNumber EnemyNumber
+    {
+        get { return enemyNumber; }
+    }
     public PlayerMoveState PlayerMoveStates
     {
         get { return playerMoveState; }
@@ -84,7 +84,7 @@ public class FighterCore : MonoBehaviour
         //技の入れ替え
         if (nextAnimation != null)
         {
-            animationPlayer.SetSkillAnimation(nextAnimation,changeWeightFrame);
+            animationPlayer.SetSkillAnimation(nextAnimation, changeWeightFrame);
             nextAnimation = null;
             changeSkill = true;
             changeWeightFrame = 0;
@@ -100,58 +100,58 @@ public class FighterCore : MonoBehaviour
         //終了
         UpdateEnd();
     }
-	public void HitStopUpdate()
-	{
-		//当たり判定のアップデート
-		hitJudgement.UpdateGame();
-	}
-	public void KnockBackUpdate()
-	{
-		hitJudgement.KnockBackPushing();
-	}
+    public void HitStopUpdate()
+    {
+        //当たり判定のアップデート
+        hitJudgement.UpdateGame();
+    }
+    public void KnockBackUpdate()
+    {
+        hitJudgement.KnockBackPushing();
+    }
 
-	#region publid メソッド
-	//技の設定
-	public void SetSkill(FighterSkill _skill,int _weightFrame)
-	{
+    #region publid メソッド
+    //技の設定
+    public void SetSkill(FighterSkill _skill, int _weightFrame)
+    {
         nextAnimation = _skill;
         changeWeightFrame = _weightFrame;
     }
-	//地面判定
-	public bool GroundCheck()
-	{
+    //地面判定
+    public bool GroundCheck()
+    {
         return hitJudgement.isGround;
     }
-	public void SetIsGround(bool _f)
-	{
-		hitJudgement.SetGround(_f);
-	}
-    public void SetDamage(FighterSkill.CustomHitBox _s,BoxCollider _col)
+    public void SetIsGround(bool _f)
+    {
+        hitJudgement.SetGround(_f);
+    }
+    public void SetDamage(FighterSkill.CustomHitBox _s, BoxCollider _col)
     {
         applyDamageSkill = _s;
-		applyDamageCollider = _col;
+        applyDamageCollider = _col;
     }
-	public void SetIsCrouching(bool _f)
-	{
-		isCrouching = _f;
-	}
-	public void SetEnemyNumber(PlayerNumber _num)
-	{
-		enemyNumber = _num;
-	}
-	public void SetDirection(PlayerDirection _dir)
-	{
-		direction = _dir;
-	}
+    public void SetIsCrouching(bool _f)
+    {
+        isCrouching = _f;
+    }
+    public void SetEnemyNumber(PlayerNumber _num)
+    {
+        enemyNumber = _num;
+    }
+    public void SetDirection(PlayerDirection _dir)
+    {
+        direction = _dir;
+    }
     public void SetPlayerMoveState(PlayerMoveState _state)
     {
         playerMoveState = _state;
     }
 
-	public void SetKnockBack(float _backCount,PlayerNumber _number,PlayerDirection _dir,int _count = 6)
-	{
-		hitJudgement.SetKnockBack(_backCount,_number,_dir, _count);
-	}
+    public void SetKnockBack(float _backCount, PlayerNumber _number, PlayerDirection _dir, int _count = 6)
+    {
+        hitJudgement.SetKnockBack(_backCount, _number, _dir, _count);
+    }
     #endregion
 
     #region 初期化時エラーチェック
@@ -226,7 +226,9 @@ public class FighterCore : MonoBehaviour
                     //TODO 関数化
                     if (skill.headFlag)
                     {
-                        pos = transform.position + status.headHitBox.localPosition;
+                        Vector3 lp = status.headHitBox.localPosition;
+                        lp.x *= dir;
+                        pos = transform.position + lp;
                         size = status.headHitBox.size;
                         //フレームごとの移動
                         for (int i = 0; i < skill.plusHeadHitBox.Count; i++)
@@ -236,7 +238,7 @@ public class FighterCore : MonoBehaviour
                                 Vector3 lPos = status.headHitBox.localPosition;
                                 Vector3 plusLpos = skill.plusHeadHitBox[i].hitBox.localPosition;
                                 lPos.x *= dir;
-                                plusLpos *= dir;
+                                plusLpos.x *= dir;
                                 pos = transform.position + lPos + plusLpos;
                                 size = status.headHitBox.size + skill.plusHeadHitBox[i].hitBox.size;
                             }
@@ -247,7 +249,9 @@ public class FighterCore : MonoBehaviour
                     #region Body
                     if (skill.bodyFlag)
                     {
-                        pos = transform.position + status.bodyHitBox.localPosition;
+                        Vector3 lp = status.bodyHitBox.localPosition;
+                        lp.x *= dir;
+                        pos = transform.position + lp;
                         size = status.bodyHitBox.size;
                         for (int i = 0; i < skill.plusBodyHitBox.Count; i++)
                         {
@@ -256,7 +260,7 @@ public class FighterCore : MonoBehaviour
                                 Vector3 lPos = status.bodyHitBox.localPosition;
                                 Vector3 plusLpos = skill.plusBodyHitBox[i].hitBox.localPosition;
                                 lPos.x *= dir;
-                                plusLpos *= dir;
+                                plusLpos.x *= dir;
                                 pos = transform.position + lPos + plusLpos;
                                 size = status.bodyHitBox.size + skill.plusBodyHitBox[i].hitBox.size;
                             }
@@ -267,7 +271,9 @@ public class FighterCore : MonoBehaviour
                     #region Foot
                     if (skill.footFlag)
                     {
-                        pos = transform.position + status.footHitBox.localPosition;
+                        Vector3 lp = status.footHitBox.localPosition;
+                        lp.x *= dir;
+                        pos = transform.position + lp;
                         size = status.footHitBox.size;
                         for (int i = 0; i < skill.plusFootHitBox.Count; i++)
                         {
@@ -276,7 +282,7 @@ public class FighterCore : MonoBehaviour
                                 Vector3 lPos = status.footHitBox.localPosition;
                                 Vector3 plusLpos = skill.plusFootHitBox[i].hitBox.localPosition;
                                 lPos.x *= dir;
-                                plusLpos *= dir;
+                                plusLpos.x *= dir;
                                 pos = transform.position + lPos + plusLpos;
                                 size = status.footHitBox.size + skill.plusFootHitBox[i].hitBox.size;
                             }
@@ -287,8 +293,10 @@ public class FighterCore : MonoBehaviour
                     #region Grab
                     if (skill.grabFlag)
                     {
-						Gizmos.color = Color.blue;
-                        pos = transform.position + status.grabHitBox.localPosition;
+                        Gizmos.color = Color.blue;
+                        Vector3 lp = status.grabHitBox.localPosition;
+                        lp.x *= dir;
+                        pos = transform.position + lp;
                         size = status.grabHitBox.size;
                         for (int i = 0; i < skill.plusGrabHitBox.Count; i++)
                         {
@@ -297,7 +305,7 @@ public class FighterCore : MonoBehaviour
                                 Vector3 lPos = status.grabHitBox.localPosition;
                                 Vector3 plusLpos = skill.plusGrabHitBox[i].hitBox.localPosition;
                                 lPos.x *= dir;
-                                plusLpos *= dir;
+                                plusLpos.x *= dir;
                                 pos = transform.position + lPos + plusLpos;
                                 size = status.grabHitBox.size + skill.plusGrabHitBox[i].hitBox.size;
                             }
@@ -305,11 +313,13 @@ public class FighterCore : MonoBehaviour
                         Gizmos.DrawWireCube(pos, size);
                     }
                     #endregion
-					#region Pushing
+                    #region Pushing
                     if (skill.pushingFlag)
                     {
                         Gizmos.color = new Color(1, 0.92f, 0.016f, 0.5f);
-                        pos = transform.position + status.pushingHitBox.localPosition;
+                        Vector3 lp = status.pushingHitBox.localPosition;
+                        lp.x *= dir;
+                        pos = transform.position + lp;
                         size = status.pushingHitBox.size;
                         for (int i = 0; i < skill.plusPushingHitBox.Count; i++)
                         {
@@ -318,13 +328,13 @@ public class FighterCore : MonoBehaviour
                                 Vector3 lPos = status.pushingHitBox.localPosition;
                                 Vector3 plusLpos = skill.plusPushingHitBox[i].hitBox.localPosition;
                                 lPos.x *= dir;
-                                plusLpos *= dir;
+                                plusLpos.x *= dir;
                                 pos = transform.position + lPos + plusLpos;
                                 size = status.pushingHitBox.size + skill.plusPushingHitBox[i].hitBox.size;
                             }
                         }
                         Gizmos.DrawCube(pos, size);
-					}
+                    }
                     #endregion
 
                     #region Custom
@@ -359,8 +369,8 @@ public class FighterCore : MonoBehaviour
                                 break;
                         }
                     }
-					#endregion
-				}
+                    #endregion
+                }
                 else
                 {
                     DefaultHitBoxDraw();
@@ -382,7 +392,9 @@ public class FighterCore : MonoBehaviour
                 #region Head
                 if (nowPlaySkill.headFlag)
                 {
-                    pos = transform.position + status.headHitBox.localPosition;
+                    Vector3 lp = status.headHitBox.localPosition;
+                    lp.x *= dir;
+                    pos = transform.position + lp;
                     size = status.headHitBox.size;
                     for (int i = 0; i < nowPlaySkill.plusHeadHitBox.Count; i++)
                     {
@@ -391,7 +403,7 @@ public class FighterCore : MonoBehaviour
                             Vector3 lPos = status.headHitBox.localPosition;
                             Vector3 plusLpos = nowPlaySkill.plusHeadHitBox[i].hitBox.localPosition;
                             lPos.x *= dir;
-                            plusLpos *= dir;
+                            plusLpos.x *= dir;
                             pos = transform.position + lPos + plusLpos;
                             size = status.headHitBox.size + nowPlaySkill.plusHeadHitBox[i].hitBox.size;
                         }
@@ -402,7 +414,9 @@ public class FighterCore : MonoBehaviour
                 #region Body
                 if (nowPlaySkill.bodyFlag)
                 {
-                    pos = transform.position + status.bodyHitBox.localPosition;
+                    Vector3 lp = status.bodyHitBox.localPosition;
+                    lp.x *= dir;
+                    pos = transform.position + lp;
                     size = status.bodyHitBox.size;
                     for (int i = 0; i < nowPlaySkill.plusBodyHitBox.Count; i++)
                     {
@@ -411,7 +425,7 @@ public class FighterCore : MonoBehaviour
                             Vector3 lPos = status.bodyHitBox.localPosition;
                             Vector3 plusLpos = nowPlaySkill.plusBodyHitBox[i].hitBox.localPosition;
                             lPos.x *= dir;
-                            plusLpos *= dir;
+                            plusLpos.x *= dir;
                             pos = transform.position + lPos + plusLpos;
                             size = status.bodyHitBox.size + nowPlaySkill.plusBodyHitBox[i].hitBox.size;
                         }
@@ -422,7 +436,9 @@ public class FighterCore : MonoBehaviour
                 #region Foot
                 if (nowPlaySkill.footFlag)
                 {
-                    pos = transform.position + status.footHitBox.localPosition;
+                    Vector3 lp = status.footHitBox.localPosition;
+                    lp.x *= dir;
+                    pos = transform.position + lp;
                     size = status.footHitBox.size;
                     for (int i = 0; i < nowPlaySkill.plusFootHitBox.Count; i++)
                     {
@@ -431,7 +447,7 @@ public class FighterCore : MonoBehaviour
                             Vector3 lPos = status.footHitBox.localPosition;
                             Vector3 plusLpos = nowPlaySkill.plusFootHitBox[i].hitBox.localPosition;
                             lPos.x *= dir;
-                            plusLpos *= dir;
+                            plusLpos.x *= dir;
                             pos = transform.position + lPos + plusLpos;
                             size = status.footHitBox.size + nowPlaySkill.plusFootHitBox[i].hitBox.size;
                         }
@@ -442,8 +458,10 @@ public class FighterCore : MonoBehaviour
                 #region Grab
                 if (nowPlaySkill.grabFlag)
                 {
-					Gizmos.color = Color.blue;
-                    pos = transform.position + status.grabHitBox.localPosition;
+                    Gizmos.color = Color.blue;
+                    Vector3 lp = status.grabHitBox.localPosition;
+                    lp.x *= dir;
+                    pos = transform.position + lp;
                     size = status.grabHitBox.size;
                     for (int i = 0; i < nowPlaySkill.plusGrabHitBox.Count; i++)
                     {
@@ -452,7 +470,7 @@ public class FighterCore : MonoBehaviour
                             Vector3 lPos = status.grabHitBox.localPosition;
                             Vector3 plusLpos = nowPlaySkill.plusGrabHitBox[i].hitBox.localPosition;
                             lPos.x *= dir;
-                            plusLpos *= dir;
+                            plusLpos.x *= dir;
                             pos = transform.position + lPos + plusLpos;
                             size = status.grabHitBox.size + nowPlaySkill.plusGrabHitBox[i].hitBox.size;
                         }
@@ -460,11 +478,13 @@ public class FighterCore : MonoBehaviour
                     Gizmos.DrawWireCube(pos, size);
                 }
                 #endregion
-				#region Pushing
+                #region Pushing
                 if (nowPlaySkill.pushingFlag)
                 {
                     Gizmos.color = new Color(1, 0.92f, 0.016f, 0.5f);
-                    pos = transform.position + status.pushingHitBox.localPosition;
+                    Vector3 lp = status.pushingHitBox.localPosition;
+                    lp.x *= dir;
+                    pos = transform.position + lp;
                     size = status.pushingHitBox.size;
                     for (int i = 0; i < nowPlaySkill.plusPushingHitBox.Count; i++)
                     {
@@ -473,7 +493,7 @@ public class FighterCore : MonoBehaviour
                             Vector3 lPos = status.pushingHitBox.localPosition;
                             Vector3 plusLpos = nowPlaySkill.plusPushingHitBox[i].hitBox.localPosition;
                             lPos.x *= dir;
-                            plusLpos *= dir;
+                            plusLpos.x *= dir;
                             pos = transform.position + lPos + plusLpos;
                             size = status.pushingHitBox.size + nowPlaySkill.plusPushingHitBox[i].hitBox.size;
                         }
@@ -532,8 +552,8 @@ public class FighterCore : MonoBehaviour
         Gizmos.DrawWireCube(transform.position + status.footHitBox.localPosition, status.footHitBox.size);
         Gizmos.color = new Color(1, 0.92f, 0.016f, 0.5f);
         Gizmos.DrawCube(transform.position + status.pushingHitBox.localPosition, status.pushingHitBox.size);
-		Gizmos.color = Color.blue;
-		Gizmos.DrawWireCube(transform.position + status.grabHitBox.localPosition, status.grabHitBox.size);
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireCube(transform.position + status.grabHitBox.localPosition, status.grabHitBox.size);
     }
 #endif
     #endregion

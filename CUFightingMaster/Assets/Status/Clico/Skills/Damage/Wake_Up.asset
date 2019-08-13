@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4fbd35985d310504d81036cc55356454, type: 3}
-  m_Name: Idle
+  m_Name: Wake_Up
   m_EditorClassIdentifier: 
-  animationClip: {fileID: 7400000, guid: d0314d2359184a446baf2bcb1002b678, type: 2}
+  animationClip: {fileID: 7400000, guid: 7961a1445d12de840837247452c7c0fb, type: 2}
   animationSpeed: 1
   status: 1
   hitMode: 0
@@ -23,11 +23,21 @@ MonoBehaviour:
   cancelLayer: 0
   inBlend: 0
   outBlend: 0
-  plusHeadHitBox: []
+  plusHeadHitBox:
+  - hitBox:
+      size: {x: 0, y: 0, z: 0}
+      localPosition: {x: -0.68, y: 0, z: 0}
+    startFrame: 0
+    endFrame: 59
   plusBodyHitBox: []
   plusFootHitBox: []
   plusGrabHitBox: []
-  plusPushingHitBox: []
+  plusPushingHitBox:
+  - hitBox:
+      size: {x: 0.95, y: -0.57, z: 0}
+      localPosition: {x: 0.58, y: -0.29, z: 0}
+    startFrame: 0
+    endFrame: 59
   customHitBox: []
   isContinue: 0
   movements: []
@@ -35,8 +45,8 @@ MonoBehaviour:
   - movement: {x: 0, y: -2, z: 0}
     limitMove: {x: 0, y: -20, z: 0}
     startFrame: 0
-  headFlag: 1
-  bodyFlag: 1
-  footFlag: 1
-  grabFlag: 1
+  headFlag: 0
+  bodyFlag: 0
+  footFlag: 0
+  grabFlag: 0
   pushingFlag: 1
