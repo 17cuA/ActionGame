@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Air_Jab 2
   m_EditorClassIdentifier: 
   animationClip: {fileID: 7400000, guid: 3177b215ff0f7454da08919dbd6d084d, type: 2}
-  animationSpeed: 0.5
+  animationSpeed: 0.4
   status: 1
   hitMode: 0
   throwMotion: {fileID: 0}
@@ -60,7 +60,22 @@ MonoBehaviour:
         size: {x: 1.51, y: 1.28, z: 1}
         localPosition: {x: 1.09, y: 1.57, z: 0}
       startFrame: 13
-      endFrame: 27
+      endFrame: 34
+    - hitBox:
+        size: {x: 1.51, y: 1.28, z: 0}
+        localPosition: {x: 1.09, y: 1.57, z: 0}
+      startFrame: 18
+      endFrame: 34
+    - hitBox:
+        size: {x: 0, y: 0, z: 0}
+        localPosition: {x: 0, y: 0, z: 0}
+      startFrame: 23
+      endFrame: 34
+    - hitBox:
+        size: {x: 0, y: 0, z: 0}
+        localPosition: {x: 0, y: 0, z: 0}
+      startFrame: 28
+      endFrame: 34
     hitStop: 6
     hitPoint: 0
     hitStrength: 0
@@ -69,7 +84,11 @@ MonoBehaviour:
     knockBack: 1
     airKnockBack: 0.2
     guardKnockBack: 0.8
-    hitEffects: []
+    hitEffects:
+    - effect: {fileID: 2688692212982812447, guid: 06d324c6486219941a1b9f3833388210,
+        type: 3}
+      guardEffect: {fileID: 0}
+      position: {x: 1.11, y: -0.24, z: 1}
     isDown: 0
     isContinue: 0
     movements: []
@@ -79,14 +98,19 @@ MonoBehaviour:
     hitRigor: 10
     guardHitRigor: 8
     plusGauge: 0
-  isContinue: 1
+  isContinue: 0
   movements:
-  - movement: {x: 2, y: 6, z: 0}
+  - movement: {x: 0, y: 0, z: 0}
     startFrame: 0
+  - movement: {x: 4, y: 2, z: 0}
+    startFrame: 12
   gravityMoves:
-  - movement: {x: 0, y: -0.2, z: 0}
-    limitMove: {x: 0, y: -20, z: 0}
+  - movement: {x: 0, y: 0, z: 0}
+    limitMove: {x: 0, y: 0, z: 0}
     startFrame: 0
+  - movement: {x: 0, y: -0.5, z: 0}
+    limitMove: {x: 0, y: -20, z: 0}
+    startFrame: 12
   headFlag: 0
   bodyFlag: 1
   footFlag: 1
