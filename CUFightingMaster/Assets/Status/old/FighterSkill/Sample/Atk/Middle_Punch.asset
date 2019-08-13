@@ -1,0 +1,62 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fbd35985d310504d81036cc55356454, type: 3}
+  m_Name: Middle_Punch
+  m_EditorClassIdentifier: 
+  animationClip: {fileID: 7400000, guid: 160482ab48241e741bb12fa7c6e3b375, type: 2}
+  animationSpeed: 1
+  status: 1
+  hitMode: 0
+  throwMotion: {fileID: 0}
+  enemyThrowMotion: {fileID: 0}
+  cancelFrag: 1
+  barrageCancelFrag: 0
+  cancelLayer: 0
+  inBlend: 0
+  outBlend: 0
+  plusHeadHitBox: []
+  plusBodyHitBox: []
+  plusFootHitBox: []
+  plusGrabHitBox: []
+  plusPushingHitBox: []
+  customHitBox:
+  - mode: 0
+    frameHitBoxes:
+    - hitBox:
+        size: {x: 2.08, y: 1, z: 1}
+        localPosition: {x: 1.7, y: 3.33, z: 0}
+      startFrame: 3
+      endFrame: 7
+    hitStop: 7
+    hitPoint: 1
+    hitStrength: 1
+    damage: 15
+    stanDamage: 0
+    knockBack: 0
+    hitEffects:
+    - effect: {fileID: 2229646581234232880, guid: 9ebe8668c876af24eac315418263e04a,
+        type: 3}
+      position: {x: 0, y: 0, z: 0}
+    isDown: 0
+    isFaceDown: 0
+    isPassiveNotPossible: 0
+    hitRigor: 16
+    guardHitRigor: 0
+    plusGauge: 0
+  isContinue: 0
+  movements: []
+  gravityMoves: []
+  headFlag: 1
+  bodyFlag: 1
+  footFlag: 1
+  grabFlag: 1
+  pushingFlag: 1
