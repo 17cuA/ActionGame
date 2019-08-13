@@ -7,8 +7,8 @@ using System;
 
 public class TestInput : MonoBehaviour {
 	public int playerIndex; //プレイヤー番号
-	public string player;
-	public string controllerName = ""; //使用するコントローラーの名前
+	public string player;   //Inputでプレイヤー毎の入力を識別するための文字列
+    public string controllerName = ""; //使用するコントローラーの名前
 	public Vector2 inputDirection; //ジョイスティックの入力方向
 	public string direction; //現在のジョイスティックの方向
 	public int lastDir = 5; //前回のジョイスティックの方向
@@ -16,42 +16,41 @@ public class TestInput : MonoBehaviour {
 	public string atkBotton; //攻撃ボタンの名前を格納
 
 	//ジョイスティックの入力方向（方向はNumパッドに依存）
-
 	enum DirJS {
 		NONE,
-		d1 = 1, //RIGHT_DOWN
-		d2 = 2, //DOWN
-		d3 = 3, //LEFT_DOWN
-		d4 = 4, //RIGHT
-		d5 = 5, //CENTER
-		d6 = 6, //LEFT
-		d7 = 7, //RIGHT_UP
-		d8 = 8, //UP
-		d9 = 9 //LEFT_UP
-	}
+		d1 = 1, //LEFT_DOWN
+        d2 = 2, //DOWN
+		d3 = 3, //RIGHT_DOWN
+        d4 = 4, //LEFT
+        d5 = 5, //CENTER
+		d6 = 6, //RIGHT
+        d7 = 7, //LEFT_UP
+        d8 = 8, //UP
+		d9 = 9  //RIGHT_UP
+    }
 
-	void Start () {
-		Application.targetFrameRate = 60;
-		player = string.Format ("Player{0}_", playerIndex);
-        void Start()
+    void Start()
+    {
+        Application.targetFrameRate = 60;
+        player = string.Format("Player{0}_", playerIndex);
+        //プレイヤー番号に対応した現在接続されているコントローラーを設定
+        var controllerNames = Input.GetJoystickNames();
+        if (playerIndex < controllerNames.Length)
         {
-            //プレイヤー番号に対応した現在接続されているコントローラーを設定
-            var controllerNames = Input.GetJoystickNames();
-            if (playerIndex < controllerNames.Length)
+            if (controllerNames[playerIndex] != "")
             {
-                if (controllerNames[playerIndex] != "")
-                {
-                    controllerName = string.Format("{0}_", controllerNames[playerIndex]);
-                }
+                controllerName = string.Format("{0}_", controllerNames[playerIndex]);
             }
         }
     }
+
 	public void UpdateGame () {
 		DownKeyCheck ();
 	}
 
 	public void SetAxis () {
-		inputDirection.x = Input.GetAxisRaw (controllerName + player + "Horizontal");
+        //X,Yそれぞれの入力を保存
+        inputDirection.x = Input.GetAxisRaw (controllerName + player + "Horizontal");
 		inputDirection.y = Input.GetAxisRaw (controllerName + player + "Vertical");
 	}
 	public void SetDirection () {
@@ -102,7 +101,7 @@ public class TestInput : MonoBehaviour {
 		}
 	}
 
-	void DownKeyCheck () {
+	public void DownKeyCheck () {
 		SetDirection ();
 		SetAtkBotton ();
 		if (Input.anyKey) {
