@@ -265,7 +265,7 @@ public class InGameManager : MonoBehaviour
 	/// </summary>
 	private void GameFinish()
     {
-        SceneManager.LoadScene("Title");
+        SceneManager.LoadScene("Result");
     }
 	#endregion
 

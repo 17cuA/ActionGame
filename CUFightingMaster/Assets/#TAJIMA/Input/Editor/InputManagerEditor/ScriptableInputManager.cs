@@ -62,6 +62,7 @@ public class ScriptableInputManager : ScriptableObject
 		set { _setButtonNum = Mathf.Clamp(value, 1, 16); }
 #endif
 	}
+
     //1コントローラー当たりに設定できる最大ボタン数
     public static int MaxButtonNum = 16;
     //1ボタン当たりに設定する項目数
@@ -95,6 +96,17 @@ public class ScriptableInputManager : ScriptableObject
 #endif
     }
 
+	//スティックの設定を追加するか
+	[SerializeField]
+	private bool _isSetStick;
+	public bool IsSetStick
+	{
+		get { return _isSetStick; }
+#if UNITY_EDITOR
+		set { _isSetStick = value; }
+#endif
+	}
+
     #region コピー用
 #if UNITY_EDITOR
     public void Copy(ScriptableInputManager sobj)
@@ -105,6 +117,7 @@ public class ScriptableInputManager : ScriptableObject
         _buttonNum = sobj.ButtonNum;
         _setButtonNum = sobj.SetButtonNum;
         _inputControllerButtons = sobj.InputControllerButtons;
+		_isSetStick = sobj._isSetStick;
 	}
 #endif
 	#endregion
