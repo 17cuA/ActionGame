@@ -211,8 +211,10 @@ public class CreateInputManagerWindow : EditorWindow
     //基本設定に応じて変数の初期化を行う
     private void SetController()
     {
-        //リストの作成及び追加、削除を行ったときの表示エラーを回避するための初期化
-        if (_obj.InputControllerButtons == null || _obj.PlayerNum != _obj.SetPlayerNum || _obj.ButtonNum != _obj.SetButtonNum)
+		////読み込み
+		ScriptableInputManager sample = AssetDatabase.LoadAssetAtPath<ScriptableInputManager>(ASSET_PATH);
+		//リストの作成及び追加、削除を行ったときの表示エラーを回避するための初期化
+		if (_obj.InputControllerButtons == null || _obj.PlayerNum != _obj.SetPlayerNum || _obj.ButtonNum != _obj.SetButtonNum)
         {
             //設定用変数に入力用変数の値を格納
             _obj.SetPlayerNum = _obj.PlayerNum;
@@ -220,15 +222,21 @@ public class CreateInputManagerWindow : EditorWindow
 			//必要な初期化を行う
 			isOpen = new bool[_obj.SetPlayerNum, _obj.SetButtonNum];
 			var playerList = new List<List<ScriptableInputManager.InputControllerButton>>();
-            //ボタン分ループ
-            for (int i = 0; i < _obj.PlayerNum; i++)
+            //プレイヤー分ループ
+            for (int i = 0; i < _obj.SetPlayerNum; i++)
             {
                 var controllerList = new List<ScriptableInputManager.InputControllerButton>();
                 //ボタン分ループ
                 for (int j = 0; j < _obj.SetButtonNum; j++)
                 {
                     var bottonList = new ScriptableInputManager.InputControllerButton();
-                    controllerList.Add(bottonList);
+					//セーブされている設定があれば移す
+					if (i < sample.SetPlayerNum && j < sample.SetButtonNum)
+					{
+						Debug.Log( i + ":" + sample.SetPlayerNum + " " + j + ":" + sample.SetButtonNum);
+						//bottonList = sample.InputControllerButtons[i][j];
+					}
+					controllerList.Add(bottonList);
 					isOpen[i, j] = false;
 				}
                 playerList.Add(controllerList);

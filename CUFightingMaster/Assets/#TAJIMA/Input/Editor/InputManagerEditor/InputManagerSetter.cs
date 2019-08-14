@@ -308,26 +308,30 @@ public class InputManagerSetter
 	}
 
 	/// <summary>
-	/// デフォルト設定を追加する（OK、キャンセルなど）
+	/// デフォルト設定を追加する（キャンセルなど）
 	/// </summary>
 	/// <param name="inputManagerGenerator">Input manager generator.</param>
 	public void AddGlobalInputSettings()
 	{
 		InputManagerGenerator inputManagerGenerator = new InputManagerGenerator();
-		// 決定
+		// 軸
 		{
-			var name = "OK";
-			inputManagerGenerator.AddAxis(InputAxis.CreateButton(name, "z", "joystick button 0"));
+			var name = "Horizontal";
+			inputManagerGenerator.AddAxis(InputAxis.CreateButton(name, "", ""));
+		}
+		{
+			var name = "Vertical";
+			inputManagerGenerator.AddAxis(InputAxis.CreateButton(name, "", ""));
 		}
 		// キャンセル
 		{
 			var name = "Cancel";
-			inputManagerGenerator.AddAxis(InputAxis.CreateButton(name, "x", "joystick button 1"));
+			inputManagerGenerator.AddAxis(InputAxis.CreateButton(name, "", ""));
 		}
 		// サブ
 		{
 			var name = "Submit";
-			inputManagerGenerator.AddAxis(InputAxis.CreateButton(name, "y", "joystick button 2"));
+			inputManagerGenerator.AddAxis(InputAxis.CreateButton(name, "", ""));
 		}
 	}
 
