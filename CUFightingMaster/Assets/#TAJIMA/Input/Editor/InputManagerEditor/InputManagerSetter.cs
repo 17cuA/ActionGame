@@ -41,8 +41,6 @@ public class InputManagerSetter
             AddPlayerInputSettings(inputManagerGenerator, scriptableInputManager, i);
         }
         Debug.Log(string.Format("{0}を設定しました。", scriptableInputManager.ControllerName));
-        //デフォルトの設定を追加
-        AddGlobalInputSettings(inputManagerGenerator);
         Debug.Log("インプットマネージャーの設定が完了しました。");
 	}
 
@@ -64,10 +62,6 @@ public class InputManagerSetter
                 Debug.Log(string.Format("{0}を設定しました。", controllerNames[i]));
             }
         }
-
-        //デフォルトの設定を追加
-        AddGlobalInputSettings(inputManagerGenerator);
-        Debug.Log("インプットマネージャーの設定が完了しました。");
     }
 
 
@@ -270,30 +264,41 @@ public class InputManagerSetter
 		int joystickNum = _player + 1;
 
 		#region コントローラーのボタンを設定
-		//スティック
-		//横方向
+		//スティックの設定
+		if (_controller.IsSetStick == true)
 		{
-			var name = string.Format("{0}_Player{1}_Horizontal", _controller.ControllerName, _player);
-			_inputManagerGenerator.AddAxis(InputAxis.CreatePadAxis(name, joystickNum, 1));
-			_inputManagerGenerator.AddAxis(InputAxis.CreateKeyAxis(name, leftKey, rightKey, "", ""));
-		}
+			//横方向
+			{
+				var name = string.Format("{0}_Player{1}_Horizontal", _controller.ControllerName, _player);
+				_inputManagerGenerator.AddAxis(InputAxis.CreatePadAxis(name, joystickNum, 1));
+				_inputManagerGenerator.AddAxis(InputAxis.CreateKeyAxis(name, leftKey, rightKey, "", ""));
+			}
 
-		//縦方向
-		{
-			var name = string.Format("{0}_Player{1}_Vertical", _controller.ControllerName, _player);
-			_inputManagerGenerator.AddAxis(InputAxis.CreatePadAxis(name, joystickNum, 2));
-			_inputManagerGenerator.AddAxis(InputAxis.CreateKeyAxis(name, upKey, downKey, "", ""));
+			//縦方向
+			{
+				var name = string.Format("{0}_Player{1}_Vertical", _controller.ControllerName, _player);
+				_inputManagerGenerator.AddAxis(InputAxis.CreatePadAxis(name, joystickNum, 2));
+				_inputManagerGenerator.AddAxis(InputAxis.CreateKeyAxis(name, upKey, downKey, "", ""));
+			}
 		}
-
 
         //ボタン
         //設定したボタン数作成する
         for (int i = 0; i < _controller.ButtonNum; i++)
         {
-            //ボタン名
-            var name = string.Format("{0}_Player{1}_{2}", _controller.ControllerName, _player, _controller.InputControllerButtons[_player][i].Name);
-            //コントローラーで入力する為のボタン
-            var button = string.Format("joystick {0} button {1}", joystickNum, _controller.InputControllerButtons[_player][i].InputButtonNum);
+			//ボタン名
+			var name = "";
+			//コントローラーで入力する為のボタン
+            var button = "";
+			if (_controller.ControllerName == "")
+			{
+				name = string.Format("Player{0}_{1}", _player, _controller.InputControllerButtons[_player][i].Name);
+			}
+			else
+			{
+				name = string.Format("{0}_Player{1}_{2}", _controller.ControllerName, _player, _controller.InputControllerButtons[_player][i].Name);
+				button = string.Format("joystick {0} button {1}", joystickNum, _controller.InputControllerButtons[_player][i].InputButtonNum);
+			}
             //デバッグ用のキー
             var key = _controller.InputControllerButtons[_player][i].AltButton;
             //キーを設定
@@ -306,22 +311,23 @@ public class InputManagerSetter
 	/// デフォルト設定を追加する（OK、キャンセルなど）
 	/// </summary>
 	/// <param name="inputManagerGenerator">Input manager generator.</param>
-	private static void AddGlobalInputSettings(InputManagerGenerator _inputManagerGenerator)
+	public void AddGlobalInputSettings()
 	{
+		InputManagerGenerator inputManagerGenerator = new InputManagerGenerator();
 		// 決定
 		{
 			var name = "OK";
-			_inputManagerGenerator.AddAxis(InputAxis.CreateButton(name, "z", "joystick button 0"));
+			inputManagerGenerator.AddAxis(InputAxis.CreateButton(name, "z", "joystick button 0"));
 		}
 		// キャンセル
 		{
 			var name = "Cancel";
-			_inputManagerGenerator.AddAxis(InputAxis.CreateButton(name, "x", "joystick button 1"));
+			inputManagerGenerator.AddAxis(InputAxis.CreateButton(name, "x", "joystick button 1"));
 		}
 		// サブ
 		{
 			var name = "Submit";
-			_inputManagerGenerator.AddAxis(InputAxis.CreateButton(name, "y", "joystick button 2"));
+			inputManagerGenerator.AddAxis(InputAxis.CreateButton(name, "y", "joystick button 2"));
 		}
 	}
 

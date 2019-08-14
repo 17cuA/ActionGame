@@ -77,6 +77,10 @@ public class CreateInputManagerWindow : EditorWindow
             {
                 inputManagerSetter.AutoSetInputManager();
             }
+			if (GUILayout.Button("デフォルトの設定をセット"))
+            {
+                inputManagerSetter.AddGlobalInputSettings();
+            }
             #endregion
             #region ロード&セーブ設定
             //ロード&セーブ
@@ -115,6 +119,7 @@ public class CreateInputManagerWindow : EditorWindow
             _obj.ControllerName = EditorGUILayout.TextField("コントローラー名", _obj.ControllerName);
             _obj.ButtonNum = EditorGUILayout.IntField("ボタン設定数", _obj.ButtonNum);
             _obj.PlayerNum = EditorGUILayout.IntField("プレイヤー数", _obj.PlayerNum);
+			_obj.IsSetStick = EditorGUILayout.ToggleLeft("設定時に入力軸の設定を自動追加", _obj.IsSetStick);
 
             //コントローラー名表示ボタン
             if (GUILayout.Button("デバッグログに接続されているコントローラーを表示"))
@@ -284,7 +289,7 @@ public class CreateInputManagerWindow : EditorWindow
         sample.Copy(_saveObj);
 
 		////インスペクターから設定できないようにする
-		//_obj.hideFlags = HideFlags.NotEditable;
+		_obj.hideFlags = HideFlags.NotEditable;
 		//更新通知
 		EditorUtility.SetDirty(_saveObj);
 		//保存
