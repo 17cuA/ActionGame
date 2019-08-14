@@ -31,6 +31,8 @@ public class UI_HP : MonoBehaviour
     public PlayerType playerType;
 
     public GameObject[] hpObjects = new GameObject[5];
+	public GameObject effectsObject;
+	public Vector3 pos;
 
     public Image redImage;
     public RectTransform hpGuagePosition;
@@ -63,7 +65,7 @@ public class UI_HP : MonoBehaviour
     /// <param name="damage">現在のHp</param>
     public void Call_UpdateHpGuage(int currentHp)
     {
-        if (beforeHp != currentHp)
+		if (beforeHp != currentHp)
         {
             float dmg = beforeHp - currentHp;
             UpdateHpGuage(dmg);
@@ -104,12 +106,12 @@ public class UI_HP : MonoBehaviour
     /// <returns></returns>
     private IEnumerator ReceiveDamageAction()
     {
-        //ダメージを受けたときにHpバーの色が変わるやつ
-        hpObjects[4].SetActive(true);
+		Instantiate(effectsObject, initHpGuagePositon, Quaternion.identity);
+		//ダメージを受けたときにHpバーの色が変わるやつ
+		hpObjects[4].SetActive(true);
         //HPゲージを震わす
         StartCoroutine(VibrationHPGuage());
-
-        yield return new WaitForSeconds(0.1f);
+		yield return new WaitForSeconds(0.1f);
         //HPゲージを元の位置に
         hpGuagePosition.position = initHpGuagePositon;
         //非表示にする
