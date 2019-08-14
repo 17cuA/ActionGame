@@ -45,7 +45,7 @@ public class UI_HP : MonoBehaviour
 
     private float hpBarWidth;                                         //hpバーの画像の長さ
     private float redAlphaValue;                                   //赤いところのアルファ値
-    private float transparentSpeed = 0.01f;               //赤いところを透明にする速度
+    private float transparentSpeed = 0.015f;               //赤いところを透明にする速度
 
     private int beforeHp = 100;
     private const int hp = 100;
@@ -53,7 +53,7 @@ public class UI_HP : MonoBehaviour
     private float beforeDamage = 0;
 
     private int cnt = 0;
-    private int cntMax = 200;
+    private int cntMax = 15;
 
     private float vibrationValue = 5;
 
