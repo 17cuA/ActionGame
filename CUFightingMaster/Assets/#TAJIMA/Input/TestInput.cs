@@ -15,7 +15,7 @@ public class TestInput : MonoBehaviour {
 	public string direction; //現在のジョイスティックの方向
 	public int lastDir = 5; //前回のジョイスティックの方向
 	public string playerDirection; //プレイヤーの入力方向
-	public string atkBotton; //攻撃ボタンの名前を格納
+	public string atkButton; //攻撃ボタンの名前を格納
 
 	public string debugCommandStr;      //コマンドの文字列をインスペクター上で確認するための変数
 
@@ -123,19 +123,21 @@ public class TestInput : MonoBehaviour {
 	//攻撃ボタンの入力を管理
 	public void SetAtkBotton () 
 	{
-		atkBotton = "";
+		atkButton = "";
 
-		if (Input.GetButtonDown(controllerName + player + "Attack1")) atkBotton += "_Atk1";
-		if (Input.GetButtonDown (controllerName + player + "Attack2")) atkBotton += "_Atk2";
-		if (Input.GetButtonDown (controllerName + player + "Attack3")) atkBotton += "_Atk3";
+		if (Input.GetButtonDown(controllerName + player + "Attack1")) atkButton += "_Atk1";
+		if (Input.GetButtonDown (controllerName + player + "Attack2")) atkButton += "_Atk2";
+		if (Input.GetButtonDown (controllerName + player + "Attack3")) atkButton += "_Atk3";
+		if (Input.GetButtonDown (controllerName + player + "Attack4")) atkButton += "_Atk4";
+		if( atkButton != "")	Debug.Log(atkButton);
 	}
 
 	public string GetPlayerAtk()
     {
         string s = null;
-        if (atkBotton != "")
+        if (atkButton != "")
         {
-            s = atkBotton;
+            s = atkButton;
         }
         return s;
     }

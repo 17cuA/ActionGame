@@ -341,9 +341,9 @@ public class FighterStateDamage : StateBaseScriptMonoBehaviour
 	}
 	public bool IsPassiveInput()
 	{
-		if(stateBase.input.atkBotton != "")
+		if(stateBase.input.atkButton != "")
 		{
-			stateBase.input.atkBotton = "";
+			stateBase.input.atkButton = "";
 			return true;
 		}
 		return false;
