@@ -7299,6 +7299,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1085984944}
   - component: {fileID: 1085984945}
+  - component: {fileID: 1085984946}
   m_Layer: 0
   m_Name: InputManager1
   m_TagString: Untagged
@@ -7340,6 +7341,35 @@ MonoBehaviour:
   lastDir: 5
   playerDirection: 
   atkBotton: 
+  debugCommandStr: 
+--- !u!114 &1085984946
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1085984943}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 584e7ea41413cd34f923e2573e4e1fec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inputCommandData: 
+  MaxCommandDataLength: 60
+  inputData: 0
+  commandName: 
+  chechInvCommand: 0
+  attackParameters:
+  - attackName: Command01
+    command: 236
+    validInputFrame: 60
+    validInvFrame: 30
+    interval: 15
+  - attackName: Command02
+    command: 214
+    validInputFrame: 60
+    validInvFrame: 30
+    interval: 15
 --- !u!1 &1127803688
 GameObject:
   m_ObjectHideFlags: 0
@@ -7794,6 +7824,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1326219562}
   - component: {fileID: 1326219563}
+  - component: {fileID: 1326219564}
   m_Layer: 0
   m_Name: InputManager2
   m_TagString: Untagged
@@ -7835,6 +7866,35 @@ MonoBehaviour:
   lastDir: 5
   playerDirection: 
   atkBotton: 
+  debugCommandStr: 
+--- !u!114 &1326219564
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1326219561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 584e7ea41413cd34f923e2573e4e1fec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inputCommandData: 
+  MaxCommandDataLength: 60
+  inputData: 0
+  commandName: 
+  chechInvCommand: 0
+  attackParameters:
+  - attackName: Command01
+    command: 123
+    validInputFrame: 60
+    validInvFrame: 30
+    interval: 15
+  - attackName: Command02
+    command: 321
+    validInputFrame: 60
+    validInvFrame: 30
+    interval: 15
 --- !u!1001 &1329672663
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13984,26 +14044,6 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 9
       objectReference: {fileID: 0}
-    - target: {fileID: 1928270668685187502, guid: a458a5e4093c7514c946c20c5aec4d07,
-        type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 697
-      objectReference: {fileID: 0}
-    - target: {fileID: 1928270668685187502, guid: a458a5e4093c7514c946c20c5aec4d07,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7638857005343791021, guid: a458a5e4093c7514c946c20c5aec4d07,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7638857005343791021, guid: a458a5e4093c7514c946c20c5aec4d07,
-        type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 697
-      objectReference: {fileID: 0}
     - target: {fileID: 3699154116109909261, guid: a458a5e4093c7514c946c20c5aec4d07,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -14085,6 +14125,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Color.b
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1928270668685187502, guid: a458a5e4093c7514c946c20c5aec4d07,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 697
+      objectReference: {fileID: 0}
+    - target: {fileID: 1928270668685187502, guid: a458a5e4093c7514c946c20c5aec4d07,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7638857005343791021, guid: a458a5e4093c7514c946c20c5aec4d07,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7638857005343791021, guid: a458a5e4093c7514c946c20c5aec4d07,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 697
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a458a5e4093c7514c946c20c5aec4d07, type: 3}

@@ -6,6 +6,8 @@ using UnityEngine;
 using System;
 
 public class TestInput : MonoBehaviour {
+	CommandManager commandManager;	//正規表現でコマンドを判別するスクリプト
+
 	public int playerIndex; //プレイヤー番号
 	public string player;   //Inputでプレイヤー毎の入力を識別するための文字列
     public string controllerName = ""; //使用するコントローラーの名前
@@ -14,6 +16,8 @@ public class TestInput : MonoBehaviour {
 	public int lastDir = 5; //前回のジョイスティックの方向
 	public string playerDirection; //プレイヤーの入力方向
 	public string atkBotton; //攻撃ボタンの名前を格納
+
+	public string debugCommandStr;      //コマンドの文字列をインスペクター上で確認するための変数
 
 	//ジョイスティックの入力方向（方向はNumパッドに依存）
 	enum DirJS {
@@ -42,6 +46,10 @@ public class TestInput : MonoBehaviour {
                 controllerName = string.Format("{0}_", controllerNames[playerIndex]);
             }
         }
+
+		//正規表現でコマンドを判別するスクリプトの変数初期化
+        commandManager = gameObject.GetComponent<CommandManager>();
+		commandManager.Init();
     }
 
 	public void UpdateGame () {
@@ -102,17 +110,17 @@ public class TestInput : MonoBehaviour {
 	}
 
 	public void DownKeyCheck () {
+		//ジョイスティックまたはキーボードでの方向入力
 		SetDirection ();
+		//攻撃ボタン入力
 		SetAtkBotton ();
-		if (Input.anyKey) {
-			//ジョイスティックまたはキーボードでの方向
-
-			//攻撃ボタン
-			//if (atkBotton != "") Debug.Log (atkBotton);
-		}
+		//コマンドの判別
+		commandManager.GetCommandData(playerDirection.ToString());
+        debugCommandStr = commandManager.inputCommandData;
 
 	}
 
+	//攻撃ボタンの入力を管理
 	public void SetAtkBotton () 
 	{
 		atkBotton = "";
