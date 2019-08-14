@@ -95,7 +95,7 @@ public class FighterInputState : StateBaseScriptMonoBehaviour
 	private string GetPlayerAtk()
 	{
 		string s = null;
-		if(input.atkBotton == "_Atk1")
+		if(input.atkButton == "_Atk1")
 		{
 			s = "_Atk1";
 		}
