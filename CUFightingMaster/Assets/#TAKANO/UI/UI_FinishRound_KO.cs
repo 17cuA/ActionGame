@@ -42,6 +42,10 @@ public class UI_FinishRound_KO: MonoBehaviour
     }
     IEnumerator RoundFinish_KOCoroutine()
     {
+		// 飯塚追加-------------------------------------------
+        Sound.LoadSe("Ko", "Voice_ko");
+        Sound.PlaySe("Ko", 3, 0.8f);
+        // ---------------------------------------------------
         isPlay = true;
 		image.enabled = true;
         yield return new WaitForSeconds(interval01);

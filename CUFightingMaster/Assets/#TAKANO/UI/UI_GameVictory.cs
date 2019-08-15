@@ -34,8 +34,21 @@ public class UI_GameVictory : MonoBehaviour
 	public GameObject win_P1;
     public GameObject win_P2;
 	public GameObject Win_sprite;
+
+	    // 飯塚追加-------------------------------------------
+    bool flag = true;
+    // ---------------------------------------------------
+
 	public bool WinP1()
 	{
+		 // 飯塚追加-------------------------------------------
+        if (flag)
+        {
+            Sound.LoadSe("PlayerOneWin", "voice_playerOneWin");
+            Sound.PlaySe("PlayerOneWin", 3, 1);
+            flag = false;
+        }
+        // ---------------------------------------------------
         displayImage = win_P1_image;
 		displayWin = win_image;
         GameVictoryStartCoroutine();
@@ -44,6 +57,14 @@ public class UI_GameVictory : MonoBehaviour
 
     public bool WinP2()
     {
+		 // 飯塚追加-------------------------------------------
+        if (flag)
+        {
+            Sound.LoadSe("Voice_PlayerTwoWin", "Voice_PlayerTwoWin");
+            Sound.PlaySe("Voice_PlayerTwoWin", 3, 1);
+            flag = false;
+        }
+        // ---------------------------------------------------
         displayImage = win_P2_image;
 		displayWin = win_image;
 		GameVictoryStartCoroutine();

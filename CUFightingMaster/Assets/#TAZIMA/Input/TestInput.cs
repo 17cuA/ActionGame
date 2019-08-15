@@ -188,6 +188,10 @@ public class TestInput : MonoBehaviour {
 			case "7":
 				if (_stateBase.core.Direction == PlayerDirection.Right)
 				{
+					 // 飯塚追加-------------------------------------------
+						Sound.LoadSe("Jump", "Se_jump");
+						Sound.PlaySe("Jump", 2, 0.6f);
+					// ---------------------------------------------------
 					return Direction.UpBack;
 				}
 				else
@@ -195,8 +199,16 @@ public class TestInput : MonoBehaviour {
 					return Direction.UpFront;
 				}
 			case "8":
+				   // 飯塚追加-------------------------------------------
+                Sound.LoadSe("Jump", "Se_jump");
+                Sound.PlaySe("Jump", 2, 0.6f);
+                // ---------------------------------------------------
 				return Direction.Up;
 			case "9":
+				 // 飯塚追加-------------------------------------------
+                Sound.LoadSe("Jump", "Se_jump");
+                Sound.PlaySe("Jump", 2, 0.6f);
+                // ---------------------------------------------------
 				if (_stateBase.core.Direction == PlayerDirection.Right)
 				{
 					return Direction.UpFront;

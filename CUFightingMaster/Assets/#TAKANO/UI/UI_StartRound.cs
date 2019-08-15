@@ -69,12 +69,34 @@ public class UI_StartRound : MonoBehaviour
 	IEnumerator StartRoundCoroutine(int roundCount)
 	{
         isPlay = true;
+		// 飯塚追加-------------------------------------------
+        Sound.LoadBgm("BGM02", "BGM02");
+        Sound.PlayBgm("BGM02", 0.4f, 1, true);
+		switch (roundCount)
+        {
+            case 0:
+                Sound.LoadSe("RoundOne", "Voice_roundOne");
+                Sound.PlaySe("RoundOne", 3, 0.8f);
+                break;
+            case 1:
+                Sound.LoadSe("RoundTwo", "Voice_roundTwo");
+                Sound.PlaySe("RoundTwo", 3, 0.8f);
+                break;
+            case 2:
+                Sound.LoadSe("RoundThree", "Voice_roundThree");
+                Sound.PlaySe("RoundThree", 3, 0.8f);
+                break;
+        }
+        // ---------------------------------------------------
 		DisplayRoundImage();
 		yield return new WaitForSeconds(interval01);
 
 		DisplayRoundNumberImage( roundCount );
 		yield return new WaitForSeconds(interval02);
-
+		  // 飯塚追加-------------------------------------------
+        Sound.LoadSe("Fight", "Voice_fight");
+        Sound.PlaySe("Fight", 3, 0.8f);
+        // ---------------------------------------------------
 		DisplayFightImage (roundCount );
 		yield return new WaitForSeconds(interval03);
         fight.GetComponent<Image>().enabled = false;

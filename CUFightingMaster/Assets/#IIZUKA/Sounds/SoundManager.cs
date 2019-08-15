@@ -36,7 +36,7 @@ public class Sound
 	AudioSource _sourceBgm = null; // BGM
 	AudioSource _sourceSeDefault = null; // SE (デフォルト)
 	AudioSource[] _sourceSeArray; // SE (チャンネル)
-	// BGMにアクセスするためのテーブル
+								  // BGMにアクセスするためのテーブル
 	Dictionary<string, _Data> _poolBgm = new Dictionary<string, _Data>();
 	// SEにアクセスするためのテーブル 
 	Dictionary<string, _Data> _poolSe = new Dictionary<string, _Data>();
@@ -113,33 +113,56 @@ public class Sound
 	/// </summary>
 	public static void AllSoundLod()
 	{
-		// サウンドをロード
-		// ゲームで使うサウンドを前もって全て記載しておく
-		Sound.LoadBgm("Bgm01", "Bgm01");
-        Sound.LoadSe("HitW", "Se_hit_weak");
-        Sound.LoadSe("HitM", "Se_hit_medium");
-        Sound.LoadSe("HitS", "Se_hit_strong");
-        Sound.LoadSe("GuardWM", "Se_guard_weak_medium");
-        Sound.LoadSe("GuardS", "Se_guard_strong");
-        Sound.LoadSe("PunchWM", "Se_punch_weak_medium");
-        Sound.LoadSe("PunchS", "Se_punch_strong");
-        Sound.LoadSe("Jump", "Se_jump");
-        Sound.LoadSe("down", "Se_down");
-        Sound.LoadSe("Step", "Se_step");
-        Sound.LoadSe("GetUp", "Se_GetUp");
-        Sound.LoadSe("Menu_MoveCursor", "Se_Menu_MoveCursor");
-        Sound.LoadSe("Menu_Cancel", "Se_Menu_Cancel");
-        Sound.LoadSe("Menu_Decision", "Se_Menu_Decision");
-    }
+		// サウンドのロード
+		// BGMロード
+		Sound.LoadBgm("BGM01", "BGM01");
+		Sound.LoadBgm("BGM02", "BGM02");
+		Sound.LoadBgm("BGM03", "BGM03");
+        Sound.LoadBgm("BGM04", "BGM04");
+		Sound.LoadBgm("BGM05", "BGM05");
+		Sound.LoadBgm("BGM06", "BGM06");
+		Sound.LoadBgm("BGM07", "BGM07");
+		Sound.LoadBgm("BGM08", "BGM08");
 
-    /// <summary>
-    /// ※サウンドデータはResources/Soundsフォルダに配置すること
-    /// 引数 : 第一引数アクセスキー(好きに命名可能), 第二引数リソース名(サウンドデータに名前を合わせる)
-    /// BGMサウンド個別ロード（1度だけ呼び出す）
-    /// </summary>
-    /// <param name="key"></param>
-    /// <param name="resName"></param>
-    public static void LoadBgm(string key, string resName)
+		// SEロード
+		Sound.LoadSe("HitW", "Se_hit_weak");
+		Sound.LoadSe("HitM", "Se_hit_medium");
+		Sound.LoadSe("HitS", "Se_hit_Strong");
+		Sound.LoadSe("GuardW", "Se_guard_weak");
+		Sound.LoadSe("GuardM", "Se_guard_medium");
+		Sound.LoadSe("GuardS", "Se_guard_strong");
+		Sound.LoadSe("PunchW", "Se_punch_weak");
+		Sound.LoadSe("PunchM", "Se_punch_medium");
+		Sound.LoadSe("PunchS", "Se_punch_strong");
+		Sound.LoadSe("Jump", "Se_jump");
+		Sound.LoadSe("Step", "Se_step");
+		Sound.LoadSe("Down", "Se_down");
+		Sound.LoadSe("GetUp", "Se_getUp");
+		Sound.LoadSe("Sutan", "Se_sutan");
+		Sound.LoadSe("Special1", "Se_special1_hadouken");
+		Sound.LoadSe("Special1_Hit", "Se_special1_hadouken_Hit");
+		Sound.LoadSe("Ca_Hit", "Se_ca_Hit");
+		Sound.LoadSe("Menu_MoveCursor", "Se_menu_moveCursor");
+		Sound.LoadSe("Menu_Cancel", "Se_menu_cancel");
+		Sound.LoadSe("Menu_Decision", "Se_menu_decision");
+		Sound.LoadSe("RoundOne", "Voice_roundOne");
+		Sound.LoadSe("RoundTwo", "Voice_roundTwo");
+		Sound.LoadSe("RoundThree", "Voice_roundThree");
+        Sound.LoadSe("Fight", "Voice_fight");
+        Sound.LoadSe("Ko", "Voice_ko");
+		Sound.LoadSe("Draw", "Voice_draw");
+		Sound.LoadSe("PlayerOneWin", "Voice_playerOneWin");
+		Sound.LoadSe("PlayerTwoWin", "Voice_PlayerTwoWin");
+	}
+
+	/// <summary>
+	/// ※サウンドデータはResources/Soundsフォルダに配置すること
+	/// 引数 : 第一引数アクセスキー(好きに命名可能), 第二引数リソース名(サウンドデータに名前を合わせる)
+	/// BGMサウンド個別ロード（1度だけ呼び出す）
+	/// </summary>
+	/// <param name="key"></param>
+	/// <param name="resName"></param>
+	public static void LoadBgm(string key, string resName)
 	{
 		GetInstance()._LoadBgm(key, resName);
 	}
@@ -175,19 +198,21 @@ public class Sound
 		_poolSe.Add(key, new _Data(key, resName));
 	}
 
-    /// <summary>
-    /// ※事前に音源をLoadBgmでロードしておくこと
-    /// 引数 : 第一引数アクセスキー, 第二引数音量(0~1), 第四引数ピッチ(-で逆再生)
-    /// BGMの再生
-    /// </summary>
-    /// <param name="key"></param>
-    /// <param name="volume"></param>
-    /// <returns></returns>
-    public static bool PlayBgm(string key, float volume = 1, float pitch = 1)
+	/// <summary>
+	/// ※事前に音源をLoadBgmでロードしておくこと
+	/// 引数 : 第一引数アクセスキー, 第二引数音量(0~1), 第三引数ピッチ(-で逆再生), 第四引数ループの有無
+	/// BGMの再生
+	/// </summary>
+	/// <param name="key"></param>
+	/// <param name="volume"></param>
+	/// <param name="pitch"></param>
+	/// <param name="loop"></param>
+	/// <returns></returns>
+	public static bool PlayBgm(string key, float volume = 1, float pitch = 1, bool loop = false)
 	{
-		return GetInstance()._PlayBgm(key, volume, pitch);
+		return GetInstance()._PlayBgm(key, volume, pitch, loop);
 	}
-	bool _PlayBgm(string key, float volume = 1, float pitch = 1)
+	bool _PlayBgm(string key, float volume = 1, float pitch = 1, bool loop = false)
 	{
 		if (_poolBgm.ContainsKey(key) == false)
 		{
@@ -203,7 +228,7 @@ public class Sound
 
 		// 再生
 		var source = _GetAudioSource(eType.Bgm);
-		source.loop = true;
+		source.loop = loop;
 		source.clip = _data.Clip;
 		source.volume = volume;
 		source.pitch = pitch;
@@ -219,7 +244,7 @@ public class Sound
 	{
 		return GetInstance()._StopBgm();
 	}
-	bool _StopBgm()
+	bool _StopBgm(bool fadeOutFlag = false)
 	{
 		_GetAudioSource(eType.Bgm).Stop();
 		return true;
@@ -234,11 +259,11 @@ public class Sound
 	/// <param name="channel"></param>
 	/// <param name="volume"></param>
 	/// <returns></returns>
-	public static bool PlaySe(string key, int channel = -1, float volume = 1, float pitch = 1)
+	public static bool PlaySe(string key, int channel = 1, float volume = 1, float pitch = 1)
 	{
 		return GetInstance()._PlaySe(key, channel, volume, pitch);
 	}
-	bool _PlaySe(string key, int channel = -1, float volume = 1, float pitch = 1)
+	bool _PlaySe(string key, int channel = 1, float volume = 1, float pitch = 1)
 	{
 		if (_poolSe.ContainsKey(key) == false)
 		{

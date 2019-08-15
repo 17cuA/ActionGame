@@ -34,6 +34,10 @@ public class FighterStateDown : StateBaseScriptMonoBehaviour
     //起き上がり
     public void WakeUpStart()
     {
+		 // 飯塚追加-------------------------------------------
+         Sound.LoadSe("GetUp", "Se_getUp");
+         Sound.PlaySe("GetUp", 1, 0.8f);
+         // ---------------------------------------------------
         downCount = 0;
         isWakeUp = false;
         stateBase.ChangeSkillConstant(SkillConstants.Wake_Up, 0);
@@ -45,6 +49,11 @@ public class FighterStateDown : StateBaseScriptMonoBehaviour
     //打ち付け
     public void GroundKnockStart()
     {
+		// 飯塚追加-------------------------------------------
+         //Sound.LoadSe("Down", "Se_down");
+         Sound.LoadSe("Down", "Se_guard_strong");
+         Sound.PlaySe("Down", 1, 1);
+         // ---------------------------------------------------
         stateBase.ChangeSkillConstant(SkillConstants.Ground_Knock, 0);
     }
     public bool IsEndGroundKnock()

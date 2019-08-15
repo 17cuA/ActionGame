@@ -31,6 +31,10 @@ public class CharacterSelectManager : MonoBehaviour
 
     void Start()
     {
+		 // 飯塚追加-------------------------------------------
+        Sound.LoadBgm("BGM01", "BGM01");
+        Sound.PlayBgm("BGM01", 0.4f, 1, true);
+        // ---------------------------------------------------
         currentSellectCharacter = Instantiate(character[selectDir], charaCreatePos.transform);
         //プレイヤー番号に対応した現在接続されているコントローラーを設定
         var controllerNames = Input.GetJoystickNames();
@@ -60,6 +64,11 @@ public class CharacterSelectManager : MonoBehaviour
 		//決定(シーン移動)
 		if (Input.GetButtonDown(string.Format("{0}Player{1}_Attack1", controllerName, playerNum)))
 		{
+			   // 飯塚追加-------------------------------------------
+            Sound.LoadSe("Menu_Decision", "Se_menu_decision");
+            Sound.PlaySe("Menu_Decision", 1, 0.8f);
+            // ---------------------------------------------------
+
 			SceneManager.LoadScene("Battle");
 		}
 	}
@@ -70,6 +79,10 @@ public class CharacterSelectManager : MonoBehaviour
 		//x軸
 		if (_dir.x == -1)
 		{
+			 // 飯塚追加-------------------------------------------
+                Sound.LoadSe("Menu_MoveCursor", "Se_menu_moveCursor");
+                Sound.PlaySe("Menu_MoveCursor", 1, 0.8f);
+             // ---------------------------------------------------
 			if (x > 0)
                 x--;
 			else
@@ -77,6 +90,10 @@ public class CharacterSelectManager : MonoBehaviour
 		}
 		else if(_dir.x == 1)
 		{
+			   // 飯塚追加-------------------------------------------
+                Sound.LoadSe("Menu_MoveCursor", "Se_menu_moveCursor");
+                Sound.PlaySe("Menu_MoveCursor", 1, 0.8f);
+             // ---------------------------------------------------
 			if (x < 3)
                 x++;
 			else

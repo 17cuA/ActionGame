@@ -42,6 +42,10 @@ public class UI_FinishRound_TimeOver : MonoBehaviour
 	}
 	IEnumerator RoundFinish_KOCoroutine()
 	{
+		 // 飯塚追加-------------------------------------------
+        Sound.LoadSe("Draw", "Voice_draw");
+        Sound.PlaySe("Draw", 3, 0.8f);
+        // ---------------------------------------------------
 		isPlay = true;
 
 		image.enabled = true;

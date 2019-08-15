@@ -26,6 +26,10 @@ public class Manager_Title : MonoBehaviour
 	//	--------------------
 	void Start()
 	{
+		 // 飯塚追加-------------------------------------------
+        Sound.LoadBgm("BGM03", "BGM03");
+        Sound.PlayBgm("BGM03", 0.4f, 1, true);
+        // ---------------------------------------------------
 		activeTitle = false;
 		demoMovie = false;
 		movieMax = 10;
@@ -39,6 +43,10 @@ public class Manager_Title : MonoBehaviour
 	{
         if (Input.anyKeyDown)
          {
+			  // 飯塚追加-------------------------------------------
+            Sound.LoadSe("Menu_Decision", "Se_menu_decision");
+            Sound.PlaySe("Menu_Decision", 1, 0.8f);
+            // ---------------------------------------------------
             SceneManager.LoadScene("CharacterSelect");
         }
 		//// TitleシーンがActiveなら
