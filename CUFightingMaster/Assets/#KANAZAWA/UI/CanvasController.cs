@@ -14,7 +14,6 @@
 //----------------------------------------
 // MEMO 
 // ごり押し。各CanvasはInspecterから直接アタッチする必要あり。
-// 現状の問題点としてFadeIn、FadeOutで遅れが発生する。他の関数も合っているか分からない。
 //----------------------------------------
 using System.Collections;
 using System.Collections.Generic;

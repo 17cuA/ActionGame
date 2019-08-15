@@ -34,21 +34,17 @@ public class JECLogo : MonoBehaviour
 			fade_1 = screenFade1.StartFadeIn();
 			fade_2 = screenFade2.StartFadeIn();
 		}
-
-		if (fade_1 && fade_2)
-		{
-			timeCurrent += Time.deltaTime;
-		}
-
-		if(timeCurrent >= timeMax)
+		else if (timeCurrent >= timeMax)
 		{
 			fade_1 = screenFade1.StartFadeOut();
 			fade_2 = screenFade2.StartFadeOut();
 		}
 
-		if ((fade_1 && fade_2) && timeCurrent >= timeMax)
+		if (fade_1 && fade_2)
 		{
-			SceneManager.LoadScene("Title");
+			if (timeCurrent >= timeMax) SceneManager.LoadScene("Title");
+			timeCurrent += Time.deltaTime;
 		}
+
 	}
 }
