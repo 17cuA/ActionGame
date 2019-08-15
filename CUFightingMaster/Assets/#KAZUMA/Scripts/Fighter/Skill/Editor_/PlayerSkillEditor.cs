@@ -247,6 +247,7 @@ public class PlayerSkillEditor : EditorWindow
                         EditorGUILayout.EndHorizontal();
                         EditorGUILayout.BeginHorizontal();
                         box.isDown = EditorGUILayout.Toggle("飛ばし（ダウン）技", box.isDown);
+                        box.isThrow = EditorGUILayout.Toggle("投げ技", box.isThrow);
                         box.hitStop = EditorGUILayout.IntField("ヒットストップ値", box.hitStop);
                         EditorGUILayout.EndHorizontal();
                         if (box.isDown)
@@ -260,6 +261,13 @@ public class PlayerSkillEditor : EditorWindow
 							{
                                 MovesSetting(ref box.isContinue, ref box.movements, ref box.gravityMoves);
                             }
+                            EditorGUILayout.EndVertical();
+                        }
+                        if (box.isThrow)
+                        {
+                            EditorGUILayout.BeginHorizontal();
+                            box.throwSkill = EditorGUILayout.ObjectField("投げモーション", box.throwSkill, typeof(FighterSkill), false) as FighterSkill;
+                            box.enemyThrowSkill = EditorGUILayout.ObjectField("投げられモーション", box.enemyThrowSkill, typeof(FighterSkill), false) as FighterSkill;
                             EditorGUILayout.EndVertical();
                         }
                         EditorGUILayout.BeginHorizontal();

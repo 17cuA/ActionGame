@@ -7,7 +7,7 @@ public class FighterStateDown : StateBaseScriptMonoBehaviour
 {
     private FighterStateBase stateBase;
     private float downCount = 0;
-    private float downTime = 1.0f;
+    private float downTime = 0.6f;
     private bool isWakeUp = false;
     private void Start()
     {

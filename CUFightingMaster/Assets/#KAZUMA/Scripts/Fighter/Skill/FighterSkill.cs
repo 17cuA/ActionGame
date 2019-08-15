@@ -47,6 +47,11 @@ public class FighterSkill : ScriptableObject
         public float guardKnockBack;
         public List<HitEffects> hitEffects = new List<HitEffects>();//TODO::ヒットエフェクト
         public bool isDown = false;     //ダウンするかどうか
+
+        public bool isThrow = false;    //投げかどうか
+        public FighterSkill throwSkill;//投げ技
+        public FighterSkill enemyThrowSkill;
+
         //ダウン時の移動
         public bool isContinue = false;
         public List<Move> movements = new List<Move>();

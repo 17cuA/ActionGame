@@ -290,10 +290,21 @@ public class FighterStateDamage : StateBaseScriptMonoBehaviour
 		stateBase.core.SetKnockBack(box.airKnockBack, stateBase.core.EnemyNumber,tmpDir, 6);
         stateBase.core.SetDamage(new FighterSkill.CustomHitBox(),null);
 	}
-	#endregion
+    #endregion
 
-	//ヒット硬直時間をプラス
-	public void HitStunUpdate()
+    #region 投げ技
+    public void Throw_Damage_Start()
+    {
+        isEndStun = false;
+        stateBase.core.SetSkill(stateBase.core.GetDamage.enemyThrowSkill, 0);
+        //ダメージを受けたのでリセット
+        GameManager.Instance.GetPlayFighterCore(stateBase.core.GetDamageCollider.gameObject.layer).SetSkill(stateBase.core.GetDamage.throwSkill, 0);
+        stateBase.core.SetDamage(new FighterSkill.CustomHitBox(), null);
+    }
+    #endregion
+
+    //ヒット硬直時間をプラス
+    public void HitStunUpdate()
 	{
 		if (GameManager.Instance.GetHitStop(stateBase.core.PlayerNumber) <= 0)
 		{
@@ -329,6 +340,30 @@ public class FighterStateDamage : StateBaseScriptMonoBehaviour
     public bool isDownHit()
     {
         return stateBase.core.GetDamage.isDown;
+    }
+    public bool isThrowHit()
+    {
+        if (GameManager.Instance.GetPlayFighterCore(stateBase.core.EnemyNumber).GetDamage.frameHitBoxes.Count <= 0)
+        {
+            return stateBase.core.GetDamage.isThrow;
+        }
+		if(stateBase.core.GetDamage.isThrow)
+		{
+			if(GameManager.Instance.GetPlayFighterCore(stateBase.core.EnemyNumber).GetDamage.isThrow)
+			{
+                GameManager.Instance.GetPlayFighterCore(stateBase.core.EnemyNumber).SetDamage(new FighterSkill.CustomHitBox(), null);
+            }
+            stateBase.core.SetDamage(new FighterSkill.CustomHitBox(), null);
+        }
+        return false;
+    }
+	public bool isNoneDamage()
+	{
+		if(stateBase.core.GetDamage.frameHitBoxes.Count > 0)
+		{
+            return false;
+        }
+        return true;
     }
     //ヒット硬直時間が終わったら
     public bool IsEndHitStunCount()

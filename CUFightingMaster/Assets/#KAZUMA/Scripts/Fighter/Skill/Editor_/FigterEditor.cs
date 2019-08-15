@@ -235,6 +235,7 @@ public class FigterEditor : EditorWindow
             SSet("弱", ref fighterStatus.constantsSkills[CommonConstants.Skills.Stand_Light_Jab]);
             SSet("中", ref fighterStatus.constantsSkills[CommonConstants.Skills.Stand_Middle_Jab]);
             SSet("強", ref fighterStatus.constantsSkills[CommonConstants.Skills.Stand_Strong_Jab]);
+            SSet("掴み", ref fighterStatus.constantsSkills[CommonConstants.Skills.Throw_Atk]);
         }
 		if(crouchingJab = CustomUI.Foldout("しゃがみP",crouchingJab))
 		{

@@ -48,10 +48,17 @@ public class FighterStateAttack : StateBaseScriptMonoBehaviour
                     stateBase.ChangeSkillConstant(SkillConstants.Stand_Strong_Jab, 0);
                 }
                 break;
+            case "_Atk4":
+                if(stateBase.core.PlayerMoveStates != PlayerMoveState.Crouching)
+                {
+                    stateBase.ChangeSkillConstant(SkillConstants.Throw_Atk, 0);
+                }
+                break;
         }
     }
     public void AttackUpdate()
     {
+        
     }
     //条件
     public bool IsEndAttack()

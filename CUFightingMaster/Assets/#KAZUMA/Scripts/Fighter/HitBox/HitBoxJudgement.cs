@@ -396,12 +396,37 @@ public class HitBoxJudgement
         Collider[] col = Physics.OverlapBox(new Vector3(t.position.x + _bCol.center.x, t.position.y + _bCol.center.y, t.position.z + _bCol.center.z), _bCol.size/2, Quaternion.identity, -1 - (1 << LayerMask.NameToLayer(CommonConstants.Layers.GetPlayerNumberLayer(core.PlayerNumber))));
         foreach(Collider c in col)
         {
-            if(c.gameObject.tag == CommonConstants.Tags.GetTags(HitBoxMode.HurtBox))
+            if((c.gameObject.tag == CommonConstants.Tags.GetTags(HitBoxMode.HurtBox))&&(_cHit.isThrow == false))
             {
 				FighterCore cr = GameManager.Instance.GetPlayFighterCore(c.gameObject.layer);
                 //ダメージを与える
 				cr.SetDamage(_cHit,_bCol);
 				cr.SetEnemyNumber(core.PlayerNumber);//現在フォーカス中の敵のセット（未使用）
+                ////エフェクト再生 ※エフェクトは当たった側で管理
+                //for (int i = 0; i < _cHit.hitEffects.Count; i++)
+                //{
+                //    if (_cHit.hitEffects[i].effect != null)
+                //    {
+                //        if (core.Direction == PlayerDirection.Right)
+                //        {
+                //            Object.Instantiate(_cHit.hitEffects[i].effect, new Vector3(t.position.x + _bCol.center.x + _cHit.hitEffects[i].position.x, t.position.y + _bCol.center.y + _cHit.hitEffects[i].position.y, t.position.z + _bCol.center.z + _cHit.hitEffects[i].position.z), Quaternion.identity);
+                //        }
+                //        else if (core.Direction == PlayerDirection.Left)
+                //        {
+                //            Object.Instantiate(_cHit.hitEffects[i].effect, new Vector3(t.position.x + _bCol.center.x + _cHit.hitEffects[i].position.x, t.position.y + _bCol.center.y + _cHit.hitEffects[i].position.y, t.position.z + _bCol.center.z + _cHit.hitEffects[i].position.z), Quaternion.Euler(0,180,0));
+                //        }
+                //    }
+                //}
+
+                attackHit = true;
+                return;
+            }
+            else if ((c.gameObject.tag == CommonConstants.Tags.GetTags(HitBoxMode.GrabAndSqueeze)) && (_cHit.isThrow == true))
+            {
+                FighterCore cr = GameManager.Instance.GetPlayFighterCore(c.gameObject.layer);
+                //ダメージを与える
+                cr.SetDamage(_cHit, _bCol);
+                cr.SetEnemyNumber(core.PlayerNumber);//現在フォーカス中の敵のセット（未使用）
                 ////エフェクト再生 ※エフェクトは当たった側で管理
                 //for (int i = 0; i < _cHit.hitEffects.Count; i++)
                 //{

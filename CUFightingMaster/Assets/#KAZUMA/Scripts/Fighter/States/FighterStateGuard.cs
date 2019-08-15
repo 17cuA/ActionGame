@@ -23,18 +23,17 @@ public class FighterStateGuard : StateBaseScriptMonoBehaviour
 		if (stateBase.core.GetDamage.frameHitBoxes.Count > 0)
 		{
 			Direction inp = stateBase.input.GetPlayerMoveDirection(stateBase);
-			Debug.Log(inp);
 
 			if (stateBase.core.GetDamage.hitPoint == HitPoint.Top || stateBase.core.GetDamage.hitPoint == HitPoint.Middle)
 			{
-				if (inp == Direction.Back)
+				if ((inp == Direction.Back)&&(stateBase.core.GetDamage.isThrow==false))
 				{
 					isGuard = true;
 				}
 			}
 			if(stateBase.core.GetDamage.hitPoint == HitPoint.Bottom|| stateBase.core.GetDamage.hitPoint == HitPoint.Top)
 			{
-				if (inp == Direction.DownBack)
+				if ((inp == Direction.DownBack)&&(stateBase.core.GetDamage.isThrow==false))
 				{
 					isGuard = true;
 				}
@@ -49,7 +48,7 @@ public class FighterStateGuard : StateBaseScriptMonoBehaviour
 		isGuardEnd = false;
 		FighterSkill.CustomHitBox box = stateBase.core.GetDamage;
 		//硬直
-		hitRigor = box.hitRigor;
+		hitRigor = box.guardHitRigor;
 		hitCount = 0;
 		//ヒットストップ
 		GameManager.Instance.SetHitStop(stateBase.core.PlayerNumber, box.hitStop);
@@ -62,6 +61,7 @@ public class FighterStateGuard : StateBaseScriptMonoBehaviour
 		Direction inp = stateBase.input.GetPlayerMoveDirection(stateBase);
 		if (inp == Direction.Back)
 		{
+			Debug.Log("ガード");
 			stateBase.ChangeSkillConstant(SkillConstants.Stand_Guard, 0);
 		}
 		else if (inp == Direction.DownBack)
