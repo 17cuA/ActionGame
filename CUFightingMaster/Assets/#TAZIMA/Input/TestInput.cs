@@ -33,7 +33,7 @@ public class TestInput : MonoBehaviour {
 		d9 = 9  //RIGHT_UP
     }
 
-    void Start()
+    private void Awake()
     {
         Application.targetFrameRate = 60;
         player = string.Format("Player{0}_", playerIndex);
@@ -46,7 +46,10 @@ public class TestInput : MonoBehaviour {
                 controllerName = string.Format("{0}_", controllerNames[playerIndex]);
             }
         }
+    }
 
+    private void Start()
+    {
 		//正規表現でコマンドを判別するスクリプトの変数初期化
         commandManager = gameObject.GetComponent<CommandManager>();
 		commandManager.Init();
