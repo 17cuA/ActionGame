@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fbd35985d310504d81036cc55356454, type: 3}
   m_Name: Throw
   m_EditorClassIdentifier: 
-  animationClip: {fileID: 7400000, guid: e3dde81d3468c8946b6101221683478f, type: 2}
+  animationClip: {fileID: 7400000, guid: e23fa9ef2a1c04042aebb28233393d14, type: 2}
   animationSpeed: 1
   status: 1
   hitMode: 0
@@ -30,8 +30,13 @@ MonoBehaviour:
   plusPushingHitBox: []
   customHitBox: []
   isContinue: 0
-  movements: []
-  gravityMoves: []
+  movements:
+  - movement: {x: -5, y: 2, z: 0}
+    startFrame: 48
+  gravityMoves:
+  - movement: {x: 0, y: -0.2, z: 0}
+    limitMove: {x: 0, y: -20, z: 0}
+    startFrame: 0
   headFlag: 1
   bodyFlag: 1
   footFlag: 1
