@@ -197,12 +197,10 @@ GameObject:
   - component: {fileID: 82213272}
   - component: {fileID: 82213271}
   - component: {fileID: 82213270}
-  - component: {fileID: 82213269}
   - component: {fileID: 82213268}
   - component: {fileID: 82213267}
   - component: {fileID: 82213266}
   - component: {fileID: 82213265}
-  - component: {fileID: 82213264}
   m_Layer: 0
   m_Name: 'Player2State '
   m_TagString: Untagged
@@ -210,19 +208,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &82213264
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 82213263}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 267f6793b81b51e4badb651ad947e4a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  stateName: 
 --- !u!114 &82213265
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -273,19 +258,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 70678f3c26cff3247a5dd2e40d9667de, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  stateName: 
---- !u!114 &82213269
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 82213263}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b463e686746962c49aba3da9329ce27f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   stateName: 
@@ -2742,12 +2714,10 @@ GameObject:
   - component: {fileID: 262175161}
   - component: {fileID: 262175160}
   - component: {fileID: 262175159}
-  - component: {fileID: 262175158}
   - component: {fileID: 262175157}
   - component: {fileID: 262175156}
   - component: {fileID: 262175155}
   - component: {fileID: 262175154}
-  - component: {fileID: 262175163}
   m_Layer: 0
   m_Name: Player1State
   m_TagString: Untagged
@@ -2809,20 +2779,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 70678f3c26cff3247a5dd2e40d9667de, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  stateName: 
---- !u!114 &262175158
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 8394669090198475098, guid: 727da66ea3ba7f54b870a8dc069b65c7,
-    type: 3}
-  m_PrefabInstance: {fileID: 1972614853}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 262175153}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b463e686746962c49aba3da9329ce27f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   stateName: 
@@ -2910,7 +2866,7 @@ MonoBehaviour:
         comment: "\u30B2\u30FC\u30E0\u30EB\u30FC\u30D7\u304C\u958B\u59CB\u3059\u308B\u6761\u4EF6"
       execDelegate: []
       playUpdateDelegate: []
-      nodePosition: {x: 60, y: 276}
+      nodePosition: {x: 135, y: 220}
       toggleWindow: 1
       stateMode: 0
       subStateID:
@@ -2950,7 +2906,7 @@ MonoBehaviour:
         comment: 
       execDelegate: []
       playUpdateDelegate: []
-      nodePosition: {x: 407, y: 378}
+      nodePosition: {x: 643, y: 399}
       toggleWindow: 1
       stateMode: 1
       subStateID:
@@ -2990,7 +2946,7 @@ MonoBehaviour:
         comment: 
       execDelegate: []
       playUpdateDelegate: []
-      nodePosition: {x: 824, y: 222}
+      nodePosition: {x: 637, y: 97}
       toggleWindow: 1
       stateMode: 1
       subStateID:
@@ -3682,7 +3638,7 @@ MonoBehaviour:
         comment: 
       execDelegate: []
       playUpdateDelegate: []
-      nodePosition: {x: -73, y: 596}
+      nodePosition: {x: -450, y: 469}
       toggleWindow: 1
       stateMode: 0
       subStateID:
@@ -3798,7 +3754,7 @@ MonoBehaviour:
         argType1: 4
         argType2: 1
         comment: 
-      nodePosition: {x: 751, y: 754}
+      nodePosition: {x: 374, y: 627}
       toggleWindow: 1
       stateMode: 0
       subStateID:
@@ -3914,7 +3870,7 @@ MonoBehaviour:
         argType1: 4
         argType2: 1
         comment: 
-      nodePosition: {x: 747, y: 1119}
+      nodePosition: {x: 370, y: 992}
       toggleWindow: 1
       stateMode: 0
       subStateID:
@@ -4010,7 +3966,7 @@ MonoBehaviour:
         comment: 
       execDelegate: []
       playUpdateDelegate: []
-      nodePosition: {x: 1155, y: 617}
+      nodePosition: {x: 778, y: 490}
       toggleWindow: 1
       stateMode: 0
       subStateID:
@@ -4046,7 +4002,7 @@ MonoBehaviour:
         argType2: 1
         comment: 
       playUpdateDelegate: []
-      nodePosition: {x: 1724, y: 1285}
+      nodePosition: {x: 1347, y: 1158}
       toggleWindow: 1
       stateMode: 0
       subStateID:
@@ -4106,7 +4062,7 @@ MonoBehaviour:
         argType2: 1
         comment: 
       playUpdateDelegate: []
-      nodePosition: {x: 1709, y: 997}
+      nodePosition: {x: 1332, y: 870}
       toggleWindow: 1
       stateMode: 0
       subStateID:
@@ -4146,7 +4102,7 @@ MonoBehaviour:
         comment: 
       execDelegate: []
       playUpdateDelegate: []
-      nodePosition: {x: 1854, y: 705}
+      nodePosition: {x: 1477, y: 578}
       toggleWindow: 1
       stateMode: 1
       subStateID:
@@ -4238,7 +4194,7 @@ MonoBehaviour:
         argType2: 1
         comment: 
       playUpdateDelegate: []
-      nodePosition: {x: 1451, y: 650}
+      nodePosition: {x: 1074, y: 523}
       toggleWindow: 1
       stateMode: 0
       subStateID:
@@ -4382,7 +4338,7 @@ MonoBehaviour:
         argType1: 5
         argType2: 1
         comment: 
-      nodePosition: {x: 741, y: 347}
+      nodePosition: {x: 364, y: 220}
       toggleWindow: 1
       stateMode: 0
       subStateID:
@@ -4470,7 +4426,7 @@ MonoBehaviour:
         argType1: 5
         argType2: 1
         comment: 
-      nodePosition: {x: 685, y: 28}
+      nodePosition: {x: 308, y: -99}
       toggleWindow: 1
       stateMode: 0
       subStateID:
@@ -4948,19 +4904,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &262175163
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 262175153}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 267f6793b81b51e4badb651ad947e4a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  stateName: 
 --- !u!1001 &334193728
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12660,6 +12603,11 @@ MonoBehaviour:
     validInputFrame: 60
     validInvFrame: 30
     interval: 15
+  - attackName: command2
+    command: 21
+    validInputFrame: 60
+    validInvFrame: 30
+    interval: 15
 --- !u!1 &1104952100
 GameObject:
   m_ObjectHideFlags: 0
@@ -19150,102 +19098,102 @@ PrefabInstance:
     - target: {fileID: 8394669090198475103, guid: 727da66ea3ba7f54b870a8dc069b65c7,
         type: 3}
       propertyPath: stateBody.Array.data[2].states.Array.data[0].nodePosition.x
-      value: -73
+      value: -450
       objectReference: {fileID: 0}
     - target: {fileID: 8394669090198475103, guid: 727da66ea3ba7f54b870a8dc069b65c7,
         type: 3}
       propertyPath: stateBody.Array.data[2].states.Array.data[0].nodePosition.y
-      value: 596
+      value: 469
       objectReference: {fileID: 0}
     - target: {fileID: 8394669090198475103, guid: 727da66ea3ba7f54b870a8dc069b65c7,
         type: 3}
       propertyPath: stateBody.Array.data[2].states.Array.data[1].nodePosition.x
-      value: 751
+      value: 374
       objectReference: {fileID: 0}
     - target: {fileID: 8394669090198475103, guid: 727da66ea3ba7f54b870a8dc069b65c7,
         type: 3}
       propertyPath: stateBody.Array.data[2].states.Array.data[1].nodePosition.y
-      value: 754
+      value: 627
       objectReference: {fileID: 0}
     - target: {fileID: 8394669090198475103, guid: 727da66ea3ba7f54b870a8dc069b65c7,
         type: 3}
       propertyPath: stateBody.Array.data[2].states.Array.data[2].nodePosition.x
-      value: 747
+      value: 370
       objectReference: {fileID: 0}
     - target: {fileID: 8394669090198475103, guid: 727da66ea3ba7f54b870a8dc069b65c7,
         type: 3}
       propertyPath: stateBody.Array.data[2].states.Array.data[2].nodePosition.y
-      value: 1119
+      value: 992
       objectReference: {fileID: 0}
     - target: {fileID: 8394669090198475103, guid: 727da66ea3ba7f54b870a8dc069b65c7,
         type: 3}
       propertyPath: stateBody.Array.data[2].states.Array.data[3].nodePosition.x
-      value: 1155
+      value: 778
       objectReference: {fileID: 0}
     - target: {fileID: 8394669090198475103, guid: 727da66ea3ba7f54b870a8dc069b65c7,
         type: 3}
       propertyPath: stateBody.Array.data[2].states.Array.data[3].nodePosition.y
-      value: 617
+      value: 490
       objectReference: {fileID: 0}
     - target: {fileID: 8394669090198475103, guid: 727da66ea3ba7f54b870a8dc069b65c7,
         type: 3}
       propertyPath: stateBody.Array.data[2].states.Array.data[4].nodePosition.x
-      value: 1724
+      value: 1347
       objectReference: {fileID: 0}
     - target: {fileID: 8394669090198475103, guid: 727da66ea3ba7f54b870a8dc069b65c7,
         type: 3}
       propertyPath: stateBody.Array.data[2].states.Array.data[4].nodePosition.y
-      value: 1285
+      value: 1158
       objectReference: {fileID: 0}
     - target: {fileID: 8394669090198475103, guid: 727da66ea3ba7f54b870a8dc069b65c7,
         type: 3}
       propertyPath: stateBody.Array.data[2].states.Array.data[5].nodePosition.x
-      value: 1709
+      value: 1332
       objectReference: {fileID: 0}
     - target: {fileID: 8394669090198475103, guid: 727da66ea3ba7f54b870a8dc069b65c7,
         type: 3}
       propertyPath: stateBody.Array.data[2].states.Array.data[5].nodePosition.y
-      value: 997
+      value: 870
       objectReference: {fileID: 0}
     - target: {fileID: 8394669090198475103, guid: 727da66ea3ba7f54b870a8dc069b65c7,
         type: 3}
       propertyPath: stateBody.Array.data[2].states.Array.data[6].nodePosition.x
-      value: 1854
+      value: 1477
       objectReference: {fileID: 0}
     - target: {fileID: 8394669090198475103, guid: 727da66ea3ba7f54b870a8dc069b65c7,
         type: 3}
       propertyPath: stateBody.Array.data[2].states.Array.data[6].nodePosition.y
-      value: 705
+      value: 578
       objectReference: {fileID: 0}
     - target: {fileID: 8394669090198475103, guid: 727da66ea3ba7f54b870a8dc069b65c7,
         type: 3}
       propertyPath: stateBody.Array.data[2].states.Array.data[7].nodePosition.x
-      value: 1451
+      value: 1074
       objectReference: {fileID: 0}
     - target: {fileID: 8394669090198475103, guid: 727da66ea3ba7f54b870a8dc069b65c7,
         type: 3}
       propertyPath: stateBody.Array.data[2].states.Array.data[7].nodePosition.y
-      value: 650
+      value: 523
       objectReference: {fileID: 0}
     - target: {fileID: 8394669090198475103, guid: 727da66ea3ba7f54b870a8dc069b65c7,
         type: 3}
       propertyPath: stateBody.Array.data[2].states.Array.data[8].nodePosition.x
-      value: 741
+      value: 364
       objectReference: {fileID: 0}
     - target: {fileID: 8394669090198475103, guid: 727da66ea3ba7f54b870a8dc069b65c7,
         type: 3}
       propertyPath: stateBody.Array.data[2].states.Array.data[8].nodePosition.y
-      value: 347
+      value: 220
       objectReference: {fileID: 0}
     - target: {fileID: 8394669090198475103, guid: 727da66ea3ba7f54b870a8dc069b65c7,
         type: 3}
       propertyPath: stateBody.Array.data[2].states.Array.data[9].nodePosition.x
-      value: 685
+      value: 308
       objectReference: {fileID: 0}
     - target: {fileID: 8394669090198475103, guid: 727da66ea3ba7f54b870a8dc069b65c7,
         type: 3}
       propertyPath: stateBody.Array.data[2].states.Array.data[9].nodePosition.y
-      value: 28
+      value: -99
       objectReference: {fileID: 0}
     - target: {fileID: 8394669090198475103, guid: 727da66ea3ba7f54b870a8dc069b65c7,
         type: 3}
@@ -19442,6 +19390,36 @@ PrefabInstance:
       propertyPath: stateBody.Array.data[2].states.Array.data[9].playUpdateDelegate.Array.data[0].argType2
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8394669090198475103, guid: 727da66ea3ba7f54b870a8dc069b65c7,
+        type: 3}
+      propertyPath: stateBody.Array.data[0].states.Array.data[0].nodePosition.x
+      value: 135
+      objectReference: {fileID: 0}
+    - target: {fileID: 8394669090198475103, guid: 727da66ea3ba7f54b870a8dc069b65c7,
+        type: 3}
+      propertyPath: stateBody.Array.data[0].states.Array.data[1].nodePosition.x
+      value: 643
+      objectReference: {fileID: 0}
+    - target: {fileID: 8394669090198475103, guid: 727da66ea3ba7f54b870a8dc069b65c7,
+        type: 3}
+      propertyPath: stateBody.Array.data[0].states.Array.data[2].nodePosition.x
+      value: 637
+      objectReference: {fileID: 0}
+    - target: {fileID: 8394669090198475103, guid: 727da66ea3ba7f54b870a8dc069b65c7,
+        type: 3}
+      propertyPath: stateBody.Array.data[0].states.Array.data[0].nodePosition.y
+      value: 220
+      objectReference: {fileID: 0}
+    - target: {fileID: 8394669090198475103, guid: 727da66ea3ba7f54b870a8dc069b65c7,
+        type: 3}
+      propertyPath: stateBody.Array.data[0].states.Array.data[1].nodePosition.y
+      value: 399
+      objectReference: {fileID: 0}
+    - target: {fileID: 8394669090198475103, guid: 727da66ea3ba7f54b870a8dc069b65c7,
+        type: 3}
+      propertyPath: stateBody.Array.data[0].states.Array.data[2].nodePosition.y
+      value: 97
+      objectReference: {fileID: 0}
     - target: {fileID: 8394669090198475102, guid: 727da66ea3ba7f54b870a8dc069b65c7,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -19497,7 +19475,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 727da66ea3ba7f54b870a8dc069b65c7, type: 3}
 --- !u!1 &2117242279
 GameObject:
