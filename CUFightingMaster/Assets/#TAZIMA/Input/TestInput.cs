@@ -16,8 +16,7 @@ public class TestInput : MonoBehaviour {
 	public int lastDir = 5; //前回のジョイスティックの方向
 	public string playerDirection; //プレイヤーの入力方向
 	public string atkButton; //攻撃ボタンの名前を格納
-
-	public string debugCommandStr;      //コマンドの文字列をインスペクター上で確認するための変数
+    public string commandName;  //発動するコマンドの名前
 
 	//ジョイスティックの入力方向（方向はNumパッドに依存）
 	enum DirJS {
@@ -56,6 +55,7 @@ public class TestInput : MonoBehaviour {
     }
 
 	public void UpdateGame () {
+        //入力管理
 		DownKeyCheck ();
 	}
 
@@ -106,33 +106,53 @@ public class TestInput : MonoBehaviour {
 				playerDirection = "9";
 				break;
 			default:
-				lastDir = 0;
-				direction = null;
+				lastDir = 5;
+                playerDirection = "5";
 				break;
 		}
 	}
 
+    //プレイヤーの入力をまとめている関数
 	public void DownKeyCheck () {
 		//ジョイスティックまたはキーボードでの方向入力
 		SetDirection ();
-		//攻撃ボタン入力
-		SetAtkBotton ();
-		//コマンドの判別
-		commandManager.GetCommandData(playerDirection.ToString());
-        debugCommandStr = commandManager.inputCommandData;
+        //攻撃ボタン入力
+        SetAtkBotton();
+        //コマンドの判別
+        commandManager.GetCommandData(playerDirection.ToString());
+    }
 
-	}
-
-	//攻撃ボタンの入力を管理
-	public void SetAtkBotton () 
-	{
-		atkButton = "";
-        if (Input.GetButtonDown(controllerName + player + "Attack4")) atkButton = "_Atk4";
-        else if (Input.GetButtonDown(controllerName + player + "Attack3")) atkButton = "_Atk3";
-        else if (Input.GetButtonDown(controllerName + player + "Attack2")) atkButton = "_Atk2";
-        else if (Input.GetButtonDown(controllerName + player + "Attack1")) atkButton = "_Atk1";
-		if( atkButton != "")	Debug.Log(atkButton);
-	}
+    //攻撃ボタンの入力を管理
+    public void SetAtkBotton()
+    {
+        atkButton = "";
+        //つかみ
+        if (Input.GetButtonDown(controllerName + player + "Attack4"))
+        {
+            atkButton = "_Atk4";
+        }
+        //攻撃(強中弱)
+        else
+        {
+            if (Input.GetButtonDown(controllerName + player + "Attack3"))
+            {
+                atkButton = "_Atk3";
+            }
+            else if (Input.GetButtonDown(controllerName + player + "Attack2"))
+            {
+                atkButton = "_Atk2";
+            }
+            else if (Input.GetButtonDown(controllerName + player + "Attack1"))
+            {
+                atkButton = "_Atk1";
+            }
+        }
+        //何かしら入力されたとき(デバッグ用)
+        if (atkButton != "")
+        {
+            Debug.Log(atkButton);
+        }
+    }
 
 	public string GetPlayerAtk()
     {
@@ -191,9 +211,9 @@ public class TestInput : MonoBehaviour {
 			case "7":
 				if (_stateBase.core.Direction == PlayerDirection.Right)
 				{
-					 // 飯塚追加-------------------------------------------
-						Sound.LoadSe("Jump", "Se_jump");
-						Sound.PlaySe("Jump", 2, 0.6f);
+					// 飯塚追加-------------------------------------------
+					Sound.LoadSe("Jump", "Se_jump");
+				    Sound.PlaySe("Jump", 2, 0.6f);
 					// ---------------------------------------------------
 					return Direction.UpBack;
 				}
@@ -202,13 +222,13 @@ public class TestInput : MonoBehaviour {
 					return Direction.UpFront;
 				}
 			case "8":
-				   // 飯塚追加-------------------------------------------
+				// 飯塚追加-------------------------------------------
                 Sound.LoadSe("Jump", "Se_jump");
                 Sound.PlaySe("Jump", 2, 0.6f);
                 // ---------------------------------------------------
 				return Direction.Up;
 			case "9":
-				 // 飯塚追加-------------------------------------------
+				// 飯塚追加-------------------------------------------
                 Sound.LoadSe("Jump", "Se_jump");
                 Sound.PlaySe("Jump", 2, 0.6f);
                 // ---------------------------------------------------

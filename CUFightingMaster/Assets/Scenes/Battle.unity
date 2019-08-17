@@ -11559,7 +11559,7 @@ MonoBehaviour:
   lastDir: 5
   playerDirection: 
   atkButton: 
-  debugCommandStr: 
+  commandName: 
 --- !u!114 &1085984946
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11572,22 +11572,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 584e7ea41413cd34f923e2573e4e1fec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputCommandData: 
-  MaxCommandDataLength: 120
   inputData: 0
-  commandName: 
-  chechInvCommand: 0
+  inputCommandName: 
+  isCommandInterval: 0
+  isHitStop: 0
   attackParameters:
-  - attackName: command1
+  - attackName: Command1
+    command: 236236
+    shotTrigger: 123
+    validInputFrame: 60
+    validShotFrame: 30
+    intervalFrame: 15
+    isShot: 0
+    checkCommadStr: 
+  - attackName: Command2
     command: 236
+    shotTrigger: 123
     validInputFrame: 60
-    validInvFrame: 30
-    interval: 15
-  - attackName: command2
-    command: 214
-    validInputFrame: 60
-    validInvFrame: 30
-    interval: 15
+    validShotFrame: 30
+    intervalFrame: 15
+    isShot: 0
+    checkCommadStr: 
 --- !u!1 &1104952100
 GameObject:
   m_ObjectHideFlags: 0
@@ -12147,7 +12152,7 @@ MonoBehaviour:
   lastDir: 5
   playerDirection: 
   atkButton: 
-  debugCommandStr: 
+  commandName: 
 --- !u!114 &1326219564
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12160,22 +12165,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 584e7ea41413cd34f923e2573e4e1fec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputCommandData: 
-  MaxCommandDataLength: 120
   inputData: 0
-  commandName: 
-  chechInvCommand: 0
+  inputCommandName: 
+  isCommandInterval: 0
+  isHitStop: 0
   attackParameters:
   - attackName: Command1
-    command: fgh
+    command: 236
+    shotTrigger: 123
     validInputFrame: 60
-    validInvFrame: 30
-    interval: 15
+    validShotFrame: 30
+    intervalFrame: 15
+    isShot: 0
+    checkCommadStr: 
   - attackName: Command2
-    command: hgf
+    command: 214
+    shotTrigger: 123
     validInputFrame: 60
-    validInvFrame: 30
-    interval: 15
+    validShotFrame: 30
+    intervalFrame: 15
+    isShot: 0
+    checkCommadStr: 
 --- !u!1001 &1385078112
 PrefabInstance:
   m_ObjectHideFlags: 0

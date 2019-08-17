@@ -80,13 +80,12 @@ public class InGameManager : MonoBehaviour
     /// </summary>
     private void StartRound()
     {
-		//ゲーム中のUI生成
-		canvasController.Call_PlayBattleRound();
-		//キャラクターポジションの設定
-		StartCoroutine("Test");
-
-		//画面が明るくなったら
-		if (canvasController.Call_StartFadeIn() == true)
+        //ゲーム中のUI生成
+        canvasController.Call_PlayBattleRound();
+        //キャラクターポジションの設定
+        StartCoroutine("Test");
+        //画面が明るくなったら
+        if (canvasController.Call_StartFadeIn() == true)
         {
             //ラウンド開始時のUI生成
             if (canvasController.Call_PlayStartRound(gameRoundCount) == false)
@@ -250,8 +249,8 @@ public class InGameManager : MonoBehaviour
 
 	#region プレイヤー位置リセット
 	private IEnumerator Test()
-	{
-		BattleCamera.transform.position = new Vector3(0, 3.0f, -8.5f);
+    {
+        BattleCamera.transform.position = new Vector3(0, 3.0f, -8.5f);
 		player1.transform.position = targetPoint[0].transform.position;
 		player2.transform.position = targetPoint[1].transform.position;
 		yield return null;
