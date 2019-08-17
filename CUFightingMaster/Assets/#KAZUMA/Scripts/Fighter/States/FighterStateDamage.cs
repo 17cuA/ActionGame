@@ -293,14 +293,32 @@ public class FighterStateDamage : StateBaseScriptMonoBehaviour
     #endregion
 
     #region 投げ技
+    private List<FighterSkill.ThrowDamage> throwDamages;
     public void Throw_Damage_Start()
     {
         isEndStun = false;
         stateBase.core.SetSkill(stateBase.core.GetDamage.enemyThrowSkill, 0);
+        throwDamages = stateBase.core.GetDamage.throwDamages;
         //ダメージを受けたのでリセット
         GameManager.Instance.GetPlayFighterCore(stateBase.core.GetDamageCollider.gameObject.layer).SetSkill(stateBase.core.GetDamage.throwSkill, 0);
         stateBase.core.SetDamage(new FighterSkill.CustomHitBox(), null);
     }
+	public void Throw_Damage_Update()
+	{
+		//特定のフレームでダメージを与える
+		foreach(var dm in throwDamages)
+		{
+			Debug.Log(dm.frame+" "+stateBase.core.AnimationPlayerCompornent.NowFrame);
+			if(dm.frame==stateBase.core.AnimationPlayerCompornent.NowFrame)
+			{
+                stateBase.core.HP-=dm.damage;
+                if (stateBase.core.HP < 0)
+                {
+                    stateBase.core.HP = 0;
+                }
+            }
+		}
+	}
     #endregion
 
     //ヒット硬直時間をプラス

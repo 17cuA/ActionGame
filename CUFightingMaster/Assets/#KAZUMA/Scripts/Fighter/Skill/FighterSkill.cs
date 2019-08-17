@@ -31,6 +31,13 @@ public class FighterSkill : ScriptableObject
 		public GameObject guardEffect;
         public Vector3 position;
     }
+    // 投げのダメージ
+    [System.Serializable]
+    public class ThrowDamage
+    {
+        public int frame;
+        public int damage;
+    }
     //当たり判定群
     [System.Serializable]
     public class CustomHitBox
@@ -51,6 +58,7 @@ public class FighterSkill : ScriptableObject
         public bool isThrow = false;    //投げかどうか
         public FighterSkill throwSkill;//投げ技
         public FighterSkill enemyThrowSkill;
+        public List<ThrowDamage> throwDamages;
 
         //ダウン時の移動
         public bool isContinue = false;

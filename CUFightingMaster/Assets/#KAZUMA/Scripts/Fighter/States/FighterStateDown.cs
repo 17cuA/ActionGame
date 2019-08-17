@@ -15,6 +15,7 @@ public class FighterStateDown : StateBaseScriptMonoBehaviour
     }
     public void DownStart()
     {
+        stateBase.core.SetIsGround(false);
         downCount = 0;
         isWakeUp = false;
         stateBase.ChangeSkillConstant(SkillConstants.Down, 0);

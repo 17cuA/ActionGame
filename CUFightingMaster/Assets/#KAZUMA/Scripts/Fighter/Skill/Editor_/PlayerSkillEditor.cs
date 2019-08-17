@@ -268,7 +268,28 @@ public class PlayerSkillEditor : EditorWindow
                             EditorGUILayout.BeginHorizontal();
                             box.throwSkill = EditorGUILayout.ObjectField("投げモーション", box.throwSkill, typeof(FighterSkill), false) as FighterSkill;
                             box.enemyThrowSkill = EditorGUILayout.ObjectField("投げられモーション", box.enemyThrowSkill, typeof(FighterSkill), false) as FighterSkill;
-                            EditorGUILayout.EndVertical();
+                            EditorGUILayout.EndHorizontal();
+                            if (GUILayout.Button("投げダメージフレーム", GUILayout.Width(150), GUILayout.Height(20)))
+                            {
+                                box.throwDamages.Add(new FighterSkill.ThrowDamage());
+                            }
+                            for (int ef = 0; ef < box.throwDamages.Count; ef++)
+                            {
+                                //削除
+                                bool f = false;
+                                EditorGUILayout.BeginHorizontal();
+                                box.throwDamages[ef].frame = EditorGUILayout.IntField("フレーム", box.throwDamages[ef].frame);
+                                box.throwDamages[ef].damage = EditorGUILayout.IntField("ダメージ", box.throwDamages[ef].damage);
+                                if (GUILayout.Button("×", GUILayout.Width(20)))
+                                {
+                                    f = true;
+                                }
+                                EditorGUILayout.EndHorizontal();
+                                if (f)
+                                {
+                                    box.throwDamages.Remove(box.throwDamages[ef]);
+                                }
+                            }
                         }
                         EditorGUILayout.BeginHorizontal();
                         box.damage = EditorGUILayout.IntField("ダメージ量", box.damage);
