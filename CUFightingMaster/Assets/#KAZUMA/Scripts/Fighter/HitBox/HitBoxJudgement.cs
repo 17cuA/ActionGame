@@ -46,7 +46,7 @@ public class HitBoxJudgement
 	private float knockBackMinus = 0;
 	private int Knock_Back_Count = 6;
 	private float knockBackPower = 0;
-	private PlayerNumber DamageEnemyNumber = 0;
+	private PlayerNumber DamageEnemyNumber = PlayerNumber.None;
 	private float wallX = 0;
     private int countKnockBack = 0;
     private bool isKnockGround = true;
