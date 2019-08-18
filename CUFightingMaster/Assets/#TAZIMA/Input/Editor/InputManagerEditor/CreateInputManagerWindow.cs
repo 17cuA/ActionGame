@@ -211,8 +211,6 @@ public class CreateInputManagerWindow : EditorWindow
     //基本設定に応じて変数の初期化を行う
     private void SetController()
     {
-		////読み込み
-		ScriptableInputManager sample = AssetDatabase.LoadAssetAtPath<ScriptableInputManager>(ASSET_PATH);
 		//リストの作成及び追加、削除を行ったときの表示エラーを回避するための初期化
 		if (_obj.InputControllerButtons == null || _obj.PlayerNum != _obj.SetPlayerNum || _obj.ButtonNum != _obj.SetButtonNum)
         {
@@ -230,12 +228,6 @@ public class CreateInputManagerWindow : EditorWindow
                 for (int j = 0; j < _obj.SetButtonNum; j++)
                 {
                     var bottonList = new ScriptableInputManager.InputControllerButton();
-					//セーブされている設定があれば移す
-					if (i < sample.SetPlayerNum && j < sample.SetButtonNum)
-					{
-						Debug.Log( i + ":" + sample.SetPlayerNum + " " + j + ":" + sample.SetButtonNum);
-						//bottonList = sample.InputControllerButtons[i][j];
-					}
 					controllerList.Add(bottonList);
 					isOpen[i, j] = false;
 				}
