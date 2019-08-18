@@ -129,22 +129,22 @@ public class TestInput : MonoBehaviour {
         //つかみ
         if (Input.GetButtonDown(controllerName + player + "Attack4"))
         {
-            atkButton = "_Atk4";
+            atkButton = "D";
         }
         //攻撃(強中弱)
         else
         {
             if (Input.GetButtonDown(controllerName + player + "Attack3"))
             {
-                atkButton = "_Atk3";
+                atkButton = "C";
             }
             else if (Input.GetButtonDown(controllerName + player + "Attack2"))
             {
-                atkButton = "_Atk2";
+                atkButton = "B";
             }
             else if (Input.GetButtonDown(controllerName + player + "Attack1"))
             {
-                atkButton = "_Atk1";
+                atkButton = "A";
             }
         }
         //何かしら入力されたとき(デバッグ用)

@@ -37,27 +37,30 @@ public class CommandManager :MonoBehaviour
 	private void CheckInputData(string _data)
 	{
 		//前回の入力とデータが同じ、もしくはニュートラル状態（５）のときはスキップ
-		if ((_data != inputData) && (_data != "5"))
+		if (_data != inputData)
 		{
-            //入力された値をそれぞれのコマンド確認用変数に移す
-            for (int i = 0;i < attackParameters.Count;i++)
+            if (_data != "5")
             {
-                var check = false;
-                while (!check)
+                //入力された値をそれぞれのコマンド確認用変数に移す
+                for (int i = 0; i < attackParameters.Count; i++)
                 {
-                    //入力された値がコマンドの次の入力と同じであれば格納
-                    if (_data == attackParameters[i].command[attackParameters[i].checkCommadStr.Length].ToString())
+                    var check = false;
+                    while (!check)
                     {
-                        //コマンド確認用変数への最初の入力だった場合、ここに入力受付カウント処理を追加
-                        if (attackParameters[i].checkCommadStr.Length == 0) StartCoroutine(CheckInputCommand(attackParameters[i]));
-                        attackParameters[i].checkCommadStr += _data;
-                        check = true;
-                    }
-                    //そうでない場合リセットし、要素数0番目の入力処理でなければもう一度入力を行う
-                    else
-                    {
-                        if (attackParameters[i].checkCommadStr.Length != 0) attackParameters[i].checkCommadStr = "";
-                        else check = true;
+                        //入力された値がコマンドの次の入力と同じであれば格納
+                        if (_data == attackParameters[i].command[attackParameters[i].checkCommadStr.Length].ToString())
+                        {
+                            //コマンド確認用変数への最初の入力だった場合、ここに入力受付カウント処理を追加
+                            if (attackParameters[i].checkCommadStr.Length == 0) StartCoroutine(CheckInputCommand(attackParameters[i]));
+                            attackParameters[i].checkCommadStr += _data;
+                            check = true;
+                        }
+                        //そうでない場合リセットし、要素数0番目の入力処理でなければもう一度入力を行う
+                        else
+                        {
+                            if (attackParameters[i].checkCommadStr.Length != 0) attackParameters[i].checkCommadStr = "";
+                            else check = true;
+                        }
                     }
                 }
             }
@@ -71,7 +74,8 @@ public class CommandManager :MonoBehaviour
 		//コマンド発動後のインターバル中ではない時のみこの処理を行う
 		if (!isCommandInterval)
 		{
-			for (int i = 0; attackParameters.Count > i; i++)
+            var isShotCommand = false;
+            for (int i = 0; attackParameters.Count > i; i++)
 			{
 				//文字数を正規表現で当てはまるかチェック
 				//パターンが文字列の最後尾で終了する場合のみ抽出
@@ -79,21 +83,36 @@ public class CommandManager :MonoBehaviour
 				{
                     //コマンドのフラグを立てる
                     attackParameters[i].isShot = true;
-					Debug.Log(attackParameters[i].attackName + "の入力が完了");
+					Debug.Log(attackParameters[i].commandName + "の入力が完了");
 					//コマンドを保存しておく時間
 					StartCoroutine(CheckSaveCommand(attackParameters[i]));
                     //これまでに入力されていたデータをリセット（空にする）
                     attackParameters[i].checkCommadStr = "";
 				}
-                //コマンドを発動する処理
-                var isShotCommand = false;
                 if (attackParameters[i].isShot == true && Regex.IsMatch(attackParameters[i].shotTrigger, testInput.atkButton) && isShotCommand == false)
                 {
-                    //コマンドを保存
-                    inputCommandName = string.Format("{0}_Atk{1}", attackParameters[i].attackName,testInput.atkButton);
-                    attackParameters[i].isShot = false;
-                    //コマンドを受け付けない時間
-                    StartCoroutine(CheckInterval(attackParameters[i]));
+                    //コマンド攻撃処理
+                    if (testInput.atkButton != "")
+                    {
+                        //コマンドを保存
+                        inputCommandName = string.Format("{0}{1}", attackParameters[i].commandName, testInput.atkButton);
+                        Debug.Log(" 攻撃コマンド発動=>" + inputCommandName);
+                        attackParameters[i].isShot = false;
+                        isShotCommand = true;
+                        //コマンドを受け付けない時間
+                        StartCoroutine(CheckInterval(attackParameters[i]));
+                    }
+                    //ステップなどの攻撃がないコマンド処理
+                    else if (attackParameters[i].shotTrigger == "")
+                    {
+                        //コマンドを保存
+                        inputCommandName = attackParameters[i].commandName;
+                        Debug.Log("コマンド発動=>" + inputCommandName);
+                        attackParameters[i].isShot = false;
+                        isShotCommand = true;
+                        //コマンドを受け付けない時間
+                        StartCoroutine(CheckInterval(attackParameters[i]));
+                    }
                 }
             }
 		}
@@ -107,17 +126,18 @@ public class CommandManager :MonoBehaviour
         //入力中のコマンドをリセットする
         _attackParameter.checkCommadStr = "";
     }
-    //コマンドを保存しておくフレームを管理
+//コマンドを保存しておくフレームを管理
     public IEnumerator CheckSaveCommand(AttackParameter _attackParameter)
     {
         Debug.Log("コマンド消去待機");
-        var str = _attackParameter.attackName;
+        var str = _attackParameter.commandName;
         var time = _attackParameter.validShotFrame / 60f;
         Debug.Log(time);
         yield return new WaitForSeconds(time);
         //ヒットストップ中でない時
-        yield return (isHitStop == false);
+        while (isHitStop) yield return null;
         //フラグをオフ
+        _attackParameter.isShot = false;
         Debug.Log("コマンド消去");
     }
     //コマンド発動後のインターバル(フレーム)を管理
