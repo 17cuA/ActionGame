@@ -3,7 +3,7 @@
 public class AttackParameter
 {
     //この攻撃の名前
-    public string attackName;
+    public string commandName;
     //この攻撃の発動コマンド
     public string command;
     //このコマンドを発動できる攻撃ボタン(弱:1 中:2 強:3)
