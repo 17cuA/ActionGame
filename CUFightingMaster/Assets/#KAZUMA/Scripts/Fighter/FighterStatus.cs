@@ -15,15 +15,18 @@ public class FighterStatus : ScriptableObject
 	[System.Serializable]
 	public class SkillAnimationCustom
 	{
-		public string Command;
-		
-		public FighterSkill skill;
+        public string name;
+        public string command;
+        public string trigger;
+        public FighterSkill skill;
 	}
-	public class SkillAnimation
+	[System.Serializable]
+	public class MoveAnimationCustom
 	{
-		public SkillStatus status;
-		public FighterSkill skill;
-	}
+        public string name;
+        public string command;
+        public FighterSkill skill;
+    }
 
     public int HP = 100;
 
@@ -38,6 +41,10 @@ public class FighterStatus : ScriptableObject
     public List<SkillAnimationCustom> uniqueSkills = new List<SkillAnimationCustom>();
     public List<SkillAnimationCustom> specialSkills = new List<SkillAnimationCustom>();
     public List<SkillAnimationCustom> CASkills = new List<SkillAnimationCustom>();
+
+    //カスタム移動
+    public List<MoveAnimationCustom> groundMoveSkills = new List<MoveAnimationCustom>();
+    public List<MoveAnimationCustom> airMoveSkills = new List<MoveAnimationCustom>();
 
 
     #region EDITOR_

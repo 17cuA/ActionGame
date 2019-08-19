@@ -95,7 +95,7 @@ public class CommandManager :MonoBehaviour
                     if (testInput.atkButton != "")
                     {
                         //コマンドを保存
-                        inputCommandName = string.Format("{0}{1}", attackParameters[i].commandName, testInput.atkButton);
+                        inputCommandName = attackParameters[i].commandName;
                         Debug.Log(" 攻撃コマンド発動=>" + inputCommandName);
                         attackParameters[i].isShot = false;
                         isShotCommand = true;

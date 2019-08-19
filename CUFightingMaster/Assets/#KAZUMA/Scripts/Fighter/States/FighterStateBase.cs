@@ -2,12 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 using CUEngine.Pattern;
+using System;
 
 public class FighterStateBase : StateBaseScriptMonoBehaviour
 {
     public FighterCore core;
     public TestInput input = null;
 	public FighterStateGuard stateGuard;
+
+    public Dictionary<string, FighterSkill> groundSkills = new Dictionary<string, FighterSkill>();//地上コマンド技
 
     #region 初期化
     private void Start()
@@ -22,6 +25,11 @@ public class FighterStateBase : StateBaseScriptMonoBehaviour
                 break;
         }
 		stateGuard = GetComponent<FighterStateGuard>();
+
+        foreach(var s in core.Status.groundMoveSkills)
+        {
+            groundSkills.Add(s.name, s.skill);
+        }
     }
     #endregion
 

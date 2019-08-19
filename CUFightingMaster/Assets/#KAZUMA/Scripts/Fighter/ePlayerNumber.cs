@@ -34,15 +34,15 @@ public enum PlayerMoveState
 
 public enum Direction
 {
-    Neutral,
-    Front,
-    Back,
-    Up,
-    Down,
-	UpFront,
-	UpBack,
-	DownFront,
-	DownBack,
+    Neutral = 5,
+    Front = 6,
+    Back = 4,
+    Up = 8,
+    Down = 2,
+	UpFront = 9,
+	UpBack = 7,
+	DownFront = 3,
+	DownBack = 1,
 }
 
 public enum HitPoint

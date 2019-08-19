@@ -13,6 +13,16 @@ public class FighterStateAttack : StateBaseScriptMonoBehaviour
     #region 地上
     public void AttackStart()
     {
+        if((stateBase.input.groundMoveCommand.inputCommandName!="")&&(stateBase.input.groundMoveCommand.inputCommandName!=null))
+        {
+            Debug.Log(stateBase.input.groundMoveCommand.inputCommandName);
+            //キーがあれば発動してreturn
+            if (stateBase.groundSkills.ContainsKey(stateBase.input.groundMoveCommand.inputCommandName))
+            {
+                stateBase.core.SetSkill(stateBase.groundSkills[stateBase.input.groundMoveCommand.inputCommandName], 0);
+            }
+            return;
+        }
         string atk = stateBase.input.GetPlayerAtk();
         switch (atk)
         {

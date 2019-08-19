@@ -77,7 +77,15 @@ public class FighterStateMove : StateBaseScriptMonoBehaviour
     }
     /* 条件式 */
     public bool Input_Atk_True()
-    {
+    { 
+        if((stateBase.input.groundMoveCommand.inputCommandName!="")&&(stateBase.input.groundMoveCommand.inputCommandName!=null))
+        {
+            //キーがあれば発動してreturn
+            if (stateBase.groundSkills.ContainsKey(stateBase.input.groundMoveCommand.inputCommandName))
+            {
+                return true;
+            }
+        }
         return stateBase.input.GetPlayerAtk() != null;
     }
     //着地

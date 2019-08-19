@@ -6,9 +6,11 @@ using UnityEngine;
 using System;
 
 public class TestInput : MonoBehaviour {
-	CommandManager commandManager;	//正規表現でコマンドを判別するスクリプト
+	  //正規表現でコマンドを判別するスクリプト
+	public CommandManager groundMoveCommand; //地上
+    public CommandManager airMoveCommand;	//空中
 
-	public int playerIndex; //プレイヤー番号
+    public int playerIndex; //プレイヤー番号
 	public string player;   //Inputでプレイヤー毎の入力を識別するための文字列
     public string controllerName = ""; //使用するコントローラーの名前
 	public Vector2 inputDirection; //ジョイスティックの入力方向
@@ -18,8 +20,11 @@ public class TestInput : MonoBehaviour {
 	public string atkButton; //攻撃ボタンの名前を格納
     public string commandName;  //発動するコマンドの名前
 
-	//ジョイスティックの入力方向（方向はNumパッドに依存）
-	enum DirJS {
+    private const int validInputFrame = 60;
+    private const int validShotFrame = 15;
+
+    //ジョイスティックの入力方向（方向はNumパッドに依存）
+    enum DirJS {
 		NONE,
 		d1 = 1, //LEFT_DOWN
         d2 = 2, //DOWN
@@ -49,14 +54,55 @@ public class TestInput : MonoBehaviour {
 
     private void Start()
     {
-		//正規表現でコマンドを判別するスクリプトの変数初期化
-        commandManager = gameObject.GetComponent<CommandManager>();
-		commandManager.Init();
     }
 
-	public void UpdateGame () {
+    //追加、初期化処理
+    public void InitCommandManagers(FighterCore _core)
+    {
+        //正規表現でコマンドを判別するスクリプトの変数初期化
+        groundMoveCommand = gameObject.AddComponent<CommandManager>();
+        groundMoveCommand.attackParameters = new List<AttackParameter>();
+        airMoveCommand = gameObject.AddComponent<CommandManager>();
+        airMoveCommand.attackParameters = new List<AttackParameter>();
+
+        //地上の初期化
+        foreach (var co in _core.Status.groundMoveSkills)
+        {
+            var param = new AttackParameter();
+            param.commandName = co.name;
+            param.command = co.command;
+            param.shotTrigger = "";
+            param.validInputFrame = validInputFrame;
+            param.validShotFrame = validShotFrame;
+            param.intervalFrame = 0;
+            groundMoveCommand.attackParameters.Add(param);
+        }
+        groundMoveCommand.Init();
+
+        //空中の初期化
+        foreach (var co in _core.Status.airMoveSkills)
+        {
+            var param = new AttackParameter();
+            param.commandName = co.name;
+            param.command = co.command;
+            param.shotTrigger = "";
+            param.validInputFrame = validInputFrame;
+            param.validShotFrame = validShotFrame;
+            param.intervalFrame = 0;
+            groundMoveCommand.attackParameters.Add(param);
+        }
+        airMoveCommand.Init();
+    }
+	//コマンド消去
+	public void DeleteCommand()
+	{
+        groundMoveCommand.inputCommandName = "";
+        airMoveCommand.inputCommandName = "";
+    }
+
+    public void UpdateGame (FighterCore _core) {
         //入力管理
-		DownKeyCheck ();
+		DownKeyCheck (_core);
 	}
 
 	public void SetAxis () {
@@ -113,13 +159,15 @@ public class TestInput : MonoBehaviour {
 	}
 
     //プレイヤーの入力をまとめている関数
-	public void DownKeyCheck () {
+	public void DownKeyCheck (FighterCore _dir) {
 		//ジョイスティックまたはキーボードでの方向入力
 		SetDirection ();
         //攻撃ボタン入力
         SetAtkBotton();
         //コマンドの判別
-        commandManager.GetCommandData(playerDirection.ToString());
+
+        groundMoveCommand.GetCommandData(((int)GetPlayerMoveDirection(_dir)).ToString());
+        airMoveCommand.GetCommandData(((int)GetPlayerMoveDirection(_dir)).ToString());
     }
 
     //攻撃ボタンの入力を管理
@@ -211,10 +259,6 @@ public class TestInput : MonoBehaviour {
 			case "7":
 				if (_stateBase.core.Direction == PlayerDirection.Right)
 				{
-					// 飯塚追加-------------------------------------------
-					Sound.LoadSe("Jump", "Se_jump");
-				    Sound.PlaySe("Jump", 2, 0.6f);
-					// ---------------------------------------------------
 					return Direction.UpBack;
 				}
 				else
@@ -222,16 +266,8 @@ public class TestInput : MonoBehaviour {
 					return Direction.UpFront;
 				}
 			case "8":
-				// 飯塚追加-------------------------------------------
-                Sound.LoadSe("Jump", "Se_jump");
-                Sound.PlaySe("Jump", 2, 0.6f);
-                // ---------------------------------------------------
 				return Direction.Up;
 			case "9":
-				// 飯塚追加-------------------------------------------
-                Sound.LoadSe("Jump", "Se_jump");
-                Sound.PlaySe("Jump", 2, 0.6f);
-                // ---------------------------------------------------
 				if (_stateBase.core.Direction == PlayerDirection.Right)
 				{
 					return Direction.UpFront;
@@ -243,4 +279,72 @@ public class TestInput : MonoBehaviour {
 		}
 		return Direction.Neutral;
 	}
+    //移動の取得
+    public Direction GetPlayerMoveDirection(FighterCore _core)
+    {
+        switch (playerDirection)
+        {
+            case "1":
+                if (_core.Direction == PlayerDirection.Right)
+                {
+                    return Direction.DownBack;
+                }
+                else
+                {
+                    return Direction.DownFront;
+                }
+            case "2":
+                return Direction.Down;
+            case "3":
+                if (_core.Direction == PlayerDirection.Right)
+                {
+                    return Direction.DownFront;
+                }
+                else
+                {
+                    return Direction.DownBack;
+                }
+            case "4":
+                if (_core.Direction == PlayerDirection.Right)
+                {
+                    return Direction.Back;
+                }
+                else
+                {
+                    return Direction.Front;
+                }
+            case "5":
+                return Direction.Neutral;
+            case "6":
+                if (_core.Direction == PlayerDirection.Right)
+                {
+                    return Direction.Front;
+                }
+                else
+                {
+                    return Direction.Back;
+                }
+            case "7":
+                if (_core.Direction == PlayerDirection.Right)
+                {
+                    return Direction.UpBack;
+                }
+                else
+                {
+                    return Direction.UpFront;
+                }
+            case "8":
+                return Direction.Up;
+            case "9":
+                if (_core.Direction == PlayerDirection.Right)
+                {
+                    return Direction.UpFront;
+                }
+                else
+                {
+                    return Direction.UpBack;
+                }
+        }
+        return Direction.Neutral;
+    }
 }

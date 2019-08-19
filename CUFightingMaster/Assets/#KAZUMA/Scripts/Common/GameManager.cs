@@ -20,12 +20,19 @@ public class GameManager : SingletonMono<GameManager>
 	{
 		QualitySettings.vSyncCount = 0;
 		Application.targetFrameRate = 60;
-	}
+
+		//Inputの初期化
+        input_one.InitCommandManagers(Player_one);
+        input_two.InitCommandManagers(Player_two);
+
+    }
+	//Updateの順番の管理
 	private void Update()
 	{
-		input_one.UpdateGame();
-		input_two.UpdateGame();
+        input_one.UpdateGame(Player_one);
+		input_two.UpdateGame(Player_two);
 		UpdateManager.Instance.UpdateGame();
+		//ヒットストップがない時
 		if ((hitStop_one <= 0) || (!isHitStop_one))
 		{
 			isHitStop_one = false;
@@ -34,7 +41,10 @@ public class GameManager : SingletonMono<GameManager>
 			{
 				Player_one.KnockBackUpdate();
 			}
-		}
+            //コマンドの削除
+            input_one.DeleteCommand();
+        }
+		//ヒットストップ中
 		else
 		{
 			Player_one.HitStopUpdate();
@@ -48,7 +58,9 @@ public class GameManager : SingletonMono<GameManager>
 			{
 				Player_two.KnockBackUpdate();
 			}
-		}
+            //コマンドの削除
+            input_two.DeleteCommand();
+        }
 		else
 		{
 			Player_two.HitStopUpdate();
@@ -57,6 +69,7 @@ public class GameManager : SingletonMono<GameManager>
 		if(hitStop_one>0)
 		{
 			isHitStop_one = true;
+			
 		}
 		if(hitStop_two>0)
 		{
