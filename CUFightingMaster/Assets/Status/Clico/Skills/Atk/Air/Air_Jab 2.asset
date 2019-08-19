@@ -34,7 +34,7 @@ MonoBehaviour:
       size: {x: -0.76, y: 0.69, z: 0}
       localPosition: {x: -0.22, y: 0.47, z: 0}
     startFrame: 0
-    endFrame: 62
+    endFrame: 34
   plusFootHitBox:
   - hitBox:
       size: {x: -1.76, y: 0, z: 0}
@@ -85,12 +85,16 @@ MonoBehaviour:
     airKnockBack: 0.2
     guardKnockBack: 0.8
     hitEffects:
-    - effect: {fileID: 1035952031622840111, guid: 1e7c60454de1a93419c148990a61f2b9,
+    - effect: {fileID: 1722284782620667795, guid: fc923a13308d53749ac62f505c756f19,
         type: 3}
       guardEffect: {fileID: 5981531815208451504, guid: fee703b5ebddea545a1e7c160ad9ca2e,
         type: 3}
       position: {x: 1.11, y: -0.24, z: -3}
     isDown: 0
+    isThrow: 0
+    throwSkill: {fileID: 0}
+    enemyThrowSkill: {fileID: 0}
+    throwDamages: []
     isContinue: 0
     movements: []
     gravityMoves: []
