@@ -52,9 +52,7 @@ public class TestInput : MonoBehaviour {
         }
     }
 
-    private void Start()
-    {
-    }
+
 
     //追加、初期化処理
     public void InitCommandManagers(FighterCore _core)
@@ -89,7 +87,7 @@ public class TestInput : MonoBehaviour {
             param.validInputFrame = validInputFrame;
             param.validShotFrame = validShotFrame;
             param.intervalFrame = 0;
-            groundMoveCommand.attackParameters.Add(param);
+            airMoveCommand.attackParameters.Add(param);
         }
         airMoveCommand.Init();
     }

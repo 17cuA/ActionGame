@@ -145,6 +145,7 @@ public class FigterEditor : EditorWindow
     private bool airHitDamage = false;
     private bool down = false;
     private bool customGroundMove = false;
+    private bool customAirMove = false;
     private void MoveAnimationTabDraw()
 	{
 		if(move = CustomUI.Foldout("移動系", move))
@@ -231,8 +232,32 @@ public class FigterEditor : EditorWindow
             }
             EditorGUILayout.EndVertical();
         }
+        if (customAirMove = CustomUI.Foldout("カスタム空中移動", customAirMove))
+        {
+            EditorGUILayout.BeginVertical("Box");
+            if (GUILayout.Button("移動技作成", GUILayout.Width(80)))
+            {
+                fighterStatus.airMoveSkills.Add(new FighterStatus.MoveAnimationCustom());
+            }
+            for (int i = 0; i < fighterStatus.airMoveSkills.Count; i++)
+            {
+                EditorGUILayout.BeginVertical("Box");
+                bool removeFrag = false;
+                if (GUILayout.Button("×", GUILayout.Width(20)))
+                {
+                    removeFrag = true;
+                }
+                fighterStatus.airMoveSkills[i].name = EditorGUILayout.TextField("名前", fighterStatus.airMoveSkills[i].name);
+                fighterStatus.airMoveSkills[i].command = EditorGUILayout.TextField("コマンド", fighterStatus.airMoveSkills[i].command);
+                SSet("技", ref fighterStatus.airMoveSkills[i].skill);
+                //削除ボタン
+                if (removeFrag) fighterStatus.airMoveSkills.RemoveAt(i);
+                EditorGUILayout.EndVertical();
+            }
+            EditorGUILayout.EndVertical();
+        }
 
-	}
+    }
 	private void SSet(string _s,ref FighterSkill _fs)
 	{
 		_fs = (FighterSkill)EditorGUILayout.ObjectField(_s,_fs,typeof(FighterSkill),false);

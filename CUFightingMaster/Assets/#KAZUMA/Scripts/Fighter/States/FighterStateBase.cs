@@ -11,6 +11,7 @@ public class FighterStateBase : StateBaseScriptMonoBehaviour
 	public FighterStateGuard stateGuard;
 
     public Dictionary<string, FighterSkill> groundSkills = new Dictionary<string, FighterSkill>();//地上コマンド技
+    public Dictionary<string, FighterSkill> airSkills = new Dictionary<string, FighterSkill>();//空中コマンド技
 
     #region 初期化
     private void Start()
@@ -29,6 +30,10 @@ public class FighterStateBase : StateBaseScriptMonoBehaviour
         foreach(var s in core.Status.groundMoveSkills)
         {
             groundSkills.Add(s.name, s.skill);
+        }
+        foreach(var s in core.Status.airMoveSkills)
+        {
+            airSkills.Add(s.name, s.skill);
         }
     }
     #endregion

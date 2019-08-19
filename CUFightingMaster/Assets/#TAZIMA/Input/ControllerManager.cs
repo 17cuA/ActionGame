@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ControllerManager : MonoBehaviour
 {
-    private static readonly int playerNum = 2;
+    private const int playerNum = 2;
     public GameObject[] inputManager = new GameObject[playerNum];   //InputManagerオブジェクトを管理
     public string[] controllerNames = new string[playerNum];        //コントローラーの名前を管理
     void Start()

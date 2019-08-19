@@ -104,6 +104,16 @@ public class FighterStateAttack : StateBaseScriptMonoBehaviour
     #region  空中
     public void AirAttackStart()
     {
+        if ((stateBase.input.airMoveCommand.inputCommandName != "") && (stateBase.input.airMoveCommand.inputCommandName != null))
+        {
+            Debug.Log(stateBase.input.airMoveCommand.inputCommandName);
+            //キーがあれば発動してreturn
+            if (stateBase.airSkills.ContainsKey(stateBase.input.airMoveCommand.inputCommandName))
+            {
+                stateBase.core.SetSkill(stateBase.airSkills[stateBase.input.airMoveCommand.inputCommandName], 0);
+            }
+            return;
+        }
         string atk = stateBase.input.GetPlayerAtk();
         if (stateBase.core.PlayerMoveStates == PlayerMoveState.Jump)
         {

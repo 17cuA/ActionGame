@@ -77,13 +77,27 @@ public class FighterStateMove : StateBaseScriptMonoBehaviour
     }
     /* 条件式 */
     public bool Input_Atk_True()
-    { 
-        if((stateBase.input.groundMoveCommand.inputCommandName!="")&&(stateBase.input.groundMoveCommand.inputCommandName!=null))
+    {
+        if (stateBase.core.GroundCheck())
         {
-            //キーがあれば発動してreturn
-            if (stateBase.groundSkills.ContainsKey(stateBase.input.groundMoveCommand.inputCommandName))
+            if ((stateBase.input.groundMoveCommand.inputCommandName != "") && (stateBase.input.groundMoveCommand.inputCommandName != null))
             {
-                return true;
+                //キーがあれば発動してreturn
+                if (stateBase.groundSkills.ContainsKey(stateBase.input.groundMoveCommand.inputCommandName))
+                {
+                    return true;
+                }
+            }
+        }
+        else
+        {
+            if ((stateBase.input.airMoveCommand.inputCommandName != "") && (stateBase.input.airMoveCommand.inputCommandName != null))
+            {
+                //キーがあれば発動してreturn
+                if (stateBase.airSkills.ContainsKey(stateBase.input.airMoveCommand.inputCommandName))
+                {
+                    return true;
+                }
             }
         }
         return stateBase.input.GetPlayerAtk() != null;
