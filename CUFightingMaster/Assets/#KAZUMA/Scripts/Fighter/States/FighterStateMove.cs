@@ -80,6 +80,19 @@ public class FighterStateMove : StateBaseScriptMonoBehaviour
     {
         return stateBase.input.GetPlayerAtk() != null;
     }
+    //着地
+    public void LandingStart()
+    {
+        stateBase.ChangeSkillConstant(SkillConstants.Landing, 0);
+    }
+    public bool IsEndLanding()
+    {
+        if(stateBase.core.AnimationPlayerCompornent.NowFrame > 3)
+        {
+            return true;
+        }
+        return false;
+    }
 
     #region 取得系
     private void ChangeMove(Direction _dir)

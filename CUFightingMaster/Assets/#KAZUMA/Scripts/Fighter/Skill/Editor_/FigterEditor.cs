@@ -157,8 +157,9 @@ public class FigterEditor : EditorWindow
             fighterStatus.constantsSkills[CommonConstants.Skills.Back_Jump] = (FighterSkill)EditorGUILayout.ObjectField("後ジャンプ", fighterStatus.constantsSkills[CommonConstants.Skills.Back_Jump], typeof(FighterSkill), false);
 			fighterStatus.constantsSkills[CommonConstants.Skills.Stand_Guard] = (FighterSkill)EditorGUILayout.ObjectField("立ちガード", fighterStatus.constantsSkills[CommonConstants.Skills.Stand_Guard], typeof(FighterSkill), false);
 			fighterStatus.constantsSkills[CommonConstants.Skills.Crouching_Guard] = (FighterSkill)EditorGUILayout.ObjectField("しゃがみガード", fighterStatus.constantsSkills[CommonConstants.Skills.Crouching_Guard], typeof(FighterSkill), false);
+            SSet("着地", ref fighterStatus.constantsSkills[CommonConstants.Skills.Landing]);
 
-		}
+        }
 		if (standHitDamage = CustomUI.Foldout("立ちやられ",standHitDamage))
 		{
             SSet("上弱", ref fighterStatus.constantsSkills[CommonConstants.Skills.Stand_Light_Top_HitMotion]);

@@ -16,7 +16,7 @@ public class FighterStateAttack : StateBaseScriptMonoBehaviour
         string atk = stateBase.input.GetPlayerAtk();
         switch (atk)
         {
-            case "_Atk1":
+            case CommonConstants.Buttons.Atk1:
                 if (stateBase.core.PlayerMoveStates == PlayerMoveState.Crouching)
                 {
 					// 飯塚追加-------------------------------------------
@@ -35,7 +35,7 @@ public class FighterStateAttack : StateBaseScriptMonoBehaviour
 
                 }
                 break;
-            case "_Atk2":
+            case CommonConstants.Buttons.Atk2:
                 if (stateBase.core.PlayerMoveStates == PlayerMoveState.Crouching)
                 {
 					 // 飯塚追加-------------------------------------------
@@ -54,7 +54,7 @@ public class FighterStateAttack : StateBaseScriptMonoBehaviour
                     stateBase.ChangeSkillConstant(SkillConstants.Stand_Middle_Jab, 0);
                 }
                 break;
-            case "_Atk3":
+            case CommonConstants.Buttons.Atk3:
                 if (stateBase.core.PlayerMoveStates == PlayerMoveState.Crouching)
                 {
 					// 飯塚追加-------------------------------------------
@@ -72,7 +72,7 @@ public class FighterStateAttack : StateBaseScriptMonoBehaviour
                     stateBase.ChangeSkillConstant(SkillConstants.Stand_Strong_Jab, 0);
                 }
                 break;
-            case "_Atk4":
+            case CommonConstants.Buttons.Atk4:
                 if(stateBase.core.PlayerMoveStates != PlayerMoveState.Crouching)
                 {
                     stateBase.ChangeSkillConstant(SkillConstants.Throw_Atk, 0);
@@ -99,21 +99,21 @@ public class FighterStateAttack : StateBaseScriptMonoBehaviour
         {
             switch (atk)
             {
-                case "_Atk1":
+            case CommonConstants.Buttons.Atk1:
 					// 飯塚追加-------------------------------------------
                     Sound.LoadSe("PunchW", "Se_punch_weak");
                     Sound.PlaySe("PunchW", 2, 0.4f);
                     // ---------------------------------------------------
                     stateBase.ChangeSkillConstant(SkillConstants.Air_Light_Jab, 0);
                     break;
-                case "_Atk2":
+            case CommonConstants.Buttons.Atk2:
 					  // 飯塚追加-------------------------------------------
                     Sound.LoadSe("PunchM", "Se_punch_medium");
                     Sound.PlaySe("PunchM", 2, 0.4f);
                     // ---------------------------------------------------
                     stateBase.ChangeSkillConstant(SkillConstants.Air_Middle_Jab, 0);
                     break;
-                case "_Atk3":
+            case CommonConstants.Buttons.Atk3:
 					 // 飯塚追加-------------------------------------------
                     Sound.LoadSe("PunchS", "Se_punch_strong");
                     Sound.PlaySe("PunchS", 2, 0.4f);
@@ -126,21 +126,21 @@ public class FighterStateAttack : StateBaseScriptMonoBehaviour
         {
             switch (atk)
             {
-                case "_Atk1":
+            case CommonConstants.Buttons.Atk1:
                     // 飯塚追加-------------------------------------------
                     Sound.LoadSe("PunchW", "Se_punch_weak");
                     Sound.PlaySe("PunchW", 2, 0.4f);
                     // ---------------------------------------------------
                     stateBase.ChangeSkillConstant(SkillConstants.Air_Back_Light_Jab, 0);
                     break;
-                case "_Atk2":
+            case CommonConstants.Buttons.Atk2:
 					 // 飯塚追加-------------------------------------------
                     Sound.LoadSe("PunchM", "Se_punch_medium");
                     Sound.PlaySe("PunchM", 2, 0.4f);
                     // ---------------------------------------------------
                     stateBase.ChangeSkillConstant(SkillConstants.Air_Back_Middle_Jab, 0);
                     break;
-                case "_Atk3":
+            case CommonConstants.Buttons.Atk3:
 					 // 飯塚追加-------------------------------------------
                     Sound.LoadSe("PunchS", "Se_punch_strong");
                     Sound.PlaySe("PunchS", 2, 0.4f);
@@ -153,21 +153,21 @@ public class FighterStateAttack : StateBaseScriptMonoBehaviour
         {
             switch (atk)
             {
-                case "_Atk1":
+            case CommonConstants.Buttons.Atk1:
 					// 飯塚追加-------------------------------------------
                     Sound.LoadSe("PunchW", "Se_punch_weak");
                     Sound.PlaySe("PunchW", 2, 0.4f);
                     // ---------------------------------------------------
                     stateBase.ChangeSkillConstant(SkillConstants.Air_Front_Light_Jab, 0);
                     break;
-                case "_Atk2":
+            case CommonConstants.Buttons.Atk2:
 					 // 飯塚追加-------------------------------------------
                     Sound.LoadSe("PunchM", "Se_punch_medium");
                     Sound.PlaySe("PunchM", 2, 0.4f);
                     // ---------------------------------------------------
                     stateBase.ChangeSkillConstant(SkillConstants.Air_Front_Middle_Jab, 0);
                     break;
-                case "_Atk3":
+            case CommonConstants.Buttons.Atk3:
 					// 飯塚追加-------------------------------------------
                     Sound.LoadSe("PunchS", "Se_punch_strong");
                     Sound.PlaySe("PunchS", 2, 0.4f);

@@ -52,10 +52,17 @@ public static class CommonConstants
             return "";
         }
     }
+    public static class Buttons
+    {
+        public const string Atk1 = "A";
+        public const string Atk2 = "B";
+        public const string Atk3 = "C";
+        public const string Atk4 = "D";
+    }
     public static class Skills
     {
         //一つ増やすたびに増やして
-        public static readonly int SkillCount = 74;
+        public static readonly int SkillCount = 75;
 
         //地上の動き
         public static readonly int Idle = 0;            //待機
@@ -166,6 +173,7 @@ public static class CommonConstants
         public static readonly int Damage_Fly_HitMotion = 72;//飛ばされ
 
         public static readonly int Throw_Atk = 73;//投げ技
+        public static readonly int Landing = 74;//着地
 
     }
 }
@@ -280,4 +288,5 @@ public enum SkillConstants
     Ground_Knock = 71,//打ち付け
     Damage_Fly_HitMotion = 72,//飛ばされ
     Throw_Atk = 73,//投げ技
+    Landing = 74,
 }

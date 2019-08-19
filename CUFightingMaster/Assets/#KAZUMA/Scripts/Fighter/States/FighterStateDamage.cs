@@ -396,9 +396,12 @@ public class FighterStateDamage : StateBaseScriptMonoBehaviour
 	{
 		if(stateBase.input.atkButton != "")
 		{
-			stateBase.input.atkButton = "";
-			return true;
-		}
+            if (stateBase.input.atkButton != CommonConstants.Buttons.Atk4)
+            {
+                stateBase.input.atkButton = "";
+                return true;
+            }
+        }
 		return false;
 	}
 }
