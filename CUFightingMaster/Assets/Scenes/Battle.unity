@@ -632,9 +632,33 @@ MonoBehaviour:
         judgeFuncInstance: {fileID: 210048055}
         priority: 0
         comment: "\u30B2\u30FC\u30E0\u30EB\u30FC\u30D7\u304C\u958B\u59CB\u3059\u308B\u6761\u4EF6"
-      execDelegate: []
+      execDelegate:
+      - actionName: StartGame
+        instance: {fileID: 210048055}
+        arg1:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 0
+          enum_Arg: 0
+          enum_Name: 
+          assembly_Name: 
+        arg2:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 0
+          enum_Arg: 0
+          enum_Name: 
+          assembly_Name: 
+        argMode: 0
+        argType1: 0
+        argType2: 0
+        comment: 
       playUpdateDelegate: []
-      nodePosition: {x: 102, y: 233}
+      nodePosition: {x: 99, y: 231}
       toggleWindow: 1
       stateMode: 0
       subStateID:
@@ -2996,9 +3020,33 @@ MonoBehaviour:
         judgeFuncInstance: {fileID: 262175160}
         priority: 0
         comment: "\u30B2\u30FC\u30E0\u30EB\u30FC\u30D7\u304C\u958B\u59CB\u3059\u308B\u6761\u4EF6"
-      execDelegate: []
+      execDelegate:
+      - actionName: StartGame
+        instance: {fileID: 262175160}
+        arg1:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 0
+          enum_Arg: 0
+          enum_Name: 
+          assembly_Name: 
+        arg2:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 0
+          enum_Arg: 0
+          enum_Name: 
+          assembly_Name: 
+        argMode: 0
+        argType1: 0
+        argType2: 0
+        comment: 
       playUpdateDelegate: []
-      nodePosition: {x: 102, y: 233}
+      nodePosition: {x: 112, y: 235}
       toggleWindow: 1
       stateMode: 0
       subStateID:
@@ -11314,6 +11362,7 @@ MonoBehaviour:
   Player_two: {fileID: 1865372484}
   input_one: {fileID: 1085984945}
   input_two: {fileID: 1326219563}
+  isStartGame: 0
 --- !u!4 &1660738368
 Transform:
   m_ObjectHideFlags: 0
@@ -13841,6 +13890,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8394669090198475103, guid: 727da66ea3ba7f54b870a8dc069b65c7,
         type: 3}
+      propertyPath: stateBody.Array.data[0].states.Array.data[0].execDelegate.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8394669090198475103, guid: 727da66ea3ba7f54b870a8dc069b65c7,
+        type: 3}
       propertyPath: stateBody.Array.data[1].states.Array.data[0].nodePosition.y
       value: -117
       objectReference: {fileID: 0}
@@ -14207,7 +14261,7 @@ PrefabInstance:
     - target: {fileID: 8394669090198475103, guid: 727da66ea3ba7f54b870a8dc069b65c7,
         type: 3}
       propertyPath: stateBody.Array.data[0].states.Array.data[0].nodePosition.x
-      value: 102
+      value: 112
       objectReference: {fileID: 0}
     - target: {fileID: 8394669090198475103, guid: 727da66ea3ba7f54b870a8dc069b65c7,
         type: 3}
@@ -14222,7 +14276,7 @@ PrefabInstance:
     - target: {fileID: 8394669090198475103, guid: 727da66ea3ba7f54b870a8dc069b65c7,
         type: 3}
       propertyPath: stateBody.Array.data[0].states.Array.data[0].nodePosition.y
-      value: 233
+      value: 235
       objectReference: {fileID: 0}
     - target: {fileID: 8394669090198475103, guid: 727da66ea3ba7f54b870a8dc069b65c7,
         type: 3}
@@ -14493,6 +14547,11 @@ PrefabInstance:
         type: 3}
       propertyPath: stateBody.Array.data[1].states.Array.data[7].execDelegate.Array.data[0].argType2
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8394669090198475103, guid: 727da66ea3ba7f54b870a8dc069b65c7,
+        type: 3}
+      propertyPath: stateBody.Array.data[0].states.Array.data[0].execDelegate.Array.data[0].actionName
+      value: StartGame
       objectReference: {fileID: 0}
     - target: {fileID: 8394669090198475102, guid: 727da66ea3ba7f54b870a8dc069b65c7,
         type: 3}
