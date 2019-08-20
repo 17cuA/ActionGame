@@ -63,7 +63,7 @@ public class TestInput : MonoBehaviour {
         airMoveCommand = gameObject.AddComponent<CommandManager>();
         airMoveCommand.attackParameters = new List<AttackParameter>();
 
-        //地上の初期化
+        //地上移動
         foreach (var co in _core.Status.groundMoveSkills)
         {
             var param = new AttackParameter();
@@ -74,6 +74,19 @@ public class TestInput : MonoBehaviour {
             param.validShotFrame = validShotFrame;
             param.intervalFrame = 0;
             groundMoveCommand.attackParameters.Add(param);
+        }
+        //地上コマンド攻撃
+        foreach(var co in _core.Status.groundAttackSkills)
+        {
+            var param = new AttackParameter();
+            param.commandName = co.name;
+            param.command = co.command;
+            param.shotTrigger = co.trigger;
+            param.validInputFrame = validInputFrame;
+            param.validShotFrame = co.validShotFrame;
+            param.intervalFrame = 0;
+            groundMoveCommand.attackParameters.Add(param);
+
         }
         groundMoveCommand.Init();
 
@@ -89,6 +102,19 @@ public class TestInput : MonoBehaviour {
             param.intervalFrame = 0;
             airMoveCommand.attackParameters.Add(param);
         }
+        //空中コマンド攻撃
+        foreach (var co in _core.Status.airAttackSkills)
+        {
+            var param = new AttackParameter();
+            param.commandName = co.name;
+            param.command = co.command;
+            param.shotTrigger = co.trigger;
+            param.validInputFrame = validInputFrame;
+            param.validShotFrame = co.validShotFrame;
+            param.intervalFrame = 0;
+            airMoveCommand.attackParameters.Add(param);
+        }
+
         airMoveCommand.Init();
     }
 	//コマンド消去

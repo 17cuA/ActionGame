@@ -31,9 +31,17 @@ public class FighterStateBase : StateBaseScriptMonoBehaviour
         {
             groundSkills.Add(s.name, s.skill);
         }
+        foreach(var s in core.Status.groundAttackSkills)
+        {
+            groundSkills.Add(s.name + s.trigger, s.skill);
+        }
         foreach(var s in core.Status.airMoveSkills)
         {
             airSkills.Add(s.name, s.skill);
+        }
+        foreach(var s in core.Status.airAttackSkills)
+        {
+            airSkills.Add(s.name + s.trigger, s.skill);
         }
     }
     #endregion

@@ -18,6 +18,7 @@ public class FighterStatus : ScriptableObject
         public string name;
         public string command;
         public string trigger;
+        public int validShotFrame = 6;
         public FighterSkill skill;
 	}
 	[System.Serializable]
@@ -38,9 +39,13 @@ public class FighterStatus : ScriptableObject
 	public HitBox_ pushingHitBox = new HitBox_();
     //スキル
     public FighterSkill[] constantsSkills = { };
-    public List<SkillAnimationCustom> uniqueSkills = new List<SkillAnimationCustom>();
-    public List<SkillAnimationCustom> specialSkills = new List<SkillAnimationCustom>();
-    public List<SkillAnimationCustom> CASkills = new List<SkillAnimationCustom>();
+
+    public List<SkillAnimationCustom> groundAttackSkills = new List<SkillAnimationCustom>();
+    public List<SkillAnimationCustom> airAttackSkills = new List<SkillAnimationCustom>();
+
+    // public List<SkillAnimationCustom> uniqueSkills = new List<SkillAnimationCustom>();
+    // public List<SkillAnimationCustom> specialSkills = new List<SkillAnimationCustom>();
+    // public List<SkillAnimationCustom> CASkills = new List<SkillAnimationCustom>();
 
     //カスタム移動
     public List<MoveAnimationCustom> groundMoveSkills = new List<MoveAnimationCustom>();

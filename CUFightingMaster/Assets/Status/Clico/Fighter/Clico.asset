@@ -104,9 +104,13 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 01c82c0f67ec07e46820b6fd55af31cb, type: 2}
   - {fileID: 11400000, guid: e48639deb7d0bfc4696eb84e2570c838, type: 2}
   - {fileID: 11400000, guid: 894f54dbfc575b947bd4f733fc84edf2, type: 2}
-  uniqueSkills: []
-  specialSkills: []
-  CASkills: []
+  groundAttackSkills:
+  - name: HADOKEN
+    command: 236
+    trigger: A
+    validShotFrame: 6
+    skill: {fileID: 11400000, guid: 0c67b6259621a924f88f5fbdcf3dd9d9, type: 2}
+  airAttackSkills: []
   groundMoveSkills:
   - name: Front_Dash
     command: 66

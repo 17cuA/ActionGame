@@ -275,9 +275,11 @@ public class FigterEditor : EditorWindow
     private bool airKick = false;
     private bool airFrontKick = false;
     private bool airBackKick = false;
-    private bool UniqueSkill = false;
-    private bool specialSkill = false;
-    private bool CASkill = false;
+    private bool groundAttack = false;
+    private bool airAttack = false;
+    // private bool UniqueSkill = false;
+    // private bool specialSkill = false;
+    // private bool CASkill = false;
 
     private void AttackTabDraw()
 	{
@@ -342,14 +344,14 @@ public class FigterEditor : EditorWindow
             SSet("中", ref fighterStatus.constantsSkills[CommonConstants.Skills.Air_Back_Middle_Kick]);
             SSet("強", ref fighterStatus.constantsSkills[CommonConstants.Skills.Air_Back_Strong_Kick]);
         }
-        if (UniqueSkill = CustomUI.Foldout("特殊技", UniqueSkill))
+        if (groundAttack = CustomUI.Foldout("地上コマンド技", groundAttack))
         {
             EditorGUILayout.BeginVertical("Box");
-            if (GUILayout.Button("特殊技作成", GUILayout.Width(80)))
+            if (GUILayout.Button("技作成", GUILayout.Width(80)))
             {
-                fighterStatus.uniqueSkills.Add(new FighterStatus.SkillAnimationCustom());
+                fighterStatus.groundAttackSkills.Add(new FighterStatus.SkillAnimationCustom());
             }
-            for (int i = 0; i < fighterStatus.uniqueSkills.Count; i++)
+            for (int i = 0; i < fighterStatus.groundAttackSkills.Count; i++)
             {
                 EditorGUILayout.BeginVertical("Box");
                 bool removeFrag = false;
@@ -357,22 +359,25 @@ public class FigterEditor : EditorWindow
                 {
                     removeFrag = true;
                 }
-                fighterStatus.uniqueSkills[i].command = EditorGUILayout.TextField("コマンド", fighterStatus.uniqueSkills[i].command);
-                SSet("技", ref fighterStatus.uniqueSkills[i].skill);
+                fighterStatus.groundAttackSkills[i].name = EditorGUILayout.TextField("技名", fighterStatus.groundAttackSkills[i].name);
+                fighterStatus.groundAttackSkills[i].command = EditorGUILayout.TextField("コマンド", fighterStatus.groundAttackSkills[i].command);
+                fighterStatus.groundAttackSkills[i].trigger = EditorGUILayout.TextField("トリガー", fighterStatus.groundAttackSkills[i].trigger);
+                fighterStatus.groundAttackSkills[i].validShotFrame = EditorGUILayout.IntField("トリガー入力猶予フレーム", fighterStatus.groundAttackSkills[i].validShotFrame);
+                SSet("技", ref fighterStatus.groundAttackSkills[i].skill);
                 //削除ボタン
-                if (removeFrag) fighterStatus.uniqueSkills.RemoveAt(i);
+                if (removeFrag) fighterStatus.groundAttackSkills.RemoveAt(i);
                 EditorGUILayout.EndVertical();
             }
             EditorGUILayout.EndVertical();
         }
-        if (specialSkill = CustomUI.Foldout("必殺技", specialSkill))
+        if (airAttack = CustomUI.Foldout("空中コマンド技", airAttack))
         {
             EditorGUILayout.BeginVertical("Box");
             if (GUILayout.Button("必殺技作成", GUILayout.Width(80)))
             {
-                fighterStatus.specialSkills.Add(new FighterStatus.SkillAnimationCustom());
+                fighterStatus.airAttackSkills.Add(new FighterStatus.SkillAnimationCustom());
             }
-            for (int i = 0; i < fighterStatus.specialSkills.Count; i++)
+            for (int i = 0; i < fighterStatus.airAttackSkills.Count; i++)
             {
                 EditorGUILayout.BeginVertical("Box");
                 bool removeFrag = false;
@@ -380,33 +385,13 @@ public class FigterEditor : EditorWindow
                 {
                     removeFrag = true;
                 }
-                fighterStatus.specialSkills[i].command = EditorGUILayout.TextField("コマンド", fighterStatus.specialSkills[i].command);
-                SSet("技", ref fighterStatus.specialSkills[i].skill);
+                fighterStatus.airAttackSkills[i].name = EditorGUILayout.TextField("技名", fighterStatus.airAttackSkills[i].name);
+                fighterStatus.airAttackSkills[i].command = EditorGUILayout.TextField("コマンド", fighterStatus.airAttackSkills[i].command);
+                fighterStatus.airAttackSkills[i].trigger = EditorGUILayout.TextField("トリガー", fighterStatus.airAttackSkills[i].trigger);
+                fighterStatus.airAttackSkills[i].validShotFrame = EditorGUILayout.IntField("トリガー入力猶予フレーム", fighterStatus.airAttackSkills[i].validShotFrame);
+                SSet("技", ref fighterStatus.airAttackSkills[i].skill);
                 //削除ボタン
-                if (removeFrag) fighterStatus.specialSkills.RemoveAt(i);
-                EditorGUILayout.EndVertical();
-            }
-            EditorGUILayout.EndVertical();
-        }
-        if (CASkill = CustomUI.Foldout("超必殺技", CASkill))
-        {
-            EditorGUILayout.BeginVertical("Box");
-            if (GUILayout.Button("超必殺技作成", GUILayout.Width(80)))
-            {
-                fighterStatus.CASkills.Add(new FighterStatus.SkillAnimationCustom());
-            }
-            for (int i = 0; i < fighterStatus.CASkills.Count; i++)
-            {
-                EditorGUILayout.BeginVertical("Box");
-                bool removeFrag = false;
-                if (GUILayout.Button("×", GUILayout.Width(20)))
-                {
-                    removeFrag = true;
-                }
-                fighterStatus.CASkills[i].command = EditorGUILayout.TextField("コマンド", fighterStatus.CASkills[i].command);
-                SSet("技", ref fighterStatus.CASkills[i].skill);
-                //削除ボタン
-                if (removeFrag) fighterStatus.CASkills.RemoveAt(i);
+                if (removeFrag) fighterStatus.airAttackSkills.RemoveAt(i);
                 EditorGUILayout.EndVertical();
             }
             EditorGUILayout.EndVertical();
