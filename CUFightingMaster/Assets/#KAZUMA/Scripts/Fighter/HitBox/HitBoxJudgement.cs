@@ -123,7 +123,9 @@ public class HitBoxJudgement
 		//HurtBoxMoving();
         DefaultBoxMoving(ref heads,ref nowPlayHeadsNumber,ref headCollider,core.Status.headHitBox);
 		DefaultBoxMoving(ref bodies, ref nowPlayBodyNumber, ref bodyCollider, core.Status.bodyHitBox);
-		DefaultBoxMoving(ref pushes, ref nowPlayPushNumber, ref pushingCollider, core.Status.pushingHitBox);
+        DefaultBoxMoving(ref foots, ref nowPlayFootNumber, ref footCollider, core.Status.footHitBox);
+        DefaultBoxMoving(ref grabs, ref nowPlayGrabNumber, ref grabCollider, core.Status.grabHitBox);
+        DefaultBoxMoving(ref pushes, ref nowPlayPushNumber, ref pushingCollider, core.Status.pushingHitBox);
 		
 		if (core.NowPlaySkill != null)
 		{
@@ -162,6 +164,7 @@ public class HitBoxJudgement
 		if (core.changeSkill == false) return;
 		if (core.NowPlaySkill != null)
 		{
+            Debug.Log("切り替わり");
             core.SetHitAttackFlag(false);//攻撃が当たったことのリセット
             //アクティブにしていたコライダーのリセット
             foreach (ComponentObjectPool<BoxCollider>.Objs g in nowPlayCollider)
