@@ -18,7 +18,7 @@ MonoBehaviour:
   hitMode: 0
   throwMotion: {fileID: 0}
   enemyThrowMotion: {fileID: 0}
-  cancelFrag: 1
+  cancelFrag: 0
   barrageCancelFrag: 0
   cancelLayer: 0
   inBlend: 0
@@ -76,6 +76,10 @@ MonoBehaviour:
         type: 3}
       position: {x: 0, y: -0.58, z: -3}
     isDown: 0
+    isThrow: 0
+    throwSkill: {fileID: 0}
+    enemyThrowSkill: {fileID: 0}
+    throwDamages: []
     isContinue: 0
     movements: []
     gravityMoves: []

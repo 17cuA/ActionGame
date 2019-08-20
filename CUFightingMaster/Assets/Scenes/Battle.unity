@@ -477,6 +477,2332 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 75ab4d1616e18ed4ea4c08a8e9e0273d, type: 3}
+--- !u!1 &210048049
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 210048057}
+  - component: {fileID: 210048056}
+  - component: {fileID: 210048055}
+  - component: {fileID: 210048054}
+  - component: {fileID: 210048053}
+  - component: {fileID: 210048052}
+  - component: {fileID: 210048051}
+  - component: {fileID: 210048050}
+  m_Layer: 0
+  m_Name: Player2State
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &210048050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 210048049}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8929e977495552a40b86f5fad1588ed3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stateName: 
+  isGuard: 0
+--- !u!114 &210048051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 210048049}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72a4ed79eb9640540989391be5ab58ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stateName: 
+--- !u!114 &210048052
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 210048049}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fe30f52129c5b04ea1e83f62702f5bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stateName: 
+--- !u!114 &210048053
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 210048049}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70678f3c26cff3247a5dd2e40d9667de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stateName: 
+--- !u!114 &210048054
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 210048049}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 644bfe671a0b98e4ba80f7e83f216dda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stateName: "\u79FB\u52D5"
+--- !u!114 &210048055
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 210048049}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f01fa8dbd172444f895bd8e01ae2a77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stateName: "\u30D9\u30FC\u30B9"
+  core: {fileID: 1865372484}
+  input: {fileID: 0}
+  stateGuard: {fileID: 0}
+--- !u!114 &210048056
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 210048049}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65440b06c5fdc3c4db9bf3616fe820d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stateBody:
+  - ID:
+      number: 1
+    stateName: 
+    stateMove: 0
+    states:
+    - stateName: start
+      ID:
+        number: 1
+      nextStateJudge:
+      - nextStateName: "\u79FB\u52D5,\u653B\u6483,\u30AC\u30FC\u30C9"
+        nextID:
+          number: 2
+        arg1:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 0
+          enum_Arg: 0
+          enum_Name: 
+          assembly_Name: 
+        arg2:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 0
+          enum_Arg: 0
+          enum_Name: 
+          assembly_Name: 
+        argMode: 0
+        argType1: 0
+        argType2: 0
+        judgeFuncName: IsStartGame
+        judgeFuncInstance: {fileID: 210048055}
+        priority: 0
+        comment: "\u30B2\u30FC\u30E0\u30EB\u30FC\u30D7\u304C\u958B\u59CB\u3059\u308B\u6761\u4EF6"
+      execDelegate: []
+      playUpdateDelegate: []
+      nodePosition: {x: 102, y: 233}
+      toggleWindow: 1
+      stateMode: 0
+      subStateID:
+        number: 0
+      isSkipState: 1
+    - stateName: "\u79FB\u52D5,\u653B\u6483,\u30AC\u30FC\u30C9"
+      ID:
+        number: 2
+      nextStateJudge:
+      - nextStateName: "\u3084\u3089\u308C"
+        nextID:
+          number: 3
+        arg1:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 0
+          enum_Arg: 0
+          enum_Name: 
+          assembly_Name: 
+        arg2:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 0
+          enum_Arg: 0
+          enum_Name: 
+          assembly_Name: 
+        argMode: 0
+        argType1: 0
+        argType2: 0
+        judgeFuncName: IsApplyDamage
+        judgeFuncInstance: {fileID: 210048055}
+        priority: 0
+        comment: 
+      execDelegate: []
+      playUpdateDelegate: []
+      nodePosition: {x: 643, y: 399}
+      toggleWindow: 1
+      stateMode: 1
+      subStateID:
+        number: 2
+      isSkipState: 0
+    - stateName: "\u3084\u3089\u308C"
+      ID:
+        number: 3
+      nextStateJudge:
+      - nextStateName: "\u79FB\u52D5,\u653B\u6483,\u30AC\u30FC\u30C9"
+        nextID:
+          number: 2
+        arg1:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 0
+          enum_Arg: 0
+          enum_Name: 
+          assembly_Name: 
+        arg2:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 0
+          enum_Arg: 0
+          enum_Name: 
+          assembly_Name: 
+        argMode: 0
+        argType1: 0
+        argType2: 0
+        judgeFuncName: IsEndHitStun
+        judgeFuncInstance: {fileID: 210048052}
+        priority: 0
+        comment: 
+      execDelegate: []
+      playUpdateDelegate: []
+      nodePosition: {x: 637, y: 97}
+      toggleWindow: 1
+      stateMode: 1
+      subStateID:
+        number: 3
+      isSkipState: 0
+    _frag: 0
+  - ID:
+      number: 2
+    stateName: 
+    stateMove: 0
+    states:
+    - stateName: Entry_
+      ID:
+        number: 1
+      nextStateJudge:
+      - nextStateName: "\u7A7A\u4E2D"
+        nextID:
+          number: 3
+        arg1:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 0
+          enum_Arg: 0
+          enum_Name: 
+          assembly_Name: 
+        arg2:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 0
+          enum_Arg: 0
+          enum_Name: 
+          assembly_Name: 
+        argMode: 1
+        argType1: 4
+        argType2: 0
+        judgeFuncName: IsGroundCheck
+        judgeFuncInstance: {fileID: 210048055}
+        priority: 0
+        comment: 
+      - nextStateName: "\u5730\u4E0A\u79FB\u52D5"
+        nextID:
+          number: 2
+        arg1:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 1
+          enum_Arg: 0
+          enum_Name: 
+          assembly_Name: 
+        arg2:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 0
+          enum_Arg: 0
+          enum_Name: 
+          assembly_Name: 
+        argMode: 1
+        argType1: 4
+        argType2: 0
+        judgeFuncName: IsGroundCheck
+        judgeFuncInstance: {fileID: 210048055}
+        priority: 0
+        comment: 
+      execDelegate: []
+      playUpdateDelegate: []
+      nodePosition: {x: -1215, y: -117}
+      toggleWindow: 1
+      stateMode: 0
+      subStateID:
+        number: 0
+      isSkipState: 1
+    - stateName: "\u5730\u4E0A\u79FB\u52D5"
+      ID:
+        number: 2
+      nextStateJudge:
+      - nextStateName: "\u30AC\u30FC\u30C9"
+        nextID:
+          number: 6
+        arg1:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 0
+          enum_Arg: 0
+          enum_Name: 
+          assembly_Name: 
+        arg2:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 0
+          enum_Arg: 0
+          enum_Name: 
+          assembly_Name: 
+        argMode: 0
+        argType1: 0
+        argType2: 0
+        judgeFuncName: IsApplyGuard
+        judgeFuncInstance: {fileID: 210048050}
+        priority: 0
+        comment: 
+      - nextStateName: "\u7A7A\u4E2D"
+        nextID:
+          number: 3
+        arg1:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 0
+          enum_Arg: 0
+          enum_Name: 
+          assembly_Name: 
+        arg2:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 0
+          enum_Arg: 0
+          enum_Name: 
+          assembly_Name: 
+        argMode: 1
+        argType1: 4
+        argType2: 0
+        judgeFuncName: IsGroundCheck
+        judgeFuncInstance: {fileID: 210048055}
+        priority: 0
+        comment: 
+      - nextStateName: "\u5730\u4E0A\u653B\u6483"
+        nextID:
+          number: 4
+        arg1:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 0
+          enum_Arg: 0
+          enum_Name: 
+          assembly_Name: 
+        arg2:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 0
+          enum_Arg: 0
+          enum_Name: 
+          assembly_Name: 
+        argMode: 0
+        argType1: 0
+        argType2: 0
+        judgeFuncName: Input_Atk_True
+        judgeFuncInstance: {fileID: 210048054}
+        priority: 0
+        comment: 
+      execDelegate:
+      - actionName: MoveStart
+        instance: {fileID: 210048054}
+        arg1:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 0
+          enum_Arg: 0
+          enum_Name: SkillConstants
+          assembly_Name: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        arg2:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 0
+          enum_Arg: 0
+          enum_Name: 
+          assembly_Name: 
+        argMode: 0
+        argType1: 5
+        argType2: 1
+        comment: 
+      playUpdateDelegate:
+      - actionName: MoveUpdate
+        instance: {fileID: 210048054}
+        arg1:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 0
+          enum_Arg: 0
+          enum_Name: SkillConstants
+          assembly_Name: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        arg2:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 0
+          enum_Arg: 0
+          enum_Name: 
+          assembly_Name: 
+        argMode: 0
+        argType1: 5
+        argType2: 1
+        comment: 
+      nodePosition: {x: -734, y: 164}
+      toggleWindow: 1
+      stateMode: 0
+      subStateID:
+        number: 0
+      isSkipState: 1
+    - stateName: "\u7A7A\u4E2D"
+      ID:
+        number: 3
+      nextStateJudge:
+      - nextStateName: "\u7740\u5730"
+        nextID:
+          number: 7
+        arg1:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 1
+          enum_Arg: 0
+          enum_Name: 
+          assembly_Name: 
+        arg2:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 0
+          enum_Arg: 0
+          enum_Name: 
+          assembly_Name: 
+        argMode: 1
+        argType1: 4
+        argType2: 0
+        judgeFuncName: IsGroundCheck
+        judgeFuncInstance: {fileID: 210048055}
+        priority: 0
+        comment: 
+      - nextStateName: "\u7A7A\u4E2D\u653B\u6483"
+        nextID:
+          number: 5
+        arg1:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 0
+          enum_Arg: 0
+          enum_Name: 
+          assembly_Name: 
+        arg2:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 0
+          enum_Arg: 0
+          enum_Name: 
+          assembly_Name: 
+        argMode: 0
+        argType1: 0
+        argType2: 0
+        judgeFuncName: Input_Atk_True
+        judgeFuncInstance: {fileID: 210048054}
+        priority: 0
+        comment: 
+      execDelegate: []
+      playUpdateDelegate: []
+      nodePosition: {x: -735, y: -329}
+      toggleWindow: 1
+      stateMode: 0
+      subStateID:
+        number: 0
+      isSkipState: 1
+    - stateName: "\u5730\u4E0A\u653B\u6483"
+      ID:
+        number: 4
+      nextStateJudge:
+      - nextStateName: "Cancel\u653B\u6483"
+        nextID:
+          number: 8
+        arg1:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 0
+          enum_Arg: 0
+          enum_Name: 
+          assembly_Name: 
+        arg2:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 0
+          enum_Arg: 0
+          enum_Name: 
+          assembly_Name: 
+        argMode: 0
+        argType1: 0
+        argType2: 0
+        judgeFuncName: IsCancelAttack
+        judgeFuncInstance: {fileID: 210048053}
+        priority: 0
+        comment: 
+      - nextStateName: Entry_
+        nextID:
+          number: 1
+        arg1:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 0
+          enum_Arg: 0
+          enum_Name: 
+          assembly_Name: 
+        arg2:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 0
+          enum_Arg: 0
+          enum_Name: 
+          assembly_Name: 
+        argMode: 0
+        argType1: 0
+        argType2: 0
+        judgeFuncName: IsEndAttack
+        judgeFuncInstance: {fileID: 210048053}
+        priority: 0
+        comment: 
+      execDelegate:
+      - actionName: AttackStart
+        instance: {fileID: 210048053}
+        arg1:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 0
+          enum_Arg: 0
+          enum_Name: SkillConstants
+          assembly_Name: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        arg2:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 0
+          enum_Arg: 0
+          enum_Name: 
+          assembly_Name: 
+        argMode: 0
+        argType1: 5
+        argType2: 1
+        comment: 
+      playUpdateDelegate:
+      - actionName: AttackUpdate
+        instance: {fileID: 210048053}
+        arg1:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 0
+          enum_Arg: 0
+          enum_Name: SkillConstants
+          assembly_Name: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        arg2:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 0
+          enum_Arg: 0
+          enum_Name: 
+          assembly_Name: 
+        argMode: 0
+        argType1: 5
+        argType2: 1
+        comment: 
+      nodePosition: {x: 79, y: 212}
+      toggleWindow: 1
+      stateMode: 0
+      subStateID:
+        number: 0
+      isSkipState: 0
+    - stateName: "\u7A7A\u4E2D\u653B\u6483"
+      ID:
+        number: 5
+      nextStateJudge:
+      - nextStateName: "\u7A7A\u4E2D"
+        nextID:
+          number: 3
+        arg1:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 0
+          enum_Arg: 0
+          enum_Name: 
+          assembly_Name: 
+        arg2:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 0
+          enum_Arg: 0
+          enum_Name: 
+          assembly_Name: 
+        argMode: 0
+        argType1: 0
+        argType2: 0
+        judgeFuncName: IsEndAirAttack
+        judgeFuncInstance: {fileID: 210048053}
+        priority: 0
+        comment: 
+      - nextStateName: "\u7740\u5730"
+        nextID:
+          number: 7
+        arg1:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 1
+          enum_Arg: 0
+          enum_Name: 
+          assembly_Name: 
+        arg2:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 0
+          enum_Arg: 0
+          enum_Name: 
+          assembly_Name: 
+        argMode: 1
+        argType1: 4
+        argType2: 0
+        judgeFuncName: IsGroundCheck
+        judgeFuncInstance: {fileID: 210048055}
+        priority: 0
+        comment: 
+      execDelegate:
+      - actionName: AirAttackStart
+        instance: {fileID: 210048053}
+        arg1:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 0
+          enum_Arg: 0
+          enum_Name: SkillConstants
+          assembly_Name: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        arg2:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 0
+          enum_Arg: 0
+          enum_Name: 
+          assembly_Name: 
+        argMode: 0
+        argType1: 5
+        argType2: 1
+        comment: 
+      playUpdateDelegate: []
+      nodePosition: {x: -49, y: -315}
+      toggleWindow: 1
+      stateMode: 0
+      subStateID:
+        number: 0
+      isSkipState: 0
+    - stateName: "\u30AC\u30FC\u30C9"
+      ID:
+        number: 6
+      nextStateJudge:
+      - nextStateName: Entry_
+        nextID:
+          number: 1
+        arg1:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 0
+          enum_Arg: 0
+          enum_Name: 
+          assembly_Name: 
+        arg2:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 0
+          enum_Arg: 0
+          enum_Name: 
+          assembly_Name: 
+        argMode: 0
+        argType1: 0
+        argType2: 0
+        judgeFuncName: IsApplyGuard
+        judgeFuncInstance: {fileID: 210048050}
+        priority: 0
+        comment: 
+      - nextStateName: Entry_
+        nextID:
+          number: 1
+        arg1:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 0
+          enum_Arg: 0
+          enum_Name: 
+          assembly_Name: 
+        arg2:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 0
+          enum_Arg: 0
+          enum_Name: 
+          assembly_Name: 
+        argMode: 0
+        argType1: 0
+        argType2: 0
+        judgeFuncName: IsEndGuard
+        judgeFuncInstance: {fileID: 210048050}
+        priority: 0
+        comment: 
+      execDelegate: []
+      playUpdateDelegate: []
+      nodePosition: {x: -373, y: 528}
+      toggleWindow: 1
+      stateMode: 1
+      subStateID:
+        number: 5
+      isSkipState: 0
+    - stateName: "\u7740\u5730"
+      ID:
+        number: 7
+      nextStateJudge:
+      - nextStateName: "\u5730\u4E0A\u79FB\u52D5"
+        nextID:
+          number: 2
+        arg1:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 0
+          enum_Arg: 0
+          enum_Name: 
+          assembly_Name: 
+        arg2:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 0
+          enum_Arg: 0
+          enum_Name: 
+          assembly_Name: 
+        argMode: 0
+        argType1: 0
+        argType2: 0
+        judgeFuncName: IsEndLanding
+        judgeFuncInstance: {fileID: 210048054}
+        priority: 0
+        comment: 
+      execDelegate:
+      - actionName: LandingStart
+        instance: {fileID: 210048054}
+        arg1:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 0
+          enum_Arg: 0
+          enum_Name: SkillConstants
+          assembly_Name: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        arg2:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 0
+          enum_Arg: 0
+          enum_Name: 
+          assembly_Name: 
+        argMode: 0
+        argType1: 5
+        argType2: 1
+        comment: 
+      playUpdateDelegate: []
+      nodePosition: {x: -448, y: -20}
+      toggleWindow: 1
+      stateMode: 0
+      subStateID:
+        number: 0
+      isSkipState: 0
+    - stateName: "Cancel\u653B\u6483"
+      ID:
+        number: 8
+      nextStateJudge:
+      - nextStateName: "\u5730\u4E0A\u653B\u6483"
+        nextID:
+          number: 4
+        arg1:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 0
+          enum_Arg: 0
+          enum_Name: 
+          assembly_Name: 
+        arg2:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 0
+          enum_Arg: 0
+          enum_Name: 
+          assembly_Name: 
+        argMode: 0
+        argType1: 0
+        argType2: 0
+        judgeFuncName: IsMoveFighter
+        judgeFuncInstance: {fileID: 210048055}
+        priority: 0
+        comment: 
+      execDelegate: []
+      playUpdateDelegate: []
+      nodePosition: {x: 524, y: 310}
+      toggleWindow: 1
+      stateMode: 0
+      subStateID:
+        number: 0
+      isSkipState: 1
+    _frag: 0
+  - ID:
+      number: 3
+    stateName: 
+    stateMove: 0
+    states:
+    - stateName: Entry_
+      ID:
+        number: 1
+      nextStateJudge:
+      - nextStateName: "\u6295\u3052\u6280"
+        nextID:
+          number: 10
+        arg1:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 0
+          enum_Arg: 0
+          enum_Name: 
+          assembly_Name: 
+        arg2:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 0
+          enum_Arg: 0
+          enum_Name: 
+          assembly_Name: 
+        argMode: 0
+        argType1: 0
+        argType2: 0
+        judgeFuncName: isThrowHit
+        judgeFuncInstance: {fileID: 210048052}
+        priority: 0
+        comment: 
+      - nextStateName: "\u30C0\u30A6\u30F3\uFF08\u98DB\u3070\u3057\uFF09\u6280"
+        nextID:
+          number: 9
+        arg1:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 0
+          enum_Arg: 0
+          enum_Name: 
+          assembly_Name: 
+        arg2:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 0
+          enum_Arg: 0
+          enum_Name: 
+          assembly_Name: 
+        argMode: 0
+        argType1: 0
+        argType2: 0
+        judgeFuncName: isDownHit
+        judgeFuncInstance: {fileID: 210048052}
+        priority: 0
+        comment: 
+      - nextStateName: End
+        nextID:
+          number: 5
+        arg1:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 0
+          enum_Arg: 0
+          enum_Name: 
+          assembly_Name: 
+        arg2:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 0
+          enum_Arg: 0
+          enum_Name: 
+          assembly_Name: 
+        argMode: 0
+        argType1: 0
+        argType2: 0
+        judgeFuncName: isNoneDamage
+        judgeFuncInstance: {fileID: 210048052}
+        priority: 0
+        comment: 
+      - nextStateName: "\u7A7A\u4E2D\u3084\u3089\u308C"
+        nextID:
+          number: 2
+        arg1:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 0
+          enum_Arg: 0
+          enum_Name: 
+          assembly_Name: 
+        arg2:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 0
+          enum_Arg: 0
+          enum_Name: 
+          assembly_Name: 
+        argMode: 1
+        argType1: 4
+        argType2: 0
+        judgeFuncName: IsGroundCheck
+        judgeFuncInstance: {fileID: 210048055}
+        priority: 0
+        comment: 
+      - nextStateName: "\u5730\u4E0A\u3084\u3089\u308C"
+        nextID:
+          number: 3
+        arg1:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 1
+          enum_Arg: 0
+          enum_Name: 
+          assembly_Name: 
+        arg2:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 0
+          enum_Arg: 0
+          enum_Name: 
+          assembly_Name: 
+        argMode: 1
+        argType1: 4
+        argType2: 0
+        judgeFuncName: IsGroundCheck
+        judgeFuncInstance: {fileID: 210048055}
+        priority: 0
+        comment: 
+      execDelegate: []
+      playUpdateDelegate: []
+      nodePosition: {x: -375, y: 257}
+      toggleWindow: 1
+      stateMode: 0
+      subStateID:
+        number: 0
+      isSkipState: 1
+    - stateName: "\u7A7A\u4E2D\u3084\u3089\u308C"
+      ID:
+        number: 2
+      nextStateJudge:
+      - nextStateName: Entry_
+        nextID:
+          number: 1
+        arg1:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 0
+          enum_Arg: 0
+          enum_Name: 
+          assembly_Name: 
+        arg2:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 0
+          enum_Arg: 0
+          enum_Name: 
+          assembly_Name: 
+        argMode: 0
+        argType1: 0
+        argType2: 0
+        judgeFuncName: IsApplyDamage
+        judgeFuncInstance: {fileID: 210048055}
+        priority: 0
+        comment: 
+      - nextStateName: "\u7A7A\u4E2D\u53D7\u3051\u8EAB\u5F85\u6A5F\u6642\u9593"
+        nextID:
+          number: 4
+        arg1:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 0
+          enum_Arg: 0
+          enum_Name: 
+          assembly_Name: 
+        arg2:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 0
+          enum_Arg: 0
+          enum_Name: 
+          assembly_Name: 
+        argMode: 0
+        argType1: 0
+        argType2: 0
+        judgeFuncName: IsEndHitStunCount
+        judgeFuncInstance: {fileID: 210048052}
+        priority: 0
+        comment: 
+      execDelegate:
+      - actionName: AirHitStunStart
+        instance: {fileID: 210048052}
+        arg1:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 0
+          enum_Arg: 0
+          enum_Name: SkillConstants
+          assembly_Name: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        arg2:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 0
+          enum_Arg: 0
+          enum_Name: 
+          assembly_Name: 
+        argMode: 0
+        argType1: 5
+        argType2: 1
+        comment: 
+      playUpdateDelegate:
+      - actionName: HitStunUpdate
+        instance: {fileID: 210048052}
+        arg1:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 0
+          enum_Arg: 0
+          enum_Name: SkillConstants
+          assembly_Name: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        arg2:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 0
+          enum_Arg: 0
+          enum_Name: 
+          assembly_Name: 
+        argMode: 0
+        argType1: 4
+        argType2: 1
+        comment: 
+      nodePosition: {x: 449, y: 415}
+      toggleWindow: 1
+      stateMode: 0
+      subStateID:
+        number: 0
+      isSkipState: 0
+    - stateName: "\u5730\u4E0A\u3084\u3089\u308C"
+      ID:
+        number: 3
+      nextStateJudge:
+      - nextStateName: Entry_
+        nextID:
+          number: 1
+        arg1:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 0
+          enum_Arg: 0
+          enum_Name: 
+          assembly_Name: 
+        arg2:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 0
+          enum_Arg: 0
+          enum_Name: 
+          assembly_Name: 
+        argMode: 0
+        argType1: 0
+        argType2: 0
+        judgeFuncName: IsApplyDamage
+        judgeFuncInstance: {fileID: 210048055}
+        priority: 0
+        comment: 
+      - nextStateName: End
+        nextID:
+          number: 5
+        arg1:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 0
+          enum_Arg: 0
+          enum_Name: 
+          assembly_Name: 
+        arg2:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 0
+          enum_Arg: 0
+          enum_Name: 
+          assembly_Name: 
+        argMode: 0
+        argType1: 0
+        argType2: 0
+        judgeFuncName: IsEndHitStunCount
+        judgeFuncInstance: {fileID: 210048052}
+        priority: 0
+        comment: 
+      execDelegate:
+      - actionName: HitStunStart
+        instance: {fileID: 210048052}
+        arg1:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 0
+          enum_Arg: 0
+          enum_Name: SkillConstants
+          assembly_Name: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        arg2:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 0
+          enum_Arg: 0
+          enum_Name: 
+          assembly_Name: 
+        argMode: 0
+        argType1: 5
+        argType2: 1
+        comment: 
+      playUpdateDelegate:
+      - actionName: HitStunUpdate
+        instance: {fileID: 210048052}
+        arg1:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 0
+          enum_Arg: 0
+          enum_Name: SkillConstants
+          assembly_Name: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        arg2:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 0
+          enum_Arg: 0
+          enum_Name: 
+          assembly_Name: 
+        argMode: 0
+        argType1: 4
+        argType2: 1
+        comment: 
+      nodePosition: {x: 445, y: 780}
+      toggleWindow: 1
+      stateMode: 0
+      subStateID:
+        number: 0
+      isSkipState: 0
+    - stateName: "\u7A7A\u4E2D\u53D7\u3051\u8EAB\u5F85\u6A5F\u6642\u9593"
+      ID:
+        number: 4
+      nextStateJudge:
+      - nextStateName: "\u6253\u3061\u4ED8\u3051"
+        nextID:
+          number: 8
+        arg1:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 1
+          enum_Arg: 0
+          enum_Name: 
+          assembly_Name: 
+        arg2:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 0
+          enum_Arg: 0
+          enum_Name: 
+          assembly_Name: 
+        argMode: 1
+        argType1: 4
+        argType2: 0
+        judgeFuncName: IsGroundCheck
+        judgeFuncInstance: {fileID: 210048055}
+        priority: 0
+        comment: 
+      - nextStateName: "\u7A7A\u4E2D\u53D7\u3051\u8EABEnd"
+        nextID:
+          number: 6
+        arg1:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 0
+          enum_Arg: 0
+          enum_Name: 
+          assembly_Name: 
+        arg2:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 0
+          enum_Arg: 0
+          enum_Name: 
+          assembly_Name: 
+        argMode: 0
+        argType1: 0
+        argType2: 0
+        judgeFuncName: IsPassiveInput
+        judgeFuncInstance: {fileID: 210048052}
+        priority: 0
+        comment: 
+      - nextStateName: Entry_
+        nextID:
+          number: 1
+        arg1:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 0
+          enum_Arg: 0
+          enum_Name: 
+          assembly_Name: 
+        arg2:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 0
+          enum_Arg: 0
+          enum_Name: 
+          assembly_Name: 
+        argMode: 0
+        argType1: 0
+        argType2: 0
+        judgeFuncName: IsApplyDamage
+        judgeFuncInstance: {fileID: 210048055}
+        priority: 0
+        comment: 
+      execDelegate: []
+      playUpdateDelegate: []
+      nodePosition: {x: 845, y: 298}
+      toggleWindow: 1
+      stateMode: 0
+      subStateID:
+        number: 0
+      isSkipState: 0
+    - stateName: End
+      ID:
+        number: 5
+      nextStateJudge: []
+      execDelegate:
+      - actionName: EndHitStunFlag
+        instance: {fileID: 210048052}
+        arg1:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 0
+          enum_Arg: 0
+          enum_Name: SkillConstants
+          assembly_Name: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        arg2:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 0
+          enum_Arg: 0
+          enum_Name: 
+          assembly_Name: 
+        argMode: 0
+        argType1: 5
+        argType2: 1
+        comment: 
+      playUpdateDelegate: []
+      nodePosition: {x: 1422, y: 946}
+      toggleWindow: 1
+      stateMode: 0
+      subStateID:
+        number: 0
+      isSkipState: 1
+    - stateName: "\u7A7A\u4E2D\u53D7\u3051\u8EABEnd"
+      ID:
+        number: 6
+      nextStateJudge: []
+      execDelegate:
+      - actionName: EndHitStunFlag
+        instance: {fileID: 210048052}
+        arg1:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 0
+          enum_Arg: 0
+          enum_Name: SkillConstants
+          assembly_Name: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        arg2:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 0
+          enum_Arg: 0
+          enum_Name: 
+          assembly_Name: 
+        argMode: 0
+        argType1: 5
+        argType2: 1
+        comment: 
+      - actionName: PlayPassive
+        instance: {fileID: 210048052}
+        arg1:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 0
+          enum_Arg: 0
+          enum_Name: SkillConstants
+          assembly_Name: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        arg2:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 0
+          enum_Arg: 0
+          enum_Name: 
+          assembly_Name: 
+        argMode: 0
+        argType1: 5
+        argType2: 1
+        comment: 
+      playUpdateDelegate: []
+      nodePosition: {x: 1407, y: 658}
+      toggleWindow: 1
+      stateMode: 0
+      subStateID:
+        number: 0
+      isSkipState: 0
+    - stateName: Down
+      ID:
+        number: 7
+      nextStateJudge:
+      - nextStateName: Entry_
+        nextID:
+          number: 1
+        arg1:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 0
+          enum_Arg: 0
+          enum_Name: 
+          assembly_Name: 
+        arg2:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 0
+          enum_Arg: 0
+          enum_Name: 
+          assembly_Name: 
+        argMode: 0
+        argType1: 0
+        argType2: 0
+        judgeFuncName: IsApplyDamage
+        judgeFuncInstance: {fileID: 210048055}
+        priority: 0
+        comment: 
+      execDelegate: []
+      playUpdateDelegate: []
+      nodePosition: {x: 1552, y: 366}
+      toggleWindow: 1
+      stateMode: 1
+      subStateID:
+        number: 4
+      isSkipState: 0
+    - stateName: "\u6253\u3061\u4ED8\u3051"
+      ID:
+        number: 8
+      nextStateJudge:
+      - nextStateName: Down
+        nextID:
+          number: 7
+        arg1:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 0
+          enum_Arg: 0
+          enum_Name: 
+          assembly_Name: 
+        arg2:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 0
+          enum_Arg: 0
+          enum_Name: 
+          assembly_Name: 
+        argMode: 0
+        argType1: 0
+        argType2: 0
+        judgeFuncName: IsEndGroundKnock
+        judgeFuncInstance: {fileID: 210048051}
+        priority: 0
+        comment: 
+      - nextStateName: Entry_
+        nextID:
+          number: 1
+        arg1:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 0
+          enum_Arg: 0
+          enum_Name: 
+          assembly_Name: 
+        arg2:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 0
+          enum_Arg: 0
+          enum_Name: 
+          assembly_Name: 
+        argMode: 0
+        argType1: 0
+        argType2: 0
+        judgeFuncName: IsApplyDamage
+        judgeFuncInstance: {fileID: 210048055}
+        priority: 0
+        comment: 
+      execDelegate:
+      - actionName: GroundKnockStart
+        instance: {fileID: 210048051}
+        arg1:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 0
+          enum_Arg: 0
+          enum_Name: SkillConstants
+          assembly_Name: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        arg2:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 0
+          enum_Arg: 0
+          enum_Name: 
+          assembly_Name: 
+        argMode: 0
+        argType1: 5
+        argType2: 1
+        comment: 
+      playUpdateDelegate: []
+      nodePosition: {x: 1178, y: 290}
+      toggleWindow: 1
+      stateMode: 0
+      subStateID:
+        number: 0
+      isSkipState: 0
+    - stateName: "\u30C0\u30A6\u30F3\uFF08\u98DB\u3070\u3057\uFF09\u6280"
+      ID:
+        number: 9
+      nextStateJudge:
+      - nextStateName: Entry_
+        nextID:
+          number: 1
+        arg1:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 0
+          enum_Arg: 0
+          enum_Name: 
+          assembly_Name: 
+        arg2:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 0
+          enum_Arg: 0
+          enum_Name: 
+          assembly_Name: 
+        argMode: 0
+        argType1: 0
+        argType2: 0
+        judgeFuncName: IsApplyDamage
+        judgeFuncInstance: {fileID: 210048055}
+        priority: 0
+        comment: 
+      - nextStateName: "\u7A7A\u4E2D\u53D7\u3051\u8EAB\u5F85\u6A5F\u6642\u9593"
+        nextID:
+          number: 4
+        arg1:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 0
+          enum_Arg: 0
+          enum_Name: 
+          assembly_Name: 
+        arg2:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 0
+          enum_Arg: 0
+          enum_Name: 
+          assembly_Name: 
+        argMode: 0
+        argType1: 0
+        argType2: 0
+        judgeFuncName: IsEndHitStunCount
+        judgeFuncInstance: {fileID: 210048052}
+        priority: 0
+        comment: 
+      - nextStateName: "\u6253\u3061\u4ED8\u3051"
+        nextID:
+          number: 8
+        arg1:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 1
+          enum_Arg: 0
+          enum_Name: 
+          assembly_Name: 
+        arg2:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 0
+          enum_Arg: 0
+          enum_Name: 
+          assembly_Name: 
+        argMode: 1
+        argType1: 4
+        argType2: 0
+        judgeFuncName: IsGroundCheck
+        judgeFuncInstance: {fileID: 210048055}
+        priority: 0
+        comment: 
+      execDelegate:
+      - actionName: DownHitStart
+        instance: {fileID: 210048052}
+        arg1:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 0
+          enum_Arg: 0
+          enum_Name: SkillConstants
+          assembly_Name: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        arg2:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 0
+          enum_Arg: 0
+          enum_Name: 
+          assembly_Name: 
+        argMode: 0
+        argType1: 5
+        argType2: 1
+        comment: 
+      playUpdateDelegate:
+      - actionName: HitStunUpdate
+        instance: {fileID: 210048052}
+        arg1:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 0
+          enum_Arg: 0
+          enum_Name: SkillConstants
+          assembly_Name: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        arg2:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 0
+          enum_Arg: 0
+          enum_Name: 
+          assembly_Name: 
+        argMode: 0
+        argType1: 5
+        argType2: 1
+        comment: 
+      nodePosition: {x: 439, y: 8}
+      toggleWindow: 1
+      stateMode: 0
+      subStateID:
+        number: 0
+      isSkipState: 0
+    - stateName: "\u6295\u3052\u6280"
+      ID:
+        number: 10
+      nextStateJudge:
+      - nextStateName: "\u7A7A\u4E2D\u53D7\u3051\u8EAB\u5F85\u6A5F\u6642\u9593"
+        nextID:
+          number: 4
+        arg1:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 0
+          enum_Arg: 0
+          enum_Name: 
+          assembly_Name: 
+        arg2:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 0
+          enum_Arg: 0
+          enum_Name: 
+          assembly_Name: 
+        argMode: 0
+        argType1: 0
+        argType2: 0
+        judgeFuncName: IsEndGroundKnock
+        judgeFuncInstance: {fileID: 210048051}
+        priority: 0
+        comment: 
+      execDelegate:
+      - actionName: Throw_Damage_Start
+        instance: {fileID: 210048052}
+        arg1:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 0
+          enum_Arg: 0
+          enum_Name: SkillConstants
+          assembly_Name: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        arg2:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 0
+          enum_Arg: 0
+          enum_Name: 
+          assembly_Name: 
+        argMode: 0
+        argType1: 5
+        argType2: 1
+        comment: 
+      playUpdateDelegate:
+      - actionName: Throw_Damage_Update
+        instance: {fileID: 210048052}
+        arg1:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 0
+          enum_Arg: 0
+          enum_Name: SkillConstants
+          assembly_Name: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        arg2:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 0
+          enum_Arg: 0
+          enum_Name: 
+          assembly_Name: 
+        argMode: 0
+        argType1: 5
+        argType2: 1
+        comment: 
+      nodePosition: {x: 383, y: -311}
+      toggleWindow: 1
+      stateMode: 0
+      subStateID:
+        number: 0
+      isSkipState: 0
+    _frag: 0
+  - ID:
+      number: 4
+    stateName: 
+    stateMove: 0
+    states:
+    - stateName: Entry_
+      ID:
+        number: 1
+      nextStateJudge:
+      - nextStateName: Down
+        nextID:
+          number: 2
+        arg1:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 0
+          enum_Arg: 0
+          enum_Name: 
+          assembly_Name: 
+        arg2:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 0
+          enum_Arg: 0
+          enum_Name: 
+          assembly_Name: 
+        argMode: 0
+        argType1: 0
+        argType2: 0
+        judgeFuncName: IsStartGame
+        judgeFuncInstance: {fileID: 210048055}
+        priority: 0
+        comment: 
+      execDelegate: []
+      playUpdateDelegate:
+      - actionName: ChangeSkillConstant
+        instance: {fileID: 210048055}
+        arg1:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 0
+          enum_Arg: 0
+          enum_Name: SkillConstants
+          assembly_Name: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        arg2:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 0
+          enum_Arg: 0
+          enum_Name: 
+          assembly_Name: 
+        argMode: 2
+        argType1: 5
+        argType2: 1
+        comment: 
+      nodePosition: {x: -493, y: 107}
+      toggleWindow: 1
+      stateMode: 0
+      subStateID:
+        number: 0
+      isSkipState: 1
+    - stateName: Down
+      ID:
+        number: 2
+      nextStateJudge:
+      - nextStateName: WakeUp
+        nextID:
+          number: 3
+        arg1:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 0
+          enum_Arg: 0
+          enum_Name: 
+          assembly_Name: 
+        arg2:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 0
+          enum_Arg: 0
+          enum_Name: 
+          assembly_Name: 
+        argMode: 0
+        argType1: 0
+        argType2: 0
+        judgeFuncName: IsWakeUp
+        judgeFuncInstance: {fileID: 210048051}
+        priority: 0
+        comment: 
+      execDelegate:
+      - actionName: DownStart
+        instance: {fileID: 210048051}
+        arg1:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 0
+          enum_Arg: 0
+          enum_Name: SkillConstants
+          assembly_Name: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        arg2:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 0
+          enum_Arg: 0
+          enum_Name: 
+          assembly_Name: 
+        argMode: 0
+        argType1: 5
+        argType2: 1
+        comment: 
+      playUpdateDelegate:
+      - actionName: UpdateDown
+        instance: {fileID: 210048051}
+        arg1:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 0
+          enum_Arg: 0
+          enum_Name: SkillConstants
+          assembly_Name: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        arg2:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 0
+          enum_Arg: 0
+          enum_Name: 
+          assembly_Name: 
+        argMode: 0
+        argType1: 5
+        argType2: 1
+        comment: 
+      nodePosition: {x: 33, y: 121}
+      toggleWindow: 1
+      stateMode: 0
+      subStateID:
+        number: 0
+      isSkipState: 0
+    - stateName: WakeUp
+      ID:
+        number: 3
+      nextStateJudge:
+      - nextStateName: End
+        nextID:
+          number: 4
+        arg1:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 0
+          enum_Arg: 0
+          enum_Name: 
+          assembly_Name: 
+        arg2:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 0
+          enum_Arg: 0
+          enum_Name: 
+          assembly_Name: 
+        argMode: 0
+        argType1: 0
+        argType2: 0
+        judgeFuncName: IsEndWakeUp
+        judgeFuncInstance: {fileID: 210048051}
+        priority: 0
+        comment: 
+      execDelegate:
+      - actionName: WakeUpStart
+        instance: {fileID: 210048051}
+        arg1:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 0
+          enum_Arg: 0
+          enum_Name: SkillConstants
+          assembly_Name: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        arg2:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 0
+          enum_Arg: 0
+          enum_Name: 
+          assembly_Name: 
+        argMode: 0
+        argType1: 5
+        argType2: 1
+        comment: 
+      playUpdateDelegate: []
+      nodePosition: {x: 453, y: 299}
+      toggleWindow: 1
+      stateMode: 0
+      subStateID:
+        number: 0
+      isSkipState: 0
+    - stateName: End
+      ID:
+        number: 4
+      nextStateJudge: []
+      execDelegate:
+      - actionName: EndHitStunFlag
+        instance: {fileID: 210048052}
+        arg1:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 0
+          enum_Arg: 0
+          enum_Name: SkillConstants
+          assembly_Name: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        arg2:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 0
+          enum_Arg: 0
+          enum_Name: 
+          assembly_Name: 
+        argMode: 0
+        argType1: 5
+        argType2: 1
+        comment: 
+      playUpdateDelegate: []
+      nodePosition: {x: 795, y: 380}
+      toggleWindow: 1
+      stateMode: 0
+      subStateID:
+        number: 0
+      isSkipState: 0
+    _frag: 0
+  - ID:
+      number: 5
+    stateName: 
+    stateMove: 0
+    states:
+    - stateName: Entry_
+      ID:
+        number: 1
+      nextStateJudge:
+      - nextStateName: Guard
+        nextID:
+          number: 2
+        arg1:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 0
+          enum_Arg: 0
+          enum_Name: 
+          assembly_Name: 
+        arg2:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 0
+          enum_Arg: 0
+          enum_Name: 
+          assembly_Name: 
+        argMode: 0
+        argType1: 0
+        argType2: 0
+        judgeFuncName: IsStartGame
+        judgeFuncInstance: {fileID: 210048055}
+        priority: 0
+        comment: 
+      execDelegate: []
+      playUpdateDelegate: []
+      nodePosition: {x: 253, y: 256}
+      toggleWindow: 1
+      stateMode: 0
+      subStateID:
+        number: 0
+      isSkipState: 1
+    - stateName: Guard
+      ID:
+        number: 2
+      nextStateJudge:
+      - nextStateName: Entry_
+        nextID:
+          number: 1
+        arg1:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 0
+          enum_Arg: 0
+          enum_Name: 
+          assembly_Name: 
+        arg2:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 0
+          enum_Arg: 0
+          enum_Name: 
+          assembly_Name: 
+        argMode: 0
+        argType1: 0
+        argType2: 0
+        judgeFuncName: IsEndGuard
+        judgeFuncInstance: {fileID: 210048050}
+        priority: 0
+        comment: 
+      - nextStateName: End
+        nextID:
+          number: 3
+        arg1:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 0
+          enum_Arg: 0
+          enum_Name: 
+          assembly_Name: 
+        arg2:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 0
+          enum_Arg: 0
+          enum_Name: 
+          assembly_Name: 
+        argMode: 0
+        argType1: 0
+        argType2: 0
+        judgeFuncName: IsEndGuardCount
+        judgeFuncInstance: {fileID: 210048050}
+        priority: 0
+        comment: 
+      execDelegate:
+      - actionName: GuardStart
+        instance: {fileID: 210048050}
+        arg1:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 0
+          enum_Arg: 0
+          enum_Name: SkillConstants
+          assembly_Name: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        arg2:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 0
+          enum_Arg: 0
+          enum_Name: 
+          assembly_Name: 
+        argMode: 0
+        argType1: 5
+        argType2: 1
+        comment: 
+      playUpdateDelegate:
+      - actionName: GuardUpdate
+        instance: {fileID: 210048050}
+        arg1:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 0
+          enum_Arg: 0
+          enum_Name: SkillConstants
+          assembly_Name: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        arg2:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 0
+          enum_Arg: 0
+          enum_Name: 
+          assembly_Name: 
+        argMode: 0
+        argType1: 5
+        argType2: 1
+        comment: 
+      nodePosition: {x: 703, y: 199}
+      toggleWindow: 1
+      stateMode: 0
+      subStateID:
+        number: 0
+      isSkipState: 1
+    - stateName: End
+      ID:
+        number: 3
+      nextStateJudge: []
+      execDelegate:
+      - actionName: EndGuardFlag
+        instance: {fileID: 210048050}
+        arg1:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 0
+          enum_Arg: 0
+          enum_Name: SkillConstants
+          assembly_Name: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        arg2:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 0
+          enum_Arg: 0
+          enum_Name: 
+          assembly_Name: 
+        argMode: 0
+        argType1: 5
+        argType2: 1
+        comment: 
+      playUpdateDelegate: []
+      nodePosition: {x: 1062, y: 266}
+      toggleWindow: 1
+      stateMode: 0
+      subStateID:
+        number: 0
+      isSkipState: 1
+    _frag: 0
+--- !u!4 &210048057
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 210048049}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.5389598, y: 3.6338923, z: -6.842574}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &249324536
 GameObject:
   m_ObjectHideFlags: 0
@@ -672,7 +2998,7 @@ MonoBehaviour:
         comment: "\u30B2\u30FC\u30E0\u30EB\u30FC\u30D7\u304C\u958B\u59CB\u3059\u308B\u6761\u4EF6"
       execDelegate: []
       playUpdateDelegate: []
-      nodePosition: {x: 135, y: 220}
+      nodePosition: {x: 102, y: 233}
       toggleWindow: 1
       stateMode: 0
       subStateID:
@@ -826,7 +3152,7 @@ MonoBehaviour:
         comment: 
       execDelegate: []
       playUpdateDelegate: []
-      nodePosition: {x: -265, y: 44}
+      nodePosition: {x: -1215, y: -117}
       toggleWindow: 1
       stateMode: 0
       subStateID:
@@ -970,7 +3296,7 @@ MonoBehaviour:
         argType1: 5
         argType2: 1
         comment: 
-      nodePosition: {x: 216, y: 325}
+      nodePosition: {x: -734, y: 164}
       toggleWindow: 1
       stateMode: 0
       subStateID:
@@ -1038,7 +3364,7 @@ MonoBehaviour:
         comment: 
       execDelegate: []
       playUpdateDelegate: []
-      nodePosition: {x: 215, y: -168}
+      nodePosition: {x: -735, y: -329}
       toggleWindow: 1
       stateMode: 0
       subStateID:
@@ -1048,6 +3374,34 @@ MonoBehaviour:
       ID:
         number: 4
       nextStateJudge:
+      - nextStateName: "Cancel\u653B\u6483"
+        nextID:
+          number: 8
+        arg1:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 0
+          enum_Arg: 0
+          enum_Name: 
+          assembly_Name: 
+        arg2:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 0
+          enum_Arg: 0
+          enum_Name: 
+          assembly_Name: 
+        argMode: 0
+        argType1: 0
+        argType2: 0
+        judgeFuncName: IsCancelAttack
+        judgeFuncInstance: {fileID: 262175157}
+        priority: 0
+        comment: 
       - nextStateName: Entry_
         nextID:
           number: 1
@@ -1126,7 +3480,7 @@ MonoBehaviour:
         argType1: 5
         argType2: 1
         comment: 
-      nodePosition: {x: 1022, y: 406}
+      nodePosition: {x: 79, y: 212}
       toggleWindow: 1
       stateMode: 0
       subStateID:
@@ -1218,7 +3572,7 @@ MonoBehaviour:
         argType2: 1
         comment: 
       playUpdateDelegate: []
-      nodePosition: {x: 878, y: -168}
+      nodePosition: {x: -49, y: -315}
       toggleWindow: 1
       stateMode: 0
       subStateID:
@@ -1286,7 +3640,7 @@ MonoBehaviour:
         comment: 
       execDelegate: []
       playUpdateDelegate: []
-      nodePosition: {x: 577, y: 689}
+      nodePosition: {x: -373, y: 528}
       toggleWindow: 1
       stateMode: 1
       subStateID:
@@ -1350,12 +3704,52 @@ MonoBehaviour:
         argType2: 1
         comment: 
       playUpdateDelegate: []
-      nodePosition: {x: 502, y: 141}
+      nodePosition: {x: -448, y: -20}
       toggleWindow: 1
       stateMode: 0
       subStateID:
         number: 0
       isSkipState: 0
+    - stateName: "Cancel\u653B\u6483"
+      ID:
+        number: 8
+      nextStateJudge:
+      - nextStateName: "\u5730\u4E0A\u653B\u6483"
+        nextID:
+          number: 4
+        arg1:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 0
+          enum_Arg: 0
+          enum_Name: 
+          assembly_Name: 
+        arg2:
+          object_Arg: {fileID: 0}
+          int_Arg: 0
+          float_Arg: 0
+          string_Arg: 
+          bool_Arg: 0
+          enum_Arg: 0
+          enum_Name: 
+          assembly_Name: 
+        argMode: 0
+        argType1: 0
+        argType2: 0
+        judgeFuncName: IsMoveFighter
+        judgeFuncInstance: {fileID: 262175160}
+        priority: 0
+        comment: 
+      execDelegate: []
+      playUpdateDelegate: []
+      nodePosition: {x: 524, y: 310}
+      toggleWindow: 1
+      stateMode: 0
+      subStateID:
+        number: 0
+      isSkipState: 1
     _frag: 0
   - ID:
       number: 3
@@ -1508,7 +3902,7 @@ MonoBehaviour:
         comment: 
       execDelegate: []
       playUpdateDelegate: []
-      nodePosition: {x: -1175, y: 90}
+      nodePosition: {x: -375, y: 257}
       toggleWindow: 1
       stateMode: 0
       subStateID:
@@ -1624,7 +4018,7 @@ MonoBehaviour:
         argType1: 4
         argType2: 1
         comment: 
-      nodePosition: {x: -351, y: 248}
+      nodePosition: {x: 449, y: 415}
       toggleWindow: 1
       stateMode: 0
       subStateID:
@@ -1740,7 +4134,7 @@ MonoBehaviour:
         argType1: 4
         argType2: 1
         comment: 
-      nodePosition: {x: -355, y: 613}
+      nodePosition: {x: 445, y: 780}
       toggleWindow: 1
       stateMode: 0
       subStateID:
@@ -1836,7 +4230,7 @@ MonoBehaviour:
         comment: 
       execDelegate: []
       playUpdateDelegate: []
-      nodePosition: {x: 45, y: 131}
+      nodePosition: {x: 845, y: 298}
       toggleWindow: 1
       stateMode: 0
       subStateID:
@@ -1872,7 +4266,7 @@ MonoBehaviour:
         argType2: 1
         comment: 
       playUpdateDelegate: []
-      nodePosition: {x: 622, y: 779}
+      nodePosition: {x: 1422, y: 946}
       toggleWindow: 1
       stateMode: 0
       subStateID:
@@ -1932,7 +4326,7 @@ MonoBehaviour:
         argType2: 1
         comment: 
       playUpdateDelegate: []
-      nodePosition: {x: 607, y: 491}
+      nodePosition: {x: 1407, y: 658}
       toggleWindow: 1
       stateMode: 0
       subStateID:
@@ -1972,7 +4366,7 @@ MonoBehaviour:
         comment: 
       execDelegate: []
       playUpdateDelegate: []
-      nodePosition: {x: 752, y: 199}
+      nodePosition: {x: 1552, y: 366}
       toggleWindow: 1
       stateMode: 1
       subStateID:
@@ -2064,7 +4458,7 @@ MonoBehaviour:
         argType2: 1
         comment: 
       playUpdateDelegate: []
-      nodePosition: {x: 378, y: 123}
+      nodePosition: {x: 1178, y: 290}
       toggleWindow: 1
       stateMode: 0
       subStateID:
@@ -2208,7 +4602,7 @@ MonoBehaviour:
         argType1: 5
         argType2: 1
         comment: 
-      nodePosition: {x: -361, y: -159}
+      nodePosition: {x: 439, y: 8}
       toggleWindow: 1
       stateMode: 0
       subStateID:
@@ -2296,7 +4690,7 @@ MonoBehaviour:
         argType1: 5
         argType2: 1
         comment: 
-      nodePosition: {x: -417, y: -478}
+      nodePosition: {x: 383, y: -311}
       toggleWindow: 1
       stateMode: 0
       subStateID:
@@ -2366,7 +4760,7 @@ MonoBehaviour:
         argType1: 5
         argType2: 1
         comment: 
-      nodePosition: {x: -483, y: 112}
+      nodePosition: {x: -493, y: 107}
       toggleWindow: 1
       stateMode: 0
       subStateID:
@@ -2454,7 +4848,7 @@ MonoBehaviour:
         argType1: 5
         argType2: 1
         comment: 
-      nodePosition: {x: 43, y: 126}
+      nodePosition: {x: 33, y: 121}
       toggleWindow: 1
       stateMode: 0
       subStateID:
@@ -2518,7 +4912,7 @@ MonoBehaviour:
         argType2: 1
         comment: 
       playUpdateDelegate: []
-      nodePosition: {x: 463, y: 304}
+      nodePosition: {x: 453, y: 299}
       toggleWindow: 1
       stateMode: 0
       subStateID:
@@ -2554,7 +4948,7 @@ MonoBehaviour:
         argType2: 1
         comment: 
       playUpdateDelegate: []
-      nodePosition: {x: 805, y: 385}
+      nodePosition: {x: 795, y: 380}
       toggleWindow: 1
       stateMode: 0
       subStateID:
@@ -8741,2264 +11135,6 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1385078112}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1561075669
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1561075677}
-  - component: {fileID: 1561075676}
-  - component: {fileID: 1561075675}
-  - component: {fileID: 1561075674}
-  - component: {fileID: 1561075673}
-  - component: {fileID: 1561075672}
-  - component: {fileID: 1561075671}
-  - component: {fileID: 1561075670}
-  m_Layer: 0
-  m_Name: Player2State
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1561075670
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1561075669}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8929e977495552a40b86f5fad1588ed3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  stateName: 
-  isGuard: 0
---- !u!114 &1561075671
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1561075669}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 72a4ed79eb9640540989391be5ab58ac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  stateName: 
---- !u!114 &1561075672
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1561075669}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9fe30f52129c5b04ea1e83f62702f5bf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  stateName: 
---- !u!114 &1561075673
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1561075669}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 70678f3c26cff3247a5dd2e40d9667de, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  stateName: 
---- !u!114 &1561075674
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1561075669}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 644bfe671a0b98e4ba80f7e83f216dda, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  stateName: "\u79FB\u52D5"
---- !u!114 &1561075675
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1561075669}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f01fa8dbd172444f895bd8e01ae2a77, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  stateName: "\u30D9\u30FC\u30B9"
-  core: {fileID: 1865372484}
-  input: {fileID: 0}
-  stateGuard: {fileID: 0}
---- !u!114 &1561075676
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1561075669}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 65440b06c5fdc3c4db9bf3616fe820d9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  stateBody:
-  - ID:
-      number: 1
-    stateName: 
-    stateMove: 0
-    states:
-    - stateName: start
-      ID:
-        number: 1
-      nextStateJudge:
-      - nextStateName: "\u79FB\u52D5,\u653B\u6483,\u30AC\u30FC\u30C9"
-        nextID:
-          number: 2
-        arg1:
-          object_Arg: {fileID: 0}
-          int_Arg: 0
-          float_Arg: 0
-          string_Arg: 
-          bool_Arg: 0
-          enum_Arg: 0
-          enum_Name: 
-          assembly_Name: 
-        arg2:
-          object_Arg: {fileID: 0}
-          int_Arg: 0
-          float_Arg: 0
-          string_Arg: 
-          bool_Arg: 0
-          enum_Arg: 0
-          enum_Name: 
-          assembly_Name: 
-        argMode: 0
-        argType1: 0
-        argType2: 0
-        judgeFuncName: IsStartGame
-        judgeFuncInstance: {fileID: 1561075675}
-        priority: 0
-        comment: "\u30B2\u30FC\u30E0\u30EB\u30FC\u30D7\u304C\u958B\u59CB\u3059\u308B\u6761\u4EF6"
-      execDelegate: []
-      playUpdateDelegate: []
-      nodePosition: {x: 135, y: 220}
-      toggleWindow: 1
-      stateMode: 0
-      subStateID:
-        number: 0
-      isSkipState: 1
-    - stateName: "\u79FB\u52D5,\u653B\u6483,\u30AC\u30FC\u30C9"
-      ID:
-        number: 2
-      nextStateJudge:
-      - nextStateName: "\u3084\u3089\u308C"
-        nextID:
-          number: 3
-        arg1:
-          object_Arg: {fileID: 0}
-          int_Arg: 0
-          float_Arg: 0
-          string_Arg: 
-          bool_Arg: 0
-          enum_Arg: 0
-          enum_Name: 
-          assembly_Name: 
-        arg2:
-          object_Arg: {fileID: 0}
-          int_Arg: 0
-          float_Arg: 0
-          string_Arg: 
-          bool_Arg: 0
-          enum_Arg: 0
-          enum_Name: 
-          assembly_Name: 
-        argMode: 0
-        argType1: 0
-        argType2: 0
-        judgeFuncName: IsApplyDamage
-        judgeFuncInstance: {fileID: 1561075675}
-        priority: 0
-        comment: 
-      execDelegate: []
-      playUpdateDelegate: []
-      nodePosition: {x: 643, y: 399}
-      toggleWindow: 1
-      stateMode: 1
-      subStateID:
-        number: 2
-      isSkipState: 0
-    - stateName: "\u3084\u3089\u308C"
-      ID:
-        number: 3
-      nextStateJudge:
-      - nextStateName: "\u79FB\u52D5,\u653B\u6483,\u30AC\u30FC\u30C9"
-        nextID:
-          number: 2
-        arg1:
-          object_Arg: {fileID: 0}
-          int_Arg: 0
-          float_Arg: 0
-          string_Arg: 
-          bool_Arg: 0
-          enum_Arg: 0
-          enum_Name: 
-          assembly_Name: 
-        arg2:
-          object_Arg: {fileID: 0}
-          int_Arg: 0
-          float_Arg: 0
-          string_Arg: 
-          bool_Arg: 0
-          enum_Arg: 0
-          enum_Name: 
-          assembly_Name: 
-        argMode: 0
-        argType1: 0
-        argType2: 0
-        judgeFuncName: IsEndHitStun
-        judgeFuncInstance: {fileID: 1561075672}
-        priority: 0
-        comment: 
-      execDelegate: []
-      playUpdateDelegate: []
-      nodePosition: {x: 637, y: 97}
-      toggleWindow: 1
-      stateMode: 1
-      subStateID:
-        number: 3
-      isSkipState: 0
-    _frag: 0
-  - ID:
-      number: 2
-    stateName: 
-    stateMove: 0
-    states:
-    - stateName: Entry_
-      ID:
-        number: 1
-      nextStateJudge:
-      - nextStateName: "\u7A7A\u4E2D"
-        nextID:
-          number: 3
-        arg1:
-          object_Arg: {fileID: 0}
-          int_Arg: 0
-          float_Arg: 0
-          string_Arg: 
-          bool_Arg: 0
-          enum_Arg: 0
-          enum_Name: 
-          assembly_Name: 
-        arg2:
-          object_Arg: {fileID: 0}
-          int_Arg: 0
-          float_Arg: 0
-          string_Arg: 
-          bool_Arg: 0
-          enum_Arg: 0
-          enum_Name: 
-          assembly_Name: 
-        argMode: 1
-        argType1: 4
-        argType2: 0
-        judgeFuncName: IsGroundCheck
-        judgeFuncInstance: {fileID: 1561075675}
-        priority: 0
-        comment: 
-      - nextStateName: "\u5730\u4E0A\u79FB\u52D5"
-        nextID:
-          number: 2
-        arg1:
-          object_Arg: {fileID: 0}
-          int_Arg: 0
-          float_Arg: 0
-          string_Arg: 
-          bool_Arg: 1
-          enum_Arg: 0
-          enum_Name: 
-          assembly_Name: 
-        arg2:
-          object_Arg: {fileID: 0}
-          int_Arg: 0
-          float_Arg: 0
-          string_Arg: 
-          bool_Arg: 0
-          enum_Arg: 0
-          enum_Name: 
-          assembly_Name: 
-        argMode: 1
-        argType1: 4
-        argType2: 0
-        judgeFuncName: IsGroundCheck
-        judgeFuncInstance: {fileID: 1561075675}
-        priority: 0
-        comment: 
-      execDelegate: []
-      playUpdateDelegate: []
-      nodePosition: {x: -84, y: 220}
-      toggleWindow: 1
-      stateMode: 0
-      subStateID:
-        number: 0
-      isSkipState: 1
-    - stateName: "\u5730\u4E0A\u79FB\u52D5"
-      ID:
-        number: 2
-      nextStateJudge:
-      - nextStateName: "\u30AC\u30FC\u30C9"
-        nextID:
-          number: 6
-        arg1:
-          object_Arg: {fileID: 0}
-          int_Arg: 0
-          float_Arg: 0
-          string_Arg: 
-          bool_Arg: 0
-          enum_Arg: 0
-          enum_Name: 
-          assembly_Name: 
-        arg2:
-          object_Arg: {fileID: 0}
-          int_Arg: 0
-          float_Arg: 0
-          string_Arg: 
-          bool_Arg: 0
-          enum_Arg: 0
-          enum_Name: 
-          assembly_Name: 
-        argMode: 0
-        argType1: 0
-        argType2: 0
-        judgeFuncName: IsApplyGuard
-        judgeFuncInstance: {fileID: 1561075670}
-        priority: 0
-        comment: 
-      - nextStateName: "\u7A7A\u4E2D"
-        nextID:
-          number: 3
-        arg1:
-          object_Arg: {fileID: 0}
-          int_Arg: 0
-          float_Arg: 0
-          string_Arg: 
-          bool_Arg: 0
-          enum_Arg: 0
-          enum_Name: 
-          assembly_Name: 
-        arg2:
-          object_Arg: {fileID: 0}
-          int_Arg: 0
-          float_Arg: 0
-          string_Arg: 
-          bool_Arg: 0
-          enum_Arg: 0
-          enum_Name: 
-          assembly_Name: 
-        argMode: 1
-        argType1: 4
-        argType2: 0
-        judgeFuncName: IsGroundCheck
-        judgeFuncInstance: {fileID: 1561075675}
-        priority: 0
-        comment: 
-      - nextStateName: "\u5730\u4E0A\u653B\u6483"
-        nextID:
-          number: 4
-        arg1:
-          object_Arg: {fileID: 0}
-          int_Arg: 0
-          float_Arg: 0
-          string_Arg: 
-          bool_Arg: 0
-          enum_Arg: 0
-          enum_Name: 
-          assembly_Name: 
-        arg2:
-          object_Arg: {fileID: 0}
-          int_Arg: 0
-          float_Arg: 0
-          string_Arg: 
-          bool_Arg: 0
-          enum_Arg: 0
-          enum_Name: 
-          assembly_Name: 
-        argMode: 0
-        argType1: 0
-        argType2: 0
-        judgeFuncName: Input_Atk_True
-        judgeFuncInstance: {fileID: 1561075674}
-        priority: 0
-        comment: 
-      execDelegate:
-      - actionName: MoveStart
-        instance: {fileID: 1561075674}
-        arg1:
-          object_Arg: {fileID: 0}
-          int_Arg: 0
-          float_Arg: 0
-          string_Arg: 
-          bool_Arg: 0
-          enum_Arg: 0
-          enum_Name: SkillConstants
-          assembly_Name: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-        arg2:
-          object_Arg: {fileID: 0}
-          int_Arg: 0
-          float_Arg: 0
-          string_Arg: 
-          bool_Arg: 0
-          enum_Arg: 0
-          enum_Name: 
-          assembly_Name: 
-        argMode: 0
-        argType1: 5
-        argType2: 1
-        comment: 
-      playUpdateDelegate:
-      - actionName: MoveUpdate
-        instance: {fileID: 1561075674}
-        arg1:
-          object_Arg: {fileID: 0}
-          int_Arg: 0
-          float_Arg: 0
-          string_Arg: 
-          bool_Arg: 0
-          enum_Arg: 0
-          enum_Name: SkillConstants
-          assembly_Name: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-        arg2:
-          object_Arg: {fileID: 0}
-          int_Arg: 0
-          float_Arg: 0
-          string_Arg: 
-          bool_Arg: 0
-          enum_Arg: 0
-          enum_Name: 
-          assembly_Name: 
-        argMode: 0
-        argType1: 5
-        argType2: 1
-        comment: 
-      nodePosition: {x: 444, y: 467}
-      toggleWindow: 1
-      stateMode: 0
-      subStateID:
-        number: 0
-      isSkipState: 1
-    - stateName: "\u7A7A\u4E2D"
-      ID:
-        number: 3
-      nextStateJudge:
-      - nextStateName: "\u7740\u5730"
-        nextID:
-          number: 7
-        arg1:
-          object_Arg: {fileID: 0}
-          int_Arg: 0
-          float_Arg: 0
-          string_Arg: 
-          bool_Arg: 1
-          enum_Arg: 0
-          enum_Name: 
-          assembly_Name: 
-        arg2:
-          object_Arg: {fileID: 0}
-          int_Arg: 0
-          float_Arg: 0
-          string_Arg: 
-          bool_Arg: 0
-          enum_Arg: 0
-          enum_Name: 
-          assembly_Name: 
-        argMode: 1
-        argType1: 4
-        argType2: 0
-        judgeFuncName: IsGroundCheck
-        judgeFuncInstance: {fileID: 1561075675}
-        priority: 0
-        comment: 
-      - nextStateName: "\u7A7A\u4E2D\u653B\u6483"
-        nextID:
-          number: 5
-        arg1:
-          object_Arg: {fileID: 0}
-          int_Arg: 0
-          float_Arg: 0
-          string_Arg: 
-          bool_Arg: 0
-          enum_Arg: 0
-          enum_Name: 
-          assembly_Name: 
-        arg2:
-          object_Arg: {fileID: 0}
-          int_Arg: 0
-          float_Arg: 0
-          string_Arg: 
-          bool_Arg: 0
-          enum_Arg: 0
-          enum_Name: 
-          assembly_Name: 
-        argMode: 0
-        argType1: 0
-        argType2: 0
-        judgeFuncName: Input_Atk_True
-        judgeFuncInstance: {fileID: 1561075674}
-        priority: 0
-        comment: 
-      execDelegate: []
-      playUpdateDelegate: []
-      nodePosition: {x: 417, y: 23}
-      toggleWindow: 1
-      stateMode: 0
-      subStateID:
-        number: 0
-      isSkipState: 1
-    - stateName: "\u5730\u4E0A\u653B\u6483"
-      ID:
-        number: 4
-      nextStateJudge:
-      - nextStateName: Entry_
-        nextID:
-          number: 1
-        arg1:
-          object_Arg: {fileID: 0}
-          int_Arg: 0
-          float_Arg: 0
-          string_Arg: 
-          bool_Arg: 0
-          enum_Arg: 0
-          enum_Name: 
-          assembly_Name: 
-        arg2:
-          object_Arg: {fileID: 0}
-          int_Arg: 0
-          float_Arg: 0
-          string_Arg: 
-          bool_Arg: 0
-          enum_Arg: 0
-          enum_Name: 
-          assembly_Name: 
-        argMode: 0
-        argType1: 0
-        argType2: 0
-        judgeFuncName: IsEndAttack
-        judgeFuncInstance: {fileID: 1561075673}
-        priority: 0
-        comment: 
-      execDelegate:
-      - actionName: AttackStart
-        instance: {fileID: 1561075673}
-        arg1:
-          object_Arg: {fileID: 0}
-          int_Arg: 0
-          float_Arg: 0
-          string_Arg: 
-          bool_Arg: 0
-          enum_Arg: 0
-          enum_Name: SkillConstants
-          assembly_Name: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-        arg2:
-          object_Arg: {fileID: 0}
-          int_Arg: 0
-          float_Arg: 0
-          string_Arg: 
-          bool_Arg: 0
-          enum_Arg: 0
-          enum_Name: 
-          assembly_Name: 
-        argMode: 0
-        argType1: 5
-        argType2: 1
-        comment: 
-      playUpdateDelegate:
-      - actionName: AttackUpdate
-        instance: {fileID: 1561075673}
-        arg1:
-          object_Arg: {fileID: 0}
-          int_Arg: 0
-          float_Arg: 0
-          string_Arg: 
-          bool_Arg: 0
-          enum_Arg: 0
-          enum_Name: SkillConstants
-          assembly_Name: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-        arg2:
-          object_Arg: {fileID: 0}
-          int_Arg: 0
-          float_Arg: 0
-          string_Arg: 
-          bool_Arg: 0
-          enum_Arg: 0
-          enum_Name: 
-          assembly_Name: 
-        argMode: 0
-        argType1: 5
-        argType2: 1
-        comment: 
-      nodePosition: {x: 910, y: 451}
-      toggleWindow: 1
-      stateMode: 0
-      subStateID:
-        number: 0
-      isSkipState: 0
-    - stateName: "\u7A7A\u4E2D\u653B\u6483"
-      ID:
-        number: 5
-      nextStateJudge:
-      - nextStateName: "\u7A7A\u4E2D"
-        nextID:
-          number: 3
-        arg1:
-          object_Arg: {fileID: 0}
-          int_Arg: 0
-          float_Arg: 0
-          string_Arg: 
-          bool_Arg: 0
-          enum_Arg: 0
-          enum_Name: 
-          assembly_Name: 
-        arg2:
-          object_Arg: {fileID: 0}
-          int_Arg: 0
-          float_Arg: 0
-          string_Arg: 
-          bool_Arg: 0
-          enum_Arg: 0
-          enum_Name: 
-          assembly_Name: 
-        argMode: 0
-        argType1: 0
-        argType2: 0
-        judgeFuncName: IsEndAirAttack
-        judgeFuncInstance: {fileID: 1561075673}
-        priority: 0
-        comment: 
-      - nextStateName: "\u7740\u5730"
-        nextID:
-          number: 7
-        arg1:
-          object_Arg: {fileID: 0}
-          int_Arg: 0
-          float_Arg: 0
-          string_Arg: 
-          bool_Arg: 1
-          enum_Arg: 0
-          enum_Name: 
-          assembly_Name: 
-        arg2:
-          object_Arg: {fileID: 0}
-          int_Arg: 0
-          float_Arg: 0
-          string_Arg: 
-          bool_Arg: 0
-          enum_Arg: 0
-          enum_Name: 
-          assembly_Name: 
-        argMode: 1
-        argType1: 4
-        argType2: 0
-        judgeFuncName: IsGroundCheck
-        judgeFuncInstance: {fileID: 1561075675}
-        priority: 0
-        comment: 
-      execDelegate:
-      - actionName: AirAttackStart
-        instance: {fileID: 1561075673}
-        arg1:
-          object_Arg: {fileID: 0}
-          int_Arg: 0
-          float_Arg: 0
-          string_Arg: 
-          bool_Arg: 0
-          enum_Arg: 0
-          enum_Name: SkillConstants
-          assembly_Name: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-        arg2:
-          object_Arg: {fileID: 0}
-          int_Arg: 0
-          float_Arg: 0
-          string_Arg: 
-          bool_Arg: 0
-          enum_Arg: 0
-          enum_Name: 
-          assembly_Name: 
-        argMode: 0
-        argType1: 5
-        argType2: 1
-        comment: 
-      playUpdateDelegate: []
-      nodePosition: {x: 942, y: 88}
-      toggleWindow: 1
-      stateMode: 0
-      subStateID:
-        number: 0
-      isSkipState: 0
-    - stateName: "\u30AC\u30FC\u30C9"
-      ID:
-        number: 6
-      nextStateJudge:
-      - nextStateName: Entry_
-        nextID:
-          number: 1
-        arg1:
-          object_Arg: {fileID: 0}
-          int_Arg: 0
-          float_Arg: 0
-          string_Arg: 
-          bool_Arg: 0
-          enum_Arg: 0
-          enum_Name: 
-          assembly_Name: 
-        arg2:
-          object_Arg: {fileID: 0}
-          int_Arg: 0
-          float_Arg: 0
-          string_Arg: 
-          bool_Arg: 0
-          enum_Arg: 0
-          enum_Name: 
-          assembly_Name: 
-        argMode: 0
-        argType1: 0
-        argType2: 0
-        judgeFuncName: IsApplyGuard
-        judgeFuncInstance: {fileID: 1561075670}
-        priority: 0
-        comment: 
-      - nextStateName: Entry_
-        nextID:
-          number: 1
-        arg1:
-          object_Arg: {fileID: 0}
-          int_Arg: 0
-          float_Arg: 0
-          string_Arg: 
-          bool_Arg: 0
-          enum_Arg: 0
-          enum_Name: 
-          assembly_Name: 
-        arg2:
-          object_Arg: {fileID: 0}
-          int_Arg: 0
-          float_Arg: 0
-          string_Arg: 
-          bool_Arg: 0
-          enum_Arg: 0
-          enum_Name: 
-          assembly_Name: 
-        argMode: 0
-        argType1: 0
-        argType2: 0
-        judgeFuncName: IsEndGuard
-        judgeFuncInstance: {fileID: 1561075670}
-        priority: 0
-        comment: 
-      execDelegate: []
-      playUpdateDelegate: []
-      nodePosition: {x: 758, y: 865}
-      toggleWindow: 1
-      stateMode: 1
-      subStateID:
-        number: 5
-      isSkipState: 0
-    - stateName: "\u7740\u5730"
-      ID:
-        number: 7
-      nextStateJudge:
-      - nextStateName: "\u5730\u4E0A\u79FB\u52D5"
-        nextID:
-          number: 2
-        arg1:
-          object_Arg: {fileID: 0}
-          int_Arg: 0
-          float_Arg: 0
-          string_Arg: 
-          bool_Arg: 0
-          enum_Arg: 0
-          enum_Name: 
-          assembly_Name: 
-        arg2:
-          object_Arg: {fileID: 0}
-          int_Arg: 0
-          float_Arg: 0
-          string_Arg: 
-          bool_Arg: 0
-          enum_Arg: 0
-          enum_Name: 
-          assembly_Name: 
-        argMode: 0
-        argType1: 0
-        argType2: 0
-        judgeFuncName: IsEndLanding
-        judgeFuncInstance: {fileID: 1561075674}
-        priority: 0
-        comment: 
-      execDelegate:
-      - actionName: LandingStart
-        instance: {fileID: 1561075674}
-        arg1:
-          object_Arg: {fileID: 0}
-          int_Arg: 0
-          float_Arg: 0
-          string_Arg: 
-          bool_Arg: 0
-          enum_Arg: 0
-          enum_Name: SkillConstants
-          assembly_Name: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-        arg2:
-          object_Arg: {fileID: 0}
-          int_Arg: 0
-          float_Arg: 0
-          string_Arg: 
-          bool_Arg: 0
-          enum_Arg: 0
-          enum_Name: 
-          assembly_Name: 
-        argMode: 0
-        argType1: 5
-        argType2: 1
-        comment: 
-      playUpdateDelegate: []
-      nodePosition: {x: 437, y: 247}
-      toggleWindow: 1
-      stateMode: 0
-      subStateID:
-        number: 0
-      isSkipState: 0
-    _frag: 0
-  - ID:
-      number: 3
-    stateName: 
-    stateMove: 0
-    states:
-    - stateName: Entry_
-      ID:
-        number: 1
-      nextStateJudge:
-      - nextStateName: "\u6295\u3052\u6280"
-        nextID:
-          number: 10
-        arg1:
-          object_Arg: {fileID: 0}
-          int_Arg: 0
-          float_Arg: 0
-          string_Arg: 
-          bool_Arg: 0
-          enum_Arg: 0
-          enum_Name: 
-          assembly_Name: 
-        arg2:
-          object_Arg: {fileID: 0}
-          int_Arg: 0
-          float_Arg: 0
-          string_Arg: 
-          bool_Arg: 0
-          enum_Arg: 0
-          enum_Name: 
-          assembly_Name: 
-        argMode: 0
-        argType1: 0
-        argType2: 0
-        judgeFuncName: isThrowHit
-        judgeFuncInstance: {fileID: 1561075672}
-        priority: 0
-        comment: 
-      - nextStateName: "\u30C0\u30A6\u30F3\uFF08\u98DB\u3070\u3057\uFF09\u6280"
-        nextID:
-          number: 9
-        arg1:
-          object_Arg: {fileID: 0}
-          int_Arg: 0
-          float_Arg: 0
-          string_Arg: 
-          bool_Arg: 0
-          enum_Arg: 0
-          enum_Name: 
-          assembly_Name: 
-        arg2:
-          object_Arg: {fileID: 0}
-          int_Arg: 0
-          float_Arg: 0
-          string_Arg: 
-          bool_Arg: 0
-          enum_Arg: 0
-          enum_Name: 
-          assembly_Name: 
-        argMode: 0
-        argType1: 0
-        argType2: 0
-        judgeFuncName: isDownHit
-        judgeFuncInstance: {fileID: 1561075672}
-        priority: 0
-        comment: 
-      - nextStateName: End
-        nextID:
-          number: 5
-        arg1:
-          object_Arg: {fileID: 0}
-          int_Arg: 0
-          float_Arg: 0
-          string_Arg: 
-          bool_Arg: 0
-          enum_Arg: 0
-          enum_Name: 
-          assembly_Name: 
-        arg2:
-          object_Arg: {fileID: 0}
-          int_Arg: 0
-          float_Arg: 0
-          string_Arg: 
-          bool_Arg: 0
-          enum_Arg: 0
-          enum_Name: 
-          assembly_Name: 
-        argMode: 0
-        argType1: 0
-        argType2: 0
-        judgeFuncName: isNoneDamage
-        judgeFuncInstance: {fileID: 1561075672}
-        priority: 0
-        comment: 
-      - nextStateName: "\u7A7A\u4E2D\u3084\u3089\u308C"
-        nextID:
-          number: 2
-        arg1:
-          object_Arg: {fileID: 0}
-          int_Arg: 0
-          float_Arg: 0
-          string_Arg: 
-          bool_Arg: 0
-          enum_Arg: 0
-          enum_Name: 
-          assembly_Name: 
-        arg2:
-          object_Arg: {fileID: 0}
-          int_Arg: 0
-          float_Arg: 0
-          string_Arg: 
-          bool_Arg: 0
-          enum_Arg: 0
-          enum_Name: 
-          assembly_Name: 
-        argMode: 1
-        argType1: 4
-        argType2: 0
-        judgeFuncName: IsGroundCheck
-        judgeFuncInstance: {fileID: 1561075675}
-        priority: 0
-        comment: 
-      - nextStateName: "\u5730\u4E0A\u3084\u3089\u308C"
-        nextID:
-          number: 3
-        arg1:
-          object_Arg: {fileID: 0}
-          int_Arg: 0
-          float_Arg: 0
-          string_Arg: 
-          bool_Arg: 1
-          enum_Arg: 0
-          enum_Name: 
-          assembly_Name: 
-        arg2:
-          object_Arg: {fileID: 0}
-          int_Arg: 0
-          float_Arg: 0
-          string_Arg: 
-          bool_Arg: 0
-          enum_Arg: 0
-          enum_Name: 
-          assembly_Name: 
-        argMode: 1
-        argType1: 4
-        argType2: 0
-        judgeFuncName: IsGroundCheck
-        judgeFuncInstance: {fileID: 1561075675}
-        priority: 0
-        comment: 
-      execDelegate: []
-      playUpdateDelegate: []
-      nodePosition: {x: -450, y: 469}
-      toggleWindow: 1
-      stateMode: 0
-      subStateID:
-        number: 0
-      isSkipState: 1
-    - stateName: "\u7A7A\u4E2D\u3084\u3089\u308C"
-      ID:
-        number: 2
-      nextStateJudge:
-      - nextStateName: Entry_
-        nextID:
-          number: 1
-        arg1:
-          object_Arg: {fileID: 0}
-          int_Arg: 0
-          float_Arg: 0
-          string_Arg: 
-          bool_Arg: 0
-          enum_Arg: 0
-          enum_Name: 
-          assembly_Name: 
-        arg2:
-          object_Arg: {fileID: 0}
-          int_Arg: 0
-          float_Arg: 0
-          string_Arg: 
-          bool_Arg: 0
-          enum_Arg: 0
-          enum_Name: 
-          assembly_Name: 
-        argMode: 0
-        argType1: 0
-        argType2: 0
-        judgeFuncName: IsApplyDamage
-        judgeFuncInstance: {fileID: 1561075675}
-        priority: 0
-        comment: 
-      - nextStateName: "\u7A7A\u4E2D\u53D7\u3051\u8EAB\u5F85\u6A5F\u6642\u9593"
-        nextID:
-          number: 4
-        arg1:
-          object_Arg: {fileID: 0}
-          int_Arg: 0
-          float_Arg: 0
-          string_Arg: 
-          bool_Arg: 0
-          enum_Arg: 0
-          enum_Name: 
-          assembly_Name: 
-        arg2:
-          object_Arg: {fileID: 0}
-          int_Arg: 0
-          float_Arg: 0
-          string_Arg: 
-          bool_Arg: 0
-          enum_Arg: 0
-          enum_Name: 
-          assembly_Name: 
-        argMode: 0
-        argType1: 0
-        argType2: 0
-        judgeFuncName: IsEndHitStunCount
-        judgeFuncInstance: {fileID: 1561075672}
-        priority: 0
-        comment: 
-      execDelegate:
-      - actionName: AirHitStunStart
-        instance: {fileID: 1561075672}
-        arg1:
-          object_Arg: {fileID: 0}
-          int_Arg: 0
-          float_Arg: 0
-          string_Arg: 
-          bool_Arg: 0
-          enum_Arg: 0
-          enum_Name: SkillConstants
-          assembly_Name: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-        arg2:
-          object_Arg: {fileID: 0}
-          int_Arg: 0
-          float_Arg: 0
-          string_Arg: 
-          bool_Arg: 0
-          enum_Arg: 0
-          enum_Name: 
-          assembly_Name: 
-        argMode: 0
-        argType1: 5
-        argType2: 1
-        comment: 
-      playUpdateDelegate:
-      - actionName: HitStunUpdate
-        instance: {fileID: 1561075672}
-        arg1:
-          object_Arg: {fileID: 0}
-          int_Arg: 0
-          float_Arg: 0
-          string_Arg: 
-          bool_Arg: 0
-          enum_Arg: 0
-          enum_Name: SkillConstants
-          assembly_Name: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-        arg2:
-          object_Arg: {fileID: 0}
-          int_Arg: 0
-          float_Arg: 0
-          string_Arg: 
-          bool_Arg: 0
-          enum_Arg: 0
-          enum_Name: 
-          assembly_Name: 
-        argMode: 0
-        argType1: 4
-        argType2: 1
-        comment: 
-      nodePosition: {x: 374, y: 627}
-      toggleWindow: 1
-      stateMode: 0
-      subStateID:
-        number: 0
-      isSkipState: 0
-    - stateName: "\u5730\u4E0A\u3084\u3089\u308C"
-      ID:
-        number: 3
-      nextStateJudge:
-      - nextStateName: Entry_
-        nextID:
-          number: 1
-        arg1:
-          object_Arg: {fileID: 0}
-          int_Arg: 0
-          float_Arg: 0
-          string_Arg: 
-          bool_Arg: 0
-          enum_Arg: 0
-          enum_Name: 
-          assembly_Name: 
-        arg2:
-          object_Arg: {fileID: 0}
-          int_Arg: 0
-          float_Arg: 0
-          string_Arg: 
-          bool_Arg: 0
-          enum_Arg: 0
-          enum_Name: 
-          assembly_Name: 
-        argMode: 0
-        argType1: 0
-        argType2: 0
-        judgeFuncName: IsApplyDamage
-        judgeFuncInstance: {fileID: 1561075675}
-        priority: 0
-        comment: 
-      - nextStateName: End
-        nextID:
-          number: 5
-        arg1:
-          object_Arg: {fileID: 0}
-          int_Arg: 0
-          float_Arg: 0
-          string_Arg: 
-          bool_Arg: 0
-          enum_Arg: 0
-          enum_Name: 
-          assembly_Name: 
-        arg2:
-          object_Arg: {fileID: 0}
-          int_Arg: 0
-          float_Arg: 0
-          string_Arg: 
-          bool_Arg: 0
-          enum_Arg: 0
-          enum_Name: 
-          assembly_Name: 
-        argMode: 0
-        argType1: 0
-        argType2: 0
-        judgeFuncName: IsEndHitStunCount
-        judgeFuncInstance: {fileID: 1561075672}
-        priority: 0
-        comment: 
-      execDelegate:
-      - actionName: HitStunStart
-        instance: {fileID: 1561075672}
-        arg1:
-          object_Arg: {fileID: 0}
-          int_Arg: 0
-          float_Arg: 0
-          string_Arg: 
-          bool_Arg: 0
-          enum_Arg: 0
-          enum_Name: SkillConstants
-          assembly_Name: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-        arg2:
-          object_Arg: {fileID: 0}
-          int_Arg: 0
-          float_Arg: 0
-          string_Arg: 
-          bool_Arg: 0
-          enum_Arg: 0
-          enum_Name: 
-          assembly_Name: 
-        argMode: 0
-        argType1: 5
-        argType2: 1
-        comment: 
-      playUpdateDelegate:
-      - actionName: HitStunUpdate
-        instance: {fileID: 1561075672}
-        arg1:
-          object_Arg: {fileID: 0}
-          int_Arg: 0
-          float_Arg: 0
-          string_Arg: 
-          bool_Arg: 0
-          enum_Arg: 0
-          enum_Name: SkillConstants
-          assembly_Name: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-        arg2:
-          object_Arg: {fileID: 0}
-          int_Arg: 0
-          float_Arg: 0
-          string_Arg: 
-          bool_Arg: 0
-          enum_Arg: 0
-          enum_Name: 
-          assembly_Name: 
-        argMode: 0
-        argType1: 4
-        argType2: 1
-        comment: 
-      nodePosition: {x: 370, y: 992}
-      toggleWindow: 1
-      stateMode: 0
-      subStateID:
-        number: 0
-      isSkipState: 0
-    - stateName: "\u7A7A\u4E2D\u53D7\u3051\u8EAB\u5F85\u6A5F\u6642\u9593"
-      ID:
-        number: 4
-      nextStateJudge:
-      - nextStateName: "\u6253\u3061\u4ED8\u3051"
-        nextID:
-          number: 8
-        arg1:
-          object_Arg: {fileID: 0}
-          int_Arg: 0
-          float_Arg: 0
-          string_Arg: 
-          bool_Arg: 1
-          enum_Arg: 0
-          enum_Name: 
-          assembly_Name: 
-        arg2:
-          object_Arg: {fileID: 0}
-          int_Arg: 0
-          float_Arg: 0
-          string_Arg: 
-          bool_Arg: 0
-          enum_Arg: 0
-          enum_Name: 
-          assembly_Name: 
-        argMode: 1
-        argType1: 4
-        argType2: 0
-        judgeFuncName: IsGroundCheck
-        judgeFuncInstance: {fileID: 1561075675}
-        priority: 0
-        comment: 
-      - nextStateName: "\u7A7A\u4E2D\u53D7\u3051\u8EABEnd"
-        nextID:
-          number: 6
-        arg1:
-          object_Arg: {fileID: 0}
-          int_Arg: 0
-          float_Arg: 0
-          string_Arg: 
-          bool_Arg: 0
-          enum_Arg: 0
-          enum_Name: 
-          assembly_Name: 
-        arg2:
-          object_Arg: {fileID: 0}
-          int_Arg: 0
-          float_Arg: 0
-          string_Arg: 
-          bool_Arg: 0
-          enum_Arg: 0
-          enum_Name: 
-          assembly_Name: 
-        argMode: 0
-        argType1: 0
-        argType2: 0
-        judgeFuncName: IsPassiveInput
-        judgeFuncInstance: {fileID: 1561075672}
-        priority: 0
-        comment: 
-      - nextStateName: Entry_
-        nextID:
-          number: 1
-        arg1:
-          object_Arg: {fileID: 0}
-          int_Arg: 0
-          float_Arg: 0
-          string_Arg: 
-          bool_Arg: 0
-          enum_Arg: 0
-          enum_Name: 
-          assembly_Name: 
-        arg2:
-          object_Arg: {fileID: 0}
-          int_Arg: 0
-          float_Arg: 0
-          string_Arg: 
-          bool_Arg: 0
-          enum_Arg: 0
-          enum_Name: 
-          assembly_Name: 
-        argMode: 0
-        argType1: 0
-        argType2: 0
-        judgeFuncName: IsApplyDamage
-        judgeFuncInstance: {fileID: 1561075675}
-        priority: 0
-        comment: 
-      execDelegate: []
-      playUpdateDelegate: []
-      nodePosition: {x: 778, y: 490}
-      toggleWindow: 1
-      stateMode: 0
-      subStateID:
-        number: 0
-      isSkipState: 0
-    - stateName: End
-      ID:
-        number: 5
-      nextStateJudge: []
-      execDelegate:
-      - actionName: EndHitStunFlag
-        instance: {fileID: 1561075672}
-        arg1:
-          object_Arg: {fileID: 0}
-          int_Arg: 0
-          float_Arg: 0
-          string_Arg: 
-          bool_Arg: 0
-          enum_Arg: 0
-          enum_Name: SkillConstants
-          assembly_Name: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-        arg2:
-          object_Arg: {fileID: 0}
-          int_Arg: 0
-          float_Arg: 0
-          string_Arg: 
-          bool_Arg: 0
-          enum_Arg: 0
-          enum_Name: 
-          assembly_Name: 
-        argMode: 0
-        argType1: 5
-        argType2: 1
-        comment: 
-      playUpdateDelegate: []
-      nodePosition: {x: 1347, y: 1158}
-      toggleWindow: 1
-      stateMode: 0
-      subStateID:
-        number: 0
-      isSkipState: 1
-    - stateName: "\u7A7A\u4E2D\u53D7\u3051\u8EABEnd"
-      ID:
-        number: 6
-      nextStateJudge: []
-      execDelegate:
-      - actionName: EndHitStunFlag
-        instance: {fileID: 1561075672}
-        arg1:
-          object_Arg: {fileID: 0}
-          int_Arg: 0
-          float_Arg: 0
-          string_Arg: 
-          bool_Arg: 0
-          enum_Arg: 0
-          enum_Name: SkillConstants
-          assembly_Name: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-        arg2:
-          object_Arg: {fileID: 0}
-          int_Arg: 0
-          float_Arg: 0
-          string_Arg: 
-          bool_Arg: 0
-          enum_Arg: 0
-          enum_Name: 
-          assembly_Name: 
-        argMode: 0
-        argType1: 5
-        argType2: 1
-        comment: 
-      - actionName: PlayPassive
-        instance: {fileID: 1561075672}
-        arg1:
-          object_Arg: {fileID: 0}
-          int_Arg: 0
-          float_Arg: 0
-          string_Arg: 
-          bool_Arg: 0
-          enum_Arg: 0
-          enum_Name: SkillConstants
-          assembly_Name: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-        arg2:
-          object_Arg: {fileID: 0}
-          int_Arg: 0
-          float_Arg: 0
-          string_Arg: 
-          bool_Arg: 0
-          enum_Arg: 0
-          enum_Name: 
-          assembly_Name: 
-        argMode: 0
-        argType1: 5
-        argType2: 1
-        comment: 
-      playUpdateDelegate: []
-      nodePosition: {x: 1332, y: 870}
-      toggleWindow: 1
-      stateMode: 0
-      subStateID:
-        number: 0
-      isSkipState: 0
-    - stateName: Down
-      ID:
-        number: 7
-      nextStateJudge:
-      - nextStateName: Entry_
-        nextID:
-          number: 1
-        arg1:
-          object_Arg: {fileID: 0}
-          int_Arg: 0
-          float_Arg: 0
-          string_Arg: 
-          bool_Arg: 0
-          enum_Arg: 0
-          enum_Name: 
-          assembly_Name: 
-        arg2:
-          object_Arg: {fileID: 0}
-          int_Arg: 0
-          float_Arg: 0
-          string_Arg: 
-          bool_Arg: 0
-          enum_Arg: 0
-          enum_Name: 
-          assembly_Name: 
-        argMode: 0
-        argType1: 0
-        argType2: 0
-        judgeFuncName: IsApplyDamage
-        judgeFuncInstance: {fileID: 1561075675}
-        priority: 0
-        comment: 
-      execDelegate: []
-      playUpdateDelegate: []
-      nodePosition: {x: 1477, y: 578}
-      toggleWindow: 1
-      stateMode: 1
-      subStateID:
-        number: 4
-      isSkipState: 0
-    - stateName: "\u6253\u3061\u4ED8\u3051"
-      ID:
-        number: 8
-      nextStateJudge:
-      - nextStateName: Down
-        nextID:
-          number: 7
-        arg1:
-          object_Arg: {fileID: 0}
-          int_Arg: 0
-          float_Arg: 0
-          string_Arg: 
-          bool_Arg: 0
-          enum_Arg: 0
-          enum_Name: 
-          assembly_Name: 
-        arg2:
-          object_Arg: {fileID: 0}
-          int_Arg: 0
-          float_Arg: 0
-          string_Arg: 
-          bool_Arg: 0
-          enum_Arg: 0
-          enum_Name: 
-          assembly_Name: 
-        argMode: 0
-        argType1: 0
-        argType2: 0
-        judgeFuncName: IsEndGroundKnock
-        judgeFuncInstance: {fileID: 1561075671}
-        priority: 0
-        comment: 
-      - nextStateName: Entry_
-        nextID:
-          number: 1
-        arg1:
-          object_Arg: {fileID: 0}
-          int_Arg: 0
-          float_Arg: 0
-          string_Arg: 
-          bool_Arg: 0
-          enum_Arg: 0
-          enum_Name: 
-          assembly_Name: 
-        arg2:
-          object_Arg: {fileID: 0}
-          int_Arg: 0
-          float_Arg: 0
-          string_Arg: 
-          bool_Arg: 0
-          enum_Arg: 0
-          enum_Name: 
-          assembly_Name: 
-        argMode: 0
-        argType1: 0
-        argType2: 0
-        judgeFuncName: IsApplyDamage
-        judgeFuncInstance: {fileID: 1561075675}
-        priority: 0
-        comment: 
-      execDelegate:
-      - actionName: GroundKnockStart
-        instance: {fileID: 1561075671}
-        arg1:
-          object_Arg: {fileID: 0}
-          int_Arg: 0
-          float_Arg: 0
-          string_Arg: 
-          bool_Arg: 0
-          enum_Arg: 0
-          enum_Name: SkillConstants
-          assembly_Name: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-        arg2:
-          object_Arg: {fileID: 0}
-          int_Arg: 0
-          float_Arg: 0
-          string_Arg: 
-          bool_Arg: 0
-          enum_Arg: 0
-          enum_Name: 
-          assembly_Name: 
-        argMode: 0
-        argType1: 5
-        argType2: 1
-        comment: 
-      playUpdateDelegate: []
-      nodePosition: {x: 1074, y: 523}
-      toggleWindow: 1
-      stateMode: 0
-      subStateID:
-        number: 0
-      isSkipState: 0
-    - stateName: "\u30C0\u30A6\u30F3\uFF08\u98DB\u3070\u3057\uFF09\u6280"
-      ID:
-        number: 9
-      nextStateJudge:
-      - nextStateName: Entry_
-        nextID:
-          number: 1
-        arg1:
-          object_Arg: {fileID: 0}
-          int_Arg: 0
-          float_Arg: 0
-          string_Arg: 
-          bool_Arg: 0
-          enum_Arg: 0
-          enum_Name: 
-          assembly_Name: 
-        arg2:
-          object_Arg: {fileID: 0}
-          int_Arg: 0
-          float_Arg: 0
-          string_Arg: 
-          bool_Arg: 0
-          enum_Arg: 0
-          enum_Name: 
-          assembly_Name: 
-        argMode: 0
-        argType1: 0
-        argType2: 0
-        judgeFuncName: IsApplyDamage
-        judgeFuncInstance: {fileID: 1561075675}
-        priority: 0
-        comment: 
-      - nextStateName: "\u7A7A\u4E2D\u53D7\u3051\u8EAB\u5F85\u6A5F\u6642\u9593"
-        nextID:
-          number: 4
-        arg1:
-          object_Arg: {fileID: 0}
-          int_Arg: 0
-          float_Arg: 0
-          string_Arg: 
-          bool_Arg: 0
-          enum_Arg: 0
-          enum_Name: 
-          assembly_Name: 
-        arg2:
-          object_Arg: {fileID: 0}
-          int_Arg: 0
-          float_Arg: 0
-          string_Arg: 
-          bool_Arg: 0
-          enum_Arg: 0
-          enum_Name: 
-          assembly_Name: 
-        argMode: 0
-        argType1: 0
-        argType2: 0
-        judgeFuncName: IsEndHitStunCount
-        judgeFuncInstance: {fileID: 1561075672}
-        priority: 0
-        comment: 
-      - nextStateName: "\u6253\u3061\u4ED8\u3051"
-        nextID:
-          number: 8
-        arg1:
-          object_Arg: {fileID: 0}
-          int_Arg: 0
-          float_Arg: 0
-          string_Arg: 
-          bool_Arg: 1
-          enum_Arg: 0
-          enum_Name: 
-          assembly_Name: 
-        arg2:
-          object_Arg: {fileID: 0}
-          int_Arg: 0
-          float_Arg: 0
-          string_Arg: 
-          bool_Arg: 0
-          enum_Arg: 0
-          enum_Name: 
-          assembly_Name: 
-        argMode: 1
-        argType1: 4
-        argType2: 0
-        judgeFuncName: IsGroundCheck
-        judgeFuncInstance: {fileID: 1561075675}
-        priority: 0
-        comment: 
-      execDelegate:
-      - actionName: DownHitStart
-        instance: {fileID: 1561075672}
-        arg1:
-          object_Arg: {fileID: 0}
-          int_Arg: 0
-          float_Arg: 0
-          string_Arg: 
-          bool_Arg: 0
-          enum_Arg: 0
-          enum_Name: SkillConstants
-          assembly_Name: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-        arg2:
-          object_Arg: {fileID: 0}
-          int_Arg: 0
-          float_Arg: 0
-          string_Arg: 
-          bool_Arg: 0
-          enum_Arg: 0
-          enum_Name: 
-          assembly_Name: 
-        argMode: 0
-        argType1: 5
-        argType2: 1
-        comment: 
-      playUpdateDelegate:
-      - actionName: HitStunUpdate
-        instance: {fileID: 1561075672}
-        arg1:
-          object_Arg: {fileID: 0}
-          int_Arg: 0
-          float_Arg: 0
-          string_Arg: 
-          bool_Arg: 0
-          enum_Arg: 0
-          enum_Name: SkillConstants
-          assembly_Name: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-        arg2:
-          object_Arg: {fileID: 0}
-          int_Arg: 0
-          float_Arg: 0
-          string_Arg: 
-          bool_Arg: 0
-          enum_Arg: 0
-          enum_Name: 
-          assembly_Name: 
-        argMode: 0
-        argType1: 5
-        argType2: 1
-        comment: 
-      nodePosition: {x: 364, y: 220}
-      toggleWindow: 1
-      stateMode: 0
-      subStateID:
-        number: 0
-      isSkipState: 0
-    - stateName: "\u6295\u3052\u6280"
-      ID:
-        number: 10
-      nextStateJudge:
-      - nextStateName: "\u7A7A\u4E2D\u53D7\u3051\u8EAB\u5F85\u6A5F\u6642\u9593"
-        nextID:
-          number: 4
-        arg1:
-          object_Arg: {fileID: 0}
-          int_Arg: 0
-          float_Arg: 0
-          string_Arg: 
-          bool_Arg: 0
-          enum_Arg: 0
-          enum_Name: 
-          assembly_Name: 
-        arg2:
-          object_Arg: {fileID: 0}
-          int_Arg: 0
-          float_Arg: 0
-          string_Arg: 
-          bool_Arg: 0
-          enum_Arg: 0
-          enum_Name: 
-          assembly_Name: 
-        argMode: 0
-        argType1: 0
-        argType2: 0
-        judgeFuncName: IsEndGroundKnock
-        judgeFuncInstance: {fileID: 1561075671}
-        priority: 0
-        comment: 
-      execDelegate:
-      - actionName: Throw_Damage_Start
-        instance: {fileID: 1561075672}
-        arg1:
-          object_Arg: {fileID: 0}
-          int_Arg: 0
-          float_Arg: 0
-          string_Arg: 
-          bool_Arg: 0
-          enum_Arg: 0
-          enum_Name: SkillConstants
-          assembly_Name: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-        arg2:
-          object_Arg: {fileID: 0}
-          int_Arg: 0
-          float_Arg: 0
-          string_Arg: 
-          bool_Arg: 0
-          enum_Arg: 0
-          enum_Name: 
-          assembly_Name: 
-        argMode: 0
-        argType1: 5
-        argType2: 1
-        comment: 
-      playUpdateDelegate:
-      - actionName: Throw_Damage_Update
-        instance: {fileID: 1561075672}
-        arg1:
-          object_Arg: {fileID: 0}
-          int_Arg: 0
-          float_Arg: 0
-          string_Arg: 
-          bool_Arg: 0
-          enum_Arg: 0
-          enum_Name: SkillConstants
-          assembly_Name: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-        arg2:
-          object_Arg: {fileID: 0}
-          int_Arg: 0
-          float_Arg: 0
-          string_Arg: 
-          bool_Arg: 0
-          enum_Arg: 0
-          enum_Name: 
-          assembly_Name: 
-        argMode: 0
-        argType1: 5
-        argType2: 1
-        comment: 
-      nodePosition: {x: 308, y: -99}
-      toggleWindow: 1
-      stateMode: 0
-      subStateID:
-        number: 0
-      isSkipState: 0
-    _frag: 0
-  - ID:
-      number: 4
-    stateName: 
-    stateMove: 0
-    states:
-    - stateName: Entry_
-      ID:
-        number: 1
-      nextStateJudge:
-      - nextStateName: Down
-        nextID:
-          number: 2
-        arg1:
-          object_Arg: {fileID: 0}
-          int_Arg: 0
-          float_Arg: 0
-          string_Arg: 
-          bool_Arg: 0
-          enum_Arg: 0
-          enum_Name: 
-          assembly_Name: 
-        arg2:
-          object_Arg: {fileID: 0}
-          int_Arg: 0
-          float_Arg: 0
-          string_Arg: 
-          bool_Arg: 0
-          enum_Arg: 0
-          enum_Name: 
-          assembly_Name: 
-        argMode: 0
-        argType1: 0
-        argType2: 0
-        judgeFuncName: IsStartGame
-        judgeFuncInstance: {fileID: 1561075675}
-        priority: 0
-        comment: 
-      execDelegate: []
-      playUpdateDelegate:
-      - actionName: ChangeSkillConstant
-        instance: {fileID: 1561075675}
-        arg1:
-          object_Arg: {fileID: 0}
-          int_Arg: 0
-          float_Arg: 0
-          string_Arg: 
-          bool_Arg: 0
-          enum_Arg: 0
-          enum_Name: SkillConstants
-          assembly_Name: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-        arg2:
-          object_Arg: {fileID: 0}
-          int_Arg: 0
-          float_Arg: 0
-          string_Arg: 
-          bool_Arg: 0
-          enum_Arg: 0
-          enum_Name: 
-          assembly_Name: 
-        argMode: 2
-        argType1: 5
-        argType2: 1
-        comment: 
-      nodePosition: {x: -483, y: 112}
-      toggleWindow: 1
-      stateMode: 0
-      subStateID:
-        number: 0
-      isSkipState: 1
-    - stateName: Down
-      ID:
-        number: 2
-      nextStateJudge:
-      - nextStateName: WakeUp
-        nextID:
-          number: 3
-        arg1:
-          object_Arg: {fileID: 0}
-          int_Arg: 0
-          float_Arg: 0
-          string_Arg: 
-          bool_Arg: 0
-          enum_Arg: 0
-          enum_Name: 
-          assembly_Name: 
-        arg2:
-          object_Arg: {fileID: 0}
-          int_Arg: 0
-          float_Arg: 0
-          string_Arg: 
-          bool_Arg: 0
-          enum_Arg: 0
-          enum_Name: 
-          assembly_Name: 
-        argMode: 0
-        argType1: 0
-        argType2: 0
-        judgeFuncName: IsWakeUp
-        judgeFuncInstance: {fileID: 1561075671}
-        priority: 0
-        comment: 
-      execDelegate:
-      - actionName: DownStart
-        instance: {fileID: 1561075671}
-        arg1:
-          object_Arg: {fileID: 0}
-          int_Arg: 0
-          float_Arg: 0
-          string_Arg: 
-          bool_Arg: 0
-          enum_Arg: 0
-          enum_Name: SkillConstants
-          assembly_Name: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-        arg2:
-          object_Arg: {fileID: 0}
-          int_Arg: 0
-          float_Arg: 0
-          string_Arg: 
-          bool_Arg: 0
-          enum_Arg: 0
-          enum_Name: 
-          assembly_Name: 
-        argMode: 0
-        argType1: 5
-        argType2: 1
-        comment: 
-      playUpdateDelegate:
-      - actionName: UpdateDown
-        instance: {fileID: 1561075671}
-        arg1:
-          object_Arg: {fileID: 0}
-          int_Arg: 0
-          float_Arg: 0
-          string_Arg: 
-          bool_Arg: 0
-          enum_Arg: 0
-          enum_Name: SkillConstants
-          assembly_Name: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-        arg2:
-          object_Arg: {fileID: 0}
-          int_Arg: 0
-          float_Arg: 0
-          string_Arg: 
-          bool_Arg: 0
-          enum_Arg: 0
-          enum_Name: 
-          assembly_Name: 
-        argMode: 0
-        argType1: 5
-        argType2: 1
-        comment: 
-      nodePosition: {x: 43, y: 126}
-      toggleWindow: 1
-      stateMode: 0
-      subStateID:
-        number: 0
-      isSkipState: 0
-    - stateName: WakeUp
-      ID:
-        number: 3
-      nextStateJudge:
-      - nextStateName: End
-        nextID:
-          number: 4
-        arg1:
-          object_Arg: {fileID: 0}
-          int_Arg: 0
-          float_Arg: 0
-          string_Arg: 
-          bool_Arg: 0
-          enum_Arg: 0
-          enum_Name: 
-          assembly_Name: 
-        arg2:
-          object_Arg: {fileID: 0}
-          int_Arg: 0
-          float_Arg: 0
-          string_Arg: 
-          bool_Arg: 0
-          enum_Arg: 0
-          enum_Name: 
-          assembly_Name: 
-        argMode: 0
-        argType1: 0
-        argType2: 0
-        judgeFuncName: IsEndWakeUp
-        judgeFuncInstance: {fileID: 1561075671}
-        priority: 0
-        comment: 
-      execDelegate:
-      - actionName: WakeUpStart
-        instance: {fileID: 1561075671}
-        arg1:
-          object_Arg: {fileID: 0}
-          int_Arg: 0
-          float_Arg: 0
-          string_Arg: 
-          bool_Arg: 0
-          enum_Arg: 0
-          enum_Name: SkillConstants
-          assembly_Name: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-        arg2:
-          object_Arg: {fileID: 0}
-          int_Arg: 0
-          float_Arg: 0
-          string_Arg: 
-          bool_Arg: 0
-          enum_Arg: 0
-          enum_Name: 
-          assembly_Name: 
-        argMode: 0
-        argType1: 5
-        argType2: 1
-        comment: 
-      playUpdateDelegate: []
-      nodePosition: {x: 463, y: 304}
-      toggleWindow: 1
-      stateMode: 0
-      subStateID:
-        number: 0
-      isSkipState: 0
-    - stateName: End
-      ID:
-        number: 4
-      nextStateJudge: []
-      execDelegate:
-      - actionName: EndHitStunFlag
-        instance: {fileID: 1561075672}
-        arg1:
-          object_Arg: {fileID: 0}
-          int_Arg: 0
-          float_Arg: 0
-          string_Arg: 
-          bool_Arg: 0
-          enum_Arg: 0
-          enum_Name: SkillConstants
-          assembly_Name: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-        arg2:
-          object_Arg: {fileID: 0}
-          int_Arg: 0
-          float_Arg: 0
-          string_Arg: 
-          bool_Arg: 0
-          enum_Arg: 0
-          enum_Name: 
-          assembly_Name: 
-        argMode: 0
-        argType1: 5
-        argType2: 1
-        comment: 
-      playUpdateDelegate: []
-      nodePosition: {x: 805, y: 385}
-      toggleWindow: 1
-      stateMode: 0
-      subStateID:
-        number: 0
-      isSkipState: 0
-    _frag: 0
-  - ID:
-      number: 5
-    stateName: 
-    stateMove: 0
-    states:
-    - stateName: Entry_
-      ID:
-        number: 1
-      nextStateJudge:
-      - nextStateName: Guard
-        nextID:
-          number: 2
-        arg1:
-          object_Arg: {fileID: 0}
-          int_Arg: 0
-          float_Arg: 0
-          string_Arg: 
-          bool_Arg: 0
-          enum_Arg: 0
-          enum_Name: 
-          assembly_Name: 
-        arg2:
-          object_Arg: {fileID: 0}
-          int_Arg: 0
-          float_Arg: 0
-          string_Arg: 
-          bool_Arg: 0
-          enum_Arg: 0
-          enum_Name: 
-          assembly_Name: 
-        argMode: 0
-        argType1: 0
-        argType2: 0
-        judgeFuncName: IsStartGame
-        judgeFuncInstance: {fileID: 1561075675}
-        priority: 0
-        comment: 
-      execDelegate: []
-      playUpdateDelegate: []
-      nodePosition: {x: 253, y: 256}
-      toggleWindow: 1
-      stateMode: 0
-      subStateID:
-        number: 0
-      isSkipState: 1
-    - stateName: Guard
-      ID:
-        number: 2
-      nextStateJudge:
-      - nextStateName: Entry_
-        nextID:
-          number: 1
-        arg1:
-          object_Arg: {fileID: 0}
-          int_Arg: 0
-          float_Arg: 0
-          string_Arg: 
-          bool_Arg: 0
-          enum_Arg: 0
-          enum_Name: 
-          assembly_Name: 
-        arg2:
-          object_Arg: {fileID: 0}
-          int_Arg: 0
-          float_Arg: 0
-          string_Arg: 
-          bool_Arg: 0
-          enum_Arg: 0
-          enum_Name: 
-          assembly_Name: 
-        argMode: 0
-        argType1: 0
-        argType2: 0
-        judgeFuncName: IsEndGuard
-        judgeFuncInstance: {fileID: 1561075670}
-        priority: 0
-        comment: 
-      - nextStateName: End
-        nextID:
-          number: 3
-        arg1:
-          object_Arg: {fileID: 0}
-          int_Arg: 0
-          float_Arg: 0
-          string_Arg: 
-          bool_Arg: 0
-          enum_Arg: 0
-          enum_Name: 
-          assembly_Name: 
-        arg2:
-          object_Arg: {fileID: 0}
-          int_Arg: 0
-          float_Arg: 0
-          string_Arg: 
-          bool_Arg: 0
-          enum_Arg: 0
-          enum_Name: 
-          assembly_Name: 
-        argMode: 0
-        argType1: 0
-        argType2: 0
-        judgeFuncName: IsEndGuardCount
-        judgeFuncInstance: {fileID: 1561075670}
-        priority: 0
-        comment: 
-      execDelegate:
-      - actionName: GuardStart
-        instance: {fileID: 1561075670}
-        arg1:
-          object_Arg: {fileID: 0}
-          int_Arg: 0
-          float_Arg: 0
-          string_Arg: 
-          bool_Arg: 0
-          enum_Arg: 0
-          enum_Name: SkillConstants
-          assembly_Name: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-        arg2:
-          object_Arg: {fileID: 0}
-          int_Arg: 0
-          float_Arg: 0
-          string_Arg: 
-          bool_Arg: 0
-          enum_Arg: 0
-          enum_Name: 
-          assembly_Name: 
-        argMode: 0
-        argType1: 5
-        argType2: 1
-        comment: 
-      playUpdateDelegate:
-      - actionName: GuardUpdate
-        instance: {fileID: 1561075670}
-        arg1:
-          object_Arg: {fileID: 0}
-          int_Arg: 0
-          float_Arg: 0
-          string_Arg: 
-          bool_Arg: 0
-          enum_Arg: 0
-          enum_Name: SkillConstants
-          assembly_Name: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-        arg2:
-          object_Arg: {fileID: 0}
-          int_Arg: 0
-          float_Arg: 0
-          string_Arg: 
-          bool_Arg: 0
-          enum_Arg: 0
-          enum_Name: 
-          assembly_Name: 
-        argMode: 0
-        argType1: 5
-        argType2: 1
-        comment: 
-      nodePosition: {x: 703, y: 199}
-      toggleWindow: 1
-      stateMode: 0
-      subStateID:
-        number: 0
-      isSkipState: 1
-    - stateName: End
-      ID:
-        number: 3
-      nextStateJudge: []
-      execDelegate:
-      - actionName: EndGuardFlag
-        instance: {fileID: 1561075670}
-        arg1:
-          object_Arg: {fileID: 0}
-          int_Arg: 0
-          float_Arg: 0
-          string_Arg: 
-          bool_Arg: 0
-          enum_Arg: 0
-          enum_Name: SkillConstants
-          assembly_Name: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-        arg2:
-          object_Arg: {fileID: 0}
-          int_Arg: 0
-          float_Arg: 0
-          string_Arg: 
-          bool_Arg: 0
-          enum_Arg: 0
-          enum_Name: 
-          assembly_Name: 
-        argMode: 0
-        argType1: 5
-        argType2: 1
-        comment: 
-      playUpdateDelegate: []
-      nodePosition: {x: 1062, y: 266}
-      toggleWindow: 1
-      stateMode: 0
-      subStateID:
-        number: 0
-      isSkipState: 1
-    _frag: 0
---- !u!4 &1561075677
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1561075669}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.5389598, y: 3.6338923, z: -6.842574}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1566995746
 GameObject:
   m_ObjectHideFlags: 0
@@ -11705,6 +11841,54 @@ PrefabInstance:
     - target: {fileID: 100206, guid: 42dde74ac3ace6c4c8f42c3b08dc7521, type: 3}
       propertyPath: m_Name
       value: GUriko_3_ALL
+      objectReference: {fileID: 0}
+    - target: {fileID: 400206, guid: 42dde74ac3ace6c4c8f42c3b08dc7521, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400206, guid: 42dde74ac3ace6c4c8f42c3b08dc7521, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400206, guid: 42dde74ac3ace6c4c8f42c3b08dc7521, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400206, guid: 42dde74ac3ace6c4c8f42c3b08dc7521, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400206, guid: 42dde74ac3ace6c4c8f42c3b08dc7521, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400206, guid: 42dde74ac3ace6c4c8f42c3b08dc7521, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400206, guid: 42dde74ac3ace6c4c8f42c3b08dc7521, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400206, guid: 42dde74ac3ace6c4c8f42c3b08dc7521, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400206, guid: 42dde74ac3ace6c4c8f42c3b08dc7521, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400206, guid: 42dde74ac3ace6c4c8f42c3b08dc7521, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 400206, guid: 42dde74ac3ace6c4c8f42c3b08dc7521, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400206, guid: 42dde74ac3ace6c4c8f42c3b08dc7521, type: 3}
+      propertyPath: m_LocalScale.x
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 42dde74ac3ace6c4c8f42c3b08dc7521, type: 3}
       propertyPath: m_LocalPosition.x
@@ -13418,54 +13602,6 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -0.00000014533997
       objectReference: {fileID: 0}
-    - target: {fileID: 400206, guid: 42dde74ac3ace6c4c8f42c3b08dc7521, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400206, guid: 42dde74ac3ace6c4c8f42c3b08dc7521, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400206, guid: 42dde74ac3ace6c4c8f42c3b08dc7521, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400206, guid: 42dde74ac3ace6c4c8f42c3b08dc7521, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400206, guid: 42dde74ac3ace6c4c8f42c3b08dc7521, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 400206, guid: 42dde74ac3ace6c4c8f42c3b08dc7521, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400206, guid: 42dde74ac3ace6c4c8f42c3b08dc7521, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400206, guid: 42dde74ac3ace6c4c8f42c3b08dc7521, type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400206, guid: 42dde74ac3ace6c4c8f42c3b08dc7521, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400206, guid: 42dde74ac3ace6c4c8f42c3b08dc7521, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 180
-      objectReference: {fileID: 0}
-    - target: {fileID: 400206, guid: 42dde74ac3ace6c4c8f42c3b08dc7521, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400206, guid: 42dde74ac3ace6c4c8f42c3b08dc7521, type: 3}
-      propertyPath: m_LocalScale.x
-      value: -1
-      objectReference: {fileID: 0}
     - target: {fileID: 400208, guid: 42dde74ac3ace6c4c8f42c3b08dc7521, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -13676,7 +13812,7 @@ PrefabInstance:
     - target: {fileID: 8394669090198475103, guid: 727da66ea3ba7f54b870a8dc069b65c7,
         type: 3}
       propertyPath: stateBody.Array.data[1].states.Array.size
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 8394669090198475103, guid: 727da66ea3ba7f54b870a8dc069b65c7,
         type: 3}
@@ -13690,63 +13826,78 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8394669090198475103, guid: 727da66ea3ba7f54b870a8dc069b65c7,
         type: 3}
+      propertyPath: stateBody.Array.data[1].states.Array.data[3].nextStateJudge.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8394669090198475103, guid: 727da66ea3ba7f54b870a8dc069b65c7,
+        type: 3}
+      propertyPath: stateBody.Array.data[1].states.Array.data[7].nextStateJudge.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8394669090198475103, guid: 727da66ea3ba7f54b870a8dc069b65c7,
+        type: 3}
+      propertyPath: stateBody.Array.data[1].states.Array.data[7].execDelegate.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8394669090198475103, guid: 727da66ea3ba7f54b870a8dc069b65c7,
+        type: 3}
       propertyPath: stateBody.Array.data[1].states.Array.data[0].nodePosition.y
-      value: 44
+      value: -117
       objectReference: {fileID: 0}
     - target: {fileID: 8394669090198475103, guid: 727da66ea3ba7f54b870a8dc069b65c7,
         type: 3}
       propertyPath: stateBody.Array.data[1].states.Array.data[1].nodePosition.y
-      value: 325
+      value: 164
       objectReference: {fileID: 0}
     - target: {fileID: 8394669090198475103, guid: 727da66ea3ba7f54b870a8dc069b65c7,
         type: 3}
       propertyPath: stateBody.Array.data[1].states.Array.data[2].nodePosition.y
-      value: -168
+      value: -329
       objectReference: {fileID: 0}
     - target: {fileID: 8394669090198475103, guid: 727da66ea3ba7f54b870a8dc069b65c7,
         type: 3}
       propertyPath: stateBody.Array.data[1].states.Array.data[3].nodePosition.y
-      value: 406
+      value: 212
       objectReference: {fileID: 0}
     - target: {fileID: 8394669090198475103, guid: 727da66ea3ba7f54b870a8dc069b65c7,
         type: 3}
       propertyPath: stateBody.Array.data[1].states.Array.data[4].nodePosition.y
-      value: -168
+      value: -315
       objectReference: {fileID: 0}
     - target: {fileID: 8394669090198475103, guid: 727da66ea3ba7f54b870a8dc069b65c7,
         type: 3}
       propertyPath: stateBody.Array.data[1].states.Array.data[5].nodePosition.y
-      value: 689
+      value: 528
       objectReference: {fileID: 0}
     - target: {fileID: 8394669090198475103, guid: 727da66ea3ba7f54b870a8dc069b65c7,
         type: 3}
       propertyPath: stateBody.Array.data[1].states.Array.data[0].nodePosition.x
-      value: -265
+      value: -1215
       objectReference: {fileID: 0}
     - target: {fileID: 8394669090198475103, guid: 727da66ea3ba7f54b870a8dc069b65c7,
         type: 3}
       propertyPath: stateBody.Array.data[1].states.Array.data[1].nodePosition.x
-      value: 216
+      value: -734
       objectReference: {fileID: 0}
     - target: {fileID: 8394669090198475103, guid: 727da66ea3ba7f54b870a8dc069b65c7,
         type: 3}
       propertyPath: stateBody.Array.data[1].states.Array.data[2].nodePosition.x
-      value: 215
+      value: -735
       objectReference: {fileID: 0}
     - target: {fileID: 8394669090198475103, guid: 727da66ea3ba7f54b870a8dc069b65c7,
         type: 3}
       propertyPath: stateBody.Array.data[1].states.Array.data[3].nodePosition.x
-      value: 1022
+      value: 79
       objectReference: {fileID: 0}
     - target: {fileID: 8394669090198475103, guid: 727da66ea3ba7f54b870a8dc069b65c7,
         type: 3}
       propertyPath: stateBody.Array.data[1].states.Array.data[4].nodePosition.x
-      value: 878
+      value: -49
       objectReference: {fileID: 0}
     - target: {fileID: 8394669090198475103, guid: 727da66ea3ba7f54b870a8dc069b65c7,
         type: 3}
       propertyPath: stateBody.Array.data[1].states.Array.data[5].nodePosition.x
-      value: 577
+      value: -373
       objectReference: {fileID: 0}
     - target: {fileID: 8394669090198475103, guid: 727da66ea3ba7f54b870a8dc069b65c7,
         type: 3}
@@ -13761,102 +13912,102 @@ PrefabInstance:
     - target: {fileID: 8394669090198475103, guid: 727da66ea3ba7f54b870a8dc069b65c7,
         type: 3}
       propertyPath: stateBody.Array.data[2].states.Array.data[0].nodePosition.x
-      value: -1175
+      value: -375
       objectReference: {fileID: 0}
     - target: {fileID: 8394669090198475103, guid: 727da66ea3ba7f54b870a8dc069b65c7,
         type: 3}
       propertyPath: stateBody.Array.data[2].states.Array.data[0].nodePosition.y
-      value: 90
+      value: 257
       objectReference: {fileID: 0}
     - target: {fileID: 8394669090198475103, guid: 727da66ea3ba7f54b870a8dc069b65c7,
         type: 3}
       propertyPath: stateBody.Array.data[2].states.Array.data[1].nodePosition.x
-      value: -351
+      value: 449
       objectReference: {fileID: 0}
     - target: {fileID: 8394669090198475103, guid: 727da66ea3ba7f54b870a8dc069b65c7,
         type: 3}
       propertyPath: stateBody.Array.data[2].states.Array.data[1].nodePosition.y
-      value: 248
+      value: 415
       objectReference: {fileID: 0}
     - target: {fileID: 8394669090198475103, guid: 727da66ea3ba7f54b870a8dc069b65c7,
         type: 3}
       propertyPath: stateBody.Array.data[2].states.Array.data[2].nodePosition.x
-      value: -355
+      value: 445
       objectReference: {fileID: 0}
     - target: {fileID: 8394669090198475103, guid: 727da66ea3ba7f54b870a8dc069b65c7,
         type: 3}
       propertyPath: stateBody.Array.data[2].states.Array.data[2].nodePosition.y
-      value: 613
+      value: 780
       objectReference: {fileID: 0}
     - target: {fileID: 8394669090198475103, guid: 727da66ea3ba7f54b870a8dc069b65c7,
         type: 3}
       propertyPath: stateBody.Array.data[2].states.Array.data[3].nodePosition.x
-      value: 45
+      value: 845
       objectReference: {fileID: 0}
     - target: {fileID: 8394669090198475103, guid: 727da66ea3ba7f54b870a8dc069b65c7,
         type: 3}
       propertyPath: stateBody.Array.data[2].states.Array.data[3].nodePosition.y
-      value: 131
+      value: 298
       objectReference: {fileID: 0}
     - target: {fileID: 8394669090198475103, guid: 727da66ea3ba7f54b870a8dc069b65c7,
         type: 3}
       propertyPath: stateBody.Array.data[2].states.Array.data[4].nodePosition.x
-      value: 622
+      value: 1422
       objectReference: {fileID: 0}
     - target: {fileID: 8394669090198475103, guid: 727da66ea3ba7f54b870a8dc069b65c7,
         type: 3}
       propertyPath: stateBody.Array.data[2].states.Array.data[4].nodePosition.y
-      value: 779
+      value: 946
       objectReference: {fileID: 0}
     - target: {fileID: 8394669090198475103, guid: 727da66ea3ba7f54b870a8dc069b65c7,
         type: 3}
       propertyPath: stateBody.Array.data[2].states.Array.data[5].nodePosition.x
-      value: 607
+      value: 1407
       objectReference: {fileID: 0}
     - target: {fileID: 8394669090198475103, guid: 727da66ea3ba7f54b870a8dc069b65c7,
         type: 3}
       propertyPath: stateBody.Array.data[2].states.Array.data[5].nodePosition.y
-      value: 491
+      value: 658
       objectReference: {fileID: 0}
     - target: {fileID: 8394669090198475103, guid: 727da66ea3ba7f54b870a8dc069b65c7,
         type: 3}
       propertyPath: stateBody.Array.data[2].states.Array.data[6].nodePosition.x
-      value: 752
+      value: 1552
       objectReference: {fileID: 0}
     - target: {fileID: 8394669090198475103, guid: 727da66ea3ba7f54b870a8dc069b65c7,
         type: 3}
       propertyPath: stateBody.Array.data[2].states.Array.data[6].nodePosition.y
-      value: 199
+      value: 366
       objectReference: {fileID: 0}
     - target: {fileID: 8394669090198475103, guid: 727da66ea3ba7f54b870a8dc069b65c7,
         type: 3}
       propertyPath: stateBody.Array.data[2].states.Array.data[7].nodePosition.x
-      value: 378
+      value: 1178
       objectReference: {fileID: 0}
     - target: {fileID: 8394669090198475103, guid: 727da66ea3ba7f54b870a8dc069b65c7,
         type: 3}
       propertyPath: stateBody.Array.data[2].states.Array.data[7].nodePosition.y
-      value: 123
+      value: 290
       objectReference: {fileID: 0}
     - target: {fileID: 8394669090198475103, guid: 727da66ea3ba7f54b870a8dc069b65c7,
         type: 3}
       propertyPath: stateBody.Array.data[2].states.Array.data[8].nodePosition.x
-      value: -361
+      value: 439
       objectReference: {fileID: 0}
     - target: {fileID: 8394669090198475103, guid: 727da66ea3ba7f54b870a8dc069b65c7,
         type: 3}
       propertyPath: stateBody.Array.data[2].states.Array.data[8].nodePosition.y
-      value: -159
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 8394669090198475103, guid: 727da66ea3ba7f54b870a8dc069b65c7,
         type: 3}
       propertyPath: stateBody.Array.data[2].states.Array.data[9].nodePosition.x
-      value: -417
+      value: 383
       objectReference: {fileID: 0}
     - target: {fileID: 8394669090198475103, guid: 727da66ea3ba7f54b870a8dc069b65c7,
         type: 3}
       propertyPath: stateBody.Array.data[2].states.Array.data[9].nodePosition.y
-      value: -478
+      value: -311
       objectReference: {fileID: 0}
     - target: {fileID: 8394669090198475103, guid: 727da66ea3ba7f54b870a8dc069b65c7,
         type: 3}
@@ -14056,7 +14207,7 @@ PrefabInstance:
     - target: {fileID: 8394669090198475103, guid: 727da66ea3ba7f54b870a8dc069b65c7,
         type: 3}
       propertyPath: stateBody.Array.data[0].states.Array.data[0].nodePosition.x
-      value: 135
+      value: 102
       objectReference: {fileID: 0}
     - target: {fileID: 8394669090198475103, guid: 727da66ea3ba7f54b870a8dc069b65c7,
         type: 3}
@@ -14071,7 +14222,7 @@ PrefabInstance:
     - target: {fileID: 8394669090198475103, guid: 727da66ea3ba7f54b870a8dc069b65c7,
         type: 3}
       propertyPath: stateBody.Array.data[0].states.Array.data[0].nodePosition.y
-      value: 220
+      value: 233
       objectReference: {fileID: 0}
     - target: {fileID: 8394669090198475103, guid: 727da66ea3ba7f54b870a8dc069b65c7,
         type: 3}
@@ -14096,12 +14247,12 @@ PrefabInstance:
     - target: {fileID: 8394669090198475103, guid: 727da66ea3ba7f54b870a8dc069b65c7,
         type: 3}
       propertyPath: stateBody.Array.data[1].states.Array.data[6].nodePosition.x
-      value: 502
+      value: -448
       objectReference: {fileID: 0}
     - target: {fileID: 8394669090198475103, guid: 727da66ea3ba7f54b870a8dc069b65c7,
         type: 3}
       propertyPath: stateBody.Array.data[1].states.Array.data[6].nodePosition.y
-      value: 141
+      value: -20
       objectReference: {fileID: 0}
     - target: {fileID: 8394669090198475103, guid: 727da66ea3ba7f54b870a8dc069b65c7,
         type: 3}
@@ -14198,6 +14349,151 @@ PrefabInstance:
       propertyPath: stateBody.Array.data[1].states.Array.data[6].isSkipState
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8394669090198475103, guid: 727da66ea3ba7f54b870a8dc069b65c7,
+        type: 3}
+      propertyPath: stateBody.Array.data[3].states.Array.data[0].nodePosition.x
+      value: -493
+      objectReference: {fileID: 0}
+    - target: {fileID: 8394669090198475103, guid: 727da66ea3ba7f54b870a8dc069b65c7,
+        type: 3}
+      propertyPath: stateBody.Array.data[3].states.Array.data[0].nodePosition.y
+      value: 107
+      objectReference: {fileID: 0}
+    - target: {fileID: 8394669090198475103, guid: 727da66ea3ba7f54b870a8dc069b65c7,
+        type: 3}
+      propertyPath: stateBody.Array.data[3].states.Array.data[1].nodePosition.x
+      value: 33
+      objectReference: {fileID: 0}
+    - target: {fileID: 8394669090198475103, guid: 727da66ea3ba7f54b870a8dc069b65c7,
+        type: 3}
+      propertyPath: stateBody.Array.data[3].states.Array.data[1].nodePosition.y
+      value: 121
+      objectReference: {fileID: 0}
+    - target: {fileID: 8394669090198475103, guid: 727da66ea3ba7f54b870a8dc069b65c7,
+        type: 3}
+      propertyPath: stateBody.Array.data[3].states.Array.data[2].nodePosition.x
+      value: 453
+      objectReference: {fileID: 0}
+    - target: {fileID: 8394669090198475103, guid: 727da66ea3ba7f54b870a8dc069b65c7,
+        type: 3}
+      propertyPath: stateBody.Array.data[3].states.Array.data[2].nodePosition.y
+      value: 299
+      objectReference: {fileID: 0}
+    - target: {fileID: 8394669090198475103, guid: 727da66ea3ba7f54b870a8dc069b65c7,
+        type: 3}
+      propertyPath: stateBody.Array.data[3].states.Array.data[3].nodePosition.x
+      value: 795
+      objectReference: {fileID: 0}
+    - target: {fileID: 8394669090198475103, guid: 727da66ea3ba7f54b870a8dc069b65c7,
+        type: 3}
+      propertyPath: stateBody.Array.data[3].states.Array.data[3].nodePosition.y
+      value: 380
+      objectReference: {fileID: 0}
+    - target: {fileID: 8394669090198475103, guid: 727da66ea3ba7f54b870a8dc069b65c7,
+        type: 3}
+      propertyPath: stateBody.Array.data[3].states.Array.data[3].isSkipState
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8394669090198475103, guid: 727da66ea3ba7f54b870a8dc069b65c7,
+        type: 3}
+      propertyPath: stateBody.Array.data[1].states.Array.data[7].stateName
+      value: "Cancel\u653B\u6483"
+      objectReference: {fileID: 0}
+    - target: {fileID: 8394669090198475103, guid: 727da66ea3ba7f54b870a8dc069b65c7,
+        type: 3}
+      propertyPath: stateBody.Array.data[1].states.Array.data[7].ID.number
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8394669090198475103, guid: 727da66ea3ba7f54b870a8dc069b65c7,
+        type: 3}
+      propertyPath: stateBody.Array.data[1].states.Array.data[7].nodePosition.x
+      value: 524
+      objectReference: {fileID: 0}
+    - target: {fileID: 8394669090198475103, guid: 727da66ea3ba7f54b870a8dc069b65c7,
+        type: 3}
+      propertyPath: stateBody.Array.data[1].states.Array.data[7].nodePosition.y
+      value: 310
+      objectReference: {fileID: 0}
+    - target: {fileID: 8394669090198475103, guid: 727da66ea3ba7f54b870a8dc069b65c7,
+        type: 3}
+      propertyPath: stateBody.Array.data[1].states.Array.data[7].isSkipState
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8394669090198475103, guid: 727da66ea3ba7f54b870a8dc069b65c7,
+        type: 3}
+      propertyPath: stateBody.Array.data[1].states.Array.data[3].nextStateJudge.Array.data[1].judgeFuncName
+      value: IsEndAttack
+      objectReference: {fileID: 0}
+    - target: {fileID: 8394669090198475103, guid: 727da66ea3ba7f54b870a8dc069b65c7,
+        type: 3}
+      propertyPath: stateBody.Array.data[1].states.Array.data[3].nextStateJudge.Array.data[0].nextStateName
+      value: "Cancel\u653B\u6483"
+      objectReference: {fileID: 0}
+    - target: {fileID: 8394669090198475103, guid: 727da66ea3ba7f54b870a8dc069b65c7,
+        type: 3}
+      propertyPath: stateBody.Array.data[1].states.Array.data[3].nextStateJudge.Array.data[0].nextID.number
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8394669090198475103, guid: 727da66ea3ba7f54b870a8dc069b65c7,
+        type: 3}
+      propertyPath: stateBody.Array.data[1].states.Array.data[3].nextStateJudge.Array.data[0].judgeFuncName
+      value: IsCancelAttack
+      objectReference: {fileID: 0}
+    - target: {fileID: 8394669090198475103, guid: 727da66ea3ba7f54b870a8dc069b65c7,
+        type: 3}
+      propertyPath: stateBody.Array.data[1].states.Array.data[3].nextStateJudge.Array.data[1].nextStateName
+      value: Entry_
+      objectReference: {fileID: 0}
+    - target: {fileID: 8394669090198475103, guid: 727da66ea3ba7f54b870a8dc069b65c7,
+        type: 3}
+      propertyPath: stateBody.Array.data[1].states.Array.data[3].nextStateJudge.Array.data[1].nextID.number
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8394669090198475103, guid: 727da66ea3ba7f54b870a8dc069b65c7,
+        type: 3}
+      propertyPath: stateBody.Array.data[1].states.Array.data[7].nextStateJudge.Array.data[0].judgeFuncName
+      value: IsMoveFighter
+      objectReference: {fileID: 0}
+    - target: {fileID: 8394669090198475103, guid: 727da66ea3ba7f54b870a8dc069b65c7,
+        type: 3}
+      propertyPath: stateBody.Array.data[1].states.Array.data[7].nextStateJudge.Array.data[0].nextStateName
+      value: "\u5730\u4E0A\u653B\u6483"
+      objectReference: {fileID: 0}
+    - target: {fileID: 8394669090198475103, guid: 727da66ea3ba7f54b870a8dc069b65c7,
+        type: 3}
+      propertyPath: stateBody.Array.data[1].states.Array.data[7].nextStateJudge.Array.data[0].nextID.number
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8394669090198475103, guid: 727da66ea3ba7f54b870a8dc069b65c7,
+        type: 3}
+      propertyPath: stateBody.Array.data[1].states.Array.data[7].execDelegate.Array.data[0].actionName
+      value: ChangeSkillConstant
+      objectReference: {fileID: 0}
+    - target: {fileID: 8394669090198475103, guid: 727da66ea3ba7f54b870a8dc069b65c7,
+        type: 3}
+      propertyPath: stateBody.Array.data[1].states.Array.data[7].execDelegate.Array.data[0].arg1.enum_Name
+      value: SkillConstants
+      objectReference: {fileID: 0}
+    - target: {fileID: 8394669090198475103, guid: 727da66ea3ba7f54b870a8dc069b65c7,
+        type: 3}
+      propertyPath: stateBody.Array.data[1].states.Array.data[7].execDelegate.Array.data[0].arg1.assembly_Name
+      value: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      objectReference: {fileID: 0}
+    - target: {fileID: 8394669090198475103, guid: 727da66ea3ba7f54b870a8dc069b65c7,
+        type: 3}
+      propertyPath: stateBody.Array.data[1].states.Array.data[7].execDelegate.Array.data[0].argMode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8394669090198475103, guid: 727da66ea3ba7f54b870a8dc069b65c7,
+        type: 3}
+      propertyPath: stateBody.Array.data[1].states.Array.data[7].execDelegate.Array.data[0].argType1
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8394669090198475103, guid: 727da66ea3ba7f54b870a8dc069b65c7,
+        type: 3}
+      propertyPath: stateBody.Array.data[1].states.Array.data[7].execDelegate.Array.data[0].argType2
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8394669090198475102, guid: 727da66ea3ba7f54b870a8dc069b65c7,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -14266,6 +14562,50 @@ PrefabInstance:
     - target: {fileID: 100206, guid: 42dde74ac3ace6c4c8f42c3b08dc7521, type: 3}
       propertyPath: m_Name
       value: GUriko_3_ALL
+      objectReference: {fileID: 0}
+    - target: {fileID: 400206, guid: 42dde74ac3ace6c4c8f42c3b08dc7521, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400206, guid: 42dde74ac3ace6c4c8f42c3b08dc7521, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400206, guid: 42dde74ac3ace6c4c8f42c3b08dc7521, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400206, guid: 42dde74ac3ace6c4c8f42c3b08dc7521, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400206, guid: 42dde74ac3ace6c4c8f42c3b08dc7521, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400206, guid: 42dde74ac3ace6c4c8f42c3b08dc7521, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400206, guid: 42dde74ac3ace6c4c8f42c3b08dc7521, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400206, guid: 42dde74ac3ace6c4c8f42c3b08dc7521, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400206, guid: 42dde74ac3ace6c4c8f42c3b08dc7521, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400206, guid: 42dde74ac3ace6c4c8f42c3b08dc7521, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 400206, guid: 42dde74ac3ace6c4c8f42c3b08dc7521, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 42dde74ac3ace6c4c8f42c3b08dc7521, type: 3}
       propertyPath: m_LocalPosition.x
@@ -16006,50 +16346,6 @@ PrefabInstance:
     - target: {fileID: 400202, guid: 42dde74ac3ace6c4c8f42c3b08dc7521, type: 3}
       propertyPath: m_LocalPosition.z
       value: -0.00000014533997
-      objectReference: {fileID: 0}
-    - target: {fileID: 400206, guid: 42dde74ac3ace6c4c8f42c3b08dc7521, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400206, guid: 42dde74ac3ace6c4c8f42c3b08dc7521, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400206, guid: 42dde74ac3ace6c4c8f42c3b08dc7521, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400206, guid: 42dde74ac3ace6c4c8f42c3b08dc7521, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400206, guid: 42dde74ac3ace6c4c8f42c3b08dc7521, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 400206, guid: 42dde74ac3ace6c4c8f42c3b08dc7521, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400206, guid: 42dde74ac3ace6c4c8f42c3b08dc7521, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400206, guid: 42dde74ac3ace6c4c8f42c3b08dc7521, type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400206, guid: 42dde74ac3ace6c4c8f42c3b08dc7521, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400206, guid: 42dde74ac3ace6c4c8f42c3b08dc7521, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 180
-      objectReference: {fileID: 0}
-    - target: {fileID: 400206, guid: 42dde74ac3ace6c4c8f42c3b08dc7521, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400208, guid: 42dde74ac3ace6c4c8f42c3b08dc7521, type: 3}
       propertyPath: m_LocalPosition.x

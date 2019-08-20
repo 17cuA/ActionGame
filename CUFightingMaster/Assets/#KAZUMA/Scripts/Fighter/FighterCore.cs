@@ -23,6 +23,8 @@ public class FighterCore : MonoBehaviour
     private int changeWeightFrame = 0;
     public bool changeSkill { get; private set; }//技が入れ替わったかどうか
     public int HP = 0;
+
+    private bool isHitAttack = false;//攻撃が当たったかどうか
     //現在のプレイヤーの移動の状況、状態
     private PlayerMoveState playerMoveState = PlayerMoveState.Idle;
     #region Getter
@@ -65,6 +67,10 @@ public class FighterCore : MonoBehaviour
     public PlayerMoveState PlayerMoveStates
     {
         get { return playerMoveState; }
+    }
+    public bool IsHitAttack
+    {
+        get { return isHitAttack; }
     }
     #endregion
     private void Start()
@@ -151,6 +157,10 @@ public class FighterCore : MonoBehaviour
     public void SetKnockBack(float _backCount, PlayerNumber _number, PlayerDirection _dir, int _count = 6)
     {
         hitJudgement.SetKnockBack(_backCount, _number, _dir, _count);
+    }
+    public void SetHitAttackFlag(bool _hitFlag)
+    {
+        isHitAttack = _hitFlag;
     }
     #endregion
 
