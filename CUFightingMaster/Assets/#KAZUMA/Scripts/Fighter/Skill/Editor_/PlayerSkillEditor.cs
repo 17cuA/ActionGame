@@ -81,7 +81,10 @@ public class PlayerSkillEditor : EditorWindow
 			case Tab.移動速度設定:
 				MoveSettingDraw();
 				break;
-		}
+            case Tab.エフェクト:
+                EffectTabDraw();
+                break;
+        }
 		GUILayout.EndScrollView();
 		AnimationPlayFrame();
         //エディタ全体の再描画
@@ -94,6 +97,7 @@ public class PlayerSkillEditor : EditorWindow
 		アニメーション,
 		当たり判定,
 		移動速度設定,
+        エフェクト,
 	}
 	private Tab _tab = Tab.アニメーション;
 	// Style定義
@@ -159,25 +163,17 @@ public class PlayerSkillEditor : EditorWindow
 			EditorGUILayout.EndHorizontal();
 			//ブレンド
 			EditorGUILayout.BeginHorizontal();
-			playerSkill.inBlend = EditorGUILayout.Toggle("再生時ブレンド",playerSkill.inBlend);
-			playerSkill.outBlend = EditorGUILayout.Toggle("終了時ブレンド",playerSkill.outBlend);
+			playerSkill.inBlend = EditorGUILayout.Toggle("（未）再生時ブレンド",playerSkill.inBlend);
+			playerSkill.outBlend = EditorGUILayout.Toggle("（未）終了時ブレンド",playerSkill.outBlend);
 			EditorGUILayout.EndHorizontal();
 		}
 		EditorGUILayout.EndVertical();
         EditorGUILayout.BeginVertical("Box");
         playerSkill.status = (SkillStatus)EditorGUILayout.EnumPopup("属性", playerSkill.status);
-        playerSkill.hitMode = (HitMode)EditorGUILayout.EnumPopup("ヒットモード", playerSkill.hitMode);
-		if(playerSkill.hitMode == HitMode.Grab)
-		{
-            EditorGUILayout.BeginVertical("Box");
-            playerSkill.throwMotion = (AnimationClip)EditorGUILayout.ObjectField("投げモーション",playerSkill.throwMotion,typeof(AnimationClip),false);
-            playerSkill.enemyThrowMotion = (AnimationClip)EditorGUILayout.ObjectField("敵投げられモーション", playerSkill.enemyThrowMotion, typeof(AnimationClip), false);
-            EditorGUILayout.EndVertical();
-        }
         playerSkill.cancelFrag = (SkillStatus)EditorGUILayout.EnumFlagsField("キャンセル属性", playerSkill.cancelFrag);
         EditorGUILayout.BeginHorizontal();
         playerSkill.barrageCancelFrag = EditorGUILayout.Toggle("連打キャンセル", playerSkill.barrageCancelFrag);
-        playerSkill.cancelLayer = EditorGUILayout.IntField("キャンセルレイヤー",playerSkill.cancelLayer);
+        playerSkill.cancelLayer = EditorGUILayout.IntField("（未）キャンセルレイヤー",playerSkill.cancelLayer);
         EditorGUILayout.EndHorizontal();
         EditorGUILayout.EndVertical();
     }
@@ -578,6 +574,43 @@ public class PlayerSkillEditor : EditorWindow
         }
     }
 	#endregion
+
+    #region  エフェクト_Tab()
+    private void EffectTabDraw()
+    {
+        if (GUILayout.Button("エフェクト作成", GUILayout.Width(100)))
+        {
+            playerSkill.frameEffects.Add(new FighterSkill.FrameEffects());
+        }
+        for (int i = 0; i < playerSkill.frameEffects.Count; i++)
+        {
+            EditorGUILayout.BeginVertical("Box");
+            EditorGUILayout.BeginHorizontal();
+            bool removeFrag = false;
+            playerSkill.frameEffects[i].frame = EditorGUILayout.IntField("フレーム", playerSkill.frameEffects[i].frame);
+            //削除ボタン
+            if (GUILayout.Button("×", GUILayout.Width(20)))
+            {
+                removeFrag = true;
+            }
+            //削除
+            EditorGUILayout.EndHorizontal();
+            EditorGUILayout.BeginVertical("Box");
+            EditorGUILayout.BeginHorizontal();
+            playerSkill.frameEffects[i].childFlag = EditorGUILayout.Toggle("親子関係", playerSkill.frameEffects[i].childFlag);
+            playerSkill.frameEffects[i].worldPositionFlag = EditorGUILayout.Toggle("ワールド座標", playerSkill.frameEffects[i].worldPositionFlag);
+            EditorGUILayout.EndHorizontal();
+            playerSkill.frameEffects[i].effect = EditorGUILayout.ObjectField("エフェクト", playerSkill.frameEffects[i].effect, typeof(GameObject), false) as GameObject;
+            //Vector3入力
+            playerSkill.frameEffects[i].position = EditorGUILayout.Vector3Field("ポジション", playerSkill.frameEffects[i].position);
+            EditorGUILayout.EndVertical();
+            EditorGUILayout.EndVertical();
+            if (removeFrag) playerSkill.frameEffects.RemoveAt(i);
+        }
+
+    }
+    #endregion
+
 	#region バー_BarDraw()
 	public int value = 0;//現在の位置
     int rightValue = 0;//最大値

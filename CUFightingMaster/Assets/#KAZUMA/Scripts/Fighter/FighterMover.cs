@@ -12,6 +12,10 @@ public class FighterMover
 	private List<FighterSkill.GravityMove> gravity = new List<FighterSkill.GravityMove>();//重力配列
 	private int gravityFrame = 0;   //重力用のフレーム数
 
+    //エフェクト
+    private List<FighterSkill.FrameEffects> effects = new List<FighterSkill.FrameEffects>();
+    private int nowPlayEffectNumber = -1;
+
     //初期化
     public FighterMover(FighterCore fighterCore)
 	{
@@ -23,7 +27,8 @@ public class FighterMover
 		ChangeSkillInit();//技の入れ替え
 		MovementSkill();//移動
 		GravityMovementSkill();
-		gravityFrame++;
+        PlayEffects();
+        gravityFrame++;
     }
 	#region 技入れ替えチェック
 	//入れ替わり処理
@@ -43,6 +48,7 @@ public class FighterMover
             {
                 gravity = new List<FighterSkill.GravityMove>(core.NowPlaySkill.gravityMoves);
             }
+            effects = new List<FighterSkill.FrameEffects>(core.NowPlaySkill.frameEffects);
             //移動配列のソート、フレームが近い順に並べる
             if(moves.Count > 1)
 			{
@@ -50,17 +56,23 @@ public class FighterMover
 			}
 			if(gravity.Count > 1)
 			{
-				moves.Sort((a, b) => a.startFrame - b.startFrame);
+				gravity.Sort((a, b) => a.startFrame - b.startFrame);
 			}
+            if(effects.Count>1)
+            {
+                effects.Sort((a, b) => a.frame - b.frame);
+            }
 			nowPlayMoveNumber = -1;
 			nowPlayGravityNumber = -1;
-		}
+            nowPlayEffectNumber = -1;
+        }
 		//なければなし
 		else
 		{
 			moves = null;
 			gravity = null;
-			gravityFrame = 0;
+            effects = null;
+            gravityFrame = 0;
 		}
 	}
     #endregion
@@ -123,4 +135,33 @@ public class FighterMover
         transform.Translate(move * 0.1f);
     }
     #endregion
+
+    private void PlayEffects()
+    {
+        if ((effects == null) || (effects.Count == 0)) return;
+        Debug.Log(effects[0].frame);
+        if (effects.Count > nowPlayEffectNumber + 1)
+        {
+            //現在再生中の移動の次の移動フレームを越えれば
+            if (effects[nowPlayEffectNumber + 1].frame == core.AnimationPlayerCompornent.NowFrame)
+            {
+                nowPlayEffectNumber++;
+                GameObject obj;
+                if (effects[nowPlayEffectNumber].worldPositionFlag)
+                {
+                    obj = Object.Instantiate(effects[nowPlayEffectNumber].effect, effects[nowPlayEffectNumber].position, Quaternion.identity);
+                }
+                else
+                {
+                    obj = Object.Instantiate(effects[nowPlayEffectNumber].effect, core.transform.position + effects[nowPlayEffectNumber].position, Quaternion.identity);
+                }
+
+                //子にするか否か
+                if(effects[nowPlayEffectNumber].childFlag)
+                {
+                    obj.transform.parent = core.transform;
+                }
+            }
+        }
+    }
 }

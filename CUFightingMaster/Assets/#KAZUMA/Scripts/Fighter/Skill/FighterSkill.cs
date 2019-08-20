@@ -38,6 +38,16 @@ public class FighterSkill : ScriptableObject
         public int frame;
         public int damage;
     }
+    //フレームエフェクト
+    [System.Serializable]
+    public class FrameEffects
+    {
+        public int frame;
+        public GameObject effect;
+        public bool childFlag;
+        public bool worldPositionFlag;
+        public Vector3 position;
+    }
     //当たり判定群
     [System.Serializable]
     public class CustomHitBox
@@ -90,11 +100,7 @@ public class FighterSkill : ScriptableObject
     public AnimationClip animationClip = null;  //再生するアニメーション
     public float animationSpeed = 1;            //アニメーションの速度
     public SkillStatus status = SkillStatus.Normal;                  //Normal,Special等
-                                                //地上か空中か
-    public HitMode hitMode = HitMode.Normal;    //投げかどうか
-    public AnimationClip throwMotion = null;    //投げだった場合のモーション
-    public AnimationClip enemyThrowMotion = null;//相手の投げられモーション
-                                                //TODO::エフェクトリスト
+    public List<FrameEffects> frameEffects = new List<FrameEffects>(); //TODO::エフェクトリスト
     public SkillStatus cancelFrag = (SkillStatus)(1<<0);//キャンセルできるもの(ビット)
                                                         //TODO::飛び道具
     public bool barrageCancelFrag = false;      //連打キャンセル

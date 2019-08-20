@@ -138,6 +138,7 @@ public class HitBoxJudgement
     //地面判定
     private void GroundCheck()
 	{
+        //地面判定の大きさ（抜けないようにYは長めに）
 		Vector3 vector3 = new Vector3(2, 8, 2);
 		Collider[] col = Physics.OverlapBox(new Vector3(transform.position.x, transform.position.y + (vector3.y / 2), transform.position.z), vector3 / 2.0f, Quaternion.identity, 1 << LayerMask.NameToLayer(CommonConstants.Layers.Ground));
 		if (col.Length <= 0)
@@ -162,6 +163,7 @@ public class HitBoxJudgement
 		if (core.NowPlaySkill != null)
 		{
             core.SetHitAttackFlag(false);//攻撃が当たったことのリセット
+            //アクティブにしていたコライダーのリセット
             foreach (ComponentObjectPool<BoxCollider>.Objs g in nowPlayCollider)
 			{
 				if (g.gameObject != null)
