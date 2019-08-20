@@ -77,8 +77,8 @@ public class CameraController : MonoBehaviour
 	void Start()
 	{
 		offsetY = transform.position.y;
-		speed_ZoomIn = 5.0f;
-		speed_ZoomOut = 15.0f;
+		speed_ZoomIn = 7.5f;
+		speed_ZoomOut = 17.5f;
 		call_Once = true;
 		stageWidth = 20.0f;				// ステージの横幅
 		cameraPos_Max.z = -8.5f;		// ズームアウトの最大値
@@ -140,7 +140,7 @@ public class CameraController : MonoBehaviour
 		cameraPos_Max.x = stageWidth - (rTop.x - transform.position.x);
 		cameraPos_Min.x = -stageWidth + (transform.position.x - lBottom.x);
 	}
-
+	#region ズーム処理
 	// カメラのズームイン
 	float ZoomIn()
 	{
@@ -172,4 +172,8 @@ public class CameraController : MonoBehaviour
 		}
 		return zoomRatio;
 	}
+	#endregion
+
+	// カメラを揺らす処理
+
 }
