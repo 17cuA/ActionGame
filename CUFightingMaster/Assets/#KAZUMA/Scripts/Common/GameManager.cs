@@ -11,8 +11,10 @@ public class GameManager : SingletonMono<GameManager>
 	public TestInput input_one;
 	public TestInput input_two;
 
-	//ヒットストップ
-	private int hitStop_one = 0;
+    public bool isStartGame = false;
+
+    //ヒットストップ
+    private int hitStop_one = 0;
 	private int hitStop_two = 0;
 	private bool isHitStop_one = false;
 	private bool isHitStop_two = false;
@@ -24,7 +26,7 @@ public class GameManager : SingletonMono<GameManager>
 		//Inputの初期化
         input_one.InitCommandManagers(Player_one);
         input_two.InitCommandManagers(Player_two);
-
+        isStartGame = false;
     }
 	//Updateの順番の管理
 	private void Update()

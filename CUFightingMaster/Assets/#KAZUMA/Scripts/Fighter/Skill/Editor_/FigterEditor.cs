@@ -148,7 +148,8 @@ public class FigterEditor : EditorWindow
     private bool customAirMove = false;
     private void MoveAnimationTabDraw()
 	{
-		if(move = CustomUI.Foldout("移動系", move))
+        SSet("スタートモーション", ref fighterStatus.constantsSkills[CommonConstants.Skills.Start_Game_Motion]);
+        if(move = CustomUI.Foldout("移動系", move))
 		{
 			fighterStatus.constantsSkills[CommonConstants.Skills.Idle] = (FighterSkill)EditorGUILayout.ObjectField("待機",fighterStatus.constantsSkills[CommonConstants.Skills.Idle],typeof(FighterSkill),false);
             fighterStatus.constantsSkills[CommonConstants.Skills.Front_Walk] = (FighterSkill)EditorGUILayout.ObjectField("前歩き", fighterStatus.constantsSkills[CommonConstants.Skills.Front_Walk], typeof(FighterSkill), false);

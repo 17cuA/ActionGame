@@ -62,7 +62,7 @@ public static class CommonConstants
     public static class Skills
     {
         //一つ増やすたびに増やして
-        public static readonly int SkillCount = 75;
+        public static readonly int SkillCount = 76;
 
         //地上の動き
         public static readonly int Idle = 0;            //待機
@@ -174,6 +174,8 @@ public static class CommonConstants
 
         public static readonly int Throw_Atk = 73;//投げ技
         public static readonly int Landing = 74;//着地
+
+        public static readonly int Start_Game_Motion = 75;
 
     }
 }
@@ -289,4 +291,5 @@ public enum SkillConstants
     Damage_Fly_HitMotion = 72,//飛ばされ
     Throw_Atk = 73,//投げ技
     Landing = 74,
+    Start_Game_Motion = 75,
 }

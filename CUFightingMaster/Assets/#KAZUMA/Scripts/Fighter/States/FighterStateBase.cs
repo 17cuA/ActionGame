@@ -46,13 +46,16 @@ public class FighterStateBase : StateBaseScriptMonoBehaviour
     }
     #endregion
 
-
+    public void StartGame()
+    {
+        ChangeSkillConstant(SkillConstants.Start_Game_Motion, 0);
+    }
     /*　汎用条件式　*/
     //ゲーム開始する条件
     public bool IsStartGame()
     {
         //現在条件なし
-        return true;
+        return GameManager.Instance.isStartGame;
     }
     public bool IsMoveFighter()
     {
