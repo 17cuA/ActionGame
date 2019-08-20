@@ -30,6 +30,10 @@ public class FighterStateDown : StateBaseScriptMonoBehaviour
     }
     public bool IsWakeUp()
     {
+        if(stateBase.core.HP <= 0)
+        {
+            return false;
+        }
         return isWakeUp;
     }
     //起き上がり

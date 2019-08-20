@@ -139,6 +139,7 @@ public class FigterEditor : EditorWindow
     #endregion
 
     #region アニメーション_Tab
+    private bool def = false;
     private bool move = false;
     private bool standHitDamage = false;
     private bool crouchingHitDamage = false;
@@ -148,7 +149,12 @@ public class FigterEditor : EditorWindow
     private bool customAirMove = false;
     private void MoveAnimationTabDraw()
 	{
-        SSet("スタートモーション", ref fighterStatus.constantsSkills[CommonConstants.Skills.Start_Game_Motion]);
+        if (def = CustomUI.Foldout("デフォルト", def))
+        {
+            SSet("スタートモーション", ref fighterStatus.constantsSkills[CommonConstants.Skills.Start_Game_Motion]);
+            SSet("敗北時飛ばされ", ref fighterStatus.constantsSkills[CommonConstants.Skills.Not_HP_Down]);
+        }
+
         if(move = CustomUI.Foldout("移動系", move))
 		{
 			fighterStatus.constantsSkills[CommonConstants.Skills.Idle] = (FighterSkill)EditorGUILayout.ObjectField("待機",fighterStatus.constantsSkills[CommonConstants.Skills.Idle],typeof(FighterSkill),false);

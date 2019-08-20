@@ -62,7 +62,7 @@ public static class CommonConstants
     public static class Skills
     {
         //一つ増やすたびに増やして
-        public static readonly int SkillCount = 76;
+        public static readonly int SkillCount = 77;
 
         //地上の動き
         public static readonly int Idle = 0;            //待機
@@ -176,6 +176,7 @@ public static class CommonConstants
         public static readonly int Landing = 74;//着地
 
         public static readonly int Start_Game_Motion = 75;
+        public static readonly int Not_HP_Down = 76;
 
     }
 }
@@ -292,4 +293,5 @@ public enum SkillConstants
     Throw_Atk = 73,//投げ技
     Landing = 74,
     Start_Game_Motion = 75,
+    Not_HP_Down = 76,//HPがなくなった時
 }

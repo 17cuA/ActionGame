@@ -392,9 +392,14 @@ public class FighterStateDamage : StateBaseScriptMonoBehaviour
 	{
 		return isEndStun;
 	}
+	//受け身したかどうか
 	public bool IsPassiveInput()
 	{
-		if(stateBase.input.atkButton != "")
+        if (stateBase.core.HP <= 0)
+        {
+            return false;
+        }
+        if(stateBase.input.atkButton != "")
 		{
             if (stateBase.input.atkButton != CommonConstants.Buttons.Atk4)
             {

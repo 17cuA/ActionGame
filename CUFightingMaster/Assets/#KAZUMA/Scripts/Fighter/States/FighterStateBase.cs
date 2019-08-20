@@ -50,12 +50,20 @@ public class FighterStateBase : StateBaseScriptMonoBehaviour
     {
         ChangeSkillConstant(SkillConstants.Start_Game_Motion, 0);
     }
+    public void Start_NO_HP()
+    {
+        ChangeSkillConstant(SkillConstants.Not_HP_Down, 0);
+    }
     /*　汎用条件式　*/
     //ゲーム開始する条件
     public bool IsStartGame()
     {
         //現在条件なし
         return GameManager.Instance.isStartGame;
+    }
+    public bool IsNotHitStop()
+    {
+        return GameManager.Instance.GetHitStop(core.PlayerNumber) <= 0;
     }
     public bool IsMoveFighter()
     {
@@ -68,13 +76,25 @@ public class FighterStateBase : StateBaseScriptMonoBehaviour
 	//ダメージ受けたとき
 	public bool IsApplyDamage()
 	{
+        //一応0以下ならダメージを受けないように
+        if(core.HP<=0)
+        {
+            return false;
+        }
 		if(stateGuard.isGuard == true)
 		{
 			return false;
 		}
 		return core.GetDamage.frameHitBoxes.Count > 0;
 	}
-
+    public bool IsHP(bool _f)
+    {
+        if ((core.HP > 0)==_f)
+        {
+            return true;
+        }
+        return false;
+    }
 	//スキル入れ替え
 	public void ChangeSkillConstant(SkillConstants _constants, int _weightFrame)
     {
