@@ -72,6 +72,10 @@ public class FighterCore : MonoBehaviour
     {
         get { return isHitAttack; }
     }
+    public HitBoxJudgement GetBoxJudgement
+    {
+        get { return hitJudgement; }
+    }
     #endregion
     private void Start()
     {

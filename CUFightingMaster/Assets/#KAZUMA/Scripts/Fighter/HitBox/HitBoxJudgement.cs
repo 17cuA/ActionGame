@@ -137,6 +137,30 @@ public class HitBoxJudgement
 		}
 		GroundCheck();
     }
+    //相手側から壁判定をもう一度やるときに使用
+    public void PlayUpdateCheck()
+    {
+
+        if (core.Direction == PlayerDirection.Right)
+        {
+            RightLeft = 1;
+        }
+        if (core.Direction == PlayerDirection.Left)
+        {
+            RightLeft = -1;
+        }
+		if (core.NowPlaySkill != null)
+		{
+            wallX = CheckDefaultPushingWall(pushingCollider);
+            if (core.NowPlaySkill.pushingFlag)
+			{
+                //無限ループ防止
+				CheckDefaultPushingBox(pushingCollider,false);
+			}
+		}
+		GroundCheck();
+
+    }
     //地面判定
     private void GroundCheck()
 	{
@@ -444,10 +468,10 @@ public class HitBoxJudgement
     }
 	//デフォルト(+技ごとのデフォルト拡張)の押し合い判定
 	//TODO 壁判定
-	public void CheckDefaultPushingBox(BoxCollider _col)
+	public void CheckDefaultPushingBox(BoxCollider _col,bool _flag = true)
 	{
         Transform t = _col.gameObject.transform;
-		float posX = t.position.x + _col.center.x;
+		float posX = t.position.x + _col.center.x;//コライダーの位置
 		float posY = t.position.y + _col.center.y;
 		float posZ = t.position.z + _col.center.z;
 		Vector3 pos = new Vector3(posX,posY,posZ );
@@ -471,17 +495,26 @@ public class HitBoxJudgement
                 }
                 float oppoX = ((((BoxCollider)c).size.x / 2.0f) * i) + ((((BoxCollider)c).center.x)*-1);//相手のコライダのX座標
                 float x = (pos.x + (siz.x * i)) + oppoX;
-				float checkX = x - c.gameObject.transform.parent.transform.position.x;
-				if(i==1&&checkX<0)
+				float checkX = (pos.x + (siz.x * i)) - (oppoX+c.transform.position.x);
+                Debug.Log("X="+(pos.x + (siz.x * i))+",Y="+(oppoX+c.transform.position.x)+"=="+checkX+" "+core.PlayerNumber);
+				if(i==1&&checkX>0)
 				{
 					continue;
 				}
-				else if(i==-1&&checkX>0)
+				else if(i==-1&&checkX<0)
 				{
 					continue;
 				}
 				c.gameObject.transform.parent.transform.position = new Vector3(x, c.transform.position.y, c.transform.position.z);
-			}
+                //壁に1F分めり込むので、相手プレイヤーの判定をもう一度行う,また、二度以上行われると無限ループする可能性があるので、その防止
+                //数字が大きい方が後に処理されるので、相手側が小さければ処理
+                if (core.PlayerNumber == PlayerNumber.Player2 && _flag)
+                {
+                    var judge = GameManager.Instance.GetPlayFighterCore(c.gameObject.transform.parent.gameObject.layer).GetBoxJudgement;
+                    judge.PlayUpdateCheck();
+
+                }
+            }
 		}
 	}
 	//壁用の当たり判定
@@ -504,16 +537,17 @@ public class HitBoxJudgement
             int i = 1;
             if (c.transform.position.x + (((BoxCollider)c).center.x) > t.transform.position.x)
             {
+                Debug.Log("mainus");
                 i = -1;
             }
             x = ((c.transform.position.x+((BoxCollider)c).center.x))+((((BoxCollider)c).size.x/2)*i)+((_col.center.x*-1+(siz.x*i)));
 			//プラスかマイナスか
-			float checkX = x - c.gameObject.transform.parent.transform.position.x;
-            if (i == 1 && checkX > 0)
+			float checkX = x - c.gameObject.transform.transform.position.x;
+            if (i == 1 && checkX < 0)
             {
                 continue;
             }
-            else if (i == -1 && checkX < 0)
+            else if (i == -1 && checkX > 0)
             {
                 continue;
             }
@@ -554,7 +588,6 @@ public class HitBoxJudgement
 
             if (Mathf.Abs(x) > 0)
             {
-                Debug.Log((int)(Knock_Back_Count - ((knockBackMinus * Knock_Back_Count) - knockBackPower) / knockBackMinus));
                 if (knockBackDir == PlayerDirection.Right)
                 {
                     if (GameManager.Instance.GetPlayFighterCore(DamageEnemyNumber).GroundCheck() == true)
