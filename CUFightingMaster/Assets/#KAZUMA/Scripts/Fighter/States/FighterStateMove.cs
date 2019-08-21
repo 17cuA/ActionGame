@@ -100,6 +100,19 @@ public class FighterStateMove : StateBaseScriptMonoBehaviour
                 }
             }
         }
+        //攻撃を行わない特殊な場合
+        //しゃがみ時の投げ
+        if((stateBase.input.GetPlayerAtk()==CommonConstants.Buttons.Atk4))
+        {
+            if (stateBase.core.PlayerMoveStates == PlayerMoveState.Crouching)
+            {
+                return false;
+            }
+            if(stateBase.core.GroundCheck()==false)
+            {
+                return false;
+            }
+        }
         return stateBase.input.GetPlayerAtk() != null;
     }
     //着地
