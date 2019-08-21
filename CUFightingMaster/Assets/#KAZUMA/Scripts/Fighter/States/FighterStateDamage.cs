@@ -46,44 +46,111 @@ public class FighterStateDamage : StateBaseScriptMonoBehaviour
 					switch(box.hitStrength)
 					{
 						case HitStrength.Light:
-							stateBase.ChangeSkillConstant(SkillConstants.Stand_Light_Bottom_HitMotion, 0);
-							break;
+							if(stateBase.core.PlayerMoveStates == PlayerMoveState.Crouching)
+							{
+                                stateBase.ChangeSkillConstant(SkillConstants.Crouching_Light_Bottom_HitMotion, 0);
+                            }
+                            else
+                            {
+                                stateBase.ChangeSkillConstant(SkillConstants.Stand_Light_Bottom_HitMotion, 0);
+                            }
+                            break;
 						case HitStrength.Middle:
-							stateBase.ChangeSkillConstant(SkillConstants.Stand_Middle_Bottom_HitMotion, 0);
-							break;
+                            if (stateBase.core.PlayerMoveStates == PlayerMoveState.Crouching)
+                            {
+
+                                stateBase.ChangeSkillConstant(SkillConstants.Crouching_Middle_Bottom_HitMotion, 0);
+                            }
+                            else
+                            {
+                                stateBase.ChangeSkillConstant(SkillConstants.Stand_Middle_Bottom_HitMotion, 0);
+                            }
+                            break;
 						case HitStrength.Strong:
-							stateBase.ChangeSkillConstant(SkillConstants.Stand_Strong_Bottom_HitMotion, 0);
-							break;
+                            if (stateBase.core.PlayerMoveStates == PlayerMoveState.Crouching)
+                            {
+                                stateBase.ChangeSkillConstant(SkillConstants.Crouching_Strong_Bottom_HitMotion, 0);
+                            }
+							else
+							{
+                                stateBase.ChangeSkillConstant(SkillConstants.Stand_Strong_Bottom_HitMotion, 0);
+							}
+                            break;
 					}
 					break;
 				case HitPoint.Middle:
 					switch (box.hitStrength)
 					{
 						case HitStrength.Light:
-							stateBase.ChangeSkillConstant(SkillConstants.Stand_Light_Middle_HitMotion, 0);
-							break;
+                            if (stateBase.core.PlayerMoveStates == PlayerMoveState.Crouching)
+                            {
+
+                                stateBase.ChangeSkillConstant(SkillConstants.Crouching_Light_Middle_HitMotion, 0);
+                            }
+							else
+							{
+                                stateBase.ChangeSkillConstant(SkillConstants.Stand_Light_Middle_HitMotion, 0);
+							}
+                            break;
 						case HitStrength.Middle:
-							stateBase.ChangeSkillConstant(SkillConstants.Stand_Middle_Middle_HitMotion, 0);
-							break;
+                            if (stateBase.core.PlayerMoveStates == PlayerMoveState.Crouching)
+                            {
+
+                                stateBase.ChangeSkillConstant(SkillConstants.Crouching_Middle_Middle_HitMotion, 0);
+                            }
+							else
+							{
+                                stateBase.ChangeSkillConstant(SkillConstants.Stand_Middle_Middle_HitMotion, 0);
+							}
+                            break;
 						case HitStrength.Strong:
-							stateBase.ChangeSkillConstant(SkillConstants.Stand_Strong_Middle_HitMotion, 0);
-							break;
+                            if (stateBase.core.PlayerMoveStates == PlayerMoveState.Crouching)
+                            {
+
+                                stateBase.ChangeSkillConstant(SkillConstants.Crouching_Strong_Middle_HitMotion, 0);
+                            }
+							else
+							{
+                                stateBase.ChangeSkillConstant(SkillConstants.Stand_Strong_Middle_HitMotion, 0);
+							}
+                            break;
 					}
 					break;
 				case HitPoint.Top:
-					switch (box.hitStrength)
-					{
-						case HitStrength.Light:
-							stateBase.ChangeSkillConstant(SkillConstants.Stand_Light_Top_HitMotion, 0);
-							break;
-						case HitStrength.Middle:
-							stateBase.ChangeSkillConstant(SkillConstants.Stand_Middle_Top_HitMotion, 0);
-							break;
-						case HitStrength.Strong:
-							stateBase.ChangeSkillConstant(SkillConstants.Stand_Strong_Top_HitMotion, 0);
-							break;
-					}
-					break;
+                    switch (box.hitStrength)
+                    {
+                        case HitStrength.Light:
+                            if (stateBase.core.PlayerMoveStates == PlayerMoveState.Crouching)
+                            {
+                                stateBase.ChangeSkillConstant(SkillConstants.Crouching_Light_Top_HitMotion, 0);
+                            }
+                            else
+                            {
+                                stateBase.ChangeSkillConstant(SkillConstants.Stand_Light_Top_HitMotion, 0);
+                            }
+                            break;
+                        case HitStrength.Middle:
+                            if (stateBase.core.PlayerMoveStates == PlayerMoveState.Crouching)
+                            {
+                                stateBase.ChangeSkillConstant(SkillConstants.Crouching_Middle_Top_HitMotion, 0);
+                            }
+                            else
+                            {
+                                stateBase.ChangeSkillConstant(SkillConstants.Stand_Light_Top_HitMotion, 0);
+                            }
+                            break;
+                        case HitStrength.Strong:
+                            if (stateBase.core.PlayerMoveStates == PlayerMoveState.Crouching)
+                            {
+                                stateBase.ChangeSkillConstant(SkillConstants.Crouching_Strong_Top_HitMotion, 0);
+                            }
+                            else
+                            {
+                                stateBase.ChangeSkillConstant(SkillConstants.Stand_Light_Top_HitMotion, 0);
+                            }
+                            break;
+                    }
+                    break;
 			}
 		}
 		//ノックバックのセット
