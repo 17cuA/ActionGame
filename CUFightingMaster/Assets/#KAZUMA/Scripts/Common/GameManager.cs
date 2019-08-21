@@ -39,10 +39,6 @@ public class GameManager : SingletonMono<GameManager>
 		{
 			isHitStop_one = false;
 			Player_one.UpdateGame();
-			if(hitStop_one<=0)
-			{
-				Player_one.KnockBackUpdate();
-			}
             //コマンドの削除
             input_one.DeleteCommand();
         }
@@ -56,10 +52,6 @@ public class GameManager : SingletonMono<GameManager>
 		{
 			isHitStop_two = false;
 			Player_two.UpdateGame();
-			if (hitStop_one <= 0)
-			{
-				Player_two.KnockBackUpdate();
-			}
             //コマンドの削除
             input_two.DeleteCommand();
         }
@@ -68,6 +60,24 @@ public class GameManager : SingletonMono<GameManager>
 			Player_two.HitStopUpdate();
 			hitStop_two--;
 		}
+
+
+		if ((hitStop_one <= 0) || (!isHitStop_one))
+		{
+			if(hitStop_one<=0)
+			{
+				Player_one.KnockBackUpdate();
+			}
+        }
+		if ((hitStop_two <= 0) || (!isHitStop_two))
+		{
+			if (hitStop_one <= 0)
+			{
+				Player_two.KnockBackUpdate();
+			}
+        }
+
+
 		if(hitStop_one>0)
 		{
 			isHitStop_one = true;

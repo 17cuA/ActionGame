@@ -496,7 +496,7 @@ public class HitBoxJudgement
                 float oppoX = ((((BoxCollider)c).size.x / 2.0f) * i) + ((((BoxCollider)c).center.x)*-1);//相手のコライダのX座標
                 float x = (pos.x + (siz.x * i)) + oppoX;
 				float checkX = (pos.x + (siz.x * i)) - (oppoX+c.transform.position.x);
-                Debug.Log("X="+(pos.x + (siz.x * i))+",Y="+(oppoX+c.transform.position.x)+"=="+checkX+" "+core.PlayerNumber);
+                Debug.Log(checkX);
 				if(i==1&&checkX>0)
 				{
 					continue;
@@ -537,7 +537,6 @@ public class HitBoxJudgement
             int i = 1;
             if (c.transform.position.x + (((BoxCollider)c).center.x) > t.transform.position.x)
             {
-                Debug.Log("mainus");
                 i = -1;
             }
             x = ((c.transform.position.x+((BoxCollider)c).center.x))+((((BoxCollider)c).size.x/2)*i)+((_col.center.x*-1+(siz.x*i)));
