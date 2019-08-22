@@ -11,7 +11,7 @@ public class rotation1 : MonoBehaviour
     void Start()
     {
         StartSecond = 0;
-        StartSecondMax = 5;
+        StartSecondMax = 3;
     }
 
     // Update is called once per frame
