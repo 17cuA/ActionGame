@@ -10,6 +10,8 @@
 // 仕様 
 //----------------------------------------
 // MEMO 
+// 参照するImageを手動で設定して下さい
+//
 // 宮島くんのソースを参考にしています
 //----------------------------------------
 using System.Collections;
@@ -54,8 +56,6 @@ public class ScreenFade : MonoBehaviour
             alfa -= fadeSpeed;
             return false;
     }
-
-
 
     private void Awake()
     {

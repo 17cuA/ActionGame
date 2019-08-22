@@ -15,7 +15,7 @@
 // ・4:Hpバーの緑のところ
 // ・3:ブロックした時に色が変わるところ
 // ・2:ダメージの赤
-// ・1:一番後ろのbackground
+// ・1:一番後ろのbackground(0822現在、使用していない)
 //----------------------------------------
 // MEMO
 // 参照は手動です
@@ -31,8 +31,8 @@ public class UI_HP : MonoBehaviour
     public PlayerType playerType;
 
     public GameObject[] hpObjects = new GameObject[5];
+
 	public GameObject effectsObject;
-	public Vector3 pos;
 
     public Image redImage;
     public RectTransform hpGuagePosition;
@@ -41,23 +41,23 @@ public class UI_HP : MonoBehaviour
     public Vector3 initHpGuagePositon;
     public Vector3 limitHpGuagePosition;
 
-    private bool isUpdate = false;                          //HPゲージを更新しているか
-    private bool isTransparentRed = false;              //赤いところを透明にするか
-    private bool isDeleteRed = false;                       //赤いところを消すか (透明にしている時に攻撃されたら、消す)
+    private bool isUpdate = false;               //HPゲージを更新しているか
+    private bool isTransparentRed = false;       //赤いところを透明にするか
+    private bool isDeleteRed = false;            //赤いところを消すか (透明にしている時に攻撃されたら、消す)
 
-    private float hpBarWidth;                                         //hpバーの画像の長さ
-    private float redAlphaValue;                                   //赤いところのアルファ値
-    private float transparentSpeed = 0.015f;               //赤いところを透明にする速度
+    private float hpBarWidth;                    //hpバーの画像の長さ
+    private float redAlphaValue;                 //赤いところのアルファ値
+    public float transparentSpeed = 0.015f;      //赤いところを透明にする速度
 
-    private int beforeHp = 100;
+	private int beforeHp = 100;
     private const int hp = 100;
-    public float totalDamage = 0;
-    private float beforeDamage = 0;
+	private float totalDamage = 0;
+	private float beforeDamage = 0;
 
-    private int cnt = 0;
-    private int cntMax = 15;
+    private int redStartCnt = 0;
+    private int redStartCntMax = 15;
 
-    private float vibrationValue = 5;
+    private float vibrationValue = 5;	//振動値
 
     /// <summary>
     /// Hpゲージを更新させる
@@ -81,7 +81,7 @@ public class UI_HP : MonoBehaviour
     private void UpdateHpGuage(float dmg)
     {
         StartCoroutine(ReceiveDamageAction());
-        cnt = 0;
+		redStartCnt = 0;
         if (isUpdate == true && isTransparentRed == true)
         {
             isDeleteRed = true;
@@ -106,7 +106,9 @@ public class UI_HP : MonoBehaviour
     /// <returns></returns>
     private IEnumerator ReceiveDamageAction()
     {
-		Instantiate(effectsObject, initHpGuagePositon, Quaternion.identity);
+
+		//Instantiate(effectsObject, initHpGuagePositon, Quaternion.identity);
+
 		//ダメージを受けたときにHpバーの色が変わるやつ
 		hpObjects[4].SetActive(true);
         //HPゲージを震わす
@@ -163,16 +165,17 @@ public class UI_HP : MonoBehaviour
         //赤いところが透明な時にHPの更新があった時の処理
         if (isDeleteRed == true)
         {
+			//赤を透明にする
             redAlphaValue = 0.0f;
             redImage.color = new Color(redImage.color.r, redImage.color.g, redImage.color.b, redAlphaValue);
 
             //位置の更新
             redRect.localPosition = new Vector3(CalcMove(hp, beforeDamage), 0, 0);
 
-            //フラグの初期化
+            //パラメータの初期化
             isDeleteRed = false;
             isTransparentRed = false;
-            cnt = 0;
+			redStartCnt = 0;
 
             //HPバーが更新されている
             isUpdate = true;
@@ -184,11 +187,16 @@ public class UI_HP : MonoBehaviour
         //赤いところが完全に透明になったときの処理
         else if (redAlphaValue <= 0.0f)
         {
+			//赤を合計のダメージ量のところへ移動させる
             redRect.localPosition = new Vector3(CalcMove(hp, totalDamage), 0, 0);
+
+			//赤を赤くする
             isTransparentRed = false;
             redAlphaValue = 1.0f;
             redImage.color = new Color(redImage.color.r, redImage.color.g, redImage.color.b, redAlphaValue);
-            cnt = 0;
+
+			//パラメータの初期化
+			redStartCnt = 0;
             isUpdate = false;
         }
         //赤いところを透明にする処理
@@ -209,13 +217,10 @@ public class UI_HP : MonoBehaviour
 
         if (playerType == PlayerType.P1)
         {
-            return (hpBarWidth * (100 - temp) / 100) * (-1);
-        }
-        else
-        {
             return hpBarWidth * (100 - temp) / 100;
         }
-    }
+		return hpBarWidth * (100 - temp) / 100 * -1;
+	}
 
     private void Start()
     {
@@ -238,10 +243,10 @@ public class UI_HP : MonoBehaviour
         if (isUpdate == true)
         {
             //赤いところが透明になるまでのカウンタ
-            if (cnt <= cntMax)
+            if (redStartCnt <= redStartCntMax)
             {
                 isTransparentRed = false;
-                cnt++;
+				redStartCnt++;
             }
             else
             {
@@ -249,15 +254,5 @@ public class UI_HP : MonoBehaviour
             }
         }
         OperateRed();
-
-        if (Input.GetKeyDown("b"))
-        {
-            UpdateHpGuage(10);
-        }
-
-        if (Input.GetKeyDown("v"))
-        {
-            UpdateHpGuage(-10);
-        }
     }
 }

@@ -235,14 +235,21 @@ public class InGameManager : MonoBehaviour
         //ラウンドカウンターの更新
         canvasController.Call_UpdateWinCounter(getRoundCount_p1, getRoundCount_p2);
 
+		//各プレイヤーが勝ったラウンド数からこの試合の勝敗を決定する
         if (getRoundCount_p1 > getRoundCount_p2)
         {
+			//P1が勝ったことを保存する
+			ShareSceneVariable.P1_info.isWin = true;
+
             if (canvasController.Call_DisplayVictory_winP1() == false)
                 currentUpdate = GameFinish;
         }
         else
         {
-            if(canvasController.Call_DisplayVictory_winP2() == false)
+			//P2が勝ったことを保存する
+			ShareSceneVariable.P2_info.isWin = true;
+
+			if (canvasController.Call_DisplayVictory_winP2() == false)
                 currentUpdate = GameFinish;
         }
     }

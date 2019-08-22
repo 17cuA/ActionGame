@@ -2,7 +2,6 @@
 //トゥーンシェーダ
 //-----------------------------------------------------------------
 //MEMO 他の人が調節出来るように調整をする必要あり
-//	   リムライト未実装
 //-----------------------------------------------------------------4
 
 Shader "Unlit/Toon"
@@ -13,6 +12,7 @@ Shader "Unlit/Toon"
 
 		[NoScaleOffset]_1st_ShadeMap("1st_ShadeMap",2D) = "black"{}
 		[NoScaleOffset]_2st_ShadeMap("2st_ShadeMap",2D) = "black"{}
+		
 		[MaterialToggle]_Is_NoramMapToBase("IsNormalMap",Float) = 0
 		[NoScaleOffset]_NormalMap("NormalMap", 2D) = "white"{}
 		
