@@ -158,9 +158,14 @@ public class FighterCore : MonoBehaviour
         playerMoveState = _state;
     }
 
-    public void SetKnockBack(float _backCount, PlayerNumber _number, PlayerDirection _dir, int _count = 6)
+    public void SetKnockBack(float _backCount, PlayerNumber _number, PlayerDirection _dir,int? _count = null)
     {
-        hitJudgement.SetKnockBack(_backCount, _number, _dir, _count);
+        if(_count == null)
+        {
+            hitJudgement.SetKnockBack(_backCount, _number, _dir);
+            return;
+        }
+        hitJudgement.SetKnockBack(_backCount, _number, _dir, _count.Value);
     }
     public void SetHitAttackFlag(bool _hitFlag)
     {

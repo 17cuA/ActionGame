@@ -291,7 +291,7 @@ public class FighterStateDamage : StateBaseScriptMonoBehaviour
 		}
 
 		//ノックバックのセット
-		stateBase.core.SetKnockBack(box.airKnockBack, stateBase.core.EnemyNumber,tmpDir, 6);
+		stateBase.core.SetKnockBack(box.airKnockBack, stateBase.core.EnemyNumber,tmpDir);
         stateBase.core.SetDamage(new FighterSkill.CustomHitBox(),null);
     }
 	#endregion
@@ -354,7 +354,7 @@ public class FighterStateDamage : StateBaseScriptMonoBehaviour
 		}
 
 		//ノックバックのセット
-		stateBase.core.SetKnockBack(box.airKnockBack, stateBase.core.EnemyNumber,tmpDir, 6);
+		stateBase.core.SetKnockBack(box.airKnockBack, stateBase.core.EnemyNumber,tmpDir);
         stateBase.core.SetDamage(new FighterSkill.CustomHitBox(),null);
 	}
     #endregion

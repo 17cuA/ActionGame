@@ -13,8 +13,10 @@ public class HitBoxJudgement
     private List<int> nowPlayCustomNumber = new List<int>();
     private List<ComponentObjectPool<BoxCollider>.Objs> nowPlayCollider = new List<ComponentObjectPool<BoxCollider>.Objs>();
 
-	//頭
-	private List<FighterSkill.FrameHitBox> heads = new List<FighterSkill.FrameHitBox>();
+    private bool isPushWall = false;//壁に当たったかどうか
+
+    //頭
+    private List<FighterSkill.FrameHitBox> heads = new List<FighterSkill.FrameHitBox>();
 	private List<int> headStartFrames = new List<int>();
 	private int nowPlayHeadsNumber = 0;
 
@@ -106,7 +108,7 @@ public class HitBoxJudgement
     public void UpdateGame()
     {
         ChangeSkillInit();
-
+        isPushWall = false;
         if (core.Direction == PlayerDirection.Right)
         {
             RightLeft = 1;
@@ -140,7 +142,7 @@ public class HitBoxJudgement
     //相手側から壁判定をもう一度やるときに使用
     public void PlayUpdateCheck()
     {
-
+        isPushWall = false;
         if (core.Direction == PlayerDirection.Right)
         {
             RightLeft = 1;
@@ -496,8 +498,15 @@ public class HitBoxJudgement
                 float oppoX = ((((BoxCollider)c).size.x / 2.0f) * i) + ((((BoxCollider)c).center.x)*-1);//相手のコライダのX座標
                 float x = (pos.x + (siz.x * i)) + oppoX;
 				float checkX = (pos.x + (siz.x * i)) - (oppoX+c.transform.position.x);
-                Debug.Log(checkX);
-				if(i==1&&checkX>0)
+
+                float xMove = (pos.x + (siz.x * i)) - (((((BoxCollider)c).size.x / 2.0f) * i * -1) + ((((BoxCollider)c).center.x) * -1) + c.transform.position.x);
+                //めり込んだ値を調べる
+                if (_flag)
+                {
+                    Debug.Log((pos.x + (siz.x * i)) - (((((BoxCollider)c).size.x / 2.0f) * i*-1) + ((((BoxCollider)c).center.x)*-1)+c.transform.position.x));
+                    Debug.Log(checkX + " " + core.PlayerNumber);
+                }
+                if(i==1&&checkX>0)
 				{
 					continue;
 				}
@@ -505,7 +514,15 @@ public class HitBoxJudgement
 				{
 					continue;
 				}
-				c.gameObject.transform.parent.transform.position = new Vector3(x, c.transform.position.y, c.transform.position.z);
+                if (isPushWall == false)
+                {
+                    c.gameObject.transform.parent.transform.position += new Vector3(xMove * GameManager.Instance.Settings.PushAmount, 0, 0);
+                    transform.position += new Vector3(-xMove * (1 - GameManager.Instance.Settings.PushAmount), 0, 0);
+                }
+                else
+                {
+                    c.gameObject.transform.parent.transform.position += new Vector3(xMove, 0, 0);
+                }
                 //壁に1F分めり込むので、相手プレイヤーの判定をもう一度行う,また、二度以上行われると無限ループする可能性があるので、その防止
                 //数字が大きい方が後に処理されるので、相手側が小さければ処理
                 if (core.PlayerNumber == PlayerNumber.Player2 && _flag)
@@ -550,7 +567,8 @@ public class HitBoxJudgement
             {
                 continue;
             }
-			float xTmp = t.parent.transform.position.x - x;
+            isPushWall = true;//壁判定有
+            float xTmp = t.parent.transform.position.x - x;
             t.parent.transform.position = new Vector3(x, t.transform.position.y, t.transform.position.z);
 			x = xTmp;
 		}
@@ -613,10 +631,14 @@ public class HitBoxJudgement
         countKnockBack++;
     }
     //ノックバックの初期化
-    public void SetKnockBack(float _power,PlayerNumber _number,PlayerDirection _dir, int _count)
+    public void SetKnockBack(float _power,PlayerNumber _number,PlayerDirection _dir, int? _count = null)
 	{
 		knockBackPower = _power;
-        Knock_Back_Count = _count;
+        if(_count == null)
+        {
+            _count = GameManager.Instance.Settings.Knock_Back_Count;
+        }
+        Knock_Back_Count = _count.Value;
         knockBackMinus = knockBackPower / Knock_Back_Count;
 		DamageEnemyNumber = _number;
         countKnockBack = 0;

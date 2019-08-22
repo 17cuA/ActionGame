@@ -6,6 +6,14 @@ using CUEngine;
 
 public class GameManager : SingletonMono<GameManager>
 {
+    [SerializeField, Header("ゲームの設定")]
+    private GameSettings settings;
+	public GameSettings Settings
+	{
+        get { return settings; }
+    }
+
+
     public FighterCore Player_one;
     public FighterCore Player_two;
 	public TestInput input_one;
