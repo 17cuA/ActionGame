@@ -31,7 +31,10 @@ public class GameManager : SingletonMono<GameManager>
 	//Updateの順番の管理
 	private void Update()
 	{
-        input_one.UpdateGame(Player_one);
+		//ポーズ中にプレイヤーの動きを止める処理
+		if (Mathf.Approximately(Time.timeScale, 0f))		return;
+
+		input_one.UpdateGame(Player_one);
 		input_two.UpdateGame(Player_two);
 		UpdateManager.Instance.UpdateGame();
 		//ヒットストップがない時
