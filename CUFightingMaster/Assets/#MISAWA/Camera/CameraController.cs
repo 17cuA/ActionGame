@@ -36,13 +36,13 @@ public class CameraController : MonoBehaviour
 	#region 変数宣言
 	//private GameObject Player1;
 	//private GameObject Player2;
-	private float offsetY;								// カメラのY座標の基準値
+	private float offsetY;						// カメラのY座標の基準値
 	private float speed_ZoomIn;					// カメラのズーム時の速度
 	private float speed_ZoomOut;				// カメラのズームアウト時の速度
-	private bool call_Once;							// 一度だけ呼び出す用
+	private bool call_Once;						// 一度だけ呼び出す用
 
 	private float distance_CamToPlayer;			// カメラからキャラまでの距離
-	private float distanceOfPlayers_Start;			// ゲーム開始時のプレイヤー同士の距離
+	private float distanceOfPlayers_Start;		// ゲーム開始時のプレイヤー同士の距離
 	private float distanceOfPLayers_Current;	// 現在のプレイヤー同士の距離
 
 	private Vector3 cameraPos_Max;			// カメラの最大座標
@@ -95,6 +95,15 @@ public class CameraController : MonoBehaviour
 			GetCameraPos_X();
 			call_Once = false;
 		}
+		if (Input.GetKeyDown(KeyCode.N))
+		{
+			Shake(0.25f, 0.1f);
+		}
+		if (Input.GetKeyDown(KeyCode.M))
+		{
+			Shake(0.25f, 5f);
+		}
+
 	}
 
 	void FixedUpdate()
@@ -106,7 +115,7 @@ public class CameraController : MonoBehaviour
 	{
 		TargetPos();
 		// カメラの移動・ズーム
-		transform.Translate(pCentorPos.x - transform.position.x, 0, ZoomIn() + ZoomOut());
+		transform.Translate(pCentorPos.x - transform.position.x, 0, Zoom());
 		// カメラの座標を制限(現在Y軸移動はここで行っている)
 		transform.position = new Vector3(Mathf.Clamp(transform.position.x, cameraPos_Min.x, cameraPos_Max.x), pCentorPos.y + offsetY, transform.position.z);
 	}
@@ -140,40 +149,64 @@ public class CameraController : MonoBehaviour
 		cameraPos_Max.x = stageWidth - (rTop.x - transform.position.x);
 		cameraPos_Min.x = -stageWidth + (transform.position.x - lBottom.x);
 	}
+
 	#region ズーム処理
-	// カメラのズームイン
-	float ZoomIn()
+	// カメラのズーム
+	float Zoom()
 	{
+		// ズームの比率
 		float zoomRatio = 0.0f;
 
+		// ズームの比率を計算
 		// カメラのZ座標が最大値より小さいかつプレイヤー間の距離が0.55未満の時
 		if (transform.position.z < cameraPos_Max.z && distanceOfPLayers_Current < 0.55)
 		{
 			// プレイヤー間の距離によって速度を変更
 			zoomRatio += distanceOfPlayers_Start / distanceOfPLayers_Current / speed_ZoomIn;
 		}
-		return zoomRatio;
-	}
-
-	// カメラのズームアウト
-	float ZoomOut()
-	{
-		// ズームの比率
-		float zoomRatio = 0.0f;
-
-		// カメラのZ座標が最小値より大きいとき
-		if (cameraPos_Min.z < transform.position.z)
+		// カメラのZ座標が最小値より大きいかつプレイヤー間の距離が0.6より大きい時
+		if (cameraPos_Min.z < transform.position.z && distanceOfPLayers_Current > 0.6)
 		{
-			// ズームインと被らないようにするため、0.6にしている
-			if (distanceOfPLayers_Current > 0.6)
-			{
-				zoomRatio -= distanceOfPLayers_Current / distanceOfPlayers_Start / speed_ZoomOut;
-			}
+			// プレイヤー間の距離によって速度を変更
+			zoomRatio -= distanceOfPLayers_Current / distanceOfPlayers_Start / speed_ZoomOut;
 		}
 		return zoomRatio;
 	}
 	#endregion
 
-	// カメラを揺らす処理
+	#region カメラを揺らす処理
+	/// <summary>
+	/// カメラを揺らす値を受け取りコルーチンに投げる
+	/// </summary>
+	/// <param name="duration">揺れる期間</param>
+	/// <param name="magnitude">揺れの大きさ</param>
+	void Shake(float duration, float magnitude)
+	{
+		StartCoroutine(DoShake(duration, magnitude));
+	}
 
+	/// <summary>
+	/// カメラを揺らす値を受け取り揺らす
+	/// </summary>
+	/// <param name="duration">揺れる期間</param>
+	/// <param name="magnitude">揺れの大きさ</param>
+	/// <returns></returns>
+	IEnumerator DoShake(float duration, float magnitude)
+	{
+		// 経過時間
+		var elapsed = 0f;
+
+		while(elapsed < duration)
+		{
+			var x = transform.position.x + Random.Range(-0.1f, 0.1f) * magnitude;
+			var y = transform.position.y + Random.Range(-0.1f, 0.1f) * magnitude;
+
+			transform.position = new Vector3(x, y, transform.position.z);
+
+			elapsed += Time.deltaTime;
+
+			yield return null;
+		}
+	}
+	#endregion
 }
