@@ -117,7 +117,7 @@ public class CharacterSelectManager : MonoBehaviour
 
         //選んだ時に変わるところ
         Destroy(currentSellectCharacter);
-       currentSelectCharacterName.sprite = characterName[selectDir];
+        currentSelectCharacterName.sprite = characterName[selectDir];
         currentSellectCharacter = Instantiate(character[selectDir], charaCreatePos.transform);
         selectCursor.transform.position = new Vector3(characterPanels[selectDir].transform.position.x, selectCursor.transform.position.y, selectCursor.transform.position.z);
     }
