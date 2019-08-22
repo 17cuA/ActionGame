@@ -11,23 +11,24 @@ public class CharacterSelectManager : MonoBehaviour
 	public string controllerName = ""; //使用するコントローラーの名前
 
 	private const int maxChara = 4;
-	public GameObject[] character = new GameObject[maxChara];               //キャラクターゲームオブジェクト
-	public GameObject[] characterPanels = new GameObject[maxChara];    //キャラクターパネル
-    public Sprite[] characterName = new Sprite[maxChara];
+	public GameObject[] character = new GameObject[maxChara];         //キャラクターゲームオブジェクト
+	public GameObject[] characterPanels = new GameObject[maxChara];   //キャラクターパネル
+    public Sprite[] characterName = new Sprite[maxChara];			　//キャラクターの名前画像
 
-	public GameObject currentSellectCharacter = null;
-    public Image currentSelectCharacterName;
-    public GameObject charaCreatePos;
+	private GameObject currentSellectCharacter = null;  //現在選択しているキャラクター
+	private Image currentSelectCharacterName;           //現在選択しているキャラクターの名前
 
-    private GameObject currentSellectPanel;
+	public GameObject charaCreatePos;					//キャラクターを生成するポジションを決める空オブジェクト
 
-    public Vector2 inputDir = Vector2.zero;//カーソル入力方向
-	public int selectDir = 0;           //現在のカーソル位置
+    public Vector2 inputDir = Vector2.zero;				//カーソル入力方向
+	public int selectDir = 0;							//現在のカーソル位置
 
     public GameObject selectCursor;		//カーソル
 
 	public float limitCursorFrame;		//カーソル移動
 	public float moveCursorFrames = 0;  //カーソル移動後フレーム
+
+	ShareSceneVariable shareSceneVariable;
 
     void Start()
     {
@@ -64,7 +65,7 @@ public class CharacterSelectManager : MonoBehaviour
 		//決定(シーン移動)
 		if (Input.GetButtonDown(string.Format("{0}Player{1}_Attack1", controllerName, playerNum)))
 		{
-			   // 飯塚追加-------------------------------------------
+			// 飯塚追加-------------------------------------------
             Sound.LoadSe("Menu_Decision", "Se_menu_decision");
             Sound.PlaySe("Menu_Decision", 1, 0.8f);
             // ---------------------------------------------------
