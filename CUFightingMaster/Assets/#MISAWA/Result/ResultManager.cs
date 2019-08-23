@@ -27,9 +27,6 @@ public class ResultManager : MonoBehaviour
 	public Canvas canvas_2;	// ディスプレイ2
 	[SerializeField] private GameObject Player2;	// 選ばれていたプレイヤー2
 
-	// 参照先
-	[SerializeField] private InGameManager inGameManager;
-	[SerializeField] private CharacterSelectManager characterSelectManager;
     void Start()
     {
     }
