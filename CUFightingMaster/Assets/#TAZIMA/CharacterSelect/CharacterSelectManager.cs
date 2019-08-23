@@ -49,8 +49,10 @@ public class CharacterSelectManager : MonoBehaviour
     }
 	void Update()
 	{
-        //カーソル移動
-        inputDir.x = Input.GetAxisRaw(string.Format("{0}Player{1}_Horizontal", controllerName, playerNum));
+		//ポーズ処理
+		if (Mathf.Approximately(Time.timeScale, 0f)) return;
+		//カーソル移動
+		inputDir.x = Input.GetAxisRaw(string.Format("{0}Player{1}_Horizontal", controllerName, playerNum));
 		inputDir.y = Input.GetAxisRaw(string.Format("{0}Player{1}_Vertical", controllerName, playerNum));
 		moveCursorFrames += Time.deltaTime;
 		if (inputDir != Vector2.zero)

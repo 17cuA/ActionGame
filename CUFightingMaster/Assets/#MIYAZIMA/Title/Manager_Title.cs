@@ -41,7 +41,9 @@ public class Manager_Title : MonoBehaviour
 	//	--------------------
 	void Update()
 	{
-        if (Input.anyKeyDown && !Input.GetKeyDown(KeyCode.F1) && !Input.GetKeyDown(KeyCode.F2) && !Input.GetKeyDown(KeyCode.F3) && !Input.GetKeyDown(KeyCode.F4))
+		//ポーズ処理
+		if (Mathf.Approximately(Time.timeScale, 0f)) return;
+		if (Input.anyKeyDown && !Input.GetKeyDown(KeyCode.Escape) && !Input.GetKeyDown(KeyCode.F1) && !Input.GetKeyDown(KeyCode.F2) && !Input.GetKeyDown(KeyCode.F3) && !Input.GetKeyDown(KeyCode.F4))
          {
 			// 飯塚追加-------------------------------------------
 			Sound.LoadSe("Menu_Decision", "Se_menu_decision");
