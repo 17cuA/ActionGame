@@ -464,20 +464,28 @@ public class FighterStateDamage : StateBaseScriptMonoBehaviour
     }
     public bool isThrowHit()
     {
-		//仮
+		//相手側がダメージを受けていたら基本受けない
         if (GameManager.Instance.GetPlayFighterCore(stateBase.core.EnemyNumber).GetDamage.frameHitBoxes.Count > 0)
         {
+            //投げ同士は無効
+            if(GameManager.Instance.GetPlayFighterCore(stateBase.core.EnemyNumber).GetDamage.isThrow)
+            {
+                GameManager.Instance.GetPlayFighterCore(stateBase.core.EnemyNumber).SetDamage(new FighterSkill.CustomHitBox(), null);
+            }
+            else
+            {
+                //相手が攻撃で自分が投げを喰らっていた場合
+                if(stateBase.core.GetDamage.isThrow)
+                {
+                    stateBase.core.SetDamage(new FighterSkill.CustomHitBox(), null);
+                }
+            }
 			return false;
             //return stateBase.core.GetDamage.isThrow;
         }
 		else if(stateBase.core.GetDamage.isThrow)
 		{
-			return true;
-			if(GameManager.Instance.GetPlayFighterCore(stateBase.core.EnemyNumber).GetDamage.isThrow)
-			{
-                GameManager.Instance.GetPlayFighterCore(stateBase.core.EnemyNumber).SetDamage(new FighterSkill.CustomHitBox(), null);
-            }
-            stateBase.core.SetDamage(new FighterSkill.CustomHitBox(), null);
+            return true;
         }
         return false;
     }

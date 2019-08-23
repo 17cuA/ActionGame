@@ -167,7 +167,8 @@ public class BulletCore : MonoBehaviour
 		{
 			foreach(var obj in nowPlayCollider)
 			{
-				if(obj.gameObject.activeSelf == true)
+				if(obj.gameObject == null) return;
+                if(obj.gameObject.activeSelf == true)
 				{
 					Gizmos.color = new Color(245f/255f, 120f/255f, 0f,0.3f);
 					Gizmos.DrawCube(obj.component.center+obj.gameObject.transform.position, obj.component.size);
