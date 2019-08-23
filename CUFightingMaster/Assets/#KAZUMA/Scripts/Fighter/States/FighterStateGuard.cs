@@ -55,7 +55,11 @@ public class FighterStateGuard : StateBaseScriptMonoBehaviour
 		//相打ち時に受けたほうを優先する
 		if (GameManager.Instance.GetHitStop(stateBase.core.EnemyNumber) <= 0)
 		{
-			GameManager.Instance.SetHitStop(stateBase.core.EnemyNumber, box.hitStop);
+			//遠距離の場合は相手側ヒットストップなし
+			if (box.mode != HitBoxMode.Bullet)
+			{
+				GameManager.Instance.SetHitStop(stateBase.core.EnemyNumber, box.hitStop);
+			}
 		}
 
 		Direction inp = stateBase.input.GetPlayerMoveDirection(stateBase);
@@ -98,7 +102,16 @@ public class FighterStateGuard : StateBaseScriptMonoBehaviour
 			}
 		}
 
-		stateBase.core.SetKnockBack(box.guardKnockBack, stateBase.core.EnemyNumber, tmpDir);
+		//遠距離の場合は相手側ノックバックなし
+		if (box.mode != HitBoxMode.Bullet)
+		{
+			stateBase.core.SetKnockBack(box.guardKnockBack, stateBase.core.EnemyNumber, tmpDir);
+		}
+		else
+		{
+			stateBase.core.SetKnockBack(box.guardKnockBack, stateBase.core.EnemyNumber, tmpDir, false);
+		}
+
 		//ダメージを受けたのでリセット
 		stateBase.core.SetDamage(new FighterSkill.CustomHitBox(),null);
 	}

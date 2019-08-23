@@ -1,0 +1,51 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: daa0c98c961cc2f468fdfd569066f34c, type: 3}
+  m_Name: New Bullet Hit Box
+  m_EditorClassIdentifier: 
+  maxFrame: 10
+  isLoop: 1
+  customHitBox:
+  - mode: 4
+    frameHitBoxes:
+    - hitBox:
+        size: {x: 1.81, y: 1, z: 0}
+        localPosition: {x: 0, y: 0, z: 0}
+      startFrame: 0
+      endFrame: 5
+    - hitBox:
+        size: {x: 2.22, y: 2.16, z: 1.65}
+        localPosition: {x: 0, y: 0, z: 0}
+      startFrame: 5
+      endFrame: 10
+    hitStop: 100
+    hitPoint: 0
+    hitStrength: 0
+    damage: 0
+    stanDamage: 0
+    knockBack: 4
+    airKnockBack: 0
+    guardKnockBack: 0
+    hitEffects: []
+    isDown: 0
+    isThrow: 0
+    throwSkill: {fileID: 0}
+    enemyThrowSkill: {fileID: 0}
+    throwDamages: []
+    isContinue: 0
+    movements: []
+    gravityMoves: []
+    isFaceDown: 0
+    isPassiveNotPossible: 0
+    hitRigor: 10
+    guardHitRigor: 0
+    plusGauge: 0

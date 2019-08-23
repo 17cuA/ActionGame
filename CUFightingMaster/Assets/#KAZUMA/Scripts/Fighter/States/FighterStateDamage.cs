@@ -29,7 +29,11 @@ public class FighterStateDamage : StateBaseScriptMonoBehaviour
 		//相打ち時に受けたほうを優先する
 		if (GameManager.Instance.GetHitStop(stateBase.core.EnemyNumber) <= 0)
 		{
-			GameManager.Instance.SetHitStop(stateBase.core.EnemyNumber, box.hitStop);
+			//遠距離の場合は相手側ヒットストップなし
+			if (box.mode != HitBoxMode.Bullet)
+			{
+				GameManager.Instance.SetHitStop(stateBase.core.EnemyNumber, box.hitStop);
+			}
 		}
 		//立ちやられ
 		if (stateBase.core.GetDamage.frameHitBoxes.Count > 0)
@@ -181,8 +185,15 @@ public class FighterStateDamage : StateBaseScriptMonoBehaviour
 				}
 			}
 		}
-
-		stateBase.core.SetKnockBack(box.knockBack,stateBase.core.EnemyNumber,tmpDir);
+		//遠距離の場合は相手側ノックバックなし
+		if (box.mode != HitBoxMode.Bullet)
+		{
+			stateBase.core.SetKnockBack(box.knockBack, stateBase.core.EnemyNumber, tmpDir);
+		}
+		else
+		{
+			stateBase.core.SetKnockBack(box.knockBack, stateBase.core.EnemyNumber, tmpDir,false);
+		}
 		//ダメージを受けたのでリセット
 		stateBase.core.SetDamage(new FighterSkill.CustomHitBox(),null);
 	}
@@ -203,7 +214,11 @@ public class FighterStateDamage : StateBaseScriptMonoBehaviour
         //相打ち時に受けたほうを優先する
         if (GameManager.Instance.GetHitStop(stateBase.core.EnemyNumber) <= 0)
         {
-            GameManager.Instance.SetHitStop(stateBase.core.EnemyNumber, box.hitStop);
+			//遠距離の場合は相手側ヒットストップなし
+			if (box.mode != HitBoxMode.Bullet)
+			{
+				GameManager.Instance.SetHitStop(stateBase.core.EnemyNumber, box.hitStop);
+			}
         }
         //立ちやられ
         if (stateBase.core.GetDamage.frameHitBoxes.Count > 0)
@@ -291,8 +306,17 @@ public class FighterStateDamage : StateBaseScriptMonoBehaviour
 		}
 
 		//ノックバックのセット
-		stateBase.core.SetKnockBack(box.airKnockBack, stateBase.core.EnemyNumber,tmpDir);
-        stateBase.core.SetDamage(new FighterSkill.CustomHitBox(),null);
+		//遠距離の場合は相手側ノックバックなし
+		if (box.mode != HitBoxMode.Bullet)
+		{
+			stateBase.core.SetKnockBack(box.airKnockBack, stateBase.core.EnemyNumber, tmpDir);
+		}
+		else
+		{
+			stateBase.core.SetKnockBack(box.airKnockBack, stateBase.core.EnemyNumber, tmpDir, false);
+		}
+
+		stateBase.core.SetDamage(new FighterSkill.CustomHitBox(),null);
     }
 	#endregion
 
@@ -310,7 +334,11 @@ public class FighterStateDamage : StateBaseScriptMonoBehaviour
         //相打ち時に受けたほうを優先する
         if (GameManager.Instance.GetHitStop(stateBase.core.EnemyNumber) <= 0)
         {
-            GameManager.Instance.SetHitStop(stateBase.core.EnemyNumber, box.hitStop);
+			//遠距離の場合は相手側ヒットストップなし
+			if (box.mode != HitBoxMode.Bullet)
+			{
+				GameManager.Instance.SetHitStop(stateBase.core.EnemyNumber, box.hitStop);
+			}
         }
         //ダウンやられ
         if (stateBase.core.GetDamage.frameHitBoxes.Count > 0)
@@ -353,9 +381,17 @@ public class FighterStateDamage : StateBaseScriptMonoBehaviour
 			}
 		}
 
-		//ノックバックのセット
-		stateBase.core.SetKnockBack(box.airKnockBack, stateBase.core.EnemyNumber,tmpDir);
-        stateBase.core.SetDamage(new FighterSkill.CustomHitBox(),null);
+		//遠距離の場合は相手側ノックバックなし
+		if (box.mode != HitBoxMode.Bullet)
+		{
+			stateBase.core.SetKnockBack(box.airKnockBack, stateBase.core.EnemyNumber, tmpDir);
+		}
+		else
+		{
+			stateBase.core.SetKnockBack(box.airKnockBack, stateBase.core.EnemyNumber, tmpDir, false);
+		}
+
+		stateBase.core.SetDamage(new FighterSkill.CustomHitBox(),null);
 	}
     #endregion
 
@@ -428,12 +464,15 @@ public class FighterStateDamage : StateBaseScriptMonoBehaviour
     }
     public bool isThrowHit()
     {
-        if (GameManager.Instance.GetPlayFighterCore(stateBase.core.EnemyNumber).GetDamage.frameHitBoxes.Count <= 0)
+		//仮
+        if (GameManager.Instance.GetPlayFighterCore(stateBase.core.EnemyNumber).GetDamage.frameHitBoxes.Count > 0)
         {
-            return stateBase.core.GetDamage.isThrow;
+			return false;
+            //return stateBase.core.GetDamage.isThrow;
         }
-		if(stateBase.core.GetDamage.isThrow)
+		else if(stateBase.core.GetDamage.isThrow)
 		{
+			return true;
 			if(GameManager.Instance.GetPlayFighterCore(stateBase.core.EnemyNumber).GetDamage.isThrow)
 			{
                 GameManager.Instance.GetPlayFighterCore(stateBase.core.EnemyNumber).SetDamage(new FighterSkill.CustomHitBox(), null);

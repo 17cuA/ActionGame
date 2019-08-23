@@ -12,12 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fbd35985d310504d81036cc55356454, type: 3}
   m_Name: Wake_Up
   m_EditorClassIdentifier: 
-  animationClip: {fileID: 7400000, guid: 7961a1445d12de840837247452c7c0fb, type: 2}
+  animationClip: {fileID: 7400000, guid: 579875b6364f78d4eabd415c58d369c8, type: 2}
   animationSpeed: 1
   status: 1
-  hitMode: 0
-  throwMotion: {fileID: 0}
-  enemyThrowMotion: {fileID: 0}
+  frameEffects: []
   cancelFrag: 1
   barrageCancelFrag: 0
   cancelLayer: 0
@@ -32,12 +30,7 @@ MonoBehaviour:
   plusBodyHitBox: []
   plusFootHitBox: []
   plusGrabHitBox: []
-  plusPushingHitBox:
-  - hitBox:
-      size: {x: 0.95, y: -0.57, z: 0}
-      localPosition: {x: 0.58, y: -0.29, z: 0}
-    startFrame: 0
-    endFrame: 59
+  plusPushingHitBox: []
   customHitBox: []
   isContinue: 0
   movements: []
