@@ -34,8 +34,6 @@ using UnityEngine.SceneManagement;
 public class CameraController : MonoBehaviour
 {
 	#region 変数宣言
-	//private GameObject Player1;
-	//private GameObject Player2;
 	private float offsetY;						// カメラのY座標の基準値
 	private float speed_ZoomIn;					// カメラのズーム時の速度
 	private float speed_ZoomOut;				// カメラのズームアウト時の速度
@@ -69,8 +67,6 @@ public class CameraController : MonoBehaviour
 	private void Awake()
 	{
 		instance = GetComponent<CameraController>();
-		//Player1 = GameObject.Find("Player01");
-		//Player2 = GameObject.Find("Player02");
 	}
 
 
@@ -95,6 +91,7 @@ public class CameraController : MonoBehaviour
 			GetCameraPos_X();
 			call_Once = false;
 		}
+		#region デバック用
 		if (Input.GetKeyDown(KeyCode.N))
 		{
 			Shake(0.25f, 0.1f);
@@ -103,8 +100,9 @@ public class CameraController : MonoBehaviour
 		{
 			Shake(0.25f, 5f);
 		}
-
+		#endregion
 	}
+
 
 	void FixedUpdate()
 	{
@@ -120,14 +118,19 @@ public class CameraController : MonoBehaviour
 		transform.position = new Vector3(Mathf.Clamp(transform.position.x, cameraPos_Min.x, cameraPos_Max.x), pCentorPos.y + offsetY, transform.position.z);
 	}
 
-	// ターゲットの中心を求める
+	#region カメラの座標
+	/// <summary>
+	/// ターゲットの中心を求める
+	/// </summary>
 	void TargetPos()
 	{
 		pCentorPos = (Fighter1.transform.position + Fighter2.transform.position) / 2;
 		distanceOfPLayers_Current = Vector3.Distance(Camera.main.WorldToViewportPoint(Fighter1.transform.position), Camera.main.WorldToViewportPoint(Fighter2.transform.position));
 	}
 
-	// カメラに関する座標を求める
+	/// <summary>
+	/// カメラに関する座標を求める
+	/// </summary>
 	void CameraPos()
 	{
 		// カメラからプレイヤーまでの距離の計算
@@ -142,16 +145,22 @@ public class CameraController : MonoBehaviour
 		#endregion
 	}
 
-	// ステージ横幅からカメラのX座標の最大値・最小値を求める
-	// Update関数内で一度だけ呼び出す
+	/// <summary>
+	/// ステージ横幅からカメラのX座標の最大値・最小値を求める
+	/// Update関数内で一度だけ呼び出す
+	/// </summary>
 	void GetCameraPos_X()
 	{
 		cameraPos_Max.x = stageWidth - (rTop.x - transform.position.x);
 		cameraPos_Min.x = -stageWidth + (transform.position.x - lBottom.x);
 	}
+	#endregion
 
 	#region ズーム処理
-	// カメラのズーム
+	/// <summary>
+	/// カメラのズームイン、ズームアウトの処理
+	/// </summary>
+	/// <returns></returns>
 	float Zoom()
 	{
 		// ズームの比率
