@@ -111,44 +111,49 @@ public class InGameManager : MonoBehaviour
         //(どちらかのHPが0になったら
         if (GameManager.Instance.Player_one.HP <= 0 || GameManager.Instance.Player_two.HP <= 0)
         {
-            //勝敗判定
-            if (GameManager.Instance.Player_one.HP <= 0 && GameManager.Instance.Player_two.HP <= 0)
-            {
-                //DoubleKO
-            }
-            else if (GameManager.Instance.Player_one.HP > GameManager.Instance.Player_two.HP)
+			//勝敗判定
+			if (GameManager.Instance.Player_one.HP > GameManager.Instance.Player_two.HP)
             {
                 getRoundCount_p1++;
 				gameRoundCount++;
             }
-            else
+            else if (GameManager.Instance.Player_one.HP < GameManager.Instance.Player_two.HP)
             {
                 getRoundCount_p2++;
 				gameRoundCount++;
             }
-            currentUpdate = FinishRound_KO;
+			else
+			{
+				//DoubleKO
+				getRoundCount_p1++;
+				getRoundCount_p2++;
+				gameRoundCount++;
+			}
+			currentUpdate = FinishRound_KO;
         }
 
         //TimeOverになったら
         else if (canvasController.Call_DoEndCountDown() == false)
         {
             //勝敗判定
-            if (GameManager.Instance.Player_one.HP == GameManager.Instance.Player_two.HP)
-            {
-                //DoubleKO
-            }
-            //勝敗判定
-            else if (GameManager.Instance.Player_one.HP > GameManager.Instance.Player_two.HP)
+			if (GameManager.Instance.Player_one.HP > GameManager.Instance.Player_two.HP)
             {
                 getRoundCount_p1++;
 				gameRoundCount++;
             }
-            else
-            {
+			else if (GameManager.Instance.Player_one.HP < GameManager.Instance.Player_two.HP)
+			{
                 getRoundCount_p2++;
 				gameRoundCount++;
             }
-            currentUpdate = FinishRound_TimeOver;
+			else
+			{
+				//DoubleKO
+				getRoundCount_p1++;
+				getRoundCount_p2++;
+				gameRoundCount++;
+			}
+				currentUpdate = FinishRound_TimeOver;
         }
     }
 	#endregion
