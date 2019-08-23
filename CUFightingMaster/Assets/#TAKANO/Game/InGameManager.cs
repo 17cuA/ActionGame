@@ -84,6 +84,7 @@ public class InGameManager : MonoBehaviour
         canvasController.Call_PlayBattleRound();
         //キャラクターポジションの設定
         StartCoroutine("Test");
+
         //画面が明るくなったら
         if (canvasController.Call_StartFadeIn() == true)
         {
@@ -205,8 +206,8 @@ public class InGameManager : MonoBehaviour
 	/// </summary>
 	private void ResetParameter()
     {
-        //画面を暗くする
-        if (canvasController.Call_StartFadeOut() == true)
+		//画面を暗くする
+		if (canvasController.Call_StartFadeOut() == true)
         {
             //キャラクターのHPのリセット
             GameManager.Instance.Player_one.HP = 100;
@@ -219,7 +220,7 @@ public class InGameManager : MonoBehaviour
             //ラウンドカウンターの更新
             canvasController.Call_UpdateWinCounter(getRoundCount_p1, getRoundCount_p2);
 
-			// キャラクターリセットができないため、StartRoundに設定として書いた
+			GameManager.Instance.isStartGame = false;
 
 			currentUpdate = StartRound;
 		}
@@ -295,11 +296,11 @@ public class InGameManager : MonoBehaviour
         //DebugKey
         if (Input.GetKeyDown("z"))
         {
-            GameManager.Instance.Player_one.HP -= 5;
+            GameManager.Instance.Player_one.HP -= 30;
         }
         if (Input.GetKeyDown("x"))
         {
-            GameManager.Instance.Player_two.HP -= 5;
+            GameManager.Instance.Player_two.HP -= 30;
         }
         if(Input.GetKeyDown("c"))
         {
