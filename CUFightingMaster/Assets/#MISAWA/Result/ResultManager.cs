@@ -37,7 +37,7 @@ public class ResultManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-		if (Input.anyKeyDown && !Input.GetKeyDown(KeyCode.F1) && !Input.GetKeyDown(KeyCode.F3) && !Input.GetKeyDown(KeyCode.F4))
+		if (Input.anyKeyDown && !Input.GetKeyDown(KeyCode.F1) && !Input.GetKeyDown(KeyCode.F2) && !Input.GetKeyDown(KeyCode.F3) && !Input.GetKeyDown(KeyCode.F4))
 		{
 			SceneManager.LoadScene("JECLogo");
 		}

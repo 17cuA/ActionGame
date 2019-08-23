@@ -48,23 +48,27 @@ public class FuncKeyManager : SingletonMono<FuncKeyManager>
 			{
 				sceneIndex = Mathf.Clamp(sceneIndex - 1, 0, sceneNames.Length);
 				SceneManager.LoadScene(sceneNames[sceneIndex]);
+				Sound.StopBgm();
 			}
 			//1シーン分進む
 			if (Input.GetKeyDown(KeyCode.F2))
 			{
 				sceneIndex = Mathf.Clamp(sceneIndex + 1, 0, sceneNames.Length - 1);
 				SceneManager.LoadScene(sceneNames[sceneIndex]);
+				Sound.StopBgm();
 			}
 			//現在のシーンを再ロード
 			if (Input.GetKeyDown(KeyCode.F3))
 			{
 				SceneManager.LoadScene(sceneNames[sceneIndex]);
+				Sound.StopBgm();
 			}
 			//タイトルに戻る
 			if (Input.GetKeyDown(KeyCode.F4))
 			{
 				sceneIndex = 0;
 				SceneManager.LoadScene(sceneNames[sceneIndex]);
+				Sound.StopBgm();
 			}
 			#endregion
 			#region バトルシーンで使用するキー

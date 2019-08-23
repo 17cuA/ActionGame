@@ -13,10 +13,10 @@ public class CharacterSelectManager : MonoBehaviour
 	private const int maxChara = 4;
 	public GameObject[] character = new GameObject[maxChara];         //キャラクターゲームオブジェクト
 	public GameObject[] characterPanels = new GameObject[maxChara];   //キャラクターパネル
-    public Sprite[] characterName = new Sprite[maxChara];            //キャラクターの名前画像
+    public Sprite[] characterName = new Sprite[maxChara];			　//キャラクターの名前画像
 
 	public GameObject currentSellectCharacter = null;  //現在選択しているキャラクター
-	public Image currentSelectCharacterName;           //現在選択しているキャラクターの名前
+	public Image currentSelectCharacter;           //現在選択しているキャラクターの名前
 
 	public GameObject charaCreatePos;					//キャラクターを生成するポジションを決める空オブジェクト
 
@@ -117,7 +117,7 @@ public class CharacterSelectManager : MonoBehaviour
 
         //選んだ時に変わるところ
         Destroy(currentSellectCharacter);
-        currentSelectCharacterName.sprite = characterName[selectDir];
+        currentSelectCharacter.sprite = characterName[selectDir];
         currentSellectCharacter = Instantiate(character[selectDir], charaCreatePos.transform);
         selectCursor.transform.position = new Vector3(characterPanels[selectDir].transform.position.x, selectCursor.transform.position.y, selectCursor.transform.position.z);
     }
