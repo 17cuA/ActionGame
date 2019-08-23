@@ -293,14 +293,6 @@ public class InGameManager : MonoBehaviour
 		currentUpdate();
 
         //DebugKey
-        if (Input.GetKeyDown("z"))
-        {
-            GameManager.Instance.Player_one.HP -= 5;
-        }
-        if (Input.GetKeyDown("x"))
-        {
-            GameManager.Instance.Player_two.HP -= 5;
-        }
         if(Input.GetKeyDown("c"))
         {
             gameRoundCount = 0;

@@ -38,6 +38,8 @@ public class JECLogo : MonoBehaviour
 	// Update is called once per frame
 	void Update()
     {
+		//ポーズ処理
+		if (Mathf.Approximately(Time.timeScale, 0f)) return;
 		// ゲーム開始直後に処理
 		if (timeCurrent == 0.0f)
 		{

@@ -39,7 +39,7 @@ public class GameManager : SingletonMono<GameManager>
 	//Updateの順番の管理
 	private void Update()
 	{
-		//ポーズ中にプレイヤーの動きを止める処理
+		//ポーズ処理
 		if (Mathf.Approximately(Time.timeScale, 0f))		return;
 
 		input_one.UpdateGame(Player_one);
