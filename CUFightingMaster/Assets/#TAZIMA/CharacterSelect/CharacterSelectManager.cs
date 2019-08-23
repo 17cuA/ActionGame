@@ -13,10 +13,10 @@ public class CharacterSelectManager : MonoBehaviour
 	private const int maxChara = 4;
 	public GameObject[] character = new GameObject[maxChara];         //キャラクターゲームオブジェクト
 	public GameObject[] characterPanels = new GameObject[maxChara];   //キャラクターパネル
-    public Sprite[] characterName = new Sprite[maxChara];			　//キャラクターの名前画像
+    public Sprite[] characterName = new Sprite[maxChara];            //キャラクターの名前画像
 
-	private GameObject currentSellectCharacter = null;  //現在選択しているキャラクター
-	private Image currentSelectCharacterName;           //現在選択しているキャラクターの名前
+	public GameObject currentSellectCharacter = null;  //現在選択しているキャラクター
+	public Image currentSelectCharacterName;           //現在選択しているキャラクターの名前
 
 	public GameObject charaCreatePos;					//キャラクターを生成するポジションを決める空オブジェクト
 
