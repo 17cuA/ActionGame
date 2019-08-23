@@ -49,7 +49,7 @@ class UI_RoundWinCounter : MonoBehaviour
 		{
 			uI_RoundWin.UpdateImage(default_Image);
 		}
-			foreach( UI_RoundWin uI_RoundWin in RoundCounter_P2 )
+		foreach( UI_RoundWin uI_RoundWin in RoundCounter_P2 )
 		{
 			uI_RoundWin.UpdateImage(default_Image);
 		}

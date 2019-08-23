@@ -70,8 +70,24 @@ public class UI_GameVictory : MonoBehaviour
 		GameVictoryStartCoroutine();
         return isPlay;
     }
+	public bool Drow()
+	{
+		//下記の処理をドロー用に変更してください
+		//// 飯塚追加-------------------------------------------
+		//if (flag)
+		//{
+		//	Sound.LoadSe("Voice_PlayerTwoWin", "Voice_PlayerTwoWin");
+		//	Sound.PlaySe("Voice_PlayerTwoWin", 3, 1);
+		//	flag = false;
+		//}
+		//// ---------------------------------------------------
+		//displayImage = win_P2_image;
+		//displayWin = win_image;
+		//GameVictoryStartCoroutine();
+		return isPlay;
+	}
 
-    void GameVictoryStartCoroutine()
+	void GameVictoryStartCoroutine()
     {
         if (isCalled == false)
 		{
