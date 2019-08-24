@@ -14,44 +14,44 @@ public class FighterStateDamage : StateBaseScriptMonoBehaviour
 	{
 		stateBase = GetComponent<FighterStateBase>();
 	}
-	#region 地上やられ
-	//やられ
-	public void HitStunStart()
-	{
-		isEndStun = false;
-		FighterSkill.CustomHitBox box = stateBase.core.GetDamage;
-		//硬直
-		hitRigor = box.hitRigor;
-		hitCount = 0;
+    #region 地上やられ
+    //やられ
+    public void HitStunStart()
+    {
+        isEndStun = false;
+        FighterSkill.CustomHitBox box = stateBase.core.GetDamage;
+        //硬直
+        hitRigor = box.hitRigor;
+        hitCount = 0;
 
-		//ヒットストップ
-		GameManager.Instance.SetHitStop(stateBase.core.PlayerNumber, box.hitStop);
-		//相打ち時に受けたほうを優先する
-		if (GameManager.Instance.GetHitStop(stateBase.core.EnemyNumber) <= 0)
-		{
-			//遠距離の場合は相手側ヒットストップなし
-			if (box.mode != HitBoxMode.Bullet)
-			{
-				GameManager.Instance.SetHitStop(stateBase.core.EnemyNumber, box.hitStop);
-			}
-		}
-		//立ちやられ
-		if (stateBase.core.GetDamage.frameHitBoxes.Count > 0)
-		{
+        //ヒットストップ
+        GameManager.Instance.SetHitStop(stateBase.core.PlayerNumber, box.hitStop);
+        //相打ち時に受けたほうを優先する
+        if (GameManager.Instance.GetHitStop(stateBase.core.EnemyNumber) <= 0)
+        {
+            //遠距離の場合は相手側ヒットストップなし
+            if (box.mode != HitBoxMode.Bullet)
+            {
+                GameManager.Instance.SetHitStop(stateBase.core.EnemyNumber, box.hitStop);
+            }
+        }
+        //立ちやられ
+        if (stateBase.core.GetDamage.frameHitBoxes.Count > 0)
+        {
             //ダメージ処理
             stateBase.core.HP -= box.damage;
-			if(stateBase.core.HP<0)
-			{
+            if (stateBase.core.HP < 0)
+            {
                 stateBase.core.HP = 0;
             }
-            switch(box.hitPoint)
-			{
-				case HitPoint.Bottom:
-					switch(box.hitStrength)
-					{
-						case HitStrength.Light:
-							if(stateBase.core.PlayerMoveStates == PlayerMoveState.Crouching)
-							{
+            switch (box.hitPoint)
+            {
+                case HitPoint.Bottom:
+                    switch (box.hitStrength)
+                    {
+                        case HitStrength.Light:
+                            if (stateBase.core.PlayerMoveStates == PlayerMoveState.Crouching)
+                            {
                                 stateBase.ChangeSkillConstant(SkillConstants.Crouching_Light_Bottom_HitMotion, 0);
                             }
                             else
@@ -59,7 +59,7 @@ public class FighterStateDamage : StateBaseScriptMonoBehaviour
                                 stateBase.ChangeSkillConstant(SkillConstants.Stand_Light_Bottom_HitMotion, 0);
                             }
                             break;
-						case HitStrength.Middle:
+                        case HitStrength.Middle:
                             if (stateBase.core.PlayerMoveStates == PlayerMoveState.Crouching)
                             {
 
@@ -70,57 +70,57 @@ public class FighterStateDamage : StateBaseScriptMonoBehaviour
                                 stateBase.ChangeSkillConstant(SkillConstants.Stand_Middle_Bottom_HitMotion, 0);
                             }
                             break;
-						case HitStrength.Strong:
+                        case HitStrength.Strong:
                             if (stateBase.core.PlayerMoveStates == PlayerMoveState.Crouching)
                             {
                                 stateBase.ChangeSkillConstant(SkillConstants.Crouching_Strong_Bottom_HitMotion, 0);
                             }
-							else
-							{
+                            else
+                            {
                                 stateBase.ChangeSkillConstant(SkillConstants.Stand_Strong_Bottom_HitMotion, 0);
-							}
+                            }
                             break;
-					}
-					break;
-				case HitPoint.Middle:
-					switch (box.hitStrength)
-					{
-						case HitStrength.Light:
+                    }
+                    break;
+                case HitPoint.Middle:
+                    switch (box.hitStrength)
+                    {
+                        case HitStrength.Light:
                             if (stateBase.core.PlayerMoveStates == PlayerMoveState.Crouching)
                             {
 
                                 stateBase.ChangeSkillConstant(SkillConstants.Crouching_Light_Middle_HitMotion, 0);
                             }
-							else
-							{
+                            else
+                            {
                                 stateBase.ChangeSkillConstant(SkillConstants.Stand_Light_Middle_HitMotion, 0);
-							}
+                            }
                             break;
-						case HitStrength.Middle:
+                        case HitStrength.Middle:
                             if (stateBase.core.PlayerMoveStates == PlayerMoveState.Crouching)
                             {
 
                                 stateBase.ChangeSkillConstant(SkillConstants.Crouching_Middle_Middle_HitMotion, 0);
                             }
-							else
-							{
+                            else
+                            {
                                 stateBase.ChangeSkillConstant(SkillConstants.Stand_Middle_Middle_HitMotion, 0);
-							}
+                            }
                             break;
-						case HitStrength.Strong:
+                        case HitStrength.Strong:
                             if (stateBase.core.PlayerMoveStates == PlayerMoveState.Crouching)
                             {
 
                                 stateBase.ChangeSkillConstant(SkillConstants.Crouching_Strong_Middle_HitMotion, 0);
                             }
-							else
-							{
+                            else
+                            {
                                 stateBase.ChangeSkillConstant(SkillConstants.Stand_Strong_Middle_HitMotion, 0);
-							}
+                            }
                             break;
-					}
-					break;
-				case HitPoint.Top:
+                    }
+                    break;
+                case HitPoint.Top:
                     switch (box.hitStrength)
                     {
                         case HitStrength.Light:
@@ -155,51 +155,51 @@ public class FighterStateDamage : StateBaseScriptMonoBehaviour
                             break;
                     }
                     break;
-			}
-		}
-		//ノックバックのセット
+            }
+        }
+        //ノックバックのセット
         PlayerDirection tmpDir;
-		//右向きにノックバックするか左向きにノックバックするか
-        if(GameManager.Instance.GetPlayFighterCore(stateBase.core.EnemyNumber).Direction == PlayerDirection.Right)
-		{
+        //右向きにノックバックするか左向きにノックバックするか
+        if (GameManager.Instance.GetPlayFighterCore(stateBase.core.EnemyNumber).Direction == PlayerDirection.Right)
+        {
             tmpDir = PlayerDirection.Left;
         }
-		else 
-		{
+        else
+        {
             tmpDir = PlayerDirection.Right;
         }
-		//エフェクト再生
-		BoxCollider _bCol = stateBase.core.GetDamageCollider;
-		Transform t = _bCol.gameObject.transform;
-		for (int i = 0; i < box.hitEffects.Count; i++)
-		{
-			if (box.hitEffects[i].effect != null)
-			{
-				if (GameManager.Instance.GetPlayFighterCore(stateBase.core.EnemyNumber).Direction == PlayerDirection.Right)
-				{
-					Object.Instantiate(box.hitEffects[i].effect, new Vector3(t.position.x + _bCol.center.x + box.hitEffects[i].position.x, t.position.y + _bCol.center.y + box.hitEffects[i].position.y, t.position.z + _bCol.center.z + box.hitEffects[i].position.z), Quaternion.identity);
-				}
-				else if (GameManager.Instance.GetPlayFighterCore(stateBase.core.EnemyNumber).Direction == PlayerDirection.Left)
-				{
-					Object.Instantiate(box.hitEffects[i].effect, new Vector3(t.position.x + _bCol.center.x + box.hitEffects[i].position.x, t.position.y + _bCol.center.y + box.hitEffects[i].position.y, t.position.z + _bCol.center.z + box.hitEffects[i].position.z), Quaternion.Euler(0, 180, 0));
-				}
-			}
-		}
-		//遠距離の場合は相手側ノックバックなし
-		if (box.mode != HitBoxMode.Bullet)
-		{
-			stateBase.core.SetKnockBack(box.knockBack, stateBase.core.EnemyNumber, tmpDir);
-		}
-		else
-		{
-			stateBase.core.SetKnockBack(box.knockBack, stateBase.core.EnemyNumber, tmpDir,false);
-		}
-		//ダメージを受けたのでリセット
-		stateBase.core.SetDamage(new FighterSkill.CustomHitBox(),null);
-	}
-	#endregion
+        //エフェクト再生
+        BoxCollider _bCol = stateBase.core.GetDamageCollider;
+        Transform t = _bCol.gameObject.transform;
+        for (int i = 0; i < box.hitEffects.Count; i++)
+        {
+            if (box.hitEffects[i].effect != null)
+            {
+                if (GameManager.Instance.GetPlayFighterCore(stateBase.core.EnemyNumber).Direction == PlayerDirection.Right)
+                {
+                    Object.Instantiate(box.hitEffects[i].effect, new Vector3(t.position.x + _bCol.center.x + box.hitEffects[i].position.x, t.position.y + _bCol.center.y + box.hitEffects[i].position.y, t.position.z + _bCol.center.z + box.hitEffects[i].position.z), Quaternion.identity);
+                }
+                else if (GameManager.Instance.GetPlayFighterCore(stateBase.core.EnemyNumber).Direction == PlayerDirection.Left)
+                {
+                    Object.Instantiate(box.hitEffects[i].effect, new Vector3(t.position.x + _bCol.center.x + box.hitEffects[i].position.x, t.position.y + _bCol.center.y + box.hitEffects[i].position.y, t.position.z + _bCol.center.z + box.hitEffects[i].position.z), Quaternion.Euler(0, 180, 0));
+                }
+            }
+        }
+        //遠距離の場合は相手側ノックバックなし
+        if (box.mode != HitBoxMode.Bullet)
+        {
+            stateBase.core.SetKnockBack(box.knockBack, stateBase.core.EnemyNumber, tmpDir);
+        }
+        else
+        {
+            stateBase.core.SetKnockBack(box.knockBack, stateBase.core.EnemyNumber, tmpDir, false);
+        }
+        //ダメージを受けたのでリセット
+        stateBase.core.SetDamage(new FighterSkill.CustomHitBox(), null);
+    }
+    #endregion
 
-	#region 空中やられ
+    #region 空中やられ
     //やられ
     public void AirHitStunStart()
     {
