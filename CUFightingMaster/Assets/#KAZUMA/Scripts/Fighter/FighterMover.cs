@@ -16,6 +16,9 @@ public class FighterMover
     private List<FighterSkill.FrameEffects> effects = new List<FighterSkill.FrameEffects>();
     private int nowPlayEffectNumber = -1;
 
+	private List<FighterSkill.FrameBullets> bullets = new List<FighterSkill.FrameBullets>();
+	private int nowPlayBulletNumber = -1;
+	int RightLeft = 1;
     //初期化
     public FighterMover(FighterCore fighterCore)
 	{
@@ -24,10 +27,19 @@ public class FighterMover
 	}
     public void UpdateGame()
     {
+		if (core.Direction == PlayerDirection.Right)
+		{
+			RightLeft = 1;
+		}
+		if (core.Direction == PlayerDirection.Left)
+		{
+			RightLeft = -1;
+		}
 		ChangeSkillInit();//技の入れ替え
 		MovementSkill();//移動
 		GravityMovementSkill();
         PlayEffects();
+		PlayBullets();
         gravityFrame++;
     }
 	#region 技入れ替えチェック
@@ -49,6 +61,7 @@ public class FighterMover
                 gravity = new List<FighterSkill.GravityMove>(core.NowPlaySkill.gravityMoves);
             }
             effects = new List<FighterSkill.FrameEffects>(core.NowPlaySkill.frameEffects);
+			bullets = new List<FighterSkill.FrameBullets>(core.NowPlaySkill.frameBullets);
             //移動配列のソート、フレームが近い順に並べる
             if(moves.Count > 1)
 			{
@@ -62,9 +75,14 @@ public class FighterMover
             {
                 effects.Sort((a, b) => a.frame - b.frame);
             }
+			if(bullets.Count>1)
+			{
+				bullets.Sort((a, b) => a.frame - b.frame);
+			}
 			nowPlayMoveNumber = -1;
 			nowPlayGravityNumber = -1;
             nowPlayEffectNumber = -1;
+			nowPlayBulletNumber = -1;
         }
 		//なければなし
 		else
@@ -72,6 +90,7 @@ public class FighterMover
 			moves = null;
 			gravity = null;
             effects = null;
+			bullets = null;
             gravityFrame = 0;
 		}
 	}
@@ -153,7 +172,7 @@ public class FighterMover
                 }
                 else
                 {
-                    obj = Object.Instantiate(effects[nowPlayEffectNumber].effect, core.transform.position + effects[nowPlayEffectNumber].position, Quaternion.identity);
+                    obj = Object.Instantiate(effects[nowPlayEffectNumber].effect, core.transform.position + (new Vector3( effects[nowPlayEffectNumber].position.x*RightLeft, effects[nowPlayEffectNumber].position.y, effects[nowPlayEffectNumber].position.z)), Quaternion.identity);
                 }
 
                 //子にするか否か
@@ -163,5 +182,38 @@ public class FighterMover
                 }
             }
         }
-    }
+	}
+	private void PlayBullets()
+	{
+		if ((bullets == null) || (bullets.Count == 0)) return;
+		Debug.Log(bullets[0].frame);
+		if (bullets.Count > nowPlayBulletNumber + 1)
+		{
+			//現在再生中の移動の次の移動フレームを越えれば
+			if (bullets[nowPlayBulletNumber + 1].frame == core.AnimationPlayerCompornent.NowFrame)
+			{
+				nowPlayBulletNumber++;
+				GameObject obj;
+				if (bullets[nowPlayBulletNumber].worldPositionFlag)
+				{
+					obj = Object.Instantiate(bullets[nowPlayBulletNumber].bullet.gameObject, bullets[nowPlayBulletNumber].position, Quaternion.identity);
+				}
+				else
+				{
+					obj = Object.Instantiate(bullets[nowPlayBulletNumber].bullet.gameObject, core.transform.position + (new Vector3(bullets[nowPlayBulletNumber].position.x * RightLeft, bullets[nowPlayBulletNumber].position.y, bullets[nowPlayBulletNumber].position.z)), Quaternion.identity);
+				}
+				//初期化
+				BulletCore bulletCore = obj.GetComponent<BulletCore>();
+				bulletCore.RightLeft = RightLeft;
+				bulletCore.playerNumber = core.PlayerNumber;
+
+				//子にするか否か
+				if (bullets[nowPlayBulletNumber].childFlag)
+				{
+					obj.transform.parent = core.transform;
+				}
+			}
+		}
+	}
+
 }
