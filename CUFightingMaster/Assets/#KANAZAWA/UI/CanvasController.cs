@@ -177,7 +177,7 @@ public class CanvasController : MonoBehaviour
 	public void Call_UpdateWinCounter(int p1Value, int p2Value)
 	{
 		inGameUIController_1.UpdateWinCounter(p1Value, p2Value);
-		inGameUIController_2.UpdateWinCounter(p1Value, p2Value);
+		inGameUIController_2.UpdateWinCounter(p2Value, p1Value);
 	}
 
 	/// <summary>

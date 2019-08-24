@@ -191,6 +191,9 @@ public class InGameManager : MonoBehaviour
 	/// </summary>
 	private void DoGameFinish()
     {
+        //ラウンドカウンターの更新
+        canvasController.Call_UpdateWinCounter(getRoundCount_p1, getRoundCount_p2);
+
         //ゲームが終了するか判定
         if (getRoundCount_p1 >= winRound || getRoundCount_p2 >= winRound)
         {
@@ -220,9 +223,6 @@ public class InGameManager : MonoBehaviour
 
             //hpの初期化
             canvasController.Call_DisplayPlayerHp(GameManager.Instance.Player_one.HP, GameManager.Instance.Player_two.HP);
-
-            //ラウンドカウンターの更新
-            canvasController.Call_UpdateWinCounter(getRoundCount_p1, getRoundCount_p2);
 
 			// キャラクターリセットができないため、StartRoundに設定として書いた
 			currentUpdate = StartRound;
