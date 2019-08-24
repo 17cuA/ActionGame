@@ -503,7 +503,11 @@ public class FighterStateDamage : StateBaseScriptMonoBehaviour
 	}
 	public bool IsEndHitStun()
 	{
-		return isEndStun;
+        if (isEndStun)
+        {
+            GameManager.Instance.GetPlayFighterCore(stateBase.core.EnemyNumber).SetComboCount(0);
+        }
+        return isEndStun;
 	}
 	//受け身したかどうか
 	public bool IsPassiveInput()

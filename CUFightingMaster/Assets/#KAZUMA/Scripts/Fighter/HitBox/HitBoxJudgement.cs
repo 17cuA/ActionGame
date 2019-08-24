@@ -15,6 +15,9 @@ public class HitBoxJudgement
 
     private bool isPushWall = false;//壁に当たったかどうか
 
+    //コンボ
+    private int validComboFrame = 0;
+
     //頭
     private List<FighterSkill.FrameHitBox> heads = new List<FighterSkill.FrameHitBox>();
 	private List<int> headStartFrames = new List<int>();

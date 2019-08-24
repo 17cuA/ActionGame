@@ -86,11 +86,18 @@ public class FighterStateBase : StateBaseScriptMonoBehaviour
 			return false;
 		}
         //相手側が投げ技を喰らっていたら投げを無効にする
-		if((core.GetDamage.frameHitBoxes.Count > 0)&&(GameManager.Instance.GetPlayFighterCore(core.EnemyNumber).GetDamage.isThrow))
+        bool f = core.GetDamage.frameHitBoxes.Count > 0;
+        if((f)&&(GameManager.Instance.GetPlayFighterCore(core.EnemyNumber).GetDamage.isThrow))
         {
             GameManager.Instance.GetPlayFighterCore(core.EnemyNumber).SetDamage(new FighterSkill.CustomHitBox(), null);
         }
-		return core.GetDamage.frameHitBoxes.Count > 0;
+        if(f)
+        {
+            //コンボカウント
+            GameManager.Instance.GetPlayFighterCore(core.EnemyNumber).PlusComboCount(1);
+            Debug.Log(GameManager.Instance.GetPlayFighterCore(core.EnemyNumber).ComboCount);
+        }
+		return f;
 	}
     public bool IsHP(bool _f)
     {
