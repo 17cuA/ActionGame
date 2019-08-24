@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using CUEngine.Pattern;
 using CUEngine;
+using System;
 
 public class GameManager : SingletonMono<GameManager>
 {
@@ -20,18 +21,24 @@ public class GameManager : SingletonMono<GameManager>
 	public TestInput input_two;
 
     public bool isStartGame = false;
+    public bool isEndRound = false;
 
     //ヒットストップ
     private int hitStop_one = 0;
 	private int hitStop_two = 0;
 	private bool isHitStop_one = false;
 	private bool isHitStop_two = false;
-	void Start()
+
+    public List<IEventable> UpdateBulletList = new List<IEventable>();
+    public List<IEventable> LateUpdateBulletList = new List<IEventable>();
+    public List<IEventable> DeleteBulletList = new List<IEventable>();
+
+    void Start()
 	{
 		QualitySettings.vSyncCount = 0;
 		Application.targetFrameRate = 60;
-
-		//Inputの初期化
+        DeleteBulletList = new List<IEventable>();//削除用
+                                                  //Inputの初期化
         input_one.InitCommandManagers(Player_one);
         input_two.InitCommandManagers(Player_two);
         isStartGame = false;
@@ -41,6 +48,11 @@ public class GameManager : SingletonMono<GameManager>
 	{
 		//ポーズ処理
 		if (Mathf.Approximately(Time.timeScale, 0f))		return;
+        //遠距離のUpdate,UpdateManagerで処理するため、UpdateManagerより前
+        foreach(var lis in UpdateBulletList)
+		{
+            lis.UpdateGame();
+        }
 
 		input_one.UpdateGame(Player_one);
 		input_two.UpdateGame(Player_two);
@@ -98,6 +110,23 @@ public class GameManager : SingletonMono<GameManager>
 		{
 			isHitStop_two = true;
 		}
+		//UpdateManagerで使用するため、Gameobjectの削除はUpdateManagerより後
+		foreach(var lis in LateUpdateBulletList)
+		{
+            lis.LateUpdateGame();
+        }
+        int i = 0;
+        foreach(var del in DeleteBulletList)
+		{
+            i++;
+            UpdateBulletList.Remove(del);
+            LateUpdateBulletList.Remove(del);
+        }
+		if(i>0)
+		{
+            DeleteBulletList = new List<IEventable>();//削除用
+        }
+
 	}
 	public FighterCore GetPlayFighterCore(PlayerNumber _mode)
 	{

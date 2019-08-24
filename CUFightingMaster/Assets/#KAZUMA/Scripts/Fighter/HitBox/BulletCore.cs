@@ -1,31 +1,45 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using CUEngine;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
 
-public class BulletCore : MonoBehaviour
+public abstract class BulletCore : MonoBehaviour,IEventable
 {
 	[SerializeField]
 	private BulletHitBox bulletHit = null;
-	private int nowFrame = -1;
 	private bool attackHit = false;//技が当たってるかどうか
 	private List<ComponentObjectPool<BoxCollider>.Objs> nowPlayCollider = new List<ComponentObjectPool<BoxCollider>.Objs>();
 	private ComponentObjectPool<BoxCollider> hitBoxCollider;
 	public int RightLeft = 1;
 	public PlayerNumber playerNumber = PlayerNumber.None;
 
-	void Start()
+	protected int nowFrame = -1;//現在のフレーム
+    protected bool isEndFrame = false;//フレームの最大数を超えた時
+    protected int hitAttackNum = 0;//攻撃が当たった回数
+    protected bool isDestroyFlag = false;
+    protected bool isNotCheck = false;
+
+    public virtual void Start()
 	{
 		ChangeSkillInit();
-		nowFrame = -1;
+        GameManager.Instance.UpdateBulletList.Add(this);
+        GameManager.Instance.LateUpdateBulletList.Add(this);
+        nowFrame = -1;
 	}
 
-	// Update is called once per frame
-	void Update()
+	// Update
+	public virtual void UpdateGame()
 	{
-		nowFrame++;
+        //ラウンド開始時に削除
+        if (GameManager.Instance.isEndRound)
+        {
+            Destroy(gameObject);
+        }
+
+        nowFrame++;
 		if (bulletHit.isLoop)
 		{
 			if (nowFrame > bulletHit.maxFrame)
@@ -33,10 +47,30 @@ public class BulletCore : MonoBehaviour
 				nowFrame = 0;
 			}
 		}
-		CustomHitBoxes();
-	}
+		else
+		{
+            if (nowFrame > bulletHit.maxFrame)
+            {
+                isEndFrame = true;
+            }
+        }
+        if (!isNotCheck)
+        {
+            CustomHitBoxes();
+        }
 
-	private List<FighterSkill.CustomHitBox> customs = new List<FighterSkill.CustomHitBox>();
+    }
+    public virtual void LateUpdateGame()
+	{
+		if(isDestroyFlag)
+		{
+            GameManager.Instance.DeleteBulletList.Add(this);
+            Destroy(gameObject);
+        }
+	}
+    public void FixedUpdateGame() { }
+
+    private List<FighterSkill.CustomHitBox> customs = new List<FighterSkill.CustomHitBox>();
 	private List<int> startFrames = new List<int>();
 	private List<int> nowPlayCustomNumber = new List<int>();
 
@@ -139,7 +173,8 @@ public class BulletCore : MonoBehaviour
 			//通常攻撃
 			if ((c.gameObject.tag == CommonConstants.Tags.GetTags(HitBoxMode.HurtBox)) && (_cHit.isThrow == false))
 			{
-				FighterCore cr = GameManager.Instance.GetPlayFighterCore(c.gameObject.layer);
+                hitAttackNum++;
+                FighterCore cr = GameManager.Instance.GetPlayFighterCore(c.gameObject.layer);
 				//ダメージを与える
 				cr.SetDamage(_cHit, _bCol);
 				cr.SetEnemyNumber(playerNumber);//現在フォーカス中の敵のセット（未使用）
@@ -151,7 +186,8 @@ public class BulletCore : MonoBehaviour
 			//投げ技
 			else if ((c.gameObject.tag == CommonConstants.Tags.GetTags(HitBoxMode.GrabAndSqueeze)) && (_cHit.isThrow == true))
 			{
-				FighterCore cr = GameManager.Instance.GetPlayFighterCore(c.gameObject.layer);
+                hitAttackNum++;
+                FighterCore cr = GameManager.Instance.GetPlayFighterCore(c.gameObject.layer);
 				//ダメージを与える
 				cr.SetDamage(_cHit, _bCol);
 				cr.SetEnemyNumber(playerNumber);//現在フォーカス中の敵のセット（未使用）

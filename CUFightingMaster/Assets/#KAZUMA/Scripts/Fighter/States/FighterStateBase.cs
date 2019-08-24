@@ -89,7 +89,6 @@ public class FighterStateBase : StateBaseScriptMonoBehaviour
 		if(GameManager.Instance.GetPlayFighterCore(core.EnemyNumber).GetDamage.isThrow)
         {
             GameManager.Instance.GetPlayFighterCore(core.EnemyNumber).SetDamage(new FighterSkill.CustomHitBox(), null);
-
         }
 		return core.GetDamage.frameHitBoxes.Count > 0;
 	}

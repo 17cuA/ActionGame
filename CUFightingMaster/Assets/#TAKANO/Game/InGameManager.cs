@@ -91,6 +91,7 @@ public class InGameManager : MonoBehaviour
             if (canvasController.Call_PlayStartRound(gameRoundCount) == false)
             {
                 GameManager.Instance.isStartGame = true;
+                GameManager.Instance.isEndRound = false;
                 //タイマーの開始
                 canvasController.Call_StartCountDown();
                 currentUpdate = BatlleRound;
@@ -191,6 +192,7 @@ public class InGameManager : MonoBehaviour
 	/// </summary>
 	private void DoGameFinish()
     {
+        GameManager.Instance.isEndRound = true;
         //ゲームが終了するか判定
         if (getRoundCount_p1 >= winRound || getRoundCount_p2 >= winRound)
         {
