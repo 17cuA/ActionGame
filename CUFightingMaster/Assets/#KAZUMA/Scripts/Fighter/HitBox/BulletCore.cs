@@ -17,10 +17,11 @@ public abstract class BulletCore : MonoBehaviour,IEventable
 	public PlayerNumber playerNumber = PlayerNumber.None;
 
 	protected int nowFrame = -1;//現在のフレーム
+    protected int allFrame = -1;//全体フレーム
     protected bool isEndFrame = false;//フレームの最大数を超えた時
     protected int hitAttackNum = 0;//攻撃が当たった回数
-    protected bool isDestroyFlag = false;
-    protected bool isNotCheck = false;
+    protected bool isDestroyFlag = false;//trueで削除
+    protected bool isNotCheck = false;//当たり判定を無くす
 
     public virtual void Start()
 	{
@@ -33,14 +34,9 @@ public abstract class BulletCore : MonoBehaviour,IEventable
 	// Update
 	public virtual void UpdateGame()
 	{
-        //ラウンド開始時に削除
-        if (GameManager.Instance.isEndRound)
-        {
-            Destroy(gameObject);
-        }
-
         nowFrame++;
-		if (bulletHit.isLoop)
+        allFrame++;
+        if (bulletHit.isLoop)
 		{
 			if (nowFrame > bulletHit.maxFrame)
 			{
@@ -62,12 +58,13 @@ public abstract class BulletCore : MonoBehaviour,IEventable
     }
     public virtual void LateUpdateGame()
 	{
-		if(isDestroyFlag)
-		{
+        //ラウンド開始時に削除
+        if (isDestroyFlag || GameManager.Instance.isEndRound)
+        {
             GameManager.Instance.DeleteBulletList.Add(this);
             Destroy(gameObject);
         }
-	}
+    }
     public void FixedUpdateGame() { }
 
     private List<FighterSkill.CustomHitBox> customs = new List<FighterSkill.CustomHitBox>();

@@ -206,7 +206,7 @@ public class BulletEditor : EditorWindow
 				if ((foldOutFlags[i].foldOutFlag) && (foldOutFlags[i].effectFlag = CustomUI.Foldout("エフェクト", foldOutFlags[i].effectFlag)))
 				{
 					EditorGUILayout.BeginVertical("Box");
-					if (box.mode == HitBoxMode.HitBox)
+					if (box.mode == HitBoxMode.HitBox|| box.mode == HitBoxMode.Bullet)
 					{
 						if (GUILayout.Button("ヒットエフェクト作成", GUILayout.Width(150), GUILayout.Height(20)))
 						{
