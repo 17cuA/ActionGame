@@ -111,44 +111,49 @@ public class InGameManager : MonoBehaviour
         //(どちらかのHPが0になったら
         if (GameManager.Instance.Player_one.HP <= 0 || GameManager.Instance.Player_two.HP <= 0)
         {
-            //勝敗判定
-            if (GameManager.Instance.Player_one.HP <= 0 && GameManager.Instance.Player_two.HP <= 0)
-            {
-                //DoubleKO
-            }
-            else if (GameManager.Instance.Player_one.HP > GameManager.Instance.Player_two.HP)
+			//勝敗判定
+			if (GameManager.Instance.Player_one.HP > GameManager.Instance.Player_two.HP)
             {
                 getRoundCount_p1++;
 				gameRoundCount++;
             }
-            else
+            else if (GameManager.Instance.Player_one.HP < GameManager.Instance.Player_two.HP)
             {
                 getRoundCount_p2++;
 				gameRoundCount++;
             }
-            currentUpdate = FinishRound_KO;
+			else
+			{
+				//DoubleKO
+				getRoundCount_p1++;
+				getRoundCount_p2++;
+				gameRoundCount++;
+			}
+			currentUpdate = FinishRound_KO;
         }
 
         //TimeOverになったら
         else if (canvasController.Call_DoEndCountDown() == false)
         {
             //勝敗判定
-            if (GameManager.Instance.Player_one.HP == GameManager.Instance.Player_two.HP)
-            {
-                //DoubleKO
-            }
-            //勝敗判定
-            else if (GameManager.Instance.Player_one.HP > GameManager.Instance.Player_two.HP)
+			if (GameManager.Instance.Player_one.HP > GameManager.Instance.Player_two.HP)
             {
                 getRoundCount_p1++;
 				gameRoundCount++;
             }
-            else
-            {
+			else if (GameManager.Instance.Player_one.HP < GameManager.Instance.Player_two.HP)
+			{
                 getRoundCount_p2++;
 				gameRoundCount++;
             }
-            currentUpdate = FinishRound_TimeOver;
+			else
+			{
+				//DoubleKO
+				getRoundCount_p1++;
+				getRoundCount_p2++;
+				gameRoundCount++;
+			}
+				currentUpdate = FinishRound_TimeOver;
         }
     }
 	#endregion
@@ -220,7 +225,6 @@ public class InGameManager : MonoBehaviour
             canvasController.Call_UpdateWinCounter(getRoundCount_p1, getRoundCount_p2);
 
 			// キャラクターリセットができないため、StartRoundに設定として書いた
-
 			currentUpdate = StartRound;
 		}
 	}
@@ -244,7 +248,7 @@ public class InGameManager : MonoBehaviour
             if (canvasController.Call_DisplayVictory_winP1() == false)
                 currentUpdate = GameFinish;
         }
-        else
+        else if (getRoundCount_p1 < getRoundCount_p2)
         {
 			//P2が勝ったことを保存する
 			ShareSceneVariable.P2_info.isWin = true;
@@ -252,6 +256,11 @@ public class InGameManager : MonoBehaviour
 			if (canvasController.Call_DisplayVictory_winP2() == false)
                 currentUpdate = GameFinish;
         }
+		else
+		{
+			//試合が引き分けで終わったことを保存する(そのままフェーズ移行処理)
+			currentUpdate = GameFinish;
+		}
     }
 	#endregion
 

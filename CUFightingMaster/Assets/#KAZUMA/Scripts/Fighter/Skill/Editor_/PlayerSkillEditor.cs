@@ -303,8 +303,10 @@ public class PlayerSkillEditor : EditorWindow
                         {
                             EditorGUILayout.BeginHorizontal();
                             box.hitRigor = EditorGUILayout.IntField("ヒット硬直", box.hitRigor);
-                        }
-                        box.guardHitRigor = EditorGUILayout.IntField("ガード硬直", box.guardHitRigor);
+							EditorGUILayout.EndHorizontal();
+						}
+						EditorGUILayout.BeginHorizontal();
+						box.guardHitRigor = EditorGUILayout.IntField("ガード硬直", box.guardHitRigor);
                         EditorGUILayout.EndHorizontal();
                     }
                 }
@@ -607,9 +609,38 @@ public class PlayerSkillEditor : EditorWindow
             EditorGUILayout.EndVertical();
             if (removeFrag) playerSkill.frameEffects.RemoveAt(i);
         }
+		if (GUILayout.Button("遠距離作成", GUILayout.Width(100)))
+		{
+			playerSkill.frameBullets.Add(new FighterSkill.FrameBullets());
+		}
+		for (int i = 0; i < playerSkill.frameBullets.Count; i++)
+		{
+			EditorGUILayout.BeginVertical("Box");
+			EditorGUILayout.BeginHorizontal();
+			bool removeFrag = false;
+			playerSkill.frameBullets[i].frame = EditorGUILayout.IntField("フレーム", playerSkill.frameBullets[i].frame);
+			//削除ボタン
+			if (GUILayout.Button("×", GUILayout.Width(20)))
+			{
+				removeFrag = true;
+			}
+			//削除
+			EditorGUILayout.EndHorizontal();
+			EditorGUILayout.BeginVertical("Box");
+			EditorGUILayout.BeginHorizontal();
+			playerSkill.frameBullets[i].childFlag = EditorGUILayout.Toggle("親子関係", playerSkill.frameBullets[i].childFlag);
+			playerSkill.frameBullets[i].worldPositionFlag = EditorGUILayout.Toggle("ワールド座標", playerSkill.frameBullets[i].worldPositionFlag);
+			EditorGUILayout.EndHorizontal();
+			playerSkill.frameBullets[i].bullet = EditorGUILayout.ObjectField("エフェクト", playerSkill.frameBullets[i].bullet, typeof(BulletCore), false) as BulletCore;
+			//Vector3入力
+			playerSkill.frameBullets[i].position = EditorGUILayout.Vector3Field("ポジション", playerSkill.frameBullets[i].position);
+			EditorGUILayout.EndVertical();
+			EditorGUILayout.EndVertical();
+			if (removeFrag) playerSkill.frameBullets.RemoveAt(i);
+		}
 
-    }
-    #endregion
+	}
+	#endregion
 
 	#region バー_BarDraw()
 	public int value = 0;//現在の位置

@@ -4,4 +4,5 @@
     HurtBox,
     GrabAndSqueeze,
 	Pushing,
+	Bullet,
 }

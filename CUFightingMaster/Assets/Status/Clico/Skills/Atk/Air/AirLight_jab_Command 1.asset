@@ -10,46 +10,43 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4fbd35985d310504d81036cc55356454, type: 3}
-  m_Name: Crouching
+  m_Name: AirLight_jab_Command 1
   m_EditorClassIdentifier: 
-  animationClip: {fileID: 7400000, guid: 3e3e9b61cb8cc6f4098e0b8b5c511778, type: 2}
+  animationClip: {fileID: 7400000, guid: 727548f6445ab81429b8a430b8c96ba0, type: 2}
   animationSpeed: 1
   status: 1
   frameEffects: []
+  frameBullets:
+  - frame: 16
+    bullet: {fileID: 5932337873573162428, guid: 63070c97a70c943489caba5ec236d087,
+      type: 3}
+    childFlag: 0
+    worldPositionFlag: 0
+    position: {x: 1, y: 2.8, z: 0}
   cancelFrag: 1
   barrageCancelFrag: 0
   cancelLayer: 0
   inBlend: 0
   outBlend: 0
-  plusHeadHitBox:
-  - hitBox:
-      size: {x: -0.42, y: 0, z: 0}
-      localPosition: {x: 0.39, y: -0.97, z: 0}
-    startFrame: 0
-    endFrame: 59
+  plusHeadHitBox: []
   plusBodyHitBox: []
-  plusFootHitBox:
-  - hitBox:
-      size: {x: 0, y: 0, z: 0}
-      localPosition: {x: 0, y: 0, z: 0}
-    startFrame: 0
-    endFrame: 59
-  plusGrabHitBox:
-  - hitBox:
-      size: {x: 1.39, y: -1.63, z: 0}
-      localPosition: {x: -0.2, y: -0.59, z: 0}
-    startFrame: 0
-    endFrame: 59
+  plusFootHitBox: []
+  plusGrabHitBox: []
   plusPushingHitBox: []
   customHitBox: []
   isContinue: 0
-  movements: []
-  gravityMoves:
-  - movement: {x: 0, y: -2, z: 0}
-    limitMove: {x: 0, y: -20, z: 0}
+  movements:
+  - movement: {x: 0, y: 0, z: 0}
     startFrame: 0
+  gravityMoves:
+  - movement: {x: 0, y: 0, z: 0}
+    limitMove: {x: 0, y: 0, z: 0}
+    startFrame: 0
+  - movement: {x: 0, y: -0.2, z: 0}
+    limitMove: {x: 0, y: -20, z: 0}
+    startFrame: 23
   headFlag: 1
-  bodyFlag: 0
+  bodyFlag: 1
   footFlag: 1
   grabFlag: 1
   pushingFlag: 1

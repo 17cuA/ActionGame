@@ -15,9 +15,7 @@ MonoBehaviour:
   animationClip: {fileID: 7400000, guid: b3d59fe9632c288489bebecb27339e2d, type: 2}
   animationSpeed: 0.66
   status: 1
-  hitMode: 0
-  throwMotion: {fileID: 0}
-  enemyThrowMotion: {fileID: 0}
+  frameEffects: []
   cancelFrag: 1
   barrageCancelFrag: 0
   cancelLayer: 0
@@ -87,22 +85,7 @@ MonoBehaviour:
       localPosition: {x: -0.47, y: 0.62, z: 0}
     startFrame: 31
     endFrame: 43
-  plusPushingHitBox:
-  - hitBox:
-      size: {x: 0, y: 0, z: 0}
-      localPosition: {x: 0, y: 0, z: 0}
-    startFrame: 0
-    endFrame: 13
-  - hitBox:
-      size: {x: 0.57, y: -1.9, z: 0}
-      localPosition: {x: -0.66, y: 1.03, z: 0}
-    startFrame: 14
-    endFrame: 30
-  - hitBox:
-      size: {x: 0.12, y: -0.76, z: 0}
-      localPosition: {x: -0.47, y: 0.62, z: 0}
-    startFrame: 31
-    endFrame: 43
+  plusPushingHitBox: []
   customHitBox: []
   isContinue: 0
   movements:
@@ -115,5 +98,5 @@ MonoBehaviour:
   headFlag: 1
   bodyFlag: 1
   footFlag: 1
-  grabFlag: 1
+  grabFlag: 0
   pushingFlag: 1

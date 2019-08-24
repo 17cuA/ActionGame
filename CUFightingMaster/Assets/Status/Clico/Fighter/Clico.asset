@@ -23,8 +23,8 @@ MonoBehaviour:
     size: {x: 2.93, y: 1.48, z: 1}
     localPosition: {x: -0.11, y: 0.79, z: 0}
   grabHitBox:
-    size: {x: 1.2, y: 2.72, z: 1}
-    localPosition: {x: 0.55, y: 1.54, z: 0}
+    size: {x: 0.78, y: 2.72, z: 1}
+    localPosition: {x: 0, y: 1.43, z: 0}
   pushingHitBox:
     size: {x: 1, y: 2.72, z: 1}
     localPosition: {x: 0, y: 1.54, z: 0}
@@ -122,7 +122,12 @@ MonoBehaviour:
     trigger: C
     validShotFrame: 6
     skill: {fileID: 11400000, guid: 0c67b6259621a924f88f5fbdcf3dd9d9, type: 2}
-  airAttackSkills: []
+  airAttackSkills:
+  - name: ENKYO_AIR
+    command: 236
+    trigger: A
+    validShotFrame: 6
+    skill: {fileID: 11400000, guid: 9a19d7c69d7906941a0c300e1cd1a388, type: 2}
   groundMoveSkills:
   - name: Front_Dash
     command: 66
