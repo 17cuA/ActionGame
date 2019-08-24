@@ -86,7 +86,7 @@ public class FighterStateBase : StateBaseScriptMonoBehaviour
 			return false;
 		}
         //相手側が投げ技を喰らっていたら投げを無効にする
-		if(GameManager.Instance.GetPlayFighterCore(core.EnemyNumber).GetDamage.isThrow)
+		if((core.GetDamage.frameHitBoxes.Count > 0)&&(GameManager.Instance.GetPlayFighterCore(core.EnemyNumber).GetDamage.isThrow))
         {
             GameManager.Instance.GetPlayFighterCore(core.EnemyNumber).SetDamage(new FighterSkill.CustomHitBox(), null);
         }

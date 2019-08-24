@@ -411,7 +411,6 @@ public class FighterStateDamage : StateBaseScriptMonoBehaviour
 		//特定のフレームでダメージを与える
 		foreach(var dm in throwDamages)
 		{
-			Debug.Log(dm.frame+" "+stateBase.core.AnimationPlayerCompornent.NowFrame);
 			if(dm.frame==stateBase.core.AnimationPlayerCompornent.NowFrame)
 			{
                 stateBase.core.HP-=dm.damage;
