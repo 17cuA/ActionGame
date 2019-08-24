@@ -70,7 +70,7 @@ public class TestInput : MonoBehaviour {
             param.commandName = co.name;
             param.command = co.command;
             param.shotTrigger = "";
-            param.validInputFrame = validInputFrame;
+            param.validInputFrame = GameManager.Instance.Settings.ValidInputFrame;
             param.validShotFrame = validShotFrame;
             param.intervalFrame = 0;
             groundMoveCommand.attackParameters.Add(param);
@@ -82,7 +82,7 @@ public class TestInput : MonoBehaviour {
             param.commandName = co.name;
             param.command = co.command;
             param.shotTrigger = co.trigger;
-            param.validInputFrame = validInputFrame;
+            param.validInputFrame = GameManager.Instance.Settings.ValidInputFrame;
             param.validShotFrame = co.validShotFrame;
             param.intervalFrame = 0;
             groundMoveCommand.attackParameters.Add(param);

@@ -14,18 +14,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxFrame: 10
   isLoop: 1
+  isOffset: 1
+  offsetEffects:
+  - effect: {fileID: 1259253502216652068, guid: 5ebc70f5175b57c4a907438c28d95c24,
+      type: 3}
+    guardEffect: {fileID: 0}
+    position: {x: 0, y: 0, z: 0}
   customHitBox:
   - mode: 4
     frameHitBoxes:
     - hitBox:
-        size: {x: 1.81, y: 1, z: 0}
+        size: {x: 0.5, y: 0.5, z: 0.5}
         localPosition: {x: 0, y: 0, z: 0}
       startFrame: 0
-      endFrame: 5
-    - hitBox:
-        size: {x: 2.22, y: 2.16, z: 1.65}
-        localPosition: {x: 0, y: 0, z: 0}
-      startFrame: 5
       endFrame: 10
     hitStop: 5
     hitPoint: 0
@@ -35,7 +36,12 @@ MonoBehaviour:
     knockBack: 0.5
     airKnockBack: 0
     guardKnockBack: 0
-    hitEffects: []
+    hitEffects:
+    - effect: {fileID: 2688692212982812447, guid: 06d324c6486219941a1b9f3833388210,
+        type: 3}
+      guardEffect: {fileID: 2675191184746711767, guid: f8d4d85e3c04245459737cdcece2a3dc,
+        type: 3}
+      position: {x: 0, y: 0, z: 0}
     isDown: 0
     isThrow: 0
     throwSkill: {fileID: 0}
@@ -46,6 +52,6 @@ MonoBehaviour:
     gravityMoves: []
     isFaceDown: 0
     isPassiveNotPossible: 0
-    hitRigor: 10
+    hitRigor: 15
     guardHitRigor: 5
     plusGauge: 0

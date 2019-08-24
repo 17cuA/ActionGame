@@ -79,18 +79,50 @@ public class BulletEditor : EditorWindow
 
 		GUI.backgroundColor = beforeBackColor;
 	}
-	#endregion
+    #endregion
 
-	#region 設定_Tab()
-	private void SettingTabDraw()
-	{
-		skill.maxFrame = EditorGUILayout.IntField("フレーム数", skill.maxFrame);
-		skill.isLoop = EditorGUILayout.Toggle("ループ", skill.isLoop);
-	}
-	#endregion
+    #region 設定_Tab()
+    private bool effectFold = false;
+    private void SettingTabDraw()
+    {
+        skill.maxFrame = EditorGUILayout.IntField("フレーム数", skill.maxFrame);
+        skill.isLoop = EditorGUILayout.Toggle("ループ", skill.isLoop);
+        skill.isOffset = EditorGUILayout.Toggle("相殺判定", skill.isOffset);
+        if (skill.isOffset && (effectFold = CustomUI.Foldout("エフェクト", effectFold)))
+        {
+            EditorGUILayout.BeginVertical("Box");
+            if (GUILayout.Button("相殺エフェクト作成", GUILayout.Width(150), GUILayout.Height(20)))
+            {
+                skill.offsetEffects.Add(new FighterSkill.HitEffects());
+            }
+            for (int ef = 0; ef < skill.offsetEffects.Count; ef++)
+            {
+                EditorGUILayout.BeginVertical("Box");
+                //削除
+                bool f = false;
+                EditorGUILayout.BeginHorizontal();
+                skill.offsetEffects[ef].effect = EditorGUILayout.ObjectField("エフェクト", skill.offsetEffects[ef].effect, typeof(GameObject), true) as GameObject;
+                if (GUILayout.Button("×", GUILayout.Width(20)))
+                {
+                    f = true;
+                }
+                EditorGUILayout.EndHorizontal();
+                skill.offsetEffects[ef].position = EditorGUILayout.Vector3Field("ポジション", skill.offsetEffects[ef].position);
+                EditorGUILayout.EndHorizontal();
+                if (f)
+                {
+                    skill.offsetEffects.Remove(skill.offsetEffects[ef]);
+                }
+            }
 
-	#region 当たり判定_Tab
-	private class FoldOutFlags
+            EditorGUILayout.EndHorizontal();
+        }
+
+    }
+    #endregion
+
+    #region 当たり判定_Tab
+    private class FoldOutFlags
 	{
 		public bool foldOutFlag = false;
 		public bool statusFlag = false;
