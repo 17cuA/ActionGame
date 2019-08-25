@@ -56,10 +56,10 @@ public class FighterStateBase : StateBaseScriptMonoBehaviour
     }
     /*　汎用条件式　*/
     //ゲーム開始する条件
-    public bool IsStartGame()
+    public bool IsStartGame(bool _game)
     {
         //現在条件なし
-        return GameManager.Instance.isStartGame;
+        return GameManager.Instance.isStartGame == _game;
     }
     public bool IsNotHitStop()
     {
