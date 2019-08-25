@@ -84,7 +84,7 @@ public class CharacterSelectManager : MonoBehaviour
 		{
 			 // 飯塚追加-------------------------------------------
                 Sound.LoadSe("Menu_MoveCursor", "Se_menu_moveCursor");
-                Sound.PlaySe("Menu_MoveCursor", 1, 0.8f);
+                Sound.PlaySe("Menu_MoveCursor", 1, 0.3f);
              // ---------------------------------------------------
 			if (x > 0)
                 x--;
@@ -95,7 +95,7 @@ public class CharacterSelectManager : MonoBehaviour
 		{
 			   // 飯塚追加-------------------------------------------
                 Sound.LoadSe("Menu_MoveCursor", "Se_menu_moveCursor");
-                Sound.PlaySe("Menu_MoveCursor", 1, 0.8f);
+                Sound.PlaySe("Menu_MoveCursor", 1, 0.3f);
              // ---------------------------------------------------
 			if (x < 3)
                 x++;
