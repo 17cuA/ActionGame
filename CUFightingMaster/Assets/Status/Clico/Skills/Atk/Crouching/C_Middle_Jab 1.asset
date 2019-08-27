@@ -16,6 +16,7 @@ MonoBehaviour:
   animationSpeed: 0.7
   status: 1
   frameEffects: []
+  frameBullets: []
   cancelFrag: 0
   barrageCancelFrag: 0
   cancelLayer: 0
@@ -40,12 +41,7 @@ MonoBehaviour:
       localPosition: {x: -0.2, y: -0.59, z: 0}
     startFrame: 0
     endFrame: 59
-  plusPushingHitBox:
-  - hitBox:
-      size: {x: 1.39, y: -1.63, z: 0}
-      localPosition: {x: -0.2, y: -0.59, z: 0}
-    startFrame: 0
-    endFrame: 59
+  plusPushingHitBox: []
   customHitBox:
   - mode: 0
     frameHitBoxes:

@@ -93,9 +93,11 @@ public class FighterStateBase : StateBaseScriptMonoBehaviour
         }
         if(f)
         {
-            //コンボカウント
-            GameManager.Instance.GetPlayFighterCore(core.EnemyNumber).PlusComboCount(1);
-            Debug.Log(GameManager.Instance.GetPlayFighterCore(core.EnemyNumber).ComboCount);
+			if (!core.GetDamage.isThrow)
+			{
+				//コンボカウント
+				GameManager.Instance.GetPlayFighterCore(core.EnemyNumber).PlusComboCount(1);
+			}
         }
 		return f;
 	}
