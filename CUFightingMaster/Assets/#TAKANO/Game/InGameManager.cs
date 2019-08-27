@@ -295,16 +295,5 @@ public class InGameManager : MonoBehaviour
     void Update()
     {
 		currentUpdate();
-
-        //DebugKey
-        if(Input.GetKeyDown("c"))
-        {
-            gameRoundCount = 0;
-            getRoundCount_p1 = 0;
-            getRoundCount_p2 = 0;
-			canvasController.ResetWinCounter();
-
-			currentUpdate = ResetParameter;
-        }
     }
 }
