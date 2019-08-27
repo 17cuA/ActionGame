@@ -21,18 +21,10 @@ using UnityEngine.SceneManagement;
 
 public class ResultManager : MonoBehaviour
 {
-	public Canvas canvas_1;	// ディスプレイ1
-	[SerializeField] private GameObject Player1;	// 選ばれていたプレイヤー1
-
-	public Canvas canvas_2;	// ディスプレイ2
-	[SerializeField] private GameObject Player2;	// 選ばれていたプレイヤー2
-
-    void Start()
-    {
-    }
-
-    // Update is called once per frame
-    void Update()
+	public Canvas canvas_1;
+	public Canvas canvas_2;
+	#region Update
+	void Update()
     {
 		//ポーズ処理
 		if (Mathf.Approximately(Time.timeScale, 0f)) return;
@@ -42,5 +34,8 @@ public class ResultManager : MonoBehaviour
 		}
 		Debug.Log(ShareSceneVariable.P1_info.isWin);
 		Debug.Log(ShareSceneVariable.P2_info.isWin);
+
 	}
+	#endregion
+
 }

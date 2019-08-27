@@ -58,12 +58,6 @@ public class InGameManager : MonoBehaviour
 		Sound.AllSoundLod();
 		Sound.PlayBgm("Bgm01", 0.5f, 1);
 
-		//キャラクター生成(07/15一時的、生成処理が出来上がり次第、生成に変更してください)
-		//if (characterStatus_P1 == null)
-		//    characterStatus_P1 = GameObject.Find("Temp_Player01").GetComponent<CharacterStatus>();
-		//if (characterStatus_P2 == null)
-		//    characterStatus_P2 = GameObject.Find("Temp_Player02").GetComponent<CharacterStatus>();
-
 		//BGMの再生(未実装)
 
 		//カットシーンの再生（未実装）
