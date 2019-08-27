@@ -15,9 +15,14 @@ MonoBehaviour:
   animationClip: {fileID: 7400000, guid: 6b6e2bbd41f51f6498f5d76c02db63e7, type: 2}
   animationSpeed: 0.8
   status: 1
-  hitMode: 0
-  throwMotion: {fileID: 0}
-  enemyThrowMotion: {fileID: 0}
+  frameEffects:
+  - frame: 0
+    effect: {fileID: 5934951168693242341, guid: f936d5af6e8a4d04fb9c2e2a87f3fe75,
+      type: 3}
+    childFlag: 0
+    worldPositionFlag: 0
+    position: {x: 0, y: 0, z: 0}
+  frameBullets: []
   cancelFrag: 1
   barrageCancelFrag: 0
   cancelLayer: 0
