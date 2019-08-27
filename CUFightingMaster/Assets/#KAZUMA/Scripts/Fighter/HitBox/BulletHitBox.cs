@@ -8,7 +8,9 @@ public class BulletHitBox : ScriptableObject
 {
 	public int maxFrame = 10;
 	public bool isLoop = false;
-	public List<FighterSkill.CustomHitBox> customHitBox = new List<FighterSkill.CustomHitBox>();//カスタム
+    public bool isOffset = true;//相殺判定
+    public List<FighterSkill.HitEffects> offsetEffects = new List<FighterSkill.HitEffects>();
+    public List<FighterSkill.CustomHitBox> customHitBox = new List<FighterSkill.CustomHitBox>();//カスタム
 
 	#region EDITOR_
 #if UNITY_EDITOR

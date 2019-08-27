@@ -9,6 +9,8 @@ public class GameSettings : ScriptableObject
     private float pushAmount = 0.5f;
     [SerializeField, Header("ノックバックフレーム")]
     private int knock_Back_Count = 6;
+    [SerializeField,Header("コマンドの入力猶予フレーム")]
+    private int validInputFrame = 15;
 
     public float PushAmount
     {
@@ -17,5 +19,9 @@ public class GameSettings : ScriptableObject
     public int Knock_Back_Count
     {
         get { return knock_Back_Count; }
+    }
+    public int ValidInputFrame
+    {
+        get { return validInputFrame; }
     }
 }

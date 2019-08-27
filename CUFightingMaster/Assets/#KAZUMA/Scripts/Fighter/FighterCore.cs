@@ -23,6 +23,7 @@ public class FighterCore : MonoBehaviour
     private int changeWeightFrame = 0;
     public bool changeSkill { get; private set; }//技が入れ替わったかどうか
     public int HP = 0;
+    private int comboCount = 0;
 
     private bool isHitAttack = false;//攻撃が当たったかどうか
     //現在のプレイヤーの移動の状況、状態
@@ -76,6 +77,10 @@ public class FighterCore : MonoBehaviour
     {
         get { return hitJudgement; }
     }
+    public int ComboCount
+    {
+        get { return comboCount; }
+    }
     #endregion
     private void Start()
     {
@@ -87,6 +92,7 @@ public class FighterCore : MonoBehaviour
             animationPlayer = playerModel.GetComponent<FightingAnimationPlayer>();
             mover = new FighterMover(this);
             hitJudgement = new HitBoxJudgement(this);
+            comboCount = 0;
         }
     }
     public void UpdateGame()
@@ -170,6 +176,19 @@ public class FighterCore : MonoBehaviour
     public void SetHitAttackFlag(bool _hitFlag)
     {
         isHitAttack = _hitFlag;
+    }
+    public void PlusComboCount(int _count)
+    {
+        //ファイターの数が2体以上ならコンボしない
+        if(GameManager.Instance.fighterAmount>2)
+        {
+            return;
+        }
+        comboCount += _count;
+    }
+    public void SetComboCount(int _count)
+    {
+        comboCount = _count;
     }
     #endregion
 

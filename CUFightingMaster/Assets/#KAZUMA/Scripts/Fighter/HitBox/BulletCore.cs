@@ -17,10 +17,11 @@ public abstract class BulletCore : MonoBehaviour,IEventable
 	public PlayerNumber playerNumber = PlayerNumber.None;
 
 	protected int nowFrame = -1;//現在のフレーム
+    protected int allFrame = -1;//全体フレーム
     protected bool isEndFrame = false;//フレームの最大数を超えた時
     protected int hitAttackNum = 0;//攻撃が当たった回数
-    protected bool isDestroyFlag = false;
-    protected bool isNotCheck = false;
+    protected bool isDestroyFlag = false;//trueで削除
+    protected bool isNotCheck = false;//当たり判定を無くす
 
     public virtual void Start()
 	{
@@ -33,14 +34,9 @@ public abstract class BulletCore : MonoBehaviour,IEventable
 	// Update
 	public virtual void UpdateGame()
 	{
-        //ラウンド開始時に削除
-        if (GameManager.Instance.isEndRound)
-        {
-            Destroy(gameObject);
-        }
-
         nowFrame++;
-		if (bulletHit.isLoop)
+        allFrame++;
+        if (bulletHit.isLoop)
 		{
 			if (nowFrame > bulletHit.maxFrame)
 			{
@@ -62,12 +58,13 @@ public abstract class BulletCore : MonoBehaviour,IEventable
     }
     public virtual void LateUpdateGame()
 	{
-		if(isDestroyFlag)
-		{
+        //ラウンド開始時に削除
+        if (isDestroyFlag || GameManager.Instance.isEndRound)
+        {
             GameManager.Instance.DeleteBulletList.Add(this);
             Destroy(gameObject);
         }
-	}
+    }
     public void FixedUpdateGame() { }
 
     private List<FighterSkill.CustomHitBox> customs = new List<FighterSkill.CustomHitBox>();
@@ -168,34 +165,47 @@ public abstract class BulletCore : MonoBehaviour,IEventable
 	{
 		Transform t = _bCol.gameObject.transform;
 		Collider[] col = Physics.OverlapBox(new Vector3(t.position.x + _bCol.center.x, t.position.y + _bCol.center.y, t.position.z + _bCol.center.z), _bCol.size / 2, Quaternion.identity, -1 - (1 << LayerMask.NameToLayer(CommonConstants.Layers.GetPlayerNumberLayer(playerNumber))));
-		foreach (Collider c in col)
-		{
-			//通常攻撃
-			if ((c.gameObject.tag == CommonConstants.Tags.GetTags(HitBoxMode.HurtBox)) && (_cHit.isThrow == false))
-			{
+        foreach (Collider c in col)
+        {
+			//相殺
+           if ((c.gameObject.tag == CommonConstants.Tags.GetTags(HitBoxMode.Bullet)))
+            {
+                if (bulletHit.isOffset)
+                {
+                    foreach (var hit in bulletHit.offsetEffects)
+                    {
+                        Instantiate(hit.effect, hit.position + transform.position, Quaternion.identity);
+                    }
+                    isDestroyFlag = true;
+                }
+                return;
+            }
+            //通常攻撃
+            else if ((c.gameObject.tag == CommonConstants.Tags.GetTags(HitBoxMode.HurtBox)) && (_cHit.isThrow == false))
+            {
                 hitAttackNum++;
                 FighterCore cr = GameManager.Instance.GetPlayFighterCore(c.gameObject.layer);
-				//ダメージを与える
-				cr.SetDamage(_cHit, _bCol);
-				cr.SetEnemyNumber(playerNumber);//現在フォーカス中の敵のセット（未使用）
-												//キャンセルなどで使用するので、遠距離では使わない
-												//core.SetHitAttackFlag(true);//攻撃が当たったことを渡す
-				attackHit = true;
-				return;
-			}
-			//投げ技
-			else if ((c.gameObject.tag == CommonConstants.Tags.GetTags(HitBoxMode.GrabAndSqueeze)) && (_cHit.isThrow == true))
-			{
+                //ダメージを与える
+                cr.SetDamage(_cHit, _bCol);
+                cr.SetEnemyNumber(playerNumber);//現在フォーカス中の敵のセット（未使用）
+                                                //キャンセルなどで使用するので、遠距離では使わない
+                                                //core.SetHitAttackFlag(true);//攻撃が当たったことを渡す
+                attackHit = true;
+                return;
+            }
+            //投げ技
+            else if ((c.gameObject.tag == CommonConstants.Tags.GetTags(HitBoxMode.GrabAndSqueeze)) && (_cHit.isThrow == true))
+            {
                 hitAttackNum++;
                 FighterCore cr = GameManager.Instance.GetPlayFighterCore(c.gameObject.layer);
-				//ダメージを与える
-				cr.SetDamage(_cHit, _bCol);
-				cr.SetEnemyNumber(playerNumber);//現在フォーカス中の敵のセット（未使用）
-				attackHit = true;
-				return;
-			}
-		}
-	}
+                //ダメージを与える
+                cr.SetDamage(_cHit, _bCol);
+                cr.SetEnemyNumber(playerNumber);//現在フォーカス中の敵のセット（未使用）
+                attackHit = true;
+                return;
+            }
+        }
+    }
 #if UNITY_EDITOR
 	private void OnDrawGizmos()
 	{

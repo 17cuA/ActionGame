@@ -14,7 +14,7 @@ public class GameManager : SingletonMono<GameManager>
         get { return settings; }
     }
 
-
+    public int fighterAmount = 2;
     public FighterCore Player_one;
     public FighterCore Player_two;
 	public TestInput input_one;

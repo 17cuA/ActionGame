@@ -15,6 +15,9 @@ public class HitBoxJudgement
 
     private bool isPushWall = false;//壁に当たったかどうか
 
+    //コンボ
+    private int validComboFrame = 0;
+
     //頭
     private List<FighterSkill.FrameHitBox> heads = new List<FighterSkill.FrameHitBox>();
 	private List<int> headStartFrames = new List<int>();
@@ -191,7 +194,6 @@ public class HitBoxJudgement
 		if (core.changeSkill == false) return;
 		if (core.NowPlaySkill != null)
 		{
-            Debug.Log("切り替わり");
             core.SetHitAttackFlag(false);//攻撃が当たったことのリセット
             //アクティブにしていたコライダーのリセット
             foreach (ComponentObjectPool<BoxCollider>.Objs g in nowPlayCollider)
@@ -501,12 +503,6 @@ public class HitBoxJudgement
 				float checkX = (pos.x + (siz.x * i)) - (oppoX+c.transform.position.x);
 
                 float xMove = (pos.x + (siz.x * i)) - (((((BoxCollider)c).size.x / 2.0f) * i * -1) + ((((BoxCollider)c).center.x) * -1) + c.transform.position.x);
-                //めり込んだ値を調べる
-                if (_flag)
-                {
-                    Debug.Log((pos.x + (siz.x * i)) - (((((BoxCollider)c).size.x / 2.0f) * i*-1) + ((((BoxCollider)c).center.x)*-1)+c.transform.position.x));
-                    Debug.Log(checkX + " " + core.PlayerNumber);
-                }
                 if(i==1&&checkX>0)
 				{
 					continue;
@@ -560,7 +556,6 @@ public class HitBoxJudgement
             x = ((c.transform.position.x+((BoxCollider)c).center.x))+((((BoxCollider)c).size.x/2)*i)+((_col.center.x*-1+(siz.x*i)));
 			//プラスかマイナスか
 			float checkX = x - c.gameObject.transform.transform.position.x;
-			Debug.Log(checkX+" "+core.PlayerNumber);
             if (i == 1 && checkX < 0)
             {
                 continue;
