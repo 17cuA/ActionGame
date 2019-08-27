@@ -50,7 +50,7 @@ public class UI_GameVictory : MonoBehaviour
         }
         // ---------------------------------------------------
         displayImage = win_P1_image;
-		displayWin = win_image;
+		//displayWin = win_image;
         GameVictoryStartCoroutine();
         return isPlay;
 	}
@@ -66,7 +66,7 @@ public class UI_GameVictory : MonoBehaviour
         }
         // ---------------------------------------------------
         displayImage = win_P2_image;
-		displayWin = win_image;
+		//displayWin = win_image;
 		GameVictoryStartCoroutine();
         return isPlay;
     }
@@ -100,10 +100,10 @@ public class UI_GameVictory : MonoBehaviour
 		isPlay = true;
 
 		displayImage.enabled = true;
-		displayWin.enabled = true;
+		//displayWin.enabled = true;
 		yield return new WaitForSeconds(interval01);
 		displayImage.enabled = false;
-		displayWin.enabled = false;
+		//displayWin.enabled = false;
 
 		isPlay = false;
 	}
