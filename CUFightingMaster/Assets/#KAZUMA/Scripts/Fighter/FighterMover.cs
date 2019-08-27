@@ -38,10 +38,13 @@ public class FighterMover
 		ChangeSkillInit();//技の入れ替え
 		MovementSkill();//移動
 		GravityMovementSkill();
-        PlayEffects();
-		PlayBullets();
         gravityFrame++;
     }
+	public void UpdateEffects()
+	{
+		PlayEffects();
+		PlayBullets();
+	}
 	#region 技入れ替えチェック
 	//入れ替わり処理
 	private void ChangeSkillInit()
@@ -50,6 +53,7 @@ public class FighterMover
 		if (core.changeSkill == false) return;
 		if (core.NowPlaySkill != null)
 		{
+
 			//重力の継続をするか否か
 			if(!core.NowPlaySkill.isContinue)
 			{
@@ -62,8 +66,14 @@ public class FighterMover
             }
             effects = new List<FighterSkill.FrameEffects>(core.NowPlaySkill.frameEffects);
 			bullets = new List<FighterSkill.FrameBullets>(core.NowPlaySkill.frameBullets);
-            //移動配列のソート、フレームが近い順に並べる
-            if(moves.Count > 1)
+
+			nowPlayMoveNumber = -1;
+			nowPlayGravityNumber = -1;
+			nowPlayEffectNumber = -1;
+			nowPlayBulletNumber = -1;
+
+			//移動配列のソート、フレームが近い順に並べる
+			if (moves.Count > 1)
 			{
 				moves.Sort((a, b) => a.startFrame - b.startFrame);
 			}
@@ -74,15 +84,35 @@ public class FighterMover
             if(effects.Count>1)
             {
                 effects.Sort((a, b) => a.frame - b.frame);
-            }
-			if(bullets.Count>1)
+			}
+			if (effects.Count > 0)
+			{
+				//現在再生中の移動の次の移動フレームを越えれば
+				if (effects[0].frame == 0)
+				{
+					nowPlayEffectNumber++;
+					GameObject obj;
+					if (effects[nowPlayEffectNumber].worldPositionFlag)
+					{
+						obj = Object.Instantiate(effects[nowPlayEffectNumber].effect, effects[nowPlayEffectNumber].position, Quaternion.identity);
+					}
+					else
+					{
+						obj = Object.Instantiate(effects[nowPlayEffectNumber].effect, core.transform.position + (new Vector3(effects[nowPlayEffectNumber].position.x * RightLeft, effects[nowPlayEffectNumber].position.y, effects[nowPlayEffectNumber].position.z)), Quaternion.identity);
+					}
+
+					//子にするか否か
+					if (effects[nowPlayEffectNumber].childFlag)
+					{
+						obj.transform.parent = core.transform;
+					}
+				}
+			}
+
+			if (bullets.Count>1)
 			{
 				bullets.Sort((a, b) => a.frame - b.frame);
 			}
-			nowPlayMoveNumber = -1;
-			nowPlayGravityNumber = -1;
-            nowPlayEffectNumber = -1;
-			nowPlayBulletNumber = -1;
         }
 		//なければなし
 		else
@@ -114,7 +144,7 @@ public class FighterMover
         {
             if(moves[0].startFrame<=core.AnimationPlayerCompornent.NowFrame && moves[nowPlayMoveNumber].startFrame > core.AnimationPlayerCompornent.NowFrame)
             {
-                nowPlayMoveNumber = 0;
+                nowPlayMoveNumber = -1;
             }
         }
         if (nowPlayMoveNumber < 0) return;//-1なら動かない
@@ -158,30 +188,42 @@ public class FighterMover
     private void PlayEffects()
     {
         if ((effects == null) || (effects.Count == 0)) return;
-        Debug.Log(effects[0].frame);
-        if (effects.Count > nowPlayEffectNumber + 1)
-        {
-            //現在再生中の移動の次の移動フレームを越えれば
-            if (effects[nowPlayEffectNumber + 1].frame == core.AnimationPlayerCompornent.NowFrame)
-            {
-                nowPlayEffectNumber++;
-                GameObject obj;
-                if (effects[nowPlayEffectNumber].worldPositionFlag)
-                {
-                    obj = Object.Instantiate(effects[nowPlayEffectNumber].effect, effects[nowPlayEffectNumber].position, Quaternion.identity);
-                }
-                else
-                {
-                    obj = Object.Instantiate(effects[nowPlayEffectNumber].effect, core.transform.position + (new Vector3( effects[nowPlayEffectNumber].position.x*RightLeft, effects[nowPlayEffectNumber].position.y, effects[nowPlayEffectNumber].position.z)), Quaternion.identity);
-                }
+		if (effects.Count > nowPlayEffectNumber + 1)
+		{
+			//現在再生中の移動の次の移動フレームを越えれば
+			if (effects[nowPlayEffectNumber + 1].frame <= core.AnimationPlayerCompornent.NowFrame)
+			{
+				nowPlayEffectNumber++;
+				if ((effects[nowPlayEffectNumber].effect == null))
+				{
+					return;
+				}
+				GameObject obj;
+				if (effects[nowPlayEffectNumber].worldPositionFlag)
+				{
+					obj = Object.Instantiate(effects[nowPlayEffectNumber].effect, effects[nowPlayEffectNumber].position, Quaternion.identity);
+				}
+				else
+				{
+					obj = Object.Instantiate(effects[nowPlayEffectNumber].effect, core.transform.position + (new Vector3(effects[nowPlayEffectNumber].position.x * RightLeft, effects[nowPlayEffectNumber].position.y, effects[nowPlayEffectNumber].position.z)), Quaternion.identity);
+				}
+				obj.layer = LayerMask.NameToLayer(CommonConstants.Layers.Effect);
 
-                //子にするか否か
-                if(effects[nowPlayEffectNumber].childFlag)
-                {
-                    obj.transform.parent = core.transform;
-                }
-            }
-        }
+				//子にするか否か
+				if (effects[nowPlayEffectNumber].childFlag)
+				{
+					obj.transform.parent = core.transform;
+				}
+			}
+		}
+		//ループ
+		else
+		{
+			if (effects[0].frame <= core.AnimationPlayerCompornent.NowFrame && effects[nowPlayEffectNumber].frame > core.AnimationPlayerCompornent.NowFrame)
+			{
+				nowPlayEffectNumber = -1;
+			}
+		}
 	}
 	private void PlayBullets()
 	{
@@ -190,9 +232,13 @@ public class FighterMover
 		if (bullets.Count > nowPlayBulletNumber + 1)
 		{
 			//現在再生中の移動の次の移動フレームを越えれば
-			if (bullets[nowPlayBulletNumber + 1].frame == core.AnimationPlayerCompornent.NowFrame)
+			if (bullets[nowPlayBulletNumber + 1].frame <= core.AnimationPlayerCompornent.NowFrame)
 			{
 				nowPlayBulletNumber++;
+				if ((bullets[nowPlayBulletNumber].bullet == null))
+				{
+					return;
+				}
 				GameObject obj;
 				if (bullets[nowPlayBulletNumber].worldPositionFlag)
 				{
@@ -206,7 +252,6 @@ public class FighterMover
 				BulletCore bulletCore = obj.GetComponent<BulletCore>();
 				bulletCore.RightLeft = RightLeft;
 				bulletCore.playerNumber = core.PlayerNumber;
-
 				//子にするか否か
 				if (bullets[nowPlayBulletNumber].childFlag)
 				{

@@ -113,6 +113,7 @@ public class FighterCore : MonoBehaviour
         mover.UpdateGame();
         //当たり判定のアップデート
         hitJudgement.UpdateGame();
+		mover.UpdateEffects();
         //終了
         UpdateEnd();
     }

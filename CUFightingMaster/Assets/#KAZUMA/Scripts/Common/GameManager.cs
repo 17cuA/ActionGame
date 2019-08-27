@@ -127,6 +127,12 @@ public class GameManager : SingletonMono<GameManager>
             DeleteBulletList = new List<IEventable>();//削除用
         }
 
+		if(isEndRound)
+		{
+            Player_one.SetComboCount(0);
+            Player_two.SetComboCount(0);
+        }
+
 	}
 	public FighterCore GetPlayFighterCore(PlayerNumber _mode)
 	{

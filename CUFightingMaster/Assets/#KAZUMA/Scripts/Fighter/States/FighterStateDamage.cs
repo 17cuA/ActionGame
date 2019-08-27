@@ -414,6 +414,7 @@ public class FighterStateDamage : StateBaseScriptMonoBehaviour
 			if(dm.frame==stateBase.core.AnimationPlayerCompornent.NowFrame)
 			{
                 stateBase.core.HP-=dm.damage;
+                GameManager.Instance.GetPlayFighterCore(stateBase.core.EnemyNumber).PlusComboCount(1);
                 if (stateBase.core.HP < 0)
                 {
                     stateBase.core.HP = 0;

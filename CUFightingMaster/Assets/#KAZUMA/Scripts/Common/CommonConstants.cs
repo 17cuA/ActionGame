@@ -43,7 +43,9 @@ public static class CommonConstants
         public static readonly string Wall = "Wall";
         public static readonly string Player_One = "Player1";
         public static readonly string Player_Two = "Player2";
-        public static string GetPlayerNumberLayer(PlayerNumber _n)
+		public static readonly string Effect = "Effect";
+
+		public static string GetPlayerNumberLayer(PlayerNumber _n)
         {
             switch(_n)
             {
