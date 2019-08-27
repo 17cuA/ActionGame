@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &5472756441862581234
+--- !u!1 &6642972061963779002
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,28 +8,28 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5472756441862581241}
-  - component: {fileID: 5472756441862581242}
-  - component: {fileID: 5472756441862581243}
-  - component: {fileID: 5472756441862581236}
-  - component: {fileID: 5472756441862581238}
-  - component: {fileID: 5472756441862581239}
-  - component: {fileID: 5472756441862581232}
-  - component: {fileID: 5472756441862581233}
+  - component: {fileID: 6642972061963778978}
+  - component: {fileID: 6642972061963778979}
+  - component: {fileID: 6642972061963778980}
+  - component: {fileID: 6642972061963778981}
+  - component: {fileID: 6642972061963778982}
+  - component: {fileID: 6642972061963778983}
+  - component: {fileID: 6642972061963779000}
+  - component: {fileID: 6642972061963779001}
   m_Layer: 0
-  m_Name: Player1State
+  m_Name: Player1State (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5472756441862581241
+--- !u!4 &6642972061963778978
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5472756441862581234}
+  m_GameObject: {fileID: 6642972061963779002}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.5389598, y: 3.6338923, z: -6.842574}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -37,13 +37,13 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5472756441862581242
+--- !u!114 &6642972061963778979
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5472756441862581234}
+  m_GameObject: {fileID: 6642972061963779002}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 65440b06c5fdc3c4db9bf3616fe820d9, type: 3}
@@ -84,12 +84,12 @@ MonoBehaviour:
         argType1: 4
         argType2: 0
         judgeFuncName: IsStartGame
-        judgeFuncInstance: {fileID: 5472756441862581243}
+        judgeFuncInstance: {fileID: 6642972061963778980}
         priority: 0
         comment: "\u30B2\u30FC\u30E0\u30EB\u30FC\u30D7\u304C\u958B\u59CB\u3059\u308B\u6761\u4EF6"
       execDelegate:
       - actionName: StartGame
-        instance: {fileID: 5472756441862581243}
+        instance: {fileID: 6642972061963778980}
         arg1:
           object_Arg: {fileID: 0}
           int_Arg: 0
@@ -113,7 +113,7 @@ MonoBehaviour:
         argType2: 0
         comment: 
       playUpdateDelegate: []
-      nodePosition: {x: -87, y: 457}
+      nodePosition: {x: -73, y: 399}
       toggleWindow: 1
       stateMode: 0
       subStateID:
@@ -148,7 +148,7 @@ MonoBehaviour:
         argType1: 4
         argType2: 0
         judgeFuncName: IsHP
-        judgeFuncInstance: {fileID: 5472756441862581243}
+        judgeFuncInstance: {fileID: 6642972061963778980}
         priority: 0
         comment: 
       - nextStateName: "\u3084\u3089\u308C"
@@ -176,7 +176,7 @@ MonoBehaviour:
         argType1: 0
         argType2: 0
         judgeFuncName: IsApplyDamage
-        judgeFuncInstance: {fileID: 5472756441862581243}
+        judgeFuncInstance: {fileID: 6642972061963778980}
         priority: 0
         comment: 
       - nextStateName: start
@@ -204,12 +204,12 @@ MonoBehaviour:
         argType1: 4
         argType2: 0
         judgeFuncName: IsStartGame
-        judgeFuncInstance: {fileID: 5472756441862581243}
+        judgeFuncInstance: {fileID: 6642972061963778980}
         priority: 0
         comment: 
       execDelegate: []
       playUpdateDelegate: []
-      nodePosition: {x: 415, y: 675}
+      nodePosition: {x: 429, y: 617}
       toggleWindow: 1
       stateMode: 1
       subStateID:
@@ -244,7 +244,7 @@ MonoBehaviour:
         argType1: 4
         argType2: 0
         judgeFuncName: IsHP
-        judgeFuncInstance: {fileID: 5472756441862581243}
+        judgeFuncInstance: {fileID: 6642972061963778980}
         priority: 0
         comment: 
       - nextStateName: "\u79FB\u52D5,\u653B\u6483,\u30AC\u30FC\u30C9"
@@ -272,12 +272,12 @@ MonoBehaviour:
         argType1: 0
         argType2: 0
         judgeFuncName: IsEndHitStun
-        judgeFuncInstance: {fileID: 5472756441862581239}
+        judgeFuncInstance: {fileID: 6642972061963778983}
         priority: 0
         comment: 
       execDelegate: []
       playUpdateDelegate: []
-      nodePosition: {x: 401, y: 227}
+      nodePosition: {x: 415, y: 169}
       toggleWindow: 1
       stateMode: 1
       subStateID:
@@ -312,12 +312,12 @@ MonoBehaviour:
         argType1: 4
         argType2: 0
         judgeFuncName: IsNotHitStop
-        judgeFuncInstance: {fileID: 5472756441862581243}
+        judgeFuncInstance: {fileID: 6642972061963778980}
         priority: 0
         comment: 
       execDelegate:
       - actionName: Start_NO_HP
-        instance: {fileID: 5472756441862581243}
+        instance: {fileID: 6642972061963778980}
         arg1:
           object_Arg: {fileID: 0}
           int_Arg: 0
@@ -341,7 +341,7 @@ MonoBehaviour:
         argType2: 0
         comment: 
       playUpdateDelegate: []
-      nodePosition: {x: 978, y: 209}
+      nodePosition: {x: 992, y: 151}
       toggleWindow: 1
       stateMode: 0
       subStateID:
@@ -376,12 +376,12 @@ MonoBehaviour:
         argType1: 4
         argType2: 0
         judgeFuncName: IsHP
-        judgeFuncInstance: {fileID: 5472756441862581243}
+        judgeFuncInstance: {fileID: 6642972061963778980}
         priority: 0
         comment: 
       execDelegate:
       - actionName: DownStart
-        instance: {fileID: 5472756441862581232}
+        instance: {fileID: 6642972061963779000}
         arg1:
           object_Arg: {fileID: 0}
           int_Arg: 0
@@ -405,7 +405,7 @@ MonoBehaviour:
         argType2: 0
         comment: 
       playUpdateDelegate: []
-      nodePosition: {x: 1604, y: 212}
+      nodePosition: {x: 1618, y: 154}
       toggleWindow: 1
       stateMode: 0
       subStateID:
@@ -440,12 +440,12 @@ MonoBehaviour:
         argType1: 4
         argType2: 0
         judgeFuncName: IsGroundCheck
-        judgeFuncInstance: {fileID: 5472756441862581243}
+        judgeFuncInstance: {fileID: 6642972061963778980}
         priority: 0
         comment: 
       execDelegate: []
       playUpdateDelegate: []
-      nodePosition: {x: 1253, y: 232}
+      nodePosition: {x: 1267, y: 174}
       toggleWindow: 1
       stateMode: 0
       subStateID:
@@ -486,7 +486,7 @@ MonoBehaviour:
         argType1: 4
         argType2: 0
         judgeFuncName: IsGroundCheck
-        judgeFuncInstance: {fileID: 5472756441862581243}
+        judgeFuncInstance: {fileID: 6642972061963778980}
         priority: 0
         comment: 
       - nextStateName: "\u5730\u4E0A\u79FB\u52D5"
@@ -514,7 +514,7 @@ MonoBehaviour:
         argType1: 4
         argType2: 0
         judgeFuncName: IsGroundCheck
-        judgeFuncInstance: {fileID: 5472756441862581243}
+        judgeFuncInstance: {fileID: 6642972061963778980}
         priority: 0
         comment: 
       execDelegate: []
@@ -554,7 +554,7 @@ MonoBehaviour:
         argType1: 0
         argType2: 0
         judgeFuncName: IsApplyGuard
-        judgeFuncInstance: {fileID: 5472756441862581233}
+        judgeFuncInstance: {fileID: 6642972061963779001}
         priority: 0
         comment: 
       - nextStateName: "\u7A7A\u4E2D"
@@ -582,7 +582,7 @@ MonoBehaviour:
         argType1: 4
         argType2: 0
         judgeFuncName: IsGroundCheck
-        judgeFuncInstance: {fileID: 5472756441862581243}
+        judgeFuncInstance: {fileID: 6642972061963778980}
         priority: 0
         comment: 
       - nextStateName: "\u5730\u4E0A\u653B\u6483"
@@ -610,12 +610,12 @@ MonoBehaviour:
         argType1: 0
         argType2: 0
         judgeFuncName: Input_Atk_True
-        judgeFuncInstance: {fileID: 5472756441862581236}
+        judgeFuncInstance: {fileID: 6642972061963778981}
         priority: 0
         comment: 
       execDelegate:
       - actionName: MoveStart
-        instance: {fileID: 5472756441862581236}
+        instance: {fileID: 6642972061963778981}
         arg1:
           object_Arg: {fileID: 0}
           int_Arg: 0
@@ -640,7 +640,7 @@ MonoBehaviour:
         comment: 
       playUpdateDelegate:
       - actionName: MoveUpdate
-        instance: {fileID: 5472756441862581236}
+        instance: {fileID: 6642972061963778981}
         arg1:
           object_Arg: {fileID: 0}
           int_Arg: 0
@@ -698,7 +698,7 @@ MonoBehaviour:
         argType1: 4
         argType2: 0
         judgeFuncName: IsGroundCheck
-        judgeFuncInstance: {fileID: 5472756441862581243}
+        judgeFuncInstance: {fileID: 6642972061963778980}
         priority: 0
         comment: 
       - nextStateName: "\u7A7A\u4E2D\u653B\u6483"
@@ -726,7 +726,7 @@ MonoBehaviour:
         argType1: 0
         argType2: 0
         judgeFuncName: Input_Atk_True
-        judgeFuncInstance: {fileID: 5472756441862581236}
+        judgeFuncInstance: {fileID: 6642972061963778981}
         priority: 0
         comment: 
       execDelegate: []
@@ -766,7 +766,7 @@ MonoBehaviour:
         argType1: 0
         argType2: 0
         judgeFuncName: IsCancelAttack
-        judgeFuncInstance: {fileID: 5472756441862581238}
+        judgeFuncInstance: {fileID: 6642972061963778982}
         priority: 0
         comment: 
       - nextStateName: Entry_
@@ -794,12 +794,12 @@ MonoBehaviour:
         argType1: 0
         argType2: 0
         judgeFuncName: IsEndAttack
-        judgeFuncInstance: {fileID: 5472756441862581238}
+        judgeFuncInstance: {fileID: 6642972061963778982}
         priority: 0
         comment: 
       execDelegate:
       - actionName: AttackStart
-        instance: {fileID: 5472756441862581238}
+        instance: {fileID: 6642972061963778982}
         arg1:
           object_Arg: {fileID: 0}
           int_Arg: 0
@@ -824,7 +824,7 @@ MonoBehaviour:
         comment: 
       playUpdateDelegate:
       - actionName: AttackUpdate
-        instance: {fileID: 5472756441862581238}
+        instance: {fileID: 6642972061963778982}
         arg1:
           object_Arg: {fileID: 0}
           int_Arg: 0
@@ -882,7 +882,7 @@ MonoBehaviour:
         argType1: 0
         argType2: 0
         judgeFuncName: IsEndAirAttack
-        judgeFuncInstance: {fileID: 5472756441862581238}
+        judgeFuncInstance: {fileID: 6642972061963778982}
         priority: 0
         comment: 
       - nextStateName: "\u7740\u5730"
@@ -910,12 +910,12 @@ MonoBehaviour:
         argType1: 4
         argType2: 0
         judgeFuncName: IsGroundCheck
-        judgeFuncInstance: {fileID: 5472756441862581243}
+        judgeFuncInstance: {fileID: 6642972061963778980}
         priority: 0
         comment: 
       execDelegate:
       - actionName: AirAttackStart
-        instance: {fileID: 5472756441862581238}
+        instance: {fileID: 6642972061963778982}
         arg1:
           object_Arg: {fileID: 0}
           int_Arg: 0
@@ -974,7 +974,7 @@ MonoBehaviour:
         argType1: 0
         argType2: 0
         judgeFuncName: IsApplyGuard
-        judgeFuncInstance: {fileID: 5472756441862581233}
+        judgeFuncInstance: {fileID: 6642972061963779001}
         priority: 0
         comment: 
       - nextStateName: Entry_
@@ -1002,7 +1002,7 @@ MonoBehaviour:
         argType1: 0
         argType2: 0
         judgeFuncName: IsEndGuard
-        judgeFuncInstance: {fileID: 5472756441862581233}
+        judgeFuncInstance: {fileID: 6642972061963779001}
         priority: 0
         comment: 
       execDelegate: []
@@ -1042,12 +1042,12 @@ MonoBehaviour:
         argType1: 0
         argType2: 0
         judgeFuncName: IsEndLanding
-        judgeFuncInstance: {fileID: 5472756441862581236}
+        judgeFuncInstance: {fileID: 6642972061963778981}
         priority: 0
         comment: 
       execDelegate:
       - actionName: LandingStart
-        instance: {fileID: 5472756441862581236}
+        instance: {fileID: 6642972061963778981}
         arg1:
           object_Arg: {fileID: 0}
           int_Arg: 0
@@ -1106,7 +1106,7 @@ MonoBehaviour:
         argType1: 0
         argType2: 0
         judgeFuncName: IsMoveFighter
-        judgeFuncInstance: {fileID: 5472756441862581243}
+        judgeFuncInstance: {fileID: 6642972061963778980}
         priority: 0
         comment: 
       execDelegate: []
@@ -1152,7 +1152,7 @@ MonoBehaviour:
         argType1: 0
         argType2: 0
         judgeFuncName: isThrowHit
-        judgeFuncInstance: {fileID: 5472756441862581239}
+        judgeFuncInstance: {fileID: 6642972061963778983}
         priority: 0
         comment: 
       - nextStateName: "\u30C0\u30A6\u30F3\uFF08\u98DB\u3070\u3057\uFF09\u6280"
@@ -1180,7 +1180,7 @@ MonoBehaviour:
         argType1: 0
         argType2: 0
         judgeFuncName: isDownHit
-        judgeFuncInstance: {fileID: 5472756441862581239}
+        judgeFuncInstance: {fileID: 6642972061963778983}
         priority: 0
         comment: 
       - nextStateName: End
@@ -1208,7 +1208,7 @@ MonoBehaviour:
         argType1: 0
         argType2: 0
         judgeFuncName: isNoneDamage
-        judgeFuncInstance: {fileID: 5472756441862581239}
+        judgeFuncInstance: {fileID: 6642972061963778983}
         priority: 0
         comment: 
       - nextStateName: "\u7A7A\u4E2D\u3084\u3089\u308C"
@@ -1236,7 +1236,7 @@ MonoBehaviour:
         argType1: 4
         argType2: 0
         judgeFuncName: IsGroundCheck
-        judgeFuncInstance: {fileID: 5472756441862581243}
+        judgeFuncInstance: {fileID: 6642972061963778980}
         priority: 0
         comment: 
       - nextStateName: "\u5730\u4E0A\u3084\u3089\u308C"
@@ -1264,12 +1264,12 @@ MonoBehaviour:
         argType1: 4
         argType2: 0
         judgeFuncName: IsGroundCheck
-        judgeFuncInstance: {fileID: 5472756441862581243}
+        judgeFuncInstance: {fileID: 6642972061963778980}
         priority: 0
         comment: 
       execDelegate: []
       playUpdateDelegate: []
-      nodePosition: {x: -609, y: 247}
+      nodePosition: {x: -1117, y: 318}
       toggleWindow: 1
       stateMode: 0
       subStateID:
@@ -1304,7 +1304,7 @@ MonoBehaviour:
         argType1: 0
         argType2: 0
         judgeFuncName: IsApplyDamage
-        judgeFuncInstance: {fileID: 5472756441862581243}
+        judgeFuncInstance: {fileID: 6642972061963778980}
         priority: 0
         comment: 
       - nextStateName: "\u7A7A\u4E2D\u53D7\u3051\u8EAB\u5F85\u6A5F\u6642\u9593"
@@ -1332,12 +1332,12 @@ MonoBehaviour:
         argType1: 0
         argType2: 0
         judgeFuncName: IsEndHitStunCount
-        judgeFuncInstance: {fileID: 5472756441862581239}
+        judgeFuncInstance: {fileID: 6642972061963778983}
         priority: 0
         comment: 
       execDelegate:
       - actionName: AirHitStunStart
-        instance: {fileID: 5472756441862581239}
+        instance: {fileID: 6642972061963778983}
         arg1:
           object_Arg: {fileID: 0}
           int_Arg: 0
@@ -1362,7 +1362,7 @@ MonoBehaviour:
         comment: 
       playUpdateDelegate:
       - actionName: HitStunUpdate
-        instance: {fileID: 5472756441862581239}
+        instance: {fileID: 6642972061963778983}
         arg1:
           object_Arg: {fileID: 0}
           int_Arg: 0
@@ -1385,7 +1385,7 @@ MonoBehaviour:
         argType1: 4
         argType2: 1
         comment: 
-      nodePosition: {x: 205, y: 490}
+      nodePosition: {x: -303, y: 561}
       toggleWindow: 1
       stateMode: 0
       subStateID:
@@ -1420,7 +1420,7 @@ MonoBehaviour:
         argType1: 0
         argType2: 0
         judgeFuncName: IsApplyDamage
-        judgeFuncInstance: {fileID: 5472756441862581243}
+        judgeFuncInstance: {fileID: 6642972061963778980}
         priority: 0
         comment: 
       - nextStateName: End
@@ -1448,12 +1448,12 @@ MonoBehaviour:
         argType1: 0
         argType2: 0
         judgeFuncName: IsEndHitStunCount
-        judgeFuncInstance: {fileID: 5472756441862581239}
+        judgeFuncInstance: {fileID: 6642972061963778983}
         priority: 0
         comment: 
       execDelegate:
       - actionName: HitStunStart
-        instance: {fileID: 5472756441862581239}
+        instance: {fileID: 6642972061963778983}
         arg1:
           object_Arg: {fileID: 0}
           int_Arg: 0
@@ -1478,7 +1478,7 @@ MonoBehaviour:
         comment: 
       playUpdateDelegate:
       - actionName: HitStunUpdate
-        instance: {fileID: 5472756441862581239}
+        instance: {fileID: 6642972061963778983}
         arg1:
           object_Arg: {fileID: 0}
           int_Arg: 0
@@ -1501,7 +1501,7 @@ MonoBehaviour:
         argType1: 4
         argType2: 1
         comment: 
-      nodePosition: {x: 202, y: 849}
+      nodePosition: {x: -306, y: 920}
       toggleWindow: 1
       stateMode: 0
       subStateID:
@@ -1536,7 +1536,7 @@ MonoBehaviour:
         argType1: 4
         argType2: 0
         judgeFuncName: IsGroundCheck
-        judgeFuncInstance: {fileID: 5472756441862581243}
+        judgeFuncInstance: {fileID: 6642972061963778980}
         priority: 0
         comment: 
       - nextStateName: "\u7A7A\u4E2D\u53D7\u3051\u8EABEnd"
@@ -1564,7 +1564,7 @@ MonoBehaviour:
         argType1: 0
         argType2: 0
         judgeFuncName: IsPassiveInput
-        judgeFuncInstance: {fileID: 5472756441862581239}
+        judgeFuncInstance: {fileID: 6642972061963778983}
         priority: 0
         comment: 
       - nextStateName: Entry_
@@ -1592,12 +1592,12 @@ MonoBehaviour:
         argType1: 0
         argType2: 0
         judgeFuncName: IsApplyDamage
-        judgeFuncInstance: {fileID: 5472756441862581243}
+        judgeFuncInstance: {fileID: 6642972061963778980}
         priority: 0
         comment: 
       execDelegate: []
       playUpdateDelegate: []
-      nodePosition: {x: 623, y: 367}
+      nodePosition: {x: 121, y: 444}
       toggleWindow: 1
       stateMode: 0
       subStateID:
@@ -1609,7 +1609,7 @@ MonoBehaviour:
       nextStateJudge: []
       execDelegate:
       - actionName: EndHitStunFlag
-        instance: {fileID: 5472756441862581239}
+        instance: {fileID: 6642972061963778983}
         arg1:
           object_Arg: {fileID: 0}
           int_Arg: 0
@@ -1633,7 +1633,7 @@ MonoBehaviour:
         argType2: 1
         comment: 
       playUpdateDelegate: []
-      nodePosition: {x: 1178, y: 1021}
+      nodePosition: {x: 670, y: 1092}
       toggleWindow: 1
       stateMode: 0
       subStateID:
@@ -1645,7 +1645,7 @@ MonoBehaviour:
       nextStateJudge: []
       execDelegate:
       - actionName: EndHitStunFlag
-        instance: {fileID: 5472756441862581239}
+        instance: {fileID: 6642972061963778983}
         arg1:
           object_Arg: {fileID: 0}
           int_Arg: 0
@@ -1669,7 +1669,7 @@ MonoBehaviour:
         argType2: 1
         comment: 
       - actionName: PlayPassive
-        instance: {fileID: 5472756441862581239}
+        instance: {fileID: 6642972061963778983}
         arg1:
           object_Arg: {fileID: 0}
           int_Arg: 0
@@ -1693,7 +1693,7 @@ MonoBehaviour:
         argType2: 1
         comment: 
       playUpdateDelegate: []
-      nodePosition: {x: 1163, y: 733}
+      nodePosition: {x: 655, y: 804}
       toggleWindow: 1
       stateMode: 0
       subStateID:
@@ -1728,12 +1728,12 @@ MonoBehaviour:
         argType1: 0
         argType2: 0
         judgeFuncName: IsApplyDamage
-        judgeFuncInstance: {fileID: 5472756441862581243}
+        judgeFuncInstance: {fileID: 6642972061963778980}
         priority: 0
         comment: 
       execDelegate: []
       playUpdateDelegate: []
-      nodePosition: {x: 1351, y: 443}
+      nodePosition: {x: 843, y: 514}
       toggleWindow: 1
       stateMode: 1
       subStateID:
@@ -1768,7 +1768,7 @@ MonoBehaviour:
         argType1: 0
         argType2: 0
         judgeFuncName: IsEndGroundKnock
-        judgeFuncInstance: {fileID: 5472756441862581232}
+        judgeFuncInstance: {fileID: 6642972061963779000}
         priority: 0
         comment: 
       - nextStateName: Entry_
@@ -1796,12 +1796,12 @@ MonoBehaviour:
         argType1: 0
         argType2: 0
         judgeFuncName: IsApplyDamage
-        judgeFuncInstance: {fileID: 5472756441862581243}
+        judgeFuncInstance: {fileID: 6642972061963778980}
         priority: 0
         comment: 
       execDelegate:
       - actionName: GroundKnockStart
-        instance: {fileID: 5472756441862581232}
+        instance: {fileID: 6642972061963779000}
         arg1:
           object_Arg: {fileID: 0}
           int_Arg: 0
@@ -1825,7 +1825,7 @@ MonoBehaviour:
         argType2: 1
         comment: 
       playUpdateDelegate: []
-      nodePosition: {x: 971, y: 346}
+      nodePosition: {x: 418, y: 114}
       toggleWindow: 1
       stateMode: 0
       subStateID:
@@ -1860,7 +1860,7 @@ MonoBehaviour:
         argType1: 0
         argType2: 0
         judgeFuncName: IsApplyDamage
-        judgeFuncInstance: {fileID: 5472756441862581243}
+        judgeFuncInstance: {fileID: 6642972061963778980}
         priority: 0
         comment: 
       - nextStateName: "\u7A7A\u4E2D\u53D7\u3051\u8EAB\u5F85\u6A5F\u6642\u9593"
@@ -1888,7 +1888,7 @@ MonoBehaviour:
         argType1: 0
         argType2: 0
         judgeFuncName: IsEndHitStunCount
-        judgeFuncInstance: {fileID: 5472756441862581239}
+        judgeFuncInstance: {fileID: 6642972061963778983}
         priority: 0
         comment: 
       - nextStateName: "\u6253\u3061\u4ED8\u3051"
@@ -1916,12 +1916,12 @@ MonoBehaviour:
         argType1: 4
         argType2: 0
         judgeFuncName: IsGroundCheck
-        judgeFuncInstance: {fileID: 5472756441862581243}
+        judgeFuncInstance: {fileID: 6642972061963778980}
         priority: 0
         comment: 
       execDelegate:
       - actionName: DownHitStart
-        instance: {fileID: 5472756441862581239}
+        instance: {fileID: 6642972061963778983}
         arg1:
           object_Arg: {fileID: 0}
           int_Arg: 0
@@ -1946,7 +1946,7 @@ MonoBehaviour:
         comment: 
       playUpdateDelegate:
       - actionName: HitStunUpdate
-        instance: {fileID: 5472756441862581239}
+        instance: {fileID: 6642972061963778983}
         arg1:
           object_Arg: {fileID: 0}
           int_Arg: 0
@@ -1969,12 +1969,12 @@ MonoBehaviour:
         argType1: 5
         argType2: 1
         comment: 
-      nodePosition: {x: 198, y: 75}
+      nodePosition: {x: -310, y: 146}
       toggleWindow: 1
       stateMode: 0
       subStateID:
         number: 0
-      isSkipState: 1
+      isSkipState: 0
     - stateName: "\u6295\u3052\u6280"
       ID:
         number: 10
@@ -2004,12 +2004,12 @@ MonoBehaviour:
         argType1: 0
         argType2: 0
         judgeFuncName: IsEndGroundKnock
-        judgeFuncInstance: {fileID: 5472756441862581232}
+        judgeFuncInstance: {fileID: 6642972061963779000}
         priority: 0
         comment: 
       execDelegate:
       - actionName: Throw_Damage_Start
-        instance: {fileID: 5472756441862581239}
+        instance: {fileID: 6642972061963778983}
         arg1:
           object_Arg: {fileID: 0}
           int_Arg: 0
@@ -2034,7 +2034,7 @@ MonoBehaviour:
         comment: 
       playUpdateDelegate:
       - actionName: Throw_Damage_Update
-        instance: {fileID: 5472756441862581239}
+        instance: {fileID: 6642972061963778983}
         arg1:
           object_Arg: {fileID: 0}
           int_Arg: 0
@@ -2057,12 +2057,12 @@ MonoBehaviour:
         argType1: 5
         argType2: 1
         comment: 
-      nodePosition: {x: 139, y: -236}
+      nodePosition: {x: -369, y: -165}
       toggleWindow: 1
       stateMode: 0
       subStateID:
         number: 0
-      isSkipState: 1
+      isSkipState: 0
     _frag: 0
   - ID:
       number: 4
@@ -2098,7 +2098,7 @@ MonoBehaviour:
         argType1: 4
         argType2: 0
         judgeFuncName: IsMoveFighter
-        judgeFuncInstance: {fileID: 5472756441862581243}
+        judgeFuncInstance: {fileID: 6642972061963778980}
         priority: 0
         comment: 
       execDelegate: []
@@ -2138,12 +2138,12 @@ MonoBehaviour:
         argType1: 0
         argType2: 0
         judgeFuncName: IsWakeUp
-        judgeFuncInstance: {fileID: 5472756441862581232}
+        judgeFuncInstance: {fileID: 6642972061963779000}
         priority: 0
         comment: 
       execDelegate:
       - actionName: DownStart
-        instance: {fileID: 5472756441862581232}
+        instance: {fileID: 6642972061963779000}
         arg1:
           object_Arg: {fileID: 0}
           int_Arg: 0
@@ -2168,7 +2168,7 @@ MonoBehaviour:
         comment: 
       playUpdateDelegate:
       - actionName: UpdateDown
-        instance: {fileID: 5472756441862581232}
+        instance: {fileID: 6642972061963779000}
         arg1:
           object_Arg: {fileID: 0}
           int_Arg: 0
@@ -2226,12 +2226,12 @@ MonoBehaviour:
         argType1: 0
         argType2: 0
         judgeFuncName: IsEndWakeUp
-        judgeFuncInstance: {fileID: 5472756441862581232}
+        judgeFuncInstance: {fileID: 6642972061963779000}
         priority: 0
         comment: 
       execDelegate:
       - actionName: WakeUpStart
-        instance: {fileID: 5472756441862581232}
+        instance: {fileID: 6642972061963779000}
         arg1:
           object_Arg: {fileID: 0}
           int_Arg: 0
@@ -2256,7 +2256,7 @@ MonoBehaviour:
         comment: 
       playUpdateDelegate:
       - actionName: WakeUpUpdate
-        instance: {fileID: 5472756441862581232}
+        instance: {fileID: 6642972061963779000}
         arg1:
           object_Arg: {fileID: 0}
           int_Arg: 0
@@ -2291,7 +2291,7 @@ MonoBehaviour:
       nextStateJudge: []
       execDelegate:
       - actionName: EndHitStunFlag
-        instance: {fileID: 5472756441862581239}
+        instance: {fileID: 6642972061963778983}
         arg1:
           object_Arg: {fileID: 0}
           int_Arg: 0
@@ -2356,7 +2356,7 @@ MonoBehaviour:
         argType1: 4
         argType2: 0
         judgeFuncName: IsMoveFighter
-        judgeFuncInstance: {fileID: 5472756441862581243}
+        judgeFuncInstance: {fileID: 6642972061963778980}
         priority: 0
         comment: 
       execDelegate: []
@@ -2396,7 +2396,7 @@ MonoBehaviour:
         argType1: 0
         argType2: 0
         judgeFuncName: IsEndGuard
-        judgeFuncInstance: {fileID: 5472756441862581233}
+        judgeFuncInstance: {fileID: 6642972061963779001}
         priority: 0
         comment: 
       - nextStateName: End
@@ -2424,12 +2424,12 @@ MonoBehaviour:
         argType1: 0
         argType2: 0
         judgeFuncName: IsEndGuardCount
-        judgeFuncInstance: {fileID: 5472756441862581233}
+        judgeFuncInstance: {fileID: 6642972061963779001}
         priority: 0
         comment: 
       execDelegate:
       - actionName: GuardStart
-        instance: {fileID: 5472756441862581233}
+        instance: {fileID: 6642972061963779001}
         arg1:
           object_Arg: {fileID: 0}
           int_Arg: 0
@@ -2454,7 +2454,7 @@ MonoBehaviour:
         comment: 
       playUpdateDelegate:
       - actionName: GuardUpdate
-        instance: {fileID: 5472756441862581233}
+        instance: {fileID: 6642972061963779001}
         arg1:
           object_Arg: {fileID: 0}
           int_Arg: 0
@@ -2489,7 +2489,7 @@ MonoBehaviour:
       nextStateJudge: []
       execDelegate:
       - actionName: EndGuardFlag
-        instance: {fileID: 5472756441862581233}
+        instance: {fileID: 6642972061963779001}
         arg1:
           object_Arg: {fileID: 0}
           int_Arg: 0
@@ -2520,13 +2520,13 @@ MonoBehaviour:
         number: 0
       isSkipState: 1
     _frag: 0
---- !u!114 &5472756441862581243
+--- !u!114 &6642972061963778980
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5472756441862581234}
+  m_GameObject: {fileID: 6642972061963779002}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2f01fa8dbd172444f895bd8e01ae2a77, type: 3}
@@ -2536,65 +2536,65 @@ MonoBehaviour:
   core: {fileID: 0}
   input: {fileID: 0}
   stateGuard: {fileID: 0}
---- !u!114 &5472756441862581236
+--- !u!114 &6642972061963778981
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5472756441862581234}
+  m_GameObject: {fileID: 6642972061963779002}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 644bfe671a0b98e4ba80f7e83f216dda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   stateName: "\u79FB\u52D5"
---- !u!114 &5472756441862581238
+--- !u!114 &6642972061963778982
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5472756441862581234}
+  m_GameObject: {fileID: 6642972061963779002}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 70678f3c26cff3247a5dd2e40d9667de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   stateName: 
---- !u!114 &5472756441862581239
+--- !u!114 &6642972061963778983
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5472756441862581234}
+  m_GameObject: {fileID: 6642972061963779002}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9fe30f52129c5b04ea1e83f62702f5bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   stateName: 
---- !u!114 &5472756441862581232
+--- !u!114 &6642972061963779000
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5472756441862581234}
+  m_GameObject: {fileID: 6642972061963779002}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 72a4ed79eb9640540989391be5ab58ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   stateName: 
---- !u!114 &5472756441862581233
+--- !u!114 &6642972061963779001
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5472756441862581234}
+  m_GameObject: {fileID: 6642972061963779002}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8929e977495552a40b86f5fad1588ed3, type: 3}
