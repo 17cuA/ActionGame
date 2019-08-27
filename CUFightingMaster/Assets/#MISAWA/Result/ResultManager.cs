@@ -12,6 +12,7 @@
 // 勝敗判定と選ばれていたキャラクターを取得
 //----------------------------------------
 // MEMO 
+// ゴリ押し
 //----------------------------------------
 
 using System.Collections;
@@ -34,8 +35,24 @@ public class ResultManager : MonoBehaviour
 		}
 		Debug.Log(ShareSceneVariable.P1_info.isWin);
 		Debug.Log(ShareSceneVariable.P2_info.isWin);
-
+		Judge();
 	}
 	#endregion
-
+	void Judge()
+	{
+		if (ShareSceneVariable.P1_info.isWin)
+		{
+			canvas_1.transform.Find("VictoryORdefeat/WIN").gameObject.SetActive(true);
+			canvas_1.transform.Find("VictoryORdefeat/LOSE").gameObject.SetActive(false);
+			canvas_2.transform.Find("VictoryORdefeat/WIN").gameObject.SetActive(false);
+			canvas_2.transform.Find("VictoryORdefeat/LOSE").gameObject.SetActive(true);
+		}
+		if (ShareSceneVariable.P2_info.isWin)
+		{
+			canvas_1.transform.Find("VictoryORdefeat/WIN").gameObject.SetActive(false);
+			canvas_1.transform.Find("VictoryORdefeat/LOSE").gameObject.SetActive(true);
+			canvas_2.transform.Find("VictoryORdefeat/WIN").gameObject.SetActive(true);
+			canvas_2.transform.Find("VictoryORdefeat/LOSE").gameObject.SetActive(false);
+		}
+	}
 }
