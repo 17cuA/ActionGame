@@ -20,7 +20,9 @@ using UnityEngine.UI;
 
 class UI_RoundWinCounter : MonoBehaviour
  {
-	public Sprite getRound_Image;
+	public Sprite victoryRound_Image;
+	public Sprite DoubleKO_Image;
+	public Sprite timeOver_Image;
 	public Sprite default_Image;
 
     //参照
@@ -35,9 +37,9 @@ class UI_RoundWinCounter : MonoBehaviour
     public void UpdateRoundCounter(int winP1cnt, int winP2cnt)
     {
         if (winP1cnt > 0)
-            RoundCounter_P1[winP1cnt - 1].UpdateImage(getRound_Image);
+            RoundCounter_P1[winP1cnt - 1].UpdateImage(victoryRound_Image);
         if(winP2cnt  > 0)
-            RoundCounter_P2[winP2cnt - 1].UpdateImage(getRound_Image);
+            RoundCounter_P2[winP2cnt - 1].UpdateImage(victoryRound_Image);
     }
 
 	/// <summary>

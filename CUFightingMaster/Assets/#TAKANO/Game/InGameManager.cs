@@ -17,22 +17,22 @@
 // Canvasをまとめて操作するCanvasControllerの関数を呼び出し
 // 各Canvasに表示・切り替えするように変更
 //----------------------------------------
-using UnityEngine;
-using UnityEngine.SceneManagement;
 using System;
 using System.Collections;
+using UnityEngine;
+using UnityEngine.SceneManagement;
 
 
 public class InGameManager : MonoBehaviour
 {
-
+	//ラウンド取得の種類
+	private static readonly int playerIndex = 2;
     [SerializeField] private int gameRoundCount = 0;     //ラウンド数をカウント
     [SerializeField] private int winRound = 3;
-    [SerializeField] private int getRoundCount_p1 = 0;   //プレイヤー1が取ったラウンド数
-    [SerializeField] private int getRoundCount_p2 = 0;   //プレイヤー2が取ったラウンド数
+	[SerializeField] private string[] getRoundCount;		//そのラウンドをどう取得したかを保存(0:なし(多分使わない),1:KO,2:DoubleKO,3:TimeOver)し、lengthで取得数確認
 
-    //Updateする場面
-    private Action currentUpdate;
+	//Updateする場面
+	private Action currentUpdate;
 
 	//参照先
 	[SerializeField] private CameraController cameraController;
@@ -88,7 +88,7 @@ public class InGameManager : MonoBehaviour
                 GameManager.Instance.isEndRound = false;
                 //タイマーの開始
                 canvasController.Call_StartCountDown();
-                currentUpdate = BatlleRound;
+                currentUpdate = BattleRound;
             }
         }
     }
@@ -98,7 +98,7 @@ public class InGameManager : MonoBehaviour
     /// <summary>
     /// ラウンド中
     /// </summary>
-    private void BatlleRound()
+    private void BattleRound()
     {
         //UIのhp表示の更新
         canvasController.Call_DisplayPlayerHp(GameManager.Instance.Player_one.HP, GameManager.Instance.Player_two.HP);
@@ -109,19 +109,19 @@ public class InGameManager : MonoBehaviour
 			//勝敗判定
 			if (GameManager.Instance.Player_one.HP > GameManager.Instance.Player_two.HP)
             {
-                getRoundCount_p1++;
+				getRoundCount[0] += "1";
 				gameRoundCount++;
             }
             else if (GameManager.Instance.Player_one.HP < GameManager.Instance.Player_two.HP)
             {
-                getRoundCount_p2++;
+				getRoundCount[1] += "1";
 				gameRoundCount++;
             }
 			else
 			{
 				//DoubleKO
-				getRoundCount_p1++;
-				getRoundCount_p2++;
+				getRoundCount[0] += "2";
+				getRoundCount[1] += "2";
 				gameRoundCount++;
 			}
 			currentUpdate = FinishRound_KO;
@@ -133,19 +133,19 @@ public class InGameManager : MonoBehaviour
             //勝敗判定
 			if (GameManager.Instance.Player_one.HP > GameManager.Instance.Player_two.HP)
             {
-                getRoundCount_p1++;
+				getRoundCount[0] += "1";
 				gameRoundCount++;
             }
 			else if (GameManager.Instance.Player_one.HP < GameManager.Instance.Player_two.HP)
 			{
-                getRoundCount_p2++;
+				getRoundCount[1] += "1";
 				gameRoundCount++;
             }
 			else
 			{
 				//DoubleKO
-				getRoundCount_p1++;
-				getRoundCount_p2++;
+				getRoundCount[0] += "2";
+				getRoundCount[1] += "2";
 				gameRoundCount++;
 			}
 				currentUpdate = FinishRound_TimeOver;
@@ -159,7 +159,6 @@ public class InGameManager : MonoBehaviour
     /// </summary>
     private void FinishRound_KO()
     {
-        Debug.Log("FinishRound_KO");
         if (canvasController.Call_PlayFinishRound_KO() == false)
         {
             currentUpdate = DoGameFinish;
@@ -188,9 +187,9 @@ public class InGameManager : MonoBehaviour
     {
         GameManager.Instance.isEndRound = true;
         //ラウンドカウンターの更新
-        canvasController.Call_UpdateWinCounter(getRoundCount_p1, getRoundCount_p2);
+        canvasController.Call_UpdateWinCounter(getRoundCount[0].Length, getRoundCount[1].Length);
         //ゲームが終了するか判定
-        if (getRoundCount_p1 >= winRound || getRoundCount_p2 >= winRound)
+        if (getRoundCount[0].Length >= winRound || getRoundCount[1].Length >= winRound)
         {
             currentUpdate = GameVictory;
 			Sound.StopBgm();
@@ -232,10 +231,10 @@ public class InGameManager : MonoBehaviour
     private void GameVictory()
     {
         //ラウンドカウンターの更新
-        canvasController.Call_UpdateWinCounter(getRoundCount_p1, getRoundCount_p2);
+        canvasController.Call_UpdateWinCounter(getRoundCount[0].Length, getRoundCount[1].Length);
 
 		//各プレイヤーが勝ったラウンド数からこの試合の勝敗を決定する
-        if (getRoundCount_p1 > getRoundCount_p2)
+        if (getRoundCount[0].Length > getRoundCount[1].Length)
         {
 			//P1が勝ったことを保存する
 			ShareSceneVariable.P1_info.isWin = true;
@@ -243,7 +242,7 @@ public class InGameManager : MonoBehaviour
             if (canvasController.Call_DisplayVictory_winP1() == false)
                 currentUpdate = GameFinish;
         }
-        else if (getRoundCount_p1 < getRoundCount_p2)
+        else if (getRoundCount[0].Length < getRoundCount[1].Length)
         {
 			//P2が勝ったことを保存する
 			ShareSceneVariable.P2_info.isWin = true;
@@ -289,6 +288,12 @@ public class InGameManager : MonoBehaviour
 
     void Start()
     {
+		//初期化
+		for (int i = 0;i < playerIndex;i++)
+		{
+			getRoundCount[i] = "";
+		}
+
         currentUpdate = StartGame;
     }
 
