@@ -20,7 +20,7 @@ using UnityEngine.UI;
 
 class UI_RoundWinCounter : MonoBehaviour
  {
-	public Sprite victoryRound_Image;
+	public Sprite KO_Image;
 	public Sprite DoubleKO_Image;
 	public Sprite timeOver_Image;
 	public Sprite default_Image;
@@ -34,13 +34,45 @@ class UI_RoundWinCounter : MonoBehaviour
 	/// </summary>
 	/// <param name="winP1cnt">P1が勝った回数</param>
 	/// <param name="winP2cnt">P2が勝った回数</param>
-    public void UpdateRoundCounter(int winP1cnt, int winP2cnt)
+    public void UpdateRoundCounter(string winP1cnt, string winP2cnt)
     {
-        if (winP1cnt > 0)
-            RoundCounter_P1[winP1cnt - 1].UpdateImage(victoryRound_Image);
-        if(winP2cnt  > 0)
-            RoundCounter_P2[winP2cnt - 1].UpdateImage(victoryRound_Image);
-    }
+		if (winP1cnt.Length > 0)
+		{
+			Debug.Log(winP1cnt.Length);
+			Debug.Log(winP1cnt[winP1cnt.Length - 1]);
+			switch (winP1cnt[Mathf.Clamp(winP1cnt.Length - 1,0,2)])
+			{
+				case '1':
+					RoundCounter_P1[Mathf.Clamp(winP1cnt.Length - 1, 0, 2)].UpdateImage(KO_Image);
+					break;
+				case'2':
+					RoundCounter_P1[Mathf.Clamp(winP1cnt.Length - 1, 0, 2)].UpdateImage(DoubleKO_Image);
+					break;
+				case '3':
+					RoundCounter_P1[Mathf.Clamp(winP1cnt.Length - 1, 0, 2)].UpdateImage(timeOver_Image);
+					break;
+				default:
+					break;
+			}
+		}
+		if (winP2cnt.Length > 0)
+		{
+			switch (winP2cnt[Mathf.Clamp(winP2cnt.Length - 1, 0, 2)])
+			{
+				case '1':
+					RoundCounter_P2[Mathf.Clamp(winP2cnt.Length - 1, 0, 2)].UpdateImage(KO_Image);
+					break;
+				case '2':
+					RoundCounter_P2[Mathf.Clamp(winP2cnt.Length - 1, 0, 2)].UpdateImage(DoubleKO_Image);
+					break;
+				case '3':
+					RoundCounter_P2[Mathf.Clamp(winP2cnt.Length - 1, 0, 2)].UpdateImage(timeOver_Image);
+					break;
+				default:
+					break;
+			}
+		}
+	}
 
 	/// <summary>
 	/// ラウンドカウンターをリセットする(0729現在、デバッグでしか使っていない)

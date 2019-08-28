@@ -174,7 +174,7 @@ public class CanvasController : MonoBehaviour
 	/// </summary>
 	/// <param name="p1Value">Player1のラウンド取得数</param>
 	/// <param name="p2Value">Player2のラウンド取得数</param>
-	public void Call_UpdateWinCounter(int p1Value, int p2Value)
+	public void Call_UpdateWinCounter(string p1Value, string p2Value)
 	{
 		inGameUIController_1.UpdateWinCounter(p1Value, p2Value);
 		inGameUIController_2.UpdateWinCounter(p2Value, p1Value);

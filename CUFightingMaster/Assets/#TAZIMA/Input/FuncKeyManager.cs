@@ -21,7 +21,6 @@ public class FuncKeyManager : SingletonMono<FuncKeyManager>
 				sceneIndex = i;
 			}
 		}
-		Debug.Log(sceneIndex);
 	}
     void Update()
     {
@@ -31,7 +30,6 @@ public class FuncKeyManager : SingletonMono<FuncKeyManager>
 			#region すべてのシーンで使用するキー（Ecs,F1 - F4）
 			if (Input.GetKeyDown(KeyCode.Escape))
 			{
-				Debug.Log(isPause);
 				if (isPause == false)
 				{
 					Time.timeScale = 0f;

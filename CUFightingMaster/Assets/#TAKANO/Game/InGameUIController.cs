@@ -155,7 +155,7 @@ public class InGameUIController : MonoBehaviour
     /// </summary>
     /// <param name="p1Value">プレイヤー1のラウンド取得数</param>
     /// <param name="p2Value">プレイヤー2のラウンド取得数</param>
-    public void UpdateWinCounter(int p1Value, int p2Value)
+    public void UpdateWinCounter(string p1Value, string p2Value)
     {
         uI_RoundWinCounter.UpdateRoundCounter(p1Value, p2Value);
     }

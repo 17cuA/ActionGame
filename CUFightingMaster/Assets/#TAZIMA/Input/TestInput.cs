@@ -219,11 +219,11 @@ public class TestInput : MonoBehaviour {
                 atkButton = "A";
             }
         }
-        //何かしら入力されたとき(デバッグ用)
-        if (atkButton != "")
-        {
-            Debug.Log(atkButton);
-        }
+        ////何かしら入力されたとき(デバッグ用)
+        //if (atkButton != "")
+        //{
+        //    Debug.Log(atkButton);
+        //}
     }
 
 	public string GetPlayerAtk()

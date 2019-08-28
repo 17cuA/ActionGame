@@ -22,10 +22,16 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-
+//ラウンド取得の種類
+public enum GetRoundCategory
+{
+	None = 0,
+	KO = 1,
+	DoubleKO = 2,
+	TimeOver = 3,
+}
 public class InGameManager : MonoBehaviour
 {
-	//ラウンド取得の種類
 	private static readonly int playerIndex = 2;
     [SerializeField] private int gameRoundCount = 0;     //ラウンド数をカウント
     [SerializeField] private int winRound = 3;
@@ -144,8 +150,8 @@ public class InGameManager : MonoBehaviour
 			else
 			{
 				//DoubleKO
-				getRoundCount[0] += "2";
-				getRoundCount[1] += "2";
+				getRoundCount[0] += "3";
+				getRoundCount[1] += "3";
 				gameRoundCount++;
 			}
 				currentUpdate = FinishRound_TimeOver;
@@ -187,7 +193,7 @@ public class InGameManager : MonoBehaviour
     {
         GameManager.Instance.isEndRound = true;
         //ラウンドカウンターの更新
-        canvasController.Call_UpdateWinCounter(getRoundCount[0].Length, getRoundCount[1].Length);
+        canvasController.Call_UpdateWinCounter(getRoundCount[0], getRoundCount[1]);
         //ゲームが終了するか判定
         if (getRoundCount[0].Length >= winRound || getRoundCount[1].Length >= winRound)
         {
@@ -230,8 +236,8 @@ public class InGameManager : MonoBehaviour
     /// </summary>
     private void GameVictory()
     {
-        //ラウンドカウンターの更新
-        canvasController.Call_UpdateWinCounter(getRoundCount[0].Length, getRoundCount[1].Length);
+        ////ラウンドカウンターの更新
+        //canvasController.Call_UpdateWinCounter(getRoundCount[0].Length, getRoundCount[1].Length);
 
 		//各プレイヤーが勝ったラウンド数からこの試合の勝敗を決定する
         if (getRoundCount[0].Length > getRoundCount[1].Length)
@@ -289,9 +295,9 @@ public class InGameManager : MonoBehaviour
 	private void Start()
     {
 		//初期化
+		Array.Resize<string>(ref getRoundCount, playerIndex);
 		for (int i = 0;i < playerIndex;i++)
 		{
-			Array.Resize<string>(ref getRoundCount, getRoundCount.Length + 1);
 			getRoundCount[i] = "";
 		}
 
