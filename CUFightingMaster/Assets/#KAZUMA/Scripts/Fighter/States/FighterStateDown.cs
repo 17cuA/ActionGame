@@ -7,8 +7,8 @@ public class FighterStateDown : StateBaseScriptMonoBehaviour
 {
     private FighterStateBase stateBase;
     private float downCount = 0;
-    private float downTime = 0.6f;
-    private bool isWakeUp = false;
+    private bool isWakeUp = false;//起き上がり
+	private bool isWakeUpPassive = false;//地上受け身
     private void Start()
     {
         stateBase = GetComponent<FighterStateBase>();
@@ -23,10 +23,14 @@ public class FighterStateDown : StateBaseScriptMonoBehaviour
     public void UpdateDown()
     {
         downCount += 1.0f / 60.0f;
-        if(downCount >= downTime)
+        if(downCount >= GameManager.Instance.Settings.DownFrame/60.0f)
         {
             isWakeUp = true;
         }
+		if(downCount >= GameManager.Instance.Settings.WakeUpFrame/60.0f)
+		{
+			isWakeUpPassive = true;
+		}
     }
     public bool IsWakeUp()
     {
@@ -36,6 +40,21 @@ public class FighterStateDown : StateBaseScriptMonoBehaviour
         }
         return isWakeUp;
     }
+	public bool IsWakeUpPassive()
+	{
+		if(isWakeUpPassive)
+		{
+			if (stateBase.input.atkButton != "")
+			{
+				if (stateBase.input.atkButton != CommonConstants.Buttons.Atk4)
+				{
+					stateBase.input.atkButton = "";
+					return true;
+				}
+			}
+		} 
+		return false;
+	}
     //起き上がり
     public void WakeUpStart()
     {
@@ -47,7 +66,25 @@ public class FighterStateDown : StateBaseScriptMonoBehaviour
         isWakeUp = false;
         stateBase.ChangeSkillConstant(SkillConstants.Wake_Up, 0);
     }
-    public void WakeUpUpdate()
+	//地上受け身
+	public void WakeUpPassiveStart()
+	{
+		Direction dir = stateBase.input.GetPlayerMoveDirection(stateBase);
+		if (dir == Direction.Back)
+		{
+			stateBase.ChangeSkillConstant(SkillConstants.Ground_Back_Passive, 0);
+		}
+		else if (dir == Direction.Front)
+		{
+			stateBase.ChangeSkillConstant(SkillConstants.Ground_Front_Passive, 0);
+		}
+		else
+		{
+			stateBase.ChangeSkillConstant(SkillConstants.Ground_Passive, 0);
+		}
+
+	}
+	public void WakeUpUpdate()
     {
         //振り向き処理
         if (stateBase.core.Direction == PlayerDirection.Right)

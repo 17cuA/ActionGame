@@ -210,6 +210,9 @@ public class FigterEditor : EditorWindow
             SSet("ダウン", ref fighterStatus.constantsSkills[CommonConstants.Skills.Down]);
             SSet("打ち付け",ref fighterStatus.constantsSkills[CommonConstants.Skills.Ground_Knock]);
             SSet("起き上がり", ref fighterStatus.constantsSkills[CommonConstants.Skills.Wake_Up]);
+			SSet("地上受け身", ref fighterStatus.constantsSkills[CommonConstants.Skills.Ground_Passive]);
+			SSet("地上前受け身", ref fighterStatus.constantsSkills[CommonConstants.Skills.Ground_Front_Passive]);
+			SSet("地上後受け身", ref fighterStatus.constantsSkills[CommonConstants.Skills.Ground_Back_Passive]);
 			SSet("空中受け身", ref fighterStatus.constantsSkills[CommonConstants.Skills.Air_Passive]);
 			SSet("空中前受け身", ref fighterStatus.constantsSkills[CommonConstants.Skills.Air_Front_Passive]);
 			SSet("空中後ろ受け身", ref fighterStatus.constantsSkills[CommonConstants.Skills.Air_Back_Passive]);
