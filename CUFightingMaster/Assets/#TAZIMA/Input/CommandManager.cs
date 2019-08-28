@@ -121,7 +121,6 @@ public class CommandManager :MonoBehaviour
     public IEnumerator CheckInputCommand(AttackParameter _attackParameter)
     {
         var time = _attackParameter.validInputFrame / 60f;
-        Debug.Log(time);
         yield return new WaitForSeconds(time);
         //入力中のコマンドをリセットする
         _attackParameter.checkCommadStr = "";

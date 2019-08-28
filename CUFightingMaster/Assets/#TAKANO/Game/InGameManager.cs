@@ -29,7 +29,7 @@ public class InGameManager : MonoBehaviour
 	private static readonly int playerIndex = 2;
     [SerializeField] private int gameRoundCount = 0;     //ラウンド数をカウント
     [SerializeField] private int winRound = 3;
-	[SerializeField] private string[] getRoundCount;		//そのラウンドをどう取得したかを保存(0:なし(多分使わない),1:KO,2:DoubleKO,3:TimeOver)し、lengthで取得数確認
+	[SerializeField] private string[] getRoundCount = {};		//そのラウンドをどう取得したかを保存(0:なし(多分使わない),1:KO,2:DoubleKO,3:TimeOver)し、lengthで取得数確認
 
 	//Updateする場面
 	private Action currentUpdate;
@@ -286,16 +286,17 @@ public class InGameManager : MonoBehaviour
 		canvasController = GameObject.Find("CanvasController").GetComponent<CanvasController>();
     }
 
-    void Start()
+	private void Start()
     {
 		//初期化
 		for (int i = 0;i < playerIndex;i++)
 		{
+			Array.Resize<string>(ref getRoundCount, getRoundCount.Length + 1);
 			getRoundCount[i] = "";
 		}
 
         currentUpdate = StartGame;
-    }
+	}
 
     void Update()
     {
