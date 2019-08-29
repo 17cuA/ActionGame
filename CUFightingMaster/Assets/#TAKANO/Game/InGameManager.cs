@@ -247,15 +247,17 @@ public class InGameManager : MonoBehaviour
         if (getRoundCount[0].Length > getRoundCount[1].Length)
         {
 			//P1が勝ったことを保存する
-			ShareSceneVariable.P1_info.isWin = true;
+			ShareSceneVariable.P1_info.isWin = 1;
+			ShareSceneVariable.P2_info.isWin = 0;
 
-            if (canvasController.Call_DisplayVictory_winP1() == false)
+			if (canvasController.Call_DisplayVictory_winP1() == false)
                 currentUpdate = GameFinish;
         }
         else if (getRoundCount[0].Length < getRoundCount[1].Length)
         {
 			//P2が勝ったことを保存する
-			ShareSceneVariable.P2_info.isWin = true;
+			ShareSceneVariable.P1_info.isWin = 0;
+			ShareSceneVariable.P2_info.isWin = 1;
 
 			if (canvasController.Call_DisplayVictory_winP2() == false)
                 currentUpdate = GameFinish;
