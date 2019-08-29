@@ -130,8 +130,6 @@ public class InGameManager : MonoBehaviour
 				getRoundCount[1] += "2";
 				gameRoundCount++;
 			}
-			GameManager.Instance.isStartGame = false;
-			GameManager.Instance.isEndRound = true;
 			currentUpdate = FinishRound_KO;
         }
 
@@ -156,8 +154,6 @@ public class InGameManager : MonoBehaviour
 				getRoundCount[1] += "3";
 				gameRoundCount++;
 			}
-			GameManager.Instance.isStartGame = false;
-			GameManager.Instance.isEndRound = true;
 			currentUpdate = FinishRound_TimeOver;
         }
     }
@@ -274,6 +270,8 @@ public class InGameManager : MonoBehaviour
         BattleCamera.transform.position = new Vector3(0, 3.0f, -8.5f);
 		player1.transform.position = targetPoint[0].transform.position;
 		player2.transform.position = targetPoint[1].transform.position;
+		GameManager.Instance.isStartGame = false;
+		GameManager.Instance.isEndRound = true;
 		yield return null;
 	}
 	#endregion
