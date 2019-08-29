@@ -20,11 +20,14 @@ public class CharacterSelect_Manager : MonoBehaviour
 	// Start is called before the first frame update
 	void Start()
     {
-        
-    }
+		// 飯塚追加-------------------------------------------
+		Sound.LoadBgm("BGM_Menu", "BGM_Menu");
+		Sound.PlayBgm("BGM_Menu", 0.4f, 1, true);
+		// ---------------------------------------------------
+	}
 
-    // Update is called once per frame
-    void Update()
+	// Update is called once per frame
+	void Update()
     {
 		if (cursor1_1.selectDir < 2)
 		{
@@ -53,8 +56,13 @@ public class CharacterSelect_Manager : MonoBehaviour
 		CharacterSelectBool[2] = cursor2_1.Determining_decision;
 		CharacterSelectBool[3] = cursor2_2.Determining_decision;
 
+		//決定(シーン移動)
 		if (CharacterSelectBool[0] && CharacterSelectBool[1] && CharacterSelectBool[2] && CharacterSelectBool[3])
 		{
+			// 飯塚追加-------------------------------------------
+			Sound.LoadSe("Menu_Decision", "Se_menu_decision");
+			Sound.PlaySe("Menu_Decision", 1, 0.3f);
+			// ---------------------------------------------------
 			SceneManager.LoadScene("Battle");
 		}
     }
