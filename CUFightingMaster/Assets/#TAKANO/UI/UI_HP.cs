@@ -111,11 +111,15 @@ public class UI_HP : MonoBehaviour
 
 		//ダメージを受けたときにHpバーの色が変わるやつ
 		hpObjects[4].SetActive(true);
-        //HPゲージを震わす
-        StartCoroutine(VibrationHPGuage());
+
+		//HPゲージを元の位置に
+		hpGuagePosition.position = initHpGuagePositon;
+		//HPゲージを震わす
+		StartCoroutine(VibrationHPGuage());
 		yield return new WaitForSeconds(0.1f);
         //HPゲージを元の位置に
         hpGuagePosition.position = initHpGuagePositon;
+
         //非表示にする
         hpObjects[4].SetActive(false);
     }

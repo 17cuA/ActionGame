@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 public struct PlayerInfo
 {
-	public bool isWin;
+	public int isWin;
 	public GameObject characterModel;
 }

@@ -84,16 +84,16 @@ public class InGameManager : MonoBehaviour
         canvasController.Call_PlayBattleRound();
         //キャラクターポジションの設定
         StartCoroutine("Test");
-        //画面が明るくなったら
-        if (canvasController.Call_StartFadeIn() == true)
+		//画面が明るくなったら
+		if (canvasController.Call_StartFadeIn() == true)
         {
             //ラウンド開始時のUI生成
             if (canvasController.Call_PlayStartRound(gameRoundCount) == false)
             {
-                GameManager.Instance.isStartGame = true;
-                GameManager.Instance.isEndRound = false;
-                //タイマーの開始
-                canvasController.Call_StartCountDown();
+				GameManager.Instance.isStartGame = true;
+				GameManager.Instance.isEndRound = false;
+				//タイマーの開始
+				canvasController.Call_StartCountDown();
                 currentUpdate = BattleRound;
             }
         }
@@ -224,9 +224,8 @@ public class InGameManager : MonoBehaviour
             GameManager.Instance.Player_one.HP = 100;
             GameManager.Instance.Player_two.HP = 100;
             canvasController.Call_ResetUIParameter();
-
-            //hpの初期化
-            canvasController.Call_DisplayPlayerHp(GameManager.Instance.Player_one.HP, GameManager.Instance.Player_two.HP);
+			//hpの初期化
+			canvasController.Call_DisplayPlayerHp(GameManager.Instance.Player_one.HP, GameManager.Instance.Player_two.HP);
 
 			// キャラクターリセットができないため、StartRoundに設定として書いた
 			currentUpdate = StartRound;
@@ -247,15 +246,17 @@ public class InGameManager : MonoBehaviour
         if (getRoundCount[0].Length > getRoundCount[1].Length)
         {
 			//P1が勝ったことを保存する
-			ShareSceneVariable.P1_info.isWin = true;
+			ShareSceneVariable.P1_info.isWin = 1;
+			ShareSceneVariable.P2_info.isWin = 0;
 
-            if (canvasController.Call_DisplayVictory_winP1() == false)
+			if (canvasController.Call_DisplayVictory_winP1() == false)
                 currentUpdate = GameFinish;
         }
         else if (getRoundCount[0].Length < getRoundCount[1].Length)
         {
 			//P2が勝ったことを保存する
-			ShareSceneVariable.P2_info.isWin = true;
+			ShareSceneVariable.P1_info.isWin = 0;
+			ShareSceneVariable.P2_info.isWin = 1;
 
 			if (canvasController.Call_DisplayVictory_winP2() == false)
                 currentUpdate = GameFinish;
@@ -271,7 +272,7 @@ public class InGameManager : MonoBehaviour
 	#region プレイヤー位置リセット
 	private IEnumerator Test()
     {
-        BattleCamera.transform.position = new Vector3(0, 3.0f, -8.5f);
+		BattleCamera.transform.position = new Vector3(0, 3.0f, -8.5f);
 		player1.transform.position = targetPoint[0].transform.position;
 		player2.transform.position = targetPoint[1].transform.position;
 		yield return null;

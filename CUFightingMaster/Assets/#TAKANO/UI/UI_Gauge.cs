@@ -47,3 +47,5 @@ public class UI_Gauge : MonoBehaviour
         mySlider = gameObject.GetComponent<Slider>();
     }
 }
+
+

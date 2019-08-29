@@ -4,17 +4,23 @@ using UnityEngine;
 
 public class UI_Judge : MonoBehaviour
 {
-	public GameObject Win;
-	public GameObject Lose;
+	[SerializeField] GameObject Win;
+	[SerializeField] GameObject Lose;
 
-	void Judge()
+	void Awake()
 	{
-		if (ShareSceneVariable.P1_info.isWin)
+		Win = transform.Find("WIN").gameObject;
+		Lose = transform.Find("LOSE").gameObject;
+	}
+
+	public void Judge(int winP1cnt, int winP2cnt)
+	{
+		if (winP1cnt > winP2cnt)
 		{
 			Win.SetActive(true);
 			Lose.SetActive(false);
 		}
-		if (ShareSceneVariable.P2_info.isWin)
+		if (winP2cnt > winP1cnt)
 		{
 			Win.SetActive(false);
 			Lose.SetActive(true);
