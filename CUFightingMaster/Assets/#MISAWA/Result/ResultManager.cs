@@ -8,7 +8,6 @@
 // 2019.08.14 作成
 //--------------------------------------
 // 仕様 
-// InGameManagerとCharacterSelectManagerから
 // 勝敗判定と選ばれていたキャラクターを取得
 //----------------------------------------
 // MEMO 
@@ -23,7 +22,11 @@ using UnityEngine.SceneManagement;
 public class ResultManager : MonoBehaviour
 {
 	public Canvas canvas_1;
+	[SerializeField] private ResultController resultController_1;
+
 	public Canvas canvas_2;
+	[SerializeField] private ResultController resultController_2;
+
 	#region Update
 	void Update()
     {
@@ -35,24 +38,19 @@ public class ResultManager : MonoBehaviour
 		}
 		Debug.Log(ShareSceneVariable.P1_info.isWin);
 		Debug.Log(ShareSceneVariable.P2_info.isWin);
-		Judge();
+		SetResultJudge();
 	}
 	#endregion
-	void Judge()
+
+	public void SetResultJudge()
 	{
-		if (ShareSceneVariable.P1_info.isWin)
-		{
-			canvas_1.transform.Find("VictoryORdefeat/WIN").gameObject.SetActive(true);
-			canvas_1.transform.Find("VictoryORdefeat/LOSE").gameObject.SetActive(false);
-			canvas_2.transform.Find("VictoryORdefeat/WIN").gameObject.SetActive(false);
-			canvas_2.transform.Find("VictoryORdefeat/LOSE").gameObject.SetActive(true);
-		}
-		if (ShareSceneVariable.P2_info.isWin)
-		{
-			canvas_1.transform.Find("VictoryORdefeat/WIN").gameObject.SetActive(false);
-			canvas_1.transform.Find("VictoryORdefeat/LOSE").gameObject.SetActive(true);
-			canvas_2.transform.Find("VictoryORdefeat/WIN").gameObject.SetActive(true);
-			canvas_2.transform.Find("VictoryORdefeat/LOSE").gameObject.SetActive(false);
-		}
+		resultController_1.SetJudge(ShareSceneVariable.P1_info.isWin, ShareSceneVariable.P2_info.isWin);
+		resultController_2.SetJudge(ShareSceneVariable.P2_info.isWin, ShareSceneVariable.P1_info.isWin);
+	}
+
+	void Awake()
+	{
+		resultController_1 = canvas_1.transform.Find("ResultController").GetComponent<ResultController>();
+		resultController_2 = canvas_2.transform.Find("ResultController").GetComponent<ResultController>();
 	}
 }
