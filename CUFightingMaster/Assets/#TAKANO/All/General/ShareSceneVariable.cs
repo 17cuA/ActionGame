@@ -27,8 +27,8 @@ public class ShareSceneVariable
 	/// </summary>
 	public void Init()
 	{
-		P1_info.isWin = false;
-		P2_info.isWin = false;
+		P1_info.isWin = 0;
+		P2_info.isWin = 0;
 		P1_info.characterModel = null;
 		P2_info.characterModel = null;
 	}
