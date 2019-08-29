@@ -57,6 +57,11 @@ public class ScreenFade : MonoBehaviour
             return false;
     }
 
+	public void BrackOut()
+	{
+		alfa = 1.0f;
+	}
+
     private void Awake()
     {
         red = gameObject.GetComponent<Image>().color.r;
