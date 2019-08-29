@@ -123,6 +123,9 @@ public class Sound
 		Sound.LoadBgm("BGM06", "BGM06");
 		Sound.LoadBgm("BGM07", "BGM07");
 		Sound.LoadBgm("BGM08", "BGM08");
+		Sound.LoadBgm("BGM_Battle", "BGM_Battle");
+		Sound.LoadBgm("BGM_Menu", "BGM_Menu");
+		Sound.LoadBgm("BGM_Title", "BGM_Title");
 
 		// SEロード
 		Sound.LoadSe("HitW", "Se_hit_weak");

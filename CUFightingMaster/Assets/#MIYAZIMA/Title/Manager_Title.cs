@@ -27,8 +27,8 @@ public class Manager_Title : MonoBehaviour
 	void Start()
 	{
 		 // 飯塚追加-------------------------------------------
-        Sound.LoadBgm("BGM03", "BGM03");
-        Sound.PlayBgm("BGM03", 0.4f, 1, true);
+        Sound.LoadBgm("BGM_Title", "BGM_Title");
+        Sound.PlayBgm("BGM_Title", 0.4f, 1, true);
         // ---------------------------------------------------
 		activeTitle = false;
 		demoMovie = false;

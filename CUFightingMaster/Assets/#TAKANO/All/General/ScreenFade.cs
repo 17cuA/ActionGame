@@ -34,7 +34,7 @@ public class ScreenFade : MonoBehaviour
     /// </summary>
     public bool StartFadeOut()
     {
-            if (alfa >= 1)
+            if (alfa > 1)
             {
 				return true;
 			}
@@ -48,7 +48,7 @@ public class ScreenFade : MonoBehaviour
     /// </summary>
     public bool StartFadeIn()
     {
-            if (alfa <= 0)
+            if (alfa < 0)
             {
                 return true;
             }
