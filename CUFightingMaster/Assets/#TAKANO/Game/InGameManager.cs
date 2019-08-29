@@ -90,8 +90,10 @@ public class InGameManager : MonoBehaviour
             //ラウンド開始時のUI生成
             if (canvasController.Call_PlayStartRound(gameRoundCount) == false)
             {
-                //タイマーの開始
-                canvasController.Call_StartCountDown();
+				GameManager.Instance.isStartGame = true;
+				GameManager.Instance.isEndRound = false;
+				//タイマーの開始
+				canvasController.Call_StartCountDown();
                 currentUpdate = BattleRound;
             }
         }
