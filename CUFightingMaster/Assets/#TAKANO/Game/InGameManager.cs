@@ -270,6 +270,8 @@ public class InGameManager : MonoBehaviour
         BattleCamera.transform.position = new Vector3(0, 3.0f, -8.5f);
 		player1.transform.position = targetPoint[0].transform.position;
 		player2.transform.position = targetPoint[1].transform.position;
+		player1.GetComponent<FighterCore>().SetDirection(PlayerDirection.Right);
+		player2.GetComponent<FighterCore>().SetDirection(PlayerDirection.Left);
 		GameManager.Instance.isStartGame = false;
 		GameManager.Instance.isEndRound = true;
 		yield return null;
