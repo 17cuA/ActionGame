@@ -70,8 +70,8 @@ public class UI_StartRound : MonoBehaviour
 	{
         isPlay = true;
 		// 飯塚追加-------------------------------------------
-        Sound.LoadBgm("BGM02", "BGM02");
-        Sound.PlayBgm("BGM02", 0.4f, 1, true);
+        Sound.LoadBgm("BGM_Battle", "BGM_Battle");
+        Sound.PlayBgm("BGM_Battle", 0.4f, 1, true);
 		switch (roundCount)
         {
             case 0:

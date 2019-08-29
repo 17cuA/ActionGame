@@ -33,8 +33,8 @@ public class CharacterSelectManager : MonoBehaviour
     void Start()
     {
 		 // 飯塚追加-------------------------------------------
-        Sound.LoadBgm("BGM01", "BGM01");
-        Sound.PlayBgm("BGM01", 0.4f, 1, true);
+        Sound.LoadBgm("BGM_Menu", "BGM_Menu");
+        Sound.PlayBgm("BGM_Menu", 0.4f, 1, true);
         // ---------------------------------------------------
         currentSellectCharacter = Instantiate(character[selectDir], charaCreatePos.transform);
         //プレイヤー番号に対応した現在接続されているコントローラーを設定
