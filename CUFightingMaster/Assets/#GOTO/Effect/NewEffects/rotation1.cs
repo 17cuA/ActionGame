@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class rotation1 : MonoBehaviour
 {
-    public float rotationSpeed=0;
+	public float rotationSpeed=0;
     public float StartSecond;
     public int StartSecondMax;
     // Start is called before the first frame update
     void Start()
     {
-        StartSecond = 0;
+		StartSecond = 0;
         StartSecondMax = 3;
     }
 

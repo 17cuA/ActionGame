@@ -1,5 +1,5 @@
 ﻿//---------------------------------------
-// Result画面
+// Result管理
 //---------------------------------------
 // 作成者:三沢
 // 作成日:2019.08.14
@@ -8,10 +8,12 @@
 // 2019.08.14 作成
 //--------------------------------------
 // 仕様 
-// 勝敗判定と選ばれていたキャラクターを取得
+// 情報を受け取り、2つのCanvasに対応できるよう
+// ResultControllerに投げる
 //----------------------------------------
 // MEMO 
-// ゴリ押し
+// 勝敗判定(完成？)
+// 勝敗時にランダムでキャラクターテキスト表示(未作成)
 //----------------------------------------
 
 using System.Collections;
@@ -27,7 +29,13 @@ public class ResultManager : MonoBehaviour
 	public Canvas canvas_2;
 	[SerializeField] private ResultController resultController_2;
 
-	#region Update
+	void Awake()
+	{
+		resultController_1 = canvas_1.transform.Find("ResultController").GetComponent<ResultController>();
+		resultController_2 = canvas_2.transform.Find("ResultController").GetComponent<ResultController>();
+		SetResultJudge();
+	}
+
 	void Update()
     {
 		//ポーズ処理
@@ -38,19 +46,15 @@ public class ResultManager : MonoBehaviour
 		}
 		Debug.Log(ShareSceneVariable.P1_info.isWin);
 		Debug.Log(ShareSceneVariable.P2_info.isWin);
-		SetResultJudge();
 	}
-	#endregion
 
-	public void SetResultJudge()
+
+	/// <summary>
+	/// 勝敗を受け取り、プレイヤーに合わせて飛ばす
+	/// </summary>
+	void SetResultJudge()
 	{
 		resultController_1.SetJudge(ShareSceneVariable.P1_info.isWin, ShareSceneVariable.P2_info.isWin);
 		resultController_2.SetJudge(ShareSceneVariable.P2_info.isWin, ShareSceneVariable.P1_info.isWin);
-	}
-
-	void Awake()
-	{
-		resultController_1 = canvas_1.transform.Find("ResultController").GetComponent<ResultController>();
-		resultController_2 = canvas_2.transform.Find("ResultController").GetComponent<ResultController>();
 	}
 }
