@@ -34,6 +34,8 @@ public class FighterStatus : ScriptableObject
 	public int SpecialGuage = 100;
 	public float airBraking = 0.5f;//空中制動
 
+	public GameObject PlayerModel;
+
     //当たり判定
     public HitBox_ headHitBox = new HitBox_();
 	public HitBox_ bodyHitBox = new HitBox_();

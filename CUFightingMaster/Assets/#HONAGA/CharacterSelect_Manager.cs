@@ -14,6 +14,7 @@ public class CharacterSelect_Manager : SingletonMono<CharacterSelect_Manager>
 
 	public GameObject[] CharacterNamePanels = new GameObject[4];
 	public GameObject[] previewModel = new GameObject[4];
+	public GameObject[] createCharaPos = new GameObject[2];
 
 	public Sprite[] SelectCharacterNamePanels = new Sprite[2];
 
@@ -34,16 +35,18 @@ public class CharacterSelect_Manager : SingletonMono<CharacterSelect_Manager>
 		animFlag = false;
 		animFlagCount = 1;
 		fedeFrame = 0;
-    }
+		previewModel[0] = Instantiate(currentCharacter[0].PlayerModel, createCharaPos[0].transform.position, createCharaPos[0].transform.rotation);
+		previewModel[1] = Instantiate(currentCharacter[1].PlayerModel, createCharaPos[0].transform.position, createCharaPos[0].transform.rotation);
+		previewModel[2] = Instantiate(currentCharacter[0].PlayerModel, createCharaPos[1].transform.position, createCharaPos[1].transform.rotation);
+		previewModel[3] = Instantiate(currentCharacter[1].PlayerModel, createCharaPos[1].transform.position, createCharaPos[1].transform.rotation);
+	}
 
-    // Update is called once per frame
-    void Update()
+	void Update()
     {
 		if (cursor1_1.selectDir < 2)
 		{
 			CharacterNamePanels[0].GetComponent<Image>().sprite = SelectCharacterNamePanels[0];
 			CharacterNamePanels[2].GetComponent<Image>().sprite = SelectCharacterNamePanels[0];
-			currentCharacter[0] = previewModel[0];
 			previewModel[0].SetActive(true);
 			previewModel[1].SetActive(false);
 		}
@@ -51,7 +54,6 @@ public class CharacterSelect_Manager : SingletonMono<CharacterSelect_Manager>
 		{
 			CharacterNamePanels[0].GetComponent<Image>().sprite = SelectCharacterNamePanels[1];
 			CharacterNamePanels[2].GetComponent<Image>().sprite = SelectCharacterNamePanels[1];
-			currentCharacter[0] = previewModel[1];
 			previewModel[0].SetActive(false);
 			previewModel[1].SetActive(true);
 		}
@@ -60,7 +62,6 @@ public class CharacterSelect_Manager : SingletonMono<CharacterSelect_Manager>
 		{
 			CharacterNamePanels[1].GetComponent<Image>().sprite = SelectCharacterNamePanels[0];
 			CharacterNamePanels[3].GetComponent<Image>().sprite = SelectCharacterNamePanels[0];
-			currentCharacter[1] = previewModel[0];
 			previewModel[2].SetActive(true);
 			previewModel[3].SetActive(false);
 		}
@@ -68,7 +69,6 @@ public class CharacterSelect_Manager : SingletonMono<CharacterSelect_Manager>
 		{
 			CharacterNamePanels[1].GetComponent<Image>().sprite = SelectCharacterNamePanels[1];
 			CharacterNamePanels[3].GetComponent<Image>().sprite = SelectCharacterNamePanels[1];
-			currentCharacter[1] = previewModel[1];
 			previewModel[2].SetActive(false);
 			previewModel[3].SetActive(true);
 		}
