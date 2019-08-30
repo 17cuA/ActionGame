@@ -4,7 +4,7 @@
 //MEMO 他の人が調節出来るように調整をする必要あり
 //-----------------------------------------------------------------4
 
-Shader "Unlit/Toon"
+Shader "Toon"
 {
     Properties
     {
@@ -13,6 +13,9 @@ Shader "Unlit/Toon"
 		[NoScaleOffset]_2st_ShadeMap("明るい色の影",2D) = "black"{}
 		[NoScaleOffset]_1st_ShadeMap("暗い色の影",2D) = "black"{}
 		
+		__2st_ShadowColor("明るい影の色に上塗り",Color) = (255,255,255,255)
+		__1st_ShadowColor("暗い影の色に上塗り",Color) = (255,255,255,255)
+
 		_Tweak_SystemShadowsLevel("明るいところの割合", Range(-0.5, 0.5)) = 0
 		_BaseColor_Step("明るい影の割合", Range(0.0,1.0)) = 0.5
 		_ShadeColor_Step("暗い影の割合",Range(0.0,1.0)) = 0.5
@@ -75,6 +78,8 @@ Shader "Unlit/Toon"
 		float _1st2nd_Shades_Feather;
 		float _Is_NormalMapToBase;
 		fixed4 _LightColor0;
+		float4 __2st_ShadowColor;
+		float4 __1st_ShadowColor;
 
 
 		float3 lerp3(float3 x, float3 y, float s)
@@ -85,8 +90,6 @@ Shader "Unlit/Toon"
 			re.z = x.z + s * (y.z - x.z);
 			return re;
 		}
-
-
             struct VertexInput
             {
                 float4 vertex : POSITION;
@@ -155,10 +158,10 @@ Shader "Unlit/Toon"
 				float3 _BaseColor = _BaseMap_var.rgb * _Set_LightColor;
 				// 1影
 				float4 _1st_ShadeMap_var = tex2D(_1st_ShadeMap, TRANSFORM_TEX(i.uv0, _1st_ShadeMap));
-				float3 _1st_ShadeColor = _1st_ShadeMap_var.rbg  * _Set_LightColor;
+				float3 _1st_ShadeColor = _1st_ShadeMap_var.rbg  *  _Set_LightColor * __1st_ShadowColor.rgb;
 				// 2影
 				float4 _2st_ShadeMap_var = tex2D(_2st_ShadeMap, TRANSFORM_TEX(i.uv0, _2st_ShadeMap));
-				float3 _2st_ShadeColor = _2st_ShadeMap_var.rgb * _Set_LightColor;
+				float3 _2st_ShadeColor = _2st_ShadeMap_var.rgb * _Set_LightColor * __2st_ShadowColor.rgb;
 
 
 				float NdotLDIr = 0.5*
@@ -314,6 +317,7 @@ Shader "Unlit/Toon"
 		}
 		ENDCG
 		}
+
     }
 	FallBack "Diffuse"
 }
