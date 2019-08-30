@@ -27,8 +27,6 @@ public class UI_FinishRound_KO: MonoBehaviour
     public bool isPlay = false;         //再生中か（InGameManagerへの戻り値）
 	public bool isCalled = false;    //既に呼ばれているか(コルーチンの再生を一度きりに使う)
 
-	private Image image;
-
 	public GameObject ko;
 
     public bool PlayFinishRound_KO()
@@ -47,14 +45,9 @@ public class UI_FinishRound_KO: MonoBehaviour
         Sound.PlaySe("Ko", 3, 0.8f);
         // ---------------------------------------------------
         isPlay = true;
-		image.enabled = true;
+		ko.SetActive(true);
         yield return new WaitForSeconds(interval01);
-        image.enabled = false;
 
         isPlay = false;
-    }
-    private void Awake()
-    {
-        image = ko.GetComponent<Image>();
     }
 }

@@ -12,11 +12,14 @@ public class AnimationUIManager : MonoBehaviour
 	public string filePath;
 	public string spriteName;
 	private int totalSpriteCount;
-	private int nowSpriteCount = 0;
-    void Start()
+	private int nowSpriteCount;
+	public int FadeOutFrame;
+	private float currentRemainFrame;
+	void Start()
     {
 		path = "Sprites/UI/AnimationUI/ROUND ANIMATION/" + filePath;
 		totalSpriteCount = Directory.GetFiles("Assets/Resources/" + path, "*", SearchOption.TopDirectoryOnly).Length / 2;
+		Init();
 	}
 
     void Update()
@@ -24,13 +27,27 @@ public class AnimationUIManager : MonoBehaviour
         if (nowSpriteCount < totalSpriteCount)
 		{
 			var sprite = Resources.Load<Sprite>(string.Format("{0}/{1}_{2}", path, spriteName, nowSpriteCount.ToString("D5")));
-			//Debug.Log(string.Format("{0}/{1}_{2}", path, spriteName, nowSpriteCount.ToString("D5")));
-			gameObject.GetComponent<SpriteRenderer>().sprite = sprite;
+			gameObject.GetComponent<Image>().sprite = sprite;
+			if (nowSpriteCount > (totalSpriteCount - FadeOutFrame - 1))
+			{
+				//徐々にフェードアウト
+				currentRemainFrame--;
+				float alpha = currentRemainFrame / FadeOutFrame;
+				var color = gameObject.GetComponent<Image>().color;
+				color.a = alpha;
+				gameObject.GetComponent<Image>().color = color;
+			}
 			nowSpriteCount++;
 		}
 		else
 		{
-			Destroy(gameObject);
+			Init();
+			gameObject.SetActive(false);
 		}
     }
+	private void Init()
+	{
+		nowSpriteCount = 0;
+		currentRemainFrame = FadeOutFrame;
+	}
 }
