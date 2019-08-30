@@ -47,7 +47,7 @@ public class Manager_Title : MonoBehaviour
          {
 			// 飯塚追加-------------------------------------------
 			Sound.LoadSe("Menu_Decision", "Se_menu_decision");
-			Sound.PlaySe("Menu_Decision", 1, 0.8f);
+			Sound.PlaySe("Menu_Decision", 1, 0.3f);
 			// ---------------------------------------------------
 			SceneManager.LoadScene("CharacterSelect");
 		}
