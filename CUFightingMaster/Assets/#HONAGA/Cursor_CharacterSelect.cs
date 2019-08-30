@@ -71,10 +71,10 @@ public class Cursor_CharacterSelect : MonoBehaviour
 				determining_decision = true;
 			else
 				determining_decision = false;
-			// 飯塚追加-------------------------------------------
-			//Sound.LoadSe("Menu_Decision", "Se_menu_decision");
-			//Sound.PlaySe("Menu_Decision", 1, 0.8f);
-			// ---------------------------------------------------
+			//飯塚追加------------------------------------------ -
+			Sound.LoadSe("Menu_Cancel", "Se_menu_cancel");
+			Sound.PlaySe("Menu_Cancel", 1, 0.8f);
+			//---------------------------------------------------
 		}
 		transform.position = new Vector3(characterPanels[selectDir].transform.position.x, transform.position.y, transform.position.z);
 		if (selectDir > 1/*currentSellectCharacter.name == "ObaChan" || currentSellectCharacter.name == "ObaChan(1)"*/)

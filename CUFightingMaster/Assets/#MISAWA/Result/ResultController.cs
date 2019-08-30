@@ -34,5 +34,6 @@ public class ResultController : MonoBehaviour
 	public void SetJudge(int p1,int p2)
 	{
 		ui_Judge.Judge(p1, p2);
+		Debug.Log("aa");
 	}
 }

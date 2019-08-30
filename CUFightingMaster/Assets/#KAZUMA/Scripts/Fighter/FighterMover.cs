@@ -31,7 +31,7 @@ public class FighterMover
 		{
 			RightLeft = 1;
 		}
-		if (core.Direction == PlayerDirection.Left)
+		else if (core.Direction == PlayerDirection.Left)
 		{
 			RightLeft = -1;
 		}
@@ -91,14 +91,21 @@ public class FighterMover
 				if (effects[0].frame == 0)
 				{
 					nowPlayEffectNumber++;
-					GameObject obj;
+					GameObject obj = null;
 					if (effects[nowPlayEffectNumber].worldPositionFlag)
 					{
 						obj = Object.Instantiate(effects[nowPlayEffectNumber].effect, effects[nowPlayEffectNumber].position, Quaternion.identity);
 					}
 					else
 					{
-						obj = Object.Instantiate(effects[nowPlayEffectNumber].effect, core.transform.position + (new Vector3(effects[nowPlayEffectNumber].position.x * RightLeft, effects[nowPlayEffectNumber].position.y, effects[nowPlayEffectNumber].position.z)), Quaternion.identity);
+						if (RightLeft == 1)
+						{
+							obj = Object.Instantiate(effects[nowPlayEffectNumber].effect, core.transform.position + (new Vector3(effects[nowPlayEffectNumber].position.x * RightLeft, effects[nowPlayEffectNumber].position.y, effects[nowPlayEffectNumber].position.z)), Quaternion.identity);
+						}
+						else if (RightLeft == -1)
+						{
+							obj = Object.Instantiate(effects[nowPlayEffectNumber].effect, core.transform.position + (new Vector3(effects[nowPlayEffectNumber].position.x * RightLeft, effects[nowPlayEffectNumber].position.y, effects[nowPlayEffectNumber].position.z)), Quaternion.Euler(0, 180, 0));
+						}
 					}
 
 					//子にするか否か
@@ -198,16 +205,26 @@ public class FighterMover
 				{
 					return;
 				}
-				GameObject obj;
+				GameObject obj = null;
 				if (effects[nowPlayEffectNumber].worldPositionFlag)
 				{
 					obj = Object.Instantiate(effects[nowPlayEffectNumber].effect, effects[nowPlayEffectNumber].position, Quaternion.identity);
 				}
 				else
 				{
-					obj = Object.Instantiate(effects[nowPlayEffectNumber].effect, core.transform.position + (new Vector3(effects[nowPlayEffectNumber].position.x * RightLeft, effects[nowPlayEffectNumber].position.y, effects[nowPlayEffectNumber].position.z)), Quaternion.identity);
+					if (RightLeft == 1)
+					{
+						obj = Object.Instantiate(effects[nowPlayEffectNumber].effect, core.transform.position + (new Vector3(effects[nowPlayEffectNumber].position.x * RightLeft, effects[nowPlayEffectNumber].position.y, effects[nowPlayEffectNumber].position.z)), Quaternion.identity);
+					}
+					else if(RightLeft == -1)
+					{
+						obj = Object.Instantiate(effects[nowPlayEffectNumber].effect, core.transform.position + (new Vector3(effects[nowPlayEffectNumber].position.x * RightLeft, effects[nowPlayEffectNumber].position.y, effects[nowPlayEffectNumber].position.z)), Quaternion.Euler(0, 180, 0));
+					}
 				}
-				obj.layer = LayerMask.NameToLayer(CommonConstants.Layers.Effect);
+				if (obj != null)
+				{
+					obj.layer = LayerMask.NameToLayer(CommonConstants.Layers.Effect);
+				}
 
 				//子にするか否か
 				if (effects[nowPlayEffectNumber].childFlag)

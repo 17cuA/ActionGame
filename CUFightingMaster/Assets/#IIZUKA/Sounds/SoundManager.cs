@@ -3,6 +3,8 @@
 //---------------------------------------------------------------
 // 作成者:飯塚
 // 作成日:2019.06.26
+// 更新日:2019.08.30 後藤 BGMを新しく追加(Title,CharaSele,)
+// 更新日:2019.08.30 後藤 
 //---------------------------------------------------------------
 using UnityEngine;
 using System.Collections;
@@ -148,6 +150,8 @@ public class Sound
 		Sound.LoadSe("Menu_MoveCursor", "Se_menu_moveCursor");
 		Sound.LoadSe("Menu_Cancel", "Se_menu_cancel");
 		Sound.LoadSe("Menu_Decision", "Se_menu_decision");
+		
+		/*古いデータ
 		Sound.LoadSe("RoundOne", "Voice_roundOne");
 		Sound.LoadSe("RoundTwo", "Voice_roundTwo");
 		Sound.LoadSe("RoundThree", "Voice_roundThree");
@@ -156,6 +160,25 @@ public class Sound
 		Sound.LoadSe("Draw", "Voice_draw");
 		Sound.LoadSe("PlayerOneWin", "Voice_playerOneWin");
 		Sound.LoadSe("PlayerTwoWin", "Voice_PlayerTwoWin");
+		*/
+
+		//新しく入れたデータ　8.30
+		Sound.LoadSe("PlayerOneWin", "Voice_Player1_Win");
+		Sound.LoadSe("PlayerTwoWin", "Voice_Player2_Win");
+		Sound.LoadSe("RoundOne", "Voice_Round1");
+		Sound.LoadSe("RoundTwo", "Voice_Round2");
+		Sound.LoadSe("RoundThree", "Voice_Final_Round");
+		Sound.LoadSe("Fight", "Voice_Fight");
+		Sound.LoadSe("Ko", "Voice_K.O.");
+		Sound.LoadSe("Draw", "Voice_Draw");
+
+		//まだ未使用組
+		Sound.LoadSe("Ko2", "Voice_K.O.2");
+		Sound.LoadSe("ADrunk", "CharaVoice_ADrunk");
+		Sound.LoadSe("Clico", "CharaVoice_Clico");
+		Sound.LoadSe("Kuidaore", "CharaVoice_Kuidaore");
+		Sound.LoadSe("Obachan", "CharaVoice_Oba");
+
 	}
 
 	/// <summary>

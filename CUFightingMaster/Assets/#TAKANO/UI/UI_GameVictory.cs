@@ -45,7 +45,7 @@ public class UI_GameVictory : MonoBehaviour
 		 // 飯塚追加-------------------------------------------
         if (flag)
         {
-            Sound.LoadSe("PlayerOneWin", "voice_playerOneWin");
+            Sound.LoadSe("PlayerOneWin", "Voice_Player1_Win");
             Sound.PlaySe("PlayerOneWin", 3, 1);
             flag = false;
         }

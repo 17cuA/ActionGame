@@ -16,6 +16,7 @@ MonoBehaviour:
   animationSpeed: 1
   status: 2
   frameEffects: []
+  frameBullets: []
   cancelFrag: 0
   barrageCancelFrag: 0
   cancelLayer: 0
@@ -70,6 +71,8 @@ MonoBehaviour:
   movements:
   - movement: {x: 2.5, y: 0, z: 0}
     startFrame: 0
+  - movement: {x: 0, y: 0, z: 0}
+    startFrame: 24
   gravityMoves:
   - movement: {x: 0, y: -2, z: 0}
     limitMove: {x: 0, y: -20, z: 0}

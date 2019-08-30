@@ -75,15 +75,15 @@ public class UI_StartRound : MonoBehaviour
 		switch (roundCount)
         {
             case 0:
-                Sound.LoadSe("RoundOne", "Voice_roundOne");
+                Sound.LoadSe("RoundOne", "Voice_Round1");
                 Sound.PlaySe("RoundOne", 3, 0.8f);
                 break;
             case 1:
-                Sound.LoadSe("RoundTwo", "Voice_roundTwo");
+                Sound.LoadSe("RoundTwo", "Voice_Round2");
                 Sound.PlaySe("RoundTwo", 3, 0.8f);
                 break;
             case 2:
-                Sound.LoadSe("RoundThree", "Voice_roundThree");
+                Sound.LoadSe("RoundThree", "Voice_Final_Round");
                 Sound.PlaySe("RoundThree", 3, 0.8f);
                 break;
         }
@@ -94,7 +94,7 @@ public class UI_StartRound : MonoBehaviour
 		DisplayRoundNumberImage( roundCount );
 		yield return new WaitForSeconds(interval02);
 		  // 飯塚追加-------------------------------------------
-        Sound.LoadSe("Fight", "Voice_fight");
+        Sound.LoadSe("Fight", "Voice_Fight");
         Sound.PlaySe("Fight", 3, 0.8f);
         // ---------------------------------------------------
 		DisplayFightImage (roundCount );

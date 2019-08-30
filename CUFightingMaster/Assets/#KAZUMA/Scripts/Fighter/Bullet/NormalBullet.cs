@@ -5,6 +5,7 @@ using UnityEngine;
 public class NormalBullet : BulletCore
 {
     private FighterCore core;
+	public Vector3 move;
     public override void Start() 
     {
         base.Start();
@@ -13,7 +14,7 @@ public class NormalBullet : BulletCore
     public override void UpdateGame()
     {
         base.UpdateGame();
-        transform.Translate(0.1f * RightLeft, 0, 0);
+        transform.Translate(move.x * RightLeft, move.y, move.z);
         if(hitAttackNum>0)
         {
             isDestroyFlag = true;
