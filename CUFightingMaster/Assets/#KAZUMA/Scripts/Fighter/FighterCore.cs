@@ -22,7 +22,7 @@ public class FighterCore : MonoBehaviour
     [SerializeField] private bool isCrouching = false;
     private int changeWeightFrame = 0;
     public bool changeSkill { get; private set; }//技が入れ替わったかどうか
-    public int HP = 0;
+    public int HP = 100;
     private int comboCount = 0;
 	private int stanGauge = 0;
 	private int specialGauge = 0;

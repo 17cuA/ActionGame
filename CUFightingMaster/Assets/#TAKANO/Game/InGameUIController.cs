@@ -90,6 +90,17 @@ public class InGameUIController : MonoBehaviour
         return uI_FinishRound_TimeOver.PlayFinishRound_TimeOver();
     }
 
+	/// <summary>
+	/// HPバーにキャラのHPの最大値をセット
+	/// </summary>
+	/// <param name="charaHpMax_P1"></param>
+	/// <param name="charaHpMax_P2"></param>
+	public void SetHpMax(int charaHpMax_P1 , int charaHpMax_P2 )
+	{
+		uI_hp_P1.SetHpMax(charaHpMax_P1);
+		uI_hp_P2.SetHpMax(charaHpMax_P2);
+	}
+
     /// <summary>
     /// プレイヤーのhp表示
     /// </summary>

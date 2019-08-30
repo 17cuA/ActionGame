@@ -19,6 +19,8 @@
 //----------------------------------------
 // MEMO
 // 参照は手動です
+// hpのマックスはキャラごとに違うので変えられるようにする
+// hpの色を変える処理	
 //----------------------------------------
 using System.Collections;
 using System.Collections.Generic;
@@ -49,8 +51,9 @@ public class UI_HP : MonoBehaviour
     private float redAlphaValue;                 //赤いところのアルファ値
     public float transparentSpeed = 0.015f;      //赤いところを透明にする速度
 
-	private int beforeHp = 100;
-    private const int hp = 100;
+    public int hpMax;
+	private int beforeHp;
+
 	private float totalDamage = 0;
 	private float beforeDamage = 0;
 
@@ -96,8 +99,8 @@ public class UI_HP : MonoBehaviour
     /// </summary>
     private void LowerHP()
     {
-        greenRect.localPosition = new Vector3(CalcMove(hp, totalDamage), 0, 0);
-        grayRect.localPosition = new Vector3(CalcMove(hp, totalDamage), 0, 0);
+        greenRect.localPosition = new Vector3(CalcMove(hpMax, totalDamage), 0, 0);
+        grayRect.localPosition = new Vector3(CalcMove(hpMax, totalDamage), 0, 0);
     }
 
     /// <summary>
@@ -106,20 +109,15 @@ public class UI_HP : MonoBehaviour
     /// <returns></returns>
     private IEnumerator ReceiveDamageAction()
     {
-
 		//Instantiate(effectsObject, initHpGuagePositon, Quaternion.identity);
 
 		//ダメージを受けたときにHpバーの色が変わるやつ
 		hpObjects[4].SetActive(true);
-
-		//HPゲージを元の位置に
-		hpGuagePosition.position = initHpGuagePositon;
-		//HPゲージを震わす
-		StartCoroutine(VibrationHPGuage());
+        //HPゲージを震わす
+        StartCoroutine(VibrationHPGuage());
 		yield return new WaitForSeconds(0.1f);
         //HPゲージを元の位置に
         hpGuagePosition.position = initHpGuagePositon;
-
         //非表示にする
         hpObjects[4].SetActive(false);
     }
@@ -174,7 +172,7 @@ public class UI_HP : MonoBehaviour
             redImage.color = new Color(redImage.color.r, redImage.color.g, redImage.color.b, redAlphaValue);
 
             //位置の更新
-            redRect.localPosition = new Vector3(CalcMove(hp, beforeDamage), 0, 0);
+            redRect.localPosition = new Vector3(CalcMove(hpMax, beforeDamage), 0, 0);
 
             //パラメータの初期化
             isDeleteRed = false;
@@ -192,7 +190,7 @@ public class UI_HP : MonoBehaviour
         else if (redAlphaValue <= 0.0f)
         {
 			//赤を合計のダメージ量のところへ移動させる
-            redRect.localPosition = new Vector3(CalcMove(hp, totalDamage), 0, 0);
+            redRect.localPosition = new Vector3(CalcMove(hpMax, totalDamage), 0, 0);
 
 			//赤を赤くする
             isTransparentRed = false;
@@ -221,24 +219,36 @@ public class UI_HP : MonoBehaviour
 
         if (playerType == PlayerType.P1)
         {
-            return hpBarWidth * (100 - temp) / 100;
+            return hpBarWidth * (hp - temp) / hp;
         }
-		return hpBarWidth * (100 - temp) / 100 * -1;
+		return hpBarWidth * (hp - temp) / hp * -1;
 	}
 
-    private void Start()
+	/// <summary>
+	/// UIにキャラのHpをセット
+	/// </summary>
+	/// <param name="charaHp"></param>
+	public void SetHpMax( int charaHp)
+	{
+		hpMax = charaHp;
+		beforeHp = charaHp;
+	}
+
+	private void Awake()
+	{
+		//初期ポジションを保存
+		initHpGuagePositon = hpGuagePosition.position;
+	}
+	private void Start()
     {
         //画像の横のサイズを取得
         hpBarWidth = hpObjects[0].GetComponent<RectTransform>().sizeDelta.x;
 
         //描画順番を指定
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < 5	; i++)
         {
             hpObjects[i].transform.SetSiblingIndex(i);
         }
-
-        //初期ポジションを保存
-        initHpGuagePositon = hpGuagePosition.position;
     }
 
     private void Update()

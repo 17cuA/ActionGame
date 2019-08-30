@@ -108,6 +108,7 @@ public class InGameManager : MonoBehaviour
     private void BattleRound()
     {
         //UIのhp表示の更新
+		canvasController.Call_SetUIHpMax(GameManager.Instance.Player_one.HP , GameManager.Instance.Player_two.HP);
         canvasController.Call_DisplayPlayerHp(GameManager.Instance.Player_one.HP, GameManager.Instance.Player_two.HP);
 
         //(どちらかのHPが0になったら
@@ -304,7 +305,6 @@ public class InGameManager : MonoBehaviour
 		{
 			getRoundCount[i] = "";
 		}
-
         currentUpdate = StartGame;
 	}
 

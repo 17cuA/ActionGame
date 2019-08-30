@@ -198,4 +198,15 @@ public class CanvasController : MonoBehaviour
 		inGameUIController_1.ResetUIParameter();
 		inGameUIController_2.ResetUIParameter();
 	}
+
+	/// <summary>
+	/// HPバーにキャラのHPの最大値をセット
+	/// </summary>
+	/// <param name="charaHp_P1"></param>
+	/// <param name="charaHp_P2"></param>
+	public void Call_SetUIHpMax(int charaHp_P1 , int charaHp_P2)
+	{
+		inGameUIController_1.SetHpMax(charaHp_P1 , charaHp_P2);
+		inGameUIController_2.SetHpMax(charaHp_P1 , charaHp_P2);
+	}
 }
