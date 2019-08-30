@@ -19,9 +19,6 @@ public class Cursor_CharacterSelect : MonoBehaviour
 	public GameObject[] characterPanels = new GameObject[maxChara];   //キャラクターパネル
 	public Sprite[] characterName = new Sprite[maxChara];            //キャラクターの名前画像
 
-	public GameObject currentSellectCharacter = null;  //現在選択しているキャラクター
-	public Image currentSelectCharacter;           //現在選択しているキャラクターの名前
-
 	public float limitCursorFrame;      //カーソル移動
 	public float moveCursorFrames = 0;  //カーソル移動後フレーム
 
@@ -71,10 +68,10 @@ public class Cursor_CharacterSelect : MonoBehaviour
 				determining_decision = true;
 			else
 				determining_decision = false;
-			//飯塚追加------------------------------------------ -
-			Sound.LoadSe("Menu_Cancel", "Se_menu_cancel");
-			Sound.PlaySe("Menu_Cancel", 1, 0.8f);
-			//---------------------------------------------------
+			// 飯塚追加-------------------------------------------
+			//Sound.LoadSe("Menu_Decision", "Se_menu_decision");
+			//Sound.PlaySe("Menu_Decision", 1, 0.8f);
+			// ---------------------------------------------------
 		}
 		transform.position = new Vector3(characterPanels[selectDir].transform.position.x, transform.position.y, transform.position.z);
 		if (selectDir > 1/*currentSellectCharacter.name == "ObaChan" || currentSellectCharacter.name == "ObaChan(1)"*/)
@@ -100,7 +97,7 @@ public class Cursor_CharacterSelect : MonoBehaviour
 		{
 			// 飯塚追加-------------------------------------------
 			Sound.LoadSe("Menu_MoveCursor", "Se_menu_moveCursor");
-			Sound.PlaySe("Menu_MoveCursor", 1, 0.2f);
+			Sound.PlaySe("Menu_MoveCursor", 1, 0.3f);
 			// ---------------------------------------------------
 			if (x > 0)
 				x--;
@@ -111,7 +108,7 @@ public class Cursor_CharacterSelect : MonoBehaviour
 		{
 			// 飯塚追加-------------------------------------------
 			Sound.LoadSe("Menu_MoveCursor", "Se_menu_moveCursor");
-			Sound.PlaySe("Menu_MoveCursor", 1, 0.2f);
+			Sound.PlaySe("Menu_MoveCursor", 1, 0.3f);
 			// ---------------------------------------------------
 			if (x < 3)
 				x++;
