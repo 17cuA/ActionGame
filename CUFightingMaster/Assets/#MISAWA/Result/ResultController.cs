@@ -20,7 +20,7 @@ using UnityEngine;
 
 public class ResultController : MonoBehaviour
 {
-	[SerializeField] UI_Judge ui_Judge;
+	public UI_Judge ui_Judge;
 	void Awake()
 	{
 		ui_Judge = gameObject.transform.Find("VictoryORdefeat").GetComponent<UI_Judge>();

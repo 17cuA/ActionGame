@@ -16,16 +16,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UI_Judge : MonoBehaviour
 {
 	[SerializeField] GameObject Win;
 	[SerializeField] GameObject Lose;
 
-	void Awake()
+	void Start()
 	{
-		Win = transform.Find("WIN").gameObject;
-		Lose = transform.Find("LOSE").gameObject;
+		Win = gameObject.transform.Find("WIN").gameObject;
+		Lose = gameObject.transform.Find("LOSE").gameObject;
 	}
 
 	/// <summary>
