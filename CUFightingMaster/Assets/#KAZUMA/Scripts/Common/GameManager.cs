@@ -132,6 +132,8 @@ public class GameManager : SingletonMono<GameManager>
             Player_one.SetComboCount(0);
             Player_two.SetComboCount(0);
         }
+		Player_one.Mover.SetAirXMove(0);
+		Player_two.Mover.SetAirXMove(0);
 
 	}
 	public FighterCore GetPlayFighterCore(PlayerNumber _mode)

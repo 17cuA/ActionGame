@@ -81,6 +81,10 @@ public class FighterCore : MonoBehaviour
     {
         get { return comboCount; }
     }
+	public FighterMover Mover
+	{
+		get { return mover; }
+	}
     #endregion
     private void Start()
     {

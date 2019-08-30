@@ -75,6 +75,18 @@ public class FighterStateMove : StateBaseScriptMonoBehaviour
         ChangeMove(inp);
         beforeInput = inp;
     }
+	public void AirUpdateMove()
+	{
+		Direction dir = stateBase.input.GetPlayerMoveDirection(stateBase);
+		if(dir == Direction.Back||dir == Direction.DownBack|| dir == Direction.UpBack)
+		{
+			stateBase.core.Mover.SetAirXMove(-stateBase.core.Status.airBraking * 0.1f);
+		}
+		else if(dir == Direction.Front||dir == Direction.UpFront||dir== Direction.DownFront)
+		{
+			stateBase.core.Mover.SetAirXMove(stateBase.core.Status.airBraking * 0.1f);
+		}
+	}
     /* 条件式 */
     public bool Input_Atk_True()
     {

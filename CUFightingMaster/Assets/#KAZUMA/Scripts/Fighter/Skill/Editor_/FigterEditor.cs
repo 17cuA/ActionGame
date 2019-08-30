@@ -72,7 +72,8 @@ public class FigterEditor : EditorWindow
     {
         EditorGUILayout.BeginVertical("Box");
         fighterStatus.HP = EditorGUILayout.IntField("HP",fighterStatus.HP);
-        EditorGUILayout.EndVertical();
+		fighterStatus.airBraking = EditorGUILayout.FloatField("空中制動", fighterStatus.airBraking);
+		EditorGUILayout.EndVertical();
     }
     #endregion
 

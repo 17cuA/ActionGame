@@ -30,6 +30,7 @@ public class FighterStatus : ScriptableObject
     }
 
     public int HP = 100;
+	public float airBraking = 0.5f;//空中制動
 
     //当たり判定
     public HitBox_ headHitBox = new HitBox_();

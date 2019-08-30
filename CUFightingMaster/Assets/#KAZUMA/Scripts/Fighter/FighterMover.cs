@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class FighterMover
 {
+	private float airBraking = 0;
+
 	private FighterCore core;
 	private Transform transform;//動かすTransform
 	private int nowPlayMoveNumber = -1;		//現在再生中の移動配列の要素数(-1だと動かない)
@@ -44,6 +46,10 @@ public class FighterMover
 	{
 		PlayEffects();
 		PlayBullets();
+	}
+	public void SetAirXMove(float _x)
+	{
+		airBraking = _x;
 	}
 	#region 技入れ替えチェック
 	//入れ替わり処理
@@ -136,7 +142,12 @@ public class FighterMover
     //移動
     private void MovementSkill()
     {
-        if ((moves == null) || (moves.Count == 0)) return;//nullチェック
+		//空中制動
+		if(airBraking != 0)
+		{
+			transform.Translate(new Vector3(airBraking * RightLeft, 0, 0));
+		}
+		if ((moves == null) || (moves.Count == 0)) return;//nullチェック
                                                           //次があるかどうか
         if (moves.Count > nowPlayMoveNumber + 1)
         {
