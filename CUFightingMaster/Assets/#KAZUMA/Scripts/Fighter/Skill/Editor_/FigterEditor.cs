@@ -168,6 +168,7 @@ public class FigterEditor : EditorWindow
 			fighterStatus.constantsSkills[CommonConstants.Skills.Stand_Guard] = (FighterSkill)EditorGUILayout.ObjectField("立ちガード", fighterStatus.constantsSkills[CommonConstants.Skills.Stand_Guard], typeof(FighterSkill), false);
 			fighterStatus.constantsSkills[CommonConstants.Skills.Crouching_Guard] = (FighterSkill)EditorGUILayout.ObjectField("しゃがみガード", fighterStatus.constantsSkills[CommonConstants.Skills.Crouching_Guard], typeof(FighterSkill), false);
             SSet("着地", ref fighterStatus.constantsSkills[CommonConstants.Skills.Landing]);
+			SSet("空中待機", ref fighterStatus.constantsSkills[CommonConstants.Skills.Air_Idle]);
 
         }
 		if (standHitDamage = CustomUI.Foldout("立ちやられ",standHitDamage))

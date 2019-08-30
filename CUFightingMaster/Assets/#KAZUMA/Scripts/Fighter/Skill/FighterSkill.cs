@@ -132,6 +132,7 @@ public class FighterSkill : ScriptableObject
 
 	//重力継続判定
 	public bool isContinue = false;
+	public bool isMoveContinue = false;
 	//移動
 	public List<Move> movements = new List<Move>();
     public List<GravityMove> gravityMoves = new List<GravityMove>();

@@ -520,30 +520,34 @@ public class PlayerSkillEditor : EditorWindow
 	#region 移動速度設定_Tab
 	private void MoveSettingDraw()
 	{
+		playerSkill.isMoveContinue = EditorGUILayout.Toggle("移動継続", playerSkill.isMoveContinue);
 		playerSkill.isContinue = EditorGUILayout.Toggle("制動継続", playerSkill.isContinue);
-		if(GUILayout.Button("移動作成",GUILayout.Width(80)))
+		if (!playerSkill.isMoveContinue)
 		{
-			playerSkill.movements.Add(new FighterSkill.Move());
-		}
-		for (int i = 0; i < playerSkill.movements.Count; i++)
-		{
-			EditorGUILayout.BeginVertical("Box");
-			EditorGUILayout.BeginHorizontal();
-			bool removeFrag = false;
-			playerSkill.movements[i].startFrame = EditorGUILayout.IntField("スタートフレーム",playerSkill.movements[i].startFrame);
-			//削除ボタン
-		   if(GUILayout.Button("×",GUILayout.Width(20)))
+			if (GUILayout.Button("移動作成", GUILayout.Width(80)))
 			{
-				removeFrag = true;
+				playerSkill.movements.Add(new FighterSkill.Move());
 			}
-		   //削除
-			EditorGUILayout.EndHorizontal();
-			EditorGUILayout.BeginVertical("Box");
-			//Vector3入力
-			playerSkill.movements[i].movement = EditorGUILayout.Vector3Field("移動量", playerSkill.movements[i].movement);
-			EditorGUILayout.EndVertical();
-			EditorGUILayout.EndVertical();
-			if (removeFrag) playerSkill.movements.RemoveAt(i);
+			for (int i = 0; i < playerSkill.movements.Count; i++)
+			{
+				EditorGUILayout.BeginVertical("Box");
+				EditorGUILayout.BeginHorizontal();
+				bool removeFrag = false;
+				playerSkill.movements[i].startFrame = EditorGUILayout.IntField("スタートフレーム", playerSkill.movements[i].startFrame);
+				//削除ボタン
+				if (GUILayout.Button("×", GUILayout.Width(20)))
+				{
+					removeFrag = true;
+				}
+				//削除
+				EditorGUILayout.EndHorizontal();
+				EditorGUILayout.BeginVertical("Box");
+				//Vector3入力
+				playerSkill.movements[i].movement = EditorGUILayout.Vector3Field("移動量", playerSkill.movements[i].movement);
+				EditorGUILayout.EndVertical();
+				EditorGUILayout.EndVertical();
+				if (removeFrag) playerSkill.movements.RemoveAt(i);
+			}
 		}
         if (!playerSkill.isContinue)
         {

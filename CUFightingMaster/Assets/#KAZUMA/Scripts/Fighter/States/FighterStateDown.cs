@@ -149,6 +149,7 @@ public class FighterStateDown : StateBaseScriptMonoBehaviour
          // ---------------------------------------------------
         stateBase.ChangeSkillConstant(SkillConstants.Ground_Knock, 0);
     }
+	//再生終了に使用
     public bool IsEndGroundKnock()
     {
         return stateBase.core.AnimationPlayerCompornent.EndAnimFrag;

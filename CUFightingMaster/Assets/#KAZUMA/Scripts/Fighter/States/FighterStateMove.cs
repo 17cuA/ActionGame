@@ -75,6 +75,11 @@ public class FighterStateMove : StateBaseScriptMonoBehaviour
         ChangeMove(inp);
         beforeInput = inp;
     }
+	public void AirMoveStart()
+	{
+		stateBase.ChangeSkillConstant(SkillConstants.Air_Idle, 5);
+		stateBase.core.SetPlayerMoveState(PlayerMoveState.Jump);
+	}
 	public void AirUpdateMove()
 	{
 		Direction dir = stateBase.input.GetPlayerMoveDirection(stateBase);

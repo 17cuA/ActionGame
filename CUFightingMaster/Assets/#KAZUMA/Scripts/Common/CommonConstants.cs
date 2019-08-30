@@ -67,7 +67,7 @@ public static class CommonConstants
     public static class Skills
     {
         //一つ増やすたびに増やして
-        public static readonly int SkillCount = 80;
+        public static readonly int SkillCount = 81;
 
         //地上の動き
         public static readonly int Idle = 0;            //待機
@@ -187,6 +187,7 @@ public static class CommonConstants
 		public static readonly int Ground_Front_Passive = 78;
 		public static readonly int Ground_Back_Passive = 79;
 
+		public static readonly int Air_Idle = 80;
     }
 }
 public enum SkillConstants
@@ -306,4 +307,5 @@ public enum SkillConstants
 	Ground_Passive = 77,
 	Ground_Front_Passive = 78,
 	Ground_Back_Passive = 79,
+	Air_Idle = 80,
 }

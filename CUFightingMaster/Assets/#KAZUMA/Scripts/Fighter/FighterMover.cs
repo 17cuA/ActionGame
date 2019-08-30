@@ -65,16 +65,24 @@ public class FighterMover
 			{
 				gravityFrame = 0;
 			}
-			moves = new List<FighterSkill.Move>(core.NowPlaySkill.movements);
+			if (!core.NowPlaySkill.isMoveContinue)
+			{
+				moves = new List<FighterSkill.Move>(core.NowPlaySkill.movements);
+			}
             if (!core.NowPlaySkill.isContinue)
             {
                 gravity = new List<FighterSkill.GravityMove>(core.NowPlaySkill.gravityMoves);
             }
             effects = new List<FighterSkill.FrameEffects>(core.NowPlaySkill.frameEffects);
 			bullets = new List<FighterSkill.FrameBullets>(core.NowPlaySkill.frameBullets);
-
-			nowPlayMoveNumber = -1;
-			nowPlayGravityNumber = -1;
+			if (!core.NowPlaySkill.isMoveContinue)
+			{
+				nowPlayMoveNumber = -1;
+			}
+			if (!core.NowPlaySkill.isContinue)
+			{
+				nowPlayGravityNumber = -1;
+			}
 			nowPlayEffectNumber = -1;
 			nowPlayBulletNumber = -1;
 
