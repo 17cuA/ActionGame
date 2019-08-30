@@ -34,16 +34,20 @@ using UnityEngine.SceneManagement;
 public class CameraController : MonoBehaviour
 {
 	#region 変数宣言
-	private float offsetY;						// カメラのY座標の基準値
-	private float speed_ZoomIn;					// カメラのズーム時の速度
+	[SerializeField]
+	private float offsetY;                      // カメラのY座標の基準値
+	[SerializeField]
+	private float speed_ZoomIn;                 // カメラのズーム時の速度
+	[SerializeField]
 	private float speed_ZoomOut;				// カメラのズームアウト時の速度
 	private bool call_Once;						// 一度だけ呼び出す用
 
 	private float distance_CamToPlayer;			// カメラからキャラまでの距離
 	private float distanceOfPlayers_Start;		// ゲーム開始時のプレイヤー同士の距離
-	private float distanceOfPLayers_Current;	// 現在のプレイヤー同士の距離
-
-	private Vector3 cameraPos_Max;			// カメラの最大座標
+	private float distanceOfPLayers_Current;    // 現在のプレイヤー同士の距離
+	[SerializeField]
+	private Vector3 cameraPos_Max;          // カメラの最大座標
+	[SerializeField]
 	private Vector3 cameraPos_Min;				// カメラの最小座標
 
 	private Vector3 pCentorPos;					// プレイヤー同士のセンターを取得
@@ -73,12 +77,12 @@ public class CameraController : MonoBehaviour
 	void Start()
 	{
 		offsetY = transform.position.y;
-		speed_ZoomIn = 7.5f;
-		speed_ZoomOut = 17.5f;
+		//speed_ZoomIn = 10.5f;
+		//speed_ZoomOut = 20.5f;
 		call_Once = true;
-		stageWidth = 20.0f;				// ステージの横幅
-		cameraPos_Max.z = -8.5f;		// ズームアウトの最大値
-		cameraPos_Min.z = -10.0f;		// ズームインの最小値
+		//stageWidth = 20.0f;				// ステージの横幅
+		//cameraPos_Max.z = -8.5f;		// ズームアウトの最大値
+		//cameraPos_Min.z = -15.0f;		// ズームインの最小値
 		//distanceOfPlayers_Start = Vector3.Distance(Camera.main.WorldToViewportPoint(Player1.transform.position), Camera.main.WorldToViewportPoint(Player2.transform.position));
 		distanceOfPlayers_Start = 0.4f; // ゲーム開始時のプレイヤー同士の距離
 	}
@@ -88,7 +92,7 @@ public class CameraController : MonoBehaviour
 	{
 		if (call_Once)
 		{
-			GetCameraPos_X();
+			//GetCameraPos_X();
 			call_Once = false;
 		}
 		#region デバック用
