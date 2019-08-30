@@ -30,6 +30,8 @@ public class FighterStatus : ScriptableObject
     }
 
     public int HP = 100;
+	public int StanGuage = 100;
+	public int SpecialGuage = 100;
 	public float airBraking = 0.5f;//空中制動
 
     //当たり判定
