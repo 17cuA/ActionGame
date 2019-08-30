@@ -8,35 +8,36 @@ Shader "Unlit/Toon"
 {
     Properties
     {
-		[NoScaleOffset]_BaseMap("BaseMap",2D) = "white"{}
+		[NoScaleOffset]_BaseMap("テクスチャ",2D) = "white"{}
 
-		[NoScaleOffset]_1st_ShadeMap("1st_ShadeMap",2D) = "black"{}
-		[NoScaleOffset]_2st_ShadeMap("2st_ShadeMap",2D) = "black"{}
+		[NoScaleOffset]_2st_ShadeMap("明るい色の影",2D) = "black"{}
+		[NoScaleOffset]_1st_ShadeMap("暗い色の影",2D) = "black"{}
 		
-		[MaterialToggle]_Is_NoramMapToBase("IsNormalMap",Float) = 0
-		[NoScaleOffset]_NormalMap("NormalMap", 2D) = "white"{}
+		_Tweak_SystemShadowsLevel("明るいところの割合", Range(-0.5, 0.5)) = 0
+		_BaseColor_Step("明るい影の割合", Range(0.0,1.0)) = 0.5
+		_ShadeColor_Step("暗い影の割合",Range(0.0,1.0)) = 0.5
 		
-		
-		_Tweak_SystemShadowsLevel("Tweak_SystemShadowsLevel", Range(-0.5, 0.5)) = 0
-		_BaseColor_Step("BaseColor_Step", Range(0.0,1.0)) = 0.5
-		_BaseShade_Feather("BaseShade_Reather",Range(0.0001,1.0)) = 0.1
-		_ShadeColor_Step("ShadeColor_Step",Range(0.0,1.0)) = 0.5
-		_1st2nd_Shades_Feather("_1st2nd_Shades_Feather",Range(0.0001,1.0)) = 0.1
+		_BaseShade_Feather("明るい影のなめらかさ",Range(0.0001,1.0)) = 0.1
+		_1st2nd_Shades_Feather("暗い影の割合なめらかさ",Range(0.0001,1.0)) = 0.1
+	
+		[Toggle]_Is_LightColor_Base("光の色の影響を受けるか" , float) = 0.0
+		[Toggle]_Is_BlendBaseColor("アウトラインとテクスチャの色とブレンドする", float) = 0.0
+		_BaseColor("テクスチャの色にブレンドする色",Color) = (0,0,0,0)
 
-		[Toggle]_Is_LightColor_Base("_Is_LightColor_Base" , float) = 0.0
-		[Toggle]_Is_BlendBaseColor("_Is_BlendBaseColor", float) = 0.0
+		__ModelOutLine_Color("アウトラインの色",Color) = (0,0,0,0)
+		__ModelOutLine_Width("アウトラインの幅", Range(0.0, 300.0)) = 0.1
 
-		__ModelOutLine_Width("_ModelOutLine_Width", Range(0.0, 300.0)) = 0.1
-		_Farthest_Distance("Farthest_Distance",float) = 1.0
-		_Nearest_Distance("Nearest_Distance",float) = 0.1
-		_Offset_Z("Offset_Z" , float) = 0.1
-
+		_Offset_Z("Offset_Z" , float) = 2
+		_Farthest_Distance("Farthest_Distance",float) = 0.5
+		_Nearest_Distance("Nearest_Distance",float) = 0.5
+	
 		__ModelOutLine_Sampler("_ModelOutLine_Sampler",2D) = "white"{}
 		//_BaseMap("BaseMap",2D) = "White"{}
-
-		_BaseColor("BaseColor",Color) = (0,0,0,0)
 		_LightColor0("LightColor0",Color) = (0,0,0,0)
-		__ModelOutLine_Color("_ModelOutLine_Color",Color) = (0,0,0,0)
+
+		[MaterialToggle]_Is_NoramMapToBase("IsNormalMap",Float) = 0
+
+		[NoScaleOffset]_NormalMap("NormalMap", 2D) = "white"{}
 	}
 		SubShader
 	{
