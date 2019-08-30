@@ -24,8 +24,8 @@ public class FighterCore : MonoBehaviour
     public bool changeSkill { get; private set; }//技が入れ替わったかどうか
     public int HP = 100;
     private int comboCount = 0;
-	private int stanGauge = 0;
-	private int specialGauge = 0;
+	public int StanGauge = 0;
+	public int SpecialGauge = 0;
 
     private bool isHitAttack = false;//攻撃が当たったかどうか
     //現在のプレイヤーの移動の状況、状態
@@ -87,14 +87,6 @@ public class FighterCore : MonoBehaviour
 	{
 		get { return mover; }
 	}
-	public int StanGuage
-	{
-		get { return stanGauge; }
-	}
-	public int SpecialGauge
-	{
-		get { return specialGauge; }
-	}
     #endregion
     private void Start()
     {
@@ -102,8 +94,8 @@ public class FighterCore : MonoBehaviour
         if (InitErrorCheck())
         {
             HP = status.HP;
-			stanGauge = status.StanGuage;
-			specialGauge = status.SpecialGuage;
+			StanGauge = status.StanGuage;
+			SpecialGauge = status.SpecialGuage;
             //アニメーションプレイヤーの取得
             animationPlayer = playerModel.GetComponent<FightingAnimationPlayer>();
             mover = new FighterMover(this);

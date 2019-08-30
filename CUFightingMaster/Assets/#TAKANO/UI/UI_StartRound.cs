@@ -30,26 +30,12 @@ public class UI_StartRound : MonoBehaviour
 	public bool isPlay = false;         //再生中か（InGameManagerへの戻り値）
 	public bool isCalled= false;    //既に呼ばれているか(コルーチンの再生を一度きりに使う)
 
-	public GameObject round;
-	public GameObject[] rundNumber = new GameObject[5];
-	public GameObject fight;
-
-	void DisplayRoundImage()
-	{
-        round.GetComponent<Image>().enabled = true;
-	}
+	public GameObject[] roundNumber = new GameObject[3];
 
 	void DisplayRoundNumberImage(int roundCnt)
 	{
-        rundNumber[roundCnt].GetComponent<Image>().enabled = true;
+		roundNumber[roundCnt].SetActive(true);
     }
-
-	void DisplayFightImage(int roundCnt)
-	{
-        round.GetComponent<Image>().enabled = false;
-        rundNumber[roundCnt].GetComponent<Image>().enabled = false;
-        fight.GetComponent<Image>().enabled = true;
-	}
 
 	public void Reset_isCalled()
 	{
@@ -87,19 +73,14 @@ public class UI_StartRound : MonoBehaviour
                 Sound.PlaySe("RoundThree", 3, 0.8f);
                 break;
         }
-        // ---------------------------------------------------
-		DisplayRoundImage();
+		// ---------------------------------------------------
+		DisplayRoundNumberImage(roundCount);
 		yield return new WaitForSeconds(interval01);
-
-		DisplayRoundNumberImage( roundCount );
-		yield return new WaitForSeconds(interval02);
-		  // 飯塚追加-------------------------------------------
+		// 飯塚追加-------------------------------------------
         Sound.LoadSe("Fight", "Voice_Fight");
         Sound.PlaySe("Fight", 3, 0.8f);
         // ---------------------------------------------------
-		DisplayFightImage (roundCount );
 		yield return new WaitForSeconds(interval03);
-        fight.GetComponent<Image>().enabled = false;
 		isPlay = false;	
     }
 }
