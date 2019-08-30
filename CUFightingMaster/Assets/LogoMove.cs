@@ -8,11 +8,12 @@ public class LogoMove : MonoBehaviour
 	public float CheckTime;
 	public float CheckTime1;
 	public float CheckTime2;
+
 	public float DontMoveTime;
 
 	public int up1;
 	public int up2;
-	public int down;
+	public int down1;
 	public float MoveSpeed;
 
 	public float rotationSpeed = 0;
@@ -36,26 +37,30 @@ public class LogoMove : MonoBehaviour
 			MoveTime += Time.deltaTime;
 			if (MoveTime <= CheckTime)
 			{
+				//１回目UP
 				rigidbody.AddForce(0, MoveSpeed * up1, 0);
 			}
 			else if (MoveTime <= CheckTime1)
 			{
-
+				//何もなし
 			}
 			else if (MoveTime < CheckTime2 && MoveTime > CheckTime1)
 			{
-				print("in2");
-				rigidbody.AddForce(0, -MoveSpeed * down, 0);
+				//１回目Down
+				rigidbody.AddForce(0, -MoveSpeed * down1, 0);
 			}
 			else
 			{
-				rigidbody.AddForce(0, MoveSpeed * up2, 0);
+				//二回目Do
+				if (transform.position.y >= 2.3) rigidbody.AddForce(0, MoveSpeed * up2, 0);
+				else rigidbody.velocity = Vector3.zero;
 			}
 		}
 		else 
 		{
 			StartSecond += Time.deltaTime;
 			rigidbody.velocity = Vector3.zero;
-			if(StartSecondMax < StartSecond) myTransform.Rotate(0f, rotationSpeed, 0f);		}
+			if(StartSecondMax < StartSecond) myTransform.Rotate(0f, rotationSpeed, 0f);
+		}
 	}
 }
