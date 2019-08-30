@@ -40,7 +40,6 @@ public class CameraController : MonoBehaviour
 	private float speed_ZoomIn;                 // カメラのズーム時の速度
 	[SerializeField]
 	private float speed_ZoomOut;				// カメラのズームアウト時の速度
-	private bool call_Once;						// 一度だけ呼び出す用
 
 	private float distance_CamToPlayer;			// カメラからキャラまでの距離
 	private float distanceOfPlayers_Start;		// ゲーム開始時のプレイヤー同士の距離
@@ -77,12 +76,11 @@ public class CameraController : MonoBehaviour
 	void Start()
 	{
 		offsetY = transform.position.y;
-		//speed_ZoomIn = 10.5f;
-		//speed_ZoomOut = 20.5f;
-		call_Once = true;
-		//stageWidth = 20.0f;				// ステージの横幅
-		//cameraPos_Max.z = -8.5f;		// ズームアウトの最大値
-		//cameraPos_Min.z = -15.0f;		// ズームインの最小値
+		speed_ZoomIn = 8.0f;
+		speed_ZoomOut = 40.0f;
+		stageWidth = 20.0f;								// ステージの横幅
+		cameraPos_Max = new Vector3(28.0f,0, -8.5f);	// ズームアウトの最大値
+		cameraPos_Min = new Vector3(-28.0f,0,-12.0f);	// ズームインの最小値
 		//distanceOfPlayers_Start = Vector3.Distance(Camera.main.WorldToViewportPoint(Player1.transform.position), Camera.main.WorldToViewportPoint(Player2.transform.position));
 		distanceOfPlayers_Start = 0.4f; // ゲーム開始時のプレイヤー同士の距離
 	}
@@ -90,11 +88,6 @@ public class CameraController : MonoBehaviour
 
 	void Update()
 	{
-		if (call_Once)
-		{
-			//GetCameraPos_X();
-			call_Once = false;
-		}
 		#region デバック用
 		if (Input.GetKeyDown(KeyCode.N))
 		{
