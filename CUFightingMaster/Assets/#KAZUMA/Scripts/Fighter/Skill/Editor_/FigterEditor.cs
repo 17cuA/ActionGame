@@ -73,6 +73,9 @@ public class FigterEditor : EditorWindow
         EditorGUILayout.BeginVertical("Box");
         fighterStatus.HP = EditorGUILayout.IntField("HP",fighterStatus.HP);
 		fighterStatus.airBraking = EditorGUILayout.FloatField("空中制動", fighterStatus.airBraking);
+		fighterStatus.StanGuage = EditorGUILayout.IntField("スタン値", fighterStatus.StanGuage);
+		fighterStatus.SpecialGuage = EditorGUILayout.IntField("スぺシャルゲージ", fighterStatus.SpecialGuage);
+		fighterStatus.PlayerModel = EditorGUILayout.ObjectField("キャラセレモデル", fighterStatus.PlayerModel, typeof(GameObject), false) as GameObject;
 		EditorGUILayout.EndVertical();
     }
     #endregion

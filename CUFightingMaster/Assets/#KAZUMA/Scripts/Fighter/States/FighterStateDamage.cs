@@ -40,6 +40,7 @@ public class FighterStateDamage : StateBaseScriptMonoBehaviour
         {
             //ダメージ処理
             stateBase.core.HP -= box.damage;
+			//stateBase.core.SpecialGauge
             if (stateBase.core.HP < 0)
             {
                 stateBase.core.HP = 0;
