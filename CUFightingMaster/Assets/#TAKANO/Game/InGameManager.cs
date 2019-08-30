@@ -80,8 +80,9 @@ public class InGameManager : MonoBehaviour
     /// </summary>
     private void StartRound()
     {
-        //ゲーム中のUI生成
-        canvasController.Call_PlayBattleRound();
+		GameManager.Instance.isStartGame = false;
+		//ゲーム中のUI生成
+		canvasController.Call_PlayBattleRound();
         //キャラクターポジションの設定
         StartCoroutine("Test");
 		//画面が明るくなったら
@@ -130,7 +131,6 @@ public class InGameManager : MonoBehaviour
 				getRoundCount[1] += "2";
 				gameRoundCount++;
 			}
-			GameManager.Instance.isStartGame = false;
 			GameManager.Instance.isEndRound = true;
 			currentUpdate = FinishRound_KO;
         }
@@ -156,7 +156,6 @@ public class InGameManager : MonoBehaviour
 				getRoundCount[1] += "3";
 				gameRoundCount++;
 			}
-			GameManager.Instance.isStartGame = false;
 			GameManager.Instance.isEndRound = true;
 			currentUpdate = FinishRound_TimeOver;
         }

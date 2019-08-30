@@ -101,11 +101,16 @@ public class FighterStateBase : StateBaseScriptMonoBehaviour
 	}
     public void Start_NO_HP()
     {
-        ChangeSkillConstant(SkillConstants.Not_HP_Down, 0);
+        ChangeSkillConstant(SkillConstants.Not_HP_Down, 10);
     }
-    /*　汎用条件式　*/
-    //ゲーム開始する条件
-    public bool IsStartGame(bool _game)
+	public void NO_HP_HitStop()
+	{
+		GameManager.Instance.SetHitStop(core.PlayerNumber, GameManager.Instance.Settings.KOHitStopFrame);
+		GameManager.Instance.SetHitStop(core.EnemyNumber, GameManager.Instance.Settings.KOHitStopFrame);
+	}
+	/*　汎用条件式　*/
+	//ゲーム開始する条件
+	public bool IsStartGame(bool _game)
     {
         //現在条件なし
         return GameManager.Instance.isStartGame == _game;

@@ -15,6 +15,8 @@ public class GameSettings : ScriptableObject
 	private int downFrame = 30;
 	[SerializeField, Header("地上起き上がりまでの時間")]
 	private int wakeUpFrame = 15;
+	[SerializeField, Header("KOヒットストップフレーム")]
+	private int koHitStopFrame = 60;
 
 
 	public float PushAmount
@@ -36,5 +38,10 @@ public class GameSettings : ScriptableObject
 	public int WakeUpFrame
 	{
 		get { return wakeUpFrame; }
+	}
+
+	public int KOHitStopFrame
+	{
+		get { return koHitStopFrame; }
 	}
 }

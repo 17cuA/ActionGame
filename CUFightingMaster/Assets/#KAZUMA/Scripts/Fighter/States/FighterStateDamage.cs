@@ -24,8 +24,8 @@ public class FighterStateDamage : StateBaseScriptMonoBehaviour
         hitRigor = box.hitRigor;
         hitCount = 0;
 
-        //ヒットストップ
-        GameManager.Instance.SetHitStop(stateBase.core.PlayerNumber, box.hitStop);
+		//ヒットストップ
+		GameManager.Instance.SetHitStop(stateBase.core.PlayerNumber, box.hitStop);
         //相打ち時に受けたほうを優先する
         if (GameManager.Instance.GetHitStop(stateBase.core.EnemyNumber) <= 0)
         {
