@@ -149,6 +149,11 @@ public class FighterStateMove : StateBaseScriptMonoBehaviour
     #region 取得系
     private void ChangeMove(Direction _dir)
     {
+        if (stateBase.core.NowPlaySkill == stateBase.core.Status.constantsSkills[(int)SkillConstants.Jump]||stateBase.core.NowPlaySkill == stateBase.core.Status.constantsSkills[(int)SkillConstants.Front_Jump]||stateBase.core.NowPlaySkill == stateBase.core.Status.constantsSkills[(int)SkillConstants.Back_Jump])
+        {
+            return;
+        }
+
         switch (_dir)
         {
             case Direction.Neutral:
