@@ -48,7 +48,8 @@ public class FighterStateBase : StateBaseScriptMonoBehaviour
 
 	public void StartGame(bool isUpdate)
 	{
-		if (core.Direction == PlayerDirection.Right)
+        core.SetDamage(new FighterSkill.CustomHitBox(), null);
+        if (core.Direction == PlayerDirection.Right)
 		{
 			if (core.PlayerNumber == PlayerNumber.Player1)
 			{
@@ -143,6 +144,13 @@ public class FighterStateBase : StateBaseScriptMonoBehaviour
         bool f = core.GetDamage.frameHitBoxes.Count > 0;
         if((f)&&(GameManager.Instance.GetPlayFighterCore(core.EnemyNumber).GetDamage.isThrow))
         {
+            //掴み同士だったらどちらも無効
+            if(core.GetDamage.isThrow)
+            {
+                core.SetDamage(new FighterSkill.CustomHitBox(), null);
+                GameManager.Instance.GetPlayFighterCore(core.EnemyNumber).SetDamage(new FighterSkill.CustomHitBox(), null);
+                return false;
+            }
             GameManager.Instance.GetPlayFighterCore(core.EnemyNumber).SetDamage(new FighterSkill.CustomHitBox(), null);
         }
         if(f)

@@ -149,29 +149,41 @@ public class FighterStateMove : StateBaseScriptMonoBehaviour
     #region 取得系
     private void ChangeMove(Direction _dir)
     {
-        if (stateBase.core.NowPlaySkill == stateBase.core.Status.constantsSkills[(int)SkillConstants.Jump]||stateBase.core.NowPlaySkill == stateBase.core.Status.constantsSkills[(int)SkillConstants.Front_Jump]||stateBase.core.NowPlaySkill == stateBase.core.Status.constantsSkills[(int)SkillConstants.Back_Jump])
-        {
-            return;
-        }
 
         switch (_dir)
         {
             case Direction.Neutral:
+                if (stateBase.core.NowPlaySkill == stateBase.core.Status.constantsSkills[(int)SkillConstants.Jump] || stateBase.core.NowPlaySkill == stateBase.core.Status.constantsSkills[(int)SkillConstants.Front_Jump] || stateBase.core.NowPlaySkill == stateBase.core.Status.constantsSkills[(int)SkillConstants.Back_Jump])
+                {
+                    return;
+                }
                 stateBase.core.SetIsCrouching(false);
                 stateBase.ChangeSkillConstant(SkillConstants.Idle, 5);
                 stateBase.core.SetPlayerMoveState(PlayerMoveState.Idle);
                 break;
             case Direction.Front:
+                if (stateBase.core.NowPlaySkill == stateBase.core.Status.constantsSkills[(int)SkillConstants.Jump] || stateBase.core.NowPlaySkill == stateBase.core.Status.constantsSkills[(int)SkillConstants.Front_Jump] || stateBase.core.NowPlaySkill == stateBase.core.Status.constantsSkills[(int)SkillConstants.Back_Jump])
+                {
+                    return;
+                }
                 stateBase.core.SetIsCrouching(false);
                 stateBase.ChangeSkillConstant(SkillConstants.Front_Walk, 5);
                 stateBase.core.SetPlayerMoveState(PlayerMoveState.Front_Walk);
                 break;
             case Direction.Back:
+                if (stateBase.core.NowPlaySkill == stateBase.core.Status.constantsSkills[(int)SkillConstants.Jump] || stateBase.core.NowPlaySkill == stateBase.core.Status.constantsSkills[(int)SkillConstants.Front_Jump] || stateBase.core.NowPlaySkill == stateBase.core.Status.constantsSkills[(int)SkillConstants.Back_Jump])
+                {
+                    return;
+                }
                 stateBase.core.SetIsCrouching(false);
                 stateBase.ChangeSkillConstant(SkillConstants.Back_Walk, 5);
                 stateBase.core.SetPlayerMoveState(PlayerMoveState.Back_Walk);
                 break;
             case Direction.Down:
+                if (stateBase.core.NowPlaySkill == stateBase.core.Status.constantsSkills[(int)SkillConstants.Jump] || stateBase.core.NowPlaySkill == stateBase.core.Status.constantsSkills[(int)SkillConstants.Front_Jump] || stateBase.core.NowPlaySkill == stateBase.core.Status.constantsSkills[(int)SkillConstants.Back_Jump])
+                {
+                    return;
+                }
                 stateBase.core.SetIsCrouching(true);
                 if(stateBase.core.NowPlaySkill != stateBase.core.Status.constantsSkills[(int)SkillConstants.Crouching])
                 {
@@ -180,6 +192,10 @@ public class FighterStateMove : StateBaseScriptMonoBehaviour
                 stateBase.core.SetPlayerMoveState(PlayerMoveState.Crouching);
                 break;
             case Direction.DownBack:
+                if (stateBase.core.NowPlaySkill == stateBase.core.Status.constantsSkills[(int)SkillConstants.Jump] || stateBase.core.NowPlaySkill == stateBase.core.Status.constantsSkills[(int)SkillConstants.Front_Jump] || stateBase.core.NowPlaySkill == stateBase.core.Status.constantsSkills[(int)SkillConstants.Back_Jump])
+                {
+                    return;
+                }
                 stateBase.core.SetIsCrouching(true);
                 if(stateBase.core.NowPlaySkill != stateBase.core.Status.constantsSkills[(int)SkillConstants.Crouching])
                 {
@@ -189,6 +205,10 @@ public class FighterStateMove : StateBaseScriptMonoBehaviour
 
                 break;
             case Direction.DownFront:
+                if (stateBase.core.NowPlaySkill == stateBase.core.Status.constantsSkills[(int)SkillConstants.Jump] || stateBase.core.NowPlaySkill == stateBase.core.Status.constantsSkills[(int)SkillConstants.Front_Jump] || stateBase.core.NowPlaySkill == stateBase.core.Status.constantsSkills[(int)SkillConstants.Back_Jump])
+                {
+                    return;
+                }
                 stateBase.core.SetIsCrouching(true);
                 if(stateBase.core.NowPlaySkill != stateBase.core.Status.constantsSkills[(int)SkillConstants.Crouching])
                 {
