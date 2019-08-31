@@ -26,17 +26,12 @@ public class UI_GameVictory : MonoBehaviour
 	public bool isPlay = false;         //再生中か（InGameManagerへの戻り値）
     public bool isCalled = false;    //既に呼ばれているか(コルーチンの再生を一度きりに使う)
 
-	private Image win_P1_image;
-    private Image win_P2_image;
-	private Image drow_image;
-	private Image win_image;
-    public Image displayImage;
-	public Image displayWin;
-	public GameObject win_P1;
-    public GameObject win_P2;
-	public GameObject Win_sprite;
+    public GameObject roundResult;
+    public string win1P;
+    public string win2P;
+    public string drow;
 
-	    // 飯塚追加-------------------------------------------
+	// 飯塚追加-------------------------------------------
     bool flag = true;
     // ---------------------------------------------------
 
@@ -50,8 +45,7 @@ public class UI_GameVictory : MonoBehaviour
             flag = false;
         }
         // ---------------------------------------------------
-        displayImage = win_P1_image;
-		//displayWin = win_image;
+        roundResult.GetComponent<AnimationUIManager>().spriteName = win1P;
         GameVictoryStartCoroutine();
         return isPlay;
 	}
@@ -66,24 +60,24 @@ public class UI_GameVictory : MonoBehaviour
             flag = false;
         }
         // ---------------------------------------------------
-        displayImage = win_P2_image;
-		//displayWin = win_image;
-		GameVictoryStartCoroutine();
+        roundResult.GetComponent<AnimationUIManager>().spriteName = win2P;
+        GameVictoryStartCoroutine();
         return isPlay;
     }
 	public bool Drow()
 	{
-		//下記の処理をドロー用に変更してください
-		//// 飯塚追加-------------------------------------------
-		//if (flag)
-		//{
-		//	Sound.LoadSe("Voice_PlayerTwoWin", "Voice_PlayerTwoWin");
-		//	Sound.PlaySe("Voice_PlayerTwoWin", 3, 1);
-		//	flag = false;
-		//}
-		//// ---------------------------------------------------
-		//displayImage = drow_image;
-		GameVictoryStartCoroutine();
+        //下記の処理をドロー用に変更してください
+        //// 飯塚追加-------------------------------------------
+        //if (flag)
+        //{
+        //	Sound.LoadSe("Voice_PlayerTwoWin", "Voice_PlayerTwoWin");
+        //	Sound.PlaySe("Voice_PlayerTwoWin", 3, 1);
+        //	flag = false;
+        //}
+        //// ---------------------------------------------------
+        
+        //roundResult.GetComponent<AnimationUIManager>().spriteName = drow;
+        GameVictoryStartCoroutine();
 		return isPlay;
 	}
 
@@ -99,18 +93,9 @@ public class UI_GameVictory : MonoBehaviour
 	{
 		isPlay = true;
 
-		displayImage.enabled = true;
-		//displayWin.enabled = true;
+        roundResult.SetActive(true);
 		yield return new WaitForSeconds(interval01);
-		displayImage.enabled = false;
-		//displayWin.enabled = false;
 
 		isPlay = false;
-	}
-	private void Awake()
-	{
-		win_P1_image = win_P1.GetComponent<Image>();
-        win_P2_image = win_P2.GetComponent<Image>();
-		win_image	 = Win_sprite.GetComponent<Image>();
 	}
 }

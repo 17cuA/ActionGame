@@ -9,7 +9,6 @@ using UnityEngine.UI;
 public class AnimationUIManager : MonoBehaviour
 {
 	private string path;
-	public string filePath;
 	public string spriteName;
 	private int totalSpriteCount;
 	private int nowSpriteCount;
@@ -17,7 +16,7 @@ public class AnimationUIManager : MonoBehaviour
 	private float currentRemainFrame;
 	void Start()
     {
-		path = "Sprites/UI/AnimationUI/ROUND ANIMATION/" + filePath;
+		path = "Sprites/UI/AnimationUI/ROUND ANIMATION/" + spriteName;
 		totalSpriteCount = Directory.GetFiles("Assets/Resources/" + path, "*", SearchOption.TopDirectoryOnly).Length / 2;
 		Init();
 	}

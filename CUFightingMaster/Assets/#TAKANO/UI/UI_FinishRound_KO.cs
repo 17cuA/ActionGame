@@ -24,7 +24,7 @@ public class UI_FinishRound_KO: MonoBehaviour
 {
     public int interval01;
 
-    public bool isPlay = false;         //再生中か（InGameManagerへの戻り値）
+    public bool isPlay = false;      //再生中か（InGameManagerへの戻り値）
 	public bool isCalled = false;    //既に呼ばれているか(コルーチンの再生を一度きりに使う)
 
 	public GameObject ko;
@@ -47,7 +47,6 @@ public class UI_FinishRound_KO: MonoBehaviour
         isPlay = true;
 		ko.SetActive(true);
         yield return new WaitForSeconds(interval01);
-
         isPlay = false;
     }
 }
