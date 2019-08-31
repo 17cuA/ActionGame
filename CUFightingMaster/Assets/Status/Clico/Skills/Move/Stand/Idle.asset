@@ -12,12 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fbd35985d310504d81036cc55356454, type: 3}
   m_Name: Idle
   m_EditorClassIdentifier: 
-  animationClip: {fileID: 7400000, guid: 758044829fc5d444b82d5ea4233494ad, type: 2}
+  animationClip: {fileID: 7400000, guid: cfac2471bea3fc6449124daddfc5992e, type: 2}
   animationSpeed: 1
   status: 1
-  hitMode: 0
-  throwMotion: {fileID: 0}
-  enemyThrowMotion: {fileID: 0}
+  frameEffects: []
+  frameBullets: []
   cancelFrag: 1
   barrageCancelFrag: 0
   cancelLayer: 0
@@ -30,6 +29,7 @@ MonoBehaviour:
   plusPushingHitBox: []
   customHitBox: []
   isContinue: 0
+  isMoveContinue: 0
   movements: []
   gravityMoves:
   - movement: {x: 0, y: -2, z: 0}

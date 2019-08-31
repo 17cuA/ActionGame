@@ -13,6 +13,8 @@ public class FighterStateBase : StateBaseScriptMonoBehaviour
     public Dictionary<string, FighterSkill> groundSkills = new Dictionary<string, FighterSkill>();//地上コマンド技
     public Dictionary<string, FighterSkill> airSkills = new Dictionary<string, FighterSkill>();//空中コマンド技
 
+    private bool isEndHitStop = false;//KO時のヒットストップをしたかどうか
+
     #region 初期化
     private void Start()
     {
@@ -48,7 +50,9 @@ public class FighterStateBase : StateBaseScriptMonoBehaviour
 
 	public void StartGame(bool isUpdate)
 	{
+        isEndHitStop = false;
         core.SetDamage(new FighterSkill.CustomHitBox(), null);
+
         if (core.Direction == PlayerDirection.Right)
 		{
 			if (core.PlayerNumber == PlayerNumber.Player1)
@@ -104,11 +108,15 @@ public class FighterStateBase : StateBaseScriptMonoBehaviour
     {
         ChangeSkillConstant(SkillConstants.Not_HP_Down, 10);
     }
-	public void NO_HP_HitStop()
+    public void NO_HP_HitStop()
 	{
-		GameManager.Instance.SetHitStop(core.PlayerNumber, GameManager.Instance.Settings.KOHitStopFrame);
-		GameManager.Instance.SetHitStop(core.EnemyNumber, GameManager.Instance.Settings.KOHitStopFrame);
-	}
+        if (!isEndHitStop)
+        {
+            GameManager.Instance.SetHitStop(core.PlayerNumber, GameManager.Instance.Settings.KOHitStopFrame);
+            GameManager.Instance.SetHitStop(core.EnemyNumber, GameManager.Instance.Settings.KOHitStopFrame);
+            isEndHitStop = true;
+        }
+    }
 	/*　汎用条件式　*/
 	//ゲーム開始する条件
 	public bool IsStartGame(bool _game)
@@ -131,11 +139,6 @@ public class FighterStateBase : StateBaseScriptMonoBehaviour
 	//ダメージ受けたとき
 	public bool IsApplyDamage()
 	{
-        //一応0以下ならダメージを受けないように
-        if(core.HP<=0)
-        {
-            return false;
-        }
 		if(stateGuard.isGuard == true)
 		{
 			return false;

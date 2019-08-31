@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fbd35985d310504d81036cc55356454, type: 3}
   m_Name: Middle_jab_Command
   m_EditorClassIdentifier: 
-  animationClip: {fileID: 7400000, guid: 552858e3babb07b4aa25305d4f24fc20, type: 2}
+  animationClip: {fileID: 7400000, guid: 5c34214c8671fcc48950c59b6338b455, type: 2}
   animationSpeed: 1
   status: 1
   frameEffects: []
+  frameBullets: []
   cancelFrag: 1
   barrageCancelFrag: 0
   cancelLayer: 0
@@ -26,10 +27,99 @@ MonoBehaviour:
   plusFootHitBox: []
   plusGrabHitBox: []
   plusPushingHitBox: []
-  customHitBox: []
+  customHitBox:
+  - mode: 0
+    frameHitBoxes:
+    - hitBox:
+        size: {x: 1.18, y: 3.15, z: 1}
+        localPosition: {x: 1.1, y: 3.91, z: 0}
+      startFrame: 5
+      endFrame: 6
+    - hitBox:
+        size: {x: 1.34, y: 3.15, z: 1}
+        localPosition: {x: 1.1, y: 3.91, z: 0}
+      startFrame: 7
+      endFrame: 8
+    hitStop: 3
+    hitPoint: 0
+    hitStrength: 0
+    damage: 5
+    stanDamage: 0
+    knockBack: 1
+    airKnockBack: 0.2
+    guardKnockBack: 0.8
+    hitEffects:
+    - effect: {fileID: 2688692212982812447, guid: 06d324c6486219941a1b9f3833388210,
+        type: 3}
+      guardEffect: {fileID: 0}
+      position: {x: 0, y: 0, z: 0}
+    isDown: 1
+    isThrow: 0
+    throwSkill: {fileID: 0}
+    enemyThrowSkill: {fileID: 0}
+    throwDamages: []
+    isContinue: 0
+    movements:
+    - movement: {x: 2, y: 3, z: 0}
+      startFrame: 0
+    gravityMoves:
+    - movement: {x: 0, y: -0.5, z: 0}
+      limitMove: {x: 0, y: -20, z: 0}
+      startFrame: 0
+    isFaceDown: 0
+    isPassiveNotPossible: 0
+    hitRigor: 4
+    guardHitRigor: 3
+    plusGauge: 0
+  - mode: 0
+    frameHitBoxes:
+    - hitBox:
+        size: {x: 1.61, y: 3.15, z: 1}
+        localPosition: {x: 1.1, y: 3.91, z: 0}
+      startFrame: 9
+      endFrame: 12
+    hitStop: 7
+    hitPoint: 0
+    hitStrength: 0
+    damage: 10
+    stanDamage: 0
+    knockBack: 2
+    airKnockBack: 0.5
+    guardKnockBack: 2
+    hitEffects:
+    - effect: {fileID: 4479652263351467394, guid: 90739d4ff63704c49af1522f63384fb9,
+        type: 3}
+      guardEffect: {fileID: 0}
+      position: {x: 0, y: 0, z: 0}
+    isDown: 1
+    isThrow: 0
+    throwSkill: {fileID: 0}
+    enemyThrowSkill: {fileID: 0}
+    throwDamages: []
+    isContinue: 0
+    movements:
+    - movement: {x: -0.3, y: 7, z: 0}
+      startFrame: 0
+    gravityMoves:
+    - movement: {x: 0, y: -0.5, z: 0}
+      limitMove: {x: 0, y: -20, z: 0}
+      startFrame: 0
+    isFaceDown: 0
+    isPassiveNotPossible: 0
+    hitRigor: 0
+    guardHitRigor: 10
+    plusGauge: 0
   isContinue: 0
-  movements: []
-  gravityMoves: []
+  isMoveContinue: 0
+  movements:
+  - movement: {x: 1, y: 8, z: 0}
+    startFrame: 5
+  - movement: {x: 0, y: 8, z: 0}
+    startFrame: 30
+  gravityMoves:
+  - movement: {x: 0, y: -0.5, z: 0}
+    limitMove: {x: 0, y: -20, z: 0}
+    startFrame: 0
   headFlag: 1
   bodyFlag: 1
   footFlag: 1

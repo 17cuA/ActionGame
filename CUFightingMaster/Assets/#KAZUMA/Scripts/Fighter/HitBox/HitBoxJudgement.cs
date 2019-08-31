@@ -322,7 +322,7 @@ public class HitBoxJudgement
             if (customs[i].frameHitBoxes[nowPlayCustomNumber[i]].endFrame < core.AnimationPlayerCompornent.NowFrame)
             {
                 nowPlayCollider[i].gameObject.SetActive(false);
-                return;
+                continue;
             }
             else
             {
@@ -330,7 +330,7 @@ public class HitBoxJudgement
                 tmp.x *= RightLeft;
                 nowPlayCollider[i].component.center = tmp;
             }
-            if (attackHit == true)return;
+            if (attackHit == true)continue;
 			//ヒットボックスの当たり判定
             if (nowPlayCollider[i].gameObject.tag == CommonConstants.Tags.GetTags(HitBoxMode.HitBox))
             {
