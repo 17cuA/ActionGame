@@ -38,9 +38,9 @@ public class AnimationUIManager : MonoBehaviour
         //アニメーション処理
         if (nowSpriteCount < totalSpriteCount)
 		{
-            //パスで次のスプライトを指定して差し替える
-			var sprite = Resources.Load<Sprite>(string.Format("{0}/{1}_{2}", path, spriteName, nowSpriteCount.ToString("D5")));
-			gameObject.GetComponent<Image>().sprite = sprite;
+   //         //パスで次のスプライトを指定して差し替える
+			//var sprite = Resources.Load<Sprite>(string.Format("{0}/{1}_{2}", path, spriteName, nowSpriteCount.ToString("D5")));
+			//gameObject.GetComponent<Image>().sprite = sprite;
             //指定フレームで指定フレーム分止められるようにする
             var isStopUI = false;
             for (int i = 0; i < stopUIs.Count; i++)
@@ -56,6 +56,9 @@ public class AnimationUIManager : MonoBehaviour
             //UIを止めていない時の処理
             if (!isStopUI)
             {
+                //パスで次のスプライトを指定して差し替える
+                var sprite = Resources.Load<Sprite>(string.Format("{0}/{1}_{2}", path, spriteName, nowSpriteCount.ToString("D5")));
+                gameObject.GetComponent<Image>().sprite = sprite;
                 //指定フレームを過ぎたらフェードアウト処理
                 if (nowSpriteCount > (totalSpriteCount - FadeOutFrame - 1))
                 {
