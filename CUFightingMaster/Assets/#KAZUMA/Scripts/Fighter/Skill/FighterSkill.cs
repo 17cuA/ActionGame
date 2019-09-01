@@ -77,6 +77,9 @@ public class FighterSkill : ScriptableObject
         public bool isDown = false;     //ダウンするかどうか
 
         public bool isThrow = false;    //投げかどうか
+        public bool isThrowGroundDamage = false;//投げ技の時、接地時にダメージを喰らう
+        public bool isThrowGroundAnimEnd = false;//投げ技の時、接地時にアニメーション終了
+        public int throwGroundDamage = 0;
         public FighterSkill throwSkill;//投げ技
         public FighterSkill enemyThrowSkill;
         public List<ThrowDamage> throwDamages = new List<ThrowDamage>();

@@ -12,12 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fbd35985d310504d81036cc55356454, type: 3}
   m_Name: Throw
   m_EditorClassIdentifier: 
-  animationClip: {fileID: 7400000, guid: e23fa9ef2a1c04042aebb28233393d14, type: 2}
+  animationClip: {fileID: 7400000, guid: cee1e4518fcbe1e4c9dcc088bc4885ad, type: 2}
   animationSpeed: 1
   status: 1
-  hitMode: 0
-  throwMotion: {fileID: 0}
-  enemyThrowMotion: {fileID: 0}
+  frameEffects: []
+  frameBullets: []
   cancelFrag: 0
   barrageCancelFrag: 0
   cancelLayer: 0
@@ -30,12 +29,17 @@ MonoBehaviour:
   plusPushingHitBox: []
   customHitBox: []
   isContinue: 0
+  isMoveContinue: 0
   movements:
-  - movement: {x: -8, y: 5, z: 0}
+  - movement: {x: 0, y: 1, z: 0}
+    startFrame: 0
+  - movement: {x: 0, y: 0, z: 0}
+    startFrame: 13
+  - movement: {x: -8, y: 20, z: 0}
     startFrame: 42
   gravityMoves:
-  - movement: {x: 0, y: -0.1, z: 0}
-    limitMove: {x: 0, y: -20, z: 0}
+  - movement: {x: 0, y: -0.4, z: 0}
+    limitMove: {x: 0, y: -50, z: 0}
     startFrame: 42
   headFlag: 1
   bodyFlag: 1

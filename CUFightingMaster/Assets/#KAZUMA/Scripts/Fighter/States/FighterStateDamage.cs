@@ -397,24 +397,53 @@ public class FighterStateDamage : StateBaseScriptMonoBehaviour
     #endregion
 
     #region 投げ技
-    private List<FighterSkill.ThrowDamage> throwDamages;
+    private FighterSkill.CustomHitBox throwDamages;
     public void Throw_Damage_Start()
     {
+        if (GameManager.Instance.GetPlayFighterCore(stateBase.core.EnemyNumber).Direction == PlayerDirection.Right)
+        {
+            Transform t = stateBase.core.AnimationPlayerCompornent.gameObject.transform;
+
+            stateBase.core.SetDirection(PlayerDirection.Left);
+            t.localScale = new Vector3(1, 1, -1);
+            t.rotation = Quaternion.Euler(0, 0, 0);
+        }
+        else if (GameManager.Instance.GetPlayFighterCore(stateBase.core.EnemyNumber).Direction == PlayerDirection.Left)
+        {
+            Transform t = stateBase.core.AnimationPlayerCompornent.gameObject.transform;
+            stateBase.core.SetDirection(PlayerDirection.Right);
+            stateBase.core.AnimationPlayerCompornent.gameObject.transform.localScale = new Vector3(1, 1, 1);
+            t.rotation = Quaternion.Euler(0, 180, 0);
+        }
         isEndStun = false;
         stateBase.core.SetSkill(stateBase.core.GetDamage.enemyThrowSkill, 0);
-        throwDamages = stateBase.core.GetDamage.throwDamages;
+        
+        throwDamages = stateBase.core.GetDamage;
         //ダメージを受けたのでリセット
         GameManager.Instance.GetPlayFighterCore(stateBase.core.GetDamageCollider.gameObject.layer).SetSkill(stateBase.core.GetDamage.throwSkill, 0);
         stateBase.core.SetDamage(new FighterSkill.CustomHitBox(), null);
     }
 	public void Throw_Damage_Update()
 	{
+        //接地時ダメージ
+        if(stateBase.core.GroundCheck())
+        {
+            if (throwDamages.isThrowGroundDamage)
+            {
+                stateBase.core.HP -= throwDamages.throwGroundDamage;
+                GameManager.Instance.GetPlayFighterCore(stateBase.core.EnemyNumber).PlusComboCount(1);
+                if (stateBase.core.HP < 0)
+                {
+                    stateBase.core.HP = 0;
+                }
+            }
+        }
 		//特定のフレームでダメージを与える
-		foreach(var dm in throwDamages)
+		foreach(var dm in throwDamages.throwDamages)
 		{
 			if(dm.frame==stateBase.core.AnimationPlayerCompornent.NowFrame)
 			{
-                stateBase.core.HP-=dm.damage;
+                stateBase.core.HP -= dm.damage;
                 GameManager.Instance.GetPlayFighterCore(stateBase.core.EnemyNumber).PlusComboCount(1);
                 if (stateBase.core.HP < 0)
                 {
@@ -528,4 +557,16 @@ public class FighterStateDamage : StateBaseScriptMonoBehaviour
         }
 		return false;
 	}
+    public bool IsEndThrowDamage()
+    {
+        if(throwDamages.isThrowGroundAnimEnd)
+        {
+            return stateBase.core.GroundCheck() == true;
+        }
+        else
+        {
+            return stateBase.core.AnimationPlayerCompornent.EndAnimFrag;
+
+        }
+    }
 }

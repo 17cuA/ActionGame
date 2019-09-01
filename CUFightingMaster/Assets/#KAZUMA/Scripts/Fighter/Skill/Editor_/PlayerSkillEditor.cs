@@ -265,6 +265,11 @@ public class PlayerSkillEditor : EditorWindow
                             box.throwSkill = EditorGUILayout.ObjectField("投げモーション", box.throwSkill, typeof(FighterSkill), false) as FighterSkill;
                             box.enemyThrowSkill = EditorGUILayout.ObjectField("投げられモーション", box.enemyThrowSkill, typeof(FighterSkill), false) as FighterSkill;
                             EditorGUILayout.EndHorizontal();
+                            EditorGUILayout.BeginHorizontal();
+                            box.isThrowGroundAnimEnd = EditorGUILayout.Toggle("投げ接地時終了", box.isThrowGroundAnimEnd);
+                            box.isThrowGroundDamage = EditorGUILayout.Toggle("投げ接地時ダメージ", box.isThrowGroundDamage);
+                            box.throwGroundDamage = EditorGUILayout.IntField("ダメージ量", box.throwGroundDamage);
+                            EditorGUILayout.EndHorizontal();
                             if (GUILayout.Button("投げダメージフレーム", GUILayout.Width(150), GUILayout.Height(20)))
                             {
                                 box.throwDamages.Add(new FighterSkill.ThrowDamage());
