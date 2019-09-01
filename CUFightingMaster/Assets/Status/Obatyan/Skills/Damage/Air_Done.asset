@@ -22,6 +22,7 @@ MonoBehaviour:
   cancelLayer: 0
   inBlend: 0
   outBlend: 0
+  isInvincibleBullet: 0
   plusHeadHitBox:
   - hitBox:
       size: {x: -0.45, y: 0.51, z: 0}
@@ -30,10 +31,10 @@ MonoBehaviour:
     endFrame: 38
   plusBodyHitBox:
   - hitBox:
-      size: {x: -0.12, y: 0.22, z: 0}
+      size: {x: 1.39, y: 0.77, z: 0}
       localPosition: {x: -0.26, y: 0.25, z: 0}
     startFrame: 0
-    endFrame: 38
+    endFrame: 0
   plusFootHitBox:
   - hitBox:
       size: {x: -1.38, y: -0.51, z: 0}
@@ -58,7 +59,7 @@ MonoBehaviour:
     limitMove: {x: 0, y: -20, z: 0}
     startFrame: 0
   headFlag: 0
-  bodyFlag: 0
+  bodyFlag: 1
   footFlag: 0
   grabFlag: 0
   pushingFlag: 1

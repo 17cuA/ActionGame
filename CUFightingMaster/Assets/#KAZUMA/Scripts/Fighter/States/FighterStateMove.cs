@@ -8,6 +8,10 @@ public class FighterStateMove : StateBaseScriptMonoBehaviour
 {
     private FighterStateBase stateBase;
     private Direction beforeInput = Direction.Neutral;
+
+    private int jumpTimes = 0;
+
+    private int jumpTimesMax = 1;
     #region 初期化
     private void Start()
     {
@@ -24,21 +28,21 @@ public class FighterStateMove : StateBaseScriptMonoBehaviour
     /* ステート中 */
     public void MoveUpdate()
     {
-		if(stateBase.core.Direction == PlayerDirection.Right)
-		{
-			if(stateBase.core.PlayerNumber==PlayerNumber.Player1)
-			{
+        if (stateBase.core.Direction == PlayerDirection.Right)
+        {
+            if (stateBase.core.PlayerNumber == PlayerNumber.Player1)
+            {
                 Transform t = stateBase.core.AnimationPlayerCompornent.gameObject.transform;
                 if (GameManager.Instance.GetPlayFighterCore(PlayerNumber.Player2).gameObject.transform.position.x < stateBase.core.transform.position.x)
-				{
-					stateBase.core.SetDirection(PlayerDirection.Left);
+                {
+                    stateBase.core.SetDirection(PlayerDirection.Left);
                     t.localScale = new Vector3(1, 1, -1);
                     t.rotation = Quaternion.Euler(0, 0, 0);
                 }
-			}
-            else if(stateBase.core.PlayerNumber==PlayerNumber.Player2)
+            }
+            else if (stateBase.core.PlayerNumber == PlayerNumber.Player2)
             {
-                if(GameManager.Instance.GetPlayFighterCore(PlayerNumber.Player1).gameObject.transform.position.x < stateBase.core.transform.position.x)
+                if (GameManager.Instance.GetPlayFighterCore(PlayerNumber.Player1).gameObject.transform.position.x < stateBase.core.transform.position.x)
                 {
                     Transform t = stateBase.core.AnimationPlayerCompornent.gameObject.transform;
                     stateBase.core.SetDirection(PlayerDirection.Left);
@@ -46,7 +50,7 @@ public class FighterStateMove : StateBaseScriptMonoBehaviour
                     t.rotation = Quaternion.Euler(0, 0, 0);
                 }
             }
-		}
+        }
         else if (stateBase.core.Direction == PlayerDirection.Left)
         {
             if (stateBase.core.PlayerNumber == PlayerNumber.Player1)
@@ -75,23 +79,35 @@ public class FighterStateMove : StateBaseScriptMonoBehaviour
         ChangeMove(inp);
         beforeInput = inp;
     }
-	public void AirMoveStart()
-	{
-		stateBase.ChangeSkillConstant(SkillConstants.Air_Idle, 5);
-		stateBase.core.SetPlayerMoveState(PlayerMoveState.Jump);
-	}
-	public void AirUpdateMove()
-	{
-		Direction dir = stateBase.input.GetPlayerMoveDirection(stateBase);
-		if(dir == Direction.Back||dir == Direction.DownBack|| dir == Direction.UpBack)
-		{
-			stateBase.core.Mover.SetAirXMove(-stateBase.core.Status.airBraking * 0.1f);
-		}
-		else if(dir == Direction.Front||dir == Direction.UpFront||dir== Direction.DownFront)
-		{
-			stateBase.core.Mover.SetAirXMove(stateBase.core.Status.airBraking * 0.1f);
-		}
-	}
+    //空中初期化
+    public void GroundInit()
+    {
+        jumpTimes = 0;
+    }
+    public void AirMoveStart()
+    {
+        stateBase.ChangeSkillConstant(SkillConstants.Air_Idle, 5);
+        stateBase.core.SetPlayerMoveState(PlayerMoveState.Jump);
+    }
+    public void AirUpdateMove()
+    {
+        Direction dir = stateBase.input.GetPlayerMoveDirection(stateBase);
+        if (dir == Direction.Back || dir == Direction.DownBack || dir == Direction.UpBack)
+        {
+            stateBase.core.Mover.SetAirXMove(-stateBase.core.Status.airBraking * 0.1f);
+        }
+        else if (dir == Direction.Front || dir == Direction.UpFront || dir == Direction.DownFront)
+        {
+            stateBase.core.Mover.SetAirXMove(stateBase.core.Status.airBraking * 0.1f);
+        }
+        //空中ジャンプ
+        Direction inp = stateBase.input.GetPlayerMoveDirection(stateBase);
+        if (Direction.Up != beforeInput && Direction.UpFront != beforeInput && Direction.UpBack != beforeInput && jumpTimes < jumpTimesMax)
+        {
+            JumpChange(inp);
+        }
+        beforeInput = inp;
+    }
     /* 条件式 */
     public bool Input_Atk_True()
     {
@@ -119,13 +135,13 @@ public class FighterStateMove : StateBaseScriptMonoBehaviour
         }
         //攻撃を行わない特殊な場合
         //しゃがみ時の投げ
-        if((stateBase.input.GetPlayerAtk()==CommonConstants.Buttons.Atk4))
+        if ((stateBase.input.GetPlayerAtk() == CommonConstants.Buttons.Atk4))
         {
             if (stateBase.core.PlayerMoveStates == PlayerMoveState.Crouching)
             {
                 return false;
             }
-            if(stateBase.core.GroundCheck()==false)
+            if (stateBase.core.GroundCheck() == false)
             {
                 return false;
             }
@@ -139,13 +155,25 @@ public class FighterStateMove : StateBaseScriptMonoBehaviour
     }
     public bool IsEndLanding()
     {
-        if(stateBase.core.AnimationPlayerCompornent.NowFrame > 3)
+        if (stateBase.core.AnimationPlayerCompornent.NowFrame > 3)
         {
             return true;
         }
         return false;
     }
-
+    //ジャンプキャンセル
+    public bool IsJumpCancel()
+    {
+        if (stateBase.core.NowPlaySkill.isJumpCancel)
+        {
+            if (jumpTimes < jumpTimesMax&&stateBase.core.IsHitAttack)
+            {
+                Direction inp = stateBase.input.GetPlayerMoveDirection(stateBase);
+                return JumpChange(inp);
+            }
+        }
+        return false;
+    }
     #region 取得系
     private void ChangeMove(Direction _dir)
     {
@@ -185,7 +213,7 @@ public class FighterStateMove : StateBaseScriptMonoBehaviour
                     return;
                 }
                 stateBase.core.SetIsCrouching(true);
-                if(stateBase.core.NowPlaySkill != stateBase.core.Status.constantsSkills[(int)SkillConstants.Crouching])
+                if (stateBase.core.NowPlaySkill != stateBase.core.Status.constantsSkills[(int)SkillConstants.Crouching])
                 {
                     stateBase.ChangeSkillConstant(SkillConstants.Crouching, 5);
                 }
@@ -197,7 +225,7 @@ public class FighterStateMove : StateBaseScriptMonoBehaviour
                     return;
                 }
                 stateBase.core.SetIsCrouching(true);
-                if(stateBase.core.NowPlaySkill != stateBase.core.Status.constantsSkills[(int)SkillConstants.Crouching])
+                if (stateBase.core.NowPlaySkill != stateBase.core.Status.constantsSkills[(int)SkillConstants.Crouching])
                 {
                     stateBase.ChangeSkillConstant(SkillConstants.Crouching, 5);
                 }
@@ -210,7 +238,7 @@ public class FighterStateMove : StateBaseScriptMonoBehaviour
                     return;
                 }
                 stateBase.core.SetIsCrouching(true);
-                if(stateBase.core.NowPlaySkill != stateBase.core.Status.constantsSkills[(int)SkillConstants.Crouching])
+                if (stateBase.core.NowPlaySkill != stateBase.core.Status.constantsSkills[(int)SkillConstants.Crouching])
                 {
                     stateBase.ChangeSkillConstant(SkillConstants.Crouching, 5);
                 }
@@ -239,4 +267,32 @@ public class FighterStateMove : StateBaseScriptMonoBehaviour
 
     }
     #endregion
+
+    private bool JumpChange(Direction _dir)
+    {
+        switch (_dir)
+        {
+            case Direction.Up:
+                stateBase.core.SetIsCrouching(false);
+                stateBase.ChangeSkillConstant(SkillConstants.Jump, 0);
+                stateBase.core.SetPlayerMoveState(PlayerMoveState.Jump);
+                jumpTimes++;
+                return true;
+            case Direction.UpFront:
+                stateBase.core.SetIsCrouching(false);
+                stateBase.ChangeSkillConstant(SkillConstants.Front_Jump, 0);
+                stateBase.core.SetPlayerMoveState(PlayerMoveState.Front_Jump);
+                jumpTimes++;
+                return true;
+            case Direction.UpBack:
+                stateBase.core.SetIsCrouching(false);
+                stateBase.ChangeSkillConstant(SkillConstants.Back_Jump, 0);
+                stateBase.core.SetPlayerMoveState(PlayerMoveState.Back_Jump);
+                jumpTimes++;
+                return true;
+            default:
+                return false;
+        }
+        return false;
+    }
 }

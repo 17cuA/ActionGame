@@ -188,4 +188,20 @@ public class FighterStateBase : StateBaseScriptMonoBehaviour
         s.isContinue = _con;
         core.SetSkill(s, _weightFrame);
     }
+
+    //キャンセル可能かどうか
+    public bool ChancelConditions(FighterSkill _now, FighterSkill _s, int _i = 0)
+    {
+        //キャンセルできるかどうか（技モード、AND演算）
+        if (_now.cancelFrag.HasFlag(_s.status))
+        {
+            return true;
+        }
+        //連打キャンセル(同じ技)
+        if ((_now.barrageCancelFrag) && (_now == _s))
+        {
+            return true;
+        }
+        return false;
+    }
 }

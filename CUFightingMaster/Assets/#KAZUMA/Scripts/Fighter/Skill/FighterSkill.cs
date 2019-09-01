@@ -120,6 +120,7 @@ public class FighterSkill : ScriptableObject
                                                         //TODO::飛び道具
     public bool barrageCancelFrag = false;      //連打キャンセル
     public int cancelLayer = 0;                 //キャンセルできるレイヤー
+    public bool isJumpCancel = false;
     //ブレンドするかしないか
     public bool inBlend = false;
     public bool outBlend = false;

@@ -88,7 +88,7 @@ public class FighterStateAttack : StateBaseScriptMonoBehaviour
                 if (stateBase.groundSkills.ContainsKey(stateBase.input.groundMoveCommand.inputCommandName))
                 {
                     //キャンセルできるかどうか（技モード、AND演算）
-                    if (ChancelConditions(_nowSkill,stateBase.groundSkills[stateBase.input.groundMoveCommand.inputCommandName]))
+                    if (stateBase.ChancelConditions(_nowSkill,stateBase.groundSkills[stateBase.input.groundMoveCommand.inputCommandName]))
                     {
                         return true;
                     }
@@ -103,31 +103,31 @@ public class FighterStateAttack : StateBaseScriptMonoBehaviour
                 case CommonConstants.Buttons.Atk1:
                     if (stateBase.core.PlayerMoveStates == PlayerMoveState.Crouching)
                     {
-                        if(ChancelConditions(_nowSkill,stateBase.core.Status.constantsSkills[(int)SkillConstants.Crouching_Light_Jab])) return true;
+                        if(stateBase.ChancelConditions(_nowSkill,stateBase.core.Status.constantsSkills[(int)SkillConstants.Crouching_Light_Jab])) return true;
                     }
                     else
                     {
-                        if(ChancelConditions(_nowSkill,stateBase.core.Status.constantsSkills[(int)SkillConstants.Stand_Light_Jab])) return true;
+                        if(stateBase.ChancelConditions(_nowSkill,stateBase.core.Status.constantsSkills[(int)SkillConstants.Stand_Light_Jab])) return true;
                     }
                     break;
                 case CommonConstants.Buttons.Atk2:
                     if (stateBase.core.PlayerMoveStates == PlayerMoveState.Crouching)
                     {
-                        if(ChancelConditions(_nowSkill,stateBase.core.Status.constantsSkills[(int)SkillConstants.Crouching_Middle_Jab])) return true;
+                        if(stateBase.ChancelConditions(_nowSkill,stateBase.core.Status.constantsSkills[(int)SkillConstants.Crouching_Middle_Jab])) return true;
                     }
                     else
                     {
-                        if(ChancelConditions(_nowSkill,stateBase.core.Status.constantsSkills[(int)SkillConstants.Stand_Middle_Jab])) return true;
+                        if(stateBase.ChancelConditions(_nowSkill,stateBase.core.Status.constantsSkills[(int)SkillConstants.Stand_Middle_Jab])) return true;
                     }
                     break;
                 case CommonConstants.Buttons.Atk3:
                     if (stateBase.core.PlayerMoveStates == PlayerMoveState.Crouching)
                     {
-                        if(ChancelConditions(_nowSkill,stateBase.core.Status.constantsSkills[(int)SkillConstants.Crouching_Strong_Jab])) return true;
+                        if(stateBase.ChancelConditions(_nowSkill,stateBase.core.Status.constantsSkills[(int)SkillConstants.Crouching_Strong_Jab])) return true;
                     }
                     else
                     {
-                        if(ChancelConditions(_nowSkill,stateBase.core.Status.constantsSkills[(int)SkillConstants.Stand_Strong_Jab])) return true;
+                        if(stateBase.ChancelConditions(_nowSkill,stateBase.core.Status.constantsSkills[(int)SkillConstants.Stand_Strong_Jab])) return true;
                     }
                     break;
                 case CommonConstants.Buttons.Atk4:
@@ -138,18 +138,95 @@ public class FighterStateAttack : StateBaseScriptMonoBehaviour
         }
         return false;
     }
-    //キャンセル条件を満たしているかどうか
-    private bool ChancelConditions(FighterSkill _now, FighterSkill _s)
+    public bool IsAirChancelAttack()
     {
-        //キャンセルできるかどうか（技モード、AND演算）
-        if (_now.cancelFrag.HasFlag(_s.status))
+        //攻撃がヒットした後
+        if (stateBase.core.IsHitAttack)
         {
-            return true;
-        }
-        //連打キャンセル(同じ技)
-        if ((_now.barrageCancelFrag) && (_now == _s))
-        {
-            return true;
+            FighterSkill _nowSkill = stateBase.core.NowPlaySkill;
+            if ((stateBase.input.airMoveCommand.inputCommandName != "") && (stateBase.input.airMoveCommand.inputCommandName != null))
+            {
+                if (stateBase.airSkills.ContainsKey(stateBase.input.airMoveCommand.inputCommandName))
+                {
+                    //キャンセルできるかどうか（技モード、AND演算）
+                    if (stateBase.ChancelConditions(_nowSkill, stateBase.airSkills[stateBase.input.airMoveCommand.inputCommandName]))
+                    {
+                        return true;
+                    }
+                }
+            }
+            string atk = stateBase.input.GetPlayerAtk();
+            if (stateBase.core.PlayerMoveStates == PlayerMoveState.Jump)
+            {
+                switch (atk)
+                {
+                    case CommonConstants.Buttons.Atk1:
+                        if (stateBase.ChancelConditions(_nowSkill, stateBase.core.Status.constantsSkills[(int)SkillConstants.Air_Light_Jab])) return true;
+                        break;
+                    case CommonConstants.Buttons.Atk2:
+                        if (stateBase.ChancelConditions(_nowSkill, stateBase.core.Status.constantsSkills[(int)SkillConstants.Air_Middle_Jab])) return true;
+                        break;
+                    case CommonConstants.Buttons.Atk3:
+                        if (stateBase.ChancelConditions(_nowSkill, stateBase.core.Status.constantsSkills[(int)SkillConstants.Air_Strong_Jab])) return true;
+                        break;
+                    case CommonConstants.Buttons.Atk4:
+                        break;
+
+                }
+            }
+            else if (stateBase.core.PlayerMoveStates == PlayerMoveState.Back_Jump)
+            {
+                switch (atk)
+                {
+                    case CommonConstants.Buttons.Atk1:
+                        if (stateBase.ChancelConditions(_nowSkill, stateBase.core.Status.constantsSkills[(int)SkillConstants.Air_Back_Light_Jab])) return true;
+                        break;
+                    case CommonConstants.Buttons.Atk2:
+                        if (stateBase.ChancelConditions(_nowSkill, stateBase.core.Status.constantsSkills[(int)SkillConstants.Air_Back_Middle_Jab])) return true;
+                        break;
+                    case CommonConstants.Buttons.Atk3:
+                        if (stateBase.ChancelConditions(_nowSkill, stateBase.core.Status.constantsSkills[(int)SkillConstants.Air_Back_Strong_Jab])) return true;
+                        break;
+                    case CommonConstants.Buttons.Atk4:
+                        break;
+
+                }
+            }
+            else if (stateBase.core.PlayerMoveStates == PlayerMoveState.Front_Jump)
+            {
+                switch (atk)
+                {
+                    case CommonConstants.Buttons.Atk1:
+                        if (stateBase.ChancelConditions(_nowSkill, stateBase.core.Status.constantsSkills[(int)SkillConstants.Air_Front_Light_Jab])) return true;
+                        break;
+                    case CommonConstants.Buttons.Atk2:
+                        if (stateBase.ChancelConditions(_nowSkill, stateBase.core.Status.constantsSkills[(int)SkillConstants.Air_Front_Middle_Jab])) return true;
+                        break;
+                    case CommonConstants.Buttons.Atk3:
+                        if (stateBase.ChancelConditions(_nowSkill, stateBase.core.Status.constantsSkills[(int)SkillConstants.Air_Front_Strong_Jab])) return true;
+                        break;
+                    case CommonConstants.Buttons.Atk4:
+                        break;
+
+                }
+            }
+            else
+            {
+                switch (atk)
+                {
+                    case CommonConstants.Buttons.Atk1:
+                        if (stateBase.ChancelConditions(_nowSkill, stateBase.core.Status.constantsSkills[(int)SkillConstants.Air_Light_Jab])) return true;
+                        break;
+                    case CommonConstants.Buttons.Atk2:
+                        if (stateBase.ChancelConditions(_nowSkill, stateBase.core.Status.constantsSkills[(int)SkillConstants.Air_Middle_Jab])) return true;
+                        break;
+                    case CommonConstants.Buttons.Atk3:
+                        if (stateBase.ChancelConditions(_nowSkill, stateBase.core.Status.constantsSkills[(int)SkillConstants.Air_Strong_Jab])) return true;
+                        break;
+                    case CommonConstants.Buttons.Atk4:
+                        break;
+                }
+            }
         }
         return false;
     }
@@ -211,6 +288,21 @@ public class FighterStateAttack : StateBaseScriptMonoBehaviour
                     break;
             case CommonConstants.Buttons.Atk3:
                     stateBase.ChangeSkillConstant(SkillConstants.Air_Front_Strong_Jab, 0);
+                    break;
+            }
+        }
+        else
+        {
+            switch (atk)
+            {
+            case CommonConstants.Buttons.Atk1:
+                    stateBase.ChangeSkillConstant(SkillConstants.Air_Light_Jab, 0);
+                    break;
+            case CommonConstants.Buttons.Atk2:
+                    stateBase.ChangeSkillConstant(SkillConstants.Air_Middle_Jab, 0);
+                    break;
+            case CommonConstants.Buttons.Atk3:
+                    stateBase.ChangeSkillConstant(SkillConstants.Air_Strong_Jab, 0);
                     break;
             }
         }

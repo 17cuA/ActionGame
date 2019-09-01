@@ -132,54 +132,58 @@ public class PlayerSkillEditor : EditorWindow
 			GUILayout.FlexibleSpace();
 		}
 	}
-	#endregion
-	#region アニメーション_Tab
-	private void AnimationTabDraw()
-	{
-		EditorGUILayout.BeginVertical("Box");
-		//アニメーションクリップ
-		EditorGUILayout.BeginHorizontal("Box");
-		EditorGUILayout.LabelField("AnimationClip");
-		playerSkill.animationClip = EditorGUILayout.ObjectField(playerSkill.animationClip, typeof(AnimationClip), true) as AnimationClip;
-		EditorGUILayout.EndHorizontal();
-		if (playerSkill.animationClip != null)
-		{
-			//アニメーション速度
-			EditorGUILayout.BeginHorizontal();
-			EditorGUILayout.LabelField("アニメーション速度：");
-			playerSkill.animationSpeed = EditorGUILayout.FloatField(playerSkill.animationSpeed);
-			EditorGUILayout.EndVertical();
-			//フレーム数
-			EditorGUILayout.BeginHorizontal();
-			EditorGUILayout.LabelField("フレーム数：");
-			if (playerSkill.animationSpeed == 0)
-			{
-				EditorGUILayout.LabelField("0");
-			}
-			else
-			{
-				EditorGUILayout.LabelField(((int)((playerSkill.animationClip.length * playerSkill.animationClip.frameRate) / playerSkill.animationSpeed)).ToString());
-			}
-			EditorGUILayout.EndHorizontal();
-			//ブレンド
-			EditorGUILayout.BeginHorizontal();
-			playerSkill.inBlend = EditorGUILayout.Toggle("（未）再生時ブレンド",playerSkill.inBlend);
-			playerSkill.outBlend = EditorGUILayout.Toggle("（未）終了時ブレンド",playerSkill.outBlend);
-			EditorGUILayout.EndHorizontal();
-		}
-		EditorGUILayout.EndVertical();
+    #endregion
+    #region アニメーション_Tab
+    private void AnimationTabDraw()
+    {
+        EditorGUILayout.BeginVertical("Box");
+        //アニメーションクリップ
+        EditorGUILayout.BeginHorizontal("Box");
+        EditorGUILayout.LabelField("AnimationClip");
+        playerSkill.animationClip = EditorGUILayout.ObjectField(playerSkill.animationClip, typeof(AnimationClip), true) as AnimationClip;
+        EditorGUILayout.EndHorizontal();
+        if (playerSkill.animationClip != null)
+        {
+            //アニメーション速度
+            EditorGUILayout.BeginHorizontal();
+            EditorGUILayout.LabelField("アニメーション速度：");
+            playerSkill.animationSpeed = EditorGUILayout.FloatField(playerSkill.animationSpeed);
+            EditorGUILayout.EndVertical();
+            //フレーム数
+            EditorGUILayout.BeginHorizontal();
+            EditorGUILayout.LabelField("フレーム数：");
+            if (playerSkill.animationSpeed == 0)
+            {
+                EditorGUILayout.LabelField("0");
+            }
+            else
+            {
+                EditorGUILayout.LabelField(((int)((playerSkill.animationClip.length * playerSkill.animationClip.frameRate) / playerSkill.animationSpeed)).ToString());
+            }
+            EditorGUILayout.EndHorizontal();
+            //ブレンド
+            EditorGUILayout.BeginHorizontal();
+            playerSkill.inBlend = EditorGUILayout.Toggle("（未）再生時ブレンド", playerSkill.inBlend);
+            playerSkill.outBlend = EditorGUILayout.Toggle("（未）終了時ブレンド", playerSkill.outBlend);
+            EditorGUILayout.EndHorizontal();
+        }
+        EditorGUILayout.EndVertical();
         EditorGUILayout.BeginVertical("Box");
         playerSkill.status = (SkillStatus)EditorGUILayout.EnumPopup("属性", playerSkill.status);
         playerSkill.cancelFrag = (SkillStatus)EditorGUILayout.EnumFlagsField("キャンセル属性", playerSkill.cancelFrag);
         EditorGUILayout.BeginHorizontal();
         playerSkill.barrageCancelFrag = EditorGUILayout.Toggle("連打キャンセル", playerSkill.barrageCancelFrag);
-        playerSkill.cancelLayer = EditorGUILayout.IntField("（未）キャンセルレイヤー",playerSkill.cancelLayer);
+        playerSkill.cancelLayer = EditorGUILayout.IntField("（未）キャンセルレイヤー", playerSkill.cancelLayer);
         EditorGUILayout.EndHorizontal();
+        EditorGUILayout.BeginHorizontal();
+        playerSkill.isJumpCancel = EditorGUILayout.Toggle("ジャンプキャンセル", playerSkill.isJumpCancel);
+        EditorGUILayout.EndHorizontal();
+
         EditorGUILayout.EndVertical();
     }
     #endregion
     #region 当たり判定_Tab
-	private class FoldOutFlags
+    private class FoldOutFlags
 	{
 		public bool foldOutFlag = false;
         public bool statusFlag = false;
