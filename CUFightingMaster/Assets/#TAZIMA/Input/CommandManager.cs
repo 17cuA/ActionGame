@@ -70,7 +70,7 @@ public class CommandManager :MonoBehaviour
             }
 			inputData = _data;
 		}
-	}
+    }
 
     //入力がコマンドに当てはまるかチェック
     private void InputCommandApplyCheck()
@@ -85,6 +85,18 @@ public class CommandManager :MonoBehaviour
             //パターンが文字列の最後尾で終了する場合のみ抽出
             if (Regex.IsMatch(attackParameters[i].checkCommadStr, attackParameters[i].command + "$"))
             {
+                //コマンドのフラグを立てる
+                attackParameters[i].isShot = true;
+                Debug.Log(attackParameters[i].commandName + "の入力が完了");
+                //コマンドを保存しておく時間
+                StartCoroutine(CheckSaveCommand(attackParameters[i]));
+                //これまでに入力されていたデータをリセット（空にする）
+                attackParameters[i].checkCommadStr = "";
+            }
+            //同時押しのために猶予フレームが0の技は押されていたら有効に
+            if (attackParameters[i].validShotFrame == 0 && attackParameters[i].command == inputData)
+            {
+                Debug.Log("aaaa");
                 //コマンドのフラグを立てる
                 attackParameters[i].isShot = true;
                 Debug.Log(attackParameters[i].commandName + "の入力が完了");
