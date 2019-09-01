@@ -25,7 +25,6 @@ public class UI_StartRound : MonoBehaviour
 {
 	public float interval01;
 	public float interval02;
-	public float interval03;
 
 	public bool isPlay = false;         //再生中か（InGameManagerへの戻り値）
 	public bool isCalled= false;    //既に呼ばれているか(コルーチンの再生を一度きりに使う)
@@ -80,7 +79,7 @@ public class UI_StartRound : MonoBehaviour
         Sound.LoadSe("Fight", "Voice_Fight");
         Sound.PlaySe("Fight", 3, 0.8f);
         // ---------------------------------------------------
-		yield return new WaitForSeconds(interval03);
+		yield return new WaitForSeconds(interval02);
 		isPlay = false;	
     }
 }
