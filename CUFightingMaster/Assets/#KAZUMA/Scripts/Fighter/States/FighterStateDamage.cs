@@ -9,7 +9,7 @@ public class FighterStateDamage : StateBaseScriptMonoBehaviour
 	private int hitRigor = 0;
 	private int hitCount = 0;
 
-	private bool isEndStun = false;
+    private bool isEndStun = false;
 	private void Start()
 	{
 		stateBase = GetComponent<FighterStateBase>();
