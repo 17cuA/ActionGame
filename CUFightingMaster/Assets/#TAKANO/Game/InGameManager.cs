@@ -272,7 +272,7 @@ public class InGameManager : MonoBehaviour
 	#region プレイヤー位置リセット
 	private IEnumerator Test()
     {
-		BattleCamera.transform.position = new Vector3(0, 3.0f, -10f);
+		BattleCamera.transform.position = new Vector3(0, 3.0f, -9.5f);
 		player1.transform.position = targetPoint[0].transform.position;
 		player2.transform.position = targetPoint[1].transform.position;
 		yield return null;
