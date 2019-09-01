@@ -9,6 +9,7 @@ public class BulletHitBox : ScriptableObject
 	public int maxFrame = 10;
 	public bool isLoop = false;
     public bool isOffset = true;//相殺判定
+    public bool isInvincibleDis = false;//飛び道具無効無効
     public List<FighterSkill.HitEffects> offsetEffects = new List<FighterSkill.HitEffects>();
     public List<FighterSkill.CustomHitBox> customHitBox = new List<FighterSkill.CustomHitBox>();//カスタム
 

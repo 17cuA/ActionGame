@@ -96,7 +96,6 @@ public class CommandManager :MonoBehaviour
             //同時押しのために猶予フレームが0の技は押されていたら有効に
             if (attackParameters[i].validShotFrame == 0 && attackParameters[i].command == inputData)
             {
-                Debug.Log("aaaa");
                 //コマンドのフラグを立てる
                 attackParameters[i].isShot = true;
                 Debug.Log(attackParameters[i].commandName + "の入力が完了");

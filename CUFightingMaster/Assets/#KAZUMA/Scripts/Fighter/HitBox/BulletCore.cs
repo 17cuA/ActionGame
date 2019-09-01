@@ -160,15 +160,15 @@ public abstract class BulletCore : MonoBehaviour,IEventable
 			}
 		}
 	}
-	//技が当たった時の処理
-	private void CheckHitBox(BoxCollider _bCol, FighterSkill.CustomHitBox _cHit)
-	{
-		Transform t = _bCol.gameObject.transform;
-		Collider[] col = Physics.OverlapBox(new Vector3(t.position.x + _bCol.center.x, t.position.y + _bCol.center.y, t.position.z + _bCol.center.z), _bCol.size / 2, Quaternion.identity, -1 - (1 << LayerMask.NameToLayer(CommonConstants.Layers.GetPlayerNumberLayer(playerNumber))));
+    //技が当たった時の処理
+    private void CheckHitBox(BoxCollider _bCol, FighterSkill.CustomHitBox _cHit)
+    {
+        Transform t = _bCol.gameObject.transform;
+        Collider[] col = Physics.OverlapBox(new Vector3(t.position.x + _bCol.center.x, t.position.y + _bCol.center.y, t.position.z + _bCol.center.z), _bCol.size / 2, Quaternion.identity, -1 - (1 << LayerMask.NameToLayer(CommonConstants.Layers.GetPlayerNumberLayer(playerNumber))));
         foreach (Collider c in col)
         {
-			//相殺
-           if ((c.gameObject.tag == CommonConstants.Tags.GetTags(HitBoxMode.Bullet)))
+            //相殺
+            if ((c.gameObject.tag == CommonConstants.Tags.GetTags(HitBoxMode.Bullet)))
             {
                 if (bulletHit.isOffset)
                 {
@@ -183,6 +183,16 @@ public abstract class BulletCore : MonoBehaviour,IEventable
             //通常攻撃
             else if ((c.gameObject.tag == CommonConstants.Tags.GetTags(HitBoxMode.HurtBox)) && (_cHit.isThrow == false))
             {
+                //飛び道具無効
+                if (GameManager.Instance.GetPlayFighterCore(c.gameObject.layer).NowPlaySkill.isInvincibleBullet && bulletHit.isInvincibleDis == false)
+                {
+                    foreach (var hit in bulletHit.offsetEffects)
+                    {
+                        Instantiate(hit.effect, hit.position + transform.position, Quaternion.identity);
+                    }
+                    isDestroyFlag = true;
+                    return;
+                }
                 hitAttackNum++;
                 FighterCore cr = GameManager.Instance.GetPlayFighterCore(c.gameObject.layer);
                 //ダメージを与える
@@ -193,9 +203,26 @@ public abstract class BulletCore : MonoBehaviour,IEventable
                 attackHit = true;
                 return;
             }
+            else if ((c.gameObject.tag == CommonConstants.Tags.GetTags(HitBoxMode.HitBox)) && (_cHit.isThrow == false))
+            {
+                //飛び道具無効
+                if (GameManager.Instance.GetPlayFighterCore(c.gameObject.layer).NowPlaySkill.isInvincibleBullet && bulletHit.isInvincibleDis == false)
+                {
+                    foreach (var hit in bulletHit.offsetEffects)
+                    {
+                        Instantiate(hit.effect, hit.position + transform.position, Quaternion.identity);
+                    }
+                    isDestroyFlag = true;
+                    return;
+                }
+            }
             //投げ技
             else if ((c.gameObject.tag == CommonConstants.Tags.GetTags(HitBoxMode.GrabAndSqueeze)) && (_cHit.isThrow == true))
             {
+                if (GameManager.Instance.GetPlayFighterCore(c.gameObject.layer).NowPlaySkill.isInvincibleBullet && bulletHit.isInvincibleDis == false)
+                {
+                    return;
+                }
                 hitAttackNum++;
                 FighterCore cr = GameManager.Instance.GetPlayFighterCore(c.gameObject.layer);
                 //ダメージを与える
@@ -207,7 +234,7 @@ public abstract class BulletCore : MonoBehaviour,IEventable
         }
     }
 #if UNITY_EDITOR
-	private void OnDrawGizmos()
+    private void OnDrawGizmos()
 	{
 		if (EditorApplication.isPlaying)
 		{

@@ -125,7 +125,8 @@ public class FighterSkill : ScriptableObject
     public bool outBlend = false;
 
     //当たり判定
-	public List<FrameHitBox> plusHeadHitBox = new List<FrameHitBox>();//頭
+    public bool isInvincibleBullet = false;//飛び道具無効
+    public List<FrameHitBox> plusHeadHitBox = new List<FrameHitBox>();//頭
 	public List<FrameHitBox> plusBodyHitBox = new List<FrameHitBox>();//体
 	public List<FrameHitBox> plusFootHitBox = new List<FrameHitBox>();//足
     public List<FrameHitBox> plusGrabHitBox = new List<FrameHitBox>();//掴み

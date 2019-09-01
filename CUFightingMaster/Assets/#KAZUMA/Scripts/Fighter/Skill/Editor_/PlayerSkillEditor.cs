@@ -189,19 +189,22 @@ public class PlayerSkillEditor : EditorWindow
     private List<FoldOutFlags> foldOutFlags = new List<FoldOutFlags>();
 	private void HitBoxTabDraw()
 	{
-		if (playerSkill != null)
-		{
-			EditorGUILayout.BeginHorizontal();
-			playerSkill.headFlag = EditorGUILayout.Toggle("Head",playerSkill.headFlag);
-			playerSkill.bodyFlag = EditorGUILayout.Toggle("Body",playerSkill.bodyFlag);
-			EditorGUILayout.EndHorizontal();
-			EditorGUILayout.BeginHorizontal();
-			playerSkill.footFlag = EditorGUILayout.Toggle("Foot",playerSkill.footFlag);
+        if (playerSkill != null)
+        {
+            EditorGUILayout.BeginHorizontal();
+            playerSkill.isInvincibleBullet = EditorGUILayout.Toggle("飛び道具無効", playerSkill.isInvincibleBullet);
+            EditorGUILayout.EndHorizontal();
+            EditorGUILayout.BeginHorizontal();
+            playerSkill.headFlag = EditorGUILayout.Toggle("Head", playerSkill.headFlag);
+            playerSkill.bodyFlag = EditorGUILayout.Toggle("Body", playerSkill.bodyFlag);
+            EditorGUILayout.EndHorizontal();
+            EditorGUILayout.BeginHorizontal();
+            playerSkill.footFlag = EditorGUILayout.Toggle("Foot", playerSkill.footFlag);
             playerSkill.grabFlag = EditorGUILayout.Toggle("Grab", playerSkill.grabFlag);
-			EditorGUILayout.EndHorizontal();
-			playerSkill.pushingFlag = EditorGUILayout.Toggle("Pushing", playerSkill.pushingFlag);
-		}
-		if (playerSkill.headFlag) HitBoxSetting(HitBoxPosition.Head);
+            EditorGUILayout.EndHorizontal();
+            playerSkill.pushingFlag = EditorGUILayout.Toggle("Pushing", playerSkill.pushingFlag);
+        }
+        if (playerSkill.headFlag) HitBoxSetting(HitBoxPosition.Head);
 		if (playerSkill.bodyFlag) HitBoxSetting(HitBoxPosition.Body);
 		if (playerSkill.footFlag) HitBoxSetting(HitBoxPosition.Foot);
         if (playerSkill.grabFlag) HitBoxSetting(HitBoxPosition.Grab);

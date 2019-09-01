@@ -403,7 +403,7 @@ public class FigterEditor : EditorWindow
                 fighterStatus.airAttackSkills[i].name = EditorGUILayout.TextField("技名", fighterStatus.airAttackSkills[i].name);
                 fighterStatus.airAttackSkills[i].command = EditorGUILayout.TextField("コマンド", fighterStatus.airAttackSkills[i].command);
                 fighterStatus.airAttackSkills[i].trigger = EditorGUILayout.TextField("トリガー", fighterStatus.airAttackSkills[i].trigger);
-                fighterStatus.airAttackSkills[i].validShotFrame = EditorGUILayout.IntField("トリガー入力猶予フレーム", fighterStatus.airAttackSkills[i].validShotFrame);
+                fighterStatus.airAttackSkills[i].validShotFrame = EditorGUILayout.IntField("トリガー入力猶予(0は同時押し)", fighterStatus.airAttackSkills[i].validShotFrame);
                 SSet("技", ref fighterStatus.airAttackSkills[i].skill);
                 //削除ボタン
                 if (removeFrag) fighterStatus.airAttackSkills.RemoveAt(i);

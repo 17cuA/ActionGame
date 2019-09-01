@@ -88,6 +88,7 @@ public class BulletEditor : EditorWindow
         skill.maxFrame = EditorGUILayout.IntField("フレーム数", skill.maxFrame);
         skill.isLoop = EditorGUILayout.Toggle("ループ", skill.isLoop);
         skill.isOffset = EditorGUILayout.Toggle("相殺判定", skill.isOffset);
+		skill.isInvincibleDis = EditorGUILayout.Toggle("飛び道具無敵無効", skill.isInvincibleDis);
         if (skill.isOffset && (effectFold = CustomUI.Foldout("エフェクト", effectFold)))
         {
             EditorGUILayout.BeginVertical("Box");
