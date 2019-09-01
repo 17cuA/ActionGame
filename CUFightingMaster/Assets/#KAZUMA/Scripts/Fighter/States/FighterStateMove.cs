@@ -162,14 +162,14 @@ public class FighterStateMove : StateBaseScriptMonoBehaviour
         return false;
     }
     //ジャンプキャンセル
-    public bool IsJumpCancel()
+    public bool IsJumpCancel(bool _isCount)
     {
         if (stateBase.core.NowPlaySkill.isJumpCancel)
         {
             if (jumpTimes < jumpTimesMax&&stateBase.core.IsHitAttack)
             {
                 Direction inp = stateBase.input.GetPlayerMoveDirection(stateBase);
-                return JumpChange(inp);
+                return JumpChange(inp,_isCount);
             }
         }
         return false;
@@ -267,8 +267,8 @@ public class FighterStateMove : StateBaseScriptMonoBehaviour
 
     }
     #endregion
-
-    private bool JumpChange(Direction _dir)
+    //ジャンプ入力時のみ
+    private bool JumpChange(Direction _dir,bool _isCount = true)
     {
         switch (_dir)
         {
@@ -276,19 +276,28 @@ public class FighterStateMove : StateBaseScriptMonoBehaviour
                 stateBase.core.SetIsCrouching(false);
                 stateBase.ChangeSkillConstant(SkillConstants.Jump, 0);
                 stateBase.core.SetPlayerMoveState(PlayerMoveState.Jump);
-                jumpTimes++;
+                if (_isCount)
+                {
+                    jumpTimes++;
+                }
                 return true;
             case Direction.UpFront:
                 stateBase.core.SetIsCrouching(false);
                 stateBase.ChangeSkillConstant(SkillConstants.Front_Jump, 0);
                 stateBase.core.SetPlayerMoveState(PlayerMoveState.Front_Jump);
-                jumpTimes++;
+                if (_isCount)
+                {
+                    jumpTimes++;
+                }
                 return true;
             case Direction.UpBack:
                 stateBase.core.SetIsCrouching(false);
                 stateBase.ChangeSkillConstant(SkillConstants.Back_Jump, 0);
                 stateBase.core.SetPlayerMoveState(PlayerMoveState.Back_Jump);
-                jumpTimes++;
+                if (_isCount)
+                {
+                    jumpTimes++;
+                }
                 return true;
             default:
                 return false;
