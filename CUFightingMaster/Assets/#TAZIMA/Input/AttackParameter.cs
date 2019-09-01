@@ -18,4 +18,6 @@ public class AttackParameter
     public bool isShot;
     //コマンドが入力されているか確認するための変数
     public string checkCommadStr;
+
+    public Coroutine nowCoroutine = null;
 }
