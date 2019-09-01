@@ -598,7 +598,14 @@ namespace CUEngine.Pattern
                     foreach (NowMethods method in methods)
                     {
                         Array.Resize(ref options, options.Length + 1);
-                        options[count] = method.nowMethod.Name + ":Class " + (method.compornent as StateBaseScriptMonoBehaviour).stateName;
+                        if((method.compornent as StateBaseScriptMonoBehaviour).stateName=="")
+                        {
+                            options[count] = "NoName" + "/" + method.nowMethod.Name;
+                        }
+                        else
+                        {
+                            options[count] = (method.compornent as StateBaseScriptMonoBehaviour).stateName + "/" + method.nowMethod.Name;
+                        }
                         count++;
                     }
                 }
