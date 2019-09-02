@@ -45,7 +45,7 @@ public class UI_FinishRound_KO: MonoBehaviour
         Sound.PlaySe("Ko", 3, 0.8f);
         // ---------------------------------------------------
         isPlay = true;
-		ko.SetActive(true);
+		ko.GetComponent<AnimationUIManager>().isStart = true;
         yield return new WaitForSeconds(interval01);
         isPlay = false;
     }

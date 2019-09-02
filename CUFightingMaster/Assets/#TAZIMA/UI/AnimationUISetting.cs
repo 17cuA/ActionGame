@@ -4,15 +4,13 @@ using UnityEngine;
 
 public class AnimationUISetting : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public GameObject[] gameObjects;
+
     void Start()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        for (int i = 0;i < gameObjects.Length;i++)
+        {
+            gameObjects[i].GetComponent<AnimationUIManager>().Init();
+        }
     }
 }

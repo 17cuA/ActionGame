@@ -92,7 +92,7 @@ public class UI_GameVictory : MonoBehaviour
 	{
 		isPlay = true;
 
-        roundResult.SetActive(true);
+        roundResult.GetComponent<AnimationUIManager>().isStart = true;
 		yield return new WaitForSeconds(interval01);
 
 		isPlay = false;

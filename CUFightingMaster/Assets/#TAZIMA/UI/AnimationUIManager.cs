@@ -19,67 +19,42 @@ public class AnimationUIManager : MonoBehaviour
     private int nowSpriteCount;
     public int FadeOutFrame;
     private float currentRemainFrame;
-    private Color initColor;
 	private Sprite[] sprites;
+    private Color initColor;
+    private Sprite defaultSprite;
+    private Color defaultColor;
     public List<StopUIClass> stopUIs = null;
-    
-
-    //初期化処理
-	private void Start()
-    {
-		Init();
-    }
+    public bool isStart;
 
     private void Update()
     {
-        //アニメーション処理
-        if (nowSpriteCount < totalSpriteCount)
-		{
-   //         //パスで次のスプライトを指定して差し替える
-			//var sprite = Resources.Load<Sprite>(string.Format("{0}/{1}_{2}", path, spriteName, nowSpriteCount.ToString("D5")));
-			//gameObject.GetComponent<Image>().sprite = sprite;
-            //指定フレームで指定フレーム分止められるようにする
-            var isStopUI = false;
-
-            //UIを止めていない時の処理
-            if (!isStopUI)
-            {
-                //パスで次のスプライトを指定して差し替える
-                var sprite = Resources.Load<Sprite>(string.Format("{0}/{1}_{2}", path, spriteName, nowSpriteCount.ToString("D5")));
-                gameObject.GetComponent<Image>().sprite = sprite;
-                //指定フレームを過ぎたらフェードアウト処理
-                if (nowSpriteCount > (totalSpriteCount - FadeOutFrame - 1))
-                {
-                    FadeOutUI();
-                }
-                nowSpriteCount++;
-            }
-		}
-		else
-		{
-            //再利用できるように元に戻しておく
-            gameObject.SetActive(false);
-            gameObject.GetComponent<Image>().color = initColor;
-            ResetUI();
-		}
+        if (isStart)
+        {
+            StartAnimation();
+        }
     }
 
-	private void Init()
+	public void Init()
 	{
-		//スプライトが保存されている場所のパス
-		path = "Sprites/UI/AnimationUI/ROUND ANIMATION/" + spriteName;
+        //各スプライトを格納
+        //デフォルトのスプライト
+        path = "Sprites/UI/AnimationUI/ROUND ANIMATION/";
+        defaultSprite = Resources.Load<Sprite>(string.Format("{0}{1}", path, "DefaultImage"));
+        //スプライトが保存されている場所のパス
+        path += spriteName;
 		totalSpriteCount = Directory.GetFiles("Assets/Resources/" + path, "*", SearchOption.TopDirectoryOnly).Length / 2;
-		initColor = gameObject.GetComponent<Image>().color;
-        //スプライト格納
+        sprites = new Sprite[totalSpriteCount];
         for (int i = 0; i < totalSpriteCount; i++)
         {
-            Debug.Log(string.Format("{0}/{1}_{2}", path, spriteName, i.ToString("D5")));
-            //sprites[i] = Resources.Load<Sprite>(string.Format("{0}/{1}_{2}", path, spriteName, i.ToString("D5")));
+            sprites[i] = Resources.Load<Sprite>(string.Format("{0}/{1}_{2}", path, spriteName, i.ToString("D5")));
         }
+        initColor = gameObject.GetComponent<Image>().color;
         ResetUI();
 	}
 	private void ResetUI()
     {
+
+        isStart = false;
         nowSpriteCount = 0;
         currentRemainFrame = FadeOutFrame;
         if (stopUIs.Count != 0)
@@ -88,6 +63,36 @@ public class AnimationUIManager : MonoBehaviour
             {
                 stopUIs[i].CountFrame = 0;
             }
+        }
+    }
+    private void StartAnimation()
+    {
+        //アニメーション処理
+        if (nowSpriteCount < totalSpriteCount)
+        {
+            //指定フレームで指定フレーム分止められるようにする
+            var isStopUI = false;
+
+            //UIを止めていない時の処理
+            if (!isStopUI)
+            {
+                //パスで次のスプライトを指定して差し替える
+                var sprite = sprites[nowSpriteCount];
+                gameObject.GetComponent<Image>().sprite = sprite;
+                //指定フレームを過ぎたらフェードアウト処理
+                if (nowSpriteCount > (totalSpriteCount - FadeOutFrame - 1))
+                {
+                    FadeOutUI();
+                }
+                nowSpriteCount++;
+            }
+        }
+        else
+        {
+            //再利用できるように元に戻しておく
+            gameObject.GetComponent<Image>().sprite = defaultSprite;
+            gameObject.GetComponent<Image>().color = initColor;
+            ResetUI();
         }
     }
 	private bool StopUI()

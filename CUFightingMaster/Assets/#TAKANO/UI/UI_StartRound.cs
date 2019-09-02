@@ -33,7 +33,7 @@ public class UI_StartRound : MonoBehaviour
 
 	void DisplayRoundNumberImage(int roundCnt)
 	{
-		roundNumber[roundCnt].SetActive(true);
+		roundNumber[roundCnt].GetComponent<AnimationUIManager>().isStart = true;
     }
 
 	public void Reset_isCalled()

@@ -41,7 +41,7 @@ public class UI_FinishRound_TimeOver : MonoBehaviour
 	{
 		isPlay = true;
 
-		timeOver.SetActive(true);
+		timeOver.GetComponent<AnimationUIManager>().isStart = true;
 		yield return new WaitForSeconds(interval01);
 
 		isPlay = false;
