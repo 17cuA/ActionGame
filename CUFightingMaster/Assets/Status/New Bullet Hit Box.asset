@@ -15,8 +15,9 @@ MonoBehaviour:
   maxFrame: 10
   isLoop: 1
   isOffset: 1
+  isInvincibleDis: 0
   offsetEffects:
-  - effect: {fileID: 1259253502216652068, guid: 5ebc70f5175b57c4a907438c28d95c24,
+  - effect: {fileID: 8710753073369587141, guid: 1cb839ce57d1375469f1080f1ea44793,
       type: 3}
     guardEffect: {fileID: 0}
     position: {x: 0, y: 0, z: 0}
@@ -44,6 +45,10 @@ MonoBehaviour:
       position: {x: 0, y: 0, z: 0}
     isDown: 0
     isThrow: 0
+    isThrowGroundDamage: 0
+    isThrowGroundAnimEnd: 0
+    airDamageMovements: []
+    throwGroundDamage: 0
     throwSkill: {fileID: 0}
     enemyThrowSkill: {fileID: 0}
     throwDamages: []
