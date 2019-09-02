@@ -22,8 +22,8 @@ using UnityEngine;
 public class CanvasController : MonoBehaviour
 {
 	public Canvas canvas_1;
-	[SerializeField] private InGameUIController inGameUIController_1;	// canvas_1の子分子のInGameUIController
-	[SerializeField] private ScreenFade screenFade_1;	// canvas_1の子分子のScreenFade
+	[SerializeField] private InGameUIController inGameUIController_1;   // canvas_1の子分子のInGameUIController
+	[SerializeField] private ScreenFade screenFade_1;   // canvas_1の子分子のScreenFade
 
 	public Canvas canvas_2;
 	[SerializeField] private InGameUIController inGameUIController_2;   // canvas_2の子分子のInGameUIController
@@ -170,6 +170,17 @@ public class CanvasController : MonoBehaviour
 	}
 
 	/// <summary>
+	/// PlayerのSt表示
+	/// </summary>
+	/// <param name="currentSt_P1">Player1の現在のSp</param>
+	/// <param name="currentSt_P2">Player2の現在のSp</param>
+	public void Call_DisplayPlayerSt(int currentSt_P1, int currentSt_P2)
+	{
+		inGameUIController_1.DisplayPlayerSt(currentSt_P1, currentSt_P2);
+		inGameUIController_2.DisplayPlayerSt(currentSt_P1, currentSt_P2);
+	}
+
+	/// <summary>
 	/// ラウンドカウンターの更新
 	/// </summary>
 	/// <param name="p1Value">Player1のラウンド取得数</param>
@@ -204,9 +215,30 @@ public class CanvasController : MonoBehaviour
 	/// </summary>
 	/// <param name="charaHp_P1"></param>
 	/// <param name="charaHp_P2"></param>
-	public void Call_SetUIHpMax(int charaHp_P1 , int charaHp_P2)
+	public void Call_SetUIHpMax(int charaHp_P1, int charaHp_P2)
 	{
-		inGameUIController_1.SetHpMax(charaHp_P1 , charaHp_P2);
-		inGameUIController_2.SetHpMax(charaHp_P1 , charaHp_P2);
+		inGameUIController_1.SetHpMax(charaHp_P1, charaHp_P2);
+		inGameUIController_2.SetHpMax(charaHp_P1, charaHp_P2);
+	}
+
+	/// <summary>
+	/// SPバーにキャラのHPの最大値をセット
+	/// </summary>
+	/// <param name="charaSP_P1"></param>
+	/// <param name="charaSP_P2"></param>
+	public void Call_SetUISpMax(int charaSp_P1, int charaSp_P2)
+	{
+		inGameUIController_1.SetSpMax(charaSp_P1, charaSp_P2);
+		inGameUIController_2.SetSpMax(charaSp_P1, charaSp_P2);
+	}
+	/// <summary>
+	/// STバーにキャラのSTの最大値をセット
+	/// </summary>
+	/// <param name="charaST_P1"></param>
+	/// <param name="charaST_P2"></param>
+	public void Call_SetUIStMax(int charaSt_P1, int charaSt_P2)
+	{
+		inGameUIController_1.SetStMax(charaSt_P1, charaSt_P2);
+		inGameUIController_2.SetStMax(charaSt_P1, charaSt_P2);
 	}
 }
