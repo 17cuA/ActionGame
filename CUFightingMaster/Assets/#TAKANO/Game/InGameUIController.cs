@@ -27,24 +27,26 @@ using UnityEngine;
 
 public class InGameUIController : MonoBehaviour
 {
-    //参照先
-    [SerializeField] GameObject Player01;
-    [SerializeField] GameObject Player02;
+	//参照先
+	[SerializeField] GameObject Player01;
+	[SerializeField] GameObject Player02;
 
-    [SerializeField] CountDownTimer uI_countDownTimer;
-    [SerializeField] UI_HP uI_hp_P1;
-    [SerializeField] UI_HP uI_hp_P2;
+	[SerializeField] CountDownTimer uI_countDownTimer;
+	[SerializeField] UI_HP uI_hp_P1;
+	[SerializeField] UI_HP uI_hp_P2;
 	[SerializeField] UI_Gauge uI_sp_P1;
 	[SerializeField] UI_Gauge uI_sp_P2;
+	[SerializeField] UI_Gauge uI_st_P1;
+	[SerializeField] UI_Gauge uI_st_P2;
 
-    [SerializeField] UI_RoundWinCounter uI_RoundWinCounter;
-    [SerializeField] UI_StartRound uI_StartRound;
-    [SerializeField] UI_BattleRound uI_BatlleRound;
-    [SerializeField] UI_FinishRound_KO uI_FinishRound_KO;
-    [SerializeField] UI_FinishRound_TimeOver uI_FinishRound_TimeOver;
-    [SerializeField] UI_GameVictory uI_GameVictory;
+	[SerializeField] UI_RoundWinCounter uI_RoundWinCounter;
+	[SerializeField] UI_StartRound uI_StartRound;
+	[SerializeField] UI_BattleRound uI_BatlleRound;
+	[SerializeField] UI_FinishRound_KO uI_FinishRound_KO;
+	[SerializeField] UI_FinishRound_TimeOver uI_FinishRound_TimeOver;
+	[SerializeField] UI_GameVictory uI_GameVictory;
 
-	[SerializeField] GameObject currentCanvas;	// このInGameUIControllerの親のCanvas
+	[SerializeField] GameObject currentCanvas;  // このInGameUIControllerの親のCanvas
 	[SerializeField] GameObject uI_InGameUI;
 
 	/// <summary>
@@ -53,123 +55,156 @@ public class InGameUIController : MonoBehaviour
 	/// <param name="roundCount">ラウンド数</param>
 	/// <returns>再生が終了したか( 再生中:true 終了:false )</returns>
 	public bool PlayStartRound(int roundCount)
-    {
-        return uI_StartRound.PlayStartRound(roundCount);
-    }
+	{
+		return uI_StartRound.PlayStartRound(roundCount);
+	}
 
-    /// <summary>
-    /// ラウンド開始後のUIの表示
-    /// </summary>
+	/// <summary>
+	/// ラウンド開始後のUIの表示
+	/// </summary>
 	public void PlayBattleRound()
-    {
-        uI_BatlleRound.DisplayBatlleUI();
-        uI_countDownTimer = uI_InGameUI.transform.Find("UI_CountDownTimer").GetComponent<CountDownTimer>();
+	{
+		uI_BatlleRound.DisplayBatlleUI();
+		uI_countDownTimer = uI_InGameUI.transform.Find("UI_CountDownTimer").GetComponent<CountDownTimer>();
 
-        //一時的
-        uI_hp_P1 = uI_InGameUI.transform.Find("UI_HP_P1").GetComponent<UI_HP>();
-        uI_hp_P2 = uI_InGameUI.transform.Find("UI_HP_P2").GetComponent<UI_HP>();
+		//一時的
+		uI_hp_P1 = uI_InGameUI.transform.Find("UI_HP_P1").GetComponent<UI_HP>();
+		uI_hp_P2 = uI_InGameUI.transform.Find("UI_HP_P2").GetComponent<UI_HP>();
 		//uI_sp_P1 = uI_InGameUI.transform.Find("UI_SP_P1").GetComponent<UI_Gauge>();
 		//uI_sp_P2 = uI_InGameUI.transform.Find("UI_SP_P2").GetComponent<UI_Gauge>();
 	}
 
-    /// <summary>
-    /// KOでラウンドが終わった時のUIの再生
-    /// </summary>
-    /// <returns></returns>
+	/// <summary>
+	/// KOでラウンドが終わった時のUIの再生
+	/// </summary>
+	/// <returns></returns>
 	public bool PlayFinishRound_KO()
-    {
-        return uI_FinishRound_KO.PlayFinishRound_KO();
-    }
+	{
+		return uI_FinishRound_KO.PlayFinishRound_KO();
+	}
 
-    /// <summary>
-    /// TimeOverでラウンドが終わった時のUiの再生
-    /// </summary>
-    /// <returns></returns>
-    public bool PlayFinishRound_TimeOver()
-    {
-        return uI_FinishRound_TimeOver.PlayFinishRound_TimeOver();
-    }
+	/// <summary>
+	/// TimeOverでラウンドが終わった時のUiの再生
+	/// </summary>
+	/// <returns></returns>
+	public bool PlayFinishRound_TimeOver()
+	{
+		return uI_FinishRound_TimeOver.PlayFinishRound_TimeOver();
+	}
 
 	/// <summary>
 	/// HPバーにキャラのHPの最大値をセット
 	/// </summary>
 	/// <param name="charaHpMax_P1"></param>
 	/// <param name="charaHpMax_P2"></param>
-	public void SetHpMax(int charaHpMax_P1 , int charaHpMax_P2 )
+	public void SetHpMax(int charaHpMax_P1, int charaHpMax_P2)
 	{
 		uI_hp_P1.SetHpMax(charaHpMax_P1);
 		uI_hp_P2.SetHpMax(charaHpMax_P2);
 	}
 
-    /// <summary>
-    /// プレイヤーのhp表示
-    /// </summary>
-    public void DisplayPlayerHp(int currentHp_P1, int currentHp_P2)
-    {
-        uI_hp_P1.Call_UpdateHpGuage(currentHp_P1);
-        uI_hp_P2.Call_UpdateHpGuage(currentHp_P2);
-    }
+
+	/// <summary>
+	/// HPバーにキャラのSPの最大値をセット
+	/// </summary>
+	/// <param name="charaSpMax_P1"></param>
+	/// <param name="charaSpMax_P2"></param>
+	public void SetSpMax(int charaSpMax_P1, int charaSpMax_P2)
+	{
+		uI_sp_P1.SetValueMax(charaSpMax_P1);
+		uI_sp_P2.SetValueMax(charaSpMax_P2);
+	}
+
+
+	/// <summary>
+	/// HPバーにキャラのSTの最大値をセット
+	/// </summary>
+	/// <param name="charaStMax_P1"></param>
+	/// <param name="charaStMax_P2"></param>
+	public void SetStMax(int charaStMax_P1, int charaStMax_P2)
+	{
+		uI_st_P1.SetValueMax(charaStMax_P1);
+		uI_st_P2.SetValueMax(charaStMax_P2);
+	}
+
+	/// <summary>
+	/// プレイヤーのhp表示
+	/// </summary>
+	public void DisplayPlayerHp(int currentHp_P1, int currentHp_P2)
+	{
+		uI_hp_P1.Call_UpdateHpGuage(currentHp_P1);
+		uI_hp_P2.Call_UpdateHpGuage(currentHp_P2);
+	}
 
 	/// <summary>
 	/// プレイヤーのsp表示
 	/// </summary>
 	public void DisplayPlayerSp(int currentSp_P1, int currentSp_P2)
 	{
-		uI_sp_P1.UpdateSliderValue(currentSp_P1);
-		uI_sp_P1.UpdateSliderValue(currentSp_P2);
+		uI_sp_P1.UpdateGuage(currentSp_P1);
+		uI_sp_P1.UpdateGuage(currentSp_P2);
 	}
 
-    /// <summary>
-    /// プレイヤー1が勝ったときのUI表示
-    /// </summary>
-    public bool DisplayVictory_winP1()
-    {
-        return uI_GameVictory.WinP1();
-    }
+	/// <summary>
+	/// プレイヤーのst表示
+	/// </summary>
+	public void DisplayPlayerSt(int currentSt_P1, int currentSt_P2)
+	{
+		uI_st_P1.UpdateGuage(currentSt_P1);
+		uI_st_P1.UpdateGuage(currentSt_P2);
+	}
 
-    /// <summary>
-    /// プレイヤー2が勝ったときのUI表示
-    /// </summary>
-    public bool DisplayVictory_winP2()
-    {
-       return  uI_GameVictory.WinP2();
-    }
+	/// <summary>
+	/// プレイヤー1が勝ったときのUI表示
+	/// </summary>
+	public bool DisplayVictory_winP1()
+	{
+		return uI_GameVictory.WinP1();
+	}
 
-    /// <summary>
-    /// カウントダウン開始
-    /// </summary>
-    public void StartCountDown()
-    {
-        uI_countDownTimer.ResetTimer();
+	/// <summary>
+	/// プレイヤー2が勝ったときのUI表示
+	/// </summary>
+	public bool DisplayVictory_winP2()
+	{
+		return uI_GameVictory.WinP2();
+	}
+
+	/// <summary>
+	/// カウントダウン開始
+	/// </summary>
+	public void StartCountDown()
+	{
+		uI_countDownTimer.ResetTimer();
 		uI_countDownTimer.PlayCountDown(true);
-    }
+	}
 
-    /// <summary>
-    /// カウントダウンストップ
-    /// </summary>
-    public void StopCountDown()
-    {
+	/// <summary>
+	/// カウントダウンストップ
+	/// </summary>
+	public void StopCountDown()
+	{
 		uI_countDownTimer.PlayCountDown(false);
-    }
+	}
 
-    /// <summary>
-    /// カウントダウンが終了したか
-    /// </summary>
-    /// <returns>終了していたらfalse</returns>
-    public bool DoEndCountDown()
-    {
-        return uI_countDownTimer.isEndCountDown();
-    }
+	/// <summary>
+	/// カウントダウンが終了したか
+	/// </summary>
+	/// <returns>終了していたらfalse</returns>
+	public bool DoEndCountDown()
+	{
+		return uI_countDownTimer.isEndCountDown();
+	}
 
-    /// <summary>
-    /// ラウンドカウンターの更新
-    /// </summary>
-    /// <param name="p1Value">プレイヤー1のラウンド取得数</param>
-    /// <param name="p2Value">プレイヤー2のラウンド取得数</param>
-    public void UpdateWinCounter(string p1Value, string p2Value)
-    {
-        uI_RoundWinCounter.UpdateRoundCounter(p1Value, p2Value);
-    }
+	/// <summary>
+	/// ラウンドカウンターの更新
+	/// </summary>
+	/// <param name="p1Value">プレイヤー1のラウンド取得数</param>
+	/// <param name="p2Value">プレイヤー2のラウンド取得数</param>
+	public void UpdateWinCounter(string p1Value, string p2Value)
+	{
+		uI_RoundWinCounter.UpdateRoundCounter(p1Value, p2Value);
+	}
 
 	/// <summary>
 	/// ラウンドカウンターをリセット（0729現在、デバッグでしか使っていない）
@@ -179,29 +214,29 @@ public class InGameUIController : MonoBehaviour
 		uI_RoundWinCounter.ResetWinCounter();
 	}
 
-    /// <summary>
-    ///UIのパラメータのリセット
-    /// </summary>
-    public void ResetUIParameter()
-    {
-        uI_StartRound.Reset_isCalled();
-        uI_FinishRound_KO.isCalled = false;
-        uI_FinishRound_TimeOver.isCalled = false;
-        uI_GameVictory.isCalled = false;
-        uI_countDownTimer.ResetTimer();
-    }
+	/// <summary>
+	///UIのパラメータのリセット
+	/// </summary>
+	public void ResetUIParameter()
+	{
+		uI_StartRound.Reset_isCalled();
+		uI_FinishRound_KO.isCalled = false;
+		uI_FinishRound_TimeOver.isCalled = false;
+		uI_GameVictory.isCalled = false;
+		uI_countDownTimer.ResetTimer();
+	}
 
-    private void Awake()
-    {
+	private void Awake()
+	{
 		//参照
 		currentCanvas = transform.root.gameObject;
 		uI_InGameUI = currentCanvas.transform.Find("InGameUI").gameObject;
-        uI_StartRound = currentCanvas.transform.Find("RoundStart").GetComponent<UI_StartRound>();
-        uI_BatlleRound = currentCanvas.transform.Find("BatlleRound").GetComponent<UI_BattleRound>();
-        uI_FinishRound_KO = currentCanvas.transform.Find("FinishRound_KO").GetComponent<UI_FinishRound_KO>();
-        uI_GameVictory = currentCanvas.transform.Find("FinishGame_Victory").GetComponent<UI_GameVictory>();
-        uI_FinishRound_TimeOver = currentCanvas.transform.Find("FinishRound_TimeOver").GetComponent<UI_FinishRound_TimeOver>();
-        uI_RoundWinCounter = currentCanvas.transform.Find("RoundWinCounter").GetComponent<UI_RoundWinCounter>();
+		uI_StartRound = currentCanvas.transform.Find("RoundStart").GetComponent<UI_StartRound>();
+		uI_BatlleRound = currentCanvas.transform.Find("BatlleRound").GetComponent<UI_BattleRound>();
+		uI_FinishRound_KO = currentCanvas.transform.Find("FinishRound_KO").GetComponent<UI_FinishRound_KO>();
+		uI_GameVictory = currentCanvas.transform.Find("FinishGame_Victory").GetComponent<UI_GameVictory>();
+		uI_FinishRound_TimeOver = currentCanvas.transform.Find("FinishRound_TimeOver").GetComponent<UI_FinishRound_TimeOver>();
+		uI_RoundWinCounter = currentCanvas.transform.Find("RoundWinCounter").GetComponent<UI_RoundWinCounter>();
 
-    }
+	}
 }
