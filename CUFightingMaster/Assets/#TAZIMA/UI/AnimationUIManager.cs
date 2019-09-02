@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class AnimationUIManager : MonoBehaviour
 {
     [System.Serializable]
-    public class StopUI
+    public class StopUIClass
     {
         public int StartFrame;
         public int StopFrame;
@@ -20,17 +20,14 @@ public class AnimationUIManager : MonoBehaviour
     public int FadeOutFrame;
     private float currentRemainFrame;
     private Color initColor;
-    public List<StopUI> stopUIs = null;
+	private Sprite[] sprites;
+    public List<StopUIClass> stopUIs = null;
     
 
     //初期化処理
 	private void Start()
     {
-        //スプライトが保存されている場所のパス
-		path = "Sprites/UI/AnimationUI/ROUND ANIMATION/" + spriteName;
-		totalSpriteCount = Directory.GetFiles("Assets/Resources/" + path, "*", SearchOption.TopDirectoryOnly).Length / 2;
-        initColor = gameObject.GetComponent<Image>().color;
-        Init();
+		Init();
     }
 
     private void Update()
@@ -43,16 +40,7 @@ public class AnimationUIManager : MonoBehaviour
 			//gameObject.GetComponent<Image>().sprite = sprite;
             //指定フレームで指定フレーム分止められるようにする
             var isStopUI = false;
-            for (int i = 0; i < stopUIs.Count; i++)
-            {
-                //現在のスプライトが指定したフレームと同じでカウントが指定したフレーム数より少ないときUIを止める
-                if (nowSpriteCount == stopUIs[i].StartFrame && stopUIs[i].CountFrame < stopUIs[i].StopFrame)
-                {
-                    Debug.Log("A");
-                    isStopUI = true;
-                    stopUIs[i].CountFrame++;
-                }
-            }
+
             //UIを止めていない時の処理
             if (!isStopUI)
             {
@@ -72,10 +60,25 @@ public class AnimationUIManager : MonoBehaviour
             //再利用できるように元に戻しておく
             gameObject.SetActive(false);
             gameObject.GetComponent<Image>().color = initColor;
-            Init();
+            ResetUI();
 		}
     }
-    private void Init()
+
+	private void Init()
+	{
+		//スプライトが保存されている場所のパス
+		path = "Sprites/UI/AnimationUI/ROUND ANIMATION/" + spriteName;
+		totalSpriteCount = Directory.GetFiles("Assets/Resources/" + path, "*", SearchOption.TopDirectoryOnly).Length / 2;
+		initColor = gameObject.GetComponent<Image>().color;
+		////スプライト格納
+		//for (int i = 0;i < totalSpriteCount;i++)
+		//{
+		//	Debug.Log(string.Format("{0}/{1}_{2}", path, spriteName, i.ToString("D5")));
+		//	sprites[i] = Resources.Load<Sprite>(string.Format("{0}/{1}_{2}", path, spriteName, i.ToString("D5")));
+		//}
+		ResetUI();
+	}
+	private void ResetUI()
     {
         nowSpriteCount = 0;
         currentRemainFrame = FadeOutFrame;
@@ -87,6 +90,19 @@ public class AnimationUIManager : MonoBehaviour
             }
         }
     }
+	private bool StopUI()
+	{
+		for (int i = 0; i < stopUIs.Count; i++)
+		{
+			//現在のスプライトが指定したフレームと同じでカウントが指定したフレーム数より少ないときUIを止める
+			if (nowSpriteCount == stopUIs[i].StartFrame && stopUIs[i].CountFrame < stopUIs[i].StopFrame)
+			{
+				stopUIs[i].CountFrame++;
+				return true;
+			}
+		}
+		return false;
+	}
     private void FadeOutUI()
     {
         //徐々にフェードアウト
