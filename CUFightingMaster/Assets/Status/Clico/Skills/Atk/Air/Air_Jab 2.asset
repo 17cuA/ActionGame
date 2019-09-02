@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fbd35985d310504d81036cc55356454, type: 3}
   m_Name: Air_Jab 2
   m_EditorClassIdentifier: 
-  animationClip: {fileID: 7400000, guid: 3177b215ff0f7454da08919dbd6d084d, type: 2}
-  animationSpeed: 0.4
+  animationClip: {fileID: 7400000, guid: 404cbbf8d9c95ad41a6bdceff87a3b18, type: 2}
+  animationSpeed: 1
   status: 1
   frameEffects: []
   frameBullets: []
@@ -105,13 +105,11 @@ MonoBehaviour:
     hitRigor: 10
     guardHitRigor: 8
     plusGauge: 0
-  isContinue: 0
+  isContinue: 1
   isMoveContinue: 0
   movements:
-  - movement: {x: 0, y: 0, z: 0}
+  - movement: {x: 0, y: 4, z: 0}
     startFrame: 0
-  - movement: {x: 4, y: 2, z: 0}
-    startFrame: 12
   gravityMoves:
   - movement: {x: 0, y: 0, z: 0}
     limitMove: {x: 0, y: 0, z: 0}

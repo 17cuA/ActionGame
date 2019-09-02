@@ -12,17 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fbd35985d310504d81036cc55356454, type: 3}
   m_Name: Stand_Guard
   m_EditorClassIdentifier: 
-  animationClip: {fileID: 7400000, guid: 573e66973f9cbc34a9a1ab55165383f9, type: 2}
+  animationClip: {fileID: 7400000, guid: 19db62e67d36e5348a3a4879c3e4123b, type: 2}
   animationSpeed: 1
   status: 1
-  hitMode: 0
-  throwMotion: {fileID: 0}
-  enemyThrowMotion: {fileID: 0}
+  frameEffects: []
+  frameBullets: []
   cancelFrag: 1
   barrageCancelFrag: 0
   cancelLayer: 0
+  isJumpCancel: 0
   inBlend: 0
   outBlend: 0
+  isInvincibleBullet: 0
   plusHeadHitBox: []
   plusBodyHitBox: []
   plusFootHitBox: []
@@ -30,6 +31,7 @@ MonoBehaviour:
   plusPushingHitBox: []
   customHitBox: []
   isContinue: 0
+  isMoveContinue: 0
   movements: []
   gravityMoves: []
   headFlag: 1
