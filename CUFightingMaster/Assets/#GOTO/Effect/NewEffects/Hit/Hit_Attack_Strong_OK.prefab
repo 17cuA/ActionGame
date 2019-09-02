@@ -28547,6 +28547,7 @@ GameObject:
   - component: {fileID: 1722284782620667806}
   - component: {fileID: 1722284782620667805}
   - component: {fileID: 1722284782620667804}
+  - component: {fileID: 2144553942721481144}
   m_Layer: 0
   m_Name: Hit_Attack_Strong_OK
   m_TagString: Untagged
@@ -33243,6 +33244,19 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
+--- !u!114 &2144553942721481144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1722284782620667795}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14519382a2c9a5d45ac8e7d9ad25aaef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundsType: 2
 --- !u!1 &2295232235892060134
 GameObject:
   m_ObjectHideFlags: 0
@@ -38066,6 +38080,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2998143556283647195, guid: da5296d9bad571642b67386232def8ce,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a01de87af713757439be1a98bf61fb77, type: 2}
+    - target: {fileID: 2998143556283647195, guid: da5296d9bad571642b67386232def8ce,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: a01de87af713757439be1a98bf61fb77, type: 2}
     - target: {fileID: 2998143556283647194, guid: da5296d9bad571642b67386232def8ce,
         type: 3}
       propertyPath: InitialModule.startLifetime.scalar
@@ -38171,16 +38195,6 @@ PrefabInstance:
       propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[0].inSlope
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 2998143556283647195, guid: da5296d9bad571642b67386232def8ce,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: a01de87af713757439be1a98bf61fb77, type: 2}
-    - target: {fileID: 2998143556283647195, guid: da5296d9bad571642b67386232def8ce,
-        type: 3}
-      propertyPath: m_Materials.Array.data[1]
-      value: 
-      objectReference: {fileID: 2100000, guid: a01de87af713757439be1a98bf61fb77, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: da5296d9bad571642b67386232def8ce, type: 3}
 --- !u!4 &8440415719771502390 stripped

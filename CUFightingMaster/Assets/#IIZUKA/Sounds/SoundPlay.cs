@@ -40,40 +40,40 @@ public class SoundPlay : MonoBehaviour
             switch (soundsType)
             {
                 case SoundsType.HitW:
-                    Sound.PlaySe("HitW", 1, 1);
+                    Sound.PlaySe("HitW", 1, 0.3f);
                     break;
                 case SoundsType.HitM:
-                    Sound.PlaySe("HitM", 1, 1);
+                    Sound.PlaySe("HitM", 1, 0.3f);
                     break;
                 case SoundsType.HitS:
-                    Sound.PlaySe("HitS", 1, 1);
+                    Sound.PlaySe("HitS", 1, 0.3f);
                     break;
                 case SoundsType.GuardW:
-                    Sound.PlaySe("GuardW", 1, 1);
+                    Sound.PlaySe("GuardW", 1, 0.3f);
                     break;
                 case SoundsType.GuardM:
-                    Sound.PlaySe("GuardM", 1, 1);
+                    Sound.PlaySe("GuardM", 1, 0.3f);
                     break;
                 case SoundsType.GuardS:
-                    Sound.PlaySe("GuardS", 1, 1);
+                    Sound.PlaySe("GuardS", 1, 0.3f);
                     break;
                 case SoundsType.PunchW:
-                    Sound.PlaySe("PunchW", 1, 1);
+                    Sound.PlaySe("PunchW", 1, 0.3f);
                     break;
                 case SoundsType.PunchM:
-                    Sound.PlaySe("PunchM", 1, 1);
+                    Sound.PlaySe("PunchM", 1, 0.3f);
                     break;
                 case SoundsType.PunchS:
-                    Sound.PlaySe("PunchS", 1, 1);
+                    Sound.PlaySe("PunchS", 1, 0.3f);
                     break;
                 case SoundsType.Jump:
-                    Sound.PlaySe("Jump", 1, 1);
+                    Sound.PlaySe("Jump", 1, 0.3f);
                     break;
                 case SoundsType.Step:
-                    Sound.PlaySe("Step", 1, 1);
+                    Sound.PlaySe("Step", 1, 0.3f);
                     break;
                 case SoundsType.Down:
-                    Sound.PlaySe("Down", 1, 1);
+                    Sound.PlaySe("Down", 1, 0.3f);
                     break;
                 case SoundsType.GetUp:
                     Sound.PlaySe("GetUp", 1, 1);
