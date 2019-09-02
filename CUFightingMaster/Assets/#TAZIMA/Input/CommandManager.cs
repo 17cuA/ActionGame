@@ -87,7 +87,6 @@ public class CommandManager :MonoBehaviour
             {
                 //コマンドのフラグを立てる
                 attackParameters[i].isShot = true;
-                Debug.Log(attackParameters[i].commandName + "の入力が完了");
                 //コマンドを保存しておく時間
                 StartCoroutine(CheckSaveCommand(attackParameters[i]));
                 //これまでに入力されていたデータをリセット（空にする）
@@ -98,7 +97,6 @@ public class CommandManager :MonoBehaviour
             {
                 //コマンドのフラグを立てる
                 attackParameters[i].isShot = true;
-                Debug.Log(attackParameters[i].commandName + "の入力が完了");
                 //コマンドを保存しておく時間
                 StartCoroutine(CheckSaveCommand(attackParameters[i]));
                 //これまでに入力されていたデータをリセット（空にする）
@@ -111,7 +109,6 @@ public class CommandManager :MonoBehaviour
                 {
                     //コマンドを保存
                     inputCommandName = attackParameters[i].commandName + attackParameters[i].shotTrigger;
-                    Debug.Log(" 攻撃コマンド発動=>" + inputCommandName);
                     attackParameters[i].isShot = false;
                     isShotCommand = true;
                     //コマンドを受け付けない時間
@@ -122,7 +119,7 @@ public class CommandManager :MonoBehaviour
                 {
                     //コマンドを保存
                     inputCommandName = attackParameters[i].commandName;
-                    Debug.Log("コマンド発動=>" + inputCommandName);
+
                     attackParameters[i].isShot = false;
                     isShotCommand = true;
                     //コマンドを受け付けない時間
@@ -138,31 +135,25 @@ public class CommandManager :MonoBehaviour
         var time = _attackParameter.validInputFrame / 60f;
         yield return new WaitForSeconds(time);
         //入力中のコマンドをリセットする
-        Debug.Log("削除");
         _attackParameter.checkCommadStr = "";
     }
 //コマンドを保存しておくフレームを管理
     public IEnumerator CheckSaveCommand(AttackParameter _attackParameter)
     {
-        Debug.Log("コマンド消去待機");
         var str = _attackParameter.commandName;
         var time = _attackParameter.validShotFrame / 60f;
-        Debug.Log(time);
         yield return new WaitForSeconds(time);
         //ヒットストップ中でない時
         while (isHitStop) yield return null;
         //フラグをオフ
         _attackParameter.isShot = false;
-        Debug.Log("コマンド消去");
     }
     //コマンド発動後のインターバル(フレーム)を管理
     public IEnumerator CheckInterval(AttackParameter _attackParameter)
 	{
         isCommandInterval = true;
-        Debug.Log("インターバル開始");
         var time = _attackParameter.intervalFrame / 60f;
         yield return new WaitForSeconds(time);
         isCommandInterval = false;
-        Debug.Log("インターバル終了");
     }
 }

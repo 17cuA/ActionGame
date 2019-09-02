@@ -17,11 +17,13 @@ MonoBehaviour:
   status: 1
   frameEffects: []
   frameBullets: []
-  cancelFrag: 1
+  cancelFrag: 0
   barrageCancelFrag: 0
   cancelLayer: 0
+  isJumpCancel: 0
   inBlend: 0
   outBlend: 0
+  isInvincibleBullet: 0
   plusHeadHitBox: []
   plusBodyHitBox: []
   plusFootHitBox: []
@@ -55,6 +57,10 @@ MonoBehaviour:
       position: {x: 0, y: 0, z: 0}
     isDown: 1
     isThrow: 0
+    isThrowGroundDamage: 0
+    isThrowGroundAnimEnd: 0
+    airDamageMovements: []
+    throwGroundDamage: 0
     throwSkill: {fileID: 0}
     enemyThrowSkill: {fileID: 0}
     throwDamages: []
@@ -93,6 +99,10 @@ MonoBehaviour:
       position: {x: 0, y: 0, z: 0}
     isDown: 1
     isThrow: 0
+    isThrowGroundDamage: 0
+    isThrowGroundAnimEnd: 0
+    airDamageMovements: []
+    throwGroundDamage: 0
     throwSkill: {fileID: 0}
     enemyThrowSkill: {fileID: 0}
     throwDamages: []

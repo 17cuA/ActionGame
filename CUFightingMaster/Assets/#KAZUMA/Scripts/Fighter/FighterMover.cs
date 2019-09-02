@@ -13,6 +13,7 @@ public class FighterMover
 	private List<FighterSkill.Move> moves = new List<FighterSkill.Move>();//移動配列
 	private List<FighterSkill.GravityMove> gravity = new List<FighterSkill.GravityMove>();//重力配列
 	private int gravityFrame = 0;   //重力用のフレーム数
+	int dasds = 0;
 
     //エフェクト
     private List<FighterSkill.FrameEffects> effects = new List<FighterSkill.FrameEffects>();
@@ -59,7 +60,8 @@ public class FighterMover
 		if (core.changeSkill == false) return;
 		if (core.NowPlaySkill != null)
 		{
-
+			Debug.Log(dasds + ":" + core.NowPlaySkill);
+			dasds++;
 			//重力の継続をするか否か
 			if(!core.NowPlaySkill.isContinue)
 			{
@@ -79,10 +81,7 @@ public class FighterMover
 			{
 				nowPlayMoveNumber = -1;
 			}
-			if (!core.NowPlaySkill.isContinue)
-			{
-				nowPlayGravityNumber = -1;
-			}
+			nowPlayGravityNumber = -1;
 			nowPlayEffectNumber = -1;
 			nowPlayBulletNumber = -1;
 
@@ -184,7 +183,8 @@ public class FighterMover
     //重力移動
     private void GravityMovementSkill()
     {
-        if ((gravity == null) || (gravity.Count == 0)) return;
+
+		if ((gravity == null) || (gravity.Count == 0)) return;
         if (gravity.Count > nowPlayGravityNumber + 1)
         {
             //現在再生中の移動の次の移動フレームを越えれば

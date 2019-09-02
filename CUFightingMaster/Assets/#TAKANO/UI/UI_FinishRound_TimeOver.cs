@@ -26,9 +26,6 @@ public class UI_FinishRound_TimeOver : MonoBehaviour
 
 	public bool isPlay = false;         //再生中か（InGameManagerへの戻り値）
 	public bool isCalled = false;    //既に呼ばれているか(コルーチンの再生を一度きりに使う)
-
-	private Image image;
-
 	public GameObject timeOver;
 
 	public bool PlayFinishRound_TimeOver()
@@ -42,20 +39,11 @@ public class UI_FinishRound_TimeOver : MonoBehaviour
 	}
 	IEnumerator RoundFinish_KOCoroutine()
 	{
-		 // 飯塚追加-------------------------------------------
-        Sound.LoadSe("Draw", "Voice_Draw");
-        Sound.PlaySe("Draw", 3, 0.8f);
-        // ---------------------------------------------------
 		isPlay = true;
 
-		image.enabled = true;
+		timeOver.SetActive(true);
 		yield return new WaitForSeconds(interval01);
-		image.enabled = false;
 
 		isPlay = false;
-	}
-	private void Awake()
-	{
-		image = timeOver.GetComponent<Image>();
 	}
 }

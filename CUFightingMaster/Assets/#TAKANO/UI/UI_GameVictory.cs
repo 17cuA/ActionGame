@@ -29,7 +29,7 @@ public class UI_GameVictory : MonoBehaviour
     public GameObject roundResult;
     public string win1P;
     public string win2P;
-    public string drow;
+    public string draw;
 
 	// 飯塚追加-------------------------------------------
     bool flag = true;
@@ -66,18 +66,14 @@ public class UI_GameVictory : MonoBehaviour
     }
 	public bool Drow()
 	{
-        //下記の処理をドロー用に変更してください
-        //// 飯塚追加-------------------------------------------
-        //if (flag)
-        //{
-        //	Sound.LoadSe("Voice_PlayerTwoWin", "Voice_PlayerTwoWin");
-        //	Sound.PlaySe("Voice_PlayerTwoWin", 3, 1);
-        //	flag = false;
-        //}
-        //// ---------------------------------------------------
-        
-        //roundResult.GetComponent<AnimationUIManager>().spriteName = drow;
-        GameVictoryStartCoroutine();
+		//下記の処理をドロー用に変更してください
+		// 飯塚追加------------------------------------------
+		Sound.LoadSe("Draw", "Voice_Draw");
+		Sound.PlaySe("Draw", 3, 0.8f);
+		// -------------------------------------------------
+
+		roundResult.GetComponent<AnimationUIManager>().spriteName = draw;
+		GameVictoryStartCoroutine();
 		return isPlay;
 	}
 

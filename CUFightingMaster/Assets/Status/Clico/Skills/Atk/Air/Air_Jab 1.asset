@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fbd35985d310504d81036cc55356454, type: 3}
   m_Name: Air_Jab 1
   m_EditorClassIdentifier: 
-  animationClip: {fileID: 7400000, guid: 3ff7fad54031c4846aceb33db3532f2a, type: 2}
+  animationClip: {fileID: 7400000, guid: aadf23df570c07f4083de6e552ae15d4, type: 2}
   animationSpeed: 0.5
   status: 1
   frameEffects: []
@@ -20,8 +20,10 @@ MonoBehaviour:
   cancelFrag: 0
   barrageCancelFrag: 0
   cancelLayer: 0
+  isJumpCancel: 0
   inBlend: 0
   outBlend: 0
+  isInvincibleBullet: 0
   plusHeadHitBox:
   - hitBox:
       size: {x: -0.52, y: 0, z: 0}
@@ -71,6 +73,10 @@ MonoBehaviour:
       position: {x: 0, y: 0, z: -3}
     isDown: 0
     isThrow: 0
+    isThrowGroundDamage: 0
+    isThrowGroundAnimEnd: 0
+    airDamageMovements: []
+    throwGroundDamage: 0
     throwSkill: {fileID: 0}
     enemyThrowSkill: {fileID: 0}
     throwDamages: []
@@ -83,6 +89,7 @@ MonoBehaviour:
     guardHitRigor: 8
     plusGauge: 0
   isContinue: 1
+  isMoveContinue: 0
   movements:
   - movement: {x: 0, y: 4, z: 0}
     startFrame: 0

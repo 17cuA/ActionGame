@@ -20,8 +20,10 @@ MonoBehaviour:
   cancelFrag: 0
   barrageCancelFrag: 0
   cancelLayer: 0
+  isJumpCancel: 0
   inBlend: 0
   outBlend: 0
+  isInvincibleBullet: 0
   plusHeadHitBox: []
   plusBodyHitBox: []
   plusFootHitBox:
@@ -51,6 +53,10 @@ MonoBehaviour:
     hitEffects: []
     isDown: 0
     isThrow: 1
+    isThrowGroundDamage: 1
+    isThrowGroundAnimEnd: 0
+    airDamageMovements: []
+    throwGroundDamage: 0
     throwSkill: {fileID: 11400000, guid: 9970f1d9fd4028747973382ae5c42e44, type: 2}
     enemyThrowSkill: {fileID: 11400000, guid: fe925ebfd8be3c443baaef03a2358edf, type: 2}
     throwDamages:
