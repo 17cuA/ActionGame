@@ -139,7 +139,7 @@ public class Sound
 		Sound.LoadSe("PunchW", "Se_punch_weak");
 		Sound.LoadSe("PunchM", "Se_punch_medium");
 		Sound.LoadSe("PunchS", "Se_punch_strong");
-		Sound.LoadSe("Jump", "Se_jump");
+
 		Sound.LoadSe("Step", "Se_step");
 		Sound.LoadSe("Down", "Se_down");
 		Sound.LoadSe("GetUp", "Se_getUp");
@@ -152,6 +152,7 @@ public class Sound
 		Sound.LoadSe("Menu_Decision", "Se_menu_decision");
 		
 		/*古いデータ
+		Sound.LoadSe("Jump", "Se_jump");
 		Sound.LoadSe("RoundOne", "Voice_roundOne");
 		Sound.LoadSe("RoundTwo", "Voice_roundTwo");
 		Sound.LoadSe("RoundThree", "Voice_roundThree");
@@ -172,13 +173,16 @@ public class Sound
 		Sound.LoadSe("Ko", "Voice_K.O.");
 		Sound.LoadSe("Draw", "Voice_Draw");
 
+		//9.2
+		Sound.LoadSe("Jump", "SE_Jump");
+		Sound.LoadSe("Jump2", "SE_Jump2");
+
 		//まだ未使用組
 		Sound.LoadSe("Ko2", "Voice_K.O.2");
 		Sound.LoadSe("ADrunk", "CharaVoice_ADrunk");
 		Sound.LoadSe("Clico", "CharaVoice_Clico");
 		Sound.LoadSe("Kuidaore", "CharaVoice_Kuidaore");
 		Sound.LoadSe("Obachan", "CharaVoice_Oba");
-
 	}
 
 	/// <summary>

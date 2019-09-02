@@ -63,6 +63,12 @@ public class CanvasController : MonoBehaviour
 		if (endFadeOut_1 && endFadeOut_2) return true;
 		return false;
 	}
+
+	public void Call_BrackOut()
+	{
+		screenFade_1.BrackOut();
+		screenFade_2.BrackOut();
+	}
 	#endregion
 
 	#region ラウンド開始・終了時のUI表示

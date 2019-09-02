@@ -47,22 +47,30 @@ public class InGameManager : MonoBehaviour
 	public GameObject BattleCamera;
 	public GameObject[] targetPoint = new GameObject[2];
 
+	bool islight = false;
+
+
 	#region 試合開始
 	/// <summary>
 	/// 試合開始 
 	/// </summary>
 	private void StartGame()
     {
-		Sound.AllSoundLod();
-		Sound.PlayBgm("Bgm01", 0.5f, 1);
-
-		//BGMの再生(未実装)
 
 		//カットシーンの再生（未実装）
+		if (islight)
+		{
+			//カットシーンの再生が終わり、暗くなったら
+			if (cinemaController.isPlay == false && canvasController.Call_StartFadeOut() == true)
+				currentUpdate = StartRound;
+		}
 
-		//カットシーンの再生が終わり、暗くなったら
-		if (cinemaController.isPlay == false && canvasController.Call_StartFadeOut() == true)
-            currentUpdate = StartRound;
+		else if (canvasController.Call_StartFadeIn())
+		{
+			islight = true;
+			Sound.AllSoundLod();
+			Sound.PlayBgm("Bgm01", 0.5f, 1);
+		}
     }
 	#endregion
 
@@ -304,7 +312,13 @@ public class InGameManager : MonoBehaviour
 		{
 			getRoundCount[i] = "";
 		}
-        currentUpdate = StartGame;
+
+
+		//画面暗転
+		canvasController.Call_BrackOut();
+
+		currentUpdate = StartGame;
+
 	}
 
     void Update()
