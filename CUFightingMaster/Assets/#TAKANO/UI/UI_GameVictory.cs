@@ -64,14 +64,17 @@ public class UI_GameVictory : MonoBehaviour
         GameVictoryStartCoroutine();
         return isPlay;
     }
-	public bool Drow()
+	public bool Draw()
 	{
 		//下記の処理をドロー用に変更してください
 		// 飯塚追加------------------------------------------
-		Sound.LoadSe("Draw", "Voice_Draw");
-		Sound.PlaySe("Draw", 3, 0.8f);
+		if (flag)
+		{
+			Sound.LoadSe("Draw", "Voice_Draw");
+			Sound.PlaySe("Draw", 3, 1);
+			flag = false;
+		}
 		// -------------------------------------------------
-
 		roundResult.GetComponent<AnimationUIManager>().spriteName = draw;
 		GameVictoryStartCoroutine();
 		return isPlay;

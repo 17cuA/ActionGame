@@ -75,12 +75,12 @@ public class FuncKeyManager : SingletonMono<FuncKeyManager>
 				//1P側の体力を5減らす
 				if (Input.GetKeyDown(KeyCode.F5))
 				{
-					GameManager.Instance.Player_one.HP -= 5;
+					GameManager.Instance.Player_one.HP -= 25;
 				}
 				//2P側の体力を5減らす
 				if (Input.GetKeyDown(KeyCode.F6))
 				{
-					GameManager.Instance.Player_two.HP -= 5;
+					GameManager.Instance.Player_two.HP -= 25;
 				}
 				//ラウンドリセット
 				if (Input.GetKeyDown(KeyCode.F7))

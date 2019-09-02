@@ -22,14 +22,6 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-//ラウンド取得の種類
-public enum GetRoundCategory
-{
-	None = 0,
-	KO = 1,
-	DoubleKO = 2,
-	TimeOver = 3,
-}
 public class InGameManager : MonoBehaviour
 {
 	private static readonly int playerIndex = 2;
@@ -146,12 +138,12 @@ public class InGameManager : MonoBehaviour
             //勝敗判定
 			if (GameManager.Instance.Player_one.HP > GameManager.Instance.Player_two.HP)
             {
-				getRoundCount[0] += "1";
+				getRoundCount[0] += "3";
 				gameRoundCount++;
             }
 			else if (GameManager.Instance.Player_one.HP < GameManager.Instance.Player_two.HP)
 			{
-				getRoundCount[1] += "1";
+				getRoundCount[1] += "3";
 				gameRoundCount++;
             }
 			else
@@ -267,7 +259,10 @@ public class InGameManager : MonoBehaviour
         }
 		else
 		{
+			ShareSceneVariable.P1_info.isWin = 1;
+			ShareSceneVariable.P2_info.isWin = 1;
 			//試合が引き分けで終わったことを保存する(そのままフェーズ移行処理)
+			if (canvasController.Call_DisplayVictory_draw() == false)
 			currentUpdate = GameFinish;
 		}
     }

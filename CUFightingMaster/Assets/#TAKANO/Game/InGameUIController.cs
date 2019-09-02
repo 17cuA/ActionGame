@@ -171,6 +171,14 @@ public class InGameUIController : MonoBehaviour
 	}
 
 	/// <summary>
+	/// 引き分けのときのUI表示
+	/// </summary>
+	public bool DisplayVictory_draw()
+	{
+		return uI_GameVictory.Draw();
+	}
+
+	/// <summary>
 	/// カウントダウン開始
 	/// </summary>
 	public void StartCountDown()

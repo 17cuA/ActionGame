@@ -123,6 +123,16 @@ public class CanvasController : MonoBehaviour
 		if (inGameUIController_1.DisplayVictory_winP2() && inGameUIController_2.DisplayVictory_winP2()) return true;
 		return false;
 	}
+
+	/// <summary>
+	/// 引き分けたときのUI表示
+	/// </summary>
+	public bool Call_DisplayVictory_draw()
+	{
+		if (inGameUIController_1.DisplayVictory_draw() && inGameUIController_2.DisplayVictory_draw()) return true;
+		return false;
+	}
+
 	#endregion
 
 	#region CountDown
