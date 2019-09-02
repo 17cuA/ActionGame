@@ -236,13 +236,13 @@ public class FighterStateDamage : StateBaseScriptMonoBehaviour
                     switch (box.hitStrength)
                     {
                         case HitStrength.Light:
-                            stateBase.ChangeSkillConstant(SkillConstants.Air_Light_Bottom_HitMotion, 0);
+							stateBase.ChangeSkillCustomMoveConstant(SkillConstants.Air_Light_Bottom_HitMotion, 0, box.airDamageMovements);
                             break;
                         case HitStrength.Middle:
-                            stateBase.ChangeSkillConstant(SkillConstants.Air_Middle_Bottom_HitMotion, 0);
+							stateBase.ChangeSkillCustomMoveConstant(SkillConstants.Air_Middle_Bottom_HitMotion, 0, box.airDamageMovements);
                             break;
                         case HitStrength.Strong:
-                            stateBase.ChangeSkillConstant(SkillConstants.Air_Strong_Bottom_HitMotion, 0);
+							stateBase.ChangeSkillCustomMoveConstant(SkillConstants.Air_Strong_Bottom_HitMotion, 0, box.airDamageMovements);
                             break;
                     }
                     break;
@@ -250,13 +250,13 @@ public class FighterStateDamage : StateBaseScriptMonoBehaviour
                     switch (box.hitStrength)
                     {
                         case HitStrength.Light:
-                            stateBase.ChangeSkillConstant(SkillConstants.Air_Light_Middle_HitMotion, 0);
+							stateBase.ChangeSkillCustomMoveConstant(SkillConstants.Air_Light_Middle_HitMotion, 0, box.airDamageMovements);
                             break;
                         case HitStrength.Middle:
-                            stateBase.ChangeSkillConstant(SkillConstants.Air_Middle_Middle_HitMotion, 0);
+							stateBase.ChangeSkillCustomMoveConstant(SkillConstants.Air_Middle_Middle_HitMotion, 0, box.airDamageMovements);
                             break;
                         case HitStrength.Strong:
-                            stateBase.ChangeSkillConstant(SkillConstants.Air_Strong_Middle_HitMotion, 0);
+							stateBase.ChangeSkillCustomMoveConstant(SkillConstants.Air_Strong_Middle_HitMotion, 0, box.airDamageMovements);
                             break;
                     }
                     break;
@@ -264,13 +264,13 @@ public class FighterStateDamage : StateBaseScriptMonoBehaviour
                     switch (box.hitStrength)
                     {
                         case HitStrength.Light:
-                            stateBase.ChangeSkillConstant(SkillConstants.Air_Light_Top_HitMotion, 0);
+							stateBase.ChangeSkillCustomMoveConstant(SkillConstants.Air_Light_Top_HitMotion, 0, box.airDamageMovements);
                             break;
                         case HitStrength.Middle:
-                            stateBase.ChangeSkillConstant(SkillConstants.Air_Middle_Top_HitMotion, 0);
+							stateBase.ChangeSkillCustomMoveConstant(SkillConstants.Air_Middle_Top_HitMotion, 0, box.airDamageMovements);
                             break;
                         case HitStrength.Strong:
-                            stateBase.ChangeSkillConstant(SkillConstants.Air_Strong_Top_HitMotion, 0);
+							stateBase.ChangeSkillCustomMoveConstant(SkillConstants.Air_Strong_Top_HitMotion, 0, box.airDamageMovements);
                             break;
                     }
                     break;

@@ -188,9 +188,16 @@ public class FighterStateBase : StateBaseScriptMonoBehaviour
         s.isContinue = _con;
         core.SetSkill(s, _weightFrame);
     }
+	//スキル入れ替え（移動カスタム）
+	public void ChangeSkillCustomMoveConstant(SkillConstants _constants, int _weightFrame, List<FighterSkill.Move> _move)
+	{
+		FighterSkill s = Instantiate(core.Status.constantsSkills[(int)_constants]);
+		s.movements = _move;
+		core.SetSkill(s, _weightFrame);
+	}
 
-    //キャンセル可能かどうか
-    public bool ChancelConditions(FighterSkill _now, FighterSkill _s, int _i = 0)
+	//キャンセル可能かどうか
+	public bool ChancelConditions(FighterSkill _now, FighterSkill _s, int _i = 0)
     {
         //キャンセルできるかどうか（技モード、AND演算）
         if (_now.cancelFrag.HasFlag(_s.status))

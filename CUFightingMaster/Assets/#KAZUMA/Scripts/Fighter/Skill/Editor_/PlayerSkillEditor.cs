@@ -189,6 +189,7 @@ public class PlayerSkillEditor : EditorWindow
         public bool statusFlag = false;
         public bool effectFlag = false;
         public bool downMoveFlag = false;
+		public bool airDamageFlag = false;
     }
     private List<FoldOutFlags> foldOutFlags = new List<FoldOutFlags>();
 	private void HitBoxTabDraw()
@@ -253,7 +254,11 @@ public class PlayerSkillEditor : EditorWindow
                         box.isThrow = EditorGUILayout.Toggle("投げ技", box.isThrow);
                         box.hitStop = EditorGUILayout.IntField("ヒットストップ値", box.hitStop);
                         EditorGUILayout.EndHorizontal();
-                        if (box.isDown)
+						if (foldOutFlags[i].airDamageFlag = CustomUI.Foldout("空中移動量", foldOutFlags[i].airDamageFlag))
+						{
+							MovesSetting( ref box.airDamageMovements);
+						}
+						if (box.isDown)
                         {
                             EditorGUILayout.BeginHorizontal();
                             box.isFaceDown = EditorGUILayout.Toggle("うつ伏せダウン", box.isFaceDown);
@@ -424,7 +429,36 @@ public class PlayerSkillEditor : EditorWindow
             }
         }
     }
-    private bool headFold;
+	//移動量設定欄
+	private void MovesSetting(ref List<FighterSkill.Move> _move)
+	{
+		if (GUILayout.Button("移動作成", GUILayout.Width(80)))
+		{
+			_move.Add(new FighterSkill.Move());
+		}
+		for (int i = 0; i < _move.Count; i++)
+		{
+			EditorGUILayout.BeginVertical("Box");
+			EditorGUILayout.BeginHorizontal();
+			bool removeFrag = false;
+			_move[i].startFrame = EditorGUILayout.IntField("スタートフレーム", _move[i].startFrame);
+			//削除ボタン
+			if (GUILayout.Button("×", GUILayout.Width(20)))
+			{
+				removeFrag = true;
+			}
+			//削除
+			EditorGUILayout.EndHorizontal();
+			EditorGUILayout.BeginVertical("Box");
+			//Vector3入力
+			_move[i].movement = EditorGUILayout.Vector3Field("移動量", _move[i].movement);
+			EditorGUILayout.EndVertical();
+			EditorGUILayout.EndVertical();
+			if (removeFrag) _move.RemoveAt(i);
+		}
+	}
+
+	private bool headFold;
 	private bool bodyFold;
 	private bool footFold;
     private bool grabFold;

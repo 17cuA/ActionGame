@@ -20,8 +20,10 @@ MonoBehaviour:
   cancelFrag: 0
   barrageCancelFrag: 0
   cancelLayer: 0
+  isJumpCancel: 0
   inBlend: 0
   outBlend: 0
+  isInvincibleBullet: 0
   plusHeadHitBox:
   - hitBox:
       size: {x: -0.52, y: 0, z: 0}
@@ -86,6 +88,12 @@ MonoBehaviour:
       position: {x: 1.11, y: -0.24, z: -3}
     isDown: 0
     isThrow: 0
+    isThrowGroundDamage: 0
+    isThrowGroundAnimEnd: 0
+    airDamageMovements:
+    - movement: {x: -0.5, y: -3, z: 0}
+      startFrame: 0
+    throwGroundDamage: 0
     throwSkill: {fileID: 0}
     enemyThrowSkill: {fileID: 0}
     throwDamages: []
@@ -98,6 +106,7 @@ MonoBehaviour:
     guardHitRigor: 8
     plusGauge: 0
   isContinue: 0
+  isMoveContinue: 0
   movements:
   - movement: {x: 0, y: 0, z: 0}
     startFrame: 0
