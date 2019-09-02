@@ -12,6 +12,8 @@ public class FighterCore : MonoBehaviour
     [SerializeField] private FightingAnimationPlayer animationPlayer = null;//アニメーション再生クラス
     [SerializeField] private FighterStatus status = null;
     [SerializeField] private PlayerDirection direction;
+	[SerializeField] private SkinnedMeshRenderer mesh = null;
+	private Material mainMaterial = null;
     private FighterMover mover = null;
     private HitBoxJudgement hitJudgement = null;
     [SerializeField] private FighterSkill nextAnimation = null;//ここにいれればアニメーションが再生される
@@ -43,6 +45,11 @@ public class FighterCore : MonoBehaviour
     {
         get { return nowPlaySkill; }
     }
+
+	public Material MainMaterial
+	{
+		get { return mainMaterial; }
+	}
     public PlayerNumber PlayerNumber
     {
         get { return playerNumber; }
@@ -93,6 +100,7 @@ public class FighterCore : MonoBehaviour
         //アタッチエラーチェック
         if (InitErrorCheck())
         {
+			mainMaterial = mesh.material;
             HP = status.HP;
 			StanGauge = status.StanGuage;
 			SpecialGauge = status.SpecialGuage;
@@ -199,6 +207,10 @@ public class FighterCore : MonoBehaviour
     {
         comboCount = _count;
     }
+	public void SetMateial(Material _material)
+	{
+		mesh.material = _material;
+	}
     #endregion
 
     #region 初期化時エラーチェック

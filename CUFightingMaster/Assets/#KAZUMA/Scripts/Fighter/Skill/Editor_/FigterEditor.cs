@@ -76,6 +76,14 @@ public class FigterEditor : EditorWindow
 		fighterStatus.StanGuage = EditorGUILayout.IntField("スタン値", fighterStatus.StanGuage);
 		fighterStatus.SpecialGuage = EditorGUILayout.IntField("スぺシャルゲージ", fighterStatus.SpecialGuage);
 		fighterStatus.PlayerModel = EditorGUILayout.ObjectField("キャラセレモデル", fighterStatus.PlayerModel, typeof(GameObject), false) as GameObject;
+		EditorGUILayout.BeginVertical("Box");
+		fighterStatus.playerMaterials[0].nomalMaterial = (Material)EditorGUILayout.ObjectField("P1ノーマルマテリアル", fighterStatus.playerMaterials[0].nomalMaterial, typeof(Material), false) as Material;
+		fighterStatus.playerMaterials[0].inversionMaterial = EditorGUILayout.ObjectField("P1反転マテリアル", fighterStatus.playerMaterials[0].inversionMaterial, typeof(Material), false) as Material;
+		EditorGUILayout.EndVertical();
+		EditorGUILayout.BeginVertical("Box");
+		fighterStatus.playerMaterials[1].nomalMaterial = (Material)EditorGUILayout.ObjectField("P2ノーマルマテリアル", fighterStatus.playerMaterials[1].nomalMaterial, typeof(Material), false) as Material;
+		fighterStatus.playerMaterials[1].inversionMaterial = EditorGUILayout.ObjectField("P2反転マテリアル", fighterStatus.playerMaterials[1].inversionMaterial, typeof(Material), false) as Material;
+		EditorGUILayout.EndVertical();
 		EditorGUILayout.EndVertical();
     }
     #endregion

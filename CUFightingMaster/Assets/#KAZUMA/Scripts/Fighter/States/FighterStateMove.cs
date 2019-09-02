@@ -28,6 +28,11 @@ public class FighterStateMove : StateBaseScriptMonoBehaviour
     /* ステート中 */
     public void MoveUpdate()
     {
+		int numberP = 1;
+		if(stateBase.core.PlayerNumber==PlayerNumber.Player1)
+		{
+			numberP = 0;
+		}
         if (stateBase.core.Direction == PlayerDirection.Right)
         {
             if (stateBase.core.PlayerNumber == PlayerNumber.Player1)
@@ -38,6 +43,7 @@ public class FighterStateMove : StateBaseScriptMonoBehaviour
                     stateBase.core.SetDirection(PlayerDirection.Left);
                     t.localScale = new Vector3(1, 1, -1);
                     t.rotation = Quaternion.Euler(0, 0, 0);
+					stateBase.core.SetMateial(stateBase.core.Status.playerMaterials[numberP].inversionMaterial);
                 }
             }
             else if (stateBase.core.PlayerNumber == PlayerNumber.Player2)
@@ -48,8 +54,9 @@ public class FighterStateMove : StateBaseScriptMonoBehaviour
                     stateBase.core.SetDirection(PlayerDirection.Left);
                     stateBase.core.AnimationPlayerCompornent.gameObject.transform.localScale = new Vector3(1, 1, -1);
                     t.rotation = Quaternion.Euler(0, 0, 0);
-                }
-            }
+					stateBase.core.SetMateial(stateBase.core.Status.playerMaterials[numberP].inversionMaterial);
+				}
+			}
         }
         else if (stateBase.core.Direction == PlayerDirection.Left)
         {
@@ -61,8 +68,9 @@ public class FighterStateMove : StateBaseScriptMonoBehaviour
                     stateBase.core.SetDirection(PlayerDirection.Right);
                     stateBase.core.AnimationPlayerCompornent.gameObject.transform.localScale = new Vector3(1, 1, 1);
                     t.rotation = Quaternion.Euler(0, 180, 0);
-                }
-            }
+					stateBase.core.SetMateial(stateBase.core.Status.playerMaterials[numberP].nomalMaterial);
+				}
+			}
             else if (stateBase.core.PlayerNumber == PlayerNumber.Player2)
             {
                 Transform t = stateBase.core.AnimationPlayerCompornent.gameObject.transform;
@@ -71,8 +79,9 @@ public class FighterStateMove : StateBaseScriptMonoBehaviour
                     stateBase.core.SetDirection(PlayerDirection.Right);
                     stateBase.core.AnimationPlayerCompornent.gameObject.transform.localScale = new Vector3(1, 1, 1);
                     t.rotation = Quaternion.Euler(0, 180, 0);
-                }
-            }
+					stateBase.core.SetMateial(stateBase.core.Status.playerMaterials[numberP].nomalMaterial);
+				}
+			}
         }
         Direction inp = stateBase.input.GetPlayerMoveDirection(stateBase);
         if (inp == beforeInput) return;

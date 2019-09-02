@@ -8,7 +8,7 @@ Shader "Toon"
 {
     Properties
     {
-		[NoScaleOffset]_BaseMap("テクスチャ",2D) = "white"{}
+		_BaseMap("テクスチャ",2D) = "white"{}
 
 		[NoScaleOffset]_2st_ShadeMap("明るい色の影",2D) = "black"{}
 		[NoScaleOffset]_1st_ShadeMap("暗い色の影",2D) = "black"{}

@@ -18,6 +18,11 @@ MonoBehaviour:
   airBraking: 0.5
   PlayerModel: {fileID: 3337991982796669725, guid: 0a77df99afc0403428bc4001fb31a0d5,
     type: 3}
+  playerMaterials:
+  - nomalMaterial: {fileID: 2100000, guid: ea49fb77be18842448d407cf7b32c142, type: 2}
+    inversionMaterial: {fileID: 2100000, guid: 1b47feacde9bf9947a650c8e11ff046b, type: 2}
+  - nomalMaterial: {fileID: 2100000, guid: ea49fb77be18842448d407cf7b32c142, type: 2}
+    inversionMaterial: {fileID: 2100000, guid: 1b47feacde9bf9947a650c8e11ff046b, type: 2}
   headHitBox:
     size: {x: 1, y: 1, z: 1}
     localPosition: {x: 0, y: 4.09, z: 0}
@@ -153,9 +158,9 @@ MonoBehaviour:
     validShotFrame: 6
     skill: {fileID: 11400000, guid: 9a19d7c69d7906941a0c300e1cd1a388, type: 2}
   - name: TENKU_PEKE
-    command: 2
+    command: 8
     trigger: B
-    validShotFrame: 6
+    validShotFrame: 0
     skill: {fileID: 11400000, guid: b79ab9652e18c234c8054320c60e704e, type: 2}
   groundMoveSkills:
   - name: Front_Dash

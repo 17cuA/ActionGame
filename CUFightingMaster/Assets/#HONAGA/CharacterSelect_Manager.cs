@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using CUEngine.Pattern;
 
-public class CharacterSelect_Manager : SingletonMono<CharacterSelect_Manager>
+public class CharacterSelect_Manager : MonoBehaviour
 {
     public Cursor_CharacterSelect cursor1_1;
     public Cursor_CharacterSelect cursor1_2;

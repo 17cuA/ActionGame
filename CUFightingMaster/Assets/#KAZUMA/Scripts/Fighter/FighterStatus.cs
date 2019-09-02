@@ -28,13 +28,20 @@ public class FighterStatus : ScriptableObject
         public string command;
         public FighterSkill skill;
     }
+	[System.Serializable]
+	public class FighterMaterials
+	{
+		public Material nomalMaterial;
+		public Material inversionMaterial;
+	}
 
-    public int HP = 100;
+	public int HP = 100;
 	public int StanGuage = 100;
 	public int SpecialGuage = 100;
 	public float airBraking = 0.5f;//空中制動
 
 	public GameObject PlayerModel;
+	public FighterMaterials[] playerMaterials = { new FighterMaterials(), new FighterMaterials() };
 
     //当たり判定
     public HitBox_ headHitBox = new HitBox_();
