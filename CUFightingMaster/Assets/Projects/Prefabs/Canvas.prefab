@@ -31,7 +31,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1762971140861464043}
-  m_RootOrder: 14
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -259,6 +259,8 @@ MonoBehaviour:
   uI_hp_P2: {fileID: 0}
   uI_sp_P1: {fileID: 0}
   uI_sp_P2: {fileID: 0}
+  uI_st_P1: {fileID: 0}
+  uI_st_P2: {fileID: 0}
   uI_RoundWinCounter: {fileID: 0}
   uI_StartRound: {fileID: 0}
   uI_BatlleRound: {fileID: 0}
@@ -1055,7 +1057,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 547e256e191c8b14e9f4e7dc87931362, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxTime: 99
+  maxTime: 20
   currentTime: 0
   displayTime: 0
   firstDigit: {fileID: 1762971140481504865}
@@ -1668,7 +1670,7 @@ MonoBehaviour:
   roundResult: {fileID: 0}
   win1P: 
   win2P: 
-  drow: 
+  draw: DRAW
 --- !u!1 &1762971140313672060
 GameObject:
   m_ObjectHideFlags: 0
@@ -1722,14 +1724,17 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1762971140313672060}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ae586ca7055677142960095fb0ee3abf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteName: K.O. movie
+  spriteName: TIME UP
   FadeOutFrame: 10
-  stopUIs: []
+  stopUIs:
+  - StartFrame: 19
+    StopFrame: 45
+    CountFrame: 0
 --- !u!114 &1762971140313672062
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1750,7 +1755,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: a32215d4ad027d94abdc819aacececec, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 84a40b3f4f2999648afda9a8b9db0096, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2486,8 +2491,8 @@ RectTransform:
   - {fileID: 1762971139240370877}
   - {fileID: 1762971139912384224}
   - {fileID: 1762971139156838371}
-  - {fileID: 5654422714655517277}
   - {fileID: 826880329910188190}
+  - {fileID: 5654422714655517277}
   - {fileID: 1762971139097498967}
   - {fileID: 1762971140313672063}
   - {fileID: 1762971140438034165}
@@ -3074,6 +3079,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9c0a2b60dea333409889892d7174199, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerType: 0
+  guage: {fileID: 0}
+  guagePosition: {fileID: 0}
 --- !u!1 &6217536098829748026
 GameObject:
   m_ObjectHideFlags: 0
@@ -3179,7 +3187,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1762971140861464043}
-  m_RootOrder: 13
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3338,6 +3346,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9c0a2b60dea333409889892d7174199, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerType: 0
+  guage: {fileID: 0}
+  guagePosition: {fileID: 0}
 --- !u!1 &7083000990947720194
 GameObject:
   m_ObjectHideFlags: 0
@@ -3366,7 +3377,7 @@ RectTransform:
   m_GameObject: {fileID: 7083000990947720194}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.8, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1762971140861464043}
   m_RootOrder: 19
