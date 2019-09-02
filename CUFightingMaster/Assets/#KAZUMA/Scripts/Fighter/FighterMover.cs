@@ -275,14 +275,22 @@ public class FighterMover
 				{
 					return;
 				}
-				GameObject obj;
+				GameObject obj = null;
 				if (bullets[nowPlayBulletNumber].worldPositionFlag)
 				{
 					obj = Object.Instantiate(bullets[nowPlayBulletNumber].bullet.gameObject, bullets[nowPlayBulletNumber].position, Quaternion.identity);
 				}
 				else
 				{
-					obj = Object.Instantiate(bullets[nowPlayBulletNumber].bullet.gameObject, core.transform.position + (new Vector3(bullets[nowPlayBulletNumber].position.x * RightLeft, bullets[nowPlayBulletNumber].position.y, bullets[nowPlayBulletNumber].position.z)), Quaternion.identity);
+					if (RightLeft == 1)
+					{
+						obj = Object.Instantiate(bullets[nowPlayBulletNumber].bullet.gameObject, core.transform.position + (new Vector3(bullets[nowPlayBulletNumber].position.x * RightLeft, bullets[nowPlayBulletNumber].position.y, bullets[nowPlayBulletNumber].position.z)), Quaternion.identity);
+					}
+					else if (RightLeft == -1)
+					{
+						obj = Object.Instantiate(bullets[nowPlayBulletNumber].bullet.gameObject, core.transform.position + (new Vector3(bullets[nowPlayBulletNumber].position.x * RightLeft, bullets[nowPlayBulletNumber].position.y, bullets[nowPlayBulletNumber].position.z)), Quaternion.Euler(0, 180, 0));
+					}
+
 				}
 				//初期化
 				BulletCore bulletCore = obj.GetComponent<BulletCore>();

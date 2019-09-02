@@ -14,7 +14,7 @@ public class NormalBullet : BulletCore
     public override void UpdateGame()
     {
         base.UpdateGame();
-        transform.Translate(move.x * RightLeft, move.y, move.z);
+        transform.Translate(move.x , move.y, move.z);
         if(hitAttackNum>0)
         {
             isDestroyFlag = true;
