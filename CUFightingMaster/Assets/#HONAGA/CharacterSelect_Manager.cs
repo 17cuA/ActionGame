@@ -106,11 +106,11 @@ public class CharacterSelect_Manager : SingletonMono<CharacterSelect_Manager>
             }
             if (CharacterNamePanels[1] != null)
             {
-                CharacterNamePanels[1].GetComponent<Image>().sprite = SelectCharacterNamePanels[1];
+                CharacterNamePanels[1].GetComponent<Image>().sprite = SelectCharacterNamePanels[0];
             }
             if (CharacterNamePanels[3] != null)
             {
-                CharacterNamePanels[3].GetComponent<Image>().sprite = SelectCharacterNamePanels[1];
+                CharacterNamePanels[3].GetComponent<Image>().sprite = SelectCharacterNamePanels[0];
             }
             if (previewModel[2] != null)
             {
@@ -129,11 +129,11 @@ public class CharacterSelect_Manager : SingletonMono<CharacterSelect_Manager>
             }
             if (CharacterNamePanels[1] != null)
             {
-                CharacterNamePanels[1].GetComponent<Image>().sprite = SelectCharacterNamePanels[0];
+                CharacterNamePanels[1].GetComponent<Image>().sprite = SelectCharacterNamePanels[1];
             }
             if (CharacterNamePanels[3] != null)
             {
-                CharacterNamePanels[3].GetComponent<Image>().sprite = SelectCharacterNamePanels[0];
+                CharacterNamePanels[3].GetComponent<Image>().sprite = SelectCharacterNamePanels[1];
             }
             if (previewModel[2] != null)
             {
@@ -175,10 +175,12 @@ public class CharacterSelect_Manager : SingletonMono<CharacterSelect_Manager>
             cursor2_1.characterPanels[1].GetComponent<Animation>().Play();
             cursor2_1.characterPanels[2].GetComponent<Animation>().Play();
             cursor2_1.characterPanels[3].GetComponent<Animation>().Play();
+
+
         }
         if (fedeFrame > 60)
         {
-
-        }
+			SceneManager.LoadScene("Battle");
+		}
     }
 }
