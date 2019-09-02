@@ -70,13 +70,13 @@ public class AnimationUIManager : MonoBehaviour
 		path = "Sprites/UI/AnimationUI/ROUND ANIMATION/" + spriteName;
 		totalSpriteCount = Directory.GetFiles("Assets/Resources/" + path, "*", SearchOption.TopDirectoryOnly).Length / 2;
 		initColor = gameObject.GetComponent<Image>().color;
-		////スプライト格納
-		//for (int i = 0;i < totalSpriteCount;i++)
-		//{
-		//	Debug.Log(string.Format("{0}/{1}_{2}", path, spriteName, i.ToString("D5")));
-		//	sprites[i] = Resources.Load<Sprite>(string.Format("{0}/{1}_{2}", path, spriteName, i.ToString("D5")));
-		//}
-		ResetUI();
+        //スプライト格納
+        for (int i = 0; i < totalSpriteCount; i++)
+        {
+            Debug.Log(string.Format("{0}/{1}_{2}", path, spriteName, i.ToString("D5")));
+            //sprites[i] = Resources.Load<Sprite>(string.Format("{0}/{1}_{2}", path, spriteName, i.ToString("D5")));
+        }
+        ResetUI();
 	}
 	private void ResetUI()
     {
