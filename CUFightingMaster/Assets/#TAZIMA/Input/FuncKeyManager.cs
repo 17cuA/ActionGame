@@ -24,6 +24,10 @@ public class FuncKeyManager : SingletonMono<FuncKeyManager>
 	}
     void Update()
     {
+		InputFuncKey();
+	}
+	public void InputFuncKey()
+	{
 		//ファンクションキーの処理
 		if (Input.anyKeyDown)
 		{
@@ -33,7 +37,7 @@ public class FuncKeyManager : SingletonMono<FuncKeyManager>
 				if (isPause == false)
 				{
 					Time.timeScale = 0f;
-					isPause = true; 
+					isPause = true;
 				}
 				else
 				{

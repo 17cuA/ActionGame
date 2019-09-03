@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class AnimationUIManager : MonoBehaviour
 {
+	//UIのアニメーションを一時的に止めるためのクラス
     [System.Serializable]
     public class StopUIClass
     {
@@ -22,7 +23,6 @@ public class AnimationUIManager : MonoBehaviour
 	private Sprite[] sprites;
     private Color initColor;
     private Sprite defaultSprite;
-    private Color defaultColor;
     public List<StopUIClass> stopUIs = null;
     public bool isStart;
 
@@ -42,7 +42,7 @@ public class AnimationUIManager : MonoBehaviour
         defaultSprite = Resources.Load<Sprite>(string.Format("{0}{1}", path, "DefaultImage"));
         //スプライトが保存されている場所のパス
         path += spriteName;
-		totalSpriteCount = Directory.GetFiles("Assets/Resources/" + path, "*", SearchOption.TopDirectoryOnly).Length / 2;
+		totalSpriteCount = Resources.LoadAll(path).Length / 2;
         sprites = new Sprite[totalSpriteCount];
         for (int i = 0; i < totalSpriteCount; i++)
         {
@@ -53,7 +53,6 @@ public class AnimationUIManager : MonoBehaviour
 	}
 	private void ResetUI()
     {
-
         isStart = false;
         nowSpriteCount = 0;
         currentRemainFrame = FadeOutFrame;

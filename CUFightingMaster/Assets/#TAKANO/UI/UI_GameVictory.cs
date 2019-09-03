@@ -27,9 +27,9 @@ public class UI_GameVictory : MonoBehaviour
     public bool isCalled = false;    //既に呼ばれているか(コルーチンの再生を一度きりに使う)
 
     public GameObject roundResult;
-    public string win1P;
-    public string win2P;
-    public string draw;
+    public GameObject win1P;
+    public GameObject win2P;
+    public GameObject draw;
 
 	// 飯塚追加-------------------------------------------
     bool flag = true;
@@ -44,8 +44,8 @@ public class UI_GameVictory : MonoBehaviour
             Sound.PlaySe("PlayerOneWin", 3, 1);
             flag = false;
         }
-        // ---------------------------------------------------
-        roundResult.GetComponent<AnimationUIManager>().spriteName = win1P;
+		// ---------------------------------------------------
+		roundResult = win1P;
         GameVictoryStartCoroutine();
         return isPlay;
 	}
@@ -59,8 +59,8 @@ public class UI_GameVictory : MonoBehaviour
             Sound.PlaySe("Voice_PlayerTwoWin", 3, 1);
             flag = false;
         }
-        // ---------------------------------------------------
-        roundResult.GetComponent<AnimationUIManager>().spriteName = win2P;
+		// ---------------------------------------------------
+		roundResult = win2P;
         GameVictoryStartCoroutine();
         return isPlay;
     }
@@ -75,7 +75,7 @@ public class UI_GameVictory : MonoBehaviour
 			flag = false;
 		}
 		// -------------------------------------------------
-		roundResult.GetComponent<AnimationUIManager>().spriteName = draw;
+		roundResult = draw;
 		GameVictoryStartCoroutine();
 		return isPlay;
 	}

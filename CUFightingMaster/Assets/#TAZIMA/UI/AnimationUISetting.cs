@@ -6,7 +6,7 @@ public class AnimationUISetting : MonoBehaviour
 {
     public GameObject[] gameObjects;
 
-    void Start()
+    void Awake()
     {
         for (int i = 0;i < gameObjects.Length;i++)
         {
