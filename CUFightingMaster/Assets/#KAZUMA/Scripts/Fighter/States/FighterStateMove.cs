@@ -79,7 +79,10 @@ public class FighterStateMove : StateBaseScriptMonoBehaviour
                     stateBase.core.SetDirection(PlayerDirection.Right);
                     stateBase.core.AnimationPlayerCompornent.gameObject.transform.localScale = new Vector3(1, 1, 1);
                     t.rotation = Quaternion.Euler(0, 180, 0);
-					stateBase.core.SetMateial(stateBase.core.Status.playerMaterials[numberP].nomalMaterial);
+					if(stateBase.core.Status.playerMaterials[numberP].nomalMaterial != null)
+					{
+						stateBase.core.SetMateial(stateBase.core.Status.playerMaterials[numberP].nomalMaterial);
+					}
 				}
 			}
         }

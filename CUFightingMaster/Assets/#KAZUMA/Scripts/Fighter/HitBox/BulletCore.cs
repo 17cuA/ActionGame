@@ -149,6 +149,10 @@ public abstract class BulletCore : MonoBehaviour,IEventable
 			{
 				Vector3 tmp = customs[i].frameHitBoxes[nowPlayCustomNumber[i]].hitBox.localPosition;
 				tmp.x *= RightLeft;
+				if(RightLeft==-1)
+				{
+					nowPlayCollider[i].component.gameObject.transform.localRotation = Quaternion.Euler(0,-180,0);
+				}
 				nowPlayCollider[i].component.center = tmp;
 			}
 			if (attackHit == true) return;
@@ -177,6 +181,14 @@ public abstract class BulletCore : MonoBehaviour,IEventable
                         Instantiate(hit.effect, hit.position + transform.position, Quaternion.identity);
                     }
                     isDestroyFlag = true;
+					BulletCore enCore = c.gameObject.transform.parent.parent.GetComponent<BulletCore>();
+					if (enCore!=null)
+					{
+						if (enCore.bulletHit.isOffset)
+						{
+							enCore.isDestroyFlag = true;
+						}
+					}
                 }
                 return;
             }
