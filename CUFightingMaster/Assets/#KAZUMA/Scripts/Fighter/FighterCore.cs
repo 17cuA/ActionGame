@@ -207,10 +207,72 @@ public class FighterCore : MonoBehaviour
     {
         comboCount = _count;
     }
-	public void SetMateial(Material _material)
+	public void SetMaterial(Material _material)
 	{
 		mesh.material = _material;
 	}
+    public void DirectionChangeMaterial()
+    {
+        int numberP = 1;
+		if(PlayerNumber==PlayerNumber.Player1)
+		{
+			numberP = 0;
+		}
+        if (Direction == PlayerDirection.Right)
+        {
+            if (PlayerNumber == PlayerNumber.Player1)
+            {
+                Transform t = AnimationPlayerCompornent.gameObject.transform;
+                if (GameManager.Instance.GetPlayFighterCore(PlayerNumber.Player2).gameObject.transform.position.x < transform.position.x)
+                {
+                    SetDirection(PlayerDirection.Left);
+                    t.localScale = new Vector3(1, 1, -1);
+                    t.rotation = Quaternion.Euler(0, 0, 0);
+					SetMaterial(Status.playerMaterials[numberP].inversionMaterial);
+                }
+            }
+            else if (PlayerNumber == PlayerNumber.Player2)
+            {
+                if (GameManager.Instance.GetPlayFighterCore(PlayerNumber.Player1).gameObject.transform.position.x < transform.position.x)
+                {
+                    Transform t = AnimationPlayerCompornent.gameObject.transform;
+                    SetDirection(PlayerDirection.Left);
+                    AnimationPlayerCompornent.gameObject.transform.localScale = new Vector3(1, 1, -1);
+                    t.rotation = Quaternion.Euler(0, 0, 0);
+					SetMaterial(Status.playerMaterials[numberP].inversionMaterial);
+				}
+			}
+        }
+        else if (Direction == PlayerDirection.Left)
+        {
+            if (PlayerNumber == PlayerNumber.Player1)
+            {
+                Transform t = AnimationPlayerCompornent.gameObject.transform;
+                if (GameManager.Instance.GetPlayFighterCore(PlayerNumber.Player2).gameObject.transform.position.x > transform.position.x)
+                {
+                    SetDirection(PlayerDirection.Right);
+                    AnimationPlayerCompornent.gameObject.transform.localScale = new Vector3(1, 1, 1);
+                    t.rotation = Quaternion.Euler(0, 180, 0);
+					SetMaterial(Status.playerMaterials[numberP].nomalMaterial);
+				}
+			}
+            else if (PlayerNumber == PlayerNumber.Player2)
+            {
+                Transform t = AnimationPlayerCompornent.gameObject.transform;
+                if (GameManager.Instance.GetPlayFighterCore(PlayerNumber.Player1).gameObject.transform.position.x > transform.position.x)
+                {
+                    SetDirection(PlayerDirection.Right);
+                    AnimationPlayerCompornent.gameObject.transform.localScale = new Vector3(1, 1, 1);
+                    t.rotation = Quaternion.Euler(0, 180, 0);
+					if(Status.playerMaterials[numberP].nomalMaterial != null)
+					{
+						SetMaterial(Status.playerMaterials[numberP].nomalMaterial);
+					}
+				}
+			}
+        }
+
+    }
     #endregion
 
     #region 初期化時エラーチェック

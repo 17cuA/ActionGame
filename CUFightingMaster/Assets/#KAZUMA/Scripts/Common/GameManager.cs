@@ -8,7 +8,7 @@ using System;
 public class GameManager : SingletonMono<GameManager>
 {
     [SerializeField, Header("ゲームの設定")]
-    private GameSettings settings;
+    private GameSettings settings = null;
 	public GameSettings Settings
 	{
         get { return settings; }

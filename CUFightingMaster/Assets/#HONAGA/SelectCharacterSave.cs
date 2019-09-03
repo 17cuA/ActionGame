@@ -18,22 +18,26 @@ public class SelectCharacterSave : SingletonMono<SelectCharacterSave>
     // Update is called once per frame
     void Update()
     {
-        if(cursor_CharacterSelects[0].selectDir < 2)
-		{
-			selectFighterStatuses[0] = fighterStatuses[0];
-		}
-		else
-		{
-			selectFighterStatuses[0] = fighterStatuses[1];
-		}
+		
+        if (cursor_CharacterSelects[0] != null)
+        {
+            if (cursor_CharacterSelects[0].selectDir < 2)
+            {
+                selectFighterStatuses[0] = fighterStatuses[0];
+            }
+            else
+            {
+                selectFighterStatuses[0] = fighterStatuses[1];
+            }
 
-		if(cursor_CharacterSelects[1].selectDir < 2)
-		{
-			selectFighterStatuses[1] = fighterStatuses[0];
-		}
-		else
-		{
-			selectFighterStatuses[1] = fighterStatuses[1];
-		}
-	}
+            if (cursor_CharacterSelects[1].selectDir < 2)
+            {
+                selectFighterStatuses[1] = fighterStatuses[0];
+            }
+            else
+            {
+                selectFighterStatuses[1] = fighterStatuses[1];
+            }
+        }
+    }
 }

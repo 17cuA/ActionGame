@@ -42,6 +42,7 @@ public class AnimationUIManager : MonoBehaviour
         defaultSprite = Resources.Load<Sprite>(string.Format("{0}{1}", path, "DefaultImage"));
         //表示するスプライト
         sprites = LoadSprite.Instance.GetSprites(spriteName);
+        totalSpriteCount = sprites.Length;
         initColor = gameObject.GetComponent<Image>().color;
         ResetUI();
 	}

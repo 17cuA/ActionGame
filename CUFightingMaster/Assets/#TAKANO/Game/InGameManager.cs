@@ -68,7 +68,6 @@ public class InGameManager : MonoBehaviour
 		else if (canvasController.Call_StartFadeIn())
 		{
 			islight = true;
-			Sound.AllSoundLod();
 			Sound.PlayBgm("Bgm01", 0.5f, 1);
 		}
     }
@@ -302,6 +301,7 @@ public class InGameManager : MonoBehaviour
 		cameraController = GameObject.Find("BattleCamera").GetComponent<CameraController>();
 		cinemaController = GameObject.Find("CinemaControll").GetComponent<CinemaController>();
 		canvasController = GameObject.Find("CanvasController").GetComponent<CanvasController>();
+        Sound.AllSoundLod();
     }
 
 	private void Start()

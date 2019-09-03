@@ -46,64 +46,31 @@ public class FighterStateBase : StateBaseScriptMonoBehaviour
             airSkills.Add(s.name + s.trigger, s.skill);
         }
     }
-	#endregion
+    #endregion
 
-	public void StartGame(bool isUpdate)
-	{
+    public void StartGame(bool isUpdate)
+    {
+        //向きの初期化
+        int numberP = 1;
+        if (core.PlayerNumber == PlayerNumber.Player1)
+        {
+            numberP = 0;
+        }
+        Transform t = core.AnimationPlayerCompornent.gameObject.transform;
+        core.SetDirection(PlayerDirection.Left);
+        t.localScale = new Vector3(1, 1, -1);
+        t.rotation = Quaternion.Euler(0, 0, 0);
+        core.SetMaterial(core.Status.playerMaterials[numberP].inversionMaterial);
+
+
         isEndHitStop = false;
         core.SetDamage(new FighterSkill.CustomHitBox(), null);
-
-        if (core.Direction == PlayerDirection.Right)
-		{
-			if (core.PlayerNumber == PlayerNumber.Player1)
-			{
-				Transform t = core.AnimationPlayerCompornent.gameObject.transform;
-				if (GameManager.Instance.GetPlayFighterCore(PlayerNumber.Player2).gameObject.transform.position.x < core.transform.position.x)
-				{
-					core.SetDirection(PlayerDirection.Left);
-					t.localScale = new Vector3(1, 1, -1);
-					t.rotation = Quaternion.Euler(0, 0, 0);
-				}
-			}
-			else if (core.PlayerNumber == PlayerNumber.Player2)
-			{
-				if (GameManager.Instance.GetPlayFighterCore(PlayerNumber.Player1).gameObject.transform.position.x < core.transform.position.x)
-				{
-					Transform t = core.AnimationPlayerCompornent.gameObject.transform;
-					core.SetDirection(PlayerDirection.Left);
-					core.AnimationPlayerCompornent.gameObject.transform.localScale = new Vector3(1, 1, -1);
-					t.rotation = Quaternion.Euler(0, 0, 0);
-				}
-			}
-		}
-		else if (core.Direction == PlayerDirection.Left)
-		{
-			if (core.PlayerNumber == PlayerNumber.Player1)
-			{
-				Transform t = core.AnimationPlayerCompornent.gameObject.transform;
-				if (GameManager.Instance.GetPlayFighterCore(PlayerNumber.Player2).gameObject.transform.position.x > core.transform.position.x)
-				{
-					core.SetDirection(PlayerDirection.Right);
-					core.AnimationPlayerCompornent.gameObject.transform.localScale = new Vector3(1, 1, 1);
-					t.rotation = Quaternion.Euler(0, 180, 0);
-				}
-			}
-			else if (core.PlayerNumber == PlayerNumber.Player2)
-			{
-				Transform t = core.AnimationPlayerCompornent.gameObject.transform;
-				if (GameManager.Instance.GetPlayFighterCore(PlayerNumber.Player1).gameObject.transform.position.x > core.transform.position.x)
-				{
-					core.SetDirection(PlayerDirection.Right);
-					core.AnimationPlayerCompornent.gameObject.transform.localScale = new Vector3(1, 1, 1);
-					t.rotation = Quaternion.Euler(0, 180, 0);
-				}
-			}
-		}
-		if (isUpdate == false)
-		{
-			ChangeSkillConstant(SkillConstants.Start_Game_Motion, 0);
-		}
-	}
+        core.DirectionChangeMaterial();
+        if (isUpdate == false)
+        {
+            ChangeSkillConstant(SkillConstants.Start_Game_Motion, 0);
+        }
+    }
     public void Start_NO_HP()
     {
         ChangeSkillConstant(SkillConstants.Not_HP_Down, 10);

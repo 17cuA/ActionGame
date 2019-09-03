@@ -22,70 +22,14 @@ public class FighterStateMove : StateBaseScriptMonoBehaviour
     /* ステートに入った時 */
     public void MoveStart()
     {
+        stateBase.core.DirectionChangeMaterial();
         beforeInput = stateBase.input.GetPlayerMoveDirection(stateBase);
         ChangeMove(beforeInput);
     }
     /* ステート中 */
     public void MoveUpdate()
     {
-		int numberP = 1;
-		if(stateBase.core.PlayerNumber==PlayerNumber.Player1)
-		{
-			numberP = 0;
-		}
-        if (stateBase.core.Direction == PlayerDirection.Right)
-        {
-            if (stateBase.core.PlayerNumber == PlayerNumber.Player1)
-            {
-                Transform t = stateBase.core.AnimationPlayerCompornent.gameObject.transform;
-                if (GameManager.Instance.GetPlayFighterCore(PlayerNumber.Player2).gameObject.transform.position.x < stateBase.core.transform.position.x)
-                {
-                    stateBase.core.SetDirection(PlayerDirection.Left);
-                    t.localScale = new Vector3(1, 1, -1);
-                    t.rotation = Quaternion.Euler(0, 0, 0);
-					stateBase.core.SetMateial(stateBase.core.Status.playerMaterials[numberP].inversionMaterial);
-                }
-            }
-            else if (stateBase.core.PlayerNumber == PlayerNumber.Player2)
-            {
-                if (GameManager.Instance.GetPlayFighterCore(PlayerNumber.Player1).gameObject.transform.position.x < stateBase.core.transform.position.x)
-                {
-                    Transform t = stateBase.core.AnimationPlayerCompornent.gameObject.transform;
-                    stateBase.core.SetDirection(PlayerDirection.Left);
-                    stateBase.core.AnimationPlayerCompornent.gameObject.transform.localScale = new Vector3(1, 1, -1);
-                    t.rotation = Quaternion.Euler(0, 0, 0);
-					stateBase.core.SetMateial(stateBase.core.Status.playerMaterials[numberP].inversionMaterial);
-				}
-			}
-        }
-        else if (stateBase.core.Direction == PlayerDirection.Left)
-        {
-            if (stateBase.core.PlayerNumber == PlayerNumber.Player1)
-            {
-                Transform t = stateBase.core.AnimationPlayerCompornent.gameObject.transform;
-                if (GameManager.Instance.GetPlayFighterCore(PlayerNumber.Player2).gameObject.transform.position.x > stateBase.core.transform.position.x)
-                {
-                    stateBase.core.SetDirection(PlayerDirection.Right);
-                    stateBase.core.AnimationPlayerCompornent.gameObject.transform.localScale = new Vector3(1, 1, 1);
-                    t.rotation = Quaternion.Euler(0, 180, 0);
-					stateBase.core.SetMateial(stateBase.core.Status.playerMaterials[numberP].nomalMaterial);
-				}
-			}
-            else if (stateBase.core.PlayerNumber == PlayerNumber.Player2)
-            {
-                Transform t = stateBase.core.AnimationPlayerCompornent.gameObject.transform;
-                if (GameManager.Instance.GetPlayFighterCore(PlayerNumber.Player1).gameObject.transform.position.x > stateBase.core.transform.position.x)
-                {
-                    stateBase.core.SetDirection(PlayerDirection.Right);
-                    stateBase.core.AnimationPlayerCompornent.gameObject.transform.localScale = new Vector3(1, 1, 1);
-                    t.rotation = Quaternion.Euler(0, 180, 0);
-					if(stateBase.core.Status.playerMaterials[numberP].nomalMaterial != null)
-					{
-						stateBase.core.SetMateial(stateBase.core.Status.playerMaterials[numberP].nomalMaterial);
-					}
-				}
-			}
-        }
+        stateBase.core.DirectionChangeMaterial();
         Direction inp = stateBase.input.GetPlayerMoveDirection(stateBase);
         if (inp == beforeInput) return;
         ChangeMove(inp);
@@ -98,6 +42,7 @@ public class FighterStateMove : StateBaseScriptMonoBehaviour
     }
     public void AirMoveStart()
     {
+        stateBase.core.DirectionChangeMaterial();
         stateBase.ChangeSkillConstant(SkillConstants.Air_Idle, 5);
         stateBase.core.SetPlayerMoveState(PlayerMoveState.Jump);
     }
@@ -113,11 +58,11 @@ public class FighterStateMove : StateBaseScriptMonoBehaviour
             stateBase.core.Mover.SetAirXMove(stateBase.core.Status.airBraking * 0.1f);
         }
         //空中ジャンプ
-        Direction inp = stateBase.input.GetPlayerMoveDirection(stateBase);
         if (Direction.Up != beforeInput && Direction.UpFront != beforeInput && Direction.UpBack != beforeInput && jumpTimes < jumpTimesMax)
         {
-            JumpChange(inp);
+            JumpChange();
         }
+        Direction inp = stateBase.input.GetPlayerMoveDirection(stateBase);
         beforeInput = inp;
     }
     /* 条件式 */
@@ -180,8 +125,7 @@ public class FighterStateMove : StateBaseScriptMonoBehaviour
         {
             if (jumpTimes < jumpTimesMax&&stateBase.core.IsHitAttack)
             {
-                Direction inp = stateBase.input.GetPlayerMoveDirection(stateBase);
-                return JumpChange(inp,_isCount);
+                return JumpChange(_isCount);
             }
         }
         return false;
@@ -280,8 +224,14 @@ public class FighterStateMove : StateBaseScriptMonoBehaviour
     }
     #endregion
     //ジャンプ入力時のみ
-    private bool JumpChange(Direction _dir,bool _isCount = true)
+    private bool JumpChange(bool _isCount = true)
     {
+        Direction _dir = stateBase.input.GetPlayerMoveDirection(stateBase);
+        if(_dir == Direction.Up||_dir == Direction.UpFront||_dir == Direction.UpBack)
+        {
+            stateBase.core.DirectionChangeMaterial();
+        }
+        _dir = stateBase.input.GetPlayerMoveDirection(stateBase);
         switch (_dir)
         {
             case Direction.Up:
