@@ -57,6 +57,7 @@ public class HitBoxJudgement
     private bool isKnockGround = true;
     private PlayerDirection knockBackDir = PlayerDirection.Right;
 	private bool isKnockEnemy = true;
+	private bool isKnockNowGround = false;//ノックバックしたとき地上にいるかどうか
 
     #region 初期化
     public HitBoxJudgement(FighterCore fighter)
@@ -580,22 +581,38 @@ public class HitBoxJudgement
 		{
             rl = -1;
         }
-
-            //ノックバックがあれば
-            if (countKnockBack >= Knock_Back_Count)
-            {
-                //空中の場合継続
-                if (!core.GroundCheck() && !isKnockGround)
-                {
-                    t.parent.transform.position += new Vector3(knockBackMinus * (rl), 0, 0);
-                }
-                else if (core.GroundCheck())
-                {
-                    isKnockGround = true;
-                }
-                return;
-            }
-        t.parent.transform.position += new Vector3(knockBackMinus * (rl), 0, 0);
+		//地上ノックバックは空中になったら削除
+		if (isKnockNowGround == true)
+		{
+			if (core.GroundCheck() == false)
+			{
+				countKnockBack = Knock_Back_Count;
+				return;
+			}
+		}
+		else
+		{
+			if (core.GroundCheck() == true)
+			{
+				countKnockBack = Knock_Back_Count;
+				return;
+			}
+		}
+		//ノックバックがなければ終了
+		if (countKnockBack >= Knock_Back_Count)
+		{
+			//空中の場合継続
+			if (!core.GroundCheck() && !isKnockGround)
+			{
+				t.parent.transform.position += new Vector3(knockBackMinus * (rl), 0, 0);
+			}
+			else if (core.GroundCheck())
+			{
+				isKnockGround = true;
+			}
+			return;
+		}
+		t.parent.transform.position += new Vector3(knockBackMinus * (rl), 0, 0);
         float x = CheckDefaultPushingWall(pushingCollider);
         if (DamageEnemyNumber != PlayerNumber.None)
         {
@@ -642,5 +659,6 @@ public class HitBoxJudgement
         isKnockGround = false;
         knockBackDir = _dir;
 		isKnockEnemy = isEnKnock;
+		isKnockNowGround = core.GroundCheck();
     }
 }
