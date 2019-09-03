@@ -20,8 +20,10 @@ MonoBehaviour:
   cancelFrag: 0
   barrageCancelFrag: 0
   cancelLayer: 0
+  isJumpCancel: 0
   inBlend: 0
   outBlend: 0
+  isInvincibleBullet: 0
   plusHeadHitBox: []
   plusBodyHitBox: []
   plusFootHitBox: []
@@ -31,11 +33,20 @@ MonoBehaviour:
   isContinue: 0
   isMoveContinue: 0
   movements:
-  - movement: {x: 0, y: 1, z: 0}
+  - isGravityInvaid: 1
+    isResetStartGravity: 0
+    isResetEndGravity: 0
+    movement: {x: 0, y: 1, z: 0}
     startFrame: 0
-  - movement: {x: 0, y: 0, z: 0}
+  - isGravityInvaid: 1
+    isResetStartGravity: 0
+    isResetEndGravity: 0
+    movement: {x: 0, y: 0, z: 0}
     startFrame: 13
-  - movement: {x: -8, y: 20, z: 0}
+  - isGravityInvaid: 1
+    isResetStartGravity: 0
+    isResetEndGravity: 0
+    movement: {x: -8, y: 20, z: 0}
     startFrame: 42
   gravityMoves:
   - movement: {x: 0, y: -0.4, z: 0}

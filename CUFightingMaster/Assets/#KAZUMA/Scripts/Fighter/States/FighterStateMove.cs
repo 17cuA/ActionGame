@@ -108,6 +108,7 @@ public class FighterStateMove : StateBaseScriptMonoBehaviour
     //着地
     public void LandingStart()
     {
+        stateBase.core.DirectionChangeMaterial();
         stateBase.ChangeSkillConstant(SkillConstants.Landing, 0);
     }
     public bool IsEndLanding()

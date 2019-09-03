@@ -56,7 +56,7 @@ MonoBehaviour:
         size: {x: 2.46, y: 1.28, z: 1}
         localPosition: {x: 0.16, y: 2.36, z: 0}
       startFrame: 7
-      endFrame: 20
+      endFrame: 18
     hitStop: 6
     hitPoint: 0
     hitStrength: 0
@@ -75,7 +75,12 @@ MonoBehaviour:
     isThrow: 0
     isThrowGroundDamage: 0
     isThrowGroundAnimEnd: 0
-    airDamageMovements: []
+    airDamageMovements:
+    - isGravityInvaid: 0
+      isResetStartGravity: 1
+      isResetEndGravity: 0
+      movement: {x: 0, y: 2, z: 0}
+      startFrame: 0
     throwGroundDamage: 0
     throwSkill: {fileID: 0}
     enemyThrowSkill: {fileID: 0}
@@ -90,9 +95,7 @@ MonoBehaviour:
     plusGauge: 0
   isContinue: 1
   isMoveContinue: 0
-  movements:
-  - movement: {x: 0, y: 4, z: 0}
-    startFrame: 0
+  movements: []
   gravityMoves:
   - movement: {x: 0, y: -0.2, z: 0}
     limitMove: {x: 0, y: -20, z: 0}

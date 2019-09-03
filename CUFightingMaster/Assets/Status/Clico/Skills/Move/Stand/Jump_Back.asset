@@ -26,8 +26,10 @@ MonoBehaviour:
   cancelFrag: 1
   barrageCancelFrag: 0
   cancelLayer: 0
+  isJumpCancel: 0
   inBlend: 0
   outBlend: 0
+  isInvincibleBullet: 0
   plusHeadHitBox:
   - hitBox:
       size: {x: -0.54, y: 0.3, z: 0}
@@ -95,12 +97,17 @@ MonoBehaviour:
   plusPushingHitBox: []
   customHitBox: []
   isContinue: 0
+  isMoveContinue: 0
   movements:
-  - movement: {x: 0, y: 4, z: 0}
+  - isGravityInvaid: 0
+    isResetStartGravity: 1
+    isResetEndGravity: 0
+    isImpact: 1
+    movement: {x: 0, y: 4, z: 0}
     startFrame: 0
   gravityMoves:
-  - movement: {x: -0.7, y: -0.2, z: 0}
-    limitMove: {x: -0.7, y: -20, z: 0}
+  - movement: {x: -0.5, y: 0, z: 0}
+    limitMove: {x: -0.5, y: 0, z: 0}
     startFrame: 0
   headFlag: 1
   bodyFlag: 1

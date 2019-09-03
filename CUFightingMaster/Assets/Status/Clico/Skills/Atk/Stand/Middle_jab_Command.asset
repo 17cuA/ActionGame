@@ -66,7 +66,10 @@ MonoBehaviour:
     throwDamages: []
     isContinue: 0
     movements:
-    - movement: {x: 2, y: 3, z: 0}
+    - isGravityInvaid: 0
+      isResetStartGravity: 0
+      isResetEndGravity: 0
+      movement: {x: 2, y: 3, z: 0}
       startFrame: 0
     gravityMoves:
     - movement: {x: 0, y: -0.5, z: 0}
@@ -108,7 +111,10 @@ MonoBehaviour:
     throwDamages: []
     isContinue: 0
     movements:
-    - movement: {x: -0.3, y: 7, z: 0}
+    - isGravityInvaid: 0
+      isResetStartGravity: 0
+      isResetEndGravity: 0
+      movement: {x: -0.3, y: 7, z: 0}
       startFrame: 0
     gravityMoves:
     - movement: {x: 0, y: -0.5, z: 0}
@@ -122,14 +128,17 @@ MonoBehaviour:
   isContinue: 0
   isMoveContinue: 0
   movements:
-  - movement: {x: 1, y: 8, z: 0}
+  - isGravityInvaid: 0
+    isResetStartGravity: 0
+    isResetEndGravity: 0
+    movement: {x: 1, y: 8, z: 0}
     startFrame: 5
-  - movement: {x: 0, y: 8, z: 0}
+  - isGravityInvaid: 0
+    isResetStartGravity: 0
+    isResetEndGravity: 0
+    movement: {x: 0, y: 8, z: 0}
     startFrame: 30
-  gravityMoves:
-  - movement: {x: 0, y: -0.5, z: 0}
-    limitMove: {x: 0, y: -20, z: 0}
-    startFrame: 0
+  gravityMoves: []
   headFlag: 1
   bodyFlag: 1
   footFlag: 1

@@ -42,6 +42,8 @@ public class FighterStatus : ScriptableObject
 
 	public GameObject PlayerModel;
 	public FighterMaterials[] playerMaterials = { new FighterMaterials(), new FighterMaterials() };
+    public Vector3 gravity = new Vector3();
+    public Vector3 gravityMax = new Vector3();
 
     //当たり判定
     public HitBox_ headHitBox = new HitBox_();

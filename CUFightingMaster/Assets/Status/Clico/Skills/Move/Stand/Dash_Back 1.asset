@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Dash_Back 1
   m_EditorClassIdentifier: 
   animationClip: {fileID: 7400000, guid: 6b6e2bbd41f51f6498f5d76c02db63e7, type: 2}
-  animationSpeed: 0.5
+  animationSpeed: 0.65
   status: 1
   frameEffects:
   - frame: 0
@@ -39,12 +39,16 @@ MonoBehaviour:
   isContinue: 0
   isMoveContinue: 0
   movements:
-  - movement: {x: -3, y: 0, z: 0}
+  - isGravityInvaid: 1
+    isResetStartGravity: 1
+    isResetEndGravity: 0
+    isImpact: 0
+    movement: {x: -2, y: 0, z: 0}
     startFrame: 0
   gravityMoves:
-  - movement: {x: 0, y: -0.2, z: 0}
-    limitMove: {x: 0, y: -20, z: 0}
-    startFrame: 21
+  - movement: {x: -1, y: 0, z: 0}
+    limitMove: {x: -1, y: 0, z: 0}
+    startFrame: 0
   headFlag: 1
   bodyFlag: 1
   footFlag: 1

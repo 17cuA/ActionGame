@@ -12,8 +12,7 @@ public class FighterMover
 	private int nowPlayGravityNumber = -1;  //現在再生中の重力配列の要素数(-1だと動かない)
 	private List<FighterSkill.Move> moves = new List<FighterSkill.Move>();//移動配列
 	private List<FighterSkill.GravityMove> gravity = new List<FighterSkill.GravityMove>();//重力配列
-	private int gravityFrame = 0;   //重力用のフレーム数
-	int dasds = 0;
+	private int gravityFrame = 0;   //技ごとの重力用のフレーム数
 
     //エフェクト
     private List<FighterSkill.FrameEffects> effects = new List<FighterSkill.FrameEffects>();
@@ -21,29 +20,44 @@ public class FighterMover
 
 	private List<FighterSkill.FrameBullets> bullets = new List<FighterSkill.FrameBullets>();
 	private int nowPlayBulletNumber = -1;
-	int RightLeft = 1;
+	int MoveRightLeft = 1;
+    int GravityRightLeft = 1;
+    int RightLeft = 1;
+    private Vector3 gravityFighter;
+    private Vector3 impactMovement;
+    private Vector3 gravityMax;
     //初期化
     public FighterMover(FighterCore fighterCore)
 	{
 		core = fighterCore;
 		transform = fighterCore.transform;
-	}
+        gravityFighter = core.Status.gravity;
+        gravityMax = core.Status.gravityMax;
+    }
     public void UpdateGame()
     {
-		if (core.Direction == PlayerDirection.Right)
-		{
-			RightLeft = 1;
-		}
-		else if (core.Direction == PlayerDirection.Left)
-		{
-			RightLeft = -1;
-		}
-		ChangeSkillInit();//技の入れ替え
-		MovementSkill();//移動
-		GravityMovementSkill();
+        RightLeftCheck();
+        if (core.GroundCheck())
+        {
+            gravityFighter = Vector3.zero;
+        }
+        ChangeSkillInit();//技の入れ替え
+        MovementSkill();//移動
+        GravityMovementSkill();
         gravityFrame++;
+        if (nowPlayMoveNumber < 0)
+        {
+            GravityMovement();
+            gravityFighter += core.Status.gravity;
+            return;
+        }
+        if (!moves[nowPlayMoveNumber].isGravityInvaid)
+        {
+            GravityMovement();
+            gravityFighter += core.Status.gravity;
+        }
     }
-	public void UpdateEffects()
+    public void UpdateEffects()
 	{
 		PlayEffects();
 		PlayBullets();
@@ -58,92 +72,106 @@ public class FighterMover
 	{
 		//入れ替わったかどうか
 		if (core.changeSkill == false) return;
-		if (core.NowPlaySkill != null)
-		{
-			Debug.Log(dasds + ":" + core.NowPlaySkill);
-			dasds++;
-			//重力の継続をするか否か
-			if(!core.NowPlaySkill.isContinue)
-			{
-				gravityFrame = 0;
-			}
-			if (!core.NowPlaySkill.isMoveContinue)
-			{
-				moves = new List<FighterSkill.Move>(core.NowPlaySkill.movements);
-			}
+        if (core.NowPlaySkill != null)
+        {
+            //重力の継続をするか否か
+            if (!core.NowPlaySkill.isContinue)
+            {
+                if (core.Direction == PlayerDirection.Right)
+                {
+                    GravityRightLeft = 1;
+                }
+                else if (core.Direction == PlayerDirection.Left)
+                {
+                    GravityRightLeft = -1;
+                }
+                gravityFrame = 0;
+            }
+            if (!core.NowPlaySkill.isMoveContinue)
+            {
+                if (core.Direction == PlayerDirection.Right)
+                {
+                    MoveRightLeft = 1;
+                }
+                else if (core.Direction == PlayerDirection.Left)
+                {
+                    MoveRightLeft = -1;
+                }
+                moves = new List<FighterSkill.Move>(core.NowPlaySkill.movements);
+            }
             if (!core.NowPlaySkill.isContinue)
             {
                 gravity = new List<FighterSkill.GravityMove>(core.NowPlaySkill.gravityMoves);
             }
             effects = new List<FighterSkill.FrameEffects>(core.NowPlaySkill.frameEffects);
-			bullets = new List<FighterSkill.FrameBullets>(core.NowPlaySkill.frameBullets);
-			if (!core.NowPlaySkill.isMoveContinue)
-			{
-				nowPlayMoveNumber = -1;
-			}
-			nowPlayGravityNumber = -1;
-			nowPlayEffectNumber = -1;
-			nowPlayBulletNumber = -1;
+            bullets = new List<FighterSkill.FrameBullets>(core.NowPlaySkill.frameBullets);
+            if (!core.NowPlaySkill.isMoveContinue)
+            {
+                nowPlayMoveNumber = -1;
+            }
+            nowPlayGravityNumber = -1;
+            nowPlayEffectNumber = -1;
+            nowPlayBulletNumber = -1;
 
-			//移動配列のソート、フレームが近い順に並べる
-			if (moves.Count > 1)
-			{
-				moves.Sort((a, b) => a.startFrame - b.startFrame);
-			}
-			if(gravity.Count > 1)
-			{
-				gravity.Sort((a, b) => a.startFrame - b.startFrame);
-			}
-            if(effects.Count>1)
+            //移動配列のソート、フレームが近い順に並べる
+            if (moves.Count > 1)
+            {
+                moves.Sort((a, b) => a.startFrame - b.startFrame);
+            }
+            if (gravity.Count > 1)
+            {
+                gravity.Sort((a, b) => a.startFrame - b.startFrame);
+            }
+            if (effects.Count > 1)
             {
                 effects.Sort((a, b) => a.frame - b.frame);
-			}
-			if (effects.Count > 0)
-			{
-				//現在再生中の移動の次の移動フレームを越えれば
-				if (effects[0].frame == 0)
-				{
-					nowPlayEffectNumber++;
-					GameObject obj = null;
-					if (effects[nowPlayEffectNumber].worldPositionFlag)
-					{
-						obj = Object.Instantiate(effects[nowPlayEffectNumber].effect, effects[nowPlayEffectNumber].position, Quaternion.identity);
-					}
-					else
-					{
-						if (RightLeft == 1)
-						{
-							obj = Object.Instantiate(effects[nowPlayEffectNumber].effect, core.transform.position + (new Vector3(effects[nowPlayEffectNumber].position.x * RightLeft, effects[nowPlayEffectNumber].position.y, effects[nowPlayEffectNumber].position.z)), Quaternion.identity);
-						}
-						else if (RightLeft == -1)
-						{
-							obj = Object.Instantiate(effects[nowPlayEffectNumber].effect, core.transform.position + (new Vector3(effects[nowPlayEffectNumber].position.x * RightLeft, effects[nowPlayEffectNumber].position.y, effects[nowPlayEffectNumber].position.z)), Quaternion.Euler(0, 180, 0));
-						}
-					}
+            }
+            if (effects.Count > 0)
+            {
+                //現在再生中の移動の次の移動フレームを越えれば
+                if (effects[0].frame == 0)
+                {
+                    nowPlayEffectNumber++;
+                    GameObject obj = null;
+                    if (effects[nowPlayEffectNumber].worldPositionFlag)
+                    {
+                        obj = Object.Instantiate(effects[nowPlayEffectNumber].effect, effects[nowPlayEffectNumber].position, Quaternion.identity);
+                    }
+                    else
+                    {
+                        if (RightLeft == 1)
+                        {
+                            obj = Object.Instantiate(effects[nowPlayEffectNumber].effect, core.transform.position + (new Vector3(effects[nowPlayEffectNumber].position.x * RightLeft, effects[nowPlayEffectNumber].position.y, effects[nowPlayEffectNumber].position.z)), Quaternion.identity);
+                        }
+                        else if (RightLeft == -1)
+                        {
+                            obj = Object.Instantiate(effects[nowPlayEffectNumber].effect, core.transform.position + (new Vector3(effects[nowPlayEffectNumber].position.x * RightLeft, effects[nowPlayEffectNumber].position.y, effects[nowPlayEffectNumber].position.z)), Quaternion.Euler(0, 180, 0));
+                        }
+                    }
 
-					//子にするか否か
-					if (effects[nowPlayEffectNumber].childFlag)
-					{
-						obj.transform.parent = core.transform;
-					}
-				}
-			}
+                    //子にするか否か
+                    if (effects[nowPlayEffectNumber].childFlag)
+                    {
+                        obj.transform.parent = core.transform;
+                    }
+                }
+            }
 
-			if (bullets.Count>1)
-			{
-				bullets.Sort((a, b) => a.frame - b.frame);
-			}
+            if (bullets.Count > 1)
+            {
+                bullets.Sort((a, b) => a.frame - b.frame);
+            }
         }
-		//なければなし
-		else
-		{
-			moves = null;
-			gravity = null;
+        //なければなし
+        else
+        {
+            moves = null;
+            gravity = null;
             effects = null;
-			bullets = null;
+            bullets = null;
             gravityFrame = 0;
-		}
-	}
+        }
+    }
     #endregion
     #region 移動
     //移動
@@ -152,16 +180,31 @@ public class FighterMover
 		//空中制動
 		if(airBraking != 0)
 		{
-			transform.Translate(new Vector3(airBraking * RightLeft, 0, 0));
+            transform.Translate(new Vector3(airBraking * RightLeft, 0, 0));
 		}
 		if ((moves == null) || (moves.Count == 0)) return;//nullチェック
                                                           //次があるかどうか
         if (moves.Count > nowPlayMoveNumber + 1)
         {
-            //現在再生中の移動の次の移動フレームを越えれば
+            //現在再生中の移動の次の移動フレームを越えれば			
             if (moves[nowPlayMoveNumber + 1].startFrame <= core.AnimationPlayerCompornent.NowFrame)
             {
+                if (nowPlayMoveNumber > -1)
+                {
+                    if (moves[nowPlayMoveNumber].isResetEndGravity)
+                    {
+                        gravityFighter.y = 0;
+                    }
+                }
                 nowPlayMoveNumber++;
+                if (moves[nowPlayMoveNumber].isResetStartGravity)
+                {
+                    gravityFighter.y = 0;
+                }
+                if (moves[nowPlayMoveNumber].isImpact)
+                {
+                    gravityFighter += moves[nowPlayMoveNumber].movement;
+                }
             }
         }
         //ループ時
@@ -173,17 +216,15 @@ public class FighterMover
             }
         }
         if (nowPlayMoveNumber < 0) return;//-1なら動かない
-        int xDirection = 1;
-        if (core.Direction == PlayerDirection.Left) xDirection = -1;
+        if(moves[nowPlayMoveNumber].isImpact)return;
         Vector3 move = moves[nowPlayMoveNumber].movement;
-        move.x *= xDirection;
+        move.x *= MoveRightLeft;
         //移動
         transform.Translate(move * 0.1f);
     }
     //重力移動
     private void GravityMovementSkill()
     {
-
 		if ((gravity == null) || (gravity.Count == 0)) return;
         if (gravity.Count > nowPlayGravityNumber + 1)
         {
@@ -196,8 +237,6 @@ public class FighterMover
         if (nowPlayGravityNumber < 0) return;
         //移動保存用
         Vector3 move = gravity[nowPlayGravityNumber].movement * gravityFrame;
-        int xDirection = 1;
-        if (core.Direction == PlayerDirection.Left) xDirection = -1;
         if (Mathf.Abs(move.x) > Mathf.Abs(gravity[nowPlayGravityNumber].limitMove.x))
         {
             move.x = gravity[nowPlayGravityNumber].limitMove.x;
@@ -206,7 +245,21 @@ public class FighterMover
         {
             move.y = gravity[nowPlayGravityNumber].limitMove.y;
         }
-        move.x *= xDirection;
+        move.x *= GravityRightLeft;
+        transform.Translate(move * 0.1f);
+    }
+	private void GravityMovement()
+	{
+        Vector3 move = gravityFighter;
+        if (Mathf.Abs(move.x) > Mathf.Abs(gravityMax.x))
+        {
+            move.x = gravityMax.x;
+        }
+        if (Mathf.Abs(move.y) > Mathf.Abs(gravityMax.y))
+        {
+            move.y = gravityMax.y;
+        }
+        move.x *= RightLeft;
         transform.Translate(move * 0.1f);
     }
     #endregion
@@ -219,7 +272,7 @@ public class FighterMover
 			//現在再生中の移動の次の移動フレームを越えれば
 			if (effects[nowPlayEffectNumber + 1].frame <= core.AnimationPlayerCompornent.NowFrame)
 			{
-				nowPlayEffectNumber++;
+                nowPlayEffectNumber++;
 				if ((effects[nowPlayEffectNumber].effect == null))
 				{
 					return;
@@ -264,13 +317,12 @@ public class FighterMover
 	private void PlayBullets()
 	{
 		if ((bullets == null) || (bullets.Count == 0)) return;
-		Debug.Log(bullets[0].frame);
 		if (bullets.Count > nowPlayBulletNumber + 1)
 		{
 			//現在再生中の移動の次の移動フレームを越えれば
 			if (bullets[nowPlayBulletNumber + 1].frame <= core.AnimationPlayerCompornent.NowFrame)
 			{
-				nowPlayBulletNumber++;
+                nowPlayBulletNumber++;
 				if ((bullets[nowPlayBulletNumber].bullet == null))
 				{
 					return;
@@ -304,5 +356,16 @@ public class FighterMover
 			}
 		}
 	}
+    private void RightLeftCheck()
+    {
+        if (core.Direction == PlayerDirection.Right)
+        {
+            RightLeft = 1;
+        }
+        else if (core.Direction == PlayerDirection.Left)
+        {
+            RightLeft = -1;
+        }
 
+    }
 }

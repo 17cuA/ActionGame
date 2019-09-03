@@ -76,7 +76,10 @@ MonoBehaviour:
     isThrowGroundDamage: 0
     isThrowGroundAnimEnd: 0
     airDamageMovements:
-    - movement: {x: -1, y: 3, z: 0}
+    - isGravityInvaid: 0
+      isResetStartGravity: 1
+      isResetEndGravity: 0
+      movement: {x: -1, y: 3, z: 0}
       startFrame: 0
     throwGroundDamage: 0
     throwSkill: {fileID: 0}
@@ -92,9 +95,7 @@ MonoBehaviour:
     plusGauge: 0
   isContinue: 1
   isMoveContinue: 0
-  movements:
-  - movement: {x: 0, y: 4, z: 0}
-    startFrame: 0
+  movements: []
   gravityMoves:
   - movement: {x: 0, y: -0.2, z: 0}
     limitMove: {x: 0, y: -20, z: 0}

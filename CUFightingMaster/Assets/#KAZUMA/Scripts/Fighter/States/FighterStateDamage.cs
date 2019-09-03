@@ -204,6 +204,7 @@ public class FighterStateDamage : StateBaseScriptMonoBehaviour
     //やられ
     public void AirHitStunStart()
     {
+        stateBase.core.DirectionChangeMaterial();
         isEndStun = false;
         FighterSkill.CustomHitBox box = stateBase.core.GetDamage;
         //硬直

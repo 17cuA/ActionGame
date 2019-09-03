@@ -58,12 +58,12 @@ MonoBehaviour:
   isContinue: 0
   isMoveContinue: 0
   movements:
-  - movement: {x: 0, y: 3.2, z: 0}
+  - isGravityInvaid: 0
+    isResetStartGravity: 0
+    isResetEndGravity: 0
+    movement: {x: 0, y: 3.2, z: 0}
     startFrame: 0
-  gravityMoves:
-  - movement: {x: 0, y: -0.2, z: 0}
-    limitMove: {x: 0, y: -20, z: 0}
-    startFrame: 0
+  gravityMoves: []
   headFlag: 0
   bodyFlag: 1
   footFlag: 0

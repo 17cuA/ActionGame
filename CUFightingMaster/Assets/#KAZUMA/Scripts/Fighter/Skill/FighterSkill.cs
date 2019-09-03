@@ -100,7 +100,11 @@ public class FighterSkill : ScriptableObject
     [System.Serializable]
 	public class Move
 	{
-		public Vector3 movement;
+        public bool isGravityInvaid;
+        public bool isResetStartGravity;
+        public bool isResetEndGravity;
+        public bool isImpact;
+        public Vector3 movement;
 		public int startFrame;
 	}
     //重力用
@@ -110,7 +114,7 @@ public class FighterSkill : ScriptableObject
 		public Vector3 movement;
 		public Vector3 limitMove;
 		public int startFrame;
-	}
+    }
     #endregion
     public AnimationClip animationClip = null;  //再生するアニメーション
     public float animationSpeed = 1;            //アニメーションの速度

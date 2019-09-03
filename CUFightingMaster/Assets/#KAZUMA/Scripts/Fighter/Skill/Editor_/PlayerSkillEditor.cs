@@ -383,6 +383,12 @@ public class PlayerSkillEditor : EditorWindow
         {
             EditorGUILayout.BeginVertical("Box");
             EditorGUILayout.BeginHorizontal();
+            _move[i].isGravityInvaid = EditorGUILayout.Toggle("重力無効", _move[i].isGravityInvaid);
+            _move[i].isResetStartGravity = EditorGUILayout.Toggle("開始時重力リセット", _move[i].isResetStartGravity);
+            _move[i].isResetEndGravity = EditorGUILayout.Toggle("終了時重力リセット", _move[i].isResetEndGravity);
+            _move[i].isImpact = EditorGUILayout.Toggle("衝撃", _move[i].isImpact);
+            EditorGUILayout.EndHorizontal();
+            EditorGUILayout.BeginHorizontal();
             bool removeFrag = false;
             _move[i].startFrame = EditorGUILayout.IntField("スタートフレーム", _move[i].startFrame);
             //削除ボタン
@@ -436,27 +442,33 @@ public class PlayerSkillEditor : EditorWindow
 		{
 			_move.Add(new FighterSkill.Move());
 		}
-		for (int i = 0; i < _move.Count; i++)
-		{
-			EditorGUILayout.BeginVertical("Box");
-			EditorGUILayout.BeginHorizontal();
-			bool removeFrag = false;
-			_move[i].startFrame = EditorGUILayout.IntField("スタートフレーム", _move[i].startFrame);
-			//削除ボタン
-			if (GUILayout.Button("×", GUILayout.Width(20)))
-			{
-				removeFrag = true;
-			}
-			//削除
-			EditorGUILayout.EndHorizontal();
-			EditorGUILayout.BeginVertical("Box");
-			//Vector3入力
-			_move[i].movement = EditorGUILayout.Vector3Field("移動量", _move[i].movement);
-			EditorGUILayout.EndVertical();
-			EditorGUILayout.EndVertical();
-			if (removeFrag) _move.RemoveAt(i);
-		}
-	}
+        for (int i = 0; i < _move.Count; i++)
+        {
+            EditorGUILayout.BeginVertical("Box");
+            EditorGUILayout.BeginHorizontal();
+            _move[i].isGravityInvaid = EditorGUILayout.Toggle("重力無効", _move[i].isGravityInvaid);
+            _move[i].isResetStartGravity = EditorGUILayout.Toggle("開始時重力リセット", _move[i].isResetStartGravity);
+            _move[i].isResetEndGravity = EditorGUILayout.Toggle("終了時重力リセット", _move[i].isResetEndGravity);
+            _move[i].isImpact = EditorGUILayout.Toggle("衝撃", _move[i].isImpact);
+            EditorGUILayout.EndHorizontal();
+            EditorGUILayout.BeginHorizontal();
+            bool removeFrag = false;
+            _move[i].startFrame = EditorGUILayout.IntField("スタートフレーム", _move[i].startFrame);
+            //削除ボタン
+            if (GUILayout.Button("×", GUILayout.Width(20)))
+            {
+                removeFrag = true;
+            }
+            //削除
+            EditorGUILayout.EndHorizontal();
+            EditorGUILayout.BeginVertical("Box");
+            //Vector3入力
+            _move[i].movement = EditorGUILayout.Vector3Field("移動量", _move[i].movement);
+            EditorGUILayout.EndVertical();
+            EditorGUILayout.EndVertical();
+            if (removeFrag) _move.RemoveAt(i);
+        }
+    }
 
 	private bool headFold;
 	private bool bodyFold;
@@ -574,27 +586,33 @@ public class PlayerSkillEditor : EditorWindow
 			{
 				playerSkill.movements.Add(new FighterSkill.Move());
 			}
-			for (int i = 0; i < playerSkill.movements.Count; i++)
-			{
-				EditorGUILayout.BeginVertical("Box");
-				EditorGUILayout.BeginHorizontal();
-				bool removeFrag = false;
-				playerSkill.movements[i].startFrame = EditorGUILayout.IntField("スタートフレーム", playerSkill.movements[i].startFrame);
-				//削除ボタン
-				if (GUILayout.Button("×", GUILayout.Width(20)))
-				{
-					removeFrag = true;
-				}
-				//削除
-				EditorGUILayout.EndHorizontal();
-				EditorGUILayout.BeginVertical("Box");
-				//Vector3入力
-				playerSkill.movements[i].movement = EditorGUILayout.Vector3Field("移動量", playerSkill.movements[i].movement);
-				EditorGUILayout.EndVertical();
-				EditorGUILayout.EndVertical();
-				if (removeFrag) playerSkill.movements.RemoveAt(i);
-			}
-		}
+            for (int i = 0; i < playerSkill.movements.Count; i++)
+            {
+                EditorGUILayout.BeginVertical("Box");
+                EditorGUILayout.BeginHorizontal();
+                playerSkill.movements[i].isGravityInvaid = EditorGUILayout.Toggle("重力無効", playerSkill.movements[i].isGravityInvaid);
+                playerSkill.movements[i].isResetStartGravity = EditorGUILayout.Toggle("開始時重力リセット", playerSkill.movements[i].isResetStartGravity);
+                playerSkill.movements[i].isResetEndGravity = EditorGUILayout.Toggle("終了時重力リセット", playerSkill.movements[i].isResetEndGravity);
+                playerSkill.movements[i].isImpact = EditorGUILayout.Toggle("衝撃", playerSkill.movements[i].isImpact);
+                EditorGUILayout.EndHorizontal();
+                EditorGUILayout.BeginHorizontal();
+                bool removeFrag = false;
+                playerSkill.movements[i].startFrame = EditorGUILayout.IntField("スタートフレーム", playerSkill.movements[i].startFrame);
+                //削除ボタン
+                if (GUILayout.Button("×", GUILayout.Width(20)))
+                {
+                    removeFrag = true;
+                }
+                //削除
+                EditorGUILayout.EndHorizontal();
+                EditorGUILayout.BeginVertical("Box");
+                //Vector3入力
+                playerSkill.movements[i].movement = EditorGUILayout.Vector3Field("移動量", playerSkill.movements[i].movement);
+                EditorGUILayout.EndVertical();
+                EditorGUILayout.EndVertical();
+                if (removeFrag) playerSkill.movements.RemoveAt(i);
+            }
+        }
         if (!playerSkill.isContinue)
         {
             if (GUILayout.Button("制動作成", GUILayout.Width(80)))

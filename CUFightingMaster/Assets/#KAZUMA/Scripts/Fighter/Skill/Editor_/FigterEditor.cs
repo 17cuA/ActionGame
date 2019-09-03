@@ -76,7 +76,9 @@ public class FigterEditor : EditorWindow
 		fighterStatus.StanGuage = EditorGUILayout.IntField("スタン値", fighterStatus.StanGuage);
 		fighterStatus.SpecialGuage = EditorGUILayout.IntField("スぺシャルゲージ", fighterStatus.SpecialGuage);
 		fighterStatus.PlayerModel = EditorGUILayout.ObjectField("キャラセレモデル", fighterStatus.PlayerModel, typeof(GameObject), false) as GameObject;
-		EditorGUILayout.BeginVertical("Box");
+        fighterStatus.gravity = EditorGUILayout.Vector3Field("重力", fighterStatus.gravity);
+        fighterStatus.gravityMax = EditorGUILayout.Vector3Field("重力限界", fighterStatus.gravityMax);
+        EditorGUILayout.BeginVertical("Box");
 		fighterStatus.playerMaterials[0].nomalMaterial = (Material)EditorGUILayout.ObjectField("P1ノーマルマテリアル", fighterStatus.playerMaterials[0].nomalMaterial, typeof(Material), false) as Material;
 		fighterStatus.playerMaterials[0].inversionMaterial = EditorGUILayout.ObjectField("P1反転マテリアル", fighterStatus.playerMaterials[0].inversionMaterial, typeof(Material), false) as Material;
 		EditorGUILayout.EndVertical();

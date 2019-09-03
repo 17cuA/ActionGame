@@ -16,11 +16,14 @@ MonoBehaviour:
   animationSpeed: 1
   status: 1
   frameEffects: []
+  frameBullets: []
   cancelFrag: 1
   barrageCancelFrag: 0
   cancelLayer: 0
+  isJumpCancel: 0
   inBlend: 0
   outBlend: 0
+  isInvincibleBullet: 0
   plusHeadHitBox:
   - hitBox:
       size: {x: 0, y: 0, z: 0}
@@ -33,11 +36,9 @@ MonoBehaviour:
   plusPushingHitBox: []
   customHitBox: []
   isContinue: 0
+  isMoveContinue: 0
   movements: []
-  gravityMoves:
-  - movement: {x: 0, y: -2, z: 0}
-    limitMove: {x: 0, y: -20, z: 0}
-    startFrame: 0
+  gravityMoves: []
   headFlag: 0
   bodyFlag: 0
   footFlag: 0
