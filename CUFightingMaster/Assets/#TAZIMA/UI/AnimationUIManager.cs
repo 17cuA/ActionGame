@@ -40,14 +40,8 @@ public class AnimationUIManager : MonoBehaviour
         //デフォルトのスプライト
         path = "Sprites/UI/AnimationUI/ROUND ANIMATION/";
         defaultSprite = Resources.Load<Sprite>(string.Format("{0}{1}", path, "DefaultImage"));
-        //スプライトが保存されている場所のパス
-        path += spriteName;
-		totalSpriteCount = Resources.LoadAll(path).Length / 2;
-        sprites = new Sprite[totalSpriteCount];
-        for (int i = 0; i < totalSpriteCount; i++)
-        {
-            sprites[i] = Resources.Load<Sprite>(string.Format("{0}/{1}_{2}", path, spriteName, i.ToString("D5")));
-        }
+        //表示するスプライト
+        sprites = LoadSprite.Instance.GetSprites(spriteName);
         initColor = gameObject.GetComponent<Image>().color;
         ResetUI();
 	}
