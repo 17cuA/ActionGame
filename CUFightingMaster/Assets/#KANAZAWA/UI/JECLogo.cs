@@ -23,11 +23,6 @@ public class JECLogo : MonoBehaviour
 
 	public Canvas canvas1;
 	public Canvas canvas2;
-
-	void Awake()
-	{
-		LoadSprite.Instance.Init();
-	}
 	void Start()
     {
 		timeMax = 2.0f;
