@@ -587,6 +587,8 @@ public class HitBoxJudgement
 			if (core.GroundCheck() == false)
 			{
 				countKnockBack = Knock_Back_Count;
+				knockBackPower = 0;
+				isKnockGround = true;
 				return;
 			}
 		}
@@ -595,6 +597,8 @@ public class HitBoxJudgement
 			if (core.GroundCheck() == true)
 			{
 				countKnockBack = Knock_Back_Count;
+				knockBackPower = 0;
+				isKnockGround = true;
 				return;
 			}
 		}
