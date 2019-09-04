@@ -15,14 +15,20 @@ public class ComboUIManager : MonoBehaviour
 	public Sprite[] comboNumSprite;
 	private Vector3 comboPos;
 
+    private float maxTime = 1;
+    private float time = 0;
+    private int beforeCombo = 0;
+
     void Start()
     {
 		Init();
+        time = 0;
 	}
 
     void Update()
     {
 		ComboCounter();
+        time += Time.deltaTime;
 	}
 	private void Init()
 	{
@@ -46,6 +52,11 @@ public class ComboUIManager : MonoBehaviour
 		{
 			var length = comboCount.ToString("D2").Length;
 			var isCombo = new bool[length];
+            if(beforeCombo != core.ComboCount)
+            {
+                time = 0;
+            }
+            beforeCombo = core.ComboCount;
 			//スプライトを格納
 			for (int i = 0; i < length; i++)
 			{
@@ -69,9 +80,11 @@ public class ComboUIManager : MonoBehaviour
 			}
 			comboObj.SetActive(true);
 		}
-		else
+		else if(time>maxTime)
 		{
+            time = 0;
 			ResetCombo();
+            beforeCombo = 0;
 		}
 	}
 	#region 揺らす処理

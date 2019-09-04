@@ -9,8 +9,8 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: hugu_outerWall_DiffuseGlossiness
   m_Shader: {fileID: 4800000, guid: 58528b2df2b901b409e3d9662b49641b, type: 3}
-  m_ShaderKeywords: _METALLICGLOSSMAP _NORMALMAP
-  m_LightmapFlags: 4
+  m_ShaderKeywords: _IS_LIGHTCOLOR_BASE_ON _METALLICGLOSSMAP _NORMALMAP
+  m_LightmapFlags: 6
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
@@ -77,7 +77,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - _1st2nd_Shades_Feather: 0.1
-    - _BaseColor_Step: 0.5
+    - _BaseColor_Step: 0.29
     - _BaseShade_Feather: 0.1
     - _BumpScale: 1
     - _Cutoff: 0.5
@@ -88,7 +88,7 @@ Material:
     - _Glossiness: 0.5
     - _GlossyReflections: 1
     - _Is_BlendBaseColor: 0
-    - _Is_LightColor_Base: 0
+    - _Is_LightColor_Base: 1
     - _Is_NoramMapToBase: 0
     - _Metallic: 0
     - _Mode: 0
@@ -100,7 +100,7 @@ Material:
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
-    - _Tweak_SystemShadowsLevel: 0
+    - _Tweak_SystemShadowsLevel: -0.12
     - _UVSec: 0
     - _ZWrite: 1
     - __ModelOutLine_Width: 0.1
