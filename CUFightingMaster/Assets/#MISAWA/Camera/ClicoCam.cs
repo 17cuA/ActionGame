@@ -8,37 +8,28 @@ public class ClicoCam : MonoBehaviour
 	public CinemachineVirtualCamera Vcam0;
 	public CinemachineVirtualCamera Vcam1;
 
-	public int n = 50;
-	public int d = 10;
+	public int pMax = 50;
+	public int pMin = 10;
+
+	public ScriptableObject ClicoObject;
+	public ScriptableObject ObachanObject;
 
     // Update is called once per frame
     void Update()
     {
-		if (Input.GetKeyDown(KeyCode.J))
+		if (Input.GetKeyDown(KeyCode.O))
 		{
-			Vcam0.Priority = n;
-			Vcam1.Priority = d;
-		}
-        if (Input.GetKeyDown(KeyCode.K))
-		{
-			Vcam0.Priority = d;
-			Vcam1.Priority = n;
+			StartCoroutine("Clico");
 		}
     }
 
-	void CloicoSP()
-	{
-		Vcam0.Priority = n;
-		StartCoroutine("Clico");
-	}
 
 	IEnumerator Clico()
 	{
-		Vcam0.Priority = n;
-		Vcam1.Priority = d;
+		Vcam0.Priority = pMax;
+		Vcam1.Priority = pMin;
 		yield return new WaitForSeconds(0.3f);
-		Vcam0.Priority = d;
-		Vcam1.Priority = n;
-		
+		Vcam0.Priority = pMin;
+		Vcam1.Priority = pMax;
 	}
 }
