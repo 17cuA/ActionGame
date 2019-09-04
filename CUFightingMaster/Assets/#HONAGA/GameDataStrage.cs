@@ -64,5 +64,30 @@ public class GameDataStrage : MonoBehaviour
 
 
 	public FighterStatus[] fighterStatuses = new FighterStatus[2];
-	public int plusAttackDamage = 0;
+	public int plusAttackDamage_One = 0;
+	public int plusAttackDamage_Two = 0;
+	//デバッグ用のダメージ
+	public void SetPlusDamage(PlayerNumber _num,int _dam)
+	{
+		if(_num==PlayerNumber.Player1)
+		{
+			plusAttackDamage_One += _dam;
+		}
+		else if(_num==PlayerNumber.Player2)
+		{
+			plusAttackDamage_Two += _dam;
+		}
+	}
+	public int GetPlusDamage(PlayerNumber _num)
+	{
+		if (_num == PlayerNumber.Player1)
+		{
+			return plusAttackDamage_One;
+		}
+		else if (_num == PlayerNumber.Player2)
+		{
+			return plusAttackDamage_Two;
+		}
+		return 0;
+	}
 }
