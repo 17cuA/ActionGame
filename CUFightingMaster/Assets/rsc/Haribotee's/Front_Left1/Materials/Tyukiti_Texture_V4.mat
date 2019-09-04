@@ -9,7 +9,7 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: Tyukiti_Texture_V4
   m_Shader: {fileID: 4800000, guid: 58528b2df2b901b409e3d9662b49641b, type: 3}
-  m_ShaderKeywords: _SMOOTHNESS_TEXTURE_ALBEDO_CHANNEL_A
+  m_ShaderKeywords: _IS_LIGHTCOLOR_BASE_ON _SMOOTHNESS_TEXTURE_ALBEDO_CHANNEL_A
   m_LightmapFlags: 6
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -77,8 +77,8 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - _1st2nd_Shades_Feather: 0.1
-    - _BaseColor_Step: 0.5
-    - _BaseShade_Feather: 0.1
+    - _BaseColor_Step: 0.34
+    - _BaseShade_Feather: 0.13
     - _BumpScale: 1
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
@@ -88,7 +88,7 @@ Material:
     - _Glossiness: 0.5
     - _GlossyReflections: 1
     - _Is_BlendBaseColor: 0
-    - _Is_LightColor_Base: 0
+    - _Is_LightColor_Base: 1
     - _Is_NoramMapToBase: 0
     - _Metallic: 0
     - _Mode: 0
