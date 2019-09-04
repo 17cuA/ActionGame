@@ -175,9 +175,6 @@ public class PlayerSkillEditor : EditorWindow
         playerSkill.barrageCancelFrag = EditorGUILayout.Toggle("連打キャンセル", playerSkill.barrageCancelFrag);
         playerSkill.cancelLayer = EditorGUILayout.IntField("（未）キャンセルレイヤー", playerSkill.cancelLayer);
         EditorGUILayout.EndHorizontal();
-        EditorGUILayout.BeginHorizontal();
-        playerSkill.isJumpCancel = EditorGUILayout.Toggle("ジャンプキャンセル", playerSkill.isJumpCancel);
-        EditorGUILayout.EndHorizontal();
 
         EditorGUILayout.EndVertical();
     }
@@ -249,7 +246,10 @@ public class PlayerSkillEditor : EditorWindow
                         box.hitPoint = (HitPoint)EditorGUILayout.EnumPopup("上中下", box.hitPoint);
                         box.hitStrength = (HitStrength)EditorGUILayout.EnumPopup("強弱", box.hitStrength);
                         EditorGUILayout.EndHorizontal();
-                        EditorGUILayout.BeginHorizontal();
+						EditorGUILayout.BeginHorizontal();
+						box.isJumpCancel = EditorGUILayout.Toggle("ジャンプキャンセル", box.isJumpCancel);
+						EditorGUILayout.EndHorizontal();
+						EditorGUILayout.BeginHorizontal();
                         box.isDown = EditorGUILayout.Toggle("飛ばし（ダウン）技", box.isDown);
                         box.isThrow = EditorGUILayout.Toggle("投げ技", box.isThrow);
                         box.hitStop = EditorGUILayout.IntField("ヒットストップ値", box.hitStop);

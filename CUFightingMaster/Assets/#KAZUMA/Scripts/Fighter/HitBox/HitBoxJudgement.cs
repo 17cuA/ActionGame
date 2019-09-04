@@ -195,7 +195,7 @@ public class HitBoxJudgement
 		if (core.changeSkill == false) return;
 		if (core.NowPlaySkill != null)
 		{
-            core.SetHitAttackFlag(false);//攻撃が当たったことのリセット
+            core.SetHitAttackFlag(false,null);//攻撃が当たったことのリセット
             //アクティブにしていたコライダーのリセット
             foreach (ComponentObjectPool<BoxCollider>.Objs g in nowPlayCollider)
 			{
@@ -439,7 +439,7 @@ public class HitBoxJudgement
                 //ダメージを与える
 				cr.SetDamage(_cHit,_bCol);
 				cr.SetEnemyNumber(core.PlayerNumber);//現在フォーカス中の敵のセット（未使用）
-                core.SetHitAttackFlag(true);//攻撃が当たったことを渡す
+                core.SetHitAttackFlag(true,_cHit);//攻撃が当たったことを渡す
                 
                 ////エフェクト再生 ※エフェクトは当たった側で管理
                 //for (int i = 0; i < _cHit.hitEffects.Count; i++)

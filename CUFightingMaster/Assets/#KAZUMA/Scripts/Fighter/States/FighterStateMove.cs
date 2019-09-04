@@ -122,7 +122,8 @@ public class FighterStateMove : StateBaseScriptMonoBehaviour
     //ジャンプキャンセル
     public bool IsJumpCancel(bool _isCount)
     {
-        if (stateBase.core.NowPlaySkill.isJumpCancel)
+		if (stateBase.core.HitAattackBox == null) return false;
+        if (stateBase.core.HitAattackBox.isJumpCancel)
         {
             if (jumpTimes < jumpTimesMax&&stateBase.core.IsHitAttack)
             {

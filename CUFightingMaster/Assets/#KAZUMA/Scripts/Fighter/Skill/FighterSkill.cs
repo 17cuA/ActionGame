@@ -84,7 +84,7 @@ public class FighterSkill : ScriptableObject
         public FighterSkill throwSkill;//投げ技
         public FighterSkill enemyThrowSkill;
         public List<ThrowDamage> throwDamages = new List<ThrowDamage>();
-
+		public bool isJumpCancel = false;
         //ダウン時の移動
         public bool isContinue = false;
         public List<Move> movements = new List<Move>();
@@ -125,7 +125,6 @@ public class FighterSkill : ScriptableObject
                                                         //TODO::飛び道具
     public bool barrageCancelFrag = false;      //連打キャンセル
     public int cancelLayer = 0;                 //キャンセルできるレイヤー
-    public bool isJumpCancel = false;
     //ブレンドするかしないか
     public bool inBlend = false;
     public bool outBlend = false;
