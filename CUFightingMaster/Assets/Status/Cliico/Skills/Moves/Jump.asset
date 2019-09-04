@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fbd35985d310504d81036cc55356454, type: 3}
+  m_Name: Jump
+  m_EditorClassIdentifier: 
+  animationClip: {fileID: 7400000, guid: 716c99d049058e14aa83a7bd1eecb34a, type: 2}
+  animationSpeed: 0.5
+  status: 16
+  frameEffects: []
+  frameBullets: []
+  cancelFrag: 0
+  barrageCancelFrag: 0
+  cancelLayer: 0
+  inBlend: 0
+  outBlend: 0
+  isInvincibleBullet: 0
+  plusHeadHitBox: []
+  plusBodyHitBox:
+  - hitBox:
+      size: {x: 0, y: 0, z: 0}
+      localPosition: {x: 0, y: 0, z: 0}
+    startFrame: 0
+    endFrame: 56
+  plusFootHitBox: []
+  plusGrabHitBox: []
+  plusPushingHitBox:
+  - hitBox:
+      size: {x: -1, y: -3.3, z: -1}
+      localPosition: {x: 0, y: 0, z: 0}
+    startFrame: 0
+    endFrame: 3
+  - hitBox:
+      size: {x: 0, y: -1.3, z: 0}
+      localPosition: {x: 0, y: 0.6, z: 0}
+    startFrame: 4
+    endFrame: 56
+  customHitBox: []
+  isContinue: 0
+  isMoveContinue: 0
+  movements:
+  - isGravityInvaid: 0
+    isResetStartGravity: 1
+    isResetEndGravity: 0
+    isImpact: 1
+    movement: {x: 0, y: 5, z: 0}
+    startFrame: 3
+  gravityMoves: []
+  headFlag: 0
+  bodyFlag: 1
+  footFlag: 0
+  grabFlag: 0
+  pushingFlag: 1

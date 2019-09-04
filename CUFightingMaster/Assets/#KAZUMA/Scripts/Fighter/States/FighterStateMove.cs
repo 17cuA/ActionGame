@@ -204,18 +204,33 @@ public class FighterStateMove : StateBaseScriptMonoBehaviour
 
                 break;
             case Direction.Up:
+                if (stateBase.core.NowPlaySkill == stateBase.core.Status.constantsSkills[(int)SkillConstants.Jump] || stateBase.core.NowPlaySkill == stateBase.core.Status.constantsSkills[(int)SkillConstants.Front_Jump] || stateBase.core.NowPlaySkill == stateBase.core.Status.constantsSkills[(int)SkillConstants.Back_Jump])
+                {
+                    return;
+                }
+
                 stateBase.core.SetIsCrouching(false);
                 stateBase.ChangeSkillConstant(SkillConstants.Jump, 0);
                 stateBase.core.SetPlayerMoveState(PlayerMoveState.Jump);
 
                 break;
             case Direction.UpFront:
+                if (stateBase.core.NowPlaySkill == stateBase.core.Status.constantsSkills[(int)SkillConstants.Jump] || stateBase.core.NowPlaySkill == stateBase.core.Status.constantsSkills[(int)SkillConstants.Front_Jump] || stateBase.core.NowPlaySkill == stateBase.core.Status.constantsSkills[(int)SkillConstants.Back_Jump])
+                {
+                    return;
+                }
+
                 stateBase.core.SetIsCrouching(false);
                 stateBase.ChangeSkillConstant(SkillConstants.Front_Jump, 0);
                 stateBase.core.SetPlayerMoveState(PlayerMoveState.Front_Jump);
 
                 break;
             case Direction.UpBack:
+                if (stateBase.core.NowPlaySkill == stateBase.core.Status.constantsSkills[(int)SkillConstants.Jump] || stateBase.core.NowPlaySkill == stateBase.core.Status.constantsSkills[(int)SkillConstants.Front_Jump] || stateBase.core.NowPlaySkill == stateBase.core.Status.constantsSkills[(int)SkillConstants.Back_Jump])
+                {
+                    return;
+                }
+
                 stateBase.core.SetIsCrouching(false);
                 stateBase.ChangeSkillConstant(SkillConstants.Back_Jump, 0);
                 stateBase.core.SetPlayerMoveState(PlayerMoveState.Back_Jump);

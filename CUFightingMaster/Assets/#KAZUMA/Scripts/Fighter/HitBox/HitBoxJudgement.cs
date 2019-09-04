@@ -503,7 +503,7 @@ public class HitBoxJudgement
                 float x = (pos.x + (siz.x * i)) + oppoX;
 				float checkX = (pos.x + (siz.x * i)) - (oppoX+c.transform.position.x);
 
-                float xMove = (pos.x + (siz.x * i)) - (((((BoxCollider)c).size.x / 2.0f) * i * -1) + ((((BoxCollider)c).center.x) * -1) + c.transform.position.x);
+                float xMove = (pos.x + (siz.x * i)) - (((((BoxCollider)c).size.x / 2.0f) * i * -1) + ((((BoxCollider)c).center.x)) + c.transform.position.x);
                 if(i==1&&checkX>0)
 				{
 					continue;
@@ -541,6 +541,15 @@ public class HitBoxJudgement
         float posZ = t.position.z + _col.center.z;
         Vector3 pos = new Vector3(posX, posY, posZ);
         Vector3 siz = new Vector3(_col.size.x / 2.0f, _col.size.y / 2.0f, _col.size.z / 2.0f);
+        //サイズが0の時はデフォルトで押す
+        if (siz.x == 0)
+        {
+            siz.x = core.Status.pushingHitBox.size.x / 2.0f;
+        }
+        if(siz.y == 0)
+        {
+            siz.y = core.Status.pushingHitBox.size.y / 2.0f;
+        }
         Collider[] col = Physics.OverlapBox(new Vector3(posX, posY, posZ), siz, Quaternion.identity, (1 << LayerMask.NameToLayer(CommonConstants.Layers.Wall)));
 		if(col.Length<=0)
 		{
