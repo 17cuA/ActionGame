@@ -48,7 +48,7 @@ Shader "Toon"
 			"RenderType" = "Opaque"
 			"LightMode" = "ForwardBase"
 		}
-		LOD 100
+		//LOD 100
 
 		//モデルに影を描写する処理 by hosino ------------------------------------------------
 		Pass
