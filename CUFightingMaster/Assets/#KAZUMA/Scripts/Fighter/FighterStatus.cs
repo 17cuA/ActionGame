@@ -54,6 +54,7 @@ public class FighterStatus : ScriptableObject
 	public HitBox_ pushingHitBox = new HitBox_();
     //スキル
     public FighterSkill[] constantsSkills = { };
+	public FighterCore fighter = null;//ファイター本体
 
     public List<SkillAnimationCustom> groundAttackSkills = new List<SkillAnimationCustom>();
     public List<SkillAnimationCustom> airAttackSkills = new List<SkillAnimationCustom>();

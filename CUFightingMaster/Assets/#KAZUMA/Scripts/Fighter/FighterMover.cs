@@ -36,6 +36,7 @@ public class FighterMover
     }
     public void UpdateGame()
     {
+		Debug.Log(gravityFighter);
         RightLeftCheck();
         if (core.GroundCheck())
         {

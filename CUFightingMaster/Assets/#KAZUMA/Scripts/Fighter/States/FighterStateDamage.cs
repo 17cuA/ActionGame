@@ -39,7 +39,7 @@ public class FighterStateDamage : StateBaseScriptMonoBehaviour
         if (stateBase.core.GetDamage.frameHitBoxes.Count > 0)
         {
             //ダメージ処理
-            stateBase.core.HP -= box.damage;
+            stateBase.core.HP -= box.damage + GameDataStrage.Instance.GetPlusDamage(stateBase.core.EnemyNumber);
 			//stateBase.core.SpecialGauge
             if (stateBase.core.HP < 0)
             {
@@ -226,7 +226,7 @@ public class FighterStateDamage : StateBaseScriptMonoBehaviour
         if (stateBase.core.GetDamage.frameHitBoxes.Count > 0)
         {
             //ダメージ処理
-            stateBase.core.HP -= box.damage;
+            stateBase.core.HP -= box.damage + GameDataStrage.Instance.GetPlusDamage(stateBase.core.EnemyNumber);
             if (stateBase.core.HP < 0)
             {
                 stateBase.core.HP = 0;
@@ -346,7 +346,7 @@ public class FighterStateDamage : StateBaseScriptMonoBehaviour
         if (stateBase.core.GetDamage.frameHitBoxes.Count > 0)
         {
             //ダメージ処理
-            stateBase.core.HP -= box.damage;
+            stateBase.core.HP -= box.damage + GameDataStrage.Instance.GetPlusDamage(stateBase.core.EnemyNumber);
             if (stateBase.core.HP < 0)
             {
                 stateBase.core.HP = 0;
@@ -431,7 +431,7 @@ public class FighterStateDamage : StateBaseScriptMonoBehaviour
         {
             if (throwDamages.isThrowGroundDamage)
             {
-                stateBase.core.HP -= throwDamages.throwGroundDamage;
+                stateBase.core.HP -= throwDamages.throwGroundDamage+GameDataStrage.Instance.GetPlusDamage(stateBase.core.EnemyNumber);
                 GameManager.Instance.GetPlayFighterCore(stateBase.core.EnemyNumber).PlusComboCount(1);
                 if (stateBase.core.HP < 0)
                 {
@@ -444,7 +444,7 @@ public class FighterStateDamage : StateBaseScriptMonoBehaviour
 		{
 			if(dm.frame==stateBase.core.AnimationPlayerCompornent.NowFrame)
 			{
-                stateBase.core.HP -= dm.damage;
+                stateBase.core.HP -= dm.damage + GameDataStrage.Instance.GetPlusDamage(stateBase.core.EnemyNumber); ;
                 GameManager.Instance.GetPlayFighterCore(stateBase.core.EnemyNumber).PlusComboCount(1);
                 if (stateBase.core.HP < 0)
                 {

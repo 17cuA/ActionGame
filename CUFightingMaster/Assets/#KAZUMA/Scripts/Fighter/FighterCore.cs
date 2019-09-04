@@ -185,6 +185,10 @@ public class FighterCore : MonoBehaviour
     {
         playerMoveState = _state;
     }
+	public void SetPlayerNumber(PlayerNumber _num)
+	{
+		playerNumber = _num;
+	}
 
     public void SetKnockBack(float _backCount, PlayerNumber _number, PlayerDirection _dir, bool isEnKnock = true, int? _count = null)
     {

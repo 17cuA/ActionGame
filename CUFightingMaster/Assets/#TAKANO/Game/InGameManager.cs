@@ -306,6 +306,8 @@ public class InGameManager : MonoBehaviour
 
 	private void Start()
     {
+		player1 = GameManager.Instance.Player_one.gameObject;
+		player2 = GameManager.Instance.Player_two.gameObject;
 		//初期化
 		Array.Resize<string>(ref getRoundCount, playerIndex);
 		for (int i = 0;i < playerIndex;i++)
