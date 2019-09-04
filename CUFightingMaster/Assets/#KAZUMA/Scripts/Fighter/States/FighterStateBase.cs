@@ -89,7 +89,7 @@ public class FighterStateBase : StateBaseScriptMonoBehaviour
 	public bool IsStartGame(bool _game)
     {
         //現在条件なし
-        return GameManager.Instance.isStartGame == _game;
+        return GameManager.Instance.isStartGame == _game && core.GroundCheck();
     }
     public bool IsNotHitStop()
     {
@@ -133,6 +133,10 @@ public class FighterStateBase : StateBaseScriptMonoBehaviour
         }
 		return f;
 	}
+    public bool IsEndRound()
+    {
+        return GameManager.Instance.isEndRound;
+    }
     public bool IsHP(bool _f)
     {
         if ((core.HP > 0)==_f)

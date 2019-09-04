@@ -135,8 +135,8 @@ public class InGameManager : MonoBehaviour
 				getRoundCount[1] += "2";
 				gameRoundCount++;
 			}
-			GameManager.Instance.isEndRound = true;
 			currentUpdate = FinishRound_KO;
+            GameManager.Instance.isStartGame = false;
         }
 
         //TimeOverになったら
@@ -160,8 +160,8 @@ public class InGameManager : MonoBehaviour
 				getRoundCount[1] += "3";
 				gameRoundCount++;
 			}
-			GameManager.Instance.isEndRound = true;
 			currentUpdate = FinishRound_TimeOver;
+            GameManager.Instance.isStartGame = false;
         }
     }
 	#endregion
@@ -175,7 +175,8 @@ public class InGameManager : MonoBehaviour
         if (canvasController.Call_PlayFinishRound_KO() == false)
         {
             currentUpdate = DoGameFinish;
-		}
+            GameManager.Instance.isStartGame = false;
+        }
     }
 	#endregion
 

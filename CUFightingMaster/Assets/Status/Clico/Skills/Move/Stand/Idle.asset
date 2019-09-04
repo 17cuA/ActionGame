@@ -22,6 +22,7 @@ MonoBehaviour:
   cancelLayer: 0
   inBlend: 0
   outBlend: 0
+  isInvincibleBullet: 0
   plusHeadHitBox: []
   plusBodyHitBox: []
   plusFootHitBox: []
@@ -30,7 +31,13 @@ MonoBehaviour:
   customHitBox: []
   isContinue: 0
   isMoveContinue: 0
-  movements: []
+  movements:
+  - isGravityInvaid: 0
+    isResetStartGravity: 1
+    isResetEndGravity: 0
+    isImpact: 0
+    movement: {x: 0, y: 0, z: 0}
+    startFrame: 0
   gravityMoves:
   - movement: {x: 0, y: -2, z: 0}
     limitMove: {x: 0, y: -20, z: 0}
