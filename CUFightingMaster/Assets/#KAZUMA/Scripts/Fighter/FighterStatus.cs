@@ -19,6 +19,7 @@ public class FighterStatus : ScriptableObject
         public string command;
         public string trigger;
 		public int skillCost = 0;//発動のためのコスト
+        public int countValid = 1;//空中の場合何回発動できるか
         public int validShotFrame = 6;
         public FighterSkill skill;
 	}
