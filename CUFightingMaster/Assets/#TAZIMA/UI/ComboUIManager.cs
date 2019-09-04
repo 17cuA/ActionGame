@@ -8,13 +8,12 @@ public class ComboUIManager : MonoBehaviour
 	[SerializeField] private PlayerNumber num = PlayerNumber.Player1;
 	Text text;
 	FighterCore core;
-	public int fadeOutFrame;
 	private int currentRemainFrame;
 	public GameObject comboObj;
 	public Sprite comboSprite;
 	public GameObject[] comboNumObj;
 	public Sprite[] comboNumSprite;
-	private Color initColor;
+	private Vector3 comboPos;
 
     void Start()
     {
@@ -29,7 +28,7 @@ public class ComboUIManager : MonoBehaviour
 	{
 		text = GetComponent<Text>();
 		core = GameManager.Instance.GetPlayFighterCore(num);
-		initColor = new Color(255,255,255,255);
+		comboPos = transform.position;
 		ResetCombo();
 	}
 	void ResetCombo()
@@ -37,17 +36,14 @@ public class ComboUIManager : MonoBehaviour
 		for (int i = 0; i < comboNumObj.Length; i++)
 		{
 			comboNumObj[i].SetActive(false);
-			comboNumObj[i].GetComponent<Image>().color = initColor;
 		}
 		comboObj.SetActive(false);
-		comboObj.GetComponent<Image>().color = initColor;
 	}
 	public void ComboCounter()
 	{
 		var comboCount = core.ComboCount;
 		if (core.ComboCount > 1)
 		{
-			if (currentRemainFrame != fadeOutFrame) currentRemainFrame = fadeOutFrame;
 			var length = comboCount.ToString("D2").Length;
 			var isCombo = new bool[length];
 			//スプライトを格納
@@ -65,28 +61,53 @@ public class ComboUIManager : MonoBehaviour
 			//表示する
 			for (int i = 0; i < length; i++)
 			{
-				Debug.Log(isCombo[i]);
-				comboNumObj[i].SetActive(isCombo[i]);
+				if ( isCombo[i])
+				{
+					comboNumObj[i].SetActive(true);
+					Shake(0.5f,150f);
+				}
 			}
 			comboObj.SetActive(true);
 		}
 		else
 		{
-			if (currentRemainFrame != 0)
-			{
-				currentRemainFrame--;
-				float alpha = currentRemainFrame / fadeOutFrame;
-				for (int i = 0; i < comboNumObj.Length; i++)
-				{
-					var numColor = comboNumObj[i].GetComponent<Image>().color;
-					numColor.a = alpha;
-					comboNumObj[i].GetComponent<Image>().color = numColor;
-				}
-				var color = comboObj.GetComponent<Image>().color;
-				color.a = alpha;
-				comboObj.GetComponent<Image>().color = color;
-			}
-			else ResetCombo();
+			ResetCombo();
 		}
 	}
+	#region 揺らす処理
+	/// <summary>
+	/// 揺らす値を受け取りコルーチンに投げる
+	/// </summary>
+	/// <param name="duration">揺れる期間</param>
+	/// <param name="magnitude">揺れの大きさ</param>
+	void Shake(float duration, float magnitude)
+	{
+		StartCoroutine(DoShake(duration, magnitude));
+	}
+
+	/// <summary>
+	/// 揺らす値を受け取り揺らす
+	/// </summary>
+	/// <param name="duration">揺れる期間</param>
+	/// <param name="magnitude">揺れの大きさ</param>
+	/// <returns></returns>
+	IEnumerator DoShake(float duration, float magnitude)
+	{
+		// 経過時間
+		var elapsed = 0f;
+
+		while (elapsed < duration)
+		{
+			var x = transform.position.x + Random.Range(-0.1f, 0.1f) * magnitude;
+			var y = transform.position.y + Random.Range(-0.1f, 0.1f) * magnitude;
+
+			transform.position = new Vector3(x, y, transform.position.z);
+
+			elapsed += Time.deltaTime;
+
+			yield return null;
+			transform.position = comboPos;
+		}
+	}
+	#endregion
 }
