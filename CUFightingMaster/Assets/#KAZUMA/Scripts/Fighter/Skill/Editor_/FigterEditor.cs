@@ -71,6 +71,7 @@ public class FigterEditor : EditorWindow
     private void StatusTabDraw()
     {
         EditorGUILayout.BeginVertical("Box");
+		fighterStatus.fighter = EditorGUILayout.ObjectField("本体", fighterStatus.fighter, typeof(FighterCore), false) as FighterCore;
         fighterStatus.HP = EditorGUILayout.IntField("HP",fighterStatus.HP);
 		fighterStatus.airBraking = EditorGUILayout.FloatField("空中制動", fighterStatus.airBraking);
 		fighterStatus.StanGuage = EditorGUILayout.IntField("スタン値", fighterStatus.StanGuage);

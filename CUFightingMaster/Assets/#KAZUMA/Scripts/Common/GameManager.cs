@@ -15,6 +15,10 @@ public class GameManager : SingletonMono<GameManager>
     }
 
     public int fighterAmount = 2;
+	public GameObject parantFighter = null;
+	public FighterStateBase oneState;
+	public FighterStateBase twoState;
+
     public FighterCore Player_one;
     public FighterCore Player_two;
 	public TestInput input_one;
@@ -32,11 +36,37 @@ public class GameManager : SingletonMono<GameManager>
     public List<IEventable> UpdateBulletList = new List<IEventable>();
     public List<IEventable> LateUpdateBulletList = new List<IEventable>();
     public List<IEventable> DeleteBulletList = new List<IEventable>();
-
-    void Start()
+	override protected void Awake()
 	{
 		QualitySettings.vSyncCount = 0;
 		Application.targetFrameRate = 60;
+		base.Awake();
+		//プレイヤー1生成
+		var obj = Instantiate(GameDataStrage.Instance.fighterStatuses[0].fighter);
+		if (parantFighter != null)
+		{
+			obj.transform.parent = parantFighter.transform;
+		}
+		FighterCore _co = obj.GetComponent<FighterCore>();
+		_co.SetPlayerNumber(PlayerNumber.Player1);
+		oneState.core = _co;
+		Player_one = _co;
+		_co.gameObject.layer = LayerMask.NameToLayer(CommonConstants.Layers.Player_One);
+		//プレイヤー2生成
+		obj = Instantiate(GameDataStrage.Instance.fighterStatuses[1].fighter);
+		if (parantFighter != null)
+		{
+			obj.transform.parent = parantFighter.transform;
+		}
+		_co = obj.GetComponent<FighterCore>();
+		_co.SetPlayerNumber(PlayerNumber.Player2);
+		twoState.core = _co;
+		Player_two = _co;
+		_co.gameObject.layer = LayerMask.NameToLayer(CommonConstants.Layers.Player_Two);
+	}
+
+	void Start()
+	{
         DeleteBulletList = new List<IEventable>();//削除用
                                                   //Inputの初期化
         input_one.InitCommandManagers(Player_one);
