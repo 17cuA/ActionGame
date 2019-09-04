@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Playables;
 
-public class TimelineController : CameraBase
+public class TimelineController : MonoBehaviour
 {
 	public PlayableDirector director;
     // Start is called before the first frame update
@@ -13,8 +13,11 @@ public class TimelineController : CameraBase
     }
 
     // Update is called once per frame
-    public override void PlayCamera()
+    void Update()
     {
-        director.Play();
+        if (Input.GetKeyDown(KeyCode.L))
+		{
+			director.Play();
+		}
     }
 }
