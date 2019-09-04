@@ -75,6 +75,8 @@ public class CameraController : MonoBehaviour
 
 	void Start()
 	{
+		Fighter1 = GameManager.Instance.Player_one.gameObject;
+		Fighter2 = GameManager.Instance.Player_two.gameObject;
 		offsetY = transform.position.y;
 		speed_ZoomIn = 8.0f;
 		speed_ZoomOut = 40.0f;

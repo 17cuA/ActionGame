@@ -18,6 +18,7 @@ public class FighterStatus : ScriptableObject
         public string name;
         public string command;
         public string trigger;
+		public int skillCost = 0;//発動のためのコスト
         public int validShotFrame = 6;
         public FighterSkill skill;
 	}
@@ -53,6 +54,7 @@ public class FighterStatus : ScriptableObject
 	public HitBox_ pushingHitBox = new HitBox_();
     //スキル
     public FighterSkill[] constantsSkills = { };
+	public FighterCore fighter = null;//ファイター本体
 
     public List<SkillAnimationCustom> groundAttackSkills = new List<SkillAnimationCustom>();
     public List<SkillAnimationCustom> airAttackSkills = new List<SkillAnimationCustom>();

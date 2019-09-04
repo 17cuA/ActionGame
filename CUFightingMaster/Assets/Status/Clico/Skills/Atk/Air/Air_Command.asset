@@ -20,7 +20,6 @@ MonoBehaviour:
   cancelFrag: 0
   barrageCancelFrag: 0
   cancelLayer: 0
-  isJumpCancel: 0
   inBlend: 0
   outBlend: 0
   isInvincibleBullet: 0
@@ -94,12 +93,14 @@ MonoBehaviour:
     - isGravityInvaid: 0
       isResetStartGravity: 1
       isResetEndGravity: 0
+      isImpact: 0
       movement: {x: -0.5, y: -3, z: 0}
       startFrame: 0
     throwGroundDamage: 0
     throwSkill: {fileID: 0}
     enemyThrowSkill: {fileID: 0}
     throwDamages: []
+    isJumpCancel: 0
     isContinue: 0
     movements: []
     gravityMoves: []
@@ -114,11 +115,13 @@ MonoBehaviour:
   - isGravityInvaid: 1
     isResetStartGravity: 0
     isResetEndGravity: 0
+    isImpact: 0
     movement: {x: 0, y: 0, z: 0}
     startFrame: 0
   - isGravityInvaid: 0
     isResetStartGravity: 1
     isResetEndGravity: 0
+    isImpact: 0
     movement: {x: 4, y: -2, z: 0}
     startFrame: 12
   gravityMoves: []

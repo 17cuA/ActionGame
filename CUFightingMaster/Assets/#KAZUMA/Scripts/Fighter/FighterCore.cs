@@ -30,6 +30,7 @@ public class FighterCore : MonoBehaviour
 	public int SpecialGauge = 0;
 
     private bool isHitAttack = false;//攻撃が当たったかどうか
+	private FighterSkill.CustomHitBox hitAttackBox = null;
     //現在のプレイヤーの移動の状況、状態
     private PlayerMoveState playerMoveState = PlayerMoveState.Idle;
     #region Getter
@@ -82,6 +83,10 @@ public class FighterCore : MonoBehaviour
     {
         get { return isHitAttack; }
     }
+	public FighterSkill.CustomHitBox HitAattackBox
+	{
+		get { return hitAttackBox; }
+	}
     public HitBoxJudgement GetBoxJudgement
     {
         get { return hitJudgement; }
@@ -180,6 +185,10 @@ public class FighterCore : MonoBehaviour
     {
         playerMoveState = _state;
     }
+	public void SetPlayerNumber(PlayerNumber _num)
+	{
+		playerNumber = _num;
+	}
 
     public void SetKnockBack(float _backCount, PlayerNumber _number, PlayerDirection _dir, bool isEnKnock = true, int? _count = null)
     {
@@ -190,9 +199,10 @@ public class FighterCore : MonoBehaviour
         }
         hitJudgement.SetKnockBack(_backCount, _number, _dir, isEnKnock, _count.Value);
     }
-    public void SetHitAttackFlag(bool _hitFlag)
+    public void SetHitAttackFlag(bool _hitFlag,FighterSkill.CustomHitBox _box)
     {
         isHitAttack = _hitFlag;
+		hitAttackBox = _box;
     }
     public void PlusComboCount(int _count)
     {

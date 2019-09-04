@@ -26,7 +26,6 @@ MonoBehaviour:
   cancelFrag: 1
   barrageCancelFrag: 0
   cancelLayer: 0
-  isJumpCancel: 0
   inBlend: 0
   outBlend: 0
   isInvincibleBullet: 0
@@ -39,16 +38,12 @@ MonoBehaviour:
   isContinue: 0
   isMoveContinue: 0
   movements:
-  - isGravityInvaid: 1
-    isResetStartGravity: 0
-    isResetEndGravity: 0
-    movement: {x: 0, y: 0, z: 0}
-    startFrame: 0
   - isGravityInvaid: 0
     isResetStartGravity: 1
     isResetEndGravity: 0
-    movement: {x: 0, y: 0, z: 0}
-    startFrame: 23
+    isImpact: 0
+    movement: {x: 0, y: -3, z: 0}
+    startFrame: 15
   gravityMoves: []
   headFlag: 1
   bodyFlag: 1
