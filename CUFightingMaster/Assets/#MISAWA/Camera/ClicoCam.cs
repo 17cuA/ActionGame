@@ -7,7 +7,6 @@ public class ClicoCam : MonoBehaviour
 {
 	public CinemachineVirtualCamera Vcam0;
 	public CinemachineVirtualCamera Vcam1;
-	public CinemachineVirtualCamera Vcam2;
 
 	public int n = 50;
 	public int d = 10;
@@ -19,19 +18,27 @@ public class ClicoCam : MonoBehaviour
 		{
 			Vcam0.Priority = n;
 			Vcam1.Priority = d;
-			Vcam2.Priority = d;
 		}
         if (Input.GetKeyDown(KeyCode.K))
 		{
 			Vcam0.Priority = d;
 			Vcam1.Priority = n;
-			Vcam2.Priority = d;
-		}
-		if (Input.GetKeyDown(KeyCode.L))
-		{
-			Vcam0.Priority = d;
-			Vcam1.Priority = d;
-			Vcam2.Priority = n;
 		}
     }
+
+	void CloicoSP()
+	{
+		Vcam0.Priority = n;
+		StartCoroutine("Clico");
+	}
+
+	IEnumerator Clico()
+	{
+		Vcam0.Priority = n;
+		Vcam1.Priority = d;
+		yield return new WaitForSeconds(0.3f);
+		Vcam0.Priority = d;
+		Vcam1.Priority = n;
+		
+	}
 }

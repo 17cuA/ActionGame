@@ -13,18 +13,23 @@ MonoBehaviour:
   m_Name: Clico
   m_EditorClassIdentifier: 
   m_CustomBlends:
-  - m_From: "BattleCam\u3068\u4E00\u5FDC\u540C\u3058\u8A2D\u5B9A"
+  - m_From: BattleCamera
     m_To: VCam1
     m_Blend:
-      m_Style: 1
+      m_Style: 0
       m_Time: 0.5
   - m_From: VCam1
     m_To: VCam2
     m_Blend:
       m_Style: 1
+      m_Time: 0.5
+  - m_From: VCam2
+    m_To: BattleCamera
+    m_Blend:
+      m_Style: 1
       m_Time: 0.2
-  - m_From: VCam3
-    m_To: VCam1
+  - m_From: VCam1
+    m_To: BattleCamera
     m_Blend:
       m_Style: 1
       m_Time: 0.2

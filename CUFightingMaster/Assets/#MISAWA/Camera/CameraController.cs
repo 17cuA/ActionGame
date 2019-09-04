@@ -101,20 +101,21 @@ public class CameraController : MonoBehaviour
 		#endregion
 	}
 
-	void FixedUpdate()
-	{
-		CameraPos();
-	}
-
 	void LateUpdate()
 	{
+		CameraUpdate();
+	}
+	#endregion
+
+	void CameraUpdate()
+	{
+		CameraPos();
 		TargetPos();
 		// カメラの移動・ズーム
 		transform.Translate(pCentorPos.x - transform.position.x, 0, Zoom());
 		// カメラの座標を制限(現在Y軸移動はここで行っている)
 		transform.position = new Vector3(Mathf.Clamp(transform.position.x, cameraPos_Min.x, cameraPos_Max.x), pCentorPos.y + offsetY, transform.position.z);
 	}
-	#endregion
 
 	#region カメラの座標
 	/// <summary>
