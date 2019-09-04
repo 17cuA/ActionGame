@@ -105,10 +105,7 @@ public class CameraController : MonoBehaviour
 
 	void LateUpdate()
 	{
-		if (Input.GetKey(KeyCode.Space))
-		{
 			CameraUpdate();
-		}
 	}
 	#endregion
 

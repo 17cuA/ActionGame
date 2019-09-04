@@ -51,7 +51,7 @@ public class GameManager : SingletonMono<GameManager>
 		_co.SetPlayerNumber(PlayerNumber.Player1);
 		oneState.core = _co;
 		Player_one = _co;
-		_co.gameObject.layer = LayerMask.NameToLayer(CommonConstants.Layers.Player_One);
+        CommonConstants.SetLayerRecursively(_co.gameObject, LayerMask.NameToLayer(CommonConstants.Layers.Player_One));
 		//プレイヤー2生成
 		obj = Instantiate(GameDataStrage.Instance.fighterStatuses[1].fighter);
 		if (parantFighter != null)
@@ -62,10 +62,10 @@ public class GameManager : SingletonMono<GameManager>
 		_co.SetPlayerNumber(PlayerNumber.Player2);
 		twoState.core = _co;
 		Player_two = _co;
-		_co.gameObject.layer = LayerMask.NameToLayer(CommonConstants.Layers.Player_Two);
-	}
+        CommonConstants.SetLayerRecursively(_co.gameObject, LayerMask.NameToLayer(CommonConstants.Layers.Player_Two));
+    }
 
-	void Start()
+    void Start()
 	{
         DeleteBulletList = new List<IEventable>();//削除用
                                                   //Inputの初期化

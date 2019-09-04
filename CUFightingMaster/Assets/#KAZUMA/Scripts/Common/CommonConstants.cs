@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
 
 public static class CommonConstants
 {
@@ -188,6 +189,18 @@ public static class CommonConstants
 		public static readonly int Ground_Back_Passive = 79;
 
 		public static readonly int Air_Idle = 80;
+    }
+    public static void SetLayerRecursively(
+    this GameObject self,
+    int layer
+)
+    {
+        self.layer = layer;
+
+        foreach (Transform n in self.transform)
+        {
+            SetLayerRecursively(n.gameObject, layer);
+        }
     }
 }
 public enum SkillConstants
