@@ -254,7 +254,7 @@ public class FighterStateMove : StateBaseScriptMonoBehaviour
         {
             stateBase.core.DirectionChangeMaterial();
         }
-        if (stateBase.core.GroundCheck())
+        if (!stateBase.core.GroundCheck())
         {
             _dir = stateBase.input.GetPlayerMoveDirection(stateBase);
             switch (_dir)

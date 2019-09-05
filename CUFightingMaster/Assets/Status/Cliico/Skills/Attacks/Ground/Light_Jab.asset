@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fbd35985d310504d81036cc55356454, type: 3}
   m_Name: Light_Jab
   m_EditorClassIdentifier: 
+  skillLayer: 1
   animationClip: {fileID: 7400000, guid: c02a555131a17cb408e1e04745536959, type: 2}
   animationSpeed: 0.8
   status: 1
@@ -19,7 +20,7 @@ MonoBehaviour:
   frameBullets: []
   cancelFrag: 10
   barrageCancelFrag: 1
-  cancelLayer: 0
+  cancelLayer: 01000000
   inBlend: 0
   outBlend: 0
   isInvincibleBullet: 0
@@ -83,7 +84,7 @@ MonoBehaviour:
       isResetStartGravity: 1
       isResetEndGravity: 0
       isImpact: 1
-      movement: {x: 0, y: 10, z: 0}
+      movement: {x: 0, y: 2, z: 0}
       startFrame: 0
     throwGroundDamage: 0
     throwSkill: {fileID: 0}

@@ -17,14 +17,18 @@ MonoBehaviour:
   isOffset: 1
   isInvincibleDis: 0
   offsetEffects:
-  - effect: {fileID: 8710753073369587141, guid: 1cb839ce57d1375469f1080f1ea44793,
+  - isEnemyPos: 0
+    isParant: 0
+    isEnemyParant: 0
+    effect: {fileID: 8710753073369587141, guid: 1cb839ce57d1375469f1080f1ea44793,
       type: 3}
     guardEffect: {fileID: 0}
     position: {x: 0, y: 0, z: 0}
   customHitBox:
   - mode: 4
     frameHitBoxes:
-    - hitBox:
+    - isInfinityFrame: 0
+      hitBox:
         size: {x: 0.5, y: 0.5, z: 0.5}
         localPosition: {x: 0.51, y: 0, z: 0}
       startFrame: 0
@@ -38,17 +42,23 @@ MonoBehaviour:
     airKnockBack: 0
     guardKnockBack: 0
     hitEffects:
-    - effect: {fileID: 2688692212982812447, guid: 06d324c6486219941a1b9f3833388210,
+    - isEnemyPos: 0
+      isParant: 0
+      isEnemyParant: 0
+      effect: {fileID: 2688692212982812447, guid: 06d324c6486219941a1b9f3833388210,
         type: 3}
       guardEffect: {fileID: 2675191184746711767, guid: f8d4d85e3c04245459737cdcece2a3dc,
         type: 3}
       position: {x: 0, y: 0, z: 0}
-    - effect: {fileID: 8710753073369587141, guid: 1cb839ce57d1375469f1080f1ea44793,
+    - isEnemyPos: 0
+      isParant: 0
+      isEnemyParant: 0
+      effect: {fileID: 8710753073369587141, guid: 56e30371f66b33a479bc82d7ec31f313,
         type: 3}
-      guardEffect: {fileID: 8710753073369587141, guid: 1cb839ce57d1375469f1080f1ea44793,
+      guardEffect: {fileID: 8710753073369587141, guid: 56e30371f66b33a479bc82d7ec31f313,
         type: 3}
       position: {x: 0, y: 0, z: 0}
-    isDown: 0
+    isDown: 1
     isThrow: 0
     isThrowGroundDamage: 0
     isThrowGroundAnimEnd: 0
@@ -59,10 +69,17 @@ MonoBehaviour:
     throwDamages: []
     isJumpCancel: 0
     isContinue: 0
-    movements: []
+    movements:
+    - isGravityInvaid: 0
+      isResetStartGravity: 1
+      isResetEndGravity: 0
+      isImpact: 1
+      movement: {x: 0, y: 3, z: 0}
+      startFrame: 0
     gravityMoves: []
     isFaceDown: 0
     isPassiveNotPossible: 0
     hitRigor: 15
     guardHitRigor: 5
     plusGauge: 0
+    enemyPlusGauge: 0

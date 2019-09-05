@@ -60,10 +60,18 @@ public class InGameManager : MonoBehaviour
 		//カットシーンの再生（未実装）
 		if (islight)
 		{
-			//カットシーンの再生が終わり、暗くなったら
-			if (cinemaController.isPlay == false && canvasController.Call_StartFadeOut() == true)
-				currentUpdate = StartRound;
-		}
+            //カットシーンの再生が終わり、暗くなったら
+            if (cinemaController != null)
+            {
+                if (cinemaController.isPlay == false && canvasController.Call_StartFadeOut() == true)
+                    currentUpdate = StartRound;
+            }
+			else
+			{
+                if (canvasController.Call_StartFadeOut() == true)
+                    currentUpdate = StartRound;
+			}
+        }
 
 		else if (canvasController.Call_StartFadeIn())
 		{

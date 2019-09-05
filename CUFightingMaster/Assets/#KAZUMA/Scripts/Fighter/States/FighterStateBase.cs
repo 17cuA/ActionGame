@@ -193,6 +193,14 @@ public class FighterStateBase : StateBaseScriptMonoBehaviour
 	public bool ChancelConditions(FighterSkill _now, FighterSkill _s, int _i = 0)
     {
         //キャンセルできるかどうか（技モード、AND演算）
+        if(_now==null)
+        {
+            return false;
+        }
+        if(_s == null)
+        {
+            return false;
+        }
         if (_now.cancelFrag.HasFlag(_s.status))
         {
             return true;

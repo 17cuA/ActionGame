@@ -42803,7 +42803,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 776677ab3818fb249adaca05f4e04545, type: 2}
+  - {fileID: 0}
   - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -42874,7 +42874,7 @@ Transform:
   m_GameObject: {fileID: 8710753073631339001}
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children: []
   m_Father: {fileID: 8710753073369587144}
   m_RootOrder: 3
@@ -42962,7 +42962,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.75
+      scalar: 0.24
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -52375,6 +52375,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8710753073369587144}
     m_Modifications:
+    - target: {fileID: 4636040646541294741, guid: 46bd02fba22a0284e940cdba03e86fd3,
+        type: 3}
+      propertyPath: m_Name
+      value: Flamepattern_Const
+      objectReference: {fileID: 0}
+    - target: {fileID: 4636040646541294741, guid: 46bd02fba22a0284e940cdba03e86fd3,
+        type: 3}
+      propertyPath: m_Layer
+      value: 16
+      objectReference: {fileID: 0}
     - target: {fileID: 5477848125702983713, guid: 46bd02fba22a0284e940cdba03e86fd3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -52429,16 +52439,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4636040646541294741, guid: 46bd02fba22a0284e940cdba03e86fd3,
-        type: 3}
-      propertyPath: m_Name
-      value: Flamepattern_Const
-      objectReference: {fileID: 0}
-    - target: {fileID: 4636040646541294741, guid: 46bd02fba22a0284e940cdba03e86fd3,
-        type: 3}
-      propertyPath: m_Layer
-      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 432650931417950459, guid: 46bd02fba22a0284e940cdba03e86fd3,
         type: 3}

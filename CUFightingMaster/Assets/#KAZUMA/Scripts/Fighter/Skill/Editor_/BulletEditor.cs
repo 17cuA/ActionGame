@@ -129,7 +129,8 @@ public class BulletEditor : EditorWindow
 		public bool statusFlag = false;
 		public bool effectFlag = false;
 		public bool downMoveFlag = false;
-	}
+        public bool airDamageFlag = false;
+    }
 	private List<FoldOutFlags> foldOutFlags = new List<FoldOutFlags>();
 	private void HitBoxTabDraw()
 	{
@@ -158,118 +159,140 @@ public class BulletEditor : EditorWindow
 			bool temp = foldOutFlags[i].foldOutFlag;
 			//FoldOut
 			foldOutFlags[i].foldOutFlag = FoldOutHitBox(box.frameHitBoxes, i.ToString(), ref temp, box);
-			if (box != null)
-			{
-				if ((foldOutFlags[i].foldOutFlag) && (foldOutFlags[i].statusFlag = CustomUI.Foldout("ステータス", foldOutFlags[i].statusFlag)))
-				{
-					if (box.mode == HitBoxMode.HitBox|| box.mode == HitBoxMode.Bullet)
-					{
+            if (box != null)
+            {
+                if ((foldOutFlags[i].foldOutFlag) && (foldOutFlags[i].statusFlag = CustomUI.Foldout("ステータス", foldOutFlags[i].statusFlag)))
+                {
+                    if (box.mode == HitBoxMode.Bullet)
+                    {
+                        EditorGUILayout.BeginHorizontal();
+                        box.hitPoint = (HitPoint)EditorGUILayout.EnumPopup("上中下", box.hitPoint);
+                        box.hitStrength = (HitStrength)EditorGUILayout.EnumPopup("強弱", box.hitStrength);
+                        EditorGUILayout.EndHorizontal();
 						EditorGUILayout.BeginHorizontal();
-						box.hitPoint = (HitPoint)EditorGUILayout.EnumPopup("上中下", box.hitPoint);
-						box.hitStrength = (HitStrength)EditorGUILayout.EnumPopup("強弱", box.hitStrength);
+						box.isJumpCancel = EditorGUILayout.Toggle("ジャンプキャンセル", box.isJumpCancel);
 						EditorGUILayout.EndHorizontal();
 						EditorGUILayout.BeginHorizontal();
-						box.isDown = EditorGUILayout.Toggle("飛ばし（ダウン）技", box.isDown);
-						box.isThrow = EditorGUILayout.Toggle("投げ技", box.isThrow);
-						box.hitStop = EditorGUILayout.IntField("ヒットストップ値", box.hitStop);
-						EditorGUILayout.EndHorizontal();
+                        box.isDown = EditorGUILayout.Toggle("飛ばし（ダウン）技", box.isDown);
+                        box.isThrow = EditorGUILayout.Toggle("投げ技", box.isThrow);
+                        box.hitStop = EditorGUILayout.IntField("ヒットストップ値", box.hitStop);
+                        EditorGUILayout.EndHorizontal();
+						if (foldOutFlags[i].airDamageFlag = CustomUI.Foldout("空中移動量", foldOutFlags[i].airDamageFlag))
+						{
+							MovesSetting( ref box.airDamageMovements);
+						}
 						if (box.isDown)
-						{
-							EditorGUILayout.BeginHorizontal();
-							box.isFaceDown = EditorGUILayout.Toggle("うつ伏せダウン", box.isFaceDown);
-							box.isPassiveNotPossible = EditorGUILayout.Toggle("受け身不可", box.isPassiveNotPossible);
-							EditorGUILayout.EndHorizontal();
-							if (foldOutFlags[i].downMoveFlag = CustomUI.Foldout("ダウン技移動量", foldOutFlags[i].downMoveFlag))
+                        {
+                            EditorGUILayout.BeginHorizontal();
+                            box.isFaceDown = EditorGUILayout.Toggle("うつ伏せダウン", box.isFaceDown);
+                            box.isPassiveNotPossible = EditorGUILayout.Toggle("受け身不可", box.isPassiveNotPossible);
+                            EditorGUILayout.EndHorizontal();
+                            EditorGUILayout.BeginVertical("Box");
+                            if(foldOutFlags[i].downMoveFlag = CustomUI.Foldout("ダウン技移動量", foldOutFlags[i].downMoveFlag))
 							{
-								MovesSetting(ref box.isContinue, ref box.movements, ref box.gravityMoves);
-							}
-
-						}
-						if (box.isThrow)
-						{
-							EditorGUILayout.BeginHorizontal();
-							box.throwSkill = EditorGUILayout.ObjectField("投げモーション", box.throwSkill, typeof(FighterSkill), false) as FighterSkill;
-							box.enemyThrowSkill = EditorGUILayout.ObjectField("投げられモーション", box.enemyThrowSkill, typeof(FighterSkill), false) as FighterSkill;
-							EditorGUILayout.EndHorizontal();
-							if (GUILayout.Button("投げダメージフレーム", GUILayout.Width(150), GUILayout.Height(20)))
-							{
-								box.throwDamages.Add(new FighterSkill.ThrowDamage());
-							}
-							for (int ef = 0; ef < box.throwDamages.Count; ef++)
-							{
-								//削除
-								bool f = false;
-								EditorGUILayout.BeginHorizontal();
-								box.throwDamages[ef].frame = EditorGUILayout.IntField("フレーム", box.throwDamages[ef].frame);
-								box.throwDamages[ef].damage = EditorGUILayout.IntField("ダメージ", box.throwDamages[ef].damage);
-								if (GUILayout.Button("×", GUILayout.Width(20)))
-								{
-									f = true;
-								}
-								EditorGUILayout.EndHorizontal();
-								if (f)
-								{
-									box.throwDamages.Remove(box.throwDamages[ef]);
-								}
-							}
-						}
-						EditorGUILayout.BeginHorizontal();
-						box.damage = EditorGUILayout.IntField("ダメージ量", box.damage);
-						box.stanDamage = EditorGUILayout.IntField("スタン値", box.stanDamage);
-						EditorGUILayout.EndHorizontal();
-						EditorGUILayout.BeginHorizontal();
-						box.knockBack = EditorGUILayout.FloatField("ノックバック値", box.knockBack);
-						box.plusGauge = EditorGUILayout.IntField("ゲージ増加量", box.plusGauge);
-						EditorGUILayout.EndHorizontal();
-						EditorGUILayout.BeginHorizontal();
-						box.airKnockBack = EditorGUILayout.FloatField("空中ノックバック値", box.airKnockBack);
-						box.guardKnockBack = EditorGUILayout.FloatField("ガードバック値", box.guardKnockBack);
-						EditorGUILayout.EndHorizontal();
-						EditorGUILayout.BeginHorizontal();
-						if (!box.isDown)
-						{
-							EditorGUILayout.BeginHorizontal();
-							box.hitRigor = EditorGUILayout.IntField("ヒット硬直", box.hitRigor);
-							EditorGUILayout.EndHorizontal();
-						}
+                                MovesSetting(ref box.isContinue, ref box.movements, ref box.gravityMoves);
+                            }
+                            EditorGUILayout.EndVertical();
+                        }
+                        if (box.isThrow)
+                        {
+                            EditorGUILayout.BeginHorizontal();
+                            box.throwSkill = EditorGUILayout.ObjectField("投げモーション", box.throwSkill, typeof(FighterSkill), false) as FighterSkill;
+                            box.enemyThrowSkill = EditorGUILayout.ObjectField("投げられモーション", box.enemyThrowSkill, typeof(FighterSkill), false) as FighterSkill;
+                            EditorGUILayout.EndHorizontal();
+                            EditorGUILayout.BeginHorizontal();
+                            box.isThrowGroundAnimEnd = EditorGUILayout.Toggle("投げ接地時終了", box.isThrowGroundAnimEnd);
+                            box.isThrowGroundDamage = EditorGUILayout.Toggle("投げ接地時ダメージ", box.isThrowGroundDamage);
+                            box.throwGroundDamage = EditorGUILayout.IntField("ダメージ量", box.throwGroundDamage);
+                            EditorGUILayout.EndHorizontal();
+                            if (GUILayout.Button("投げダメージフレーム", GUILayout.Width(150), GUILayout.Height(20)))
+                            {
+                                box.throwDamages.Add(new FighterSkill.ThrowDamage());
+                            }
+                            for (int ef = 0; ef < box.throwDamages.Count; ef++)
+                            {
+                                //削除
+                                bool f = false;
+                                EditorGUILayout.BeginHorizontal();
+                                box.throwDamages[ef].frame = EditorGUILayout.IntField("フレーム", box.throwDamages[ef].frame);
+                                box.throwDamages[ef].damage = EditorGUILayout.IntField("ダメージ", box.throwDamages[ef].damage);
+                                if (GUILayout.Button("×", GUILayout.Width(20)))
+                                {
+                                    f = true;
+                                }
+                                EditorGUILayout.EndHorizontal();
+                                if (f)
+                                {
+                                    box.throwDamages.Remove(box.throwDamages[ef]);
+                                }
+                            }
+                        }
+                        EditorGUILayout.BeginHorizontal();
+                        box.damage = EditorGUILayout.IntField("ダメージ量", box.damage);
+                        box.stanDamage = EditorGUILayout.IntField("スタン値", box.stanDamage);
+                        EditorGUILayout.EndHorizontal();
+                        box.enemyPlusGauge = EditorGUILayout.IntField("相手ゲージ増加量", box.enemyPlusGauge);
+                        EditorGUILayout.BeginHorizontal();
+                       　box.knockBack = EditorGUILayout.FloatField("ノックバック値", box.knockBack);
+                        box.plusGauge = EditorGUILayout.IntField("ゲージ増加量", box.plusGauge);
+                        EditorGUILayout.EndHorizontal();
+                        EditorGUILayout.BeginHorizontal();
+                        box.airKnockBack = EditorGUILayout.FloatField("空中ノックバック値", box.airKnockBack);
+                        box.guardKnockBack = EditorGUILayout.FloatField("ガードバック値", box.guardKnockBack);
+                        EditorGUILayout.EndHorizontal();
+                        EditorGUILayout.BeginHorizontal();
+                            box.hitRigor = EditorGUILayout.IntField("ヒット硬直", box.hitRigor);
 						box.guardHitRigor = EditorGUILayout.IntField("ガード硬直", box.guardHitRigor);
-						EditorGUILayout.EndHorizontal();
-					}
-				}
-				if ((foldOutFlags[i].foldOutFlag) && (foldOutFlags[i].effectFlag = CustomUI.Foldout("エフェクト", foldOutFlags[i].effectFlag)))
-				{
-					EditorGUILayout.BeginVertical("Box");
-					if (box.mode == HitBoxMode.HitBox|| box.mode == HitBoxMode.Bullet)
-					{
-						if (GUILayout.Button("ヒットエフェクト作成", GUILayout.Width(150), GUILayout.Height(20)))
-						{
-							box.hitEffects.Add(new FighterSkill.HitEffects());
-						}
-						for (int ef = 0; ef < box.hitEffects.Count; ef++)
-						{
-							EditorGUILayout.BeginVertical("Box");
-							//削除
-							bool f = false;
-							EditorGUILayout.BeginHorizontal();
-							box.hitEffects[ef].effect = EditorGUILayout.ObjectField("エフェクト", box.hitEffects[ef].effect, typeof(GameObject), true) as GameObject;
+                        EditorGUILayout.EndHorizontal();
+                    }
+                }
+                if ((foldOutFlags[i].foldOutFlag) && (foldOutFlags[i].effectFlag = CustomUI.Foldout("エフェクト", foldOutFlags[i].effectFlag)))
+                {
+                    EditorGUILayout.BeginVertical("Box");
+                    if (box.mode == HitBoxMode.Bullet)
+                    {
+                        if (GUILayout.Button("ヒットエフェクト作成", GUILayout.Width(150), GUILayout.Height(20)))
+                        {
+                            box.hitEffects.Add(new FighterSkill.HitEffects());
+                        }
+                        for (int ef = 0; ef < box.hitEffects.Count; ef++)
+                        {
+                            EditorGUILayout.BeginVertical("Box");
+                            //削除
+                            bool f = false;
+                            EditorGUILayout.BeginHorizontal();
+                            box.hitEffects[ef].isParant = EditorGUILayout.Toggle("親子関係", box.hitEffects[ef].isParant);
+                            if(box.hitEffects[ef].isParant&&box.hitEffects[ef].isEnemyParant)
+                            {
+                                box.hitEffects[ef].isEnemyParant = false;
+                            }
+                            box.hitEffects[ef].isEnemyParant = EditorGUILayout.Toggle("敵親子関係", box.hitEffects[ef].isEnemyParant);
+                            if (box.hitEffects[ef].isParant && box.hitEffects[ef].isEnemyParant)
+                            {
+                                box.hitEffects[ef].isParant = false;
+                            }
+                            box.hitEffects[ef].isEnemyPos = EditorGUILayout.Toggle("敵ポジション", box.hitEffects[ef].isEnemyPos);
+                            EditorGUILayout.EndHorizontal();
+                            EditorGUILayout.BeginHorizontal();
+                            box.hitEffects[ef].effect = EditorGUILayout.ObjectField("エフェクト", box.hitEffects[ef].effect, typeof(GameObject), true) as GameObject;
 							box.hitEffects[ef].guardEffect = EditorGUILayout.ObjectField("ガードエフェクト", box.hitEffects[ef].guardEffect, typeof(GameObject), true) as GameObject;
 							if (GUILayout.Button("×", GUILayout.Width(20)))
-							{
-								f = true;
-							}
-							EditorGUILayout.EndHorizontal();
-							box.hitEffects[ef].position = EditorGUILayout.Vector3Field("ポジション", box.hitEffects[ef].position);
-							EditorGUILayout.EndHorizontal();
-							if (f)
-							{
-								box.hitEffects.Remove(box.hitEffects[ef]);
-							}
-						}
-					}
-					EditorGUILayout.EndHorizontal();
-				}
+                            {
+                                f = true;
+                            }
+                            EditorGUILayout.EndHorizontal();
+                            box.hitEffects[ef].position = EditorGUILayout.Vector3Field("ポジション", box.hitEffects[ef].position);
+                            EditorGUILayout.EndHorizontal();
+                            if (f)
+                            {
+                                box.hitEffects.Remove(box.hitEffects[ef]);
+                            }
+                        }
+                    }
+                    EditorGUILayout.EndHorizontal();
+                }
 
-			}
+            }
 
 			i++;
 			EditorGUILayout.EndVertical();
@@ -280,64 +303,104 @@ public class BulletEditor : EditorWindow
 			skill.customHitBox.RemoveAt(removeNumber[j]);
 		}
 	}
+    //移動量設定欄
+    private void MovesSetting(ref bool _continue,ref List<FighterSkill.Move> _move,ref List<FighterSkill.GravityMove> _grav)
+    {
+        _continue = EditorGUILayout.Toggle("制動継続", _continue);
+        if (GUILayout.Button("移動作成", GUILayout.Width(80)))
+        {
+            _move.Add(new FighterSkill.Move());
+        }
+        for (int i = 0; i < _move.Count; i++)
+        {
+            EditorGUILayout.BeginVertical("Box");
+            EditorGUILayout.BeginHorizontal();
+            _move[i].isGravityInvaid = EditorGUILayout.Toggle("重力無効", _move[i].isGravityInvaid);
+            _move[i].isResetStartGravity = EditorGUILayout.Toggle("開始時重力リセット", _move[i].isResetStartGravity);
+            _move[i].isResetEndGravity = EditorGUILayout.Toggle("終了時重力リセット", _move[i].isResetEndGravity);
+            _move[i].isImpact = EditorGUILayout.Toggle("衝撃", _move[i].isImpact);
+            EditorGUILayout.EndHorizontal();
+            EditorGUILayout.BeginHorizontal();
+            bool removeFrag = false;
+            _move[i].startFrame = EditorGUILayout.IntField("スタートフレーム", _move[i].startFrame);
+            //削除ボタン
+            if (GUILayout.Button("×", GUILayout.Width(20)))
+            {
+                removeFrag = true;
+            }
+            //削除
+            EditorGUILayout.EndHorizontal();
+            EditorGUILayout.BeginVertical("Box");
+            //Vector3入力
+            _move[i].movement = EditorGUILayout.Vector3Field("移動量", _move[i].movement);
+            EditorGUILayout.EndVertical();
+            EditorGUILayout.EndVertical();
+            if (removeFrag) _move.RemoveAt(i);
+        }
+        if (!_continue)
+        {
+            if (GUILayout.Button("制動作成", GUILayout.Width(80)))
+            {
+                _grav.Add(new FighterSkill.GravityMove());
+            }
+            for (int i = 0; i < _grav.Count; i++)
+            {
+                EditorGUILayout.BeginVertical("Box");
+                EditorGUILayout.BeginHorizontal();
+                bool removeFrag = false;
+                _grav[i].startFrame = EditorGUILayout.IntField("スタートフレーム", _grav[i].startFrame);
+                //削除ボタン
+                if (GUILayout.Button("×", GUILayout.Width(20)))
+                {
+                    removeFrag = true;
+                }
+                //削除
+                EditorGUILayout.EndHorizontal();
+                EditorGUILayout.BeginVertical("Box");
+                //Vector3入力
+                _grav[i].movement = EditorGUILayout.Vector3Field("移動量", _grav[i].movement);
+                //Vector3入力
+                _grav[i].limitMove = EditorGUILayout.Vector3Field("移動量限界", _grav[i].limitMove);
+                EditorGUILayout.EndVertical();
+                EditorGUILayout.EndVertical();
+                if (removeFrag) _grav.RemoveAt(i);
+            }
+        }
+    }
 	//移動量設定欄
-	private void MovesSetting(ref bool _continue, ref List<FighterSkill.Move> _move, ref List<FighterSkill.GravityMove> _grav)
+	private void MovesSetting(ref List<FighterSkill.Move> _move)
 	{
-		_continue = EditorGUILayout.Toggle("制動継続", _continue);
 		if (GUILayout.Button("移動作成", GUILayout.Width(80)))
 		{
 			_move.Add(new FighterSkill.Move());
 		}
-		for (int i = 0; i < _move.Count; i++)
-		{
-			EditorGUILayout.BeginVertical("Box");
-			EditorGUILayout.BeginHorizontal();
-			bool removeFrag = false;
-			_move[i].startFrame = EditorGUILayout.IntField("スタートフレーム", _move[i].startFrame);
-			//削除ボタン
-			if (GUILayout.Button("×", GUILayout.Width(20)))
-			{
-				removeFrag = true;
-			}
-			//削除
-			EditorGUILayout.EndHorizontal();
-			EditorGUILayout.BeginVertical("Box");
-			//Vector3入力
-			_move[i].movement = EditorGUILayout.Vector3Field("移動量", _move[i].movement);
-			EditorGUILayout.EndVertical();
-			EditorGUILayout.EndVertical();
-			if (removeFrag) _move.RemoveAt(i);
-		}
-		if (!_continue)
-		{
-			if (GUILayout.Button("制動作成", GUILayout.Width(80)))
-			{
-				_grav.Add(new FighterSkill.GravityMove());
-			}
-			for (int i = 0; i < _grav.Count; i++)
-			{
-				EditorGUILayout.BeginVertical("Box");
-				EditorGUILayout.BeginHorizontal();
-				bool removeFrag = false;
-				_grav[i].startFrame = EditorGUILayout.IntField("スタートフレーム", _grav[i].startFrame);
-				//削除ボタン
-				if (GUILayout.Button("×", GUILayout.Width(20)))
-				{
-					removeFrag = true;
-				}
-				//削除
-				EditorGUILayout.EndHorizontal();
-				EditorGUILayout.BeginVertical("Box");
-				//Vector3入力
-				_grav[i].movement = EditorGUILayout.Vector3Field("移動量", _grav[i].movement);
-				//Vector3入力
-				_grav[i].limitMove = EditorGUILayout.Vector3Field("移動量限界", _grav[i].limitMove);
-				EditorGUILayout.EndVertical();
-				EditorGUILayout.EndVertical();
-				if (removeFrag) _grav.RemoveAt(i);
-			}
-		}
-	}
+        for (int i = 0; i < _move.Count; i++)
+        {
+            EditorGUILayout.BeginVertical("Box");
+            EditorGUILayout.BeginHorizontal();
+            _move[i].isGravityInvaid = EditorGUILayout.Toggle("重力無効", _move[i].isGravityInvaid);
+            _move[i].isResetStartGravity = EditorGUILayout.Toggle("開始時重力リセット", _move[i].isResetStartGravity);
+            _move[i].isResetEndGravity = EditorGUILayout.Toggle("終了時重力リセット", _move[i].isResetEndGravity);
+            _move[i].isImpact = EditorGUILayout.Toggle("衝撃", _move[i].isImpact);
+            EditorGUILayout.EndHorizontal();
+            EditorGUILayout.BeginHorizontal();
+            bool removeFrag = false;
+            _move[i].startFrame = EditorGUILayout.IntField("スタートフレーム", _move[i].startFrame);
+            //削除ボタン
+            if (GUILayout.Button("×", GUILayout.Width(20)))
+            {
+                removeFrag = true;
+            }
+            //削除
+            EditorGUILayout.EndHorizontal();
+            EditorGUILayout.BeginVertical("Box");
+            //Vector3入力
+            _move[i].movement = EditorGUILayout.Vector3Field("移動量", _move[i].movement);
+            EditorGUILayout.EndVertical();
+            EditorGUILayout.EndVertical();
+            if (removeFrag) _move.RemoveAt(i);
+        }
+    }
 	//ヒットボックス個々（FoldOutした中身）
 	private bool FoldOutHitBox(List<FighterSkill.FrameHitBox> frameHitBox, string label, ref bool frag, FighterSkill.CustomHitBox cus = null)
 	{
