@@ -254,38 +254,77 @@ public class FighterStateMove : StateBaseScriptMonoBehaviour
         {
             stateBase.core.DirectionChangeMaterial();
         }
-        _dir = stateBase.input.GetPlayerMoveDirection(stateBase);
-        switch (_dir)
+        if (stateBase.core.GroundCheck())
         {
-            case Direction.Up:
-                stateBase.core.SetIsCrouching(false);
-                stateBase.ChangeSkillConstant(SkillConstants.Jump, 0);
-                stateBase.core.SetPlayerMoveState(PlayerMoveState.Jump);
-                if (_isCount)
-                {
-                    jumpTimes++;
-                }
-                return true;
-            case Direction.UpFront:
-                stateBase.core.SetIsCrouching(false);
-                stateBase.ChangeSkillConstant(SkillConstants.Front_Jump, 0);
-                stateBase.core.SetPlayerMoveState(PlayerMoveState.Front_Jump);
-                if (_isCount)
-                {
-                    jumpTimes++;
-                }
-                return true;
-            case Direction.UpBack:
-                stateBase.core.SetIsCrouching(false);
-                stateBase.ChangeSkillConstant(SkillConstants.Back_Jump, 0);
-                stateBase.core.SetPlayerMoveState(PlayerMoveState.Back_Jump);
-                if (_isCount)
-                {
-                    jumpTimes++;
-                }
-                return true;
-            default:
-                return false;
+            _dir = stateBase.input.GetPlayerMoveDirection(stateBase);
+            switch (_dir)
+            {
+                case Direction.Up:
+                    stateBase.core.SetIsCrouching(false);
+                    stateBase.ChangeSkillConstant(SkillConstants.Double_Jump, 0);
+                    stateBase.core.SetPlayerMoveState(PlayerMoveState.Jump);
+                    if (_isCount)
+                    {
+                        jumpTimes++;
+                    }
+                    return true;
+                case Direction.UpFront:
+                    stateBase.core.SetIsCrouching(false);
+                    stateBase.ChangeSkillConstant(SkillConstants.Double_Jump_Front, 0);
+                    stateBase.core.SetPlayerMoveState(PlayerMoveState.Front_Jump);
+                    if (_isCount)
+                    {
+                        jumpTimes++;
+                    }
+                    return true;
+                case Direction.UpBack:
+                    stateBase.core.SetIsCrouching(false);
+                    stateBase.ChangeSkillConstant(SkillConstants.Double_Jump_Back, 0);
+                    stateBase.core.SetPlayerMoveState(PlayerMoveState.Back_Jump);
+                    if (_isCount)
+                    {
+                        jumpTimes++;
+                    }
+                    return true;
+                default:
+                    return false;
+            }
+        }
+        else
+        {
+            _dir = stateBase.input.GetPlayerMoveDirection(stateBase);
+            switch (_dir)
+            {
+                case Direction.Up:
+                    stateBase.core.SetIsCrouching(false);
+                    stateBase.ChangeSkillConstant(SkillConstants.Jump, 0);
+                    stateBase.core.SetPlayerMoveState(PlayerMoveState.Jump);
+                    if (_isCount)
+                    {
+                        jumpTimes++;
+                    }
+                    return true;
+                case Direction.UpFront:
+                    stateBase.core.SetIsCrouching(false);
+                    stateBase.ChangeSkillConstant(SkillConstants.Front_Jump, 0);
+                    stateBase.core.SetPlayerMoveState(PlayerMoveState.Front_Jump);
+                    if (_isCount)
+                    {
+                        jumpTimes++;
+                    }
+                    return true;
+                case Direction.UpBack:
+                    stateBase.core.SetIsCrouching(false);
+                    stateBase.ChangeSkillConstant(SkillConstants.Back_Jump, 0);
+                    stateBase.core.SetPlayerMoveState(PlayerMoveState.Back_Jump);
+                    if (_isCount)
+                    {
+                        jumpTimes++;
+                    }
+                    return true;
+                default:
+                    return false;
+            }
         }
         return false;
     }

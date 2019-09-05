@@ -68,7 +68,7 @@ public static class CommonConstants
     public static class Skills
     {
         //一つ増やすたびに増やして
-        public static readonly int SkillCount = 81;
+        public static readonly int SkillCount = 84;
 
         //地上の動き
         public static readonly int Idle = 0;            //待機
@@ -80,7 +80,7 @@ public static class CommonConstants
         public static readonly int Back_Jump = 6;       //後ジャンプ
         public static readonly int Stand_Guard = 7;     //立ちガード
         public static readonly int Crouching_Guard = 8; //しゃがみガード
-                                                    //立ちやられ上
+                                                        //立ちやられ上
         public static readonly int Stand_Light_Top_HitMotion = 9;
         public static readonly int Stand_Middle_Top_HitMotion = 10;
         public static readonly int Stand_Strong_Top_HitMotion = 11;
@@ -172,9 +172,9 @@ public static class CommonConstants
 
         public static readonly int Down = 66;//ダウン
         public static readonly int Wake_Up = 67;//起き上がり
-		public static readonly int Air_Passive = 68;//空中受身
-		public static readonly int Air_Front_Passive = 69;//前空中受け身
-		public static readonly int Air_Back_Passive = 70;
+        public static readonly int Air_Passive = 68;//空中受身
+        public static readonly int Air_Front_Passive = 69;//前空中受け身
+        public static readonly int Air_Back_Passive = 70;
         public static readonly int Ground_Knock = 71;//打ち付け
         public static readonly int Damage_Fly_HitMotion = 72;//飛ばされ
 
@@ -184,11 +184,14 @@ public static class CommonConstants
         public static readonly int Start_Game_Motion = 75;
         public static readonly int Not_HP_Down = 76;
 
-		public static readonly int Ground_Passive = 77;
-		public static readonly int Ground_Front_Passive = 78;
-		public static readonly int Ground_Back_Passive = 79;
+        public static readonly int Ground_Passive = 77;
+        public static readonly int Ground_Front_Passive = 78;
+        public static readonly int Ground_Back_Passive = 79;
 
-		public static readonly int Air_Idle = 80;
+        public static readonly int Air_Idle = 80;
+        public static readonly int Double_Jump = 81;//二段ジャンプ
+        public static readonly int Double_Jump_Front = 82;
+        public static readonly int Double_Jump_Back = 83;
     }
     public static void SetLayerRecursively(
     this GameObject self,
@@ -321,4 +324,7 @@ public enum SkillConstants
 	Ground_Front_Passive = 78,
 	Ground_Back_Passive = 79,
 	Air_Idle = 80,
+    Double_Jump = 81,//二段ジャンプ
+    Double_Jump_Front = 82,
+    Double_Jump_Back = 83,
 }
