@@ -19,10 +19,22 @@ MonoBehaviour:
   PlayerModel: {fileID: 3337991982796669725, guid: 0a77df99afc0403428bc4001fb31a0d5,
     type: 3}
   playerMaterials:
-  - nomalMaterial: {fileID: 2100000, guid: ea49fb77be18842448d407cf7b32c142, type: 2}
-    inversionMaterial: {fileID: 2100000, guid: 1b47feacde9bf9947a650c8e11ff046b, type: 2}
-  - nomalMaterial: {fileID: 2100000, guid: ea49fb77be18842448d407cf7b32c142, type: 2}
-    inversionMaterial: {fileID: 2100000, guid: 1b47feacde9bf9947a650c8e11ff046b, type: 2}
+  - nomalMaterial:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    inversionMaterial:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+  - nomalMaterial:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    inversionMaterial:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
   gravity: {x: 0, y: -0.2, z: 0}
   gravityMax: {x: -10, y: -20, z: 0}
   headHitBox:
@@ -122,48 +134,58 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 926c6e9e4ffe6874b99c7dde82997bbd, type: 2}
   - {fileID: 11400000, guid: 569cadf3be7e02a4f917ec7bacbb0b67, type: 2}
   - {fileID: 11400000, guid: a173c4a740b97854082440cd31681847, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   fighter: {fileID: 2613595936408007771, guid: 27187cbc30378a641b1dc435bfff85ee, type: 3}
   groundAttackSkills:
   - name: TYOUKYORI
     command: 236236
     trigger: A
     skillCost: 0
+    countValid: 1
     validShotFrame: 6
     skill: {fileID: 11400000, guid: 0c67b6259621a924f88f5fbdcf3dd9d9, type: 2}
   - name: KAIHUKU
     command: 214
     trigger: B
     skillCost: 0
+    countValid: 1
     validShotFrame: 6
     skill: {fileID: 11400000, guid: f7a1069142b89434ea51a0ddcc02404d, type: 2}
   - name: TAKKURU
     command: 623
     trigger: C
     skillCost: 0
+    countValid: 1
     validShotFrame: 6
     skill: {fileID: 11400000, guid: 0c67b6259621a924f88f5fbdcf3dd9d9, type: 2}
   - name: TAKKURU2
     command: 6323
     trigger: C
     skillCost: 0
+    countValid: 1
     validShotFrame: 6
     skill: {fileID: 11400000, guid: 0c67b6259621a924f88f5fbdcf3dd9d9, type: 2}
   - name: TAKKURU3
     command: 63236
     trigger: 6
     skillCost: 0
+    countValid: 1
     validShotFrame: 6
     skill: {fileID: 11400000, guid: 0c67b6259621a924f88f5fbdcf3dd9d9, type: 2}
   - name: ENKYORI
     command: 236
     trigger: A
     skillCost: 0
+    countValid: 1
     validShotFrame: 6
     skill: {fileID: 11400000, guid: f9310b9e8b614dc4bb6dd38c94075cfd, type: 2}
   - name: asdfas
     command: 4
     trigger: B
     skillCost: 0
+    countValid: 1
     validShotFrame: 0
     skill: {fileID: 11400000, guid: f9310b9e8b614dc4bb6dd38c94075cfd, type: 2}
   airAttackSkills:
@@ -171,25 +193,35 @@ MonoBehaviour:
     command: 236
     trigger: A
     skillCost: 0
+    countValid: 1
     validShotFrame: 6
     skill: {fileID: 11400000, guid: 9a19d7c69d7906941a0c300e1cd1a388, type: 2}
   - name: TENKU_PEKE
     command: 8
     trigger: B
     skillCost: 0
+    countValid: 1
     validShotFrame: 0
     skill: {fileID: 11400000, guid: b79ab9652e18c234c8054320c60e704e, type: 2}
   groundMoveSkills:
-  - name: Front_Dash
+  - skillCost: 0
+    countValid: 1
+    name: Front_Dash
     command: 66
     skill: {fileID: 11400000, guid: 49ef3060e4f11ab4c92065f0dad128d4, type: 2}
-  - name: Back_Dash
+  - skillCost: 0
+    countValid: 1
+    name: Back_Dash
     command: 44
     skill: {fileID: 11400000, guid: 4f4228fa765f4c24dae3a74a90e675fc, type: 2}
   airMoveSkills:
-  - name: Air_Dash
+  - skillCost: 0
+    countValid: 1
+    name: Air_Dash
     command: 66
     skill: {fileID: 11400000, guid: 0df01a2b112993240a6b7195c9b8d09f, type: 2}
-  - name: Air_Back
+  - skillCost: 0
+    countValid: 1
+    name: Air_Back
     command: 44
     skill: {fileID: 11400000, guid: 16c370b3b4259454ebf7df71ecc91ca9, type: 2}
