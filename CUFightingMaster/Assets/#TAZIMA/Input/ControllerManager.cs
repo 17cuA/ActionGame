@@ -24,10 +24,13 @@ public class ControllerManager : MonoBehaviour
             if ( i < nowControllerNames.Length)
             {
                 //変更が必要かどうか
-                if (inputManager[i].GetComponent<TestInput>().controllerName != nowControllerNames[i] + "_" && nowControllerNames[i] != "")
-                    inputManager[i].GetComponent<TestInput>().controllerName = nowControllerNames[i] + "_";
-                else if (inputManager[i].GetComponent<TestInput>().controllerName != nowControllerNames[i] + "_" && nowControllerNames[i] == "")
-                    inputManager[i].GetComponent<TestInput>().controllerName = nowControllerNames[i];
+				if (inputManager[i].GetComponent<TestInput>().controllerName != nowControllerNames[i] + "_")
+				{
+					if (nowControllerNames[i] != "")
+						inputManager[i].GetComponent<TestInput>().controllerName = nowControllerNames[i] + "_";
+					else
+						inputManager[i].GetComponent<TestInput>().controllerName = nowControllerNames[i];
+				}
             }
         }
     }
