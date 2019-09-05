@@ -17,7 +17,7 @@ public class CinemaController : MonoBehaviour, ITimeControl
 	}
 	public void OnControlTimeStart()
 	{
-		isPlay = true;
+		isPlay = true;	
 	}
 	public void SetTime(double time)
 	{
