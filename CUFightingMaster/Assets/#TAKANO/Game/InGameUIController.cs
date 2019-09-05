@@ -65,11 +65,11 @@ public class InGameUIController : MonoBehaviour
 	public void PlayBattleRound()
 	{
 		uI_BatlleRound.DisplayBatlleUI();
-		uI_countDownTimer = uI_InGameUI.transform.Find("UI_CountDownTimer").GetComponent<CountDownTimer>();
 
 		//一時的
 		uI_hp_P1 = uI_InGameUI.transform.Find("UI_HP_P1").GetComponent<UI_HP>();
 		uI_hp_P2 = uI_InGameUI.transform.Find("UI_HP_P2").GetComponent<UI_HP>();
+		uI_countDownTimer = uI_InGameUI.transform.Find("UI_CountDownTimer").GetComponent<CountDownTimer>();
 		//uI_sp_P1 = uI_InGameUI.transform.Find("UI_SP_P1").GetComponent<UI_Gauge>();
 		//uI_sp_P2 = uI_InGameUI.transform.Find("UI_SP_P2").GetComponent<UI_Gauge>();
 	}

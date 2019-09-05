@@ -23,21 +23,21 @@ Shader "Toon"
 		_BaseShade_Feather ("明るい影のなめらかさ",Range (0.0001,1.0)) = 0.1
 		_1st2nd_Shades_Feather ("暗い影の割合なめらかさ",Range (0.0001,1.0)) = 0.1
 
-		[Toggle]_Is_LightColor_Base ("光の色の影響を受けるか" , float) = 0.0
-		[Toggle]_Is_BlendBaseColor ("アウトラインとテクスチャの色とブレンドする", float) = 0.0
-		_BaseColor ("テクスチャの色にブレンドする色",Color) = (0,0,0,0)
+		//[Toggle]_Is_LightColor_Base ("光の色の影響を受けるか" , float) = 0.0
+		//[Toggle]_Is_BlendBaseColor ("アウトラインとテクスチャの色とブレンドする", float) = 0.0
+		//_BaseColor ("テクスチャの色にブレンドする色",Color) = (0,0,0,0)
 
-			//__ModelOutLine_Color("アウトラインの色",Color) = (0,0,0,0)
-		_OutLineColor ("0:Brack 1:Blue 2:Red" , Range (0,2)) = 1
+		_Color ("アウトラインの色",Color) = (0,0,0,0)
+		/*_OutLineColor ("0:Brack 1:Blue 2:Red" , Range (0,2)) = 1*/
 		__ModelOutLine_Width ("アウトラインの幅", Range (0.0, 300.0)) = 0.1
 
 		_Offset_Z ("Offset_Z" , float) = 2
 		_Farthest_Distance ("Farthest_Distance",float) = 0.5
 		_Nearest_Distance ("Nearest_Distance",float) = 0.5
 
-		__ModelOutLine_Sampler ("_ModelOutLine_Sampler",2D) = "white"{}
+		//__ModelOutLine_Sampler ("_ModelOutLine_Sampler",2D) = "brack"{}
 		//_BaseMap("BaseMap",2D) = "White"{}
-		_LightColor0 ("LightColor0",Color) = (0,0,0,0)
+		//_LightColor0 ("LightColor0",Color) = (0,0,0,0)
 
 		[MaterialToggle]_Is_NoramMapToBase ("IsNormalMap",Float) = 0
 
@@ -240,9 +240,7 @@ Shader "Toon"
 
 		float4 _BaseColor;
 		float4 _LightColor0;
-		float4 __ModelOutLine_Brack = (255,255,255,1);
-		float4 __ModelOutLine_Blue = (0, 0, 255, 1);
-		float4 __ModelOutLine_Red = (0, 0, 0, 0);
+		float4 _Color;
 
 		int _OutLineColor;
 
@@ -302,36 +300,19 @@ Shader "Toon"
 		float4 frag (VertexOutput i, float facting : VFACE) : SV_Target
 		{
 			//_BaceMapからカラーの値を抽出
-			float4 _BaseMap_var = tex2D (_BaseMap,TRANSFORM_TEX (i.uv0 , _BaseMap));
+			//float4 _BaseMap_var = tex2D (_BaseMap,TRANSFORM_TEX (i.uv0 , _BaseMap));
 
 			//_BaceColorからテクスチャのカラー値を乗算してベースの色を決定
 			//_IsLightColor_Baceがオンならライトカラーを反映させる
-			float3 Set_BaseColor = lerp (
-				_BaseColor.rgb * _BaseMap_var.rgb,
-				  _BaseColor.rgb * _BaseMap_var.rgb * _LightColor0.rgb,
-				_Is_LightColor_Base);
+			//float3 Set_BaseColor = lerp (
+			//	_BaseColor.rgb * _BaseMap_var.rgb,
+			//	  _BaseColor.rgb * _BaseMap_var.rgb * _LightColor0.rgb,
+			//	_Is_LightColor_Base);
 
 			//輪郭線のカラー値を決定
-			float4 _Color = __ModelOutLine_Red;
+			float4 _SetColor = _Color;
 
-			//if (_OutLineColor == 1)
-			//	_Color = __ModelOutLine_Blue;
-			//else if (_OutLineColor == 2)
-			//	_Color = __ModelOutLine_Red;
-			//else if (_OutLineColor == 0)
-			//	_Color = __ModelOutLine_Brack;
-
-			float3 _Color3 = _Color.rgb;
-
-			return  fixed4 (_Color3, 1);
-
-			////_Is_BlendBaseColorがオンなら、ベースカラーの2乗値が乗算される
-			//float3 Set__ModelOutLine_Color = lerp (
-			//	_Color.rgb,
-			//	_Color.rgb * Set_BaseColor * Set_BaseColor,
-			//	_Is_BlendBaseColor);
-
-			//return fixed4 (Set__ModelOutLine_Color, 0);
+			return _SetColor;
 		}
 		ENDCG
 		}
