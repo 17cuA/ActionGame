@@ -2,8 +2,8 @@
 
 public class SpriteScroll : MonoBehaviour
 {
-	private float pos;
-	private float scrollSpeed;
+	private float pos;		// 画面端の座標
+	private float scrollSpeed;		// スクロールする速度
 
 	void Start()
 	{
@@ -16,10 +16,10 @@ public class SpriteScroll : MonoBehaviour
 	{
 		transform.Translate(-scrollSpeed * Time.deltaTime, 0.0f, 0.0f);
 
-		// 画面の下に移動したら
+		// 画面の左端に移動したら
 		if (transform.position.x < -pos)
 		{
-			// 背景を画面の上に移動させる
+			// 背景を画面の右端に移動させる
 			// transform.position = オブジェクトの位置
 			transform.position = new Vector3(pos, -2.25f, 0.0f);
 
