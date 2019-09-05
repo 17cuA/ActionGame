@@ -71,35 +71,43 @@ public class FigterEditor : EditorWindow
     private void StatusTabDraw()
     {
         EditorGUILayout.BeginVertical("Box");
-		fighterStatus.fighter = EditorGUILayout.ObjectField("本体", fighterStatus.fighter, typeof(FighterCore), false) as FighterCore;
-        fighterStatus.HP = EditorGUILayout.IntField("HP",fighterStatus.HP);
-		fighterStatus.airBraking = EditorGUILayout.FloatField("空中制動", fighterStatus.airBraking);
-		fighterStatus.StanGuage = EditorGUILayout.IntField("スタン値", fighterStatus.StanGuage);
-		fighterStatus.SpecialGuage = EditorGUILayout.IntField("スぺシャルゲージ", fighterStatus.SpecialGuage);
-		fighterStatus.PlayerModel = EditorGUILayout.ObjectField("キャラセレモデル", fighterStatus.PlayerModel, typeof(GameObject), false) as GameObject;
+        fighterStatus.fighter = EditorGUILayout.ObjectField("本体", fighterStatus.fighter, typeof(FighterCore), false) as FighterCore;
+        fighterStatus.HP = EditorGUILayout.IntField("HP", fighterStatus.HP);
+        fighterStatus.airBraking = EditorGUILayout.FloatField("空中制動", fighterStatus.airBraking);
+        fighterStatus.StanGuage = EditorGUILayout.IntField("スタン値", fighterStatus.StanGuage);
+        fighterStatus.SpecialGuage = EditorGUILayout.IntField("スぺシャルゲージ", fighterStatus.SpecialGuage);
+        fighterStatus.PlayerModel = EditorGUILayout.ObjectField("キャラセレモデル", fighterStatus.PlayerModel, typeof(GameObject), false) as GameObject;
         fighterStatus.gravity = EditorGUILayout.Vector3Field("重力", fighterStatus.gravity);
         fighterStatus.gravityMax = EditorGUILayout.Vector3Field("重力限界", fighterStatus.gravityMax);
-		EditorGUILayout.BeginVertical("Box");
-		for (int i = 0; fighterStatus.playerMaterials[0].nomalMaterial.Length > i; i++)
-		{
-			fighterStatus.playerMaterials[0].nomalMaterial[i] = (Material)EditorGUILayout.ObjectField("P1ノーマルマテリアル", fighterStatus.playerMaterials[0].nomalMaterial[i], typeof(Material), false) as Material;
-		}
-		for (int i = 0; fighterStatus.playerMaterials[0].inversionMaterial.Length > i; i++)
-		{
-			fighterStatus.playerMaterials[0].inversionMaterial[i] = EditorGUILayout.ObjectField("P1反転マテリアル", fighterStatus.playerMaterials[0].inversionMaterial[i], typeof(Material), false) as Material;
-		}
-		EditorGUILayout.EndVertical();
-		EditorGUILayout.BeginVertical("Box");
-		for (int i = 0; fighterStatus.playerMaterials[1].nomalMaterial.Length > i; i++)
-		{
-			fighterStatus.playerMaterials[1].nomalMaterial[i] = (Material)EditorGUILayout.ObjectField("P2ノーマルマテリアル", fighterStatus.playerMaterials[1].nomalMaterial[i], typeof(Material), false) as Material;
-		}
-		for (int i = 0; fighterStatus.playerMaterials[1].inversionMaterial.Length > i; i++)
-		{
-			fighterStatus.playerMaterials[1].inversionMaterial[i] = EditorGUILayout.ObjectField("P2反転マテリアル", fighterStatus.playerMaterials[1].inversionMaterial[i], typeof(Material), false) as Material;
-		}
-		EditorGUILayout.EndVertical();
-		EditorGUILayout.EndVertical();
+        EditorGUILayout.BeginVertical("Box");
+        if (fighterStatus.fighter != null)
+        {
+            Array.Resize<Material>(ref fighterStatus.playerMaterials[0].nomalMaterial, fighterStatus.fighter.Meshes.Count);
+            Array.Resize<Material>(ref fighterStatus.playerMaterials[0].inversionMaterial, fighterStatus.fighter.Meshes.Count);
+            Array.Resize<Material>(ref fighterStatus.playerMaterials[1].nomalMaterial, fighterStatus.fighter.Meshes.Count);
+            Array.Resize<Material>(ref fighterStatus.playerMaterials[1].inversionMaterial, fighterStatus.fighter.Meshes.Count);
+        }
+
+        for (int i = 0; fighterStatus.playerMaterials[0].nomalMaterial.Length > i; i++)
+        {
+            fighterStatus.playerMaterials[0].nomalMaterial[i] = (Material)EditorGUILayout.ObjectField("P1ノーマルマテリアル", fighterStatus.playerMaterials[0].nomalMaterial[i], typeof(Material), false) as Material;
+        }
+        for (int i = 0; fighterStatus.playerMaterials[0].inversionMaterial.Length > i; i++)
+        {
+            fighterStatus.playerMaterials[0].inversionMaterial[i] = EditorGUILayout.ObjectField("P1反転マテリアル", fighterStatus.playerMaterials[0].inversionMaterial[i], typeof(Material), false) as Material;
+        }
+        EditorGUILayout.EndVertical();
+        EditorGUILayout.BeginVertical("Box");
+        for (int i = 0; fighterStatus.playerMaterials[1].nomalMaterial.Length > i; i++)
+        {
+            fighterStatus.playerMaterials[1].nomalMaterial[i] = (Material)EditorGUILayout.ObjectField("P2ノーマルマテリアル", fighterStatus.playerMaterials[1].nomalMaterial[i], typeof(Material), false) as Material;
+        }
+        for (int i = 0; fighterStatus.playerMaterials[1].inversionMaterial.Length > i; i++)
+        {
+            fighterStatus.playerMaterials[1].inversionMaterial[i] = EditorGUILayout.ObjectField("P2反転マテリアル", fighterStatus.playerMaterials[1].inversionMaterial[i], typeof(Material), false) as Material;
+        }
+        EditorGUILayout.EndVertical();
+        EditorGUILayout.EndVertical();
     }
     #endregion
 
@@ -263,6 +271,7 @@ public class FigterEditor : EditorWindow
                 }
                 fighterStatus.groundMoveSkills[i].name = EditorGUILayout.TextField("名前", fighterStatus.groundMoveSkills[i].name);
                 fighterStatus.groundMoveSkills[i].command = EditorGUILayout.TextField("コマンド", fighterStatus.groundMoveSkills[i].command);
+                fighterStatus.groundMoveSkills[i].skillCost = EditorGUILayout.IntField("スキルコスト", fighterStatus.groundMoveSkills[i].skillCost);
                 SSet("技", ref fighterStatus.groundMoveSkills[i].skill);
                 //削除ボタン
                 if (removeFrag) fighterStatus.groundMoveSkills.RemoveAt(i);
@@ -287,6 +296,7 @@ public class FigterEditor : EditorWindow
                 }
                 fighterStatus.airMoveSkills[i].name = EditorGUILayout.TextField("名前", fighterStatus.airMoveSkills[i].name);
                 fighterStatus.airMoveSkills[i].command = EditorGUILayout.TextField("コマンド", fighterStatus.airMoveSkills[i].command);
+                fighterStatus.airMoveSkills[i].skillCost = EditorGUILayout.IntField("スキルコスト", fighterStatus.airMoveSkills[i].skillCost);
                 SSet("技", ref fighterStatus.airMoveSkills[i].skill);
                 //削除ボタン
                 if (removeFrag) fighterStatus.airMoveSkills.RemoveAt(i);
@@ -401,6 +411,7 @@ public class FigterEditor : EditorWindow
                 fighterStatus.groundAttackSkills[i].command = EditorGUILayout.TextField("コマンド", fighterStatus.groundAttackSkills[i].command);
                 fighterStatus.groundAttackSkills[i].trigger = EditorGUILayout.TextField("トリガー", fighterStatus.groundAttackSkills[i].trigger);
                 fighterStatus.groundAttackSkills[i].validShotFrame = EditorGUILayout.IntField("トリガー入力猶予フレーム", fighterStatus.groundAttackSkills[i].validShotFrame);
+                fighterStatus.groundAttackSkills[i].skillCost = EditorGUILayout.IntField("スキルコスト", fighterStatus.groundAttackSkills[i].skillCost);
                 SSet("技", ref fighterStatus.groundAttackSkills[i].skill);
                 //削除ボタン
                 if (removeFrag) fighterStatus.groundAttackSkills.RemoveAt(i);
@@ -427,6 +438,7 @@ public class FigterEditor : EditorWindow
                 fighterStatus.airAttackSkills[i].command = EditorGUILayout.TextField("コマンド", fighterStatus.airAttackSkills[i].command);
                 fighterStatus.airAttackSkills[i].trigger = EditorGUILayout.TextField("トリガー", fighterStatus.airAttackSkills[i].trigger);
                 fighterStatus.airAttackSkills[i].validShotFrame = EditorGUILayout.IntField("トリガー入力猶予(0は同時押し)", fighterStatus.airAttackSkills[i].validShotFrame);
+                fighterStatus.airAttackSkills[i].skillCost = EditorGUILayout.IntField("スキルコスト", fighterStatus.airAttackSkills[i].skillCost);
                 SSet("技", ref fighterStatus.airAttackSkills[i].skill);
                 //削除ボタン
                 if (removeFrag) fighterStatus.airAttackSkills.RemoveAt(i);

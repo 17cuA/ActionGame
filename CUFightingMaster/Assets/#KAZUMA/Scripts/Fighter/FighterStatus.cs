@@ -23,14 +23,16 @@ public class FighterStatus : ScriptableObject
         public int validShotFrame = 6;
         public FighterSkill skill;
 	}
-	[System.Serializable]
-	public class MoveAnimationCustom
-	{
+    [System.Serializable]
+    public class MoveAnimationCustom
+    {
+        public int skillCost = 0;//発動のためのコスト
+        public int countValid = 1;//空中の場合何回発動できるか
         public string name;
         public string command;
         public FighterSkill skill;
     }
-	[System.Serializable]
+    [System.Serializable]
 	public class FighterMaterials
 	{
 		public Material[] nomalMaterial = { };

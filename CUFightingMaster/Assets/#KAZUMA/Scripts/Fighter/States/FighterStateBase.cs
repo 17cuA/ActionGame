@@ -9,9 +9,15 @@ public class FighterStateBase : StateBaseScriptMonoBehaviour
     public FighterCore core;
     public TestInput input = null;
 	public FighterStateGuard stateGuard;
-
-    public Dictionary<string, FighterSkill> groundSkills = new Dictionary<string, FighterSkill>();//地上コマンド技
-    public Dictionary<string, FighterSkill> airSkills = new Dictionary<string, FighterSkill>();//空中コマンド技
+    //格納用
+    public struct MoveAndSkills
+    {
+        public int skillCost;//発動のためのコスト
+        public int countValid;//空中の場合何回発動できるか
+        public FighterSkill skill;
+    }
+    public Dictionary<string, MoveAndSkills> groundSkills = new Dictionary<string, MoveAndSkills>();//地上コマンド技
+    public Dictionary<string, MoveAndSkills> airSkills = new Dictionary<string, MoveAndSkills>();//空中コマンド技
 
     private bool isEndHitStop = false;//KO時のヒットストップをしたかどうか
 
@@ -27,23 +33,39 @@ public class FighterStateBase : StateBaseScriptMonoBehaviour
                 input = InputManager.Instance.testInput[1];
                 break;
         }
-		stateGuard = GetComponent<FighterStateGuard>();
+        stateGuard = GetComponent<FighterStateGuard>();
 
-        foreach(var s in core.Status.groundMoveSkills)
+        foreach (var s in core.Status.groundMoveSkills)
         {
-            groundSkills.Add(s.name, s.skill);
+            var _s = new MoveAndSkills();
+            _s.skill = s.skill;
+            _s.skillCost = s.skillCost;
+            _s.countValid = s.countValid;
+            groundSkills.Add(s.name, _s);
         }
-        foreach(var s in core.Status.groundAttackSkills)
+        foreach (var s in core.Status.groundAttackSkills)
         {
-            groundSkills.Add(s.name + s.trigger, s.skill);
+            var _s = new MoveAndSkills();
+            _s.skill = s.skill;
+            _s.skillCost = s.skillCost;
+            _s.countValid = s.countValid;
+            groundSkills.Add(s.name + s.trigger, _s);
         }
-        foreach(var s in core.Status.airMoveSkills)
+        foreach (var s in core.Status.airMoveSkills)
         {
-            airSkills.Add(s.name, s.skill);
+            var _s = new MoveAndSkills();
+            _s.skill = s.skill;
+            _s.skillCost = s.skillCost;
+            _s.countValid = s.countValid;
+            airSkills.Add(s.name, _s);
         }
-        foreach(var s in core.Status.airAttackSkills)
+        foreach (var s in core.Status.airAttackSkills)
         {
-            airSkills.Add(s.name + s.trigger, s.skill);
+            var _s = new MoveAndSkills();
+            _s.skill = s.skill;
+            _s.skillCost = s.skillCost;
+            _s.countValid = s.countValid;
+            airSkills.Add(s.name + s.trigger, _s);
         }
     }
     #endregion

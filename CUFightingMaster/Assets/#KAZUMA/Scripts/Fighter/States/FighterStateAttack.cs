@@ -18,7 +18,9 @@ public class FighterStateAttack : StateBaseScriptMonoBehaviour
             //キーがあれば発動してreturn
             if (stateBase.groundSkills.ContainsKey(stateBase.input.groundMoveCommand.inputCommandName))
             {
-                stateBase.core.SetSkill(stateBase.groundSkills[stateBase.input.groundMoveCommand.inputCommandName], 0);
+                var _move = stateBase.groundSkills[stateBase.input.groundMoveCommand.inputCommandName];
+                stateBase.core.SetSkill(_move.skill, 0);
+                stateBase.core.SpecialGauge -= _move.skillCost;
             }
             return;
         }
@@ -89,10 +91,14 @@ public class FighterStateAttack : StateBaseScriptMonoBehaviour
 				{
 					if (stateBase.groundSkills.ContainsKey(stateBase.input.groundMoveCommand.inputCommandName))
 					{
-						//キャンセルできるかどうか（技モード、AND演算）
-						if (stateBase.ChancelConditions(_nowSkill, stateBase.groundSkills[stateBase.input.groundMoveCommand.inputCommandName]))
+                        var _move = stateBase.groundSkills[stateBase.input.groundMoveCommand.inputCommandName];
+                        //キャンセルできるかどうか（技モード、AND演算）
+                        if (stateBase.ChancelConditions(_nowSkill, _move.skill))
 						{
-							return true;
+							if(_move.skillCost<=stateBase.core.SpecialGauge)
+							{
+                                return true;
+                            }
 						}
 					}
 				}
@@ -143,11 +149,15 @@ public class FighterStateAttack : StateBaseScriptMonoBehaviour
 				{
 					if (stateBase.airSkills.ContainsKey(stateBase.input.airMoveCommand.inputCommandName))
 					{
-						//キャンセルできるかどうか（技モード、AND演算）
-						if (stateBase.ChancelConditions(_nowSkill, stateBase.airSkills[stateBase.input.airMoveCommand.inputCommandName]))
+                        var _move = stateBase.airSkills[stateBase.input.airMoveCommand.inputCommandName];
+                        //キャンセルできるかどうか（技モード、AND演算）
+                        if (stateBase.ChancelConditions(_nowSkill, _move.skill))
 						{
-							return true;
-						}
+                            if (stateBase.core.SpecialGauge >= _move.skillCost)
+                            {
+                                return true;
+                            }
+                        }
 					}
 				}
 				string atk = stateBase.input.GetPlayerAtk();
@@ -238,13 +248,17 @@ public class FighterStateAttack : StateBaseScriptMonoBehaviour
 				#region コマンド技
 				if ((stateBase.input.groundMoveCommand.inputCommandName != "") && (stateBase.input.groundMoveCommand.inputCommandName != null))
 				{
-					if (stateBase.groundSkills.ContainsKey(stateBase.input.groundMoveCommand.inputCommandName))
+                    var _move = stateBase.groundSkills[stateBase.input.groundMoveCommand.inputCommandName];
+                    if (stateBase.groundSkills.ContainsKey(stateBase.input.groundMoveCommand.inputCommandName))
 					{
 						//キャンセルできるかどうか（技モード、AND演算）
-						if (stateBase.ChancelConditions(_nowSkill, stateBase.groundSkills[stateBase.input.groundMoveCommand.inputCommandName]))
+						if (stateBase.ChancelConditions(_nowSkill, _move.skill))
 						{
-							return true;
-						}
+                            if (stateBase.core.SpecialGauge >= _move.skillCost)
+                            {
+                                return true;
+                            }
+                        }
 					}
 				}
 				#endregion
@@ -294,10 +308,14 @@ public class FighterStateAttack : StateBaseScriptMonoBehaviour
 				{
 					if (stateBase.airSkills.ContainsKey(stateBase.input.airMoveCommand.inputCommandName))
 					{
-						//キャンセルできるかどうか（技モード、AND演算）
-						if (stateBase.ChancelConditions(_nowSkill, stateBase.airSkills[stateBase.input.airMoveCommand.inputCommandName]))
+                        var _move = stateBase.airSkills[stateBase.input.airMoveCommand.inputCommandName];
+                        //キャンセルできるかどうか（技モード、AND演算）
+                        if (stateBase.ChancelConditions(_nowSkill, _move.skill))
 						{
-							return true;
+                            if (stateBase.core.SpecialGauge >= _move.skillCost)
+                            {
+                                return true;
+                            }
 						}
 					}
 				}
@@ -388,7 +406,9 @@ public class FighterStateAttack : StateBaseScriptMonoBehaviour
             //キーがあれば発動してreturn
             if (stateBase.airSkills.ContainsKey(stateBase.input.airMoveCommand.inputCommandName))
             {
-                stateBase.core.SetSkill(stateBase.airSkills[stateBase.input.airMoveCommand.inputCommandName], 0);
+                var _move = stateBase.airSkills[stateBase.input.airMoveCommand.inputCommandName];
+                stateBase.core.SetSkill(_move.skill, 0);
+                stateBase.core.SpecialGauge -= _move.skillCost;
             }
             return;
         }

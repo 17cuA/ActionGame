@@ -74,6 +74,30 @@ public class HitBoxJudgement
 	private BoxCollider grabCollider = null;
 	private BoxCollider pushingCollider = null;
 	private ComponentObjectPool<BoxCollider> hitBoxCollider;
+    public BoxCollider Head
+    {
+        get {return headCollider; }
+    }
+    public BoxCollider Body
+    {
+        get { return bodyCollider; }
+    }
+    public BoxCollider Foot
+    {
+        get { return footCollider; }
+    }
+    public BoxCollider Grab
+    {
+        get { return grabCollider; }
+    }
+    public BoxCollider Push
+    {
+        get { return pushingCollider; }
+    }
+    public List<BoxCollider> Custom
+    {
+        get { return hitBoxCollider.GetList; }
+    }
     #endregion
 
     //初期化
@@ -283,46 +307,55 @@ public class HitBoxJudgement
             if ((customs[i].frameHitBoxes == null) || (customs.Count == 0)) continue;
             if (customs[i].frameHitBoxes.Count > nowPlayCustomNumber[i] + 1)
             {
-                //現在再生中の次フレームを越えれば
-                if (customs[i].frameHitBoxes[nowPlayCustomNumber[i] + 1].startFrame <= core.AnimationPlayerCompornent.NowFrame)
+                if (nowPlayCustomNumber[i] < 0 || !customs[i].frameHitBoxes[nowPlayCustomNumber[i]].isInfinityFrame)
                 {
-                    //処理
-                    if (nowPlayCollider[i].gameObject != null)
+                    //現在再生中の次フレームを越えれば
+                    if (customs[i].frameHitBoxes[nowPlayCustomNumber[i] + 1].startFrame <= core.AnimationPlayerCompornent.NowFrame)
                     {
-                        nowPlayCollider[i].gameObject.SetActive(false);
+                        //処理
+                        if (nowPlayCollider[i].gameObject != null)
+                        {
+                            nowPlayCollider[i].gameObject.SetActive(false);
+                        }
+                        nowPlayCustomNumber[i]++;
+                        nowPlayCollider[i] = hitBoxCollider.GetObjects();
+                        nowPlayCollider[i].gameObject.tag = CommonConstants.Tags.GetTags(customs[i].mode);
+                        nowPlayCollider[i].gameObject.layer = LayerMask.NameToLayer(CommonConstants.Layers.GetPlayerNumberLayer(core.PlayerNumber));
+                        nowPlayCollider[i].component.size = customs[i].frameHitBoxes[nowPlayCustomNumber[i]].hitBox.size;
+                        attackHit = false;
                     }
-                    nowPlayCustomNumber[i]++;
-                    nowPlayCollider[i] = hitBoxCollider.GetObjects();
-                    nowPlayCollider[i].gameObject.tag = CommonConstants.Tags.GetTags(customs[i].mode);
-                    nowPlayCollider[i].gameObject.layer = LayerMask.NameToLayer(CommonConstants.Layers.GetPlayerNumberLayer(core.PlayerNumber));
-                    nowPlayCollider[i].component.size = customs[i].frameHitBoxes[nowPlayCustomNumber[i]].hitBox.size;
-                    attackHit = false;
                 }
             }
             //ループ時
             else
             {
-                //一番最初のスタートフレーム以上かつ現在のフレームが現在の再生フレーム数より小さい場合ループありの
-                if (customs[i].frameHitBoxes[0].startFrame <= core.AnimationPlayerCompornent.NowFrame && customs[i].frameHitBoxes[nowPlayCustomNumber[i]].startFrame > core.AnimationPlayerCompornent.NowFrame)
+                if (nowPlayCustomNumber[i] < 0 || !customs[i].frameHitBoxes[nowPlayCustomNumber[i]].isInfinityFrame)
                 {
-                    //処理
-                    if (nowPlayCollider[i].gameObject != null)
+                    //一番最初のスタートフレーム以上かつ現在のフレームが現在の再生フレーム数より小さい場合ループありの
+                    if (customs[i].frameHitBoxes[0].startFrame <= core.AnimationPlayerCompornent.NowFrame && customs[i].frameHitBoxes[nowPlayCustomNumber[i]].startFrame > core.AnimationPlayerCompornent.NowFrame)
                     {
-                        nowPlayCollider[i].gameObject.SetActive(false);
+                        //処理
+                        if (nowPlayCollider[i].gameObject != null)
+                        {
+                            nowPlayCollider[i].gameObject.SetActive(false);
+                        }
+                        nowPlayCustomNumber[i] = 0;
+                        //処理
+                        nowPlayCollider[i] = hitBoxCollider.GetObjects();
+                        nowPlayCollider[i].gameObject.tag = CommonConstants.Tags.GetTags(customs[i].mode);
+                        nowPlayCollider[i].gameObject.layer = LayerMask.NameToLayer(CommonConstants.Layers.GetPlayerNumberLayer(core.PlayerNumber));
+                        nowPlayCollider[i].component.size = customs[i].frameHitBoxes[nowPlayCustomNumber[i]].hitBox.size;
+                        attackHit = false;
                     }
-                    nowPlayCustomNumber[i] = 0;
-                    //処理
-                    nowPlayCollider[i] = hitBoxCollider.GetObjects();
-                    nowPlayCollider[i].gameObject.tag = CommonConstants.Tags.GetTags(customs[i].mode);
-                    nowPlayCollider[i].gameObject.layer = LayerMask.NameToLayer(CommonConstants.Layers.GetPlayerNumberLayer(core.PlayerNumber));
-                    nowPlayCollider[i].component.size = customs[i].frameHitBoxes[nowPlayCustomNumber[i]].hitBox.size;
-                    attackHit = false;
                 }
             }
             if (nowPlayCustomNumber[i] < 0) continue;
             if (customs[i].frameHitBoxes[nowPlayCustomNumber[i]].endFrame < core.AnimationPlayerCompornent.NowFrame)
             {
-                nowPlayCollider[i].gameObject.SetActive(false);
+                if (!customs[i].frameHitBoxes[nowPlayCustomNumber[i]].isInfinityFrame)
+                {
+                    nowPlayCollider[i].gameObject.SetActive(false);
+                }
                 continue;
             }
             else
@@ -390,30 +423,49 @@ public class HitBoxJudgement
         if ((_defs == null) || (_defs.Count == 0)) return;
         if (_defs.Count > _number + 1)
         {
-            //現在再生中の次フレームを越えれば
-            if (_defs[_number + 1].startFrame <= core.AnimationPlayerCompornent.NowFrame)
+            //アニメーション終了後も継続が選択されていれば入れ替えない
+            if (_number<0||!_defs[_number].isInfinityFrame)
             {
-                //処理
-                _number++;
+                //現在再生中の次フレームを越えれば
+                if (_defs[_number + 1].startFrame <= core.AnimationPlayerCompornent.NowFrame)
+                {
+                    //処理
+                    _number++;
+                }
             }
         }
         //ループ時
         else
         {
-            if (_defs[0].startFrame <= core.AnimationPlayerCompornent.NowFrame && _defs[_number].startFrame > core.AnimationPlayerCompornent.NowFrame || (_defs.Count == 1 && _defs[_number].startFrame == core.AnimationPlayerCompornent.NowFrame))
+            if (_number<0||!_defs[_number].isInfinityFrame)
             {
-                //処理
-                _number = 0;
+                if (_defs[0].startFrame <= core.AnimationPlayerCompornent.NowFrame && _defs[_number].startFrame > core.AnimationPlayerCompornent.NowFrame || (_defs.Count == 1 && _defs[_number].startFrame == core.AnimationPlayerCompornent.NowFrame))
+                {
+                    //処理
+                    _number = 0;
+                }
             }
         }
         if (_number < 0) return;
         if (_defs[_number].endFrame < core.AnimationPlayerCompornent.NowFrame)
         {
-            Vector3 tmp = _hit.localPosition;
-            tmp.x *= RightLeft;
-            _col.center = tmp;
-            _col.size = _hit.size;
-            return;
+            if (!_defs[_number].isInfinityFrame)
+            {
+                Vector3 tmp = _hit.localPosition;
+                tmp.x *= RightLeft;
+                _col.center = tmp;
+                _col.size = _hit.size;
+                return;
+            }
+            else
+            {
+                //常時当たり判定を移動
+                Vector3 tmp = _defs[_number].hitBox.localPosition + _hit.localPosition;
+                tmp.x *= RightLeft;
+                _col.center = tmp;
+                //サイズ
+                _col.size = _hit.size + _defs[_number].hitBox.size;
+            }
         }
         else
         {
@@ -440,7 +492,12 @@ public class HitBoxJudgement
 				cr.SetDamage(_cHit,_bCol);
 				cr.SetEnemyNumber(core.PlayerNumber);//現在フォーカス中の敵のセット（未使用）
                 core.SetHitAttackFlag(true,_cHit);//攻撃が当たったことを渡す
-                
+                core.SpecialGauge += _cHit.plusGauge;
+                if(core.SpecialGauge>core.Status.SpecialGuage)
+                {
+                    core.SpecialGauge = core.Status.SpecialGuage;
+                }
+
                 ////エフェクト再生 ※エフェクトは当たった側で管理
                 //for (int i = 0; i < _cHit.hitEffects.Count; i++)
                 //{

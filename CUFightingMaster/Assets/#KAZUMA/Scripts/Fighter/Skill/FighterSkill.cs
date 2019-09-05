@@ -20,13 +20,17 @@ public class FighterSkill : ScriptableObject
 	[System.Serializable]
 	public class FrameHitBox
 	{
-		public HitBox_ hitBox;
+        public bool isInfinityFrame;//アニメーション再生終了後も継続
+        public HitBox_ hitBox;
 		public int startFrame;
 		public int endFrame;        
     }
     [System.Serializable]
     public class HitEffects
     {
+        public bool isEnemyPos;
+        public bool isParant;
+        public bool isEnemyParant;
         public GameObject effect;
 		public GameObject guardEffect;
         public Vector3 position;
@@ -73,7 +77,7 @@ public class FighterSkill : ScriptableObject
         public float knockBack;           //ノックバック値
         public float airKnockBack;
         public float guardKnockBack;
-        public List<HitEffects> hitEffects = new List<HitEffects>();//TODO::ヒットエフェクト
+        public List<HitEffects> hitEffects = new List<HitEffects>();//ヒットエフェクト
         public bool isDown = false;     //ダウンするかどうか
 
         public bool isThrow = false;    //投げかどうか
@@ -95,6 +99,7 @@ public class FighterSkill : ScriptableObject
         public int hitRigor;            //ヒット硬直
         public int guardHitRigor;       //ガード硬直
         public int plusGauge;           //ゲージ増加量
+        public int enemyPlusGauge;      //相手ゲージ増加量
     }
     //移動量
     [System.Serializable]

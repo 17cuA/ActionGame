@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Air_Done
   m_EditorClassIdentifier: 
   animationClip: {fileID: 7400000, guid: 9bd226a85e324eb488ec4a97204ee06d, type: 2}
-  animationSpeed: 0.5
+  animationSpeed: 1
   status: 16
   frameEffects: []
   frameBullets: []
@@ -25,19 +25,21 @@ MonoBehaviour:
   isInvincibleBullet: 0
   plusHeadHitBox: []
   plusBodyHitBox:
-  - hitBox:
+  - isInfinityFrame: 1
+    hitBox:
       size: {x: 0, y: 0, z: 0}
-      localPosition: {x: 0, y: 0, z: 0}
+      localPosition: {x: 0, y: -3.81, z: 0}
     startFrame: 0
-    endFrame: 30
+    endFrame: 19
   plusFootHitBox: []
   plusGrabHitBox: []
   plusPushingHitBox:
-  - hitBox:
+  - isInfinityFrame: 1
+    hitBox:
       size: {x: 0, y: -1.3, z: 0}
       localPosition: {x: 0, y: 0.6, z: 0}
     startFrame: 0
-    endFrame: 30
+    endFrame: 19
   customHitBox: []
   isContinue: 0
   isMoveContinue: 0

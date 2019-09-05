@@ -172,20 +172,7 @@ public class FighterStateDamage : StateBaseScriptMonoBehaviour
         //エフェクト再生
         BoxCollider _bCol = stateBase.core.GetDamageCollider;
         Transform t = _bCol.gameObject.transform;
-        for (int i = 0; i < box.hitEffects.Count; i++)
-        {
-            if (box.hitEffects[i].effect != null)
-            {
-                if (GameManager.Instance.GetPlayFighterCore(stateBase.core.EnemyNumber).Direction == PlayerDirection.Right)
-                {
-                    Object.Instantiate(box.hitEffects[i].effect, new Vector3(t.position.x + _bCol.center.x + box.hitEffects[i].position.x, t.position.y + _bCol.center.y + box.hitEffects[i].position.y, t.position.z + _bCol.center.z + box.hitEffects[i].position.z), Quaternion.identity);
-                }
-                else if (GameManager.Instance.GetPlayFighterCore(stateBase.core.EnemyNumber).Direction == PlayerDirection.Left)
-                {
-                    Object.Instantiate(box.hitEffects[i].effect, new Vector3(t.position.x + _bCol.center.x + box.hitEffects[i].position.x, t.position.y + _bCol.center.y + box.hitEffects[i].position.y, t.position.z + _bCol.center.z + box.hitEffects[i].position.z), Quaternion.Euler(0, 180, 0));
-                }
-            }
-        }
+        CreateHitEffects(_bCol, t,box);
         //遠距離の場合は相手側ノックバックなし
         if (box.mode != HitBoxMode.Bullet)
         {
@@ -195,6 +182,8 @@ public class FighterStateDamage : StateBaseScriptMonoBehaviour
         {
             stateBase.core.SetKnockBack(box.knockBack, stateBase.core.EnemyNumber, tmpDir, false);
         }
+        //ゲージ増加
+        stateBase.core.SpecialGauge += box.enemyPlusGauge;
         //ダメージを受けたのでリセット
         stateBase.core.SetDamage(new FighterSkill.CustomHitBox(), null);
     }
@@ -292,20 +281,7 @@ public class FighterStateDamage : StateBaseScriptMonoBehaviour
 		//エフェクト再生
 		BoxCollider _bCol = stateBase.core.GetDamageCollider;
 		Transform t = _bCol.gameObject.transform;
-		for (int i = 0; i < box.hitEffects.Count; i++)
-		{
-			if (box.hitEffects[i].effect != null)
-			{
-				if (GameManager.Instance.GetPlayFighterCore(stateBase.core.EnemyNumber).Direction == PlayerDirection.Right)
-				{
-					Object.Instantiate(box.hitEffects[i].effect, new Vector3(t.position.x + _bCol.center.x + box.hitEffects[i].position.x, t.position.y + _bCol.center.y + box.hitEffects[i].position.y, t.position.z + _bCol.center.z + box.hitEffects[i].position.z), Quaternion.identity);
-				}
-				else if (GameManager.Instance.GetPlayFighterCore(stateBase.core.EnemyNumber).Direction == PlayerDirection.Left)
-				{
-					Object.Instantiate(box.hitEffects[i].effect, new Vector3(t.position.x + _bCol.center.x + box.hitEffects[i].position.x, t.position.y + _bCol.center.y + box.hitEffects[i].position.y, t.position.z + _bCol.center.z + box.hitEffects[i].position.z), Quaternion.Euler(0, 180, 0));
-				}
-			}
-		}
+        CreateHitEffects(_bCol, t,box);
 
 		//ノックバックのセット
 		//遠距離の場合は相手側ノックバックなし
@@ -317,7 +293,8 @@ public class FighterStateDamage : StateBaseScriptMonoBehaviour
 		{
 			stateBase.core.SetKnockBack(box.airKnockBack, stateBase.core.EnemyNumber, tmpDir, false);
 		}
-
+        //ゲージ増加
+        stateBase.core.SpecialGauge += box.enemyPlusGauge;
 		stateBase.core.SetDamage(new FighterSkill.CustomHitBox(),null);
     }
 	#endregion
@@ -368,20 +345,7 @@ public class FighterStateDamage : StateBaseScriptMonoBehaviour
 		//エフェクト再生
 		BoxCollider _bCol = stateBase.core.GetDamageCollider;
 		Transform t = _bCol.gameObject.transform;
-		for (int i = 0; i < box.hitEffects.Count; i++)
-		{
-			if (box.hitEffects[i].effect != null)
-			{
-				if (GameManager.Instance.GetPlayFighterCore(stateBase.core.EnemyNumber).Direction == PlayerDirection.Right)
-				{
-					Object.Instantiate(box.hitEffects[i].effect, new Vector3(t.position.x + _bCol.center.x + box.hitEffects[i].position.x, t.position.y + _bCol.center.y + box.hitEffects[i].position.y, t.position.z + _bCol.center.z + box.hitEffects[i].position.z), Quaternion.identity);
-				}
-				else if (GameManager.Instance.GetPlayFighterCore(stateBase.core.EnemyNumber).Direction == PlayerDirection.Left)
-				{
-					Object.Instantiate(box.hitEffects[i].effect, new Vector3(t.position.x + _bCol.center.x + box.hitEffects[i].position.x, t.position.y + _bCol.center.y + box.hitEffects[i].position.y, t.position.z + _bCol.center.z + box.hitEffects[i].position.z), Quaternion.Euler(0, 180, 0));
-				}
-			}
-		}
+        CreateHitEffects(_bCol, t ,box);
 
 		//遠距離の場合は相手側ノックバックなし
 		if (box.mode != HitBoxMode.Bullet)
@@ -392,7 +356,8 @@ public class FighterStateDamage : StateBaseScriptMonoBehaviour
 		{
 			stateBase.core.SetKnockBack(box.airKnockBack, stateBase.core.EnemyNumber, tmpDir, false);
 		}
-
+        //ゲージ増加
+        stateBase.core.SpecialGauge += box.enemyPlusGauge;
 		stateBase.core.SetDamage(new FighterSkill.CustomHitBox(),null);
 	}
     #endregion
@@ -420,6 +385,14 @@ public class FighterStateDamage : StateBaseScriptMonoBehaviour
         stateBase.core.SetSkill(stateBase.core.GetDamage.enemyThrowSkill, 0);
         
         throwDamages = stateBase.core.GetDamage;
+        //ヒットストップ
+        GameManager.Instance.SetHitStop(stateBase.core.PlayerNumber, throwDamages.hitStop);
+        GameManager.Instance.SetHitStop(stateBase.core.EnemyNumber, throwDamages.hitStop);
+
+        //エフェクト再生
+		BoxCollider _bCol = stateBase.core.GetDamageCollider;
+		Transform trans = _bCol.gameObject.transform;
+        CreateHitEffects(_bCol, trans, throwDamages);
         //ダメージを受けたのでリセット
         GameManager.Instance.GetPlayFighterCore(stateBase.core.GetDamageCollider.gameObject.layer).SetSkill(stateBase.core.GetDamage.throwSkill, 0);
         stateBase.core.SetDamage(new FighterSkill.CustomHitBox(), null);
@@ -432,6 +405,8 @@ public class FighterStateDamage : StateBaseScriptMonoBehaviour
             if (throwDamages.isThrowGroundDamage)
             {
                 stateBase.core.HP -= throwDamages.throwGroundDamage+GameDataStrage.Instance.GetPlusDamage(stateBase.core.EnemyNumber);
+                //ゲージ増加
+                stateBase.core.SpecialGauge += throwDamages.enemyPlusGauge;
                 GameManager.Instance.GetPlayFighterCore(stateBase.core.EnemyNumber).PlusComboCount(1);
                 if (stateBase.core.HP < 0)
                 {
@@ -444,6 +419,8 @@ public class FighterStateDamage : StateBaseScriptMonoBehaviour
 		{
 			if(dm.frame==stateBase.core.AnimationPlayerCompornent.NowFrame)
 			{
+                //ゲージ増加
+                stateBase.core.SpecialGauge += throwDamages.enemyPlusGauge;
                 stateBase.core.HP -= dm.damage + GameDataStrage.Instance.GetPlusDamage(stateBase.core.EnemyNumber); ;
                 GameManager.Instance.GetPlayFighterCore(stateBase.core.EnemyNumber).PlusComboCount(1);
                 if (stateBase.core.HP < 0)
@@ -568,6 +545,57 @@ public class FighterStateDamage : StateBaseScriptMonoBehaviour
         {
             return stateBase.core.AnimationPlayerCompornent.EndAnimFrag;
 
+        }
+    }
+    //エフェクトの生成(ガードは別)
+    private void CreateHitEffects(BoxCollider _boxCollider, Transform _enemyTrans, FighterSkill.CustomHitBox _box)
+    {
+        Transform _en = _enemyTrans;
+        for (int i = 0; i < _box.hitEffects.Count; i++)
+        {
+            if (_box.hitEffects[i].effect != null)
+            {
+                _enemyTrans = _en;
+                GameObject obj = null;
+                if (!_box.hitEffects[i].isEnemyPos)
+                {
+                    if (GameManager.Instance.GetPlayFighterCore(stateBase.core.EnemyNumber).Direction == PlayerDirection.Right)
+                    {
+                        obj = Object.Instantiate(_box.hitEffects[i].effect, new Vector3(_enemyTrans.position.x + _boxCollider.center.x + _box.hitEffects[i].position.x, _enemyTrans.position.y + _boxCollider.center.y + _box.hitEffects[i].position.y, _enemyTrans.position.z + _boxCollider.center.z + _box.hitEffects[i].position.z), Quaternion.identity);
+                    }
+                    else if (GameManager.Instance.GetPlayFighterCore(stateBase.core.EnemyNumber).Direction == PlayerDirection.Left)
+                    {
+                        obj = Object.Instantiate(_box.hitEffects[i].effect, new Vector3(_enemyTrans.position.x + _boxCollider.center.x + _box.hitEffects[i].position.x, _enemyTrans.position.y + _boxCollider.center.y + _box.hitEffects[i].position.y, _enemyTrans.position.z + _boxCollider.center.z + _box.hitEffects[i].position.z), Quaternion.Euler(0, 180, 0));
+                    }
+                }
+                else
+                {
+                    _enemyTrans = stateBase.core.transform;
+                    if (GameManager.Instance.GetPlayFighterCore(stateBase.core.EnemyNumber).Direction == PlayerDirection.Right)
+                    {
+                        obj = Object.Instantiate(_box.hitEffects[i].effect, new Vector3(_enemyTrans.position.x + _boxCollider.center.x + _box.hitEffects[i].position.x, _enemyTrans.position.y + _boxCollider.center.y + _box.hitEffects[i].position.y, _enemyTrans.position.z + _boxCollider.center.z + _box.hitEffects[i].position.z), Quaternion.identity);
+                    }
+                    else if (GameManager.Instance.GetPlayFighterCore(stateBase.core.EnemyNumber).Direction == PlayerDirection.Left)
+                    {
+                        obj = Object.Instantiate(_box.hitEffects[i].effect, new Vector3(_enemyTrans.position.x + _boxCollider.center.x + _box.hitEffects[i].position.x, _enemyTrans.position.y + _boxCollider.center.y + _box.hitEffects[i].position.y, _enemyTrans.position.z + _boxCollider.center.z + _box.hitEffects[i].position.z), Quaternion.Euler(0, 180, 0));
+                    }
+                }
+                //親子関係
+                if(_box.hitEffects[i].isEnemyParant)
+                {
+                    if (obj != null)
+                    {
+                        obj.transform.parent = stateBase.core.transform;
+                    }
+                }
+                else if(_box.hitEffects[i].isParant)
+                {
+                    if(obj!=null)
+                    {
+                        obj.transform.parent = GameManager.Instance.GetPlayFighterCore(stateBase.core.EnemyNumber).transform;
+                    }
+                }
+            }
         }
     }
 }

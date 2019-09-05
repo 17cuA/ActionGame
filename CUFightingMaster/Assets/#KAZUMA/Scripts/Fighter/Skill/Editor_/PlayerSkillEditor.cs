@@ -308,21 +308,17 @@ public class PlayerSkillEditor : EditorWindow
                         box.damage = EditorGUILayout.IntField("ダメージ量", box.damage);
                         box.stanDamage = EditorGUILayout.IntField("スタン値", box.stanDamage);
                         EditorGUILayout.EndHorizontal();
+                        box.enemyPlusGauge = EditorGUILayout.IntField("相手ゲージ増加量", box.enemyPlusGauge);
                         EditorGUILayout.BeginHorizontal();
-                       　 box.knockBack = EditorGUILayout.FloatField("ノックバック値", box.knockBack);
+                       　box.knockBack = EditorGUILayout.FloatField("ノックバック値", box.knockBack);
                         box.plusGauge = EditorGUILayout.IntField("ゲージ増加量", box.plusGauge);
                         EditorGUILayout.EndHorizontal();
                         EditorGUILayout.BeginHorizontal();
                         box.airKnockBack = EditorGUILayout.FloatField("空中ノックバック値", box.airKnockBack);
                         box.guardKnockBack = EditorGUILayout.FloatField("ガードバック値", box.guardKnockBack);
                         EditorGUILayout.EndHorizontal();
-                        if (!box.isDown)
-                        {
-                            EditorGUILayout.BeginHorizontal();
+                        EditorGUILayout.BeginHorizontal();
                             box.hitRigor = EditorGUILayout.IntField("ヒット硬直", box.hitRigor);
-							EditorGUILayout.EndHorizontal();
-						}
-						EditorGUILayout.BeginHorizontal();
 						box.guardHitRigor = EditorGUILayout.IntField("ガード硬直", box.guardHitRigor);
                         EditorGUILayout.EndHorizontal();
                     }
@@ -341,6 +337,19 @@ public class PlayerSkillEditor : EditorWindow
                             EditorGUILayout.BeginVertical("Box");
                             //削除
                             bool f = false;
+                            EditorGUILayout.BeginHorizontal();
+                            box.hitEffects[ef].isParant = EditorGUILayout.Toggle("親子関係", box.hitEffects[ef].isParant);
+                            if(box.hitEffects[ef].isParant&&box.hitEffects[ef].isEnemyParant)
+                            {
+                                box.hitEffects[ef].isEnemyParant = false;
+                            }
+                            box.hitEffects[ef].isEnemyParant = EditorGUILayout.Toggle("敵親子関係", box.hitEffects[ef].isEnemyParant);
+                            if (box.hitEffects[ef].isParant && box.hitEffects[ef].isEnemyParant)
+                            {
+                                box.hitEffects[ef].isParant = false;
+                            }
+                            box.hitEffects[ef].isEnemyPos = EditorGUILayout.Toggle("敵ポジション", box.hitEffects[ef].isEnemyPos);
+                            EditorGUILayout.EndHorizontal();
                             EditorGUILayout.BeginHorizontal();
                             box.hitEffects[ef].effect = EditorGUILayout.ObjectField("エフェクト", box.hitEffects[ef].effect, typeof(GameObject), true) as GameObject;
 							box.hitEffects[ef].guardEffect = EditorGUILayout.ObjectField("ガードエフェクト", box.hitEffects[ef].guardEffect, typeof(GameObject), true) as GameObject;
@@ -536,7 +545,7 @@ public class PlayerSkillEditor : EditorWindow
                     f = true;
                 }
                 EditorGUILayout.EndHorizontal();
-
+                frameHitBox[i].isInfinityFrame = EditorGUILayout.Toggle("アニメーション再生後も継続", frameHitBox[i].isInfinityFrame);
                 frameHitBox[i].startFrame = (int)frameStart;
 				frameHitBox[i].endFrame = (int)frameEnd;
 

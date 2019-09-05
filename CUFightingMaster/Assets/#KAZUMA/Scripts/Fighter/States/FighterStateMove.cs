@@ -75,7 +75,10 @@ public class FighterStateMove : StateBaseScriptMonoBehaviour
                 //キーがあれば発動してreturn
                 if (stateBase.groundSkills.ContainsKey(stateBase.input.groundMoveCommand.inputCommandName))
                 {
-                    return true;
+                    if (stateBase.core.SpecialGauge >= stateBase.groundSkills[stateBase.input.groundMoveCommand.inputCommandName].skillCost)
+                    {
+                        return true;
+                    }
                 }
             }
         }
@@ -86,7 +89,10 @@ public class FighterStateMove : StateBaseScriptMonoBehaviour
                 //キーがあれば発動してreturn
                 if (stateBase.airSkills.ContainsKey(stateBase.input.airMoveCommand.inputCommandName))
                 {
-                    return true;
+                    if (stateBase.core.SpecialGauge >= stateBase.airSkills[stateBase.input.airMoveCommand.inputCommandName].skillCost)
+                    {
+                        return true;
+                    }
                 }
             }
         }

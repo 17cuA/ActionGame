@@ -12,17 +12,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4555c0d7fe2368a48b3d4bbeb834ba4f, type: 3}
   m_Name: Clico
   m_EditorClassIdentifier: 
-  HP: 500
+  HP: 10000
   StanGuage: 100
   SpecialGuage: 100
   airBraking: 0.5
-  PlayerModel: {fileID: 3337991982796669725, guid: 0a77df99afc0403428bc4001fb31a0d5,
+  PlayerModel: {fileID: 6757136910751876648, guid: ca752718444b8624aaf5197bfa02f9bb,
     type: 3}
   playerMaterials:
-  - nomalMaterial: {fileID: 2100000, guid: 5e438542c24cf7840a4180efb560a066, type: 2}
-    inversionMaterial: {fileID: 2100000, guid: 2ebf63c892d9d09459b021f3b3c7de6f, type: 2}
-  - nomalMaterial: {fileID: 2100000, guid: 4875f457b766c3c4aa8ec6e321a42e51, type: 2}
-    inversionMaterial: {fileID: 2100000, guid: 3881ffa9171a08746bd5d15d3d79a073, type: 2}
+  - nomalMaterial:
+    - {fileID: 2100000, guid: 5e438542c24cf7840a4180efb560a066, type: 2}
+    inversionMaterial:
+    - {fileID: 2100000, guid: 2ebf63c892d9d09459b021f3b3c7de6f, type: 2}
+  - nomalMaterial:
+    - {fileID: 2100000, guid: 4875f457b766c3c4aa8ec6e321a42e51, type: 2}
+    inversionMaterial:
+    - {fileID: 2100000, guid: 3881ffa9171a08746bd5d15d3d79a073, type: 2}
   gravity: {x: 0, y: -0.25, z: 0}
   gravityMax: {x: 0, y: -20, z: 0}
   headHitBox:
@@ -77,7 +81,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 3db27ad5fc8529a4fa8c6d8a2bdfba93, type: 2}
   - {fileID: 11400000, guid: 3db27ad5fc8529a4fa8c6d8a2bdfba93, type: 2}
   - {fileID: 11400000, guid: 01c82c0f67ec07e46820b6fd55af31cb, type: 2}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: c272c3b233381f048b3fa855cfa3d742, type: 2}
   - {fileID: 11400000, guid: 0369492ad236d0c438e0d515eb8a2881, type: 2}
   - {fileID: 0}
   - {fileID: 0}
@@ -126,10 +130,14 @@ MonoBehaviour:
   groundAttackSkills: []
   airAttackSkills: []
   groundMoveSkills:
-  - name: Front_Dash
+  - skillCost: 2
+    countValid: 1
+    name: Front_Dash
     command: 66
     skill: {fileID: 11400000, guid: 7201b9ee970a9ae4b88ab6e4e2303e59, type: 2}
-  - name: Back_Dash
+  - skillCost: 0
+    countValid: 1
+    name: Back_Dash
     command: 44
     skill: {fileID: 11400000, guid: 1b2a9a5df63cebc42a5cc2ed4632e665, type: 2}
   airMoveSkills: []

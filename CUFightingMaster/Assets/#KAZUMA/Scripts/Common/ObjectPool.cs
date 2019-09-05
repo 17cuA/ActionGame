@@ -6,6 +6,10 @@ public class ComponentObjectPool<T>　where T : Component
 {
     private List<GameObject> poolObjList;
 	private List<T> componentList;
+    public List<T> GetList
+    {
+        get { return componentList; }
+    }
     public GameObject parantObject = null;
     //返す用
     public struct Objs

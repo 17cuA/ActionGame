@@ -65,7 +65,6 @@ public class FighterStateGuard : StateBaseScriptMonoBehaviour
 		Direction inp = stateBase.input.GetPlayerMoveDirection(stateBase);
 		if (inp == Direction.Back)
 		{
-			Debug.Log("ガード");
 			stateBase.ChangeSkillConstant(SkillConstants.Stand_Guard, 0);
 		}
 		else if (inp == Direction.DownBack)
@@ -87,23 +86,10 @@ public class FighterStateGuard : StateBaseScriptMonoBehaviour
 		//エフェクト再生
 		BoxCollider _bCol = stateBase.core.GetDamageCollider;
 		Transform t = _bCol.gameObject.transform;
-		for (int i = 0; i < box.hitEffects.Count; i++)
-		{
-			if (box.hitEffects[i].guardEffect != null)
-			{
-				if (GameManager.Instance.GetPlayFighterCore(stateBase.core.EnemyNumber).Direction == PlayerDirection.Right)
-				{
-					Object.Instantiate(box.hitEffects[i].guardEffect, new Vector3(t.position.x + _bCol.center.x + box.hitEffects[i].position.x, t.position.y + _bCol.center.y + box.hitEffects[i].position.y, t.position.z + _bCol.center.z + box.hitEffects[i].position.z), Quaternion.identity);
-				}
-				else if (GameManager.Instance.GetPlayFighterCore(stateBase.core.EnemyNumber).Direction == PlayerDirection.Left)
-				{
-					Object.Instantiate(box.hitEffects[i].guardEffect, new Vector3(t.position.x + _bCol.center.x + box.hitEffects[i].position.x, t.position.y + _bCol.center.y + box.hitEffects[i].position.y, t.position.z + _bCol.center.z + box.hitEffects[i].position.z), Quaternion.Euler(0, 180, 0));
-				}
-			}
-		}
+        CreateGuardEffects(_bCol, t, box);
 
-		//遠距離の場合は相手側ノックバックなし
-		if (box.mode != HitBoxMode.Bullet)
+        //遠距離の場合は相手側ノックバックなし
+        if (box.mode != HitBoxMode.Bullet)
 		{
 			stateBase.core.SetKnockBack(box.guardKnockBack, stateBase.core.EnemyNumber, tmpDir);
 		}
@@ -140,5 +126,57 @@ public class FighterStateGuard : StateBaseScriptMonoBehaviour
 	{
 		isGuardEnd = true;
 	}
+    //エフェクトの生成
+    private void CreateGuardEffects(BoxCollider _boxCollider, Transform _enemyTrans, FighterSkill.CustomHitBox _box)
+    {
+        Transform _en = _enemyTrans;
+        for (int i = 0; i < _box.hitEffects.Count; i++)
+        {
+            if (_box.hitEffects[i].guardEffect != null)
+            {
+                _enemyTrans = _en;
+                GameObject obj = null;
+                if (!_box.hitEffects[i].isEnemyPos)
+                {
+                    if (GameManager.Instance.GetPlayFighterCore(stateBase.core.EnemyNumber).Direction == PlayerDirection.Right)
+                    {
+                        obj = Object.Instantiate(_box.hitEffects[i].guardEffect, new Vector3(_enemyTrans.position.x + _boxCollider.center.x + _box.hitEffects[i].position.x, _enemyTrans.position.y + _boxCollider.center.y + _box.hitEffects[i].position.y, _enemyTrans.position.z + _boxCollider.center.z + _box.hitEffects[i].position.z), Quaternion.identity);
+                    }
+                    else if (GameManager.Instance.GetPlayFighterCore(stateBase.core.EnemyNumber).Direction == PlayerDirection.Left)
+                    {
+                        obj = Object.Instantiate(_box.hitEffects[i].guardEffect, new Vector3(_enemyTrans.position.x + _boxCollider.center.x + _box.hitEffects[i].position.x, _enemyTrans.position.y + _boxCollider.center.y + _box.hitEffects[i].position.y, _enemyTrans.position.z + _boxCollider.center.z + _box.hitEffects[i].position.z), Quaternion.Euler(0, 180, 0));
+                    }
+                }
+                else
+                {
+                    _enemyTrans = stateBase.core.transform;
+                    if (GameManager.Instance.GetPlayFighterCore(stateBase.core.EnemyNumber).Direction == PlayerDirection.Right)
+                    {
+                        obj = Object.Instantiate(_box.hitEffects[i].guardEffect, new Vector3(_enemyTrans.position.x + _boxCollider.center.x + _box.hitEffects[i].position.x, _enemyTrans.position.y + _boxCollider.center.y + _box.hitEffects[i].position.y, _enemyTrans.position.z + _boxCollider.center.z + _box.hitEffects[i].position.z), Quaternion.identity);
+                    }
+                    else if (GameManager.Instance.GetPlayFighterCore(stateBase.core.EnemyNumber).Direction == PlayerDirection.Left)
+                    {
+                        obj = Object.Instantiate(_box.hitEffects[i].guardEffect, new Vector3(_enemyTrans.position.x + _boxCollider.center.x + _box.hitEffects[i].position.x, _enemyTrans.position.y + _boxCollider.center.y + _box.hitEffects[i].position.y, _enemyTrans.position.z + _boxCollider.center.z + _box.hitEffects[i].position.z), Quaternion.Euler(0, 180, 0));
+                    }
+                }
+                //親子関係
+                if(_box.hitEffects[i].isEnemyParant)
+                {
+                    if (obj != null)
+                    {
+                        obj.transform.parent = stateBase.core.transform;
+                    }
+                }
+                else if(_box.hitEffects[i].isParant)
+                {
+                    if(obj!=null)
+                    {
+                        obj.transform.parent = GameManager.Instance.GetPlayFighterCore(stateBase.core.EnemyNumber).transform;
+                    }
+                }
+            }
+        }
+    }
+
 
 }

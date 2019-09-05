@@ -34,8 +34,8 @@ MonoBehaviour:
     - hitBox:
         size: {x: 1.8, y: 3.86, z: 1}
         localPosition: {x: 1.13, y: 1.93, z: 0}
-      startFrame: 3
-      endFrame: 5
+      startFrame: 7
+      endFrame: 9
     hitStop: 10
     hitPoint: 0
     hitStrength: 0
@@ -44,7 +44,11 @@ MonoBehaviour:
     knockBack: 0
     airKnockBack: 0
     guardKnockBack: 0
-    hitEffects: []
+    hitEffects:
+    - effect: {fileID: 7721722575896693875, guid: 027f955a5ea60b24897a3c579e52a3cf,
+        type: 3}
+      guardEffect: {fileID: 0}
+      position: {x: 0, y: 0, z: 0}
     isDown: 0
     isThrow: 1
     isThrowGroundDamage: 1

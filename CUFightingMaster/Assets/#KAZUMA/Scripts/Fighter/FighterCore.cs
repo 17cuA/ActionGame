@@ -36,6 +36,10 @@ public class FighterCore : MonoBehaviour
     //現在のプレイヤーの移動の状況、状態
     private PlayerMoveState playerMoveState = PlayerMoveState.Idle;
     #region Getter
+    public List<SkinnedMeshRenderer> Meshes
+    {
+        get { return mesh; }
+    }
     public GameObject PlayerModel
     {
         get { return playerModel; }
@@ -109,11 +113,17 @@ public class FighterCore : MonoBehaviour
         {
 			for(int i = 0;i<mesh.Count;i++)
 			{
-				mainMaterial.Add(mesh[i].material);
-			}
+                if (mesh[i] != null)
+                {
+                    if (mesh[i].material != null)
+                    {
+                        mainMaterial.Add(mesh[i].material);
+                    }
+                }
+            }
             HP = status.HP;
-			StanGauge = status.StanGuage;
-			SpecialGauge = status.SpecialGuage;
+			StanGauge = 0;
+			SpecialGauge = 0;
             //アニメーションプレイヤーの取得
             animationPlayer = playerModel.GetComponent<FightingAnimationPlayer>();
             mover = new FighterMover(this);
@@ -228,8 +238,11 @@ public class FighterCore : MonoBehaviour
 	{
 		for(int i = 0;i<_material.Length;i++) 
 		{
-			mesh[i].material = _material[i];
-		}
+            if (_material[i] != null)
+            {
+                mesh[i].material = _material[i];
+            }
+        }
 	}
     public void DirectionChangeMaterial()
     {
@@ -528,161 +541,212 @@ public class FighterCore : MonoBehaviour
         {
             Gizmos.color = Color.green;
             Vector3 pos; Vector3 size;
-            if (nowPlaySkill != null)
+            if (hitJudgement.Head.gameObject.activeSelf == true)
             {
-                #region Head
-                if (nowPlaySkill.headFlag)
+                Gizmos.DrawWireCube(hitJudgement.Head.transform.position + hitJudgement.Head.center, hitJudgement.Head.size);
+            }
+            if (hitJudgement.Body.gameObject.activeSelf == true)
+            {
+                Gizmos.DrawWireCube(hitJudgement.Body.transform.position + hitJudgement.Body.center, hitJudgement.Body.size);
+            }
+            if (hitJudgement.Foot.gameObject.activeSelf == true)
+            {
+                Gizmos.DrawWireCube(hitJudgement.Foot.transform.position + hitJudgement.Foot.center, hitJudgement.Foot.size);
+            }
+            if (hitJudgement.Grab.gameObject.activeSelf == true)
+            {
+                Gizmos.color = Color.blue;
+                Gizmos.DrawWireCube(hitJudgement.Grab.transform.position + hitJudgement.Grab.center, hitJudgement.Grab.size);
+            }
+            if (hitJudgement.Push.gameObject.activeSelf == true)
+            {
+                Gizmos.color = new Color(1, 0.92f, 0.016f, 0.5f);
+                Gizmos.DrawCube(hitJudgement.Push.transform.position + hitJudgement.Push.center, hitJudgement.Push.size);
+            }
+            foreach(var _c in hitJudgement.Custom)
+            {
+                if(_c.gameObject.activeSelf == true)
                 {
-                    Vector3 lp = status.headHitBox.localPosition;
-                    lp.x *= dir;
-                    pos = transform.position + lp;
-                    size = status.headHitBox.size;
-                    for (int i = 0; i < nowPlaySkill.plusHeadHitBox.Count; i++)
+                    if(_c.gameObject.tag == CommonConstants.Tags.HurtBox)
                     {
-                        if ((nowPlaySkill.plusHeadHitBox[i].startFrame <= animationPlayer.NowFrame) && nowPlaySkill.plusHeadHitBox[i].endFrame >= animationPlayer.NowFrame)
-                        {
-                            Vector3 lPos = status.headHitBox.localPosition;
-                            Vector3 plusLpos = nowPlaySkill.plusHeadHitBox[i].hitBox.localPosition;
-                            lPos.x *= dir;
-                            plusLpos.x *= dir;
-                            pos = transform.position + lPos + plusLpos;
-                            size = status.headHitBox.size + nowPlaySkill.plusHeadHitBox[i].hitBox.size;
-                        }
+                        Gizmos.color = Color.green;
                     }
-                    Gizmos.DrawWireCube(pos, size);
+                    else if(_c.gameObject.tag == CommonConstants.Tags.Pushing)
+                    {
+                        Gizmos.color = new Color(1, 0.92f, 0.016f, 0.5f);
+                        Gizmos.DrawCube(_c.transform.position + _c.center, _c.size);
+                        continue;
+                    }
+                    else if(_c.gameObject.tag == CommonConstants.Tags.HitBox)
+                    {
+                        Gizmos.color = new Color(1, 0, 0, 0.5f);
+                        Gizmos.DrawCube(_c.transform.position + _c.center, _c.size);
+                        continue;
+                    }
+                    else if (_c.gameObject.tag == CommonConstants.Tags.Grab)
+                    {
+                        Gizmos.color = Color.blue;
+                    }                    
+                    Gizmos.DrawWireCube(_c.transform.position + _c.center, _c.size);
                 }
-                #endregion
-                #region Body
-                if (nowPlaySkill.bodyFlag)
-                {
-                    Vector3 lp = status.bodyHitBox.localPosition;
-                    lp.x *= dir;
-                    pos = transform.position + lp;
-                    size = status.bodyHitBox.size;
-                    for (int i = 0; i < nowPlaySkill.plusBodyHitBox.Count; i++)
-                    {
-                        if ((nowPlaySkill.plusBodyHitBox[i].startFrame <= animationPlayer.NowFrame) && nowPlaySkill.plusBodyHitBox[i].endFrame >= animationPlayer.NowFrame)
-                        {
-                            Vector3 lPos = status.bodyHitBox.localPosition;
-                            Vector3 plusLpos = nowPlaySkill.plusBodyHitBox[i].hitBox.localPosition;
-                            lPos.x *= dir;
-                            plusLpos.x *= dir;
-                            pos = transform.position + lPos + plusLpos;
-                            size = status.bodyHitBox.size + nowPlaySkill.plusBodyHitBox[i].hitBox.size;
-                        }
-                    }
-                    Gizmos.DrawWireCube(pos, size);
-                }
-                #endregion
-                #region Foot
-                if (nowPlaySkill.footFlag)
-                {
-                    Vector3 lp = status.footHitBox.localPosition;
-                    lp.x *= dir;
-                    pos = transform.position + lp;
-                    size = status.footHitBox.size;
-                    for (int i = 0; i < nowPlaySkill.plusFootHitBox.Count; i++)
-                    {
-                        if ((nowPlaySkill.plusFootHitBox[i].startFrame <= animationPlayer.NowFrame) && nowPlaySkill.plusFootHitBox[i].endFrame >= animationPlayer.NowFrame)
-                        {
-                            Vector3 lPos = status.footHitBox.localPosition;
-                            Vector3 plusLpos = nowPlaySkill.plusFootHitBox[i].hitBox.localPosition;
-                            lPos.x *= dir;
-                            plusLpos.x *= dir;
-                            pos = transform.position + lPos + plusLpos;
-                            size = status.footHitBox.size + nowPlaySkill.plusFootHitBox[i].hitBox.size;
-                        }
-                    }
-                    Gizmos.DrawWireCube(pos, size);
-                }
-                #endregion
-                #region Grab
-                if (nowPlaySkill.grabFlag)
-                {
-                    Gizmos.color = Color.blue;
-                    Vector3 lp = status.grabHitBox.localPosition;
-                    lp.x *= dir;
-                    pos = transform.position + lp;
-                    size = status.grabHitBox.size;
-                    for (int i = 0; i < nowPlaySkill.plusGrabHitBox.Count; i++)
-                    {
-                        if ((nowPlaySkill.plusGrabHitBox[i].startFrame <= animationPlayer.NowFrame) && nowPlaySkill.plusGrabHitBox[i].endFrame >= animationPlayer.NowFrame)
-                        {
-                            Vector3 lPos = status.grabHitBox.localPosition;
-                            Vector3 plusLpos = nowPlaySkill.plusGrabHitBox[i].hitBox.localPosition;
-                            lPos.x *= dir;
-                            plusLpos.x *= dir;
-                            pos = transform.position + lPos + plusLpos;
-                            size = status.grabHitBox.size + nowPlaySkill.plusGrabHitBox[i].hitBox.size;
-                        }
-                    }
-                    Gizmos.DrawWireCube(pos, size);
-                }
-                #endregion
-                #region Pushing
-                if (nowPlaySkill.pushingFlag)
-                {
-                    Gizmos.color = new Color(1, 0.92f, 0.016f, 0.5f);
-                    Vector3 lp = status.pushingHitBox.localPosition;
-                    lp.x *= dir;
-                    pos = transform.position + lp;
-                    size = status.pushingHitBox.size;
-                    for (int i = 0; i < nowPlaySkill.plusPushingHitBox.Count; i++)
-                    {
-                        if ((nowPlaySkill.plusPushingHitBox[i].startFrame <= animationPlayer.NowFrame) && nowPlaySkill.plusPushingHitBox[i].endFrame >= animationPlayer.NowFrame)
-                        {
-                            Vector3 lPos = status.pushingHitBox.localPosition;
-                            Vector3 plusLpos = nowPlaySkill.plusPushingHitBox[i].hitBox.localPosition;
-                            lPos.x *= dir;
-                            plusLpos.x *= dir;
-                            pos = transform.position + lPos + plusLpos;
-                            size = status.pushingHitBox.size + nowPlaySkill.plusPushingHitBox[i].hitBox.size;
-                        }
-                    }
-                    Gizmos.DrawCube(pos, size);
-                }
-                #endregion
-                #region Custom
-                for (int i = 0; i < nowPlaySkill.customHitBox.Count; i++)
-                {
-                    pos = transform.position;
-                    size = Vector3.zero;
-                    for (int j = 0; j < nowPlaySkill.customHitBox[i].frameHitBoxes.Count; j++)
-                    {
-                        if ((nowPlaySkill.customHitBox[i].frameHitBoxes[j].startFrame <= animationPlayer.NowFrame) &&
-                            (nowPlaySkill.customHitBox[i].frameHitBoxes[j].endFrame >= animationPlayer.NowFrame))
-                        {
-                            Vector3 lPos = nowPlaySkill.customHitBox[i].frameHitBoxes[j].hitBox.localPosition;
-                            lPos.x *= dir;
-                            pos = transform.position + lPos;
-                            size = nowPlaySkill.customHitBox[i].frameHitBoxes[j].hitBox.size;
-                        }
-                    }
-                    switch (nowPlaySkill.customHitBox[i].mode)
-                    {
-                        case HitBoxMode.HitBox:
-                            Gizmos.color = new Color(1, 0, 0, 0.5f);
-                            Gizmos.DrawCube(pos, size);
-                            break;
-                        case HitBoxMode.HurtBox:
-                            Gizmos.color = Color.green;
-                            Gizmos.DrawWireCube(pos, size);
-                            break;
-                        case HitBoxMode.GrabAndSqueeze:
-                            Gizmos.color = new Color(1, 0.92f, 0.016f, 0.5f);
-                            Gizmos.DrawCube(pos, size);
-                            break;
-                    }
-                }
-                #endregion
             }
 
-            else
-            {
-                DefaultHitBoxDraw();
-            }
+            //     if (nowPlaySkill != null)
+            //     {
+            //         #region Head
+            //         // if (nowPlaySkill.headFlag)
+            //         // {
+            //         //     Vector3 lp = status.headHitBox.localPosition;
+            //         //     lp.x *= dir;
+            //         //     pos = transform.position + lp;
+            //         //     size = status.headHitBox.size;
+            //         //     for (int i = 0; i < nowPlaySkill.plusHeadHitBox.Count; i++)
+            //         //     {
+            //         //         if ((nowPlaySkill.plusHeadHitBox[i].startFrame <= animationPlayer.NowFrame) && nowPlaySkill.plusHeadHitBox[i].endFrame >= animationPlayer.NowFrame)
+            //         //         {
+            //         //             Vector3 lPos = status.headHitBox.localPosition;
+            //         //             Vector3 plusLpos = nowPlaySkill.plusHeadHitBox[i].hitBox.localPosition;
+            //         //             lPos.x *= dir;
+            //         //             plusLpos.x *= dir;
+            //         //             pos = transform.position + lPos + plusLpos;
+            //         //             size = status.headHitBox.size + nowPlaySkill.plusHeadHitBox[i].hitBox.size;
+            //         //         }
+            //         //     }
+            //         //     Gizmos.DrawWireCube(pos, size);
+            //         // }
+            //         // #endregion
+            //         // #region Body
+            //         // if (nowPlaySkill.bodyFlag)
+            //         // {
+            //         //     Vector3 lp = status.bodyHitBox.localPosition;
+            //         //     lp.x *= dir;
+            //         //     pos = transform.position + lp;
+            //         //     size = status.bodyHitBox.size;
+            //         //     for (int i = 0; i < nowPlaySkill.plusBodyHitBox.Count; i++)
+            //         //     {
+            //         //         if ((nowPlaySkill.plusBodyHitBox[i].startFrame <= animationPlayer.NowFrame) && nowPlaySkill.plusBodyHitBox[i].endFrame >= animationPlayer.NowFrame)
+            //         //         {
+            //         //             Vector3 lPos = status.bodyHitBox.localPosition;
+            //         //             Vector3 plusLpos = nowPlaySkill.plusBodyHitBox[i].hitBox.localPosition;
+            //         //             lPos.x *= dir;
+            //         //             plusLpos.x *= dir;
+            //         //             pos = transform.position + lPos + plusLpos;
+            //         //             size = status.bodyHitBox.size + nowPlaySkill.plusBodyHitBox[i].hitBox.size;
+            //         //         }
+            //         //     }
+            //         //     Gizmos.DrawWireCube(pos, size);
+            //         // }
+            //         // #endregion
+            //         // #region Foot
+            //         // if (nowPlaySkill.footFlag)
+            //         // {
+            //         //     Vector3 lp = status.footHitBox.localPosition;
+            //         //     lp.x *= dir;
+            //         //     pos = transform.position + lp;
+            //         //     size = status.footHitBox.size;
+            //         //     for (int i = 0; i < nowPlaySkill.plusFootHitBox.Count; i++)
+            //         //     {
+            //         //         if ((nowPlaySkill.plusFootHitBox[i].startFrame <= animationPlayer.NowFrame) && nowPlaySkill.plusFootHitBox[i].endFrame >= animationPlayer.NowFrame)
+            //         //         {
+            //         //             Vector3 lPos = status.footHitBox.localPosition;
+            //         //             Vector3 plusLpos = nowPlaySkill.plusFootHitBox[i].hitBox.localPosition;
+            //         //             lPos.x *= dir;
+            //         //             plusLpos.x *= dir;
+            //         //             pos = transform.position + lPos + plusLpos;
+            //         //             size = status.footHitBox.size + nowPlaySkill.plusFootHitBox[i].hitBox.size;
+            //         //         }
+            //         //     }
+            //         //     Gizmos.DrawWireCube(pos, size);
+            //         // }
+            //         // #endregion
+            //         // #region Grab
+            //         // if (nowPlaySkill.grabFlag)
+            //         // {
+            //         //     Gizmos.color = Color.blue;
+            //         //     Vector3 lp = status.grabHitBox.localPosition;
+            //         //     lp.x *= dir;
+            //         //     pos = transform.position + lp;
+            //         //     size = status.grabHitBox.size;
+            //         //     for (int i = 0; i < nowPlaySkill.plusGrabHitBox.Count; i++)
+            //         //     {
+            //         //         if ((nowPlaySkill.plusGrabHitBox[i].startFrame <= animationPlayer.NowFrame) && nowPlaySkill.plusGrabHitBox[i].endFrame >= animationPlayer.NowFrame)
+            //         //         {
+            //         //             Vector3 lPos = status.grabHitBox.localPosition;
+            //         //             Vector3 plusLpos = nowPlaySkill.plusGrabHitBox[i].hitBox.localPosition;
+            //         //             lPos.x *= dir;
+            //         //             plusLpos.x *= dir;
+            //         //             pos = transform.position + lPos + plusLpos;
+            //         //             size = status.grabHitBox.size + nowPlaySkill.plusGrabHitBox[i].hitBox.size;
+            //         //         }
+            //         //     }
+            //         //     Gizmos.DrawWireCube(pos, size);
+            //         // }
+            //         // #endregion
+            //         // #region Pushing
+            //         // if (nowPlaySkill.pushingFlag)
+            //         // {
+            //         //     Gizmos.color = new Color(1, 0.92f, 0.016f, 0.5f);
+            //         //     Vector3 lp = status.pushingHitBox.localPosition;
+            //         //     lp.x *= dir;
+            //         //     pos = transform.position + lp;
+            //         //     size = status.pushingHitBox.size;
+            //         //     for (int i = 0; i < nowPlaySkill.plusPushingHitBox.Count; i++)
+            //         //     {
+            //         //         if ((nowPlaySkill.plusPushingHitBox[i].startFrame <= animationPlayer.NowFrame) && nowPlaySkill.plusPushingHitBox[i].endFrame >= animationPlayer.NowFrame)
+            //         //         {
+            //         //             Vector3 lPos = status.pushingHitBox.localPosition;
+            //         //             Vector3 plusLpos = nowPlaySkill.plusPushingHitBox[i].hitBox.localPosition;
+            //         //             lPos.x *= dir;
+            //         //             plusLpos.x *= dir;
+            //         //             pos = transform.position + lPos + plusLpos;
+            //         //             size = status.pushingHitBox.size + nowPlaySkill.plusPushingHitBox[i].hitBox.size;
+            //         //         }
+            //         //     }
+            //         //     Gizmos.DrawCube(pos, size);
+            //         // }
+            //         // #endregion
+            //         // #region Custom
+            //         // for (int i = 0; i < nowPlaySkill.customHitBox.Count; i++)
+            //         // {
+            //         //     pos = transform.position;
+            //         //     size = Vector3.zero;
+            //         //     for (int j = 0; j < nowPlaySkill.customHitBox[i].frameHitBoxes.Count; j++)
+            //         //     {
+            //         //         if ((nowPlaySkill.customHitBox[i].frameHitBoxes[j].startFrame <= animationPlayer.NowFrame) &&
+            //         //             (nowPlaySkill.customHitBox[i].frameHitBoxes[j].endFrame >= animationPlayer.NowFrame))
+            //         //         {
+            //         //             Vector3 lPos = nowPlaySkill.customHitBox[i].frameHitBoxes[j].hitBox.localPosition;
+            //         //             lPos.x *= dir;
+            //         //             pos = transform.position + lPos;
+            //         //             size = nowPlaySkill.customHitBox[i].frameHitBoxes[j].hitBox.size;
+            //         //         }
+            //         //     }
+            //         //     switch (nowPlaySkill.customHitBox[i].mode)
+            //         //     {
+            //         //         case HitBoxMode.HitBox:
+            //         //             Gizmos.color = new Color(1, 0, 0, 0.5f);
+            //         //             Gizmos.DrawCube(pos, size);
+            //         //             break;
+            //         //         case HitBoxMode.HurtBox:
+            //         //             Gizmos.color = Color.green;
+            //         //             Gizmos.DrawWireCube(pos, size);
+            //         //             break;
+            //         //         case HitBoxMode.GrabAndSqueeze:
+            //         //             Gizmos.color = new Color(1, 0.92f, 0.016f, 0.5f);
+            //         //             Gizmos.DrawCube(pos, size);
+            //         //             break;
+            //         //     }
+            //         // }
+            //         #endregion
+            //     }
+
+            //     else
+            //     {
+            //         DefaultHitBoxDraw();
+            //     }
+            // }
+            #endregion
         }
-        #endregion
     }
     //デフォルトの当たり判定の表示
     private void DefaultHitBoxDraw()
