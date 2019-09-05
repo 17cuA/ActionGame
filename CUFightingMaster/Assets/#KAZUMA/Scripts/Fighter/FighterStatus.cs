@@ -33,8 +33,8 @@ public class FighterStatus : ScriptableObject
 	[System.Serializable]
 	public class FighterMaterials
 	{
-		public Material nomalMaterial;
-		public Material inversionMaterial;
+		public Material[] nomalMaterial = { };
+		public Material[] inversionMaterial = { };
 	}
 
 	public int HP = 100;
