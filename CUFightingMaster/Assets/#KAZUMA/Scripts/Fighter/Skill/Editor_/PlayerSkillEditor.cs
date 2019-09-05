@@ -173,8 +173,28 @@ public class PlayerSkillEditor : EditorWindow
         playerSkill.cancelFrag = (SkillStatus)EditorGUILayout.EnumFlagsField("キャンセル属性", playerSkill.cancelFrag);
         EditorGUILayout.BeginHorizontal();
         playerSkill.barrageCancelFrag = EditorGUILayout.Toggle("連打キャンセル", playerSkill.barrageCancelFrag);
-        playerSkill.cancelLayer = EditorGUILayout.IntField("（未）キャンセルレイヤー", playerSkill.cancelLayer);
+        playerSkill.skillLayer = EditorGUILayout.IntField("スキルレイヤー", playerSkill.skillLayer);
         EditorGUILayout.EndHorizontal();
+        if (GUILayout.Button("キャンセルレイヤー作成", GUILayout.Width(150), GUILayout.Height(15)))
+        {
+            playerSkill.cancelLayer.Add(0);
+        }
+        for (int ef = 0; ef < playerSkill.cancelLayer.Count; ef++)
+        {
+            //削除
+            bool f = false;
+            EditorGUILayout.BeginHorizontal();
+            playerSkill.cancelLayer[ef] = EditorGUILayout.IntField("キャンセル" + ef, playerSkill.cancelLayer[ef]);
+            if (GUILayout.Button("×", GUILayout.Width(20)))
+            {
+                f = true;
+            }
+            EditorGUILayout.EndHorizontal();
+            if (f)
+            {
+                playerSkill.cancelLayer.Remove(playerSkill.cancelLayer[ef]);
+            }
+        }
 
         EditorGUILayout.EndVertical();
     }

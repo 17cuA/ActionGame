@@ -202,6 +202,14 @@ public class FighterStateBase : StateBaseScriptMonoBehaviour
         {
             return true;
         }
+        //特殊キャンセル
+        foreach(var _can in _now.cancelLayer)
+        {
+            if(_can == _s.skillLayer)
+            {
+                return true;
+            }
+        }
         return false;
     }
 }

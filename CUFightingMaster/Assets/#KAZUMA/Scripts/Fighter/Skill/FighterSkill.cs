@@ -121,6 +121,7 @@ public class FighterSkill : ScriptableObject
 		public int startFrame;
     }
     #endregion
+    public int skillLayer = 0;//キャンセル用のレイヤー
     public AnimationClip animationClip = null;  //再生するアニメーション
     public float animationSpeed = 1;            //アニメーションの速度
     public SkillStatus status = SkillStatus.Normal;                  //Normal,Special等
@@ -129,7 +130,7 @@ public class FighterSkill : ScriptableObject
     public SkillStatus cancelFrag = (SkillStatus)(1<<0);//キャンセルできるもの(ビット)
                                                         //TODO::飛び道具
     public bool barrageCancelFrag = false;      //連打キャンセル
-    public int cancelLayer = 0;                 //キャンセルできるレイヤー
+    public List<int> cancelLayer = new List<int>();                 //キャンセルできるレイヤー
     //ブレンドするかしないか
     public bool inBlend = false;
     public bool outBlend = false;
