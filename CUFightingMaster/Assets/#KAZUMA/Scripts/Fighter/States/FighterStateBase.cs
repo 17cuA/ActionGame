@@ -58,8 +58,8 @@ public class FighterStateBase : StateBaseScriptMonoBehaviour
         }
         Transform t = core.AnimationPlayerCompornent.gameObject.transform;
         core.SetDirection(PlayerDirection.Left);
-        t.localScale = new Vector3(1, 1, -1);
-        t.rotation = Quaternion.Euler(0, 0, 0);
+        core.scaleChangeObject.transform.localScale = new Vector3(1, 1, -1);
+        core.rotationChangeObject.transform.rotation = Quaternion.Euler(0, 0, 0);
         core.SetMaterial(core.Status.playerMaterials[numberP].inversionMaterial);
 
 

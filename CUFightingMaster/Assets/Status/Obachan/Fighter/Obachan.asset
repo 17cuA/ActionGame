@@ -1,0 +1,129 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4555c0d7fe2368a48b3d4bbeb834ba4f, type: 3}
+  m_Name: Obachan
+  m_EditorClassIdentifier: 
+  HP: 500
+  StanGuage: 100
+  SpecialGuage: 100
+  airBraking: 0.5
+  PlayerModel: {fileID: 3337991982796669725, guid: 0a77df99afc0403428bc4001fb31a0d5,
+    type: 3}
+  playerMaterials:
+  - nomalMaterial: {fileID: 2100000, guid: 5e438542c24cf7840a4180efb560a066, type: 2}
+    inversionMaterial: {fileID: 2100000, guid: 2ebf63c892d9d09459b021f3b3c7de6f, type: 2}
+  - nomalMaterial: {fileID: 2100000, guid: 4875f457b766c3c4aa8ec6e321a42e51, type: 2}
+    inversionMaterial: {fileID: 2100000, guid: 3881ffa9171a08746bd5d15d3d79a073, type: 2}
+  gravity: {x: 0, y: -0.25, z: 0}
+  gravityMax: {x: 0, y: -20, z: 0}
+  headHitBox:
+    size: {x: 1, y: 1, z: 1}
+    localPosition: {x: 0.2, y: 3.6, z: 0}
+  bodyHitBox:
+    size: {x: 1.6, y: 2.3, z: 1}
+    localPosition: {x: 0.1, y: 2.5, z: 0}
+  footHitBox:
+    size: {x: 1.6, y: 1.35, z: 1}
+    localPosition: {x: 0.1, y: 0.675, z: 0}
+  grabHitBox:
+    size: {x: 1, y: 3.3, z: 1}
+    localPosition: {x: 0.1, y: 1.65, z: 0}
+  pushingHitBox:
+    size: {x: 1, y: 3.3, z: 1}
+    localPosition: {x: 0.1, y: 1.65, z: 0}
+  constantsSkills:
+  - {fileID: 11400000, guid: 707d78d74618cf447b3ebd6fe56acfe8, type: 2}
+  - {fileID: 11400000, guid: 404c1b831ad7e634cbd43466135d4b3c, type: 2}
+  - {fileID: 11400000, guid: b7b7b061cab7cee4291ca7931bacc9bb, type: 2}
+  - {fileID: 11400000, guid: f53951b48ae8b7b41b935015e750a906, type: 2}
+  - {fileID: 11400000, guid: 9f293308b761cb04aad1e190cb6be3e8, type: 2}
+  - {fileID: 11400000, guid: 703dc8861b78a9348887f69c73534a80, type: 2}
+  - {fileID: 11400000, guid: 029ff52f406b40348aa3378211afdd2b, type: 2}
+  - {fileID: 11400000, guid: 7163335ce435c474497f4685d5320fcc, type: 2}
+  - {fileID: 11400000, guid: 4717ca97ea055b94c9d4508469a608b3, type: 2}
+  - {fileID: 11400000, guid: 1b434d18c88667048a5bfabcaac7b060, type: 2}
+  - {fileID: 11400000, guid: 1b434d18c88667048a5bfabcaac7b060, type: 2}
+  - {fileID: 11400000, guid: 1b434d18c88667048a5bfabcaac7b060, type: 2}
+  - {fileID: 11400000, guid: 1b434d18c88667048a5bfabcaac7b060, type: 2}
+  - {fileID: 11400000, guid: 1b434d18c88667048a5bfabcaac7b060, type: 2}
+  - {fileID: 11400000, guid: 1b434d18c88667048a5bfabcaac7b060, type: 2}
+  - {fileID: 11400000, guid: 1b434d18c88667048a5bfabcaac7b060, type: 2}
+  - {fileID: 11400000, guid: 1b434d18c88667048a5bfabcaac7b060, type: 2}
+  - {fileID: 11400000, guid: 1b434d18c88667048a5bfabcaac7b060, type: 2}
+  - {fileID: 11400000, guid: bc04b1d03cd81e8488877397b851f98f, type: 2}
+  - {fileID: 11400000, guid: bc04b1d03cd81e8488877397b851f98f, type: 2}
+  - {fileID: 11400000, guid: bc04b1d03cd81e8488877397b851f98f, type: 2}
+  - {fileID: 11400000, guid: bc04b1d03cd81e8488877397b851f98f, type: 2}
+  - {fileID: 11400000, guid: bc04b1d03cd81e8488877397b851f98f, type: 2}
+  - {fileID: 11400000, guid: bc04b1d03cd81e8488877397b851f98f, type: 2}
+  - {fileID: 11400000, guid: bc04b1d03cd81e8488877397b851f98f, type: 2}
+  - {fileID: 11400000, guid: bc04b1d03cd81e8488877397b851f98f, type: 2}
+  - {fileID: 11400000, guid: bc04b1d03cd81e8488877397b851f98f, type: 2}
+  - {fileID: 11400000, guid: 3db27ad5fc8529a4fa8c6d8a2bdfba93, type: 2}
+  - {fileID: 11400000, guid: 3db27ad5fc8529a4fa8c6d8a2bdfba93, type: 2}
+  - {fileID: 11400000, guid: 3db27ad5fc8529a4fa8c6d8a2bdfba93, type: 2}
+  - {fileID: 11400000, guid: 3db27ad5fc8529a4fa8c6d8a2bdfba93, type: 2}
+  - {fileID: 11400000, guid: 3db27ad5fc8529a4fa8c6d8a2bdfba93, type: 2}
+  - {fileID: 11400000, guid: 3db27ad5fc8529a4fa8c6d8a2bdfba93, type: 2}
+  - {fileID: 11400000, guid: 3db27ad5fc8529a4fa8c6d8a2bdfba93, type: 2}
+  - {fileID: 11400000, guid: 3db27ad5fc8529a4fa8c6d8a2bdfba93, type: 2}
+  - {fileID: 11400000, guid: 01c82c0f67ec07e46820b6fd55af31cb, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 11400000, guid: 725841e54b5dd204ea5780dc31606530, type: 2}
+  - {fileID: 11400000, guid: 49278d8e93880184883099f3b166a474, type: 2}
+  - {fileID: 11400000, guid: d06621f4ca69c3040981a0814dd61e5b, type: 2}
+  - {fileID: 11400000, guid: 2029dedb7d3a78e4c8aea9ef5f5cc4fb, type: 2}
+  - {fileID: 11400000, guid: c877e7445e172104299e484e92e6fc5a, type: 2}
+  - {fileID: 11400000, guid: 13468786a8ff19e499a406f72953a7b7, type: 2}
+  - {fileID: 11400000, guid: 3db27ad5fc8529a4fa8c6d8a2bdfba93, type: 2}
+  - {fileID: 0}
+  - {fileID: 11400000, guid: 81343a971441e84468ff0d9bfcde60d1, type: 2}
+  - {fileID: 11400000, guid: 22b88c7266bc2b648aa07033b89ec2a7, type: 2}
+  - {fileID: 0}
+  - {fileID: 11400000, guid: 0dad812b97032414ab5e0875da3f3557, type: 2}
+  - {fileID: 11400000, guid: ed6caae0e463b9c4bb55db4b15a05cd2, type: 2}
+  - {fileID: 11400000, guid: 829c42ffa0af7df40a46cb5057206e4f, type: 2}
+  - {fileID: 11400000, guid: 5fe41ec1a5254884c949ff1fc648d60f, type: 2}
+  fighter: {fileID: 8909664302368228206, guid: bec4ef309491e0f429b3e4259289abc9, type: 3}
+  groundAttackSkills: []
+  airAttackSkills: []
+  groundMoveSkills: []
+  airMoveSkills: []

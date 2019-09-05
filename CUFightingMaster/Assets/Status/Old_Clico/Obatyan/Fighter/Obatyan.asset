@@ -1,0 +1,147 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4555c0d7fe2368a48b3d4bbeb834ba4f, type: 3}
+  m_Name: Obatyan
+  m_EditorClassIdentifier: 
+  HP: 100
+  StanGuage: 100
+  SpecialGuage: 100
+  airBraking: 0.5
+  PlayerModel: {fileID: 3273255827342735269, guid: 4a7c0cbca10933445a2a190ee80023e8,
+    type: 3}
+  headHitBox:
+    size: {x: 1.74, y: 1, z: 1}
+    localPosition: {x: 0.72, y: 2.89, z: 0}
+  bodyHitBox:
+    size: {x: 2, y: 1, z: 1}
+    localPosition: {x: 0.55, y: 2.04, z: 0}
+  footHitBox:
+    size: {x: 2.93, y: 1.48, z: 1}
+    localPosition: {x: -0.11, y: 0.79, z: 0}
+  grabHitBox:
+    size: {x: 0.78, y: 2.72, z: 1}
+    localPosition: {x: 0, y: 1.43, z: 0}
+  pushingHitBox:
+    size: {x: 1, y: 2.72, z: 1}
+    localPosition: {x: 0, y: 1.54, z: 0}
+  constantsSkills:
+  - {fileID: 11400000, guid: d2ce7a40f197d9247bcec666a3a0c85f, type: 2}
+  - {fileID: 11400000, guid: d49032d43cf4d3e46b7424f98a1cb800, type: 2}
+  - {fileID: 11400000, guid: e21de5ec23f27c64fa07fe9e0662490b, type: 2}
+  - {fileID: 11400000, guid: ba82b826cbd28584182acbb4941797c9, type: 2}
+  - {fileID: 11400000, guid: 1ce4fce71df1d2948896354dbbd62d87, type: 2}
+  - {fileID: 11400000, guid: 2823e799a88b05142ad5fd89e994a34b, type: 2}
+  - {fileID: 11400000, guid: b27997f9710ee3a46b189cc036fc5167, type: 2}
+  - {fileID: 11400000, guid: 279b324301876c945b057e9e7946aee2, type: 2}
+  - {fileID: 11400000, guid: 21a6faabf7f44ca4ca70882571ba08fb, type: 2}
+  - {fileID: 11400000, guid: 0c8bb924a3c8e3c4e94969fd7669b4c1, type: 2}
+  - {fileID: 11400000, guid: 0c8bb924a3c8e3c4e94969fd7669b4c1, type: 2}
+  - {fileID: 11400000, guid: 0c8bb924a3c8e3c4e94969fd7669b4c1, type: 2}
+  - {fileID: 11400000, guid: 0c8bb924a3c8e3c4e94969fd7669b4c1, type: 2}
+  - {fileID: 11400000, guid: 0c8bb924a3c8e3c4e94969fd7669b4c1, type: 2}
+  - {fileID: 11400000, guid: 0c8bb924a3c8e3c4e94969fd7669b4c1, type: 2}
+  - {fileID: 11400000, guid: 0c8bb924a3c8e3c4e94969fd7669b4c1, type: 2}
+  - {fileID: 11400000, guid: 0c8bb924a3c8e3c4e94969fd7669b4c1, type: 2}
+  - {fileID: 11400000, guid: 0c8bb924a3c8e3c4e94969fd7669b4c1, type: 2}
+  - {fileID: 11400000, guid: f9a3050804cc37b4da5b4f45a9adbaab, type: 2}
+  - {fileID: 11400000, guid: f9a3050804cc37b4da5b4f45a9adbaab, type: 2}
+  - {fileID: 11400000, guid: f9a3050804cc37b4da5b4f45a9adbaab, type: 2}
+  - {fileID: 11400000, guid: f9a3050804cc37b4da5b4f45a9adbaab, type: 2}
+  - {fileID: 11400000, guid: 4e67e3393bde51a4bada60c65808e864, type: 2}
+  - {fileID: 11400000, guid: f9a3050804cc37b4da5b4f45a9adbaab, type: 2}
+  - {fileID: 11400000, guid: f9a3050804cc37b4da5b4f45a9adbaab, type: 2}
+  - {fileID: 11400000, guid: f9a3050804cc37b4da5b4f45a9adbaab, type: 2}
+  - {fileID: 11400000, guid: f9a3050804cc37b4da5b4f45a9adbaab, type: 2}
+  - {fileID: 11400000, guid: 656469b4ea48fd640bd26c08dc4d827d, type: 2}
+  - {fileID: 11400000, guid: 656469b4ea48fd640bd26c08dc4d827d, type: 2}
+  - {fileID: 11400000, guid: 656469b4ea48fd640bd26c08dc4d827d, type: 2}
+  - {fileID: 11400000, guid: 656469b4ea48fd640bd26c08dc4d827d, type: 2}
+  - {fileID: 11400000, guid: 656469b4ea48fd640bd26c08dc4d827d, type: 2}
+  - {fileID: 11400000, guid: 656469b4ea48fd640bd26c08dc4d827d, type: 2}
+  - {fileID: 11400000, guid: 656469b4ea48fd640bd26c08dc4d827d, type: 2}
+  - {fileID: 11400000, guid: 656469b4ea48fd640bd26c08dc4d827d, type: 2}
+  - {fileID: 11400000, guid: 656469b4ea48fd640bd26c08dc4d827d, type: 2}
+  - {fileID: 11400000, guid: 16065da9f2c1098488659359bddfdff3, type: 2}
+  - {fileID: 11400000, guid: 7afa3c78461f1444f95229ab8c83320c, type: 2}
+  - {fileID: 11400000, guid: 914c80b376100fd419512ce0e194b51f, type: 2}
+  - {fileID: 11400000, guid: ada215cab93645646ba36afa0c0d3d83, type: 2}
+  - {fileID: 11400000, guid: 4776e01ab84916f49b713a172085f480, type: 2}
+  - {fileID: 11400000, guid: 9a0681fb7fdaed34687962a012ed40a7, type: 2}
+  - {fileID: 11400000, guid: e5991c6ac75eb9942894a9b13f75c378, type: 2}
+  - {fileID: 11400000, guid: ac1dfb0b20015584291c6b5483d6bec6, type: 2}
+  - {fileID: 11400000, guid: 12bd1a297066a5e47bf8a12b3739c762, type: 2}
+  - {fileID: 11400000, guid: e5991c6ac75eb9942894a9b13f75c378, type: 2}
+  - {fileID: 11400000, guid: ac1dfb0b20015584291c6b5483d6bec6, type: 2}
+  - {fileID: 11400000, guid: 12bd1a297066a5e47bf8a12b3739c762, type: 2}
+  - {fileID: 11400000, guid: e5991c6ac75eb9942894a9b13f75c378, type: 2}
+  - {fileID: 11400000, guid: ac1dfb0b20015584291c6b5483d6bec6, type: 2}
+  - {fileID: 11400000, guid: 12bd1a297066a5e47bf8a12b3739c762, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 11400000, guid: 9802ef201b53f8149a6e3df732f0b463, type: 2}
+  - {fileID: 11400000, guid: 5f7ad9ef248fae042a2dbf48cbad5b39, type: 2}
+  - {fileID: 11400000, guid: 6b07beb4dfc6a58478e06c83f5c398fb, type: 2}
+  - {fileID: 11400000, guid: 926c6e9e4ffe6874b99c7dde82997bbd, type: 2}
+  - {fileID: 11400000, guid: 569cadf3be7e02a4f917ec7bacbb0b67, type: 2}
+  - {fileID: 11400000, guid: 6a443b63264a5a84b9f2972b38788d88, type: 2}
+  - {fileID: 11400000, guid: 01c82c0f67ec07e46820b6fd55af31cb, type: 2}
+  - {fileID: 11400000, guid: e48639deb7d0bfc4696eb84e2570c838, type: 2}
+  - {fileID: 11400000, guid: 421acae2afc75924aaf96b0895739283, type: 2}
+  - {fileID: 11400000, guid: d2ce7a40f197d9247bcec666a3a0c85f, type: 2}
+  - {fileID: 11400000, guid: e0179f774b0fc8d4898d1fb1ee9ab951, type: 2}
+  - {fileID: 11400000, guid: 6b07beb4dfc6a58478e06c83f5c398fb, type: 2}
+  - {fileID: 11400000, guid: 926c6e9e4ffe6874b99c7dde82997bbd, type: 2}
+  - {fileID: 11400000, guid: 569cadf3be7e02a4f917ec7bacbb0b67, type: 2}
+  - {fileID: 0}
+  groundAttackSkills:
+  - name: ENKYORI
+    command: 236
+    trigger: A
+    validShotFrame: 6
+    skill: {fileID: 11400000, guid: bddadc24be918e845b070fec883652f8, type: 2}
+  - name: KAIHUKU
+    command: 214
+    trigger: B
+    validShotFrame: 6
+    skill: {fileID: 11400000, guid: f7a1069142b89434ea51a0ddcc02404d, type: 2}
+  - name: TAKKURU
+    command: 623
+    trigger: C
+    validShotFrame: 6
+    skill: {fileID: 11400000, guid: 0c67b6259621a924f88f5fbdcf3dd9d9, type: 2}
+  airAttackSkills:
+  - name: ENKYO_AIR
+    command: 236
+    trigger: A
+    validShotFrame: 6
+    skill: {fileID: 11400000, guid: 9a19d7c69d7906941a0c300e1cd1a388, type: 2}
+  groundMoveSkills:
+  - name: Front_Dash
+    command: 66
+    skill: {fileID: 11400000, guid: 05ecb3388c615344586422fd3091ed4a, type: 2}
+  - name: Back_Dash
+    command: 44
+    skill: {fileID: 11400000, guid: eecbc2b313bf60a439fa3c457342b8f9, type: 2}
+  airMoveSkills: []

@@ -13,6 +13,8 @@ public class FighterCore : MonoBehaviour
     [SerializeField] private FighterStatus status = null;
     [SerializeField] private PlayerDirection direction;
 	[SerializeField] private SkinnedMeshRenderer mesh = null;
+    [Header("スケール変更オブジェクト")] public GameObject scaleChangeObject = null;
+    [Header("ローテーション変更オブジェクト")] public GameObject rotationChangeObject = null;
 	private Material mainMaterial = null;
     private FighterMover mover = null;
     private HitBoxJudgement hitJudgement = null;
@@ -114,6 +116,8 @@ public class FighterCore : MonoBehaviour
             mover = new FighterMover(this);
             hitJudgement = new HitBoxJudgement(this);
             comboCount = 0;
+            if (scaleChangeObject == null) scaleChangeObject = AnimationPlayerCompornent.gameObject;
+            if (rotationChangeObject == null) rotationChangeObject = AnimationPlayerCompornent.gameObject;
         }
     }
     public void UpdateGame()
@@ -236,8 +240,8 @@ public class FighterCore : MonoBehaviour
                 if (GameManager.Instance.GetPlayFighterCore(PlayerNumber.Player2).gameObject.transform.position.x < transform.position.x)
                 {
                     SetDirection(PlayerDirection.Left);
-                    t.localScale = new Vector3(1, 1, -1);
-                    t.rotation = Quaternion.Euler(0, 0, 0);
+                    scaleChangeObject.transform.localScale = new Vector3(1, 1, -1);
+                    rotationChangeObject.transform.rotation = Quaternion.Euler(0, 0, 0);
 					SetMaterial(Status.playerMaterials[numberP].inversionMaterial);
                 }
             }
@@ -247,8 +251,8 @@ public class FighterCore : MonoBehaviour
                 {
                     Transform t = AnimationPlayerCompornent.gameObject.transform;
                     SetDirection(PlayerDirection.Left);
-                    AnimationPlayerCompornent.gameObject.transform.localScale = new Vector3(1, 1, -1);
-                    t.rotation = Quaternion.Euler(0, 0, 0);
+                    scaleChangeObject.transform.localScale = new Vector3(1, 1, -1);
+                    rotationChangeObject.transform.rotation = Quaternion.Euler(0, 0, 0);
 					SetMaterial(Status.playerMaterials[numberP].inversionMaterial);
 				}
 			}
@@ -261,8 +265,8 @@ public class FighterCore : MonoBehaviour
                 if (GameManager.Instance.GetPlayFighterCore(PlayerNumber.Player2).gameObject.transform.position.x > transform.position.x)
                 {
                     SetDirection(PlayerDirection.Right);
-                    AnimationPlayerCompornent.gameObject.transform.localScale = new Vector3(1, 1, 1);
-                    t.rotation = Quaternion.Euler(0, 180, 0);
+                    scaleChangeObject.transform.localScale = new Vector3(1, 1, 1);
+                    rotationChangeObject.transform.rotation = Quaternion.Euler(0, 180, 0);
 					SetMaterial(Status.playerMaterials[numberP].nomalMaterial);
 				}
 			}
@@ -272,8 +276,8 @@ public class FighterCore : MonoBehaviour
                 if (GameManager.Instance.GetPlayFighterCore(PlayerNumber.Player1).gameObject.transform.position.x > transform.position.x)
                 {
                     SetDirection(PlayerDirection.Right);
-                    AnimationPlayerCompornent.gameObject.transform.localScale = new Vector3(1, 1, 1);
-                    t.rotation = Quaternion.Euler(0, 180, 0);
+                    scaleChangeObject.transform.localScale = new Vector3(1, 1, 1);
+                    rotationChangeObject.transform.rotation = Quaternion.Euler(0, 180, 0);
 					if(Status.playerMaterials[numberP].nomalMaterial != null)
 					{
 						SetMaterial(Status.playerMaterials[numberP].nomalMaterial);

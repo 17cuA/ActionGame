@@ -1,0 +1,59 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fbd35985d310504d81036cc55356454, type: 3}
+  m_Name: Throw
+  m_EditorClassIdentifier: 
+  animationClip: {fileID: 7400000, guid: cee1e4518fcbe1e4c9dcc088bc4885ad, type: 2}
+  animationSpeed: 1
+  status: 1
+  frameEffects: []
+  frameBullets: []
+  cancelFrag: 0
+  barrageCancelFrag: 0
+  cancelLayer: 0
+  isJumpCancel: 0
+  inBlend: 0
+  outBlend: 0
+  isInvincibleBullet: 0
+  plusHeadHitBox: []
+  plusBodyHitBox: []
+  plusFootHitBox: []
+  plusGrabHitBox: []
+  plusPushingHitBox: []
+  customHitBox: []
+  isContinue: 0
+  isMoveContinue: 0
+  movements:
+  - isGravityInvaid: 1
+    isResetStartGravity: 0
+    isResetEndGravity: 0
+    movement: {x: 0, y: 1, z: 0}
+    startFrame: 0
+  - isGravityInvaid: 1
+    isResetStartGravity: 0
+    isResetEndGravity: 0
+    movement: {x: 0, y: 0, z: 0}
+    startFrame: 13
+  - isGravityInvaid: 1
+    isResetStartGravity: 0
+    isResetEndGravity: 0
+    movement: {x: -8, y: 20, z: 0}
+    startFrame: 42
+  gravityMoves:
+  - movement: {x: 0, y: -0.4, z: 0}
+    limitMove: {x: 0, y: -50, z: 0}
+    startFrame: 42
+  headFlag: 1
+  bodyFlag: 1
+  footFlag: 1
+  grabFlag: 1
+  pushingFlag: 1

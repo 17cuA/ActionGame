@@ -1,0 +1,75 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fbd35985d310504d81036cc55356454, type: 3}
+  m_Name: Jump_Front
+  m_EditorClassIdentifier: 
+  animationClip: {fileID: 7400000, guid: 2d4830f14da962b4cb985b32fa578075, type: 2}
+  animationSpeed: 0.5
+  status: 1
+  frameEffects:
+  - frame: 0
+    effect: {fileID: 5708031583818599373, guid: 8d7bd9a89996c5d459f1b8425ec79d45,
+      type: 3}
+    childFlag: 0
+    worldPositionFlag: 0
+    position: {x: 0, y: 0, z: 0}
+  frameBullets: []
+  cancelFrag: 1
+  barrageCancelFrag: 0
+  cancelLayer: 0
+  inBlend: 0
+  outBlend: 0
+  isInvincibleBullet: 0
+  plusHeadHitBox:
+  - hitBox:
+      size: {x: -0.54, y: 0.09, z: 0}
+      localPosition: {x: 0.09, y: 0.15, z: 0}
+    startFrame: 0
+    endFrame: 58
+  plusBodyHitBox:
+  - hitBox:
+      size: {x: -0.7, y: 0.16, z: 0}
+      localPosition: {x: -0.23, y: 0.09, z: 0}
+    startFrame: 0
+    endFrame: 58
+  plusFootHitBox:
+  - hitBox:
+      size: {x: -0.95, y: -0.51, z: 0}
+      localPosition: {x: 0.13, y: 0.57, z: 0}
+    startFrame: 0
+    endFrame: 58
+  plusGrabHitBox:
+  - hitBox:
+      size: {x: -0.25, y: -1.02, z: 0}
+      localPosition: {x: -0.21, y: 0.31, z: 0}
+    startFrame: 0
+    endFrame: 58
+  plusPushingHitBox: []
+  customHitBox: []
+  isContinue: 0
+  isMoveContinue: 0
+  movements:
+  - isGravityInvaid: 0
+    isResetStartGravity: 1
+    isResetEndGravity: 0
+    isImpact: 1
+    movement: {x: 0, y: 4, z: 0}
+    startFrame: 0
+  gravityMoves:
+  - movement: {x: 0.8, y: 0, z: 0}
+    limitMove: {x: 0.8, y: 0, z: 0}
+    startFrame: 0
+  headFlag: 1
+  bodyFlag: 1
+  footFlag: 1
+  grabFlag: 0
+  pushingFlag: 1

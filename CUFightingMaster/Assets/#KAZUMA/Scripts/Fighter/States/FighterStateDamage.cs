@@ -406,8 +406,8 @@ public class FighterStateDamage : StateBaseScriptMonoBehaviour
             Transform t = stateBase.core.AnimationPlayerCompornent.gameObject.transform;
 
             stateBase.core.SetDirection(PlayerDirection.Left);
-            t.localScale = new Vector3(1, 1, -1);
-            t.rotation = Quaternion.Euler(0, 0, 0);
+            stateBase.core.scaleChangeObject.transform.localScale = new Vector3(1, 1, -1);
+            stateBase.core.rotationChangeObject.transform.rotation = Quaternion.Euler(0, 0, 0);
         }
         else if (GameManager.Instance.GetPlayFighterCore(stateBase.core.EnemyNumber).Direction == PlayerDirection.Left)
         {
