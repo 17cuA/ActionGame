@@ -64,6 +64,8 @@ public class CameraController : MonoBehaviour
 	// 仮で作成(07/29)
 	public GameObject Collider1;
 	public GameObject Collider2;
+
+	public CinemaController cinemaController;
 	#endregion
 
 	#region 初期化
@@ -105,6 +107,7 @@ public class CameraController : MonoBehaviour
 
 	void LateUpdate()
 	{
+		if (cinemaController.isPlay)return;
 		CameraUpdate();	
 	}
 	#endregion

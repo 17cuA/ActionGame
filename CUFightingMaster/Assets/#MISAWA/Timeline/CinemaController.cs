@@ -7,13 +7,20 @@ using UnityEngine.Timeline;
 public class CinemaController : MonoBehaviour, ITimeControl
 {
 	//再生中のフラグ
-	public bool isPlay = true;
+	public bool isPlay;
+	public GameObject P1;
+	public GameObject P2;
+
+	void Start()
+	{
+		isPlay = true;
+	}
+
 	public void OnControlTimeStop()
 	{
 		isPlay = false;
-        //0715 by takano コメントアウト
-		//Manager_Game.instance.EndAppearance();
-		//UIManager_Game.instance.call_Once = true;
+		Destroy(P1);
+		Destroy(P2);
 	}
 	public void OnControlTimeStart()
 	{

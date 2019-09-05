@@ -56,7 +56,7 @@ public class InGameManager : MonoBehaviour
 	/// </summary>
 	private void StartGame()
     {
-
+		//if (cinemaController.isPlay) return;
 		//カットシーンの再生（未実装）
 		if (islight)
 		{
@@ -301,7 +301,7 @@ public class InGameManager : MonoBehaviour
     private void Awake()
     {
 		cameraController = GameObject.Find("BattleCamera").GetComponent<CameraController>();
-		cinemaController = GameObject.Find("CinemaControll").GetComponent<CinemaController>();
+		//cinemaController = GameObject.Find("CinemaControll").GetComponent<CinemaController>();
 		canvasController = GameObject.Find("CanvasController").GetComponent<CanvasController>();
         Sound.AllSoundLod();
     }
