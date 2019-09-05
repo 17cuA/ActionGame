@@ -105,7 +105,7 @@ public class CameraController : MonoBehaviour
 
 	void LateUpdate()
 	{
-			CameraUpdate();
+		CameraUpdate();	
 	}
 	#endregion
 

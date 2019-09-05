@@ -38,8 +38,6 @@ class UI_RoundWinCounter : MonoBehaviour
     {
 		if (winP1cnt.Length > 0)
 		{
-			Debug.Log(winP1cnt.Length);
-			Debug.Log(winP1cnt[winP1cnt.Length - 1]);
 			switch (winP1cnt[Mathf.Clamp(winP1cnt.Length - 1,0,2)])
 			{
 				case '1':
