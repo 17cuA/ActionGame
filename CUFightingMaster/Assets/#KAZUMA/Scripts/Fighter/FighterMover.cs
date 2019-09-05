@@ -104,20 +104,23 @@ public class FighterMover
 			//継続は最後のフレームのものだけ
 			else
 			{
-				var _mo = new List<FighterSkill.Move>();
-				_mo.Add(moves[nowPlayMoveNumber]);
-				while (moves.Count > nowPlayMoveNumber + 1)
+				if (moves.Count > 0)
 				{
-					if (moves[nowPlayMoveNumber].startFrame == moves[nowPlayMoveNumber + 1].startFrame)
+					var _mo = new List<FighterSkill.Move>();
+					_mo.Add(moves[nowPlayMoveNumber]);
+					while (moves.Count > nowPlayMoveNumber + 1)
 					{
-						_mo.Add(moves[nowPlayMoveNumber + 1]);
+						if (moves[nowPlayMoveNumber].startFrame == moves[nowPlayMoveNumber + 1].startFrame)
+						{
+							_mo.Add(moves[nowPlayMoveNumber + 1]);
+						}
+						else
+						{
+							break;
+						}
 					}
-					else
-					{
-						break;
-					}
+					moves = _mo;
 				}
-				moves = _mo;
 			}
 
 			if (!core.NowPlaySkill.isContinue)
@@ -126,9 +129,12 @@ public class FighterMover
 			}
 			else
 			{
-				var _gravity = new List<FighterSkill.GravityMove>();
-				_gravity.Add(gravity[nowPlayGravityNumber]);
-				gravity = _gravity;
+				if (gravity.Count > 0)
+				{
+					var _gravity = new List<FighterSkill.GravityMove>();
+					_gravity.Add(gravity[nowPlayGravityNumber]);
+					gravity = _gravity;
+				}
 			}
             effects = new List<FighterSkill.FrameEffects>(core.NowPlaySkill.frameEffects);
             bullets = new List<FighterSkill.FrameBullets>(core.NowPlaySkill.frameBullets);
