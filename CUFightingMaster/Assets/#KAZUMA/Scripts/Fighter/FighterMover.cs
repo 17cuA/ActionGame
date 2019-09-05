@@ -36,7 +36,7 @@ public class FighterMover
     }
     public void UpdateGame()
     {
-		Debug.Log(gravityFighter);
+
         RightLeftCheck();
         if (core.GroundCheck())
         {
@@ -88,22 +88,48 @@ public class FighterMover
                 }
                 gravityFrame = 0;
             }
-            if (!core.NowPlaySkill.isMoveContinue)
-            {
-                if (core.Direction == PlayerDirection.Right)
-                {
-                    MoveRightLeft = 1;
-                }
-                else if (core.Direction == PlayerDirection.Left)
-                {
-                    MoveRightLeft = -1;
-                }
-                moves = new List<FighterSkill.Move>(core.NowPlaySkill.movements);
-            }
-            if (!core.NowPlaySkill.isContinue)
-            {
-                gravity = new List<FighterSkill.GravityMove>(core.NowPlaySkill.gravityMoves);
-            }
+			//移動の継続をするかどうか
+			if (!core.NowPlaySkill.isMoveContinue)
+			{
+				if (core.Direction == PlayerDirection.Right)
+				{
+					MoveRightLeft = 1;
+				}
+				else if (core.Direction == PlayerDirection.Left)
+				{
+					MoveRightLeft = -1;
+				}
+				moves = new List<FighterSkill.Move>(core.NowPlaySkill.movements);
+			}
+			//継続は最後のフレームのものだけ
+			else
+			{
+				var _mo = new List<FighterSkill.Move>();
+				_mo.Add(moves[nowPlayMoveNumber]);
+				while (moves.Count > nowPlayMoveNumber + 1)
+				{
+					if (moves[nowPlayMoveNumber].startFrame == moves[nowPlayMoveNumber + 1].startFrame)
+					{
+						_mo.Add(moves[nowPlayMoveNumber + 1]);
+					}
+					else
+					{
+						break;
+					}
+				}
+				moves = _mo;
+			}
+
+			if (!core.NowPlaySkill.isContinue)
+			{
+				gravity = new List<FighterSkill.GravityMove>(core.NowPlaySkill.gravityMoves);
+			}
+			else
+			{
+				var _gravity = new List<FighterSkill.GravityMove>();
+				_gravity.Add(gravity[nowPlayGravityNumber]);
+				gravity = _gravity;
+			}
             effects = new List<FighterSkill.FrameEffects>(core.NowPlaySkill.frameEffects);
             bullets = new List<FighterSkill.FrameBullets>(core.NowPlaySkill.frameBullets);
             if (!core.NowPlaySkill.isMoveContinue)
@@ -178,50 +204,89 @@ public class FighterMover
     //移動
     private void MovementSkill()
     {
+		//二回まで同じフレームで動作
 		//空中制動
 		if(airBraking != 0)
 		{
             transform.Translate(new Vector3(airBraking * RightLeft, 0, 0));
 		}
 		if ((moves == null) || (moves.Count == 0)) return;//nullチェック
-                                                          //次があるかどうか
-        if (moves.Count > nowPlayMoveNumber + 1)
-        {
-            //現在再生中の移動の次の移動フレームを越えれば			
-            if (moves[nowPlayMoveNumber + 1].startFrame <= core.AnimationPlayerCompornent.NowFrame)
-            {
-                if (nowPlayMoveNumber > -1)
-                {
-                    if (moves[nowPlayMoveNumber].isResetEndGravity)
-                    {
-                        gravityFighter.y = 0;
-                    }
-                }
-                nowPlayMoveNumber++;
-                if (moves[nowPlayMoveNumber].isResetStartGravity)
-                {
-                    gravityFighter.y = 0;
-                }
-                if (moves[nowPlayMoveNumber].isImpact)
-                {
-                    gravityFighter += moves[nowPlayMoveNumber].movement;
-                }
-            }
-        }
-        //ループ時
-        else
-        {
-            if(moves[0].startFrame<=core.AnimationPlayerCompornent.NowFrame && moves[nowPlayMoveNumber].startFrame > core.AnimationPlayerCompornent.NowFrame)
-            {
-                nowPlayMoveNumber = -1;
-            }
-        }
-        if (nowPlayMoveNumber < 0) return;//-1なら動かない
-        if(moves[nowPlayMoveNumber].isImpact)return;
-        Vector3 move = moves[nowPlayMoveNumber].movement;
-        move.x *= MoveRightLeft;
-        //移動
-        transform.Translate(move * 0.1f);
+		int i = 0;
+		while (true)
+		{
+			Debug.Log(i+"移動：");
+			bool _flag = false;
+			//次があるかどうか
+			if (moves.Count > nowPlayMoveNumber + 1)
+			{
+				//現在再生中の移動の次の移動フレームを越えれば			
+				if (moves[nowPlayMoveNumber + 1].startFrame <= core.AnimationPlayerCompornent.NowFrame)
+				{
+					if (nowPlayMoveNumber > -1)
+					{
+						if (moves[nowPlayMoveNumber + 1].startFrame == moves[nowPlayMoveNumber].startFrame)
+						{
+							i++;
+						}
+					}
+					if (nowPlayMoveNumber > -1)
+					{
+						if (moves[nowPlayMoveNumber].isResetEndGravity)
+						{
+							gravityFighter.y = 0;
+						}
+					}
+					nowPlayMoveNumber++;
+					if (moves[nowPlayMoveNumber].isResetStartGravity)
+					{
+						gravityFighter.y = 0;
+					}
+					if (moves[nowPlayMoveNumber].isImpact)
+					{
+						gravityFighter += moves[nowPlayMoveNumber].movement;
+					}
+				}
+				else
+				{
+					_flag = true;
+				}
+			}
+			//ループ時
+			else if (moves[0].startFrame <= core.AnimationPlayerCompornent.NowFrame && moves[nowPlayMoveNumber].startFrame > core.AnimationPlayerCompornent.NowFrame)
+			{
+				nowPlayMoveNumber = -1;
+				i++;
+			}
+			else
+			{
+				_flag = true;
+			}
+			if (nowPlayMoveNumber < 0) return;//-1なら動かない
+			if (moves[nowPlayMoveNumber].isImpact)
+			{
+				if (_flag)
+				{
+					if (i > 0)
+					{
+						nowPlayMoveNumber -= i;
+					}
+					break;
+				}
+				continue;
+			}
+			Vector3 move = moves[nowPlayMoveNumber].movement;
+			move.x *= MoveRightLeft;
+			//移動
+			transform.Translate(move * 0.1f);
+			if (_flag)
+			{
+				if (i > 0)
+				{
+					nowPlayMoveNumber -= i;
+				}
+				break;
+			}
+		}
     }
     //重力移動
     private void GravityMovementSkill()
@@ -268,92 +333,111 @@ public class FighterMover
     private void PlayEffects()
     {
         if ((effects == null) || (effects.Count == 0)) return;
-		if (effects.Count > nowPlayEffectNumber + 1)
+		while (true)
 		{
-			//現在再生中の移動の次の移動フレームを越えれば
-			if (effects[nowPlayEffectNumber + 1].frame <= core.AnimationPlayerCompornent.NowFrame)
+			if (effects.Count > nowPlayEffectNumber + 1)
 			{
-                nowPlayEffectNumber++;
-				if ((effects[nowPlayEffectNumber].effect == null))
+				//現在再生中の移動の次の移動フレームを越えれば
+				if (effects[nowPlayEffectNumber + 1].frame <= core.AnimationPlayerCompornent.NowFrame)
 				{
-					return;
-				}
-				GameObject obj = null;
-				if (effects[nowPlayEffectNumber].worldPositionFlag)
-				{
-					obj = Object.Instantiate(effects[nowPlayEffectNumber].effect, effects[nowPlayEffectNumber].position, Quaternion.identity);
+					nowPlayEffectNumber++;
+					if ((effects[nowPlayEffectNumber].effect == null))
+					{
+						return;
+					}
+					GameObject obj = null;
+					if (effects[nowPlayEffectNumber].worldPositionFlag)
+					{
+						obj = Object.Instantiate(effects[nowPlayEffectNumber].effect, effects[nowPlayEffectNumber].position, Quaternion.identity);
+					}
+					else
+					{
+						if (RightLeft == 1)
+						{
+							obj = Object.Instantiate(effects[nowPlayEffectNumber].effect, core.transform.position + (new Vector3(effects[nowPlayEffectNumber].position.x * RightLeft, effects[nowPlayEffectNumber].position.y, effects[nowPlayEffectNumber].position.z)), Quaternion.identity);
+						}
+						else if (RightLeft == -1)
+						{
+							obj = Object.Instantiate(effects[nowPlayEffectNumber].effect, core.transform.position + (new Vector3(effects[nowPlayEffectNumber].position.x * RightLeft, effects[nowPlayEffectNumber].position.y, effects[nowPlayEffectNumber].position.z)), Quaternion.Euler(0, 180, 0));
+						}
+					}
+					if (obj != null)
+					{
+						obj.layer = LayerMask.NameToLayer(CommonConstants.Layers.Effect);
+					}
+
+					//子にするか否か
+					if (effects[nowPlayEffectNumber].childFlag)
+					{
+						obj.transform.parent = core.transform;
+					}
 				}
 				else
 				{
-					if (RightLeft == 1)
-					{
-						obj = Object.Instantiate(effects[nowPlayEffectNumber].effect, core.transform.position + (new Vector3(effects[nowPlayEffectNumber].position.x * RightLeft, effects[nowPlayEffectNumber].position.y, effects[nowPlayEffectNumber].position.z)), Quaternion.identity);
-					}
-					else if(RightLeft == -1)
-					{
-						obj = Object.Instantiate(effects[nowPlayEffectNumber].effect, core.transform.position + (new Vector3(effects[nowPlayEffectNumber].position.x * RightLeft, effects[nowPlayEffectNumber].position.y, effects[nowPlayEffectNumber].position.z)), Quaternion.Euler(0, 180, 0));
-					}
-				}
-				if (obj != null)
-				{
-					obj.layer = LayerMask.NameToLayer(CommonConstants.Layers.Effect);
-				}
-
-				//子にするか否か
-				if (effects[nowPlayEffectNumber].childFlag)
-				{
-					obj.transform.parent = core.transform;
+					break;
 				}
 			}
-		}
-		//ループ
-		else
-		{
-			if (effects[0].frame <= core.AnimationPlayerCompornent.NowFrame && effects[nowPlayEffectNumber].frame > core.AnimationPlayerCompornent.NowFrame)
+			//ループ
+			else if (effects[0].frame <= core.AnimationPlayerCompornent.NowFrame && effects[nowPlayEffectNumber].frame > core.AnimationPlayerCompornent.NowFrame)
 			{
 				nowPlayEffectNumber = -1;
+			}
+			else
+			{
+				break;
 			}
 		}
 	}
 	private void PlayBullets()
 	{
 		if ((bullets == null) || (bullets.Count == 0)) return;
-		if (bullets.Count > nowPlayBulletNumber + 1)
+		while (true)
 		{
-			//現在再生中の移動の次の移動フレームを越えれば
-			if (bullets[nowPlayBulletNumber + 1].frame <= core.AnimationPlayerCompornent.NowFrame)
+			if (bullets.Count > nowPlayBulletNumber + 1)
 			{
-                nowPlayBulletNumber++;
-				if ((bullets[nowPlayBulletNumber].bullet == null))
+				//現在再生中の移動の次の移動フレームを越えれば
+				if (bullets[nowPlayBulletNumber + 1].frame <= core.AnimationPlayerCompornent.NowFrame)
 				{
-					return;
-				}
-				GameObject obj = null;
-				if (bullets[nowPlayBulletNumber].worldPositionFlag)
-				{
-					obj = Object.Instantiate(bullets[nowPlayBulletNumber].bullet.gameObject, bullets[nowPlayBulletNumber].position, Quaternion.identity);
+					nowPlayBulletNumber++;
+					if ((bullets[nowPlayBulletNumber].bullet == null))
+					{
+						return;
+					}
+					GameObject obj = null;
+					if (bullets[nowPlayBulletNumber].worldPositionFlag)
+					{
+						obj = Object.Instantiate(bullets[nowPlayBulletNumber].bullet.gameObject, bullets[nowPlayBulletNumber].position, Quaternion.identity);
+					}
+					else
+					{
+						if (RightLeft == 1)
+						{
+							obj = Object.Instantiate(bullets[nowPlayBulletNumber].bullet.gameObject, core.transform.position + (new Vector3(bullets[nowPlayBulletNumber].position.x * RightLeft, bullets[nowPlayBulletNumber].position.y, bullets[nowPlayBulletNumber].position.z)), Quaternion.identity);
+						}
+						else if (RightLeft == -1)
+						{
+							obj = Object.Instantiate(bullets[nowPlayBulletNumber].bullet.gameObject, core.transform.position + (new Vector3(bullets[nowPlayBulletNumber].position.x * RightLeft, bullets[nowPlayBulletNumber].position.y, bullets[nowPlayBulletNumber].position.z)), Quaternion.Euler(0, 180, 0));
+						}
+
+					}
+					//初期化
+					BulletCore bulletCore = obj.GetComponent<BulletCore>();
+					bulletCore.RightLeft = RightLeft;
+					bulletCore.playerNumber = core.PlayerNumber;
+					//子にするか否か
+					if (bullets[nowPlayBulletNumber].childFlag)
+					{
+						obj.transform.parent = core.transform;
+					}
 				}
 				else
 				{
-					if (RightLeft == 1)
-					{
-						obj = Object.Instantiate(bullets[nowPlayBulletNumber].bullet.gameObject, core.transform.position + (new Vector3(bullets[nowPlayBulletNumber].position.x * RightLeft, bullets[nowPlayBulletNumber].position.y, bullets[nowPlayBulletNumber].position.z)), Quaternion.identity);
-					}
-					else if (RightLeft == -1)
-					{
-						obj = Object.Instantiate(bullets[nowPlayBulletNumber].bullet.gameObject, core.transform.position + (new Vector3(bullets[nowPlayBulletNumber].position.x * RightLeft, bullets[nowPlayBulletNumber].position.y, bullets[nowPlayBulletNumber].position.z)), Quaternion.Euler(0, 180, 0));
-					}
-
+					break;
 				}
-				//初期化
-				BulletCore bulletCore = obj.GetComponent<BulletCore>();
-				bulletCore.RightLeft = RightLeft;
-				bulletCore.playerNumber = core.PlayerNumber;
-				//子にするか否か
-				if (bullets[nowPlayBulletNumber].childFlag)
-				{
-					obj.transform.parent = core.transform;
-				}
+			}
+			else
+			{
+				break;
 			}
 		}
 	}
