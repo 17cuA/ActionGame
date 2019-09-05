@@ -25,6 +25,7 @@ public class AnimationUIManager : MonoBehaviour
     private Sprite defaultSprite;
     public List<StopUIClass> stopUIs = null;
     public bool isStart;
+    public bool isLeave;
 
     private void Update()
     {
@@ -38,7 +39,7 @@ public class AnimationUIManager : MonoBehaviour
 	{
         //各スプライトを格納
         //デフォルトのスプライト
-        path = "Sprites/UI/AnimationUI/ROUND ANIMATION/";
+        path = "Sprites/UI/AnimationUI/";
         defaultSprite = Resources.Load<Sprite>(string.Format("{0}{1}", path, "DefaultImage"));
         //表示するスプライト
         path += spriteName;
@@ -88,10 +89,13 @@ public class AnimationUIManager : MonoBehaviour
         }
         else
         {
-            //再利用できるように元に戻しておく
-            gameObject.GetComponent<Image>().sprite = defaultSprite;
-            gameObject.GetComponent<Image>().color = initColor;
-            ResetUI();
+            if (!isLeave)
+            {
+                //再利用できるように元に戻しておく
+                gameObject.GetComponent<Image>().sprite = defaultSprite;
+                gameObject.GetComponent<Image>().color = initColor;
+                ResetUI();
+            }
         }
     }
 	private bool StopUI()
