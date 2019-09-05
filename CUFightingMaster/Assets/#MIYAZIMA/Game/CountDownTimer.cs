@@ -22,8 +22,10 @@ public class CountDownTimer : MonoBehaviour
 {
     public float maxTime;   //初期値
     public float currentTime; //現在値
+	public int EmphasizTime = 10;   //強調表示する時間
+		
 
-    public int displayTime;
+	public int displayTime;
 
     bool isPlayCountDown = false;
 
@@ -68,6 +70,19 @@ public class CountDownTimer : MonoBehaviour
         firstDigit.sprite = numSprite[count % 10];
         secondDigit.sprite = numSprite[count / 10];
     }
+	
+	/// <summary>
+	/// タイマーの強調表示
+	/// </summary>
+	/// <param name="fromNumber"></param>
+	private void EmphasizNumber( int fromNumber)
+	{
+		if(currentTime <= (fromNumber + 1))
+		{
+			firstDigit.color = new Color(255, 0, 0, 1);
+			secondDigit.color = new Color(255, 0, 0, 1);
+		}
+	}
 
     private void Start()
     {
@@ -86,6 +101,8 @@ public class CountDownTimer : MonoBehaviour
 
             displayTime = (int)currentTime;
             UpdateDisplay(displayTime);
-        }
+			EmphasizNumber(EmphasizTime);
+
+		}
     }
 }
