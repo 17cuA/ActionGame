@@ -27,7 +27,7 @@ Shader "Toon"
 		//[Toggle]_Is_BlendBaseColor ("アウトラインとテクスチャの色とブレンドする", float) = 0.0
 		//_BaseColor ("テクスチャの色にブレンドする色",Color) = (0,0,0,0)
 
-		//__ModelOutLine_Color ("アウトラインの色",Color) = (0,0,0,0)
+		_Color ("アウトラインの色",Color) = (0,0,0,0)
 		/*_OutLineColor ("0:Brack 1:Blue 2:Red" , Range (0,2)) = 1*/
 		__ModelOutLine_Width ("アウトラインの幅", Range (0.0, 300.0)) = 0.1
 
@@ -240,7 +240,7 @@ Shader "Toon"
 
 		float4 _BaseColor;
 		float4 _LightColor0;
-		float4 __ModelOutLine_Color;
+		float4 _Color;
 
 		int _OutLineColor;
 
@@ -310,9 +310,9 @@ Shader "Toon"
 			//	_Is_LightColor_Base);
 
 			//輪郭線のカラー値を決定
-			float4 _Color = __ModelOutLine_Color;
+			float4 _SetColor = _Color;
 
-			return _Color;
+			return _SetColor;
 		}
 		ENDCG
 		}
