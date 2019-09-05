@@ -84,8 +84,8 @@ public class InGameManager : MonoBehaviour
 		//ゲーム中のUI生成
 		canvasController.Call_PlayBattleRound();
 
-		//キャラのHpをセット
-		canvasController.Call_SetUIHpMax(GameManager.Instance.Player_one.Status.HP, GameManager.Instance.Player_one.Status.HP);
+		//キャラのHpの最大値をUIセット
+		canvasController.Call_SetUIHpMax(GameManager.Instance.Player_one.Status.HP, GameManager.Instance.Player_two.Status.HP);
 		//canvasController.Call_SetUISpMax(GameManager.Instance.Player_one.Status.SpecialGuage, GameManager.Instance.Player_one.Status.SpecialGuage);
 		//canvasController.Call_SetUISpMax(GameManager.Instance.Player_one.Status.StanGuage, GameManager.Instance.Player_one.Status.StanGuage);
 		//キャラクターポジションの設定
@@ -316,8 +316,6 @@ public class InGameManager : MonoBehaviour
 		{
 			getRoundCount[i] = "";
 		}
-
-
 		//画面暗転
 		canvasController.Call_BrackOut();
 

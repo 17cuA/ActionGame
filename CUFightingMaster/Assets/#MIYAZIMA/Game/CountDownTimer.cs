@@ -34,6 +34,8 @@ public class CountDownTimer : MonoBehaviour
 
     public Sprite[] numSprite = new Sprite[10];
 
+	private Color initColor;
+
     /// <summary>
     /// タイマーを初期値へ戻す
     /// </summary>
@@ -42,6 +44,9 @@ public class CountDownTimer : MonoBehaviour
         isPlayCountDown = false;
         currentTime = maxTime;
         UpdateDisplay((int)currentTime);
+
+		firstDigit.color = initColor;
+		secondDigit.color = initColor;
     }
 
 	/// <summary>
@@ -87,7 +92,8 @@ public class CountDownTimer : MonoBehaviour
     private void Start()
     {
         currentTime = maxTime;
-    }
+		initColor = firstDigit.color;
+	}
     private void Update()
     {
         if (currentTime <= 0.0f)
