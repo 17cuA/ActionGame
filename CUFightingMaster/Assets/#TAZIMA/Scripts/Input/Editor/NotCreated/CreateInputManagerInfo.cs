@@ -158,7 +158,7 @@ public static class InputManagerInfo {{
 		var result = string.Format(TEMPLATE, inputAxis);
 
 		// ファイルに保存
-		var inputManagerResult = Application.dataPath + "/#TAZIMA/Input/InputManagerInfo.cs";
+		var inputManagerResult = Application.dataPath + "/#TAZIMA/Scripts/Input/InputManagerInfo.cs";
 		var sr = new StreamWriter(inputManagerResult);
 		sr.Write(result);
 		sr.Close();
