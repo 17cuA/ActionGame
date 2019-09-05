@@ -25,7 +25,7 @@ public class UIManager_Title : MonoBehaviour
 	{
 		scaleTime_Start = 0.5f;
 		scaleTime_Max = 1.0f;
-		scaleValue = 0.5f;
+		scaleValue = 0.75f;
 		// 画像を透明にしておく
 		visibleImage.color = new Color(1, 1, 1, 0);
 	}
