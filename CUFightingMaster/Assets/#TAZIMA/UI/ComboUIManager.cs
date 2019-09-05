@@ -50,7 +50,7 @@ public class ComboUIManager : MonoBehaviour
 		var comboCount = core.ComboCount;
 		if (core.ComboCount > 1)
 		{
-			var length = comboCount.ToString("D2").Length;
+			var length = comboNumObj.Length;
 			var isCombo = new bool[length];
             if(beforeCombo != core.ComboCount)
             {
@@ -60,8 +60,9 @@ public class ComboUIManager : MonoBehaviour
 			//スプライトを格納
 			for (int i = 0; i < length; i++)
 			{
-				Debug.Log((i == 1) ? 0:1);
-				comboNumObj[(i == 1) ? 0 : 1].GetComponent<Image>().sprite = comboNumSprite[comboCount / (int)Mathf.Pow(10, i)];
+				var outputComboCount = Mathf.Clamp(comboCount, 0, max:99);
+				Debug.Log(outputComboCount);
+				comboNumObj[i].GetComponent<Image>().sprite = comboNumSprite[(i == 0) ? outputComboCount / 10: outputComboCount % 10];
 				isCombo[i] = true;
 			}
 			//表示するかどうか判定
