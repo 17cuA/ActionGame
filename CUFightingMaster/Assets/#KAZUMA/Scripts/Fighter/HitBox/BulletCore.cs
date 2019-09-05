@@ -22,6 +22,8 @@ public abstract class BulletCore : MonoBehaviour,IEventable
     protected int hitAttackNum = 0;//攻撃が当たった回数
     protected bool isDestroyFlag = false;//trueで削除
     protected bool isNotCheck = false;//当たり判定を無くす
+    protected bool isWallHit = false;
+    protected bool isGroundHit = false;
 
     public virtual void Start()
 	{
@@ -243,6 +245,24 @@ public abstract class BulletCore : MonoBehaviour,IEventable
                 attackHit = true;
                 return;
             }
+        }
+        col = Physics.OverlapBox(new Vector3(t.position.x + _bCol.center.x, t.position.y + _bCol.center.y, t.position.z + _bCol.center.z), _bCol.size / 2, Quaternion.identity, (1 << LayerMask.NameToLayer(CommonConstants.Layers.Wall)));
+        if(col.Length > 0)
+		{
+            isWallHit = true;
+        }
+		else
+		{
+            isWallHit = false;
+        }
+        col = Physics.OverlapBox(new Vector3(t.position.x + _bCol.center.x, t.position.y + _bCol.center.y, t.position.z + _bCol.center.z), _bCol.size / 2, Quaternion.identity, (1 << LayerMask.NameToLayer(CommonConstants.Layers.Ground)));
+		if(col.Length > 0)
+		{
+            isGroundHit = true;
+        }
+		else
+		{
+            isGroundHit = false;
         }
     }
 #if UNITY_EDITOR

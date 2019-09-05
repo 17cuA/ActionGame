@@ -19,7 +19,15 @@ public class NormalBullet : BulletCore
         {
             isDestroyFlag = true;
         }
-        if(nowFrame>180)
+        if(allFrame>180)
+        {
+            isDestroyFlag = true;
+        }
+        if(isWallHit)
+        {
+            isDestroyFlag = true;
+        }
+        if(isGroundHit)
         {
             isDestroyFlag = true;
         }

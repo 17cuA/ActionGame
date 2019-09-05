@@ -107,8 +107,11 @@ public class CameraController : MonoBehaviour
 
 	void LateUpdate()
 	{
-		if (cinemaController.isPlay)return;
-		CameraUpdate();	
+        if (cinemaController != null)
+        {
+            if (cinemaController.isPlay) return;
+        }
+        CameraUpdate();	
 	}
 	#endregion
 
