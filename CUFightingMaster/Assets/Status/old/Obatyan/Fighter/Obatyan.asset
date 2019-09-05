@@ -16,8 +16,15 @@ MonoBehaviour:
   StanGuage: 100
   SpecialGuage: 100
   airBraking: 0.5
-  PlayerModel: {fileID: 3273255827342735269, guid: 4a7c0cbca10933445a2a190ee80023e8,
+  PlayerModel: {fileID: 3337991982796669725, guid: c6adc742988983245a90eab8f6bc72d9,
     type: 3}
+  playerMaterials:
+  - nomalMaterial: {fileID: 0}
+    inversionMaterial: {fileID: 0}
+  - nomalMaterial: {fileID: 0}
+    inversionMaterial: {fileID: 0}
+  gravity: {x: 0, y: 0, z: 0}
+  gravityMax: {x: 0, y: 0, z: 0}
   headHitBox:
     size: {x: 1.74, y: 1, z: 1}
     localPosition: {x: 0.72, y: 2.89, z: 0}
@@ -115,26 +122,35 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 926c6e9e4ffe6874b99c7dde82997bbd, type: 2}
   - {fileID: 11400000, guid: 569cadf3be7e02a4f917ec7bacbb0b67, type: 2}
   - {fileID: 0}
+  fighter: {fileID: 6757136910751876647, guid: ca752718444b8624aaf5197bfa02f9bb, type: 3}
   groundAttackSkills:
   - name: ENKYORI
     command: 236
     trigger: A
+    skillCost: 0
+    countValid: 1
     validShotFrame: 6
     skill: {fileID: 11400000, guid: bddadc24be918e845b070fec883652f8, type: 2}
   - name: KAIHUKU
     command: 214
     trigger: B
+    skillCost: 0
+    countValid: 1
     validShotFrame: 6
     skill: {fileID: 11400000, guid: f7a1069142b89434ea51a0ddcc02404d, type: 2}
   - name: TAKKURU
     command: 623
     trigger: C
+    skillCost: 0
+    countValid: 1
     validShotFrame: 6
     skill: {fileID: 11400000, guid: 0c67b6259621a924f88f5fbdcf3dd9d9, type: 2}
   airAttackSkills:
   - name: ENKYO_AIR
     command: 236
     trigger: A
+    skillCost: 0
+    countValid: 1
     validShotFrame: 6
     skill: {fileID: 11400000, guid: 9a19d7c69d7906941a0c300e1cd1a388, type: 2}
   groundMoveSkills:

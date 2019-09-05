@@ -11863,6 +11863,18 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
+--- !u!114 &421891836 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5316512512201138442, guid: 1ea4eef4998c3b24eb6594f68107eb79,
+    type: 3}
+  m_PrefabInstance: {fileID: 236517084}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &465324718
 GameObject:
   m_ObjectHideFlags: 0
@@ -12079,9 +12091,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 639292445}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 69752e8288341194d9fd825f30a4ecb6, type: 3}
+  m_Script: {fileID: 11500000, guid: c48810b66803887449a2c05f2b1c030e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Manager: {fileID: 0}
+  Canvas_One: {fileID: 1969477178}
+  Canvas_Two: {fileID: 421891836}
 --- !u!4 &639292447
 Transform:
   m_ObjectHideFlags: 0
@@ -20587,12 +20602,13 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 7bae8b74f25491a45884f4fb1a1f985c, type: 3}
   - {fileID: 21300000, guid: 5847bc7545365304c995a80f62074490, type: 3}
   CharacterSelectBool: 00000000
+  sceneChangeJughe: 0
   currentCharacter:
   - {fileID: 11400000, guid: c12cc3f9a96a6a94d9bd012dbc3ae478, type: 2}
   - {fileID: 11400000, guid: 9d89817fc7c23424ea327b28b129af48, type: 2}
   animFlag: 0
   animFlagCount: 0
-  fedeFrame: 0
+  fadeFrame: 0
 --- !u!4 &1618172208
 Transform:
   m_ObjectHideFlags: 0
@@ -21261,6 +21277,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1896874479}
   m_CullTransparentMesh: 0
+--- !u!114 &1969477178 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5316512512201138442, guid: 1ea4eef4998c3b24eb6594f68107eb79,
+    type: 3}
+  m_PrefabInstance: {fileID: 1459543341}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2098263771
 GameObject:
   m_ObjectHideFlags: 0

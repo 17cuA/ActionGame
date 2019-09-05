@@ -20,22 +20,30 @@ public class CharacterSelect_Manager : MonoBehaviour
 
     [SerializeField]
     private bool[] CharacterSelectBool = { false, false, false, false };
+	public bool sceneChangeJughe;
 
-    public FighterStatus[] currentCharacter = new FighterStatus[2];
+	public FighterStatus[] currentCharacter = new FighterStatus[2];
 
     [SerializeField]
     private bool animFlag;
     [SerializeField]
     private int animFlagCount;
     [SerializeField]
-    int fedeFrame;
+    private float fadeFrame;
+	public float FadeFrame
+	{
+		get { return fadeFrame; }
+	}
+	public 
     // Start is called before the first frame update
     void Start()
     {
-        animFlag = false;
+		/*pplication.targetFrameRate = 60;*/
+		animFlag = false;
         animFlagCount = 1;
-        fedeFrame = 0;
-        if (currentCharacter[0] == null)
+        fadeFrame = 0;
+		sceneChangeJughe = false;
+		if (currentCharacter[0] == null)
         {
             return;
         }
@@ -53,7 +61,9 @@ public class CharacterSelect_Manager : MonoBehaviour
         }
         if (cursor1_1.selectDir < 2)
         {
-            if (SelectCharacterNamePanels[0] == null)
+			GameDataStrage.Instance.fighterStatuses[0] = currentCharacter[0];
+
+			if (SelectCharacterNamePanels[0] == null)
             {
                 return;
             }
@@ -76,7 +86,8 @@ public class CharacterSelect_Manager : MonoBehaviour
         }
         else
         {
-            if (SelectCharacterNamePanels[1] == null)
+			GameDataStrage.Instance.fighterStatuses[0] = currentCharacter[1];
+			if (SelectCharacterNamePanels[1] == null)
             {
                 return;
             }
@@ -100,7 +111,8 @@ public class CharacterSelect_Manager : MonoBehaviour
 
         if (cursor1_2.selectDir < 2)
         {
-            if (SelectCharacterNamePanels[1] == null)
+			GameDataStrage.Instance.fighterStatuses[1] = currentCharacter[0];
+			if (SelectCharacterNamePanels[1] == null)
             {
                 return;
             }
@@ -123,7 +135,8 @@ public class CharacterSelect_Manager : MonoBehaviour
         }
         else
         {
-            if (SelectCharacterNamePanels[1] == null)
+			GameDataStrage.Instance.fighterStatuses[1] = currentCharacter[1];
+			if (SelectCharacterNamePanels[1] == null)
             {
                 return;
             }
@@ -153,12 +166,12 @@ public class CharacterSelect_Manager : MonoBehaviour
         if (CharacterSelectBool[0] && CharacterSelectBool[1] && CharacterSelectBool[2] && CharacterSelectBool[3])
         {
             animFlag = true;
-            //SceneManager.LoadScene("Battle");
         }
         if (animFlag)
         {
-            fedeFrame++;
-        }
+			fadeFrame += Time.deltaTime;
+			sceneChangeJughe = true;
+		}
         if (animFlag == true && animFlagCount > 0)
         {
             if (cursor1_1.characterPanels[0] == null)
@@ -178,9 +191,5 @@ public class CharacterSelect_Manager : MonoBehaviour
 
 
         }
-        if (fedeFrame > 60)
-        {
-			SceneManager.LoadScene("Battle");
-		}
     }
 }

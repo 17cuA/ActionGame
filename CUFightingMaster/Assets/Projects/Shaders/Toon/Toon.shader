@@ -242,7 +242,7 @@ Shader "Toon"
 		float4 _LightColor0;
 		float4 __ModelOutLine_Brack = (255,255,255,1);
 		float4 __ModelOutLine_Blue = (0, 0, 255, 1);
-		float4 __ModelOutLine_Red = (255, 0, 0, 1);
+		float4 __ModelOutLine_Red = (0, 0, 0, 0);
 
 		int _OutLineColor;
 
@@ -312,21 +312,26 @@ Shader "Toon"
 				_Is_LightColor_Base);
 
 			//輪郭線のカラー値を決定
-			float4 _Color;
-			if (_OutLineColor == 1)
-				_Color = __ModelOutLine_Blue;
-			else if (_OutLineColor == 2)
-				_Color = __ModelOutLine_Red;
-			else if (_OutLineColor == 0)
-				_Color = __ModelOutLine_Brack;
+			float4 _Color = __ModelOutLine_Red;
 
-			//_Is_BlendBaseColorがオンなら、ベースカラーの2乗値が乗算される
-			float3 Set__ModelOutLine_Color = lerp (
-				_Color.rgb,
-				_Color.rgb * Set_BaseColor * Set_BaseColor,
-				_Is_BlendBaseColor);
+			//if (_OutLineColor == 1)
+			//	_Color = __ModelOutLine_Blue;
+			//else if (_OutLineColor == 2)
+			//	_Color = __ModelOutLine_Red;
+			//else if (_OutLineColor == 0)
+			//	_Color = __ModelOutLine_Brack;
 
-			return fixed4 (Set__ModelOutLine_Color, 0);
+			float3 _Color3 = _Color.rgb;
+
+			return  fixed4 (_Color3, 1);
+
+			////_Is_BlendBaseColorがオンなら、ベースカラーの2乗値が乗算される
+			//float3 Set__ModelOutLine_Color = lerp (
+			//	_Color.rgb,
+			//	_Color.rgb * Set_BaseColor * Set_BaseColor,
+			//	_Is_BlendBaseColor);
+
+			//return fixed4 (Set__ModelOutLine_Color, 0);
 		}
 		ENDCG
 		}
