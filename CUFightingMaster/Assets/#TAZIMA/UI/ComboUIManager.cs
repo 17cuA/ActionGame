@@ -60,7 +60,8 @@ public class ComboUIManager : MonoBehaviour
 			//スプライトを格納
 			for (int i = 0; i < length; i++)
 			{
-				comboNumObj[i].GetComponent<Image>().sprite = comboNumSprite[comboCount / (int)Mathf.Pow(10, (i == 1) ? 0:1)];
+				Debug.Log((i == 1) ? 0:1);
+				comboNumObj[(i == 1) ? 0 : 1].GetComponent<Image>().sprite = comboNumSprite[comboCount / (int)Mathf.Pow(10, i)];
 				isCombo[i] = true;
 			}
 			//表示するかどうか判定
