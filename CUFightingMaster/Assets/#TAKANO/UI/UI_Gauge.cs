@@ -26,8 +26,8 @@ public class UI_Gauge : MonoBehaviour
 
 	private float guageWidth;
 
-	private int valueMax;
-	private int value;
+	[SerializeField]private int valueMax;
+	[SerializeField] private int value;
 
 	/// <summary>
 	/// 増やす量を計算
@@ -68,7 +68,7 @@ public class UI_Gauge : MonoBehaviour
 	{
 		//if(Input.GetKeyDown("x"))
 		//{
-		//    UpdateGuage();
+		    UpdateGuage(value);
 		//}
 	}
 }

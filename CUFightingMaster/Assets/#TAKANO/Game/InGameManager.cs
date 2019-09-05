@@ -83,6 +83,7 @@ public class InGameManager : MonoBehaviour
 		GameManager.Instance.isStartGame = false;
 		//ゲーム中のUI生成
 		canvasController.Call_PlayBattleRound();
+
 		//キャラのHpをセット
 		canvasController.Call_SetUIHpMax(GameManager.Instance.Player_one.Status.HP, GameManager.Instance.Player_one.Status.HP);
 		//canvasController.Call_SetUISpMax(GameManager.Instance.Player_one.Status.SpecialGuage, GameManager.Instance.Player_one.Status.SpecialGuage);
