@@ -130,7 +130,7 @@ public class InGameUIController : MonoBehaviour
 	public void DisplayPlayerSp(int currentSp_P1, int currentSp_P2)
 	{
 		uI_sp_P1.value = currentSp_P1;
-		uI_sp_P1.value = currentSp_P2;
+		uI_sp_P2.value = currentSp_P2;
 	}
 
 	/// <summary>

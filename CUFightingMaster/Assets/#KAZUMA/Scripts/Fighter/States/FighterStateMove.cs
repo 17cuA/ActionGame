@@ -10,6 +10,7 @@ public class FighterStateMove : StateBaseScriptMonoBehaviour
     private Direction beforeInput = Direction.Neutral;
 
     private int jumpTimes = 0;
+	private bool isJump = false;
 
     private int jumpTimesMax = 1;
     #region 初期化
@@ -22,6 +23,7 @@ public class FighterStateMove : StateBaseScriptMonoBehaviour
     /* ステートに入った時 */
     public void MoveStart()
     {
+		isJump = false;
         stateBase.core.DirectionChangeMaterial();
         beforeInput = stateBase.input.GetPlayerMoveDirection(stateBase);
         ChangeMove(beforeInput);
@@ -125,6 +127,10 @@ public class FighterStateMove : StateBaseScriptMonoBehaviour
         }
         return false;
     }
+	public bool IsJump()
+	{
+		return isJump;
+	}
     //ジャンプキャンセル
     public bool IsJumpCancel(bool _isCount)
     {
@@ -214,8 +220,8 @@ public class FighterStateMove : StateBaseScriptMonoBehaviour
                 {
                     return;
                 }
-
-                stateBase.core.SetIsCrouching(false);
+				isJump = true;
+				stateBase.core.SetIsCrouching(false);
                 stateBase.ChangeSkillConstant(SkillConstants.Jump, 0);
                 stateBase.core.SetPlayerMoveState(PlayerMoveState.Jump);
 
@@ -225,8 +231,8 @@ public class FighterStateMove : StateBaseScriptMonoBehaviour
                 {
                     return;
                 }
-
-                stateBase.core.SetIsCrouching(false);
+				isJump = true;
+				stateBase.core.SetIsCrouching(false);
                 stateBase.ChangeSkillConstant(SkillConstants.Front_Jump, 0);
                 stateBase.core.SetPlayerMoveState(PlayerMoveState.Front_Jump);
 
@@ -236,8 +242,8 @@ public class FighterStateMove : StateBaseScriptMonoBehaviour
                 {
                     return;
                 }
-
-                stateBase.core.SetIsCrouching(false);
+				isJump = true;
+				stateBase.core.SetIsCrouching(false);
                 stateBase.ChangeSkillConstant(SkillConstants.Back_Jump, 0);
                 stateBase.core.SetPlayerMoveState(PlayerMoveState.Back_Jump);
 

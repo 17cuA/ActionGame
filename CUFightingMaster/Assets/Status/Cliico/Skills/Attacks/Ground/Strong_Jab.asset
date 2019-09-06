@@ -38,20 +38,33 @@ MonoBehaviour:
         localPosition: {x: 1.82, y: 2.86, z: 0}
       startFrame: 9
       endFrame: 12
-    hitStop: 10
+    hitStop: 6
     hitPoint: 0
     hitStrength: 2
     damage: 750
     stanDamage: 0
     knockBack: 1.5
-    airKnockBack: 1
+    airKnockBack: 0.2
     guardKnockBack: 1.2
-    hitEffects: []
+    hitEffects:
+    - isEnemyPos: 0
+      isParant: 0
+      isEnemyParant: 0
+      effect: {fileID: 2314571988542883478, guid: 7a9204d95bc398742ab330e066fccfd0,
+        type: 3}
+      guardEffect: {fileID: 0}
+      position: {x: -0.39, y: 0, z: 0}
     isDown: 0
     isThrow: 0
     isThrowGroundDamage: 0
     isThrowGroundAnimEnd: 0
-    airDamageMovements: []
+    airDamageMovements:
+    - isGravityInvaid: 0
+      isResetStartGravity: 1
+      isResetEndGravity: 0
+      isImpact: 0
+      movement: {x: 0, y: 5, z: 0}
+      startFrame: 0
     throwGroundDamage: 0
     throwSkill: {fileID: 0}
     enemyThrowSkill: {fileID: 0}
