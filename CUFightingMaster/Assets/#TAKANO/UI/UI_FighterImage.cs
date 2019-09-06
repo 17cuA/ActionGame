@@ -35,7 +35,7 @@ public class UI_FighterImage : MonoBehaviour
 		else
 		{
 			playerNumber = GameDataStrage.Instance.fighterStatuses[1].fighter.PlayerNumber;
-			displayImage.sprite = GameDataStrage.Instance.fighterStatuses[0].fighter.Status.characterImage;
+			displayImage.sprite = GameDataStrage.Instance.fighterStatuses[1].fighter.Status.characterImage;
 		}
 		DisplayPlayerImage();
 	}
