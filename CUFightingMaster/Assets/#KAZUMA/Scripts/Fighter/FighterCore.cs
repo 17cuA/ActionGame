@@ -152,6 +152,10 @@ public class FighterCore : MonoBehaviour
         //当たり判定のアップデート
         hitJudgement.UpdateGame();
 		mover.UpdateEffects();
+		if(SpecialGauge>status.SpecialGuage)
+		{
+			SpecialGauge = status.SpecialGuage;
+		}
         //終了
         UpdateEnd();
     }

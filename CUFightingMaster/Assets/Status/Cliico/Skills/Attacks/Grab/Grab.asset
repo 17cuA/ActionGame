@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fbd35985d310504d81036cc55356454, type: 3}
   m_Name: Grab
   m_EditorClassIdentifier: 
+  skillLayer: 0
   animationClip: {fileID: 7400000, guid: 411a699a39d0a994d92e689f30b5af7e, type: 2}
   animationSpeed: 1
   status: 16
@@ -19,7 +20,7 @@ MonoBehaviour:
   frameBullets: []
   cancelFrag: 0
   barrageCancelFrag: 0
-  cancelLayer: 0
+  cancelLayer: 
   inBlend: 0
   outBlend: 0
   isInvincibleBullet: 0
@@ -31,7 +32,8 @@ MonoBehaviour:
   customHitBox:
   - mode: 0
     frameHitBoxes:
-    - hitBox:
+    - isInfinityFrame: 0
+      hitBox:
         size: {x: 1.8, y: 3.86, z: 1}
         localPosition: {x: 1.13, y: 1.93, z: 0}
       startFrame: 7
@@ -45,16 +47,19 @@ MonoBehaviour:
     airKnockBack: 0
     guardKnockBack: 0
     hitEffects:
-    - effect: {fileID: 7721722575896693875, guid: 027f955a5ea60b24897a3c579e52a3cf,
+    - isEnemyPos: 0
+      isParant: 0
+      isEnemyParant: 0
+      effect: {fileID: 7721722575896693875, guid: 027f955a5ea60b24897a3c579e52a3cf,
         type: 3}
       guardEffect: {fileID: 0}
       position: {x: 0, y: 0, z: 0}
     isDown: 0
     isThrow: 1
     isThrowGroundDamage: 1
-    isThrowGroundAnimEnd: 0
+    isThrowGroundAnimEnd: 1
     airDamageMovements: []
-    throwGroundDamage: 15
+    throwGroundDamage: 1000
     throwSkill: {fileID: 11400000, guid: 109ab586ae0fda64ea6b96b606e61936, type: 2}
     enemyThrowSkill: {fileID: 11400000, guid: b626d9333ee02fa4699c2cfa3d9083f4, type: 2}
     throwDamages: []
@@ -67,6 +72,7 @@ MonoBehaviour:
     hitRigor: 100
     guardHitRigor: 0
     plusGauge: 0
+    enemyPlusGauge: 0
   isContinue: 0
   isMoveContinue: 0
   movements: []
