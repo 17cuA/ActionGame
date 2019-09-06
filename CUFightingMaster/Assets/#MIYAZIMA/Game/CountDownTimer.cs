@@ -20,12 +20,12 @@ using UnityEngine.UI;
 
 public class CountDownTimer : MonoBehaviour
 {
-    public float maxTime;   //初期値
-    public float currentTime; //現在値
-	public int EmphasizTime = 10;   //強調表示する時間
-		
+	private float maxTime = 99;   //初期値
+    private float currentTime = 0; //現在値
+	private int EmphasizTime = 10;   //強調表示する時間
 
-	public int displayTime;
+
+	private int displayTime;
 
     bool isPlayCountDown = false;
 
@@ -84,9 +84,19 @@ public class CountDownTimer : MonoBehaviour
 	{
 		if(currentTime <= (fromNumber + 1))
 		{
+
 			firstDigit.color = new Color(255, 0, 0, 1);
 			secondDigit.color = new Color(255, 0, 0, 1);
 		}
+	}
+
+	/// <summary>
+	/// カウントを10秒はやめる 
+	/// </summary>
+
+	public void CountTenSeconds()
+	{
+		currentTime -= 10;
 	}
 
     private void Start()
@@ -108,7 +118,6 @@ public class CountDownTimer : MonoBehaviour
             displayTime = (int)currentTime;
             UpdateDisplay(displayTime);
 			EmphasizNumber(EmphasizTime);
-
 		}
     }
 }

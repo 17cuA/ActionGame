@@ -1,4 +1,7 @@
-﻿using System.Collections;
+﻿//更新履歴
+//2019/09/06 : カウントダウンを早めるキー(F8)の追加 by高野
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -10,8 +13,16 @@ public class FuncKeyManager : SingletonMono<FuncKeyManager>
 	//シーンの名前
 	private string[] sceneNames = { "JECLogo", "Title", "CharacterSelect", "Battle", "Result" };
 	private int sceneIndex;
-    void Start()
+
+	[SerializeField] private CountDownTimer countDownTimer_1;
+	[SerializeField] private CountDownTimer countDownTimer_2;
+
+	void Start()
     {
+		//参照チェック
+		if (countDownTimer_2 == null || countDownTimer_2 == null)
+			Debug.LogError("参照ミス : FunckeyManagerにcountDownTimerの参照を追加してください");
+
 		for (int i = 0; i < SceneManager.sceneCountInBuildSettings; ++i)
 		{
 			Scene scene = SceneManager.GetSceneByBuildIndex(i);
@@ -21,6 +32,7 @@ public class FuncKeyManager : SingletonMono<FuncKeyManager>
 				sceneIndex = i;
 			}
 		}
+
 	}
     void Update()
     {
@@ -95,6 +107,12 @@ public class FuncKeyManager : SingletonMono<FuncKeyManager>
 					//canvasController.ResetWinCounter();
 
 					//currentUpdate = ResetParameter;
+				}
+				//タイマーカウントを10ずつ進める
+				if(Input.GetKeyDown(KeyCode.F8))
+				{
+					countDownTimer_1.CountTenSeconds();
+					countDownTimer_2.CountTenSeconds();
 				}
 			}
 			#endregion
