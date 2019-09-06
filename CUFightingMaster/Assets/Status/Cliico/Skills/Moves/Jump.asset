@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fbd35985d310504d81036cc55356454, type: 3}
   m_Name: Jump
   m_EditorClassIdentifier: 
+  skillLayer: 0
   animationClip: {fileID: 7400000, guid: b20f15776f910424cbd0fd397302998c, type: 2}
   animationSpeed: 0.5
   status: 16
@@ -19,13 +20,14 @@ MonoBehaviour:
   frameBullets: []
   cancelFrag: 0
   barrageCancelFrag: 0
-  cancelLayer: 0
+  cancelLayer: 
   inBlend: 0
   outBlend: 0
   isInvincibleBullet: 0
   plusHeadHitBox: []
   plusBodyHitBox:
-  - hitBox:
+  - isInfinityFrame: 0
+    hitBox:
       size: {x: 0, y: 0, z: 0}
       localPosition: {x: 0, y: 0, z: 0}
     startFrame: 0
@@ -33,12 +35,14 @@ MonoBehaviour:
   plusFootHitBox: []
   plusGrabHitBox: []
   plusPushingHitBox:
-  - hitBox:
+  - isInfinityFrame: 0
+    hitBox:
       size: {x: -1, y: -3.3, z: -1}
       localPosition: {x: 0, y: 0, z: 0}
     startFrame: 0
     endFrame: 3
-  - hitBox:
+  - isInfinityFrame: 0
+    hitBox:
       size: {x: 0, y: -1.3, z: 0}
       localPosition: {x: 0, y: 0.6, z: 0}
     startFrame: 4

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fbd35985d310504d81036cc55356454, type: 3}
   m_Name: Throw
   m_EditorClassIdentifier: 
+  skillLayer: 0
   animationClip: {fileID: 7400000, guid: 9f8317c26fbb4504e89ce49e9fed9471, type: 2}
   animationSpeed: 1
   status: 16
@@ -19,7 +20,7 @@ MonoBehaviour:
   frameBullets: []
   cancelFrag: 0
   barrageCancelFrag: 0
-  cancelLayer: 0
+  cancelLayer: 
   inBlend: 0
   outBlend: 0
   isInvincibleBullet: 0
@@ -31,7 +32,25 @@ MonoBehaviour:
   customHitBox: []
   isContinue: 0
   isMoveContinue: 0
-  movements: []
+  movements:
+  - isGravityInvaid: 0
+    isResetStartGravity: 0
+    isResetEndGravity: 0
+    isImpact: 0
+    movement: {x: -0.5, y: 0, z: 0}
+    startFrame: 10
+  - isGravityInvaid: 0
+    isResetStartGravity: 0
+    isResetEndGravity: 0
+    isImpact: 0
+    movement: {x: 0, y: 0, z: 0}
+    startFrame: 24
+  - isGravityInvaid: 0
+    isResetStartGravity: 0
+    isResetEndGravity: 0
+    isImpact: 0
+    movement: {x: 0.8, y: 0, z: 0}
+    startFrame: 27
   gravityMoves: []
   headFlag: 0
   bodyFlag: 0

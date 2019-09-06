@@ -144,7 +144,7 @@ public class FighterStateGuard : StateBaseScriptMonoBehaviour
                     }
                     else if (GameManager.Instance.GetPlayFighterCore(stateBase.core.EnemyNumber).Direction == PlayerDirection.Left)
                     {
-                        obj = Object.Instantiate(_box.hitEffects[i].guardEffect, new Vector3(_enemyTrans.position.x + _boxCollider.center.x + _box.hitEffects[i].position.x, _enemyTrans.position.y + _boxCollider.center.y + _box.hitEffects[i].position.y, _enemyTrans.position.z + _boxCollider.center.z + _box.hitEffects[i].position.z), Quaternion.Euler(0, 180, 0));
+                        obj = Object.Instantiate(_box.hitEffects[i].guardEffect, new Vector3(_enemyTrans.position.x + _boxCollider.center.x + (_box.hitEffects[i].position.x*-1), _enemyTrans.position.y + _boxCollider.center.y + _box.hitEffects[i].position.y, _enemyTrans.position.z + _boxCollider.center.z + _box.hitEffects[i].position.z), Quaternion.Euler(0, 180, 0));
                     }
                 }
                 else
@@ -152,11 +152,11 @@ public class FighterStateGuard : StateBaseScriptMonoBehaviour
                     _enemyTrans = stateBase.core.transform;
                     if (GameManager.Instance.GetPlayFighterCore(stateBase.core.EnemyNumber).Direction == PlayerDirection.Right)
                     {
-                        obj = Object.Instantiate(_box.hitEffects[i].guardEffect, new Vector3(_enemyTrans.position.x + _boxCollider.center.x + _box.hitEffects[i].position.x, _enemyTrans.position.y + _boxCollider.center.y + _box.hitEffects[i].position.y, _enemyTrans.position.z + _boxCollider.center.z + _box.hitEffects[i].position.z), Quaternion.identity);
+                        obj = Object.Instantiate(_box.hitEffects[i].guardEffect, new Vector3(_enemyTrans.position.x + _box.hitEffects[i].position.x, _enemyTrans.position.y + _box.hitEffects[i].position.y, _enemyTrans.position.z + _box.hitEffects[i].position.z), Quaternion.identity);
                     }
                     else if (GameManager.Instance.GetPlayFighterCore(stateBase.core.EnemyNumber).Direction == PlayerDirection.Left)
                     {
-                        obj = Object.Instantiate(_box.hitEffects[i].guardEffect, new Vector3(_enemyTrans.position.x + _boxCollider.center.x + _box.hitEffects[i].position.x, _enemyTrans.position.y + _boxCollider.center.y + _box.hitEffects[i].position.y, _enemyTrans.position.z + _boxCollider.center.z + _box.hitEffects[i].position.z), Quaternion.Euler(0, 180, 0));
+                        obj = Object.Instantiate(_box.hitEffects[i].guardEffect, new Vector3(_enemyTrans.position.x + (_box.hitEffects[i].position.x*-1), _enemyTrans.position.y + _box.hitEffects[i].position.y, _enemyTrans.position.z + _box.hitEffects[i].position.z), Quaternion.Euler(0, 180, 0));
                     }
                 }
                 //親子関係

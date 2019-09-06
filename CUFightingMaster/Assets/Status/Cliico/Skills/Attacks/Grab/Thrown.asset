@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fbd35985d310504d81036cc55356454, type: 3}
   m_Name: Thrown
   m_EditorClassIdentifier: 
+  skillLayer: 0
   animationClip: {fileID: 7400000, guid: 46ac418f725c4ed4bb1e76b767f8faed, type: 2}
   animationSpeed: 1
   status: 1
@@ -19,7 +20,7 @@ MonoBehaviour:
   frameBullets: []
   cancelFrag: 1
   barrageCancelFrag: 0
-  cancelLayer: 0
+  cancelLayer: 
   inBlend: 0
   outBlend: 0
   isInvincibleBullet: 0
@@ -48,11 +49,11 @@ MonoBehaviour:
     isResetStartGravity: 1
     isResetEndGravity: 0
     isImpact: 0
-    movement: {x: 0, y: 5, z: 0}
+    movement: {x: 0, y: 4.5, z: 0}
     startFrame: 46
   gravityMoves:
-  - movement: {x: -4, y: -0.05, z: 0}
-    limitMove: {x: -4, y: -20, z: 0}
+  - movement: {x: -6, y: -0.1, z: 0}
+    limitMove: {x: -6, y: -20, z: 0}
     startFrame: 46
   headFlag: 1
   bodyFlag: 1
