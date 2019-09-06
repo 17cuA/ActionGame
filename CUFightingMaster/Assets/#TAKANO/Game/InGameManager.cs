@@ -92,8 +92,10 @@ public class InGameManager : MonoBehaviour
 		//ゲーム中のUI生成
 		canvasController.Call_PlayBattleRound();
 
-		//キャラのHpの最大値をUIセット
-		canvasController.Call_SetUIHpMax(GameManager.Instance.Player_one.Status.HP, GameManager.Instance.Player_two.Status.HP);
+		//キャラのパラメータ最大値をUIにセット
+		canvasController.Call_SetUIParameterMax(GameManager.Instance.Player_one.Status.HP, GameManager.Instance.Player_two.Status.HP , 
+			GameManager.Instance.Player_one.Status.SpecialGuage , GameManager.Instance.Player_two.Status.SpecialGuage);
+
 		//canvasController.Call_SetUISpMax(GameManager.Instance.Player_one.Status.SpecialGuage, GameManager.Instance.Player_one.Status.SpecialGuage);
 		//canvasController.Call_SetUISpMax(GameManager.Instance.Player_one.Status.StanGuage, GameManager.Instance.Player_one.Status.StanGuage);
 		//キャラクターポジションの設定
@@ -122,9 +124,11 @@ public class InGameManager : MonoBehaviour
     {
         //UIのhp表示の更新
         canvasController.Call_DisplayPlayerHp(GameManager.Instance.Player_one.HP, GameManager.Instance.Player_two.HP);
-
-        //(どちらかのHPが0になったら
-        if (GameManager.Instance.Player_one.HP <= 0 || GameManager.Instance.Player_two.HP <= 0)
+		canvasController.Call_DisplayPlayerSp(GameManager.Instance.Player_one.SpecialGauge, GameManager.Instance.Player_two.SpecialGauge);
+		Debug.Log(GameManager.Instance.Player_one.SpecialGauge);
+		Debug.Log(GameManager.Instance.Player_two.SpecialGauge);
+		//(どちらかのHPが0になったら
+		if (GameManager.Instance.Player_one.HP <= 0 || GameManager.Instance.Player_two.HP <= 0)
         {
 			//勝敗判定
 			if (GameManager.Instance.Player_one.HP > GameManager.Instance.Player_two.HP)
@@ -236,7 +240,9 @@ public class InGameManager : MonoBehaviour
             //キャラクターのHPのリセット
             GameManager.Instance.Player_one.HP = GameManager.Instance.Player_one.Status.HP;
             GameManager.Instance.Player_two.HP = GameManager.Instance.Player_two.Status.HP;
-            canvasController.Call_ResetUIParameter();
+			GameManager.Instance.Player_one.SpecialGauge = GameManager.Instance.Player_one.Status.SpecialGuage;
+			GameManager.Instance.Player_two.SpecialGauge = GameManager.Instance.Player_two.Status.SpecialGuage;
+			canvasController.Call_ResetUIParameter();
 			//hpの初期化
 			canvasController.Call_DisplayPlayerHp(GameManager.Instance.Player_one.HP, GameManager.Instance.Player_two.HP);
 

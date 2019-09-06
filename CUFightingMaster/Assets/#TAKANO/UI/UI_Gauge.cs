@@ -26,8 +26,8 @@ public class UI_Gauge : MonoBehaviour
 
 	private float guageWidth;
 
-	[SerializeField]private int valueMax;
-	[SerializeField] private int value;
+	[SerializeField]private int valueMax = 0;
+	public int value = 0;
 
 	/// <summary>
 	/// 増やす量を計算
@@ -37,11 +37,15 @@ public class UI_Gauge : MonoBehaviour
 	{
 		float temp = valueMax + damage;
 
-		if (playerType == PlayerType.P1)
+		if (temp != 0)
 		{
+			if (playerType == PlayerType.P1)
+			{
+				return guageWidth * (valueMax + valueMax - temp) / valueMax * -1;
+			}
 			return guageWidth * (valueMax + valueMax - temp) / valueMax;
 		}
-		return guageWidth * (valueMax + valueMax - temp) / valueMax * -1;
+		return 0;
 	}
 
 	/// <summary>

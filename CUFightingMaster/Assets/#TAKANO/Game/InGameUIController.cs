@@ -70,8 +70,8 @@ public class InGameUIController : MonoBehaviour
 		uI_hp_P1 = uI_InGameUI.transform.Find("UI_HP_P1").GetComponent<UI_HP>();
 		uI_hp_P2 = uI_InGameUI.transform.Find("UI_HP_P2").GetComponent<UI_HP>();
 		uI_countDownTimer = uI_InGameUI.transform.Find("UI_CountDownTimer").GetComponent<CountDownTimer>();
-		//uI_sp_P1 = uI_InGameUI.transform.Find("UI_SP_P1").GetComponent<UI_Gauge>();
-		//uI_sp_P2 = uI_InGameUI.transform.Find("UI_SP_P2").GetComponent<UI_Gauge>();
+		uI_sp_P1 = uI_InGameUI.transform.Find("UI_SP_P1").GetComponent<UI_Gauge>();
+		uI_sp_P2 = uI_InGameUI.transform.Find("UI_SP_P2").GetComponent<UI_Gauge>();
 	}
 
 	/// <summary>
@@ -115,18 +115,6 @@ public class InGameUIController : MonoBehaviour
 		uI_sp_P2.SetValueMax(charaSpMax_P2);
 	}
 
-
-	/// <summary>
-	/// HPバーにキャラのSTの最大値をセット
-	/// </summary>
-	/// <param name="charaStMax_P1"></param>
-	/// <param name="charaStMax_P2"></param>
-	public void SetStMax(int charaStMax_P1, int charaStMax_P2)
-	{
-		uI_st_P1.SetValueMax(charaStMax_P1);
-		uI_st_P2.SetValueMax(charaStMax_P2);
-	}
-
 	/// <summary>
 	/// プレイヤーのhp表示
 	/// </summary>
@@ -141,8 +129,8 @@ public class InGameUIController : MonoBehaviour
 	/// </summary>
 	public void DisplayPlayerSp(int currentSp_P1, int currentSp_P2)
 	{
-		uI_sp_P1.UpdateGuage(currentSp_P1);
-		uI_sp_P1.UpdateGuage(currentSp_P2);
+		uI_sp_P1.value = currentSp_P1;
+		uI_sp_P1.value = currentSp_P2;
 	}
 
 	/// <summary>
