@@ -22,7 +22,8 @@ public class Manager_Title : MonoBehaviour
 	//	画面のマスク関係
 	public GameObject maskOb;   //	マスク用のイメージが入ってるオブジェクト
 
-	private bool isLight = false;
+	private bool isBright = false;
+    private bool isPushKey = false;
 
 	//	--------------------
 	//	スタート
@@ -37,7 +38,7 @@ public class Manager_Title : MonoBehaviour
         // ---------------------------------------------------
 		activeTitle = false;
 		demoMovie = false;
-		isLight = false;
+        isBright = false;
 		movieMax = 10;
 		movie = movieMax;
 	}
@@ -50,32 +51,39 @@ public class Manager_Title : MonoBehaviour
 		//ポーズ処理
 		if (Mathf.Approximately(Time.timeScale, 0f)) return;
 		
-		//画面を徐々に明るくする
-		if (canvasController_Title.StartFadeIn() && isLight == false)
-			isLight = true;
-
-		if (isLight == true)
+        //画面が明るいとき
+		if (isBright == true)
 		{
 
-			if (Input.anyKeyDown && !Input.GetKeyDown(KeyCode.Escape) && !Input.GetKeyDown(KeyCode.F1) && !Input.GetKeyDown(KeyCode.F2) && !Input.GetKeyDown(KeyCode.F3) && !Input.GetKeyDown(KeyCode.F4))
+            if (Input.anyKeyDown && !Input.GetKeyDown(KeyCode.Escape) && !Input.GetKeyDown(KeyCode.F1) && !Input.GetKeyDown(KeyCode.F2) && !Input.GetKeyDown(KeyCode.F3) && !Input.GetKeyDown(KeyCode.F4))
 			{
-				// 飯塚追加-------------------------------------------
 				Sound.LoadSe("Menu_Decision", "Se_menu_decision");
 				Sound.PlaySe("Menu_Decision", 1, 0.3f);
-				// ---------------------------------------------------
-				if (canvasController_Title.StartFadeOut())
-					SceneManager.LoadScene("CharacterSelect");
+                isPushKey = true;
 			}
-		}
-		//// TitleシーンがActiveなら
-		//if (activeTitle)
-		//{
-		//	movie -= Time.deltaTime;        // ムービー再生まで待機
-											// ムービーの再生
-			//if (movie <= 0)
-			//{
-			//	demoMovie = true;
-			//	mMM.FadeOut(0);
-			//}
-		}
+
+            if (isPushKey)
+            {
+                //画面が暗くなったらシーン遷移
+                if (canvasController_Title.StartFadeOut())
+                    SceneManager.LoadScene("CharacterSelect");
+            }
+        }
+
+        //画面が暗いとき
+        //画面を徐々に明るくする
+        else if (canvasController_Title.StartFadeIn())
+            isBright = true;
+
+        //// TitleシーンがActiveなら
+        //if (activeTitle)
+        //{
+        //	movie -= Time.deltaTime;        // ムービー再生まで待機
+        // ムービーの再生
+        //if (movie <= 0)
+        //{
+        //	demoMovie = true;
+        //	mMM.FadeOut(0);
+        //}
+    }
 	}

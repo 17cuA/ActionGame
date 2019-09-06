@@ -52,7 +52,7 @@ public class LogoMove : MonoBehaviour
 			else
 			{
 				//二回目Do
-				if (transform.position.y >= 2.3) rigidbody.AddForce(0, MoveSpeed * up2, 0);
+				if (transform.position.y >= 0.7f) rigidbody.AddForce(0, MoveSpeed * up2, 0);
 				else rigidbody.velocity = Vector3.zero;
 			}
 		}

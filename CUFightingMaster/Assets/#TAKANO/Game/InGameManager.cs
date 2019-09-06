@@ -47,7 +47,7 @@ public class InGameManager : MonoBehaviour
 	public GameObject BattleCamera;
 	public GameObject[] targetPoint = new GameObject[2];
 
-	bool islight = false;
+	bool isBright = false;
 
 
 	#region 試合開始
@@ -58,7 +58,7 @@ public class InGameManager : MonoBehaviour
     {
 		//if (cinemaController.isPlay) return;
 		//カットシーンの再生（未実装）
-		if (islight)
+		if (isBright)
 		{
             //カットシーンの再生が終わり、暗くなったら
             if (cinemaController != null)
@@ -75,7 +75,7 @@ public class InGameManager : MonoBehaviour
 
 		else if (canvasController.Call_StartFadeIn())
 		{
-			islight = true;
+            isBright = true;
 			Sound.PlayBgm("Bgm01", 0.5f, 1);
 		}
     }
