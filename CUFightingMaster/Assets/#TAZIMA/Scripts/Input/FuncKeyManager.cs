@@ -19,10 +19,6 @@ public class FuncKeyManager : SingletonMono<FuncKeyManager>
 
 	void Start()
     {
-		//参照チェック
-		if (countDownTimer_2 == null || countDownTimer_2 == null)
-			Debug.LogError("参照ミス : FunckeyManagerにcountDownTimerの参照を追加してください");
-
 		for (int i = 0; i < SceneManager.sceneCountInBuildSettings; ++i)
 		{
 			Scene scene = SceneManager.GetSceneByBuildIndex(i);
@@ -33,6 +29,12 @@ public class FuncKeyManager : SingletonMono<FuncKeyManager>
 			}
 		}
 
+		if(sceneNames[sceneIndex] == "Battle")
+		{
+			//参照チェック
+			if (countDownTimer_2 == null || countDownTimer_2 == null)
+				Debug.LogError("参照ミス : FunckeyManagerにcountDownTimerの参照を追加してください");
+		}
 	}
     void Update()
     {
