@@ -20,14 +20,14 @@ using UnityEngine.UI;
 
 public class CountDownTimer : MonoBehaviour
 {
-    public float maxTime;   //初期値
-    public float currentTime; //現在値
-	public int EmphasizTime = 10;   //強調表示する時間
-		
+	private float maxTime = 99;   //初期値
+    private float currentTime = 99; //現在値
+	private int EmphasizTime = 10;   //強調表示する時間
 
-	public int displayTime;
+	private int displayTime;
 
-    bool isPlayCountDown = false;
+	public bool isPlay = false;
+    bool isEndCont = false;
 
     public Image firstDigit;    //一桁目のimage
     public Image secondDigit;   //二桁目のimage
@@ -41,7 +41,8 @@ public class CountDownTimer : MonoBehaviour
     /// </summary>
     public void ResetTimer()
     {
-        isPlayCountDown = false;
+		isPlay = false;
+		isEndCont = false;
         currentTime = maxTime;
         UpdateDisplay((int)currentTime);
 
@@ -50,12 +51,17 @@ public class CountDownTimer : MonoBehaviour
     }
 
 	/// <summary>
-	/// カウントダウンを開始・終了する
+	/// カウントダウンを開始・終了する、引数にtrueだと開始、引数にfalseだと停止
 	/// </summary>
-	public void PlayCountDown(bool isPlay)
+	public void PlayCountDown(bool flag)
 	{
-		if (isPlay) isPlayCountDown = true;
-		else	isPlayCountDown = false;
+		if (flag)
+		{
+			isPlay = true;
+			isEndCont = true;
+
+		}
+		else isPlay = false;
 	}
 
 	/// <summary>
@@ -64,8 +70,9 @@ public class CountDownTimer : MonoBehaviour
 	/// <returns></returns>
 	public bool isEndCountDown()
     {
-        return isPlayCountDown;
+        return isEndCont;
     }
+
     /// <summary>
     /// タイマー表示の更新
     /// </summary>
@@ -84,9 +91,24 @@ public class CountDownTimer : MonoBehaviour
 	{
 		if(currentTime <= (fromNumber + 1))
 		{
+
 			firstDigit.color = new Color(255, 0, 0, 1);
 			secondDigit.color = new Color(255, 0, 0, 1);
 		}
+	}
+
+	/// <summary>
+	/// カウントを10秒はやめる 
+	/// </summary>
+
+	public void CountTenSeconds()
+	{
+		currentTime -= 10;
+	}
+
+	public void StopTimer()
+	{
+
 	}
 
     private void Start()
@@ -98,17 +120,17 @@ public class CountDownTimer : MonoBehaviour
     {
         if (currentTime <= 0.0f)
         {
-            isPlayCountDown = false;
+            isEndCont = false;
+			isPlay = false;
         }
 
-        if (isPlayCountDown == true)
+        if (isPlay == true)
         {
             currentTime -= Time.deltaTime;
 
             displayTime = (int)currentTime;
             UpdateDisplay(displayTime);
 			EmphasizNumber(EmphasizTime);
-
 		}
     }
 }
