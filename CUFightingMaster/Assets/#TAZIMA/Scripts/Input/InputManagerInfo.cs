@@ -878,7 +878,7 @@ public static class InputManagerInfo {
             joyNum = 0,
         },
         new InputAxis {
-            name = "Player1_Attack2",
+            name = "Player1_Attack3",
             descriptiveName = "",
             descriptiveNegativeName = "",
             negativeButton = "",
@@ -895,7 +895,7 @@ public static class InputManagerInfo {
             joyNum = 0,
         },
         new InputAxis {
-            name = "Player1_Attack2",
+            name = "Player1_Attack4",
             descriptiveName = "",
             descriptiveNegativeName = "",
             negativeButton = "",
