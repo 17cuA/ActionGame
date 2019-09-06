@@ -28,29 +28,20 @@ public class UI_FighterImage : MonoBehaviour
 	private void Start()
 	{
 		if (playerType == PlayerType.P1)
+		{
 			playerNumber = GameDataStrage.Instance.fighterStatuses[0].fighter.PlayerNumber;
+			displayImage.sprite = GameDataStrage.Instance.fighterStatuses[0].fighter.Status.characterImage;
+		}
 		else
+		{
 			playerNumber = GameDataStrage.Instance.fighterStatuses[1].fighter.PlayerNumber;
-
+			displayImage.sprite = GameDataStrage.Instance.fighterStatuses[0].fighter.Status.characterImage;
+		}
 		DisplayPlayerImage();
 	}
 
 	public void DisplayPlayerImage()
 	{
-		//キャラごとに表示するパネルを変える
-		switch (playerNumber)
-		{
-			//Clico
-			case PlayerNumber.Player1:
-				displayImage.sprite = fighterImage[0];
-				break;
-			//Obachan
-			case PlayerNumber.Player2:
-				displayImage.sprite = fighterImage[1];
-				break;
-			default:
-				break;
-		}
 		//P1の場合
 		if(playerType == PlayerType.P1)
 		{
