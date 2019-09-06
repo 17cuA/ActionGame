@@ -14,175 +14,174 @@ using UnityEngine.UI;
 /// サウンド管理
 public class Sound
 {
-	/// SEチャンネル数
-	const int SE_CHANNEL = 10;
+    /// SEチャンネル数
+    const int SE_CHANNEL = 20;
 
-	/// サウンド種別
-	enum eType
-	{
-		Bgm, // BGM
-		Se,  // SE
-	}
+    /// サウンド種別
+    enum eType
+    {
+        Bgm, // BGM
+        Se,  // SE
+    }
 
-	// シングルトン
-	static Sound _singleton = null;
-	// インスタンス取得
-	public static Sound GetInstance()
-	{
-		return _singleton ?? (_singleton = new Sound());
-	}
+    // シングルトン
+    static Sound _singleton = null;
+    // インスタンス取得
+    public static Sound GetInstance()
+    {
+        return _singleton ?? (_singleton = new Sound());
+    }
 
-	// サウンド再生のためのゲームオブジェクト
-	GameObject _object = null;
-	// サウンドリソース
-	AudioSource _sourceBgm = null; // BGM
-	AudioSource _sourceSeDefault = null; // SE (デフォルト)
-	AudioSource[] _sourceSeArray; // SE (チャンネル)
-								  // BGMにアクセスするためのテーブル
-	Dictionary<string, _Data> _poolBgm = new Dictionary<string, _Data>();
-	// SEにアクセスするためのテーブル 
-	Dictionary<string, _Data> _poolSe = new Dictionary<string, _Data>();
+    // サウンド再生のためのゲームオブジェクト
+    GameObject _object = null;
+    // サウンドリソース
+    AudioSource _sourceBgm = null; // BGM
+    AudioSource _sourceSeDefault = null; // SE (デフォルト)
+    AudioSource[] _sourceSeArray; // SE (チャンネル)
+    // BGMにアクセスするためのテーブル
+    Dictionary<string, _Data> _poolBgm = new Dictionary<string, _Data>();
+    // SEにアクセスするためのテーブル 
+    Dictionary<string, _Data> _poolSe = new Dictionary<string, _Data>();
 
-	/// 保持するデータ
-	class _Data
-	{
-		/// アクセス用のキー
-		public string Key;
-		/// リソース名
-		public string ResName;
-		/// AudioClip
-		public AudioClip Clip;
+    /// 保持するデータ
+    class _Data
+    {
+        /// アクセス用のキー
+        public string Key;
+        /// リソース名
+        public string ResName;
+        /// AudioClip
+        public AudioClip Clip;
 
-		/// コンストラクタ
-		public _Data(string key, string res)
-		{
-			Key = key;
-			ResName = "Sounds/" + res;
-			// AudioClipの取得
-			Clip = Resources.Load(ResName) as AudioClip;
-		}
-	}
+        /// コンストラクタ
+        public _Data(string key, string res)
+        {
+            Key = key;
+            ResName = "Sounds/" + res;
+            // AudioClipの取得
+            Clip = Resources.Load(ResName) as AudioClip;
+        }
+    }
 
-	/// コンストラクタ
-	public Sound()
-	{
-		// チャンネル確保
-		_sourceSeArray = new AudioSource[SE_CHANNEL];
-	}
+    /// コンストラクタ
+    public Sound()
+    {
+        // チャンネル確保
+        _sourceSeArray = new AudioSource[SE_CHANNEL];
+    }
 
-	/// AudioSourceを取得する
-	AudioSource _GetAudioSource(eType type, int channel = -1)
-	{
-		if (_object == null)
-		{
-			// GameObjectがなければ作る
-			_object = new GameObject("Sounds");
-			// 破棄しないようにする
-			GameObject.DontDestroyOnLoad(_object);
-			// AudioSourceを作成
-			_sourceBgm = _object.AddComponent<AudioSource>();
-			_sourceSeDefault = _object.AddComponent<AudioSource>();
-			for (int i = 0; i < SE_CHANNEL; i++)
-			{
-				_sourceSeArray[i] = _object.AddComponent<AudioSource>();
-			}
-		}
+    /// AudioSourceを取得する
+    AudioSource _GetAudioSource(eType type, int channel = -1)
+    {
+        if (_object == null)
+        {
+            // GameObjectがなければ作る
+            _object = new GameObject("Sounds");
+            // 破棄しないようにする
+            GameObject.DontDestroyOnLoad(_object);
+            // AudioSourceを作成
+            _sourceBgm = _object.AddComponent<AudioSource>();
+            _sourceSeDefault = _object.AddComponent<AudioSource>();
+            for (int i = 0; i < SE_CHANNEL; i++)
+            {
+                _sourceSeArray[i] = _object.AddComponent<AudioSource>();
+            }
+        }
 
-		if (type == eType.Bgm)
-		{
-			// BGM
-			return _sourceBgm;
-		}
-		else
-		{
-			// SE
-			if (0 <= channel && channel < SE_CHANNEL)
-			{
-				// チャンネル指定
-				return _sourceSeArray[channel];
-			}
-			else
-			{
-				// デフォルト
-				return _sourceSeDefault;
-			}
-		}
-	}
+        if (type == eType.Bgm)
+        {
+            // BGM
+            return _sourceBgm;
+        }
+        else
+        {
+            // SE
+            if (0 <= channel && channel < SE_CHANNEL)
+            {
+                // チャンネル指定
+                return _sourceSeArray[channel];
+            }
+            else
+            {
+                // デフォルト
+                return _sourceSeDefault;
+            }
+        }
+    }
 
-	/// <summary>
-	/// ※サウンドデータはResources/Soundsフォルダに配置すること
-	/// サウンドの一括ロード（1度だけ呼び出す）
-	/// </summary>
-	public static void AllSoundLod()
-	{
-		// サウンドのロード
-		// BGMロード
-		Sound.LoadBgm("BGM01", "BGM01");
-		Sound.LoadBgm("BGM02", "BGM02");
-		Sound.LoadBgm("BGM03", "BGM03");
-        Sound.LoadBgm("BGM04", "BGM04");
-		Sound.LoadBgm("BGM05", "BGM05");
-		Sound.LoadBgm("BGM06", "BGM06");
-		Sound.LoadBgm("BGM07", "BGM07");
-		Sound.LoadBgm("BGM08", "BGM08");
-		Sound.LoadBgm("BGM_Battle", "BGM_Battle");
-		Sound.LoadBgm("BGM_Menu", "BGM_Menu");
-		Sound.LoadBgm("BGM_Title", "BGM_Title");
+    /// <summary>
+    /// ※サウンドデータはResources/Soundsフォルダに配置すること
+    /// サウンドの一括ロード（1度だけ呼び出す）
+    /// </summary>
+    public static void AllSoundLod()
+    {
+        // サウンドのロード
+        // BGMロード
+      Sound.LoadBgm("BGM_Battle", "BGM_Battle");
+        Sound.LoadBgm("BGM_Menu", "BGM_Menu");
+        Sound.LoadBgm("BGM_Title", "BGM_Title");
 
-		// SEロード
-		Sound.LoadSe("HitW", "Se_hit_weak");
-		Sound.LoadSe("HitM", "Se_hit_medium");
-		Sound.LoadSe("HitS", "Se_hit_Strong");
-		Sound.LoadSe("GuardW", "Se_guard_weak");
-		Sound.LoadSe("GuardM", "Se_guard_medium");
-		Sound.LoadSe("GuardS", "Se_guard_strong");
-		Sound.LoadSe("PunchW", "Se_punch_weak");
-		Sound.LoadSe("PunchM", "Se_punch_medium");
-		Sound.LoadSe("PunchS", "Se_punch_strong");
+        // SEロード
+        Sound.LoadSe("HitL", "Se_hit_light");
+        Sound.LoadSe("HitM", "Se_hit_medium");
+        Sound.LoadSe("HitS", "Se_hit_Strong");
+        Sound.LoadSe("GuardL", "Se_guard_light");
+        Sound.LoadSe("GuardM", "Se_guard_medium");
+        Sound.LoadSe("GuardS", "Se_guard_strong");
+        Sound.LoadSe("JabL", "Se_jab_light");
+        Sound.LoadSe("JabM", "Se_jab_medium");
+        Sound.LoadSe("JabS", "Se_jab_strong");
+        Sound.LoadSe("Squat", "Se_squat");
+        Sound.LoadSe("Jump", "Se_jump");
+        Sound.LoadSe("Step", "Se_step");
+        Sound.LoadSe("Down", "Se_down");
+        Sound.LoadSe("DownCancel", "Se_downCancel");
+        Sound.LoadSe("GetUp", "Se_getUp");
+        Sound.LoadSe("Sutan", "Se_sutan");
+        Sound.LoadSe("Special1", "Se_special1_hadouken");
+        Sound.LoadSe("Special1_Hit", "Se_special1_hadouken_Hit");
+        Sound.LoadSe("Ca_Hit", "Se_ca_Hit");
+        Sound.LoadSe("Menu_MoveCursor", "Se_menu_moveCursor");
+        Sound.LoadSe("Menu_Cancel", "Se_menu_cancel");
+        Sound.LoadSe("Menu_Decision", "Se_menu_decision");
 
-		Sound.LoadSe("Step", "Se_step");
-		Sound.LoadSe("Down", "Se_down");
-		Sound.LoadSe("GetUp", "Se_getUp");
-		Sound.LoadSe("Sutan", "Se_sutan");
-		Sound.LoadSe("Special1", "Se_special1_hadouken");
-		Sound.LoadSe("Special1_Hit", "Se_special1_hadouken_Hit");
-		Sound.LoadSe("Ca_Hit", "Se_ca_Hit");
-		Sound.LoadSe("Menu_MoveCursor", "Se_menu_moveCursor");
-		Sound.LoadSe("Menu_Cancel", "Se_menu_cancel");
-		Sound.LoadSe("Menu_Decision", "Se_menu_decision");
-		
-		/*古いデータ
-		Sound.LoadSe("Jump", "Se_jump");
-		Sound.LoadSe("RoundOne", "Voice_roundOne");
-		Sound.LoadSe("RoundTwo", "Voice_roundTwo");
-		Sound.LoadSe("RoundThree", "Voice_roundThree");
-        Sound.LoadSe("Fight", "Voice_fight");
-        Sound.LoadSe("Ko", "Voice_ko");
-		Sound.LoadSe("Draw", "Voice_draw");
-		Sound.LoadSe("PlayerOneWin", "Voice_playerOneWin");
-		Sound.LoadSe("PlayerTwoWin", "Voice_PlayerTwoWin");
-		*/
+        //新しく入れたデータ　8.30
+        Sound.LoadSe("PlayerOneWin", "Voice_Player1_Win");
+        Sound.LoadSe("PlayerTwoWin", "Voice_Player2_Win");
+        Sound.LoadSe("RoundOne", "Voice_Round1");
+        Sound.LoadSe("RoundTwo", "Voice_Round2");
+        Sound.LoadSe("RoundThree", "Voice_Final_Round");
+        Sound.LoadSe("Fight", "Voice_Fight");
+        Sound.LoadSe("Ko", "Voice_K.O.");
+        Sound.LoadSe("Draw", "Voice_Draw");
 
-		//新しく入れたデータ　8.30
-		Sound.LoadSe("PlayerOneWin", "Voice_Player1_Win");
-		Sound.LoadSe("PlayerTwoWin", "Voice_Player2_Win");
-		Sound.LoadSe("RoundOne", "Voice_Round1");
-		Sound.LoadSe("RoundTwo", "Voice_Round2");
-		Sound.LoadSe("RoundThree", "Voice_Final_Round");
-		Sound.LoadSe("Fight", "Voice_Fight");
-		Sound.LoadSe("Ko", "Voice_K.O.");
-		Sound.LoadSe("Draw", "Voice_Draw");
+        //まだ未使用組
+        Sound.LoadSe("Ko2", "Voice_K.O.2");
+        Sound.LoadSe("ADrunk", "CharaVoice_ADrunk");
+        Sound.LoadSe("Clico", "CharaVoice_Clico");
+        Sound.LoadSe("Kuidaore", "CharaVoice_Kuidaore");
+        Sound.LoadSe("Obachan", "CharaVoice_Oba");
 
-		//9.2
-		Sound.LoadSe("Jump", "SE_Jump");
-		Sound.LoadSe("Jump2", "SE_Jump2");
 
-		//まだ未使用組
-		Sound.LoadSe("Ko2", "Voice_K.O.2");
-		Sound.LoadSe("ADrunk", "CharaVoice_ADrunk");
-		Sound.LoadSe("Clico", "CharaVoice_Clico");
-		Sound.LoadSe("Kuidaore", "CharaVoice_Kuidaore");
-		Sound.LoadSe("Obachan", "CharaVoice_Oba");
+		// キャラボイスオバチャン
+		Sound.LoadSe("Oba_CharacterSelect", "Cv_Oba_CharacterSelect");
+		Sound.LoadSe("Oba_GetUp", "Cv_Oba_GetUp");
+		Sound.LoadSe("Oba_HitL", "Cv_Oba_HitL");
+		Sound.LoadSe("Oba_HitM", "Cv_Oba_HitM");
+		Sound.LoadSe("Oba_HitS", "Cv_Oba_HitS");
+		Sound.LoadSe("Oba_JobL", "Cv_Oba_JobL");
+		Sound.LoadSe("Oba_JobM", "Cv_Oba_JobM");
+		Sound.LoadSe("Oba_JobS", "Cv_Oba_JobS");
+		Sound.LoadSe("Oba_Jump", "Cv_Oba_Jump");
+		Sound.LoadSe("Oba_RoundDraw", "Cv_Oba_RoundDraw");
+		Sound.LoadSe("Oba_RoundLoss", "Cv_Oba_RoundLoss");
+		Sound.LoadSe("Oba_RoundWin", "Cv_Oba_RoundWin");
+		Sound.LoadSe("Oba_Special1", "Cv_Oba_Special1");
+		Sound.LoadSe("Oba_Special2", "Cv_Oba_Special2");
+		Sound.LoadSe("Oba_Special3", "Cv_Oba_Special3");
+		Sound.LoadSe("Ova_Special4", "Cv_Ova_Special4");
+		Sound.LoadSe("Oba_Thrown", "Cv_Oba_Thrown");
+		Sound.LoadSe("Ova_RoundStart", "Cv_Ova_RoundStart");
 	}
 
 	/// <summary>

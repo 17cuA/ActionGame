@@ -19,8 +19,8 @@ public class CinemaController : MonoBehaviour, ITimeControl
 	public void OnControlTimeStop()
 	{
 		isPlay = false;
-		Destroy(P1);
-		Destroy(P2);
+		//Destroy(P1);
+		//Destroy(P2);
 	}
 	public void OnControlTimeStart()
 	{
