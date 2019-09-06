@@ -29,8 +29,50 @@ MonoBehaviour:
   plusFootHitBox: []
   plusGrabHitBox: []
   plusPushingHitBox: []
-  customHitBox: []
-  isContinue: 0
+  customHitBox:
+  - mode: 0
+    frameHitBoxes:
+    - isInfinityFrame: 0
+      hitBox:
+        size: {x: 1.72, y: 1.99, z: 1}
+        localPosition: {x: 0.48, y: 1.98, z: 0}
+      startFrame: 3
+      endFrame: 5
+    hitStop: 5
+    hitPoint: 1
+    hitStrength: 0
+    damage: 300
+    stanDamage: 0
+    knockBack: 0
+    airKnockBack: 0.3
+    guardKnockBack: 0
+    hitEffects: []
+    isDown: 0
+    isThrow: 0
+    isThrowGroundDamage: 0
+    isThrowGroundAnimEnd: 0
+    airDamageMovements:
+    - isGravityInvaid: 0
+      isResetStartGravity: 1
+      isResetEndGravity: 0
+      isImpact: 0
+      movement: {x: 0, y: 1, z: 0}
+      startFrame: 0
+    throwGroundDamage: 0
+    throwSkill: {fileID: 0}
+    enemyThrowSkill: {fileID: 0}
+    throwDamages: []
+    isJumpCancel: 0
+    isContinue: 0
+    movements: []
+    gravityMoves: []
+    isFaceDown: 0
+    isPassiveNotPossible: 0
+    hitRigor: 50
+    guardHitRigor: 0
+    plusGauge: 0
+    enemyPlusGauge: 0
+  isContinue: 1
   isMoveContinue: 0
   movements: []
   gravityMoves: []
