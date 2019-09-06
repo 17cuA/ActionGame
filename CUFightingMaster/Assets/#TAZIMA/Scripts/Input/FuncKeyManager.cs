@@ -98,18 +98,20 @@ public class FuncKeyManager : SingletonMono<FuncKeyManager>
 				{
 					GameManager.Instance.Player_two.HP -= 25;
 				}
-				//ラウンドリセット
+				//タイマーカウントダウンを止める
 				if (Input.GetKeyDown(KeyCode.F7))
 				{
-					//gameRoundCount = 0;
-					//getRoundCount_p1 = 0;
-					//getRoundCount_p2 = 0;
-					//canvasController.ResetWinCounter();
-
-					//currentUpdate = ResetParameter;
+					countDownTimer_1.PlayCountDown(false);
+					countDownTimer_2.PlayCountDown(false);
+				}
+				//タイマーカウントダウンを進める
+				if (Input.GetKeyDown(KeyCode.F8))
+				{
+					countDownTimer_1.PlayCountDown(true);
+					countDownTimer_2.PlayCountDown(true);
 				}
 				//タイマーカウントを10ずつ進める
-				if(Input.GetKeyDown(KeyCode.F8))
+				if (Input.GetKeyDown(KeyCode.F9))
 				{
 					countDownTimer_1.CountTenSeconds();
 					countDownTimer_2.CountTenSeconds();
