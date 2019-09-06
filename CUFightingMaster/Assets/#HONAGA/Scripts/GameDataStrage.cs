@@ -60,12 +60,10 @@ public class GameDataStrage : MonoBehaviour
 	}
 	#endregion
 
-
-
-
 	public FighterStatus[] fighterStatuses = new FighterStatus[2];
 	public int plusAttackDamage_One = 0;
 	public int plusAttackDamage_Two = 0;
+
 	//デバッグ用のダメージ
 	public void SetPlusDamage(PlayerNumber _num,int _dam)
 	{

@@ -21,17 +21,20 @@ using UnityEngine;
 
 public class CanvasController : MonoBehaviour
 {
-	public Canvas canvas_1;
+	[SerializeField] private Canvas canvas_1;
 	[SerializeField] private InGameUIController inGameUIController_1;   // canvas_1の子分子のInGameUIController
 	[SerializeField] private ScreenFade screenFade_1;   // canvas_1の子分子のScreenFade
 
-	public Canvas canvas_2;
+	[SerializeField] private Canvas canvas_2;
 	[SerializeField] private InGameUIController inGameUIController_2;   // canvas_2の子分子のInGameUIController
 	[SerializeField] private ScreenFade screenFade_2;   // canvas_2の子分子のScreenFade
 
 	// 取得
 	void Awake()
 	{
+		if (canvas_1 == null || canvas_2 == null)
+			Debug.LogError("参照ミス : CanvacControllerにCanvasを追加してください");
+
 		inGameUIController_1 = canvas_1.transform.Find("InGameUIController").GetComponent<InGameUIController>();
 		inGameUIController_2 = canvas_2.transform.Find("InGameUIController").GetComponent<InGameUIController>();
 
