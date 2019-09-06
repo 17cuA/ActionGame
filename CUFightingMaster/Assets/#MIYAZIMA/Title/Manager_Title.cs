@@ -15,23 +15,29 @@ public class Manager_Title : MonoBehaviour
 	public bool activeTitle;	// TitleがActiveかどうか
 	public bool demoMovie;  // デモムービーを再生するかどうか
 	private float movie;		// ムービー再生までの時間を引く
-	private float movieMax;	// ムービーが流れるまでの待ち時間
+	private float movieMax; // ムービーが流れるまでの待ち時間
 
+	[SerializeField]private CanvasController_Title canvasController_Title;
 
 	//	画面のマスク関係
-	public GameObject maskOb;	//	マスク用のイメージが入ってるオブジェクト
+	public GameObject maskOb;   //	マスク用のイメージが入ってるオブジェクト
+
+	private bool isLight = false;
 
 	//	--------------------
 	//	スタート
 	//	--------------------
 	void Start()
 	{
+		//画面を暗くする
+		canvasController_Title.BrackOut();
 		 // 飯塚追加-------------------------------------------
         Sound.LoadBgm("BGM_Title", "BGM_Title");
         Sound.PlayBgm("BGM_Title", 0.4f, 1, true);
         // ---------------------------------------------------
 		activeTitle = false;
 		demoMovie = false;
+		isLight = false;
 		movieMax = 10;
 		movie = movieMax;
 	}
@@ -43,13 +49,23 @@ public class Manager_Title : MonoBehaviour
 	{
 		//ポーズ処理
 		if (Mathf.Approximately(Time.timeScale, 0f)) return;
-		if (Input.anyKeyDown && !Input.GetKeyDown(KeyCode.Escape) && !Input.GetKeyDown(KeyCode.F1) && !Input.GetKeyDown(KeyCode.F2) && !Input.GetKeyDown(KeyCode.F3) && !Input.GetKeyDown(KeyCode.F4))
-         {
-			// 飯塚追加-------------------------------------------
-			Sound.LoadSe("Menu_Decision", "Se_menu_decision");
-			Sound.PlaySe("Menu_Decision", 1, 0.3f);
-			// ---------------------------------------------------
-			SceneManager.LoadScene("CharacterSelect");
+		
+		//画面を徐々に明るくする
+		if (canvasController_Title.StartFadeIn() && isLight == false)
+			isLight = true;
+
+		if (isLight == true)
+		{
+
+			if (Input.anyKeyDown && !Input.GetKeyDown(KeyCode.Escape) && !Input.GetKeyDown(KeyCode.F1) && !Input.GetKeyDown(KeyCode.F2) && !Input.GetKeyDown(KeyCode.F3) && !Input.GetKeyDown(KeyCode.F4))
+			{
+				// 飯塚追加-------------------------------------------
+				Sound.LoadSe("Menu_Decision", "Se_menu_decision");
+				Sound.PlaySe("Menu_Decision", 1, 0.3f);
+				// ---------------------------------------------------
+				if (canvasController_Title.StartFadeOut())
+					SceneManager.LoadScene("CharacterSelect");
+			}
 		}
 		//// TitleシーンがActiveなら
 		//if (activeTitle)

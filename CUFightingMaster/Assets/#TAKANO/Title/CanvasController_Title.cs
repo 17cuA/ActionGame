@@ -28,7 +28,10 @@ public class CanvasController_Title : MonoBehaviour
 
     private void Awake()
     {
-        screenFade_Display1 = canvas_Display1.transform.Find("ScreenFade").GetComponent<ScreenFade>();
+		if (canvas_Display1 == null || canvas_Display2 == null)
+			Debug.LogError("参照ミス : CanvacControllerにCanvasを追加してください");
+
+		screenFade_Display1 = canvas_Display1.transform.Find("ScreenFade").GetComponent<ScreenFade>();
         screenFade_Display2 = canvas_Display2.transform.Find("ScreenFade").GetComponent<ScreenFade>();
     }
 
