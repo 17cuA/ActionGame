@@ -8,8 +8,6 @@ public class CinemaController : MonoBehaviour, ITimeControl
 {
 	//再生中のフラグ
 	public bool isPlay;
-	//public GameObject P1;
-	//public GameObject P2;
 
 	void Start()
 	{

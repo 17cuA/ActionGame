@@ -5,14 +5,16 @@ using UnityEngine.Playables;
 
 public class TimelineController : CameraBase
 {
-	public PlayableDirector director;
-
-	//public override bool IsEndCamera()
-	//{
-	//}
+	public PlayableDirector Admissiondirector;
+	public PlayableDirector ClicoSpdirector;
 
 	public override void PlayCamera()
 	{
-		director.Play();
+		Admissiondirector.Play();
+	}
+
+	public override void ClicoSp()
+	{
+		ClicoSpdirector.Play();
 	}
 }
