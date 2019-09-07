@@ -251,7 +251,6 @@ public class FighterCore : MonoBehaviour
         comboCount = _count;
         if(comboCount == 0)
         {
-            Debug.Log("aaa");
             isBound = false;
         }
     }

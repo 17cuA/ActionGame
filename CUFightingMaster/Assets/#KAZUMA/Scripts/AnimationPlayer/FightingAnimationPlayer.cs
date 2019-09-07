@@ -51,18 +51,28 @@ public class FightingAnimationPlayer : AnimationPlayerBase
             SetPlayAnimation(skill.animationClip, skill.animationSpeed, weightFrame);
         }
     }
-    public void CheckTimeStop(PlayerNumber _num)
+    public bool CheckTimeStop(PlayerNumber _num,bool _enem)
     {
-        if(nowPlaySkill==null)return;
+        if(nowPlaySkill==null)return false;
         if ((nowPlaySkill.timeStops.startFrame <= (NowFrame + 1)) && nowPlaySkill.timeStops.endFrame >= (NowFrame + 1))
         {
             if(_num == PlayerNumber.Player1)
             {
                 GameManager.Instance.isTimeStop_Two = true;
+                if (GameManager.Instance.isTimeStop_One||_enem)
+                {
+                    GameManager.Instance.isTimeStop_Two = false;
+                }
+                return true;
             }
             else if(_num == PlayerNumber.Player2)
             {
                 GameManager.Instance.isTimeStop_One = true;
+                if (GameManager.Instance.isTimeStop_Two||_enem)
+                {
+                    GameManager.Instance.isTimeStop_One = false;
+                }
+                return true;
             }
         }
         else if(nowPlaySkill.timeStops.endFrame<(NowFrame+1))
@@ -76,5 +86,6 @@ public class FightingAnimationPlayer : AnimationPlayerBase
                 GameManager.Instance.isTimeStop_One = false;
             }
         }
+        return false;
     }
 }

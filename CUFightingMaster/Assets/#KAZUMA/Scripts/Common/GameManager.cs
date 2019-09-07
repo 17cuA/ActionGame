@@ -100,8 +100,8 @@ public class GameManager : SingletonMono<GameManager>
 		input_one.UpdateGame(Player_one);
 		input_two.UpdateGame(Player_two);
 		UpdateManager.Instance.UpdateGame();
-        Player_one.AnimationPlayerCompornent.CheckTimeStop(PlayerNumber.Player1);
-        Player_two.AnimationPlayerCompornent.CheckTimeStop(PlayerNumber.Player2);
+        bool _timeF = Player_one.AnimationPlayerCompornent.CheckTimeStop(PlayerNumber.Player1,Player_two.AnimationPlayerCompornent.CheckTimeStop(PlayerNumber.Player2,false));
+        Player_two.AnimationPlayerCompornent.CheckTimeStop(PlayerNumber.Player2,_timeF);
         //ヒットストップがない時
         if ((!isTimeStop_One)&&((hitStop_one <= 0) || (!isHitStop_one)))
 		{

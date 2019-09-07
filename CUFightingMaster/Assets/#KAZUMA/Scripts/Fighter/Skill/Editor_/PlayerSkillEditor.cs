@@ -175,6 +175,10 @@ public class PlayerSkillEditor : EditorWindow
         playerSkill.barrageCancelFrag = EditorGUILayout.Toggle("連打キャンセル", playerSkill.barrageCancelFrag);
         playerSkill.skillLayer = EditorGUILayout.IntField("スキルレイヤー", playerSkill.skillLayer);
         EditorGUILayout.EndHorizontal();
+        EditorGUILayout.BeginHorizontal();
+        playerSkill.timeStops.startFrame = EditorGUILayout.IntField("時間停止スタート", playerSkill.timeStops.startFrame);
+        playerSkill.timeStops.endFrame = EditorGUILayout.IntField("時間停止エンド", playerSkill.timeStops.endFrame);
+        EditorGUILayout.EndHorizontal();
         if (GUILayout.Button("キャンセルレイヤー作成", GUILayout.Width(150), GUILayout.Height(15)))
         {
             playerSkill.cancelLayer.Add(0);

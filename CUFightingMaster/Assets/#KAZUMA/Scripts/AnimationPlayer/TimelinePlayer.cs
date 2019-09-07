@@ -21,5 +21,12 @@ public class TimelinePlayer : CameraBase
         ProductionCameraManager.Instance.cinemachine[1].gameObject.SetActive(false);
         Destroy(destroyObject);
     }
+    private void Update() 
+    {
+        if(!cinemaController.isPlay)
+        {
+            DestroyCamera();
+        }
+    }
 
 }

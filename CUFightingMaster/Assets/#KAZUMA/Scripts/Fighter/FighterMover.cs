@@ -239,7 +239,6 @@ public class FighterMover
 		int i = 0;
 		while (true)
 		{
-			Debug.Log(i+"移動：");
 			bool _flag = false;
 			//次があるかどうか
 			if (moves.Count > nowPlayMoveNumber + 1)

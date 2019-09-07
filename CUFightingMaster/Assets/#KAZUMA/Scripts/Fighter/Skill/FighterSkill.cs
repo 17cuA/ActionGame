@@ -129,6 +129,12 @@ public class FighterSkill : ScriptableObject
         public int startFrame;
         public int endFrame;
     }
+    [System.Serializable]
+    public class CameraPlay
+    {
+        public int startFrame;
+        public CameraBase playCamera;
+    }
     #endregion
     public int skillLayer = 0;//キャンセル用のレイヤー
     public AnimationClip animationClip = null;  //再生するアニメーション
@@ -143,8 +149,8 @@ public class FighterSkill : ScriptableObject
     //ブレンドするかしないか
     public bool inBlend = false;
     public bool outBlend = false;
+    public CameraPlay cameraPlay = new CameraPlay();
 
-    
     //当たり判定
     public bool isInvincibleBullet = false;//飛び道具無効
     public List<FrameHitBox> plusHeadHitBox = new List<FrameHitBox>();//頭
