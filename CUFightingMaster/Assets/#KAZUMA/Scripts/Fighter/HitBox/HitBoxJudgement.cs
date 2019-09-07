@@ -613,29 +613,29 @@ public class HitBoxJudgement
             return 0;
         }
 		float x = 0;
-        foreach (Collider c in col)
-        {
+        // foreach (Collider c in col)
+        // {
             int i = 1;
-            if (c.transform.position.x + (((BoxCollider)c).center.x) > t.transform.position.x)
+            if (col[0].transform.position.x + (((BoxCollider)col[0]).center.x) > t.transform.position.x)
             {
                 i = -1;
             }
-            x = ((c.transform.position.x+((BoxCollider)c).center.x))+((((BoxCollider)c).size.x/2)*i)+((_col.center.x*-1+(siz.x*i)));
+            x = ((col[0].transform.position.x+((BoxCollider)col[0]).center.x))+((((BoxCollider)col[0]).size.x/2)*i)+((_col.center.x*-1+(siz.x*i)));
 			//プラスかマイナスか
-			float checkX = x - c.gameObject.transform.transform.position.x;
+			float checkX = x - col[0].gameObject.transform.transform.position.x;
             if (i == 1 && checkX < 0)
             {
-                continue;
-            }
+            return 0;
+        }
             else if (i == -1 && checkX > 0)
             {
-                continue;
+                return 0;
             }
             isPushWall = true;//壁判定有
             float xTmp = t.parent.transform.position.x - x;
             t.parent.transform.position = new Vector3(x, t.transform.position.y, t.transform.position.z);
 			x = xTmp;
-		}
+		// }
 		return  x;
 	}
     public void KnockBackPushing()
