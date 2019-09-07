@@ -30,8 +30,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using CUEngine.Pattern;
 
-public class CameraController : MonoBehaviour
+public class CameraController : SingletonMono<CameraController>
 {
 	#region 変数宣言
 	[SerializeField]
@@ -64,18 +65,22 @@ public class CameraController : MonoBehaviour
 	// 仮で作成(07/29)
 	public GameObject Collider1;
 	public GameObject Collider2;
+    public BoxCollider boxCollider1;
+    public BoxCollider boxCollider2;
 
-	public CinemaController cinemaController;
-	#endregion
+    public CinemaController cinemaController;
+    #endregion
 
-	#region 初期化
-	private void Awake()
-	{
-		instance = GetComponent<CameraController>();
-	}
+    #region 初期化
+    private void Awake()
+    {
+        instance = GetComponent<CameraController>();
+        boxCollider1 = Collider1.GetComponent<BoxCollider>();
+        boxCollider2 = Collider2.GetComponent<BoxCollider>();
+    }
 
 
-	void Start()
+    void Start()
 	{
 		Fighter1 = GameManager.Instance.Player_one.gameObject;
 		Fighter2 = GameManager.Instance.Player_two.gameObject;
@@ -87,7 +92,7 @@ public class CameraController : MonoBehaviour
 		cameraPos_Min = new Vector3(-28.0f,0,-12.0f);	// ズームインの最小値
 		//distanceOfPlayers_Start = Vector3.Distance(Camera.main.WorldToViewportPoint(Player1.transform.position), Camera.main.WorldToViewportPoint(Player2.transform.position));
 		distanceOfPlayers_Start = 0.4f; // ゲーム開始時のプレイヤー同士の距離
-	}
+    }
 	#endregion
 
 	#region Update

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2620255843168714988}
   - component: {fileID: 2620255843168714990}
+  - component: {fileID: 6887895120208235615}
   m_Layer: 0
   m_Name: ClocoSPR
   m_TagString: Untagged
@@ -52,16 +53,32 @@ PlayableDirector:
     value: {fileID: 0}
   m_ExposedReferences:
     m_References:
-    - 667b13a41f4e76843a3739b42894ca90: {fileID: 2620255844155598923}
+    - 667b13a41f4e76843a3739b42894ca90: {fileID: 2620255843659750944}
     - 7fc99b2c76f56214899fa9e8f9172e63: {fileID: 2620255843659750944}
     - 84f61d1f24acc6548b23ae3f20cd2d27: {fileID: 2620255843659750944}
     - 3294fdb9a1729c247a0b7abdaf9c67bf: {fileID: 2620255843782415150}
     - 895c336c4a88a694586563332320025d: {fileID: 2620255844190872664}
-    - ea24f06a7cb2a4840a8cf434d3ec3d23: {fileID: 2620255844190872664}
+    - ea24f06a7cb2a4840a8cf434d3ec3d23: {fileID: 2620255843782415150}
     - f6bb0e7175675304c9b90e88cc542977: {fileID: 2620255845019850672}
-    - 4bdd411517b90474dae06bb15bafaf02: {fileID: 2620255844369909603}
+    - 4bdd411517b90474dae06bb15bafaf02: {fileID: 2620255845019850672}
     - 452339e4ccf943f4783bfb7d28e5e8d2: {fileID: 2620255844369909603}
     - 34424893342dddb43825936f1670ff70: {fileID: 2620255844155598923}
+--- !u!114 &6887895120208235615
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2620255843168714989}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d0177c4a0658a24187a95822eade881, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  director: {fileID: 0}
+  PlayerNum: 1
+  cinemachineBrain: {fileID: 0}
+  trackName: Cinemachine Track (1)
 --- !u!1 &2620255843169071754
 GameObject:
   m_ObjectHideFlags: 0
@@ -702,6 +719,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2620255844391877689}
   - component: {fileID: 2620255844391877691}
+  - component: {fileID: 3064135552986576744}
   m_Layer: 0
   m_Name: SpecialTimeline
   m_TagString: Untagged
@@ -736,7 +754,7 @@ PlayableDirector:
   m_Enabled: 1
   serializedVersion: 3
   m_PlayableAsset: {fileID: 11400000, guid: 19f269599f211804b8c340343065b612, type: 2}
-  m_InitialState: 0
+  m_InitialState: 1
   m_WrapMode: 2
   m_DirectorUpdateMode: 1
   m_InitialTime: 0
@@ -745,10 +763,28 @@ PlayableDirector:
     value: {fileID: 0}
   - key: {fileID: 114315286685258072, guid: 19f269599f211804b8c340343065b612, type: 2}
     value: {fileID: 0}
+  - key: {fileID: 114943588469151230, guid: 19f269599f211804b8c340343065b612, type: 2}
+    value: {fileID: 0}
   m_ExposedReferences:
     m_References:
-    - 9e1d89e50165f5b4eaaddf8344955cf7: {fileID: 2620255844997424567}
+    - 9e1d89e50165f5b4eaaddf8344955cf7: {fileID: 2620255843168714989}
+    - 7bf3d5b7363307747b858518d77e4c21: {fileID: 2620255843168714989}
+    - fcdbef1229402eb46a06532941611d42: {fileID: 2620255844997424567}
     - 485090831d36cc14e8efc9d82f8a3373: {fileID: 2620255844623511882}
+--- !u!114 &3064135552986576744
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2620255844391877694}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 054be7e70d1bfa74a9cd815b3f5adb21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cinemaController: {fileID: 2620255844623511877}
+  destroyObject: {fileID: 2620255844391877694}
 --- !u!1 &2620255844469001765
 GameObject:
   m_ObjectHideFlags: 0
@@ -1163,6 +1199,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2620255844997424566}
   - component: {fileID: 2620255844997424560}
+  - component: {fileID: 8316985502913145419}
   m_Layer: 0
   m_Name: ClocoSPL
   m_TagString: Untagged
@@ -1215,6 +1252,22 @@ PlayableDirector:
     - 4bdd411517b90474dae06bb15bafaf02: {fileID: 2620255845019850672}
     - 452339e4ccf943f4783bfb7d28e5e8d2: {fileID: 2620255844369909603}
     - 34424893342dddb43825936f1670ff70: {fileID: 2620255844155598923}
+--- !u!114 &8316985502913145419
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2620255844997424567}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d0177c4a0658a24187a95822eade881, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  director: {fileID: 0}
+  PlayerNum: 0
+  cinemachineBrain: {fileID: 0}
+  trackName: Cinemachine Track (1)
 --- !u!1 &2620255845001075886
 GameObject:
   m_ObjectHideFlags: 0

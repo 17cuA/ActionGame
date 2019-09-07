@@ -61,10 +61,10 @@ public class InGameManager : SingletonMono<InGameManager>
     /// </summary>
     private void StartGame()
     {
-		//if (cinemaController.isPlay) return;
-		//入場シーンの再生（未実装）
-		if (isBright)
-		{
+        //if (cinemaController.isPlay) return;
+        //入場シーンの再生（未実装）
+        if (isBright)
+        {
             if (!player1_Timeline.GetController().isPlay && !player2_Timeline.GetController().isPlay)
             {
                 player1_Timeline.DestroyCamera();
@@ -74,12 +74,16 @@ public class InGameManager : SingletonMono<InGameManager>
                 {
                     if (cinemaController.isPlay == false && canvasController.Call_StartFadeOut() == true)
                     {
+                        (CameraController.Instance.Collider1.GetComponent<BoxCollider>()).enabled = true;
+                        (CameraController.Instance.Collider2.GetComponent<BoxCollider>()).enabled = true;
                         GameManager.Instance.isEndInGame = true;
                         currentUpdate = StartRound;
                     }
                 }
                 else
                 {
+                    (CameraController.Instance.Collider1.GetComponent<BoxCollider>()).enabled = true;
+                    (CameraController.Instance.Collider2.GetComponent<BoxCollider>()).enabled = true;
                     if (canvasController.Call_StartFadeOut() == true)
                     {
                         GameManager.Instance.isEndInGame = true;
@@ -89,14 +93,14 @@ public class InGameManager : SingletonMono<InGameManager>
             }
         }
         //画面を暗くする
-		else if (canvasController.Call_StartFadeIn())
-		{
+        else if (canvasController.Call_StartFadeIn())
+        {
             isBright = true;
-		}
+        }
     }
-	#endregion
+    #endregion
 
-	#region ラウンド開始
+    #region ラウンド開始
     /// <summary>
     /// ラウンド開始
     /// </summary>

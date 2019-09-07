@@ -179,6 +179,11 @@ public class PlayerSkillEditor : EditorWindow
         playerSkill.timeStops.startFrame = EditorGUILayout.IntField("時間停止スタート", playerSkill.timeStops.startFrame);
         playerSkill.timeStops.endFrame = EditorGUILayout.IntField("時間停止エンド", playerSkill.timeStops.endFrame);
         EditorGUILayout.EndHorizontal();
+        EditorGUILayout.BeginHorizontal();
+        playerSkill.cameraPlay.rightCamera = EditorGUILayout.ObjectField("右側カメラ", playerSkill.cameraPlay.rightCamera, typeof(CameraBase), false) as CameraBase;
+        playerSkill.cameraPlay.leftCamera = EditorGUILayout.ObjectField("左側カメラ", playerSkill.cameraPlay.leftCamera, typeof(CameraBase), false) as CameraBase;
+        playerSkill.cameraPlay.startFrame = EditorGUILayout.IntField("スタートフレーム", playerSkill.cameraPlay.startFrame);
+        EditorGUILayout.EndHorizontal();
         if (GUILayout.Button("キャンセルレイヤー作成", GUILayout.Width(150), GUILayout.Height(15)))
         {
             playerSkill.cancelLayer.Add(0);

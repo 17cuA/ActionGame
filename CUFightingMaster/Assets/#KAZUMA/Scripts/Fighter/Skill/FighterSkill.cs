@@ -133,7 +133,8 @@ public class FighterSkill : ScriptableObject
     public class CameraPlay
     {
         public int startFrame;
-        public CameraBase playCamera;
+        public CameraBase rightCamera;
+        public CameraBase leftCamera;
     }
     #endregion
     public int skillLayer = 0;//キャンセル用のレイヤー

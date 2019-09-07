@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SpecialSkill
   m_EditorClassIdentifier: 
   skillLayer: 0
-  animationClip: {fileID: 0}
+  animationClip: {fileID: 7400000, guid: fc717657845ccfd48a526245777b6e0b, type: 2}
   animationSpeed: 1
   status: 1
   frameEffects: []
@@ -23,6 +23,11 @@ MonoBehaviour:
   cancelLayer: 
   inBlend: 0
   outBlend: 0
+  cameraPlay:
+    startFrame: 0
+    rightCamera: {fileID: 3064135552986576744, guid: fa9e759f406dc5347a6ed503a8f8749f,
+      type: 3}
+    leftCamera: {fileID: 0}
   isInvincibleBullet: 0
   plusHeadHitBox: []
   plusBodyHitBox: []
@@ -36,7 +41,7 @@ MonoBehaviour:
   gravityMoves: []
   timeStops:
     startFrame: 0
-    endFrame: 0
+    endFrame: 65
   headFlag: 1
   bodyFlag: 1
   footFlag: 1

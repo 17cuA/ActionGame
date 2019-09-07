@@ -18,11 +18,14 @@ public class FighterStateAttack : StateBaseScriptMonoBehaviour
             //キーがあれば発動してreturn
             if (stateBase.groundSkills.ContainsKey(stateBase.input.groundMoveCommand.inputCommandName))
             {
-                var _move = stateBase.groundSkills[stateBase.input.groundMoveCommand.inputCommandName];
-                stateBase.core.SetSkill(_move.skill, 0);
-                stateBase.core.SpecialGauge -= _move.skillCost;
+                if (stateBase.core.SpecialGauge >= stateBase.groundSkills[stateBase.input.groundMoveCommand.inputCommandName].skillCost)
+                {
+                    var _move = stateBase.groundSkills[stateBase.input.groundMoveCommand.inputCommandName];
+                    stateBase.core.SetSkill(_move.skill, 0);
+                    stateBase.core.SpecialGauge -= _move.skillCost;
+                    return;
+                }
             }
-            return;
         }
         string atk = stateBase.input.GetPlayerAtk();
         var _dir = stateBase.input.GetPlayerMoveDirection(stateBase);
@@ -407,11 +410,14 @@ public class FighterStateAttack : StateBaseScriptMonoBehaviour
             //キーがあれば発動してreturn
             if (stateBase.airSkills.ContainsKey(stateBase.input.airMoveCommand.inputCommandName))
             {
-                var _move = stateBase.airSkills[stateBase.input.airMoveCommand.inputCommandName];
-                stateBase.core.SetSkill(_move.skill, 0);
-                stateBase.core.SpecialGauge -= _move.skillCost;
+                if (stateBase.core.SpecialGauge >= stateBase.airSkills[stateBase.input.airMoveCommand.inputCommandName].skillCost)
+                {
+                    var _move = stateBase.airSkills[stateBase.input.airMoveCommand.inputCommandName];
+                    stateBase.core.SetSkill(_move.skill, 0);
+                    stateBase.core.SpecialGauge -= _move.skillCost;
+                    return;
+                }
             }
-            return;
         }
         string atk = stateBase.input.GetPlayerAtk();
         if (stateBase.core.PlayerMoveStates == PlayerMoveState.Jump)
