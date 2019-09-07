@@ -163,15 +163,33 @@ public class CanvasController : MonoBehaviour
 		if (inGameUIController_1.DoEndCountDown() == false && inGameUIController_2.DoEndCountDown() == false) return false;
 		return true;
 	}
-	#endregion
 
-	#region UIの更新
-	/// <summary>
-	/// PlayerのHP表示
-	/// </summary>
-	/// <param name="currentHp_P1">Player1の現在のHP</param>
-	/// <param name="currentHp_P2">Player2の現在のHP</param>
-	public void Call_DisplayPlayerHp(int currentHp_P1, int currentHp_P2)
+    /// <summary>
+    /// カウントダウン一時停止
+    /// </summary>
+    public void Call_StopCountDown()
+    {
+        inGameUIController_1.StopCountDown();
+        inGameUIController_2.StopCountDown();
+    }
+
+    /// <summary>
+    /// カウントダウン再開
+    /// </summary>
+    public void Call_ResumeCountdown()
+    {
+        inGameUIController_1.ResumeCountdown();
+        inGameUIController_2.ResumeCountdown();
+    }
+    #endregion
+
+    #region UIの更新
+    /// <summary>
+    /// PlayerのHP表示
+    /// </summary>
+    /// <param name="currentHp_P1">Player1の現在のHP</param>
+    /// <param name="currentHp_P2">Player2の現在のHP</param>
+    public void Call_DisplayPlayerHp(int currentHp_P1, int currentHp_P2)
 	{
 		inGameUIController_1.DisplayPlayerHp(currentHp_P1, currentHp_P2);
 		inGameUIController_2.DisplayPlayerHp(currentHp_P1, currentHp_P2);

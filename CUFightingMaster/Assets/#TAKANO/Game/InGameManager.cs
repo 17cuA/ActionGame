@@ -49,18 +49,20 @@ public class InGameManager : MonoBehaviour
 
 	bool isBright = false;
 
+    [SerializeField]bool isPlayCutIn = false;     //ゲーム中のカットシーンフラグ、再生されていたらTrue
 
-	#region 試合開始
-	/// <summary>
-	/// 試合開始 
-	/// </summary>
-	private void StartGame()
+
+    #region 試合開始
+    /// <summary>
+    /// 試合開始 
+    /// </summary>
+    private void StartGame()
     {
 		//if (cinemaController.isPlay) return;
-		//カットシーンの再生（未実装）
+		//入場シーンの再生（未実装）
 		if (isBright)
 		{
-            //カットシーンの再生が終わり、暗くなったら
+            //入場シーンの再生が終わり、暗くなったらStartRoundへ
             if (cinemaController != null)
             {
                 if (cinemaController.isPlay == false && canvasController.Call_StartFadeOut() == true)
@@ -72,7 +74,7 @@ public class InGameManager : MonoBehaviour
                     currentUpdate = StartRound;
 			}
         }
-
+        //画面を暗くする
 		else if (canvasController.Call_StartFadeIn())
 		{
             isBright = true;
@@ -122,57 +124,65 @@ public class InGameManager : MonoBehaviour
     /// </summary>
     private void BattleRound()
     {
-        //UIのhp表示の更新
-        canvasController.Call_DisplayPlayerHp(GameManager.Instance.Player_one.HP, GameManager.Instance.Player_two.HP);
-		canvasController.Call_DisplayPlayerSp(GameManager.Instance.Player_one.SpecialGauge, GameManager.Instance.Player_two.SpecialGauge);
-		//(どちらかのHPが0になったら
-		if (GameManager.Instance.Player_one.HP <= 0 || GameManager.Instance.Player_two.HP <= 0)
+        //カットインが再生されていたら
+        if (isPlayCutIn == true)
         {
-			//勝敗判定
-			if (GameManager.Instance.Player_one.HP > GameManager.Instance.Player_two.HP)
-            {
-				getRoundCount[0] += "1";
-				gameRoundCount++;
-            }
-            else if (GameManager.Instance.Player_one.HP < GameManager.Instance.Player_two.HP)
-            {
-				getRoundCount[1] += "1";
-				gameRoundCount++;
-            }
-			else
-			{
-				//DoubleKO
-				getRoundCount[0] += "2";
-				getRoundCount[1] += "2";
-				gameRoundCount++;
-			}
-			currentUpdate = FinishRound_KO;
-            GameManager.Instance.isStartGame = false;
-        }
 
-        //TimeOverになったら
-        else if (canvasController.Call_DoEndCountDown() == false)
+        }
+        else
         {
-            //勝敗判定
-			if (GameManager.Instance.Player_one.HP > GameManager.Instance.Player_two.HP)
+            //UIのhp表示の更新
+            canvasController.Call_DisplayPlayerHp(GameManager.Instance.Player_one.HP, GameManager.Instance.Player_two.HP);
+            canvasController.Call_DisplayPlayerSp(GameManager.Instance.Player_one.SpecialGauge, GameManager.Instance.Player_two.SpecialGauge);
+
+            //(どちらかのHPが0になったら
+            if (GameManager.Instance.Player_one.HP <= 0 || GameManager.Instance.Player_two.HP <= 0)
             {
-				getRoundCount[0] += "3";
-				gameRoundCount++;
+                //勝敗判定
+                if (GameManager.Instance.Player_one.HP > GameManager.Instance.Player_two.HP)
+                {
+                    getRoundCount[0] += "1";
+                    gameRoundCount++;
+                }
+                else if (GameManager.Instance.Player_one.HP < GameManager.Instance.Player_two.HP)
+                {
+                    getRoundCount[1] += "1";
+                    gameRoundCount++;
+                }
+                else
+                {
+                    //DoubleKO
+                    getRoundCount[0] += "2";
+                    getRoundCount[1] += "2";
+                    gameRoundCount++;
+                }
+                currentUpdate = FinishRound_KO;
+                GameManager.Instance.isStartGame = false;
             }
-			else if (GameManager.Instance.Player_one.HP < GameManager.Instance.Player_two.HP)
-			{
-				getRoundCount[1] += "3";
-				gameRoundCount++;
+            //TimeOverになったら
+            else if (canvasController.Call_DoEndCountDown() == false)
+            {
+                //勝敗判定
+                if (GameManager.Instance.Player_one.HP > GameManager.Instance.Player_two.HP)
+                {
+                    getRoundCount[0] += "3";
+                    gameRoundCount++;
+                }
+                else if (GameManager.Instance.Player_one.HP < GameManager.Instance.Player_two.HP)
+                {
+                    getRoundCount[1] += "3";
+                    gameRoundCount++;
+                }
+                else
+                {
+                    //DoubleKO
+                    getRoundCount[0] += "3";
+                    getRoundCount[1] += "3";
+                    gameRoundCount++;
+                }
+                currentUpdate = FinishRound_TimeOver;
+                GameManager.Instance.isStartGame = false;
             }
-			else
-			{
-				//DoubleKO
-				getRoundCount[0] += "3";
-				getRoundCount[1] += "3";
-				gameRoundCount++;
-			}
-			currentUpdate = FinishRound_TimeOver;
-            GameManager.Instance.isStartGame = false;
         }
     }
 	#endregion
