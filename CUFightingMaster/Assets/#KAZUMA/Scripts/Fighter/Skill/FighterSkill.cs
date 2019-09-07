@@ -20,6 +20,7 @@ public class FighterSkill : ScriptableObject
 	[System.Serializable]
 	public class FrameHitBox
 	{
+        public bool isFalse = false;
         public bool isInfinityFrame;//アニメーション再生終了後も継続
         public HitBox_ hitBox;
 		public int startFrame;

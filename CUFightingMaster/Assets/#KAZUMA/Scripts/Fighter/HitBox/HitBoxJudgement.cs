@@ -431,6 +431,14 @@ public class HitBoxJudgement
                 {
                     //処理
                     _number++;
+                    if(_defs[_number].isFalse)
+                    {
+                        _col.gameObject.SetActive(false);
+                    }
+                    else
+                    {
+                        _col.gameObject.SetActive(true);
+                    }
                 }
             }
         }
@@ -443,6 +451,14 @@ public class HitBoxJudgement
                 {
                     //処理
                     _number = 0;
+                    if (_defs[_number].isFalse)
+                    {
+                        _col.gameObject.SetActive(false);
+                    }
+                    else
+                    {
+                        _col.gameObject.SetActive(true);
+                    }
                 }
             }
         }

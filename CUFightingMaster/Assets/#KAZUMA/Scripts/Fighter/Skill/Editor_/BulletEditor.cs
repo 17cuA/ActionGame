@@ -315,6 +315,7 @@ public class BulletEditor : EditorWindow
         {
             EditorGUILayout.BeginVertical("Box");
             EditorGUILayout.BeginHorizontal();
+            _move[i].isBound = EditorGUILayout.Toggle("バウンド", _move[i].isBound);
             _move[i].isGravityInvaid = EditorGUILayout.Toggle("重力無効", _move[i].isGravityInvaid);
             _move[i].isResetStartGravity = EditorGUILayout.Toggle("開始時重力リセット", _move[i].isResetStartGravity);
             _move[i].isResetEndGravity = EditorGUILayout.Toggle("終了時重力リセット", _move[i].isResetEndGravity);
@@ -378,6 +379,7 @@ public class BulletEditor : EditorWindow
         {
             EditorGUILayout.BeginVertical("Box");
             EditorGUILayout.BeginHorizontal();
+            _move[i].isBound = EditorGUILayout.Toggle("バウンド", _move[i].isBound);
             _move[i].isGravityInvaid = EditorGUILayout.Toggle("重力無効", _move[i].isGravityInvaid);
             _move[i].isResetStartGravity = EditorGUILayout.Toggle("開始時重力リセット", _move[i].isResetStartGravity);
             _move[i].isResetEndGravity = EditorGUILayout.Toggle("終了時重力リセット", _move[i].isResetEndGravity);

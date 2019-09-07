@@ -574,6 +574,7 @@ public class PlayerSkillEditor : EditorWindow
                 }
                 EditorGUILayout.EndHorizontal();
                 frameHitBox[i].isInfinityFrame = EditorGUILayout.Toggle("アニメーション再生後も継続", frameHitBox[i].isInfinityFrame);
+                frameHitBox[i].isFalse = EditorGUILayout.Toggle("消す", frameHitBox[i].isFalse);
                 frameHitBox[i].startFrame = (int)frameStart;
 				frameHitBox[i].endFrame = (int)frameEnd;
 
