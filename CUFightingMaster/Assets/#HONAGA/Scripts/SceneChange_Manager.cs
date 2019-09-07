@@ -36,11 +36,11 @@ public class SceneChange_Manager : MonoBehaviour
             Canvas_One.color += new Color(0.0f,0.0f,0.0f,0.02f);
             Canvas_Two.color += new Color(0.0f, 0.0f, 0.0f, 0.02f);
         }
-        else if (Canvas_One.color.a >= 1.0f && Canvas_Two.color.a >= 1.0f && isBirght == true)
+         if (Canvas_One.color.a >= 1.0f && Canvas_Two.color.a >= 1.0f && isBirght == true)
         {
             async.allowSceneActivation = true;
         }
-        else if (isBirght == false)
+        if (isBirght == false)
         {
             Canvas_One.color -= new Color(0.0f, 0.0f, 0.0f, 0.02f);
             Canvas_Two.color -= new Color(0.0f, 0.0f, 0.0f, 0.02f);
