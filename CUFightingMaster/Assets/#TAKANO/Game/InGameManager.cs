@@ -21,8 +21,9 @@ using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using CUEngine.Pattern;
 
-public class InGameManager : MonoBehaviour
+public class InGameManager : SingletonMono<InGameManager>
 {
 	private static readonly int playerIndex = 2;
     [SerializeField] private int gameRoundCount = 0;     //ラウンド数をカウント
@@ -56,9 +57,10 @@ public class InGameManager : MonoBehaviour
 	/// </summary>
 	private void StartGame()
     {
-		//if (cinemaController.isPlay) return;
-		//カットシーンの再生（未実装）
-		if (isBright)
+        StartCoroutine("Test");
+        //if (cinemaController.isPlay) return;
+        //カットシーンの再生（未実装）
+        if (isBright)
 		{
             //カットシーンの再生が終わり、暗くなったら
             if (cinemaController != null)
@@ -318,22 +320,27 @@ public class InGameManager : MonoBehaviour
         Sound.AllSoundLod();
     }
 
-	private void Start()
+    private void Start()
     {
-		player1 = GameManager.Instance.Player_one.gameObject;
-		player2 = GameManager.Instance.Player_two.gameObject;
-		//初期化
-		Array.Resize<string>(ref getRoundCount, playerIndex);
-		for (int i = 0;i < playerIndex;i++)
-		{
-			getRoundCount[i] = "";
-		}
-		//画面暗転
-		canvasController.Call_BrackOut();
+        player1 = GameManager.Instance.Player_one.gameObject;
+        player2 = GameManager.Instance.Player_two.gameObject;
+        //初期化
+        Array.Resize<string>(ref getRoundCount, playerIndex);
+        for (int i = 0; i < playerIndex; i++)
+        {
+            getRoundCount[i] = "";
+        }
+        //画面暗転
+        canvasController.Call_BrackOut();
 
-		currentUpdate = StartGame;
+        currentUpdate = StartGame;
 
-	}
+        BattleCamera.transform.position = new Vector3(0, 3.0f, -9.5f);
+        player1.transform.position = targetPoint[0].transform.position;
+        player2.transform.position = targetPoint[1].transform.position;
+		StartCoroutine("Test");
+
+    }
 
     void Update()
     {

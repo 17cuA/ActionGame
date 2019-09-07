@@ -42,7 +42,7 @@ public class GameManager : SingletonMono<GameManager>
 		Application.targetFrameRate = 60;
 		base.Awake();
 		//プレイヤー1生成
-		var obj = Instantiate(GameDataStrage.Instance.fighterStatuses[0].fighter);
+		var obj = Instantiate(GameDataStrage.Instance.fighterStatuses[0].fighter,InGameManager.Instance.targetPoint[0].transform.position,Quaternion.identity);
 		if (parantFighter != null)
 		{
 			obj.transform.parent = parantFighter.transform;
@@ -53,7 +53,7 @@ public class GameManager : SingletonMono<GameManager>
 		Player_one = _co;
         CommonConstants.SetLayerRecursively(_co.gameObject, LayerMask.NameToLayer(CommonConstants.Layers.Player_One));
 		//プレイヤー2生成
-		obj = Instantiate(GameDataStrage.Instance.fighterStatuses[1].fighter);
+		obj = Instantiate(GameDataStrage.Instance.fighterStatuses[1].fighter,InGameManager.Instance.targetPoint[1].transform.position,Quaternion.identity);
 		if (parantFighter != null)
 		{
 			obj.transform.parent = parantFighter.transform;
