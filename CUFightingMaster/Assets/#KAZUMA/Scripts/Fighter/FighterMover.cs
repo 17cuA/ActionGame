@@ -26,6 +26,25 @@ public class FighterMover
     private Vector3 gravityFighter;
     private Vector3 impactMovement;
     private Vector3 gravityMax;
+	public FighterSkill.Move GetNowMove()
+	{
+        if (nowPlayMoveNumber > -1)
+        {
+            return moves[nowPlayMoveNumber];
+        }
+        return null;
+    }
+	public void SetNowMovement(FighterSkill.Move _move)
+	{
+        if (nowPlayMoveNumber > -1)
+        {
+            moves[nowPlayMoveNumber] = _move;
+        }
+		else
+		{
+            moves.Add(_move);
+        }
+	}
     //初期化
     public FighterMover(FighterCore fighterCore)
 	{

@@ -156,8 +156,6 @@ public class UI_HP : MonoBehaviour
 			}
 			hpGuagePosition.position = vec3;
 		}
-        yield return new WaitForSeconds(0.01f);
-        hpGuagePosition.position = initHpGuagePositon;
     }
 
 	/// <summary>

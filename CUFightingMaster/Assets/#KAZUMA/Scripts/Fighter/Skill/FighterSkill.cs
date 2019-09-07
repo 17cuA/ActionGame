@@ -84,7 +84,7 @@ public class FighterSkill : ScriptableObject
         public bool isThrowGroundDamage = false;//投げ技の時、接地時にダメージを喰らう
         public bool isThrowGroundAnimEnd = false;//投げ技の時、接地時にアニメーション終了
 		public List<Move> airDamageMovements = new List<Move>();//空中で当たった時の動き
-		public int throwGroundDamage = 0;
+        public int throwGroundDamage = 0;
         public FighterSkill throwSkill;//投げ技
         public FighterSkill enemyThrowSkill;
         public List<ThrowDamage> throwDamages = new List<ThrowDamage>();
@@ -109,6 +109,8 @@ public class FighterSkill : ScriptableObject
         public bool isResetStartGravity;
         public bool isResetEndGravity;
         public bool isImpact;
+        public bool isBound = false;//バウンド
+        public List<Move> boundMovements = new List<Move>();//バウンド移動量
         public Vector3 movement;
 		public int startFrame;
 	}

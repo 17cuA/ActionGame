@@ -25,7 +25,7 @@ MonoBehaviour:
     position: {x: 0, y: 0, z: 0}
   frameBullets: []
   cancelFrag: 10
-  barrageCancelFrag: 0
+  barrageCancelFrag: 1
   cancelLayer: 
   inBlend: 0
   outBlend: 0
@@ -79,6 +79,20 @@ MonoBehaviour:
         type: 3}
       guardEffect: {fileID: 0}
       position: {x: 1.19, y: 0, z: 0}
+    - isEnemyPos: 1
+      isParant: 0
+      isEnemyParant: 0
+      effect: {fileID: 0}
+      guardEffect: {fileID: 5981531815208451504, guid: fee703b5ebddea545a1e7c160ad9ca2e,
+        type: 3}
+      position: {x: -0.97, y: 1.91, z: 0}
+    - isEnemyPos: 1
+      isParant: 0
+      isEnemyParant: 0
+      effect: {fileID: 0}
+      guardEffect: {fileID: 7721722575896693875, guid: 027f955a5ea60b24897a3c579e52a3cf,
+        type: 3}
+      position: {x: 0.62, y: 1.79, z: 0}
     isDown: 0
     isThrow: 0
     isThrowGroundDamage: 0
@@ -88,24 +102,24 @@ MonoBehaviour:
       isResetStartGravity: 1
       isResetEndGravity: 0
       isImpact: 0
-      movement: {x: 0, y: 1, z: 0}
+      movement: {x: 0, y: 3, z: 0}
       startFrame: 0
     throwGroundDamage: 0
     throwSkill: {fileID: 0}
     enemyThrowSkill: {fileID: 0}
     throwDamages: []
-    isJumpCancel: 0
+    isJumpCancel: 1
     isContinue: 0
     movements: []
     gravityMoves: []
     isFaceDown: 0
     isPassiveNotPossible: 0
     hitRigor: 20
-    guardHitRigor: 20
+    guardHitRigor: 6
     plusGauge: 0
     enemyPlusGauge: 0
   isContinue: 1
-  isMoveContinue: 0
+  isMoveContinue: 1
   movements: []
   gravityMoves: []
   headFlag: 0

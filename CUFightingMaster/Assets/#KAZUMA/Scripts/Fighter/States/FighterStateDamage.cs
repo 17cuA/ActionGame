@@ -196,6 +196,7 @@ public class FighterStateDamage : StateBaseScriptMonoBehaviour
         stateBase.core.DirectionChangeMaterial();
         isEndStun = false;
         FighterSkill.CustomHitBox box = stateBase.core.GetDamage;
+        stateBase.nowDamage = box;
         //硬直
         hitRigor = box.hitRigor;
         hitCount = 0;

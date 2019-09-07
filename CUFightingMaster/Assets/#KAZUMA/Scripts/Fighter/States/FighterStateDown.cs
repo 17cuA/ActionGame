@@ -86,6 +86,17 @@ public class FighterStateDown : StateBaseScriptMonoBehaviour
         //振り向き処理
         stateBase.core.DirectionChangeMaterial();
     }
+    public void BoundStart()
+    {
+        GameManager.Instance.GetPlayFighterCore(stateBase.core.EnemyNumber).isBound = true;
+        if(stateBase.nowDamage!=null)
+        {
+            if (stateBase.core.Mover.GetNowMove() != null)
+            {
+                stateBase.ChangeSkillCustomMoveConstant(SkillConstants.Damage_Fly_HitMotion, 0, stateBase.core.Mover.GetNowMove().boundMovements);
+            }
+        }
+    }
     public bool IsEndWakeUp()
     {
         return stateBase.core.AnimationPlayerCompornent.EndAnimFrag;
@@ -99,5 +110,17 @@ public class FighterStateDown : StateBaseScriptMonoBehaviour
     public bool IsEndGroundKnock()
     {
         return stateBase.core.AnimationPlayerCompornent.EndAnimFrag;
+    }
+    public bool IsBound()
+    {
+        //コンボ中にバウンドしてなければ
+        if (!GameManager.Instance.GetPlayFighterCore(stateBase.core.EnemyNumber).isBound)
+        {
+            if (stateBase.core.Mover.GetNowMove() != null)
+            {
+                return stateBase.core.Mover.GetNowMove().isBound;
+            }
+        }
+        return false;
     }
 }

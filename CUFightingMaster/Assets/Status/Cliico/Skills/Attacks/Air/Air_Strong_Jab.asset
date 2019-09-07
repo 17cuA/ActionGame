@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4fbd35985d310504d81036cc55356454, type: 3}
-  m_Name: Air_Middle_Jab
+  m_Name: Air_Strong_Jab
   m_EditorClassIdentifier: 
   skillLayer: 0
-  animationClip: {fileID: 7400000, guid: 06b020e8082c2644695a9f41f38d84fe, type: 2}
-  animationSpeed: 1
+  animationClip: {fileID: 7400000, guid: ce00267e838410f41b62d683f3cf6a11, type: 2}
+  animationSpeed: 0.6
   status: 1
   frameEffects: []
   frameBullets: []
-  cancelFrag: 10
+  cancelFrag: 8
   barrageCancelFrag: 0
   cancelLayer: 
   inBlend: 0
@@ -31,7 +31,7 @@ MonoBehaviour:
       size: {x: 0, y: 0, z: 0}
       localPosition: {x: 0, y: 0, z: 0}
     startFrame: 0
-    endFrame: 22
+    endFrame: 34
   plusFootHitBox: []
   plusGrabHitBox: []
   plusPushingHitBox:
@@ -40,78 +40,82 @@ MonoBehaviour:
       size: {x: 0, y: -1.3, z: 0}
       localPosition: {x: 0, y: 0.6, z: 0}
     startFrame: 0
-    endFrame: 22
+    endFrame: 34
   customHitBox:
   - mode: 0
     frameHitBoxes:
     - isInfinityFrame: 0
       hitBox:
-        size: {x: 3.84, y: 0.83, z: 0.74}
-        localPosition: {x: 0.8, y: 1.4, z: 0}
-      startFrame: 6
-      endFrame: 12
-    hitStop: 8
-    hitPoint: 1
-    hitStrength: 1
-    damage: 770
+        size: {x: 2.3, y: 2.2, z: 1}
+        localPosition: {x: 1.51, y: 3.26, z: 0}
+      startFrame: 16
+      endFrame: 19
+    hitStop: 15
+    hitPoint: 0
+    hitStrength: 2
+    damage: 1000
     stanDamage: 0
-    knockBack: 0.5
-    airKnockBack: 0.3
-    guardKnockBack: 1
+    knockBack: 1.2
+    airKnockBack: 0.2
+    guardKnockBack: 0.5
     hitEffects:
     - isEnemyPos: 0
       isParant: 0
       isEnemyParant: 0
-      effect: {fileID: 537173260980545929, guid: 61704b3d6a6ed2e4d9e67b07de91466e,
+      effect: {fileID: 537173260980545929, guid: 8b5948be9c7e07d499fd9cffaf62493d,
         type: 3}
       guardEffect: {fileID: 0}
-      position: {x: 0.59, y: 0, z: 0}
+      position: {x: 0, y: 0, z: 0}
     - isEnemyPos: 1
       isParant: 0
       isEnemyParant: 0
       effect: {fileID: 0}
-      guardEffect: {fileID: 822153979730028474, guid: 062c122a40345df47aff4840e9096438,
+      guardEffect: {fileID: 6532350964205856054, guid: 8eea3721bc3fc884eafd65d00f7413aa,
         type: 3}
-      position: {x: -0.63, y: 1.51, z: 0}
-    - isEnemyPos: 1
-      isParant: 0
-      isEnemyParant: 0
-      effect: {fileID: 5357085053199187855, guid: 8fb88e057fea8e547a71a2f0d52c6ac9,
-        type: 3}
-      guardEffect: {fileID: 0}
-      position: {x: 1.37, y: 3.78, z: 0}
-    - isEnemyPos: 1
-      isParant: 0
-      isEnemyParant: 0
-      effect: {fileID: 0}
-      guardEffect: {fileID: 7721722575896693875, guid: 027f955a5ea60b24897a3c579e52a3cf,
-        type: 3}
-      position: {x: 1.41, y: 1.85, z: 0}
-    isDown: 0
+      position: {x: -0.33, y: 2.36, z: 0}
+    isDown: 1
     isThrow: 0
     isThrowGroundDamage: 0
     isThrowGroundAnimEnd: 0
     airDamageMovements:
     - isGravityInvaid: 0
-      isResetStartGravity: 1
+      isResetStartGravity: 0
       isResetEndGravity: 0
       isImpact: 0
-      movement: {x: -0.8, y: 5, z: 0}
+      isBound: 1
+      boundMovements:
+      - isGravityInvaid: 0
+        isResetStartGravity: 0
+        isResetEndGravity: 0
+        isImpact: 0
+        isBound: 0
+        boundMovements: []
+        movement: {x: 0, y: 3, z: 0}
+        startFrame: 0
+      movement: {x: 0, y: -5, z: 0}
       startFrame: 0
     throwGroundDamage: 0
     throwSkill: {fileID: 0}
     enemyThrowSkill: {fileID: 0}
     throwDamages: []
-    isJumpCancel: 1
+    isJumpCancel: 0
     isContinue: 0
-    movements: []
+    movements:
+    - isGravityInvaid: 0
+      isResetStartGravity: 1
+      isResetEndGravity: 0
+      isImpact: 1
+      isBound: 0
+      boundMovements: []
+      movement: {x: 0, y: 5, z: 0}
+      startFrame: 0
     gravityMoves: []
     isFaceDown: 0
     isPassiveNotPossible: 0
     hitRigor: 20
-    guardHitRigor: 15
-    plusGauge: 20
-    enemyPlusGauge: 15
+    guardHitRigor: 0
+    plusGauge: 25
+    enemyPlusGauge: 20
   isContinue: 1
   isMoveContinue: 1
   movements: []

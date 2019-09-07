@@ -44,8 +44,6 @@ public class ResultManager : MonoBehaviour
 		{
 			SceneManager.LoadScene("JECLogo");
 		}
-		Debug.Log(ShareSceneVariable.P1_info.isWin);
-		Debug.Log(ShareSceneVariable.P2_info.isWin);
 	}
 
 
