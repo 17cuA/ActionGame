@@ -50,35 +50,48 @@ public class InGameManager : SingletonMono<InGameManager>
 
 	bool isBright = false;
 
+    [SerializeField]bool isPlayCutIn = false;     //ゲーム中のカットシーンフラグ、再生されていたらTrue
+    public CameraBase player1_Timeline = null;
+    public CameraBase player2_Timeline = null;
 
-	#region 試合開始
-	/// <summary>
-	/// 試合開始 
-	/// </summary>
-	private void StartGame()
+
+    #region 試合開始
+    /// <summary>
+    /// 試合開始 
+    /// </summary>
+    private void StartGame()
     {
-        StartCoroutine("Test");
-        //if (cinemaController.isPlay) return;
-        //カットシーンの再生（未実装）
-        if (isBright)
+		//if (cinemaController.isPlay) return;
+		//入場シーンの再生（未実装）
+		if (isBright)
 		{
-            //カットシーンの再生が終わり、暗くなったら
-            if (cinemaController != null)
+            if (!player1_Timeline.GetController().isPlay && !player2_Timeline.GetController().isPlay)
             {
-                if (cinemaController.isPlay == false && canvasController.Call_StartFadeOut() == true)
-                    currentUpdate = StartRound;
+                player1_Timeline.DestroyCamera();
+                player2_Timeline.DestroyCamera();
+                //入場シーンの再生が終わり、暗くなったらStartRoundへ
+                if (cinemaController != null)
+                {
+                    if (cinemaController.isPlay == false && canvasController.Call_StartFadeOut() == true)
+                    {
+                        GameManager.Instance.isEndInGame = true;
+                        currentUpdate = StartRound;
+                    }
+                }
+                else
+                {
+                    if (canvasController.Call_StartFadeOut() == true)
+                    {
+                        GameManager.Instance.isEndInGame = true;
+                        currentUpdate = StartRound;
+                    }
+                }
             }
-			else
-			{
-                if (canvasController.Call_StartFadeOut() == true)
-                    currentUpdate = StartRound;
-			}
         }
-
+        //画面を暗くする
 		else if (canvasController.Call_StartFadeIn())
 		{
             isBright = true;
-			Sound.PlayBgm("Bgm01", 0.5f, 1);
 		}
     }
 	#endregion
@@ -124,57 +137,65 @@ public class InGameManager : SingletonMono<InGameManager>
     /// </summary>
     private void BattleRound()
     {
-        //UIのhp表示の更新
-        canvasController.Call_DisplayPlayerHp(GameManager.Instance.Player_one.HP, GameManager.Instance.Player_two.HP);
-		canvasController.Call_DisplayPlayerSp(GameManager.Instance.Player_one.SpecialGauge, GameManager.Instance.Player_two.SpecialGauge);
-		//(どちらかのHPが0になったら
-		if (GameManager.Instance.Player_one.HP <= 0 || GameManager.Instance.Player_two.HP <= 0)
+        //カットインが再生されていたら
+        if (isPlayCutIn == true)
         {
-			//勝敗判定
-			if (GameManager.Instance.Player_one.HP > GameManager.Instance.Player_two.HP)
-            {
-				getRoundCount[0] += "1";
-				gameRoundCount++;
-            }
-            else if (GameManager.Instance.Player_one.HP < GameManager.Instance.Player_two.HP)
-            {
-				getRoundCount[1] += "1";
-				gameRoundCount++;
-            }
-			else
-			{
-				//DoubleKO
-				getRoundCount[0] += "2";
-				getRoundCount[1] += "2";
-				gameRoundCount++;
-			}
-			currentUpdate = FinishRound_KO;
-            GameManager.Instance.isStartGame = false;
-        }
 
-        //TimeOverになったら
-        else if (canvasController.Call_DoEndCountDown() == false)
+        }
+        else
         {
-            //勝敗判定
-			if (GameManager.Instance.Player_one.HP > GameManager.Instance.Player_two.HP)
+            //UIのhp表示の更新
+            canvasController.Call_DisplayPlayerHp(GameManager.Instance.Player_one.HP, GameManager.Instance.Player_two.HP);
+            canvasController.Call_DisplayPlayerSp(GameManager.Instance.Player_one.SpecialGauge, GameManager.Instance.Player_two.SpecialGauge);
+
+            //(どちらかのHPが0になったら
+            if (GameManager.Instance.Player_one.HP <= 0 || GameManager.Instance.Player_two.HP <= 0)
             {
-				getRoundCount[0] += "3";
-				gameRoundCount++;
+                //勝敗判定
+                if (GameManager.Instance.Player_one.HP > GameManager.Instance.Player_two.HP)
+                {
+                    getRoundCount[0] += "1";
+                    gameRoundCount++;
+                }
+                else if (GameManager.Instance.Player_one.HP < GameManager.Instance.Player_two.HP)
+                {
+                    getRoundCount[1] += "1";
+                    gameRoundCount++;
+                }
+                else
+                {
+                    //DoubleKO
+                    getRoundCount[0] += "2";
+                    getRoundCount[1] += "2";
+                    gameRoundCount++;
+                }
+                currentUpdate = FinishRound_KO;
+                GameManager.Instance.isStartGame = false;
             }
-			else if (GameManager.Instance.Player_one.HP < GameManager.Instance.Player_two.HP)
-			{
-				getRoundCount[1] += "3";
-				gameRoundCount++;
+            //TimeOverになったら
+            else if (canvasController.Call_DoEndCountDown() == false)
+            {
+                //勝敗判定
+                if (GameManager.Instance.Player_one.HP > GameManager.Instance.Player_two.HP)
+                {
+                    getRoundCount[0] += "3";
+                    gameRoundCount++;
+                }
+                else if (GameManager.Instance.Player_one.HP < GameManager.Instance.Player_two.HP)
+                {
+                    getRoundCount[1] += "3";
+                    gameRoundCount++;
+                }
+                else
+                {
+                    //DoubleKO
+                    getRoundCount[0] += "3";
+                    getRoundCount[1] += "3";
+                    gameRoundCount++;
+                }
+                currentUpdate = FinishRound_TimeOver;
+                GameManager.Instance.isStartGame = false;
             }
-			else
-			{
-				//DoubleKO
-				getRoundCount[0] += "3";
-				getRoundCount[1] += "3";
-				gameRoundCount++;
-			}
-			currentUpdate = FinishRound_TimeOver;
-            GameManager.Instance.isStartGame = false;
         }
     }
 	#endregion
@@ -320,27 +341,22 @@ public class InGameManager : SingletonMono<InGameManager>
         Sound.AllSoundLod();
     }
 
-    private void Start()
+	private void Start()
     {
-        player1 = GameManager.Instance.Player_one.gameObject;
-        player2 = GameManager.Instance.Player_two.gameObject;
-        //初期化
-        Array.Resize<string>(ref getRoundCount, playerIndex);
-        for (int i = 0; i < playerIndex; i++)
-        {
-            getRoundCount[i] = "";
-        }
-        //画面暗転
-        canvasController.Call_BrackOut();
-
+		player1 = GameManager.Instance.Player_one.gameObject;
+		player2 = GameManager.Instance.Player_two.gameObject;
+		//初期化
+		Array.Resize<string>(ref getRoundCount, playerIndex);
+		for (int i = 0;i < playerIndex;i++)
+		{
+			getRoundCount[i] = "";
+		}
+		//画面暗転
+		canvasController.Call_BrackOut();
         currentUpdate = StartGame;
+        Sound.PlayBgm("BGM_Battle", 0.4f, 1, true);
 
-        BattleCamera.transform.position = new Vector3(0, 3.0f, -9.5f);
-        player1.transform.position = targetPoint[0].transform.position;
-        player2.transform.position = targetPoint[1].transform.position;
-		StartCoroutine("Test");
-
-    }
+	}
 
     void Update()
     {

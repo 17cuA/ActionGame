@@ -73,6 +73,8 @@ public class FigterEditor : EditorWindow
         EditorGUILayout.BeginVertical("Box");
 		fighterStatus.characterImage = EditorGUILayout.ObjectField("キャラクターイメージ",fighterStatus.characterImage, typeof(Sprite), false) as Sprite;
         fighterStatus.fighter = EditorGUILayout.ObjectField("本体", fighterStatus.fighter, typeof(FighterCore), false) as FighterCore;
+        fighterStatus.InGameTimeline_One = EditorGUILayout.ObjectField("入場シーン1P",fighterStatus.InGameTimeline_One, typeof(CameraBase), false) as CameraBase;
+        fighterStatus.InGameTimeline_Two = EditorGUILayout.ObjectField("入場シーン2P", fighterStatus.InGameTimeline_Two, typeof(CameraBase), false) as CameraBase;
         fighterStatus.HP = EditorGUILayout.IntField("HP", fighterStatus.HP);
         fighterStatus.airBraking = EditorGUILayout.FloatField("空中制動", fighterStatus.airBraking);
         fighterStatus.StanGuage = EditorGUILayout.IntField("スタン値", fighterStatus.StanGuage);
@@ -189,6 +191,7 @@ public class FigterEditor : EditorWindow
         {
             SSet("スタートモーション", ref fighterStatus.constantsSkills[CommonConstants.Skills.Start_Game_Motion]);
             SSet("敗北時飛ばされ", ref fighterStatus.constantsSkills[CommonConstants.Skills.Not_HP_Down]);
+            SSet("入場シーン", ref fighterStatus.constantsSkills[CommonConstants.Skills.InGameMotion]);
         }
 
         if(move = CustomUI.Foldout("移動系", move))

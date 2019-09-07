@@ -68,7 +68,7 @@ public static class CommonConstants
     public static class Skills
     {
         //一つ増やすたびに増やして
-        public static readonly int SkillCount = 84;
+        public static readonly int SkillCount = 85;
 
         //地上の動き
         public static readonly int Idle = 0;            //待機
@@ -192,6 +192,8 @@ public static class CommonConstants
         public static readonly int Double_Jump = 81;//二段ジャンプ
         public static readonly int Double_Jump_Front = 82;
         public static readonly int Double_Jump_Back = 83;
+
+        public static readonly int InGameMotion = 84;//入場シーン
     }
     public static void SetLayerRecursively(
     this GameObject self,
@@ -327,4 +329,5 @@ public enum SkillConstants
     Double_Jump = 81,//二段ジャンプ
     Double_Jump_Front = 82,
     Double_Jump_Back = 83,
+    InGameMotion = 84,//入場シーン
 }

@@ -70,7 +70,10 @@ public class FighterStateBase : StateBaseScriptMonoBehaviour
         }
     }
     #endregion
-
+    public void InGameMotionStart()
+    {
+        ChangeSkillConstant(SkillConstants.InGameMotion, 0);
+    }
     public void StartGame(bool isUpdate)
     {
         //向きの初期化
@@ -223,5 +226,9 @@ public class FighterStateBase : StateBaseScriptMonoBehaviour
             }
         }
         return false;
+    }
+    public bool IsEndInGameMotion()
+    {
+        return GameManager.Instance.isEndInGame;
     }
 }

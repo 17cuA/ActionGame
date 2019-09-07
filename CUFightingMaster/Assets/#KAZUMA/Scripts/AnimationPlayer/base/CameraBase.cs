@@ -7,5 +7,6 @@ using Cinemachine;
 public abstract class CameraBase : MonoBehaviour
 {
 	public abstract void PlayCamera();
-	public abstract void ClicoSp();
+    public abstract CinemaController GetController();
+    public abstract void DestroyCamera();
 }

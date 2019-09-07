@@ -26,6 +26,7 @@ public class GameManager : SingletonMono<GameManager>
 
     public bool isStartGame = false;
     public bool isEndRound = false;
+    public bool isEndInGame = false;
 
     //ヒットストップ
     private int hitStop_one = 0;
@@ -38,12 +39,17 @@ public class GameManager : SingletonMono<GameManager>
     public List<IEventable> DeleteBulletList = new List<IEventable>();
 	override protected void Awake()
 	{
-		QualitySettings.vSyncCount = 0;
+        isEndInGame = false;
+        QualitySettings.vSyncCount = 0;
 		Application.targetFrameRate = 60;
 		base.Awake();
 		//プレイヤー1生成
 		var obj = Instantiate(GameDataStrage.Instance.fighterStatuses[0].fighter,InGameManager.Instance.targetPoint[0].transform.position,Quaternion.identity);
-		if (parantFighter != null)
+        //入場シーンカメラ生成
+        var camera = Instantiate(GameDataStrage.Instance.fighterStatuses[0].InGameTimeline_One, Vector3.zero, Quaternion.identity);
+        InGameManager.Instance.player1_Timeline = camera;
+        camera.PlayCamera();//再生
+        if (parantFighter != null)
 		{
 			obj.transform.parent = parantFighter.transform;
 		}
@@ -54,7 +60,11 @@ public class GameManager : SingletonMono<GameManager>
         CommonConstants.SetLayerRecursively(_co.gameObject, LayerMask.NameToLayer(CommonConstants.Layers.Player_One));
 		//プレイヤー2生成
 		obj = Instantiate(GameDataStrage.Instance.fighterStatuses[1].fighter,InGameManager.Instance.targetPoint[1].transform.position,Quaternion.identity);
-		if (parantFighter != null)
+        //入場シーンカメラ生成
+        var cam2 = Instantiate(GameDataStrage.Instance.fighterStatuses[0].InGameTimeline_Two, Vector3.zero, Quaternion.identity);
+        cam2.PlayCamera();
+        InGameManager.Instance.player2_Timeline = cam2;
+        if (parantFighter != null)
 		{
 			obj.transform.parent = parantFighter.transform;
 		}

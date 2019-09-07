@@ -59,6 +59,10 @@ public class FighterStatus : ScriptableObject
     public FighterSkill[] constantsSkills = { };
 	public FighterCore fighter = null;//ファイター本体
 
+    //入場
+    public CameraBase InGameTimeline_One = null;
+    public CameraBase InGameTimeline_Two = null;
+
     public List<SkillAnimationCustom> groundAttackSkills = new List<SkillAnimationCustom>();
     public List<SkillAnimationCustom> airAttackSkills = new List<SkillAnimationCustom>();
 

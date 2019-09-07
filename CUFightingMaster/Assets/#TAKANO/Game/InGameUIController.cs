@@ -183,11 +183,19 @@ public class InGameUIController : MonoBehaviour
 		uI_countDownTimer.PlayCountDown(false);
 	}
 
-	/// <summary>
-	/// カウントダウンが終了したか
-	/// </summary>
-	/// <returns>終了していたらfalse</returns>
-	public bool DoEndCountDown()
+    /// <summary>
+    /// カウントダウン再開
+    /// </summary>
+    public void ResumeCountdown()
+    {
+        uI_countDownTimer.PlayCountDown(true);
+    }
+
+    /// <summary>
+    /// カウントダウンが終了したか
+    /// </summary>
+    /// <returns>終了していたらfalse</returns>
+    public bool DoEndCountDown()
 	{
 		return uI_countDownTimer.isEndCountDown();
 	}

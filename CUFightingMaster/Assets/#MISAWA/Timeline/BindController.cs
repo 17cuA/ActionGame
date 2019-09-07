@@ -40,7 +40,7 @@ public class BindController : MonoBehaviour
 		// 自身のPlaybleDirectorをセット
 		director = gameObject.GetComponent<PlayableDirector>();
 		// トラック名の指定がなかったら
-		if (trackName != null)
+		if (trackName == "")
 		{
 			trackName = "Cinemachine Track";        //デフォルトを取得
 		}
