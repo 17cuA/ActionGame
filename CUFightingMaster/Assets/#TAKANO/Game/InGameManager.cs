@@ -125,8 +125,7 @@ public class InGameManager : MonoBehaviour
         //UIのhp表示の更新
         canvasController.Call_DisplayPlayerHp(GameManager.Instance.Player_one.HP, GameManager.Instance.Player_two.HP);
 		canvasController.Call_DisplayPlayerSp(GameManager.Instance.Player_one.SpecialGauge, GameManager.Instance.Player_two.SpecialGauge);
-		Debug.Log(GameManager.Instance.Player_one.SpecialGauge);
-		Debug.Log(GameManager.Instance.Player_two.SpecialGauge);
+		Debug.Log("P1:" + GameManager.Instance.Player_one.SpecialGauge + "    P2:" + GameManager.Instance.Player_two.SpecialGauge);
 		//(どちらかのHPが0になったら
 		if (GameManager.Instance.Player_one.HP <= 0 || GameManager.Instance.Player_two.HP <= 0)
         {
