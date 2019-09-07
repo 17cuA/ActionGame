@@ -24,17 +24,29 @@ MonoBehaviour:
     worldPositionFlag: 0
     position: {x: 0, y: 0, z: 0}
   frameBullets: []
-  cancelFrag: 0
+  cancelFrag: 10
   barrageCancelFrag: 0
   cancelLayer: 
   inBlend: 0
   outBlend: 0
   isInvincibleBullet: 0
   plusHeadHitBox: []
-  plusBodyHitBox: []
+  plusBodyHitBox:
+  - isInfinityFrame: 0
+    hitBox:
+      size: {x: 0, y: 0, z: 0}
+      localPosition: {x: 0, y: 0, z: 0}
+    startFrame: 0
+    endFrame: 13
   plusFootHitBox: []
   plusGrabHitBox: []
-  plusPushingHitBox: []
+  plusPushingHitBox:
+  - isInfinityFrame: 0
+    hitBox:
+      size: {x: 0, y: -1.3, z: 0}
+      localPosition: {x: 0, y: 0.6, z: 0}
+    startFrame: 0
+    endFrame: 13
   customHitBox:
   - mode: 0
     frameHitBoxes:
@@ -96,8 +108,8 @@ MonoBehaviour:
   isMoveContinue: 0
   movements: []
   gravityMoves: []
-  headFlag: 1
+  headFlag: 0
   bodyFlag: 1
-  footFlag: 1
-  grabFlag: 1
+  footFlag: 0
+  grabFlag: 0
   pushingFlag: 1
