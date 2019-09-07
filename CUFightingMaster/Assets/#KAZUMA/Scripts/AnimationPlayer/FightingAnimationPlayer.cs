@@ -51,5 +51,30 @@ public class FightingAnimationPlayer : AnimationPlayerBase
             SetPlayAnimation(skill.animationClip, skill.animationSpeed, weightFrame);
         }
     }
-
+    public void CheckTimeStop(PlayerNumber _num)
+    {
+        if(nowPlaySkill==null)return;
+        if ((nowPlaySkill.timeStops.startFrame <= (NowFrame + 1)) && nowPlaySkill.timeStops.endFrame >= (NowFrame + 1))
+        {
+            if(_num == PlayerNumber.Player1)
+            {
+                GameManager.Instance.isTimeStop_Two = true;
+            }
+            else if(_num == PlayerNumber.Player2)
+            {
+                GameManager.Instance.isTimeStop_One = true;
+            }
+        }
+        else if(nowPlaySkill.timeStops.endFrame<(NowFrame+1))
+        {
+            if(_num == PlayerNumber.Player1)
+            {
+                GameManager.Instance.isTimeStop_Two = false;
+            }
+            else if(_num == PlayerNumber.Player2)
+            {
+                GameManager.Instance.isTimeStop_One = false;
+            }
+        }
+    }
 }

@@ -32,7 +32,8 @@ MonoBehaviour:
   customHitBox:
   - mode: 0
     frameHitBoxes:
-    - isInfinityFrame: 0
+    - isFalse: 0
+      isInfinityFrame: 0
       hitBox:
         size: {x: 1.8, y: 3.86, z: 1}
         localPosition: {x: 1.13, y: 1.93, z: 0}
@@ -77,6 +78,9 @@ MonoBehaviour:
   isMoveContinue: 0
   movements: []
   gravityMoves: []
+  timeStops:
+    startFrame: 0
+    endFrame: 10
   headFlag: 1
   bodyFlag: 1
   footFlag: 1

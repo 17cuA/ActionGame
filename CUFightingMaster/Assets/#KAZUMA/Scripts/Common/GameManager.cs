@@ -34,6 +34,9 @@ public class GameManager : SingletonMono<GameManager>
 	private bool isHitStop_one = false;
 	private bool isHitStop_two = false;
 
+    public bool isTimeStop_One = false;
+    public bool isTimeStop_Two = false;
+
     public List<IEventable> UpdateBulletList = new List<IEventable>();
     public List<IEventable> LateUpdateBulletList = new List<IEventable>();
     public List<IEventable> DeleteBulletList = new List<IEventable>();
@@ -97,8 +100,10 @@ public class GameManager : SingletonMono<GameManager>
 		input_one.UpdateGame(Player_one);
 		input_two.UpdateGame(Player_two);
 		UpdateManager.Instance.UpdateGame();
-		//ヒットストップがない時
-		if ((hitStop_one <= 0) || (!isHitStop_one))
+        Player_one.AnimationPlayerCompornent.CheckTimeStop(PlayerNumber.Player1);
+        Player_two.AnimationPlayerCompornent.CheckTimeStop(PlayerNumber.Player2);
+        //ヒットストップがない時
+        if ((!isTimeStop_One)&&((hitStop_one <= 0) || (!isHitStop_one)))
 		{
 			isHitStop_one = false;
 			Player_one.UpdateGame();
@@ -111,7 +116,7 @@ public class GameManager : SingletonMono<GameManager>
 			Player_one.HitStopUpdate();
 			hitStop_one--;
 		}
-		if ((hitStop_two <= 0) || (!isHitStop_two))
+		if ((!isTimeStop_Two)&&((hitStop_two <= 0) || (!isHitStop_two)))
 		{
 			isHitStop_two = false;
 			Player_two.UpdateGame();
@@ -125,14 +130,14 @@ public class GameManager : SingletonMono<GameManager>
 		}
 
 
-		if ((hitStop_one <= 0) || (!isHitStop_one))
+		if (((hitStop_one <= 0) || (!isHitStop_one))&&(!isTimeStop_One))
 		{
 			if(hitStop_one<=0)
 			{
 				Player_one.KnockBackUpdate();
 			}
         }
-		if ((hitStop_two <= 0) || (!isHitStop_two))
+		if (((hitStop_two <= 0) || (!isHitStop_two))&&(!isTimeStop_Two))
 		{
 			if (hitStop_one <= 0)
 			{

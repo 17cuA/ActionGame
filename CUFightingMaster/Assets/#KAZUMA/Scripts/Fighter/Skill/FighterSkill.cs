@@ -123,6 +123,12 @@ public class FighterSkill : ScriptableObject
 		public Vector3 limitMove;
 		public int startFrame;
     }
+    [System.Serializable]
+    public class TimeStop
+    {
+        public int startFrame;
+        public int endFrame;
+    }
     #endregion
     public int skillLayer = 0;//キャンセル用のレイヤー
     public AnimationClip animationClip = null;  //再生するアニメーション
@@ -138,6 +144,7 @@ public class FighterSkill : ScriptableObject
     public bool inBlend = false;
     public bool outBlend = false;
 
+    
     //当たり判定
     public bool isInvincibleBullet = false;//飛び道具無効
     public List<FrameHitBox> plusHeadHitBox = new List<FrameHitBox>();//頭
@@ -154,6 +161,7 @@ public class FighterSkill : ScriptableObject
 	//移動
 	public List<Move> movements = new List<Move>();
     public List<GravityMove> gravityMoves = new List<GravityMove>();
+    public TimeStop timeStops = new TimeStop();
 
     //Default当たり判定があるかないか
     public bool headFlag = true;

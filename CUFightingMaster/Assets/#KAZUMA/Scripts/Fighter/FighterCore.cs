@@ -144,6 +144,17 @@ public class FighterCore : MonoBehaviour
             changeSkill = true;
             changeWeightFrame = 0;
         }
+        if(changeSkill)
+        {
+            if(playerNumber == PlayerNumber.Player1)
+            {
+                GameManager.Instance.isTimeStop_Two = false;
+            }
+            else if (playerNumber == PlayerNumber.Player2)
+            {
+                GameManager.Instance.isTimeStop_One = false;
+            }
+        }
         //技が入れ替わってから動作させたいのでanimationのアップデートは後
         animationPlayer.UpdateGame();
         //アニメーションが入れ替わってから入れ替わったかどうかチェック
