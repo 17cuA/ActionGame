@@ -40,8 +40,9 @@ public class UI_HP : MonoBehaviour
 
 	public Vector3 initHpGuagePositon;
 	public Vector3 limitHpGuagePosition;
+    public Vector3 initPosition;
 
-	private bool isUpdate = false;               //HPゲージを更新しているか
+    private bool isUpdate = false;               //HPゲージを更新しているか
 	private bool isTransparentRed = false;       //赤いところを透明にするか
 	private bool isDeleteRed = false;            //赤いところを消すか (透明にしている時に攻撃されたら、消す)
 
@@ -155,7 +156,7 @@ public class UI_HP : MonoBehaviour
 			}
 			hpGuagePosition.position = vec3;
 		}
-	}
+    }
 
 	/// <summary>
 	/// 赤いところの操作
@@ -233,8 +234,8 @@ public class UI_HP : MonoBehaviour
 
 	private void Start()
 	{
-		//画像の横のサイズを取得
-		hpBarWidth = hpObjects[0].GetComponent<RectTransform>().sizeDelta.x;
+        //画像の横のサイズを取得
+        hpBarWidth = hpObjects[0].GetComponent<RectTransform>().sizeDelta.x;
 
 		//描画順番を指定
 		for (int i = 0; i < 5; i++)

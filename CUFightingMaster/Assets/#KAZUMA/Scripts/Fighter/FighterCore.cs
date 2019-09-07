@@ -32,7 +32,8 @@ public class FighterCore : MonoBehaviour
 	public int SpecialGauge = 0;
 
     private bool isHitAttack = false;//攻撃が当たったかどうか
-	private FighterSkill.CustomHitBox hitAttackBox = null;
+    public bool isBound = false;
+    private FighterSkill.CustomHitBox hitAttackBox = null;
     //現在のプレイヤーの移動の状況、状態
     private PlayerMoveState playerMoveState = PlayerMoveState.Idle;
     #region Getter
@@ -237,6 +238,11 @@ public class FighterCore : MonoBehaviour
     public void SetComboCount(int _count)
     {
         comboCount = _count;
+        if(comboCount == 0)
+        {
+            Debug.Log("aaa");
+            isBound = false;
+        }
     }
 	public void SetMaterial(Material[] _material)
 	{

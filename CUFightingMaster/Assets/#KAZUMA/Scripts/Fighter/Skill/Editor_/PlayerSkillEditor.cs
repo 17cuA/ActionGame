@@ -475,6 +475,7 @@ public class PlayerSkillEditor : EditorWindow
         {
             EditorGUILayout.BeginVertical("Box");
             EditorGUILayout.BeginHorizontal();
+            _move[i].isBound = EditorGUILayout.Toggle("バウンド", _move[i].isBound);
             _move[i].isGravityInvaid = EditorGUILayout.Toggle("重力無効", _move[i].isGravityInvaid);
             _move[i].isResetStartGravity = EditorGUILayout.Toggle("開始時重力リセット", _move[i].isResetStartGravity);
             _move[i].isResetEndGravity = EditorGUILayout.Toggle("終了時重力リセット", _move[i].isResetEndGravity);
@@ -493,6 +494,13 @@ public class PlayerSkillEditor : EditorWindow
             EditorGUILayout.BeginVertical("Box");
             //Vector3入力
             _move[i].movement = EditorGUILayout.Vector3Field("移動量", _move[i].movement);
+            EditorGUILayout.EndVertical();
+            EditorGUILayout.BeginVertical("Box");
+            if (_move[i].isBound)
+            {
+                EditorGUILayout.LabelField("バウンド移動量");
+                MovesSetting(ref _move[i].boundMovements);//バウンド
+            }
             EditorGUILayout.EndVertical();
             EditorGUILayout.EndVertical();
             if (removeFrag) _move.RemoveAt(i);

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Middle_Jab
   m_EditorClassIdentifier: 
   skillLayer: 0
-  animationClip: {fileID: 7400000, guid: 781b0e2d13caff245b9a0d38dbdb9709, type: 2}
+  animationClip: {fileID: 7400000, guid: e7984a04e161b5c48bb539593dbb91f4, type: 2}
   animationSpeed: 1
   status: 1
   frameEffects:
@@ -23,6 +23,11 @@ MonoBehaviour:
     childFlag: 0
     worldPositionFlag: 0
     position: {x: 0, y: 0, z: 0}
+  - frame: 5
+    effect: {fileID: 483088011043992929, guid: 55bc7c3ac833ce647a05d8fc9ca2f267, type: 3}
+    childFlag: 0
+    worldPositionFlag: 0
+    position: {x: 2.61, y: 2.97, z: 0}
   frameBullets: []
   cancelFrag: 10
   barrageCancelFrag: 0
@@ -77,13 +82,13 @@ MonoBehaviour:
     airKnockBack: 0.8
     guardKnockBack: 1
     hitEffects:
-    - isEnemyPos: 0
+    - isEnemyPos: 1
       isParant: 0
       isEnemyParant: 0
       effect: {fileID: 537173260980545929, guid: 61704b3d6a6ed2e4d9e67b07de91466e,
         type: 3}
       guardEffect: {fileID: 0}
-      position: {x: 0.45, y: 0.21, z: 0}
+      position: {x: 0.01, y: 2.69, z: 0}
     - isEnemyPos: 0
       isParant: 0
       isEnemyParant: 1
@@ -114,6 +119,8 @@ MonoBehaviour:
       isResetStartGravity: 1
       isResetEndGravity: 0
       isImpact: 0
+      isBound: 1
+      boundMovements: []
       movement: {x: 0, y: 3, z: 0}
       startFrame: 0
     throwGroundDamage: 0

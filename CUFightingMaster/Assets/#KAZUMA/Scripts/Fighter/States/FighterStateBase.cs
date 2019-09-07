@@ -9,6 +9,7 @@ public class FighterStateBase : StateBaseScriptMonoBehaviour
     public FighterCore core;
     public TestInput input = null;
 	public FighterStateGuard stateGuard;
+    public FighterSkill.CustomHitBox nowDamage;
     //格納用
     public struct MoveAndSkills
     {
@@ -184,10 +185,13 @@ public class FighterStateBase : StateBaseScriptMonoBehaviour
 	//スキル入れ替え（移動カスタム）
 	public void ChangeSkillCustomMoveConstant(SkillConstants _constants, int _weightFrame, List<FighterSkill.Move> _move)
 	{
-		FighterSkill s = Instantiate(core.Status.constantsSkills[(int)_constants]);
-		s.movements = _move;
-		core.SetSkill(s, _weightFrame);
-	}
+        if (core.Status.constantsSkills[(int)_constants] != null)
+        {
+            FighterSkill s = Instantiate(core.Status.constantsSkills[(int)_constants]);
+            s.movements = _move;
+            core.SetSkill(s, _weightFrame);
+        }
+    }
 
 	//キャンセル可能かどうか
 	public bool ChancelConditions(FighterSkill _now, FighterSkill _s, int _i = 0)
