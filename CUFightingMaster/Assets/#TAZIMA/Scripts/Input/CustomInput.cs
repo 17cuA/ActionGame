@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
@@ -15,21 +15,14 @@ namespace CustomInputClass
         public void SetConfig(int _playerIndex,int _cotrollerIndex,int _joyNum)
         {
             var axes = new TempInputManagerInfo.InputAxis[TempInputManagerInfo.Config.Length];
-        
-            for (int i = 0;i < config.Length;i++)
+            for (int i = 0;i < TempInputManagerInfo.Config.Length;i++)
             {
                 var axis = new TempInputManagerInfo.InputAxis();
-                if (Regex.IsMatch(TempInputManagerInfo.Config[i].name,"{0}"))
-                    axis.name = string.Format(TempInputManagerInfo.Config[i].name,_playerIndex);
-                else
-                    axis.name = TempInputManagerInfo.Config[i].name;
+                axis.name = TempInputManagerInfo.Config[i].name.Replace("{0}",_playerIndex.ToString());
 			    axis.descriptiveName = TempInputManagerInfo.Config[i].descriptiveName;
 			    axis.descriptiveNegativeName = TempInputManagerInfo.Config[i].negativeButton;
 			    axis.negativeButton = TempInputManagerInfo.Config[i].positiveButton;
-                if (Regex.IsMatch(TempInputManagerInfo.Config[i].positiveButton,"{0}"))
-			        axis.positiveButton = string.Format(TempInputManagerInfo.Config[i].positiveButton,_cotrollerIndex);
-                else
-                    axis.positiveButton = TempInputManagerInfo.Config[i].positiveButton;
+			    axis.positiveButton = TempInputManagerInfo.Config[i].positiveButton.Replace("{0}",_cotrollerIndex.ToString());
 			    axis.altNegativeButton = TempInputManagerInfo.Config[i].altNegativeButton;
 			    axis.altPositiveButton = TempInputManagerInfo.Config[i].altPositiveButton;
 			    axis.gravity = TempInputManagerInfo.Config[i].gravity;
@@ -50,10 +43,11 @@ namespace CustomInputClass
         }
 
         #region GetAxisRaw
-        public float GeyAxisRaw()
+        /*public float GeyAxisRaw()
         {
+            if()
             return 0f;
-        }
+        }*/
         #endregion
 
         #region GeyKey,GetKeyDown
@@ -72,18 +66,19 @@ namespace CustomInputClass
         private string GetName(string _positiveButton)
         {
             for (int i = 0;i < config.Length;i++)
+            {
+                if (config[i].positiveButton == _positiveButton || config[i].altPositiveButton == _positiveButton)
                 {
-                    if (config[i].positiveButton == _positiveButton)
-                    {
-                        return config[i].name;
-                    }
+                    return config[i].name;
                 }
+            }
             return "";
         }
         public bool GetButtonDown(string _name)
         {
             if (Input.anyKeyDown)
             {
+                Debug.Log(GetKeyCode().ToString()+ ":" +GetName(GetKeyCode().ToString()) + ":" + _name);
                 return GetName(GetKeyCode().ToString()) == _name;
             }
             return false;
