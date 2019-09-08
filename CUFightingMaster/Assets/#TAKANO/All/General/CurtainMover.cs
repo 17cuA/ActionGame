@@ -17,13 +17,9 @@ using UnityEngine;
 
 public class CurtainMover : MonoBehaviour
 {
-   [SerializeField] private bool isUp = false;
-    [SerializeField] private bool isDown = false;
-    [SerializeField] private bool isEndMove = false;
+    public float curtainSpeed = 10.0f;
 
-    private float curtainSpeed = 5.0f;
-
-    public RectTransform rectTransform;
+    [SerializeField] public RectTransform rectTransform;
 
     public bool UpCurtain()
     {
@@ -49,39 +45,20 @@ public class CurtainMover : MonoBehaviour
     {
         rectTransform.localPosition = new Vector3(0.0f, 25.0f, 0.0f);
     }
-
-    private void Update()
-    {
-        //    if(isEndMove == false)
-        //    {
-        //        //カーテンを上げるフラグがONだったら
-        //        if (isUp == true)
-        //        { 
-        //            rectTransform.localPosition += new Vector3(0.0f, curtainSpeed, 0.0f);
-        //            if(rectTransform.localPosition.y > 1080)
-        //            {
-        //                isUp = false;
-        //                isEndMove = true;
-        //            }
-        //        }
-        //        else if (isDown == true)
-        //        {
-        //            rectTransform.localPosition -= new Vector3(0.0f, curtainSpeed, 0.0f);
-        //            if (rectTransform.localPosition.y < 0)
-        //            {
-        //                isDown = false;
-        //                isEndMove = true;
-        //            }
-        //        }
-        //    }
-        //    if (Input.GetKeyDown("x"))
-        //    {
-        //        UpCurtain();
-        //    }
-        //    if (Input.GetKeyDown("c"))
-        //    {
-        //        DownCurtain();
-        //    }
-        //}
-    }
 }
+//    private void Update()
+//    {
+//       // if (Input.GetKeyDown("x"))
+//        {
+//    //        if(DownCurtain())
+//    //        {
+//    //            Debug.Log("a");
+//    //        }
+//    //    }
+//    //    if (Input.GetKeyDown("c"))
+//    //    {
+//    //        DownCurtain();
+//    //    }
+//    //}
+//}
+

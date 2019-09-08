@@ -29,8 +29,11 @@ public class CanvasController : MonoBehaviour
 	[SerializeField] private InGameUIController inGameUIController_2;   // canvas_2の子分子のInGameUIController
 	[SerializeField] private ScreenFade screenFade_2;   // canvas_2の子分子のScreenFade
 
-	// 取得
-	void Awake()
+    [SerializeField] private CurtainMover curtainMover_1;
+    [SerializeField] private CurtainMover curtainMover_2;
+
+    // 取得
+    void Awake()
 	{
 		if (canvas_1 == null || canvas_2 == null)
 			Debug.LogError("参照ミス : CanvacControllerにCanvasを追加してください");
@@ -40,7 +43,11 @@ public class CanvasController : MonoBehaviour
 
 		screenFade_1 = canvas_1.transform.Find("ScreenFade").GetComponent<ScreenFade>();
 		screenFade_2 = canvas_2.transform.Find("ScreenFade").GetComponent<ScreenFade>();
-	}
+
+        curtainMover_1 = canvas_1.transform.Find("Curtain").GetComponent<CurtainMover>();
+        curtainMover_2 = canvas_2.transform.Find("Curtain").GetComponent<CurtainMover>();
+
+    }
 
 	#region ScreenFade
 	/// <summary>
@@ -259,5 +266,41 @@ public class CanvasController : MonoBehaviour
 		inGameUIController_1.SetSpMax(charaSp_P1, charaSp_P2);
 		inGameUIController_2.SetSpMax(charaSp_P1, charaSp_P2);
 	}
+
+    /// <summary>
+    ///徐々に 幕を開ける
+    /// </summary>
+    public bool Call_UpCurtain()
+    {
+        bool isEnd1 = curtainMover_1.UpCurtain();
+        bool isEnd2 = curtainMover_2.UpCurtain();
+
+        if (isEnd1 && isEnd2)
+            return true;
+
+        return false;
+    }
+
+    /// <summary>
+    ///徐々に幕を下ろす
+    /// </summary>
+    public bool Call_DownCurtain()
+    {
+        bool isEnd1 = curtainMover_1.DownCurtain();
+        bool isEnd2 = curtainMover_2.DownCurtain();
+
+        if (isEnd1 && isEnd2)
+            return true;
+        return false;
+    }
+
+    /// <summary>
+    ///一気に幕を下ろす
+    /// </summary>
+    public void Call_InitDownCurtain()
+    {
+        curtainMover_1.InitDownCurtain();
+        curtainMover_2.InitDownCurtain();
+    }
 
 }
