@@ -89,7 +89,12 @@ public class FighterStateDown : StateBaseScriptMonoBehaviour
     }
     public void BoundStart()
     {
-        GameManager.Instance.GetPlayFighterCore(stateBase.core.EnemyNumber).isBound = true;
+        FighterCore c = GameManager.Instance.GetPlayFighterCore(stateBase.core.EnemyNumber);
+        c.BoundCount++;
+        if (c.BoundCount >= GameManager.Instance.Settings.BoundCount)
+        {
+            c.isBound = true;
+        }
         if(stateBase.nowDamage!=null)
         {
             if (stateBase.core.Mover.GetNowMove() != null)
