@@ -27,6 +27,7 @@ public class AnimationUIManager : MonoBehaviour
     private Sprite defaultSprite;
     public List<StopUIClass> stopUIs = null;
     public bool isStart;
+    public bool isLoop;
     public bool isLeave;
 
     private void Update()
@@ -52,11 +53,11 @@ public class AnimationUIManager : MonoBehaviour
             sprites[i] = Resources.Load<Sprite>(string.Format("{0}/{1}_{2}", path, spriteName,i.ToString("D5")));
         }
         initColor = gameObject.GetComponent<Image>().color;
+        isStart = false;
         ResetUI();
 	}
 	private void ResetUI()
     {
-        isStart = false;
         nowSpriteCount = 0;
 		currentRemainFadeInFrame = fadeInFrame;
         currentRemainFadeOutFrame = fadeOutFrame;
@@ -102,6 +103,7 @@ public class AnimationUIManager : MonoBehaviour
                 //再利用できるように元に戻しておく
                 gameObject.GetComponent<Image>().sprite = defaultSprite;
                 gameObject.GetComponent<Image>().color = initColor;
+                if (!isLoop)    isStart = false;
                 ResetUI();
             }
         }
