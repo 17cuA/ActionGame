@@ -93,7 +93,7 @@ public class InGameManager : SingletonMono<InGameManager>
             }
         }
         //画面を暗くする
-        else if (canvasController.Call_StartFadeIn())
+        else if (canvasController.Call_UpCurtain())
         {
             isBright = true;
         }
@@ -333,7 +333,10 @@ public class InGameManager : SingletonMono<InGameManager>
 	/// </summary>
 	private void GameFinish()
     {
-        SceneManager.LoadScene("Result");
+        if(canvasController.Call_DownCurtain())
+        {
+            SceneManager.LoadScene("Result");
+        }
     }
 	#endregion
 
@@ -356,7 +359,7 @@ public class InGameManager : SingletonMono<InGameManager>
 			getRoundCount[i] = "";
 		}
 		//画面暗転
-		canvasController.Call_BrackOut();
+		canvasController.Call_InitDownCurtain();
         currentUpdate = StartGame;
         Sound.PlayBgm("BGM_Battle", 0.4f, 1, true);
 
