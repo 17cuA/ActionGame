@@ -376,6 +376,7 @@ public class FighterMover
             move.y = gravityMax.y;
         }
         move.x *= RightLeft;
+        move.y += GameManager.Instance.GetPlayFighterCore(core.EnemyNumber).ComboCount * GameManager.Instance.Settings.ComboGravity;
         transform.Translate(move * 0.1f);
     }
     #endregion

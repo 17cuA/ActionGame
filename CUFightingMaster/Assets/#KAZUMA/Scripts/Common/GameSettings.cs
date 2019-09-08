@@ -17,9 +17,13 @@ public class GameSettings : ScriptableObject
 	private int wakeUpFrame = 15;
 	[SerializeField, Header("KOヒットストップフレーム")]
 	private int koHitStopFrame = 60;
+    [SerializeField, Header("コンボ重力加算")]
+    private float comboGravity = 0.1f;
+    [SerializeField, Header("何回バウンドできるか")]
+    private int boundCount = 1;
 
 
-	public float PushAmount
+    public float PushAmount
     {
         get { return pushAmount; }
     }
@@ -44,4 +48,12 @@ public class GameSettings : ScriptableObject
 	{
 		get { return koHitStopFrame; }
 	}
+	public float ComboGravity
+	{
+        get { return comboGravity; }
+    }
+	public int BoundCount
+	{
+        get { return boundCount; }
+    }
 }

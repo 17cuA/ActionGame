@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4fbd35985d310504d81036cc55356454, type: 3}
-  m_Name: Crouching_Light
+  m_Name: 3C
   m_EditorClassIdentifier: 
   skillLayer: 1
-  animationClip: {fileID: 7400000, guid: 19480b8e1f9c93a42abb48e4d432b580, type: 2}
+  animationClip: {fileID: 7400000, guid: dd1318f0e39697048ba379758ca4c022, type: 2}
   animationSpeed: 1
   status: 1
   frameEffects: []
@@ -39,7 +39,7 @@ MonoBehaviour:
       size: {x: 0.3, y: 0, z: 0}
       localPosition: {x: 0, y: -0.91, z: 0}
     startFrame: 0
-    endFrame: 11
+    endFrame: 29
   plusBodyHitBox: []
   plusFootHitBox:
   - isFalse: 0
@@ -48,7 +48,7 @@ MonoBehaviour:
       size: {x: 0.3, y: 1, z: 0}
       localPosition: {x: 0, y: 0.5, z: 0}
     startFrame: 0
-    endFrame: 11
+    endFrame: 29
   plusGrabHitBox:
   - isFalse: 0
     isInfinityFrame: 1
@@ -56,7 +56,7 @@ MonoBehaviour:
       size: {x: 0, y: -1, z: 0}
       localPosition: {x: 0, y: -0.5, z: 0}
     startFrame: 0
-    endFrame: 11
+    endFrame: 29
   plusPushingHitBox:
   - isFalse: 0
     isInfinityFrame: 1
@@ -64,24 +64,24 @@ MonoBehaviour:
       size: {x: 0, y: -1, z: 0}
       localPosition: {x: 0, y: -0.5, z: 0}
     startFrame: 0
-    endFrame: 11
+    endFrame: 29
   customHitBox:
   - mode: 0
     frameHitBoxes:
     - isFalse: 0
       isInfinityFrame: 0
       hitBox:
-        size: {x: 2.44, y: 2.92, z: 1}
-        localPosition: {x: 1.4, y: 0.1, z: 0}
-      startFrame: 3
-      endFrame: 5
-    hitStop: 4
+        size: {x: 2.69, y: 2.89, z: 1}
+        localPosition: {x: 1.56, y: 0.76, z: 0}
+      startFrame: 8
+      endFrame: 11
+    hitStop: 12
     hitPoint: 2
     hitStrength: 0
     damage: 200
     stanDamage: 0
     knockBack: 0.7
-    airKnockBack: 0.3
+    airKnockBack: 1
     guardKnockBack: 1
     hitEffects:
     - isEnemyPos: 0
@@ -112,7 +112,7 @@ MonoBehaviour:
       guardEffect: {fileID: 7721722575896693875, guid: 027f955a5ea60b24897a3c579e52a3cf,
         type: 3}
       position: {x: 0, y: 1.18, z: 0}
-    isDown: 0
+    isDown: 1
     isThrow: 0
     isThrowGroundDamage: 0
     isThrowGroundAnimEnd: 0
@@ -131,11 +131,35 @@ MonoBehaviour:
     throwDamages: []
     isJumpCancel: 1
     isContinue: 0
-    movements: []
+    movements:
+    - isGravityInvaid: 0
+      isResetStartGravity: 0
+      isResetEndGravity: 0
+      isImpact: 1
+      isBound: 0
+      boundMovements: []
+      movement: {x: 0, y: 5, z: 0}
+      startFrame: 0
+    - isGravityInvaid: 0
+      isResetStartGravity: 0
+      isResetEndGravity: 0
+      isImpact: 0
+      isBound: 0
+      boundMovements: []
+      movement: {x: -1, y: 0, z: 0}
+      startFrame: 0
+    - isGravityInvaid: 0
+      isResetStartGravity: 0
+      isResetEndGravity: 0
+      isImpact: 0
+      isBound: 0
+      boundMovements: []
+      movement: {x: 0, y: -2, z: 0}
+      startFrame: 0
     gravityMoves: []
     isFaceDown: 0
     isPassiveNotPossible: 0
-    hitRigor: 8
+    hitRigor: 20
     guardHitRigor: 4
     plusGauge: 8
     enemyPlusGauge: 5

@@ -33,6 +33,7 @@ public class FighterCore : MonoBehaviour
 
     private bool isHitAttack = false;//攻撃が当たったかどうか
     public bool isBound = false;
+    public int BoundCount = 0;//何回バウンドしたか
     private FighterSkill.CustomHitBox hitAttackBox = null;
     //現在のプレイヤーの移動の状況、状態
     private PlayerMoveState playerMoveState = PlayerMoveState.Idle;
@@ -252,6 +253,7 @@ public class FighterCore : MonoBehaviour
         if(comboCount == 0)
         {
             isBound = false;
+            BoundCount = 0;
         }
     }
 	public void SetMaterial(Material[] _material)
