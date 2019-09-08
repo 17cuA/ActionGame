@@ -53,6 +53,7 @@ public class InGameManager : SingletonMono<InGameManager>
     [SerializeField]bool isPlayCutIn = false;     //ゲーム中のカットシーンフラグ、再生されていたらTrue
     public CameraBase player1_Timeline = null;
     public CameraBase player2_Timeline = null;
+    public bool skipInGame = false;
 
 
     #region 試合開始
@@ -61,29 +62,27 @@ public class InGameManager : SingletonMono<InGameManager>
     /// </summary>
     private void StartGame()
     {
+        if(Input.GetKeyDown(KeyCode.F10))
+        {
+            skipInGame = true;
+        }
         //if (cinemaController.isPlay) return;
         //入場シーンの再生（未実装）
         if (isBright)
         {
-            if (!player1_Timeline.GetController().isPlay && !player2_Timeline.GetController().isPlay)
+            if (skipInGame||(!player1_Timeline.GetController().isPlay && !player2_Timeline.GetController().isPlay))
             {
-                player1_Timeline.DestroyCamera();
-                player2_Timeline.DestroyCamera();
                 //入場シーンの再生が終わり、暗くなったらStartRoundへ
                 if (cinemaController != null)
                 {
                     if (cinemaController.isPlay == false && canvasController.Call_StartFadeOut() == true)
                     {
-                        (CameraController.Instance.Collider1.GetComponent<BoxCollider>()).enabled = true;
-                        (CameraController.Instance.Collider2.GetComponent<BoxCollider>()).enabled = true;
                         GameManager.Instance.isEndInGame = true;
                         currentUpdate = StartRound;
                     }
                 }
                 else
                 {
-                    (CameraController.Instance.Collider1.GetComponent<BoxCollider>()).enabled = true;
-                    (CameraController.Instance.Collider2.GetComponent<BoxCollider>()).enabled = true;
                     if (canvasController.Call_StartFadeOut() == true)
                     {
                         GameManager.Instance.isEndInGame = true;
@@ -106,36 +105,37 @@ public class InGameManager : SingletonMono<InGameManager>
     /// </summary>
     private void StartRound()
     {
+        player1_Timeline.DestroyCamera();
+        player2_Timeline.DestroyCamera();
+        GameManager.Instance.isStartGame = false;
+        //ゲーム中のUI生成
+        canvasController.Call_PlayBattleRound();
 
-		GameManager.Instance.isStartGame = false;
-		//ゲーム中のUI生成
-		canvasController.Call_PlayBattleRound();
+        //キャラのパラメータ最大値をUIにセット
+        canvasController.Call_SetUIParameterMax(GameManager.Instance.Player_one.Status.HP, GameManager.Instance.Player_two.Status.HP,
+        GameManager.Instance.Player_one.Status.SpecialGuage, GameManager.Instance.Player_two.Status.SpecialGuage);
 
-		//キャラのパラメータ最大値をUIにセット
-		canvasController.Call_SetUIParameterMax(GameManager.Instance.Player_one.Status.HP, GameManager.Instance.Player_two.Status.HP , 
-			GameManager.Instance.Player_one.Status.SpecialGuage , GameManager.Instance.Player_two.Status.SpecialGuage);
-
-		//canvasController.Call_SetUISpMax(GameManager.Instance.Player_one.Status.SpecialGuage, GameManager.Instance.Player_one.Status.SpecialGuage);
-		//canvasController.Call_SetUISpMax(GameManager.Instance.Player_one.Status.StanGuage, GameManager.Instance.Player_one.Status.StanGuage);
-		//キャラクターポジションの設定
-		StartCoroutine("Test");
-		//画面が明るくなったら
-		if (canvasController.Call_StartFadeIn() == true)
+        //canvasController.Call_SetUISpMax(GameManager.Instance.Player_one.Status.SpecialGuage, GameManager.Instance.Player_one.Status.SpecialGuage);
+        //canvasController.Call_SetUISpMax(GameManager.Instance.Player_one.Status.StanGuage, GameManager.Instance.Player_one.Status.StanGuage);
+        //キャラクターポジションの設定
+        StartCoroutine("Test");
+        //画面が明るくなったら
+        if (canvasController.Call_StartFadeIn() == true)
         {
             //ラウンド開始時のUI生成
             if (canvasController.Call_PlayStartRound(gameRoundCount) == false)
             {
-				GameManager.Instance.isStartGame = true;
-				GameManager.Instance.isEndRound = false;
-				//タイマーの開始
-				canvasController.Call_StartCountDown();
+                GameManager.Instance.isStartGame = true;
+                GameManager.Instance.isEndRound = false;
+                //タイマーの開始
+                canvasController.Call_StartCountDown();
                 currentUpdate = BattleRound;
             }
         }
     }
-	#endregion
+    #endregion
 
-	#region 試合中
+    #region 試合中
     /// <summary>
     /// ラウンド中
     /// </summary>

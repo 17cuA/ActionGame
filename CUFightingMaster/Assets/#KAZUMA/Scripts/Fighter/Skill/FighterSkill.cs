@@ -144,7 +144,12 @@ public class FighterSkill : ScriptableObject
     public List<FrameEffects> frameEffects = new List<FrameEffects>(); //TODO::エフェクトリスト
 	public List<FrameBullets> frameBullets = new List<FrameBullets>();
     public SkillStatus cancelFrag = (SkillStatus)(1<<0);//キャンセルできるもの(ビット)
-                                                        //TODO::飛び道具
+    public FighterSkill endNextAnimation = null;//終了時スキル
+    public int endNextWeight = 0;
+    public FighterSkill groundLandingSkill = null;//着地時スキル
+    public int groundLandingWeight = 0;
+
+    //TODO::飛び道具
     public bool barrageCancelFrag = false;      //連打キャンセル
     public List<int> cancelLayer = new List<int>();                 //キャンセルできるレイヤー
     //ブレンドするかしないか

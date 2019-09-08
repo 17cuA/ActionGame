@@ -61,6 +61,7 @@ public class FighterStateDown : StateBaseScriptMonoBehaviour
     {
         downCount = 0;
         isWakeUp = false;
+        isWakeUpPassive = false;
         stateBase.ChangeSkillConstant(SkillConstants.Wake_Up, 0);
     }
 	//地上受け身

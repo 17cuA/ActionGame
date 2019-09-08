@@ -19,14 +19,21 @@ MonoBehaviour:
   frameEffects: []
   frameBullets: []
   cancelFrag: 10
+  endNextAnimation: {fileID: 11400000, guid: b8383f7918a66d84cbb7f6035d2e0336, type: 2}
+  endNextWeight: 0
   barrageCancelFrag: 0
   cancelLayer: 
   inBlend: 0
   outBlend: 0
+  cameraPlay:
+    startFrame: 0
+    rightCamera: {fileID: 0}
+    leftCamera: {fileID: 0}
   isInvincibleBullet: 0
   plusHeadHitBox: []
   plusBodyHitBox:
-  - isInfinityFrame: 0
+  - isFalse: 0
+    isInfinityFrame: 0
     hitBox:
       size: {x: 0, y: 0, z: 0}
       localPosition: {x: 0, y: 0, z: 0}
@@ -35,7 +42,8 @@ MonoBehaviour:
   plusFootHitBox: []
   plusGrabHitBox: []
   plusPushingHitBox:
-  - isInfinityFrame: 0
+  - isFalse: 0
+    isInfinityFrame: 0
     hitBox:
       size: {x: 0, y: -1.3, z: 0}
       localPosition: {x: 0, y: 0.6, z: 0}
@@ -44,7 +52,8 @@ MonoBehaviour:
   customHitBox:
   - mode: 0
     frameHitBoxes:
-    - isInfinityFrame: 0
+    - isFalse: 0
+      isInfinityFrame: 0
       hitBox:
         size: {x: 3.84, y: 0.83, z: 0.74}
         localPosition: {x: 0.8, y: 1.4, z: 0}
@@ -96,6 +105,8 @@ MonoBehaviour:
       isResetStartGravity: 1
       isResetEndGravity: 0
       isImpact: 0
+      isBound: 0
+      boundMovements: []
       movement: {x: -0.8, y: 5, z: 0}
       startFrame: 0
     throwGroundDamage: 0
@@ -116,6 +127,9 @@ MonoBehaviour:
   isMoveContinue: 1
   movements: []
   gravityMoves: []
+  timeStops:
+    startFrame: 0
+    endFrame: 0
   headFlag: 0
   bodyFlag: 1
   footFlag: 0

@@ -45,7 +45,7 @@ public class FighterStateMove : StateBaseScriptMonoBehaviour
     public void AirMoveStart()
     {
         stateBase.core.DirectionChangeMaterial();
-        stateBase.ChangeSkillConstant(SkillConstants.Air_Idle, 20);
+        stateBase.ChangeSkillConstant(SkillConstants.Air_Idle, 5);
         stateBase.core.SetPlayerMoveState(PlayerMoveState.Jump);
     }
     public void AirUpdateMove()

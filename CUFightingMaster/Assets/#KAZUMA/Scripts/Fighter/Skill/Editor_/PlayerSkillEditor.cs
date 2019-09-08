@@ -184,6 +184,16 @@ public class PlayerSkillEditor : EditorWindow
         playerSkill.cameraPlay.leftCamera = EditorGUILayout.ObjectField("左側カメラ", playerSkill.cameraPlay.leftCamera, typeof(CameraBase), false) as CameraBase;
         playerSkill.cameraPlay.startFrame = EditorGUILayout.IntField("スタートフレーム", playerSkill.cameraPlay.startFrame);
         EditorGUILayout.EndHorizontal();
+        EditorGUILayout.LabelField("終了時別スキル(攻撃、カスタム移動のみ)");
+        EditorGUILayout.BeginHorizontal();
+        playerSkill.endNextAnimation = EditorGUILayout.ObjectField("スキル", playerSkill.endNextAnimation, typeof(FighterSkill), false) as FighterSkill;
+        playerSkill.endNextWeight = EditorGUILayout.IntField("ウェイト", playerSkill.endNextWeight);
+        EditorGUILayout.EndHorizontal();
+        EditorGUILayout.LabelField("空中技着地時別スキル");
+        EditorGUILayout.BeginHorizontal();
+        playerSkill.groundLandingSkill = EditorGUILayout.ObjectField("スキル", playerSkill.groundLandingSkill, typeof(FighterSkill), false) as FighterSkill;
+        playerSkill.groundLandingWeight = EditorGUILayout.IntField("ウェイト", playerSkill.groundLandingWeight);
+        EditorGUILayout.EndHorizontal();
         if (GUILayout.Button("キャンセルレイヤー作成", GUILayout.Width(150), GUILayout.Height(15)))
         {
             playerSkill.cancelLayer.Add(0);

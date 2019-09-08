@@ -29,6 +29,10 @@ MonoBehaviour:
   cancelLayer: 
   inBlend: 0
   outBlend: 0
+  cameraPlay:
+    startFrame: 0
+    rightCamera: {fileID: 0}
+    leftCamera: {fileID: 0}
   isInvincibleBullet: 0
   plusHeadHitBox: []
   plusBodyHitBox: []
@@ -43,21 +47,30 @@ MonoBehaviour:
     isResetStartGravity: 0
     isResetEndGravity: 0
     isImpact: 0
+    isBound: 0
+    boundMovements: []
     movement: {x: -0.5, y: 0, z: 0}
     startFrame: 10
   - isGravityInvaid: 0
     isResetStartGravity: 0
     isResetEndGravity: 0
     isImpact: 0
+    isBound: 0
+    boundMovements: []
     movement: {x: 0, y: 0, z: 0}
     startFrame: 24
   - isGravityInvaid: 0
     isResetStartGravity: 0
     isResetEndGravity: 0
     isImpact: 0
+    isBound: 0
+    boundMovements: []
     movement: {x: 0.8, y: 0, z: 0}
     startFrame: 27
   gravityMoves: []
+  timeStops:
+    startFrame: 0
+    endFrame: 0
   headFlag: 0
   bodyFlag: 0
   footFlag: 0

@@ -3,29 +3,36 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using CustomInputClass;
 
 public class InputConfirmation : MonoBehaviour
 {
+    CustomInput customInput = new CustomInput();
+    void Start()
+    {
+        customInput.SetConfig(0,1,1);
+    }
     void Update()
     {
 		if (Input.anyKeyDown)
         {
-			var names = Input.GetJoystickNames();
-			Debug.Log(names.Length);
-			var sampleNames = new string[names.Length];
-			for (int i = 0;i < names.Length;i++)
-			{
-				Debug.Log(names[i]);
-			}
-			foreach (KeyCode code in Enum.GetValues(typeof(KeyCode)))
+            if (customInput.GetButtonDown("Player0_Attack1")/*Input.GetKeyDown(code)*/)
             {
-                if (Input.GetKeyDown(code))
-                {
-                    //処理を書く
-                    Debug.Log(code);
-                    break;
-                }
+                //処理を書く
+                Debug.Log(true);
             }
         }
     }
+    /*private KeyCode GetAxisRaw()
+    {
+        foreach (KeyCode code in Enum.GetValues(typeof(KeyCode)))
+        {
+            if (Input.GetAxisRaw())
+            {
+                //処理を書く
+                return code;
+            }
+        }
+        return KeyCode.None;
+    } */
 }
