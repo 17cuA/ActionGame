@@ -13,7 +13,7 @@ public class LogoMove : MonoBehaviour
 
 	public int up1;
 	public int up2;
-	public int down1;
+	public float down1;
 	public float MoveSpeed;
 
 	public float rotationSpeed = 0;
