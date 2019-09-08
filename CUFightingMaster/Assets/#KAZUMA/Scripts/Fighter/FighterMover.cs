@@ -163,6 +163,7 @@ public class FighterMover
                             break;
                         }
                     }
+                    nowPlayMoveNumber = 0;
                     moves = _mo;
                 }
             }
@@ -507,7 +508,6 @@ public class FighterMover
         if (isCameraCreate) return;
         if (core.NowPlaySkill.cameraPlay.startFrame <= core.AnimationPlayerCompornent.NowFrame)
         {
-			Debug.Log("aaaa");
             if (core.Direction == PlayerDirection.Right)
             {
                 cameraBase = core.NowPlaySkill.cameraPlay.rightCamera;
@@ -516,10 +516,8 @@ public class FighterMover
             {
                 cameraBase = core.NowPlaySkill.cameraPlay.leftCamera;
             }
-			Debug.Log(cameraBase);
             if (cameraBase != null)
             {
-				Debug.Log("asadas");
                 nowPlayCamera = Object.Instantiate(cameraBase, core.gameObject.transform.position, Quaternion.identity);
                 isCameraCreate = true;
             }

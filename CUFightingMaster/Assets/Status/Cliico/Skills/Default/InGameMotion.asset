@@ -16,13 +16,23 @@ MonoBehaviour:
   animationClip: {fileID: 7400000, guid: df20905cae1c2704a89a6293fc56e643, type: 2}
   animationSpeed: 1
   status: 1
-  frameEffects: []
+  frameEffects:
+  - frame: 130
+    effect: {fileID: 2734520157358481158, guid: 87caf0424bde1d44491a5f7975c3956d,
+      type: 3}
+    childFlag: 0
+    worldPositionFlag: 0
+    position: {x: 0, y: 0, z: 0}
   frameBullets: []
   cancelFrag: 1
   barrageCancelFrag: 0
   cancelLayer: 
   inBlend: 0
   outBlend: 0
+  cameraPlay:
+    startFrame: 0
+    rightCamera: {fileID: 0}
+    leftCamera: {fileID: 0}
   isInvincibleBullet: 0
   plusHeadHitBox: []
   plusBodyHitBox: []
@@ -34,6 +44,9 @@ MonoBehaviour:
   isMoveContinue: 0
   movements: []
   gravityMoves: []
+  timeStops:
+    startFrame: 0
+    endFrame: 0
   headFlag: 1
   bodyFlag: 1
   footFlag: 1

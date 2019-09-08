@@ -486,4 +486,22 @@ public class FighterStateAttack : StateBaseScriptMonoBehaviour
         return stateBase.core.AnimationPlayerCompornent.EndAnimFrag;
     }
     #endregion
+	public void NextSkillStart()
+	{
+        stateBase.core.SetSkill(stateBase.core.NowPlaySkill.endNextAnimation, stateBase.core.NowPlaySkill.endNextWeight);
+    }
+	//終了時スキル
+	public bool IsEndNextSkill()
+	{
+        return (stateBase.core.NowPlaySkill.endNextAnimation != null);
+    }
+	public void GroundLandingSkillStart()
+	{
+        stateBase.core.SetSkill(stateBase.core.NowPlaySkill.groundLandingSkill, stateBase.core.NowPlaySkill.groundLandingWeight);
+    }
+	//着地時スキル
+	public bool IsGroundLandingSkill()
+	{
+        return (stateBase.core.NowPlaySkill.groundLandingSkill != null);
+    }
 }
