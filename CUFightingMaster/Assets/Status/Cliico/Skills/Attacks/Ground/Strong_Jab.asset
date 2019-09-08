@@ -29,6 +29,10 @@ MonoBehaviour:
   cancelLayer: 03000000
   inBlend: 0
   outBlend: 0
+  cameraPlay:
+    startFrame: 0
+    rightCamera: {fileID: 0}
+    leftCamera: {fileID: 0}
   isInvincibleBullet: 0
   plusHeadHitBox: []
   plusBodyHitBox: []
@@ -38,7 +42,8 @@ MonoBehaviour:
   customHitBox:
   - mode: 0
     frameHitBoxes:
-    - isInfinityFrame: 0
+    - isFalse: 0
+      isInfinityFrame: 0
       hitBox:
         size: {x: 3.42, y: 0.85, z: 1}
         localPosition: {x: 1.82, y: 2.86, z: 0}
@@ -74,7 +79,7 @@ MonoBehaviour:
         type: 3}
       guardEffect: {fileID: 7721722575896693875, guid: 027f955a5ea60b24897a3c579e52a3cf,
         type: 3}
-      position: {x: -1.03, y: 4.78, z: 0}
+      position: {x: 1.5, y: 3.5, z: 0}
     isDown: 0
     isThrow: 0
     isThrowGroundDamage: 0
@@ -84,6 +89,8 @@ MonoBehaviour:
       isResetStartGravity: 1
       isResetEndGravity: 0
       isImpact: 0
+      isBound: 0
+      boundMovements: []
       movement: {x: 0, y: 5, z: 0}
       startFrame: 0
     throwGroundDamage: 0
@@ -104,6 +111,9 @@ MonoBehaviour:
   isMoveContinue: 0
   movements: []
   gravityMoves: []
+  timeStops:
+    startFrame: 0
+    endFrame: 0
   headFlag: 1
   bodyFlag: 1
   footFlag: 1

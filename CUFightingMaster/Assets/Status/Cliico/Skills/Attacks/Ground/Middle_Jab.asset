@@ -34,30 +34,38 @@ MonoBehaviour:
   cancelLayer: 02000000
   inBlend: 0
   outBlend: 0
+  cameraPlay:
+    startFrame: 0
+    rightCamera: {fileID: 0}
+    leftCamera: {fileID: 0}
   isInvincibleBullet: 0
   plusHeadHitBox:
-  - isInfinityFrame: 0
+  - isFalse: 0
+    isInfinityFrame: 0
     hitBox:
       size: {x: 0.75, y: 0, z: 0}
       localPosition: {x: 0.2, y: 0, z: 0}
     startFrame: 3
     endFrame: 25
   plusBodyHitBox:
-  - isInfinityFrame: 0
+  - isFalse: 0
+    isInfinityFrame: 0
     hitBox:
       size: {x: 0, y: 0, z: 0}
       localPosition: {x: 0.21, y: 0, z: 0}
     startFrame: 3
     endFrame: 25
   plusFootHitBox:
-  - isInfinityFrame: 0
+  - isFalse: 0
+    isInfinityFrame: 0
     hitBox:
       size: {x: 0, y: 0, z: 0}
       localPosition: {x: 0.91, y: 0, z: 0}
     startFrame: 3
     endFrame: 25
   plusGrabHitBox:
-  - isInfinityFrame: 0
+  - isFalse: 0
+    isInfinityFrame: 0
     hitBox:
       size: {x: 0, y: 0, z: 0}
       localPosition: {x: 0, y: 0, z: 0}
@@ -67,7 +75,8 @@ MonoBehaviour:
   customHitBox:
   - mode: 0
     frameHitBoxes:
-    - isInfinityFrame: 0
+    - isFalse: 0
+      isInfinityFrame: 0
       hitBox:
         size: {x: 2.86, y: 2.28, z: 1}
         localPosition: {x: 1.8, y: 2.79, z: 0}
@@ -89,13 +98,13 @@ MonoBehaviour:
         type: 3}
       guardEffect: {fileID: 0}
       position: {x: 0.01, y: 2.69, z: 0}
-    - isEnemyPos: 0
+    - isEnemyPos: 1
       isParant: 0
-      isEnemyParant: 1
-      effect: {fileID: 7721722575896693875, guid: 027f955a5ea60b24897a3c579e52a3cf,
+      isEnemyParant: 0
+      effect: {fileID: 5357085053199187855, guid: 8fb88e057fea8e547a71a2f0d52c6ac9,
         type: 3}
       guardEffect: {fileID: 0}
-      position: {x: 1.43, y: 2, z: 0}
+      position: {x: 1.5, y: 3.5, z: 0}
     - isEnemyPos: 1
       isParant: 0
       isEnemyParant: 1
@@ -109,7 +118,7 @@ MonoBehaviour:
       effect: {fileID: 0}
       guardEffect: {fileID: 7721722575896693875, guid: 027f955a5ea60b24897a3c579e52a3cf,
         type: 3}
-      position: {x: -1.37, y: 1.04, z: 0}
+      position: {x: 1.5, y: 3.5, z: 0}
     isDown: 0
     isThrow: 0
     isThrowGroundDamage: 0
@@ -141,6 +150,9 @@ MonoBehaviour:
   isMoveContinue: 0
   movements: []
   gravityMoves: []
+  timeStops:
+    startFrame: 0
+    endFrame: 0
   headFlag: 1
   bodyFlag: 1
   footFlag: 1
