@@ -109,6 +109,7 @@ public class GameManager : SingletonMono<GameManager>
 			Player_one.UpdateGame();
             //コマンドの削除
             input_one.DeleteCommand();
+            hitStop_one--;
         }
 		//ヒットストップ中
 		else
@@ -122,6 +123,7 @@ public class GameManager : SingletonMono<GameManager>
 			Player_two.UpdateGame();
             //コマンドの削除
             input_two.DeleteCommand();
+            hitStop_two--;
         }
 		else
 		{

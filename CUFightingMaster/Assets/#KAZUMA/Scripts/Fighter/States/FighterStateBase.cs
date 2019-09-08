@@ -119,7 +119,7 @@ public class FighterStateBase : StateBaseScriptMonoBehaviour
     }
     public bool IsNotHitStop()
     {
-        return GameManager.Instance.GetHitStop(core.PlayerNumber) <= 0;
+        return GameManager.Instance.GetHitStop(core.PlayerNumber) < 0;
     }
     public bool IsMoveFighter()
     {
