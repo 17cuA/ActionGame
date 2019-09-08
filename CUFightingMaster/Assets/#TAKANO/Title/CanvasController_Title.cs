@@ -23,6 +23,8 @@ public class CanvasController_Title : MonoBehaviour
 
     [SerializeField] private ScreenFade screenFade_Display1;
     [SerializeField] private ScreenFade screenFade_Display2;
+    [SerializeField] private CurtainMover curtainMover_1;
+    [SerializeField] private CurtainMover curtainMover_2;
 
     // Start is called before the first frame update
 
@@ -33,6 +35,8 @@ public class CanvasController_Title : MonoBehaviour
 
 		screenFade_Display1 = canvas_Display1.transform.Find("ScreenFade").GetComponent<ScreenFade>();
         screenFade_Display2 = canvas_Display2.transform.Find("ScreenFade").GetComponent<ScreenFade>();
+        curtainMover_1 = canvas_Display1.transform.Find("Curtain").GetComponent<CurtainMover>();
+        curtainMover_2 = canvas_Display2.transform.Find("Curtain").GetComponent<CurtainMover>();
     }
 
     /// <summary>
@@ -70,5 +74,50 @@ public class CanvasController_Title : MonoBehaviour
     {
         screenFade_Display1.BrackOut();
         screenFade_Display2.BrackOut();
+    }
+
+
+    /// <summary>
+    ///徐々に 幕を開ける
+    /// </summary>
+    public bool UpCurtain()
+    {
+        bool isEnd1 = curtainMover_1.UpCurtain();
+        bool isEnd2 = curtainMover_2.UpCurtain();
+
+        if (isEnd1 && isEnd2)
+            return true;
+        return false;
+    }
+
+    /// <summary>
+    ///徐々に幕を下ろす
+    /// </summary>
+    public bool DownCurtain()
+    {
+        bool isEnd1 = curtainMover_1.DownCurtain();
+        bool isEnd2 = curtainMover_2.DownCurtain();
+
+        if (isEnd1 && isEnd2)
+            return true;
+        return false;
+    }
+
+    /// <summary>
+    ///一気に幕を下ろす
+    /// </summary>
+    public void InitDownCurtain()
+    {
+        curtainMover_1.InitDownCurtain();
+        curtainMover_2.InitDownCurtain();
+    }
+
+    public bool IsEndMoveCurtain()
+    {
+        if (curtainMover_1 == true && curtainMover_2 == true)
+        {
+            return true;
+        }
+        return false;
     }
 }

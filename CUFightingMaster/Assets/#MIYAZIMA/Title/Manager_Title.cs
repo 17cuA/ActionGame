@@ -64,8 +64,10 @@ public class Manager_Title : MonoBehaviour
 
             if (isPushKey)
             {
+
+
                 //画面が暗くなったらシーン遷移
-                if (canvasController_Title.StartFadeOut())
+                if (canvasController_Title.DownCurtain())
                     SceneManager.LoadScene("CharacterSelect");
             }
         }

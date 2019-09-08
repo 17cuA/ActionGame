@@ -23,41 +23,18 @@ public class CanvasController_CharacterSelect : MonoBehaviour
 
     [SerializeField] private ScreenFade screenFade_Display1;
     [SerializeField] private ScreenFade screenFade_Display2;
+    [SerializeField] private CurtainMover curtainMover_1;
+    [SerializeField] private CurtainMover curtainMover_2;
 
     // Start is called before the first frame update
 
     private void Awake()
     {
-        screenFade_Display1 = canvas_Display1.transform.Find("ScreenFade").GetComponent<ScreenFade>();
-        screenFade_Display2 = canvas_Display2.transform.Find("ScreenFade").GetComponent<ScreenFade>();
-    }
+        if (canvas_Display1 == null || canvas_Display2 == null)
+            Debug.LogError("参照ミス : CanvacControllerにCanvasを追加してください");
 
-    /// <summary>
-    /// 二画面を徐々に明るくする
-    /// </summary>
-    /// <returns>明るくなったらtrue</returns>
-    public bool StartFadeIn()
-    {
-        bool isEndFadeIn_1 = screenFade_Display1.StartFadeIn();
-        bool isEndFadeIn_2 = screenFade_Display2.StartFadeIn();
-
-        if (isEndFadeIn_1 && isEndFadeIn_2)
-            return true;
-        return false;
-    }
-
-    /// <summary>
-    /// 二画面を徐々に暗くする
-    /// </summary>
-    /// <returns>暗くなったらtrue</returns>
-    public bool StartFadeOut()
-    {
-        bool isEndFadeOut_1 = screenFade_Display1.StartFadeOut();
-        bool isEndFadeOut_2 = screenFade_Display2.StartFadeOut();
-
-        if (isEndFadeOut_1 && isEndFadeOut_2)
-            return true;
-        return false;
+        curtainMover_1 = canvas_Display1.transform.Find("Curtain").GetComponent<CurtainMover>();
+        curtainMover_2 = canvas_Display2.transform.Find("Curtain").GetComponent<CurtainMover>();
     }
 
     /// <summary>
@@ -67,5 +44,40 @@ public class CanvasController_CharacterSelect : MonoBehaviour
     {
         screenFade_Display1.BrackOut();
         screenFade_Display2.BrackOut();
+    }
+
+    /// <summary>
+    ///徐々に 幕を開ける
+    /// </summary>
+    public bool UpCurtain()
+    {
+        bool isEnd1 = curtainMover_1.UpCurtain();
+        bool isEnd2 = curtainMover_2.UpCurtain();
+
+        if (isEnd1 && isEnd2)
+            return true;
+        return false;
+    }
+
+    /// <summary>
+    ///徐々に幕を下ろす
+    /// </summary>
+    public bool DownCurtain()
+    {
+        bool isEnd1 = curtainMover_1.DownCurtain();
+        bool isEnd2 = curtainMover_2.DownCurtain();
+
+        if (isEnd1 && isEnd2)
+            return true;
+        return false;
+    }
+
+    /// <summary>
+    ///一気に幕を下ろす
+    /// </summary>
+    public void InitDownCurtain()
+    {
+        curtainMover_1.InitDownCurtain();
+        curtainMover_2.InitDownCurtain();
     }
 }
