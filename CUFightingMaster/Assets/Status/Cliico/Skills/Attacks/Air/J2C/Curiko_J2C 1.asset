@@ -37,8 +37,8 @@ MonoBehaviour:
   - isFalse: 0
     isInfinityFrame: 0
     hitBox:
-      size: {x: 0, y: 0, z: 0}
-      localPosition: {x: 0, y: 0, z: 0}
+      size: {x: 1.5, y: -0.3, z: 0}
+      localPosition: {x: 0, y: -2.11, z: 0}
     startFrame: 0
     endFrame: 4
   plusFootHitBox: []
@@ -47,8 +47,8 @@ MonoBehaviour:
   - isFalse: 0
     isInfinityFrame: 0
     hitBox:
-      size: {x: 0, y: -1.3, z: 0}
-      localPosition: {x: 0, y: 0.6, z: 0}
+      size: {x: 0, y: -1.72, z: 0}
+      localPosition: {x: 0, y: -1.21, z: 0}
     startFrame: 0
     endFrame: 4
   customHitBox:
@@ -68,14 +68,14 @@ MonoBehaviour:
         localPosition: {x: 0.5, y: -0.25, z: 0}
       startFrame: 3
       endFrame: 4
-    hitStop: 2
+    hitStop: 5
     hitPoint: 0
     hitStrength: 1
-    damage: 0
+    damage: 200
     stanDamage: 0
-    knockBack: 0
-    airKnockBack: 0
-    guardKnockBack: 0
+    knockBack: 0.3
+    airKnockBack: 0.1
+    guardKnockBack: 0.1
     hitEffects:
     - isEnemyPos: 0
       isParant: 0
@@ -84,6 +84,20 @@ MonoBehaviour:
         type: 3}
       guardEffect: {fileID: 0}
       position: {x: 0, y: 0, z: 0}
+    - isEnemyPos: 1
+      isParant: 0
+      isEnemyParant: 0
+      effect: {fileID: 0}
+      guardEffect: {fileID: 822153979730028474, guid: 062c122a40345df47aff4840e9096438,
+        type: 3}
+      position: {x: -0.86, y: 2.08, z: 0}
+    - isEnemyPos: 1
+      isParant: 0
+      isEnemyParant: 0
+      effect: {fileID: 0}
+      guardEffect: {fileID: 7721722575896693875, guid: 027f955a5ea60b24897a3c579e52a3cf,
+        type: 3}
+      position: {x: 0.58, y: 3.2, z: 0}
     isDown: 0
     isThrow: 0
     isThrowGroundDamage: 0
@@ -115,10 +129,10 @@ MonoBehaviour:
     gravityMoves: []
     isFaceDown: 0
     isPassiveNotPossible: 0
-    hitRigor: 0
-    guardHitRigor: 0
-    plusGauge: 0
-    enemyPlusGauge: 0
+    hitRigor: 15
+    guardHitRigor: 15
+    plusGauge: 2
+    enemyPlusGauge: 3
   isContinue: 1
   isMoveContinue: 1
   movements: []
