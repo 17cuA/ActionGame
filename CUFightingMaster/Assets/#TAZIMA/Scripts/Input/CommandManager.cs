@@ -5,28 +5,33 @@ using System.Text.RegularExpressions;
 
 public class CommandManager :MonoBehaviour
 {
-    TestInput testInput;                        //入力を管理するスクリプト
+    /// <summary>
+    /// CommandManagerの変数
+    /// </summary>
+    TestInput testInput;                            //入力を管理するスクリプト
+	public string inputData = "0";			        //入力した方向を保存する変数
+    public string inputCommandName = "";            //入力したコマンドを保存する変数
+    public bool isCommandInterval = false;          //コマンド発動中かどうか
+    public bool isHitStop = false;                  //ヒットストップ中かどうか
+	public List<AttackParameter> attackParameters;  //攻撃技のパラメータ
 
-    //プロパティ========================================================
-	public string inputData = "0";			    //入力した方向を保存する変数
-    public string inputCommandName = "";        //入力したコマンドを保存する変数
-    public bool isCommandInterval = false;      //コマンド発動中かどうか
-    public bool isHitStop = false;              //ヒットストップ中かどうか
 
-	//攻撃技のパラメータ
-	public List<AttackParameter> attackParameters;
-
-	//メソッド========================================================
-	//変数の初期化をする
-	public void Init()
+    /// <summary>
+    /// 変数の初期化をする
+    /// </summary>
+    public void Init()
 	{
         testInput = gameObject.GetComponent<TestInput>();
         //コマンド確認用変数の初期化
         for (int i = 0; i < attackParameters.Count; i++) attackParameters[i].checkCommadStr = "";
 	}
 
-	//入力からコマンドデータを取得
-	public void GetCommandData(string _data)
+
+    /// <summary>
+    /// 入力からコマンドデータを取得
+    /// </summary>
+    /// <param name="_data"></param>
+    public void GetCommandData(string _data)
 	{
         //入力
         CheckInputData(_data);
@@ -34,6 +39,10 @@ public class CommandManager :MonoBehaviour
         InputCommandApplyCheck();
     }
 
+    /// <summary>
+    /// 入力された値を確認し、必要な処理を行う
+    /// </summary>
+    /// <param name="_data"></param>
 	private void CheckInputData(string _data)
 	{
 		//前回の入力とデータが同じ、もしくはニュートラル状態（５）のときはスキップ
@@ -72,7 +81,9 @@ public class CommandManager :MonoBehaviour
 		}
     }
 
-    //入力がコマンドに当てはまるかチェック
+    /// <summary>
+    /// 美優力がコマンドに当てはまるか確認し、コマンド発動処理を行う
+    /// </summary>
     private void InputCommandApplyCheck()
     {
         //コマンド発動後のインターバル中ではない時のみこの処理を行う
@@ -129,7 +140,12 @@ public class CommandManager :MonoBehaviour
             // }
         }
     }
-    //コマンド入力を開始してからの時間(フレーム)を管理
+
+    /// <summary>
+    /// コマンド入力を開始してからの時間(フレーム)を管理
+    /// </summary>
+    /// <param name="_attackParameter"></param>
+    /// <returns></returns>
     public IEnumerator CheckInputCommand(AttackParameter _attackParameter)
     {
         var time = _attackParameter.validInputFrame / 60f;
@@ -137,7 +153,12 @@ public class CommandManager :MonoBehaviour
         //入力中のコマンドをリセットする
         _attackParameter.checkCommadStr = "";
     }
-//コマンドを保存しておくフレームを管理
+
+    /// <summary>
+    /// コマンドを保存しておくフレームを管理
+    /// </summary>
+    /// <param name="_attackParameter"></param>
+    /// <returns></returns>
     public IEnumerator CheckSaveCommand(AttackParameter _attackParameter)
     {
         var str = _attackParameter.commandName;
@@ -148,7 +169,12 @@ public class CommandManager :MonoBehaviour
         //フラグをオフ
         _attackParameter.isShot = false;
     }
-    //コマンド発動後のインターバル(フレーム)を管理
+
+    /// <summary>
+    /// コマンド発動後のインターバル(フレーム)を管理
+    /// </summary>
+    /// <param name="_attackParameter"></param>
+    /// <returns></returns>
     public IEnumerator CheckInterval(AttackParameter _attackParameter)
 	{
         isCommandInterval = true;

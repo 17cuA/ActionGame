@@ -4,15 +4,21 @@ using UnityEngine;
 
 public class ControllerManager : MonoBehaviour
 {
-    private const int playerNum = 2;
+    /// <summary>
+    /// ControllerManagerの変数
+    /// </summary>
+    [SerializeField] private const int playerNum = 2;               //プレイヤー数
     public GameObject[] inputManager = new GameObject[playerNum];   //InputManagerオブジェクトを管理
     public string[] controllerNames = new string[playerNum];        //コントローラーの名前を管理
+
+    /// <summary>
+    /// 初期化処理
+    /// </summary>
     void Start()
     {
         for (int i = 0;i < playerNum;i++)
         {
             controllerNames[i] = inputManager[i].GetComponent<TestInput>().controllerName;
-            //Debug.Log(controllerNames[i]);
         }
     }
 

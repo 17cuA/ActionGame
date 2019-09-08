@@ -1,17 +1,25 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using System;
-using System.IO;
-using System.Text.RegularExpressions;
+
 namespace CustomInputClass
 {
     public class CustomInput
     {
+        /// <summary>
+        /// CustomInputの変数
+        /// </summary>
         public int playerIndex; //プレイヤー番号
         public int controllerIndex;
 	    public int configIndex;
         public TempInputManagerInfo.InputAxis[] config;
+
+        #region SerConfig
+        /// <summary>
+        /// コンフィグの設定を行います
+        /// </summary>
+        /// <param name="_playerIndex"></param>
+        /// <param name="_cotrollerIndex"></param>
+        /// <param name="_joyNum"></param>
         public void SetConfig(int _playerIndex,int _cotrollerIndex,int _joyNum)
         {
             var axes = new TempInputManagerInfo.InputAxis[TempInputManagerInfo.Config.Length];
@@ -41,16 +49,36 @@ namespace CustomInputClass
             }
             config = axes;
         }
+        #endregion
 
         #region GetAxisRaw
-        /*public float GeyAxisRaw()
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="_name"></param>
+        /// <returns></returns>
+        private string SearchAxisName(string _name)
         {
-            if()
+            for (int i = 0;i < config.Length;i++)
+            {
+                if (config[i].name == _name)
+                {
+                    return "";
+                }
+            }
+            return "";
+        }
+        public float GeyAxisRaw(string _name)
+        {
             return 0f;
-        }*/
+        }
         #endregion
 
         #region GeyKey,GetKeyDown
+        /// <summary>
+        /// 入力されたKeyCodeをstring型で返します
+        /// </summary>
+        /// <returns></returns>
         private KeyCode GetKeyCode()
         {
             foreach (KeyCode code in Enum.GetValues(typeof(KeyCode)))
@@ -62,7 +90,14 @@ namespace CustomInputClass
                 }
             }
             return KeyCode.None;
-        } 
+        }
+
+        /// <summary>
+        /// コンフィグに保存されているボタンと引数で受け取ったボタンを比較し、
+        /// trueならコンフィグに保存されている仮想ボタンを返す
+        /// </summary>
+        /// <param name="_positiveButton"></param>
+        /// <returns></returns>
         private string GetName(string _positiveButton)
         {
             for (int i = 0;i < config.Length;i++)
@@ -74,15 +109,26 @@ namespace CustomInputClass
             }
             return "";
         }
+
+        /// <summary>
+        /// ボタンが押された時の処理
+        /// </summary>
+        /// <param name="_name"></param>
+        /// <returns></returns>
         public bool GetButtonDown(string _name)
         {
             if (Input.anyKeyDown)
             {
-                Debug.Log(GetKeyCode().ToString()+ ":" +GetName(GetKeyCode().ToString()) + ":" + _name);
                 return GetName(GetKeyCode().ToString()) == _name;
             }
             return false;
         }
+
+        /// <summary>
+        /// ボタンが押されている時の処理
+        /// </summary>
+        /// <param name="_name"></param>
+        /// <returns></returns>
         public bool GetButton(string _name)
         {
             if (Input.anyKey)

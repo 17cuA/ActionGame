@@ -38,7 +38,9 @@ public class CreateInputManagerWindow : EditorWindow
         window.minSize = new Vector2(380, 280);
 	}
 
-    //GUI作成
+    /// <summary>
+    /// GUI作成
+    /// </summary>
     private void OnGUI()
     {
         if (_obj == null)
@@ -53,7 +55,6 @@ public class CreateInputManagerWindow : EditorWindow
         using (new GUILayout.VerticalScope())
         {
             #region InputManager設定
-            //InputManager設定
             GUI.backgroundColor = Color.gray;
             using (new GUILayout.HorizontalScope(EditorStyles.toolbar))
             {
@@ -67,7 +68,7 @@ public class CreateInputManagerWindow : EditorWindow
                 {
                     inputManagerSetter.ClearInputManager();
                 }
-                //オートセット
+                //セーブした設定をセット
                 if (GUILayout.Button("セーブした設定をセット"))
                 {
                     inputManagerSetter.SetInputManager();
@@ -194,7 +195,9 @@ public class CreateInputManagerWindow : EditorWindow
     }
 
     #region コントローラの名前確認
-    //接続が確認されているコントローラーの名前をデバッグログで表示するメソッド
+    /// <summary>
+    /// 接続が確認されているコントローラーの名前をデバッグログで表示するメソッド
+    /// </summary>
     private void OutputControllerName()
     {
         var text = "";
@@ -208,7 +211,9 @@ public class CreateInputManagerWindow : EditorWindow
     }
     #endregion
     #region コントローラーのボタン設定用変数の初期化を行う
-    //基本設定に応じて変数の初期化を行う
+    /// <summary>
+    /// 基本設定に応じて変数の初期化を行う
+    /// </summary>
     private void SetController()
     {
 		//リストの作成及び追加、削除を行ったときの表示エラーを回避するための初期化
@@ -238,7 +243,9 @@ public class CreateInputManagerWindow : EditorWindow
     }
     #endregion
     #region ロード
-    //ロード用メソッド
+    /// <summary>
+    /// ロード用メソッド
+    /// </summary>
     private void Import()
     {
         if (_obj == null)
@@ -262,7 +269,9 @@ public class CreateInputManagerWindow : EditorWindow
 	}
     #endregion
     #region 保存
-    //保存用メソッド
+    /// <summary>
+    /// セーブ用メソッド
+    /// </summary>
     private void Export()
     {
         //読み込み
