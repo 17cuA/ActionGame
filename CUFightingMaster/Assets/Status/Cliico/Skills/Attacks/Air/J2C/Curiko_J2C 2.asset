@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Curiko_J2C 2
   m_EditorClassIdentifier: 
   skillLayer: 0
-  animationClip: {fileID: 7400000, guid: 4ad8723da1f01884b942984fdc3576fa, type: 2}
+  animationClip: {fileID: 7400000, guid: 04b92b99fa309c642a862cb0a8b961a9, type: 2}
   animationSpeed: 1
   status: 1
   frameEffects: []
@@ -58,13 +58,13 @@ MonoBehaviour:
       isInfinityFrame: 0
       hitBox:
         size: {x: 4, y: 0.5, z: 1.5}
-        localPosition: {x: 0.5, y: -0.25, z: 0}
+        localPosition: {x: 0.5, y: 0.62, z: 0}
       startFrame: 0
-      endFrame: 2
+      endFrame: 4
     hitStop: 2
     hitPoint: 0
     hitStrength: 1
-    damage: 0
+    damage: 5000
     stanDamage: 0
     knockBack: 0
     airKnockBack: 0
@@ -94,9 +94,9 @@ MonoBehaviour:
         isImpact: 0
         isBound: 0
         boundMovements: []
-        movement: {x: 0, y: 2, z: 0}
+        movement: {x: 0, y: 3, z: 0}
         startFrame: 0
-      movement: {x: 1, y: -5, z: 0}
+      movement: {x: 0, y: -1, z: 0}
       startFrame: 0
     throwGroundDamage: 0
     throwSkill: {fileID: 0}
@@ -112,8 +112,8 @@ MonoBehaviour:
     guardHitRigor: 0
     plusGauge: 0
     enemyPlusGauge: 0
-  isContinue: 1
-  isMoveContinue: 1
+  isContinue: 0
+  isMoveContinue: 0
   movements: []
   gravityMoves: []
   timeStops:
