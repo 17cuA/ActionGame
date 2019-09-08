@@ -17,8 +17,15 @@ public class FighterStateBase : StateBaseScriptMonoBehaviour
         public int countValid;//空中の場合何回発動できるか
         public FighterSkill skill;
     }
+    public class CountValidsSkill
+    {
+        public int count = 0;
+        public int maxCount = 0;
+    }
     public Dictionary<string, MoveAndSkills> groundSkills = new Dictionary<string, MoveAndSkills>();//地上コマンド技
     public Dictionary<string, MoveAndSkills> airSkills = new Dictionary<string, MoveAndSkills>();//空中コマンド技
+    public Dictionary<string, CountValidsSkill> airCountValids = new Dictionary<string, CountValidsSkill>();//空中で何回出せるか
+    public List<string> countAirName = new List<string>();
 
     private bool isEndHitStop = false;//KO時のヒットストップをしたかどうか
 
@@ -57,6 +64,10 @@ public class FighterStateBase : StateBaseScriptMonoBehaviour
             var _s = new MoveAndSkills();
             _s.skill = s.skill;
             _s.skillCost = s.skillCost;
+            CountValidsSkill count = new CountValidsSkill();
+            count.count = 0;
+            count.maxCount = s.countValid;
+            airCountValids.Add(s.name, count);
             _s.countValid = s.countValid;
             airSkills.Add(s.name, _s);
         }
@@ -66,6 +77,11 @@ public class FighterStateBase : StateBaseScriptMonoBehaviour
             _s.skill = s.skill;
             _s.skillCost = s.skillCost;
             _s.countValid = s.countValid;
+            CountValidsSkill count = new CountValidsSkill();
+            count.count = 0;
+            count.maxCount = s.countValid;
+            airCountValids.Add(s.name + s.trigger, count);
+
             airSkills.Add(s.name + s.trigger, _s);
         }
     }

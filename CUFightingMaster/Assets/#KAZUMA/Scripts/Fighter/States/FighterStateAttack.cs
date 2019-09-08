@@ -160,7 +160,14 @@ public class FighterStateAttack : StateBaseScriptMonoBehaviour
 						{
                             if (stateBase.core.SpecialGauge >= _move.skillCost)
                             {
-                                return true;
+								if(stateBase.airCountValids.ContainsKey(stateBase.input.airMoveCommand.inputCommandName))
+								{
+                                    FighterStateBase.CountValidsSkill sk = stateBase.airCountValids[stateBase.input.airMoveCommand.inputCommandName];
+                                    if(sk.count<sk.maxCount||sk.maxCount == 0)
+									{
+                                        return true;
+                                    }
+								}
                             }
                         }
 					}
@@ -319,7 +326,14 @@ public class FighterStateAttack : StateBaseScriptMonoBehaviour
 						{
                             if (stateBase.core.SpecialGauge >= _move.skillCost)
                             {
-                                return true;
+                                if (stateBase.airCountValids.ContainsKey(stateBase.input.airMoveCommand.inputCommandName))
+                                {
+                                    FighterStateBase.CountValidsSkill sk = stateBase.airCountValids[stateBase.input.airMoveCommand.inputCommandName];
+                                    if(sk.count<sk.maxCount||sk.maxCount == 0)
+                                    {
+                                        return true;
+                                    }
+                                }
                             }
 						}
 					}
@@ -412,10 +426,20 @@ public class FighterStateAttack : StateBaseScriptMonoBehaviour
             {
                 if (stateBase.core.SpecialGauge >= stateBase.airSkills[stateBase.input.airMoveCommand.inputCommandName].skillCost)
                 {
-                    var _move = stateBase.airSkills[stateBase.input.airMoveCommand.inputCommandName];
-                    stateBase.core.SetSkill(_move.skill, 0);
-                    stateBase.core.SpecialGauge -= _move.skillCost;
-                    return;
+					//空中で発動できる回数
+					if(stateBase.airCountValids.ContainsKey(stateBase.input.airMoveCommand.inputCommandName))
+					{
+                        FighterStateBase.CountValidsSkill sk = stateBase.airCountValids[stateBase.input.airMoveCommand.inputCommandName];
+                        if (sk.count < sk.maxCount || sk.maxCount == 0)
+                        {
+                            sk.count++;
+                            stateBase.countAirName.Add(stateBase.input.airMoveCommand.inputCommandName);
+                            var _move = stateBase.airSkills[stateBase.input.airMoveCommand.inputCommandName];
+                            stateBase.core.SetSkill(_move.skill, 0);
+                            stateBase.core.SpecialGauge -= _move.skillCost;
+                            return;
+                        }
+                    }
                 }
             }
         }

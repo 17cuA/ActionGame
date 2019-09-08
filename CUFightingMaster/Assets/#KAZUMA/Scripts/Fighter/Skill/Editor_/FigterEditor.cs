@@ -304,6 +304,7 @@ public class FigterEditor : EditorWindow
                 fighterStatus.airMoveSkills[i].name = EditorGUILayout.TextField("名前", fighterStatus.airMoveSkills[i].name);
                 fighterStatus.airMoveSkills[i].command = EditorGUILayout.TextField("コマンド", fighterStatus.airMoveSkills[i].command);
                 fighterStatus.airMoveSkills[i].skillCost = EditorGUILayout.IntField("スキルコスト", fighterStatus.airMoveSkills[i].skillCost);
+                fighterStatus.airMoveSkills[i].countValid = EditorGUILayout.IntField("回数", fighterStatus.airMoveSkills[i].countValid);
                 SSet("技", ref fighterStatus.airMoveSkills[i].skill);
                 //削除ボタン
                 if (removeFrag) fighterStatus.airMoveSkills.RemoveAt(i);
@@ -446,6 +447,7 @@ public class FigterEditor : EditorWindow
                 fighterStatus.airAttackSkills[i].trigger = EditorGUILayout.TextField("トリガー", fighterStatus.airAttackSkills[i].trigger);
                 fighterStatus.airAttackSkills[i].validShotFrame = EditorGUILayout.IntField("トリガー入力猶予(0は同時押し)", fighterStatus.airAttackSkills[i].validShotFrame);
                 fighterStatus.airAttackSkills[i].skillCost = EditorGUILayout.IntField("スキルコスト", fighterStatus.airAttackSkills[i].skillCost);
+                fighterStatus.airAttackSkills[i].countValid = EditorGUILayout.IntField("回数", fighterStatus.airAttackSkills[i].countValid);
                 SSet("技", ref fighterStatus.airAttackSkills[i].skill);
                 //削除ボタン
                 if (removeFrag) fighterStatus.airAttackSkills.RemoveAt(i);

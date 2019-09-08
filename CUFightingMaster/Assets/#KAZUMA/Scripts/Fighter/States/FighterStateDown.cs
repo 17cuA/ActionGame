@@ -15,7 +15,6 @@ public class FighterStateDown : StateBaseScriptMonoBehaviour
     }
     public void DownStart()
     {
-        stateBase.core.DirectionChangeMaterial();
         stateBase.core.SetIsGround(false);
         downCount = 0;
         isWakeUp = false;

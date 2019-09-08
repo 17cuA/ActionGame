@@ -23,6 +23,11 @@ public class FighterStateMove : StateBaseScriptMonoBehaviour
     /* ステートに入った時 */
     public void MoveStart()
     {
+        //空中発動のカウントを0に戻す
+        foreach(var c in stateBase.countAirName)
+        {
+            stateBase.airCountValids[c].count = 0;
+        }
 		isJump = false;
         stateBase.core.DirectionChangeMaterial();
         beforeInput = stateBase.input.GetPlayerMoveDirection(stateBase);
@@ -93,7 +98,14 @@ public class FighterStateMove : StateBaseScriptMonoBehaviour
                 {
                     if (stateBase.core.SpecialGauge >= stateBase.airSkills[stateBase.input.airMoveCommand.inputCommandName].skillCost)
                     {
-                        return true;
+                        if (stateBase.airCountValids.ContainsKey(stateBase.input.airMoveCommand.inputCommandName))
+                        {
+                            FighterStateBase.CountValidsSkill sk = stateBase.airCountValids[stateBase.input.airMoveCommand.inputCommandName];
+                            if (sk.count < sk.maxCount || sk.maxCount == 0)
+                            {
+                                return true;
+                            }
+                        }
                     }
                 }
             }
