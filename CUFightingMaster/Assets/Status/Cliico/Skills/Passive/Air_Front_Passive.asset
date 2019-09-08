@@ -12,16 +12,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fbd35985d310504d81036cc55356454, type: 3}
   m_Name: Air_Front_Passive
   m_EditorClassIdentifier: 
+  skillLayer: 0
   animationClip: {fileID: 7400000, guid: 133bb630a8e7d6546a2d5d8735b76d75, type: 2}
   animationSpeed: 1
   status: 1
-  frameEffects: []
+  frameEffects:
+  - frame: 0
+    effect: {fileID: 5574062585748201925, guid: 48795f0c109c52245950f83eea9e01a3,
+      type: 3}
+    childFlag: 1
+    worldPositionFlag: 0
+    position: {x: 0, y: 2.3, z: 0}
   frameBullets: []
   cancelFrag: 1
+  endNextAnimation: {fileID: 0}
+  endNextWeight: 0
+  groundLandingSkill: {fileID: 0}
+  groundLandingWeight: 0
   barrageCancelFrag: 0
-  cancelLayer: 0
+  cancelLayer: 
   inBlend: 0
   outBlend: 0
+  cameraPlay:
+    startFrame: 0
+    rightCamera: {fileID: 0}
+    leftCamera: {fileID: 0}
   isInvincibleBullet: 0
   plusHeadHitBox: []
   plusBodyHitBox: []
@@ -36,12 +51,17 @@ MonoBehaviour:
     isResetStartGravity: 1
     isResetEndGravity: 0
     isImpact: 1
+    isBound: 0
+    boundMovements: []
     movement: {x: 0, y: 3, z: 0}
     startFrame: 0
   gravityMoves:
   - movement: {x: 2, y: 0, z: 0}
     limitMove: {x: 2, y: 0, z: 0}
     startFrame: 0
+  timeStops:
+    startFrame: 0
+    endFrame: 0
   headFlag: 0
   bodyFlag: 0
   footFlag: 0
