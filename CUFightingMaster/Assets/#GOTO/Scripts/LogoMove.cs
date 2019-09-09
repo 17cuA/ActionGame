@@ -2,65 +2,48 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LogoMove : MonoBehaviour
+public class LogoMove : UIManager_Title
 {
-	public float MoveTime;
-	public float CheckTime;
-	public float CheckTime1;
-	public float CheckTime2;
+	private float MoveTime;
+	private float rate;
+	private Vector3 secondPos;
+	private Vector3 lastPos;
+	private bool checkPoint_1;
+	private bool checkPoint_2;
 
-	public float DontMoveTime;
-
-	public int up1;
-	public int up2;
-	public float down1;
-	public float MoveSpeed;
-
-	public float rotationSpeed = 0;
-	public float StartSecond;
-	public int StartSecondMax;
-
-	Rigidbody rigidbody;
+	public float CheckTime_1;
+	public float CheckTime_2;
 
 	// Start is called before the first frame update
 	void Start()
     {
-		rigidbody = GetComponent<Rigidbody>();
+		secondPos = new Vector3(transform.position.x, 10.0f, 0.0f);
+		lastPos = new Vector3(transform.position.x, 0.5f, 0.0f);
+		checkPoint_1 = false;
+		checkPoint_2 = false;
+		MoveTime = 0.0f;
 	}
 
-    // Update is called once per frame
-    void Update()
+	// Update is called once per frame
+	void Update()
     {
-		Transform myTransform = this.transform;
-		if (MoveTime < DontMoveTime)
+		MoveTime += Time.deltaTime;
+		if (checkPoint_1 == false)
 		{
-			MoveTime += Time.deltaTime;
-			if (MoveTime <= CheckTime)
-			{
-				//１回目UP
-				rigidbody.AddForce(0, MoveSpeed * up1, 0);
-			}
-			else if (MoveTime <= CheckTime1)
-			{
-				//何もなし
-			}
-			else if (MoveTime < CheckTime2 && MoveTime > CheckTime1)
-			{
-				//１回目Down
-				rigidbody.AddForce(0, -MoveSpeed * down1, 0);
-			}
-			else
-			{
-				//二回目Do
-				if (transform.position.y >= 0.7f) rigidbody.AddForce(0, MoveSpeed * up2, 0);
-				else rigidbody.velocity = Vector3.zero;
-			}
+			rate = MoveTime / CheckTime_1 / 100.0f;
+			//１回目UP
+			transform.position = Vector3.Lerp(transform.position, secondPos, rate);		
+			if (MoveTime >= CheckTime_1) checkPoint_1 = true;
 		}
-		else 
+		else if (checkPoint_1 == true)
 		{
-			StartSecond += Time.deltaTime;
-			rigidbody.velocity = Vector3.zero;
-			if(StartSecondMax < StartSecond) myTransform.Rotate(0f, rotationSpeed, 0f);
+			rate = MoveTime / CheckTime_2 / 100.0f;
+			//１回目Down
+			transform.position = Vector3.Lerp(transform.position, lastPos, rate);
+			if (MoveTime >= CheckTime_2) checkPoint_2 = true;
+		}
+		if (checkPoint_2 == true)
+		{
 		}
 	}
 }
