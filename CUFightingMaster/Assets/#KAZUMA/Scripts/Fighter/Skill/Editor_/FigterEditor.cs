@@ -79,8 +79,9 @@ public class FigterEditor : EditorWindow
         fighterStatus.airBraking = EditorGUILayout.FloatField("空中制動", fighterStatus.airBraking);
         fighterStatus.StanGuage = EditorGUILayout.IntField("スタン値", fighterStatus.StanGuage);
         fighterStatus.SpecialGuage = EditorGUILayout.IntField("スぺシャルゲージ", fighterStatus.SpecialGuage);
-        fighterStatus.PlayerModel = EditorGUILayout.ObjectField("キャラセレモデル", fighterStatus.PlayerModel, typeof(GameObject), false) as GameObject;
-        fighterStatus.gravity = EditorGUILayout.Vector3Field("重力", fighterStatus.gravity);
+        fighterStatus.PlayerModel = EditorGUILayout.ObjectField("キャラセレモデル1P", fighterStatus.PlayerModel, typeof(GameObject), false) as GameObject;
+		fighterStatus.PlayerModel2 = EditorGUILayout.ObjectField("キャラセレモデル2P", fighterStatus.PlayerModel2, typeof(GameObject), false) as GameObject;
+		fighterStatus.gravity = EditorGUILayout.Vector3Field("重力", fighterStatus.gravity);
         fighterStatus.gravityMax = EditorGUILayout.Vector3Field("重力限界", fighterStatus.gravityMax);
         EditorGUILayout.BeginVertical("Box");
         if (fighterStatus.fighter != null)
