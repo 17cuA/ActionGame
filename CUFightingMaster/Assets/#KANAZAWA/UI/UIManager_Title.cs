@@ -13,13 +13,13 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class UIManager_Title : MonoBehaviour
-{     
+{
 	public Image visibleImage;  //	点滅させるImage
 
 	private float scaleTime;     // 現在時間
-	private float scaleTime_Start;	// 処理を開始する時間
+	private float scaleTime_Start;  // 処理を開始する時間
 	private float scaleTime_Max;    // 処理を終了する時間
-	private float scaleValue;	// 拡大の割合
+	private float scaleValue;   // 拡大の割合
 
 	void Start()
 	{
@@ -35,6 +35,11 @@ public class UIManager_Title : MonoBehaviour
 	//	--------------------
 	void Update()
 	{
+		ScaleUp(visibleImage);
+	}
+
+	public void ScaleUp(Image image)
+	{
 		// 時間計測
 		scaleTime += Time.deltaTime;
 
@@ -43,9 +48,28 @@ public class UIManager_Title : MonoBehaviour
 		{
 			// 画像を拡大する
 			// Sin式を利用して徐々にスケールを足していく
-			visibleImage.transform.localScale = new Vector3(1.0f + Mathf.Sin(scaleTime - scaleTime_Start) * scaleValue, 1.0f + Mathf.Sin(scaleTime - scaleTime_Start) * scaleValue, 1.0f);
+			image.transform.localScale = new Vector3(1.0f + Mathf.Sin(scaleTime - scaleTime_Start) * scaleValue, 1.0f + Mathf.Sin(scaleTime - scaleTime_Start) * scaleValue, 1.0f);
 			// 画像を透明にしていく
-			visibleImage.color = new Color(1, 1, 1, 1 - scaleTime);
+			image.color = new Color(1, 1, 1, 1 - scaleTime);
+		}
+		// 終了時間になった時
+		if (scaleTime >= scaleTime_Max)
+		{
+			scaleTime = 0.0f;
+		}
+	}
+
+	public void ScaleUp(GameObject ob, float scaleValue)
+	{
+		// 時間計測
+		scaleTime += Time.deltaTime;
+
+		// 開始時間になった時
+		if (scaleTime >= scaleTime_Start)
+		{
+			// 画像を拡大する
+			// Sin式を利用して徐々にスケールを足していく
+			ob.transform.localScale = new Vector3(1.0f + Mathf.Sin(scaleTime - scaleTime_Start) * scaleValue, 1.0f + Mathf.Sin(scaleTime - scaleTime_Start) * scaleValue, 1.0f);
 		}
 		// 終了時間になった時
 		if (scaleTime >= scaleTime_Max)
