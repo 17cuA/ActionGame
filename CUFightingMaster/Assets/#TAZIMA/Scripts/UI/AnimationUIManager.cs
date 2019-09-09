@@ -6,7 +6,9 @@ using UnityEngine.UI;
 
 public class AnimationUIManager : MonoBehaviour
 {
-	//UIのアニメーションを一時的に止めるためのクラス
+	/// <summary>
+	/// アニメーションUIを指定したフレームで指定したフレーム数停止させるクラス
+	/// </summary>
     [System.Serializable]
     public class StopUIClass
     {
@@ -14,34 +16,42 @@ public class AnimationUIManager : MonoBehaviour
         public int StopFrame;
         public int CountFrame;
     }
-    private string path;
-    public string spriteName;
-    private int totalSpriteCount;
-    private int nowSpriteCount;
-	public int fadeInFrame;
-    public int fadeOutFrame;
-    private float currentRemainFadeInFrame;
-	private float currentRemainFadeOutFrame;
-	private Sprite[] sprites;
-    private Color initColor;
-    private Sprite defaultSprite;
-    public List<StopUIClass> stopUIs = null;
-    public bool isStart;
-    public bool isLoop;
-    public bool isLeave;
+	/// <summary>
+	/// AnimationUIの変数
+	/// </summary>
+    private string path;			//スプライトの場所を参照するパス
+    public string spriteName;		//スプライトの名前
+    private int totalSpriteCount;	//合計スプライト数
+    private int nowSpriteCount;		//現在のスプライトの番号をカウント
+	public int delayChangeFrame;	//スプライトを次に移すフレームまでに挟むフレーム
+	private int delayFrameCount;	//スプライトを次に移すフレームまでに挟むフレームのカウントをする
+	public int fadeInFrame;			//フェードイン後完了するまでのフレーム
+    public int fadeOutFrame;		//フェードアウトが完了するまでのフレーム
+    private float currentRemainFadeInFrame;		//フェードインが完了するまでの残りのフレーム
+	private float currentRemainFadeOutFrame;	//フェードアウトが完了するまでの残りのフレーム
+	private Sprite[] sprites;		//読み込んだスプライトを格納
+    private Color initColor;		//初期化用のカラー
+    private Sprite defaultSprite;	//アニメーションUIを出していないときに出しておくスプライト
+    public List<StopUIClass> stopUIs = null;    //アニメーションUIを指定したフレームで指定したフレーム数停止させるクラスの変数
+	public bool isStart;			//アニメーションUI開始用フラグ
+    public bool isLoop;				//アニメーションUI停止用フラグ
+    public bool isLeave;			//アニメーションUI消去用フラグ
 
     private void Update()
     {
-        if (isStart)
-        {
-            StartAnimation();
-        }
-		if(isLoop)
+		if (delayChangeFrame <= delayFrameCount)
 		{
-			StartAnimation();
+			delayFrameCount = 0;
+			if (isStart) StartAnimation();
+			else ResetUI();
+	
 		}
+		else delayFrameCount++;
     }
 
+	/// <summary>
+	/// 初期化用メソッド
+	/// </summary>
 	public void Init()
 	{
         //各スプライトを格納
@@ -57,6 +67,7 @@ public class AnimationUIManager : MonoBehaviour
             sprites[i] = Resources.Load<Sprite>(string.Format("{0}/{1}_{2}", path, spriteName,i.ToString("D5")));
         }
         initColor = gameObject.GetComponent<Image>().color;
+		delayFrameCount = 0;
         isStart = false;
         ResetUI();
 	}
@@ -73,45 +84,54 @@ public class AnimationUIManager : MonoBehaviour
             }
         }
     }
-    private void StartAnimation()
-    {
-        //アニメーション処理
-        if (nowSpriteCount < totalSpriteCount)
-        {
-            //指定フレームで指定フレーム分止められるようにする
-            var isStopUI = false;
 
-            //UIを止めていない時の処理
-            if (!isStopUI)
-            {
-                //パスで次のスプライトを指定して差し替える
-                var sprite = sprites[nowSpriteCount];
-                gameObject.GetComponent<Image>().sprite = sprite;
+	/// <summary>
+	/// アニメーション開始用メソッド
+	/// </summary>
+	private void StartAnimation()
+	{
+		//アニメーション処理
+		if (nowSpriteCount < totalSpriteCount)
+		{
+			//指定フレームで指定フレーム分止められるようにする
+			var isStopUI = false;
+
+			//UIを止めていない時の処理
+			if (!isStopUI)
+			{
+				//パスで次のスプライトを指定して差し替える
+				var sprite = sprites[nowSpriteCount];
+				gameObject.GetComponent<Image>().sprite = sprite;
 				//指定フレームまでフェードイン処理
 				if (nowSpriteCount < fadeInFrame)
 				{
 					FadeInUI();
 				}
-                //指定フレームを過ぎたらフェードアウト処理
-                if (nowSpriteCount > (totalSpriteCount - fadeOutFrame - 1))
-                {
-                    FadeOutUI();
-                }
-                nowSpriteCount++;
-            }
-        }
-        else
-        {
-            if (!isLeave)
-            {
-                //再利用できるように元に戻しておく
-                gameObject.GetComponent<Image>().sprite = defaultSprite;
-                gameObject.GetComponent<Image>().color = initColor;
-                if (!isLoop)    isStart = false;
-                ResetUI();
-            }
-        }
-    }
+				//指定フレームを過ぎたらフェードアウト処理
+				if (nowSpriteCount > (totalSpriteCount - fadeOutFrame - 1))
+				{
+					FadeOutUI();
+				}
+				nowSpriteCount++;
+			}
+		}
+		else
+		{
+			if (!isLeave)
+			{
+				//再利用できるように元に戻しておく
+				if (gameObject.GetComponent<Image>().sprite != defaultSprite) gameObject.GetComponent<Image>().sprite = defaultSprite;
+				if (gameObject.GetComponent<Image>().color != initColor) gameObject.GetComponent<Image>().color = initColor;
+				if (!isLoop) isStart = false;
+				ResetUI();
+			}
+		}
+	}
+
+	/// <summary>
+	/// アニメーションUI停止用メソッド
+	/// </summary>
+	/// <returns></returns>
 	private bool StopUI()
 	{
 		for (int i = 0; i < stopUIs.Count; i++)
@@ -125,17 +145,24 @@ public class AnimationUIManager : MonoBehaviour
 		}
 		return false;
 	}
+
+	/// <summary>
+	/// アニメーションUIをフェードインさせる
+	/// </summary>
 	private void FadeInUI()
 	{
 		//徐々にフェードイン
-		//徐々にフェードアウト
 		currentRemainFadeInFrame--;
 		float alpha = (fadeInFrame - currentRemainFadeInFrame) / fadeInFrame;
 		var color = gameObject.GetComponent<Image>().color;
 		color.a = alpha;
 		gameObject.GetComponent<Image>().color = color;
 	}
-    private void FadeOutUI()
+
+	/// <summary>
+	/// アニメーションUIをフェードアウトさせる
+	/// </summary>
+	private void FadeOutUI()
     {
         //徐々にフェードアウト
         currentRemainFadeOutFrame--;

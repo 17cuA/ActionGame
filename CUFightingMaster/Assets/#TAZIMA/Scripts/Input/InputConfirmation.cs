@@ -10,7 +10,7 @@ public class InputConfirmation : MonoBehaviour
     CustomInput customInput = new CustomInput();
     void Start()
     {
-        customInput.SetConfig(0,1,1);
+        customInput.SetConfig(0,1);
     }
     void Update()
     {
