@@ -42,13 +42,17 @@ public class CameraController : SingletonMono<CameraController>
 	[SerializeField]
 	private float speed_ZoomOut;				// カメラのズームアウト時の速度
 
-	private float distance_CamToPlayer;			// カメラからキャラまでの距離
-	private float distanceOfPlayers_Start;		// ゲーム開始時のプレイヤー同士の距離
-	private float distanceOfPLayers_Current;    // 現在のプレイヤー同士の距離
+	private float distance_CamToPlayer;				// カメラからキャラまでの距離
+	private float distanceOfPlayers_Start;			// ゲーム開始時のプレイヤー同士の距離
+	private float distanceOfPLayers_Current;		// 現在のプレイヤー同士の距離
+	private float distanceOfPLayers_Current_x;  // 現在のプレイヤー同士の距離のXの差
+	private float distanceOfPLayers_Current_y;  // 現在のプレイヤー同士の距離のYの差
+	private float distanceOfPLayers_Current_z;  // 現在のプレイヤー同士の距離のZの差
+
 	[SerializeField]
 	private Vector3 cameraPos_Max;          // カメラの最大座標
 	[SerializeField]
-	private Vector3 cameraPos_Min;				// カメラの最小座標
+	public Vector3 cameraPos_Min;				// カメラの最小座標
 
 	private Vector3 pCentorPos;					// プレイヤー同士のセンターを取得
 
@@ -69,6 +73,9 @@ public class CameraController : SingletonMono<CameraController>
     public BoxCollider boxCollider2;
 
     public CinemaController cinemaController;
+
+	[SerializeField]
+	private bool zoomFlag_Z = false;
     #endregion
 
     #region 初期化
@@ -90,7 +97,6 @@ public class CameraController : SingletonMono<CameraController>
 		stageWidth = 20.0f;								// ステージの横幅
 		cameraPos_Max = new Vector3(28.0f,0, -9.5f);	// ズームアウトの最大値
 		cameraPos_Min = new Vector3(-28.0f,0,-12.0f);	// ズームインの最小値
-		//distanceOfPlayers_Start = Vector3.Distance(Camera.main.WorldToViewportPoint(Player1.transform.position), Camera.main.WorldToViewportPoint(Player2.transform.position));
 		distanceOfPlayers_Start = 0.4f; // ゲーム開始時のプレイヤー同士の距離
     }
 	#endregion
@@ -116,7 +122,8 @@ public class CameraController : SingletonMono<CameraController>
         {
             if (cinemaController.isPlay) return;
         }
-        CameraUpdate();	
+        CameraUpdate();
+		Debug.Log(Zoom());
 	}
 	#endregion
 
@@ -138,6 +145,9 @@ public class CameraController : SingletonMono<CameraController>
 	{
 		pCentorPos = (Fighter1.transform.position + Fighter2.transform.position) / 2;
 		distanceOfPLayers_Current = Vector3.Distance(Camera.main.WorldToViewportPoint(Fighter1.transform.position), Camera.main.WorldToViewportPoint(Fighter2.transform.position));
+		distanceOfPLayers_Current_x = Camera.main.WorldToViewportPoint(Fighter1.transform.position).x - Camera.main.WorldToViewportPoint(Fighter2.transform.position).x;
+		distanceOfPLayers_Current_y = Camera.main.WorldToViewportPoint(Fighter1.transform.position).y - Camera.main.WorldToViewportPoint(Fighter2.transform.position).y;
+		distanceOfPLayers_Current_z = Camera.main.WorldToViewportPoint(Fighter1.transform.position).z - Camera.main.WorldToViewportPoint(Fighter2.transform.position).z;
 	}
 
 	/// <summary>
@@ -178,6 +188,11 @@ public class CameraController : SingletonMono<CameraController>
 		// ズームの比率
 		float zoomRatio = 0.0f;
 
+		//if ((Fighter1.transform.position.y >= 6.0 || Fighter2.transform.position.y >= 6.0) && transform.position.z > -15.0f)
+		//{
+		//	zoomRatio -= 1.0f;
+		//}
+
 		// ズームの比率を計算
 		// カメラのZ座標が最大値より小さいかつプレイヤー間の距離が0.55未満の時
 		if (transform.position.z < cameraPos_Max.z && distanceOfPLayers_Current < 0.55)
@@ -190,6 +205,25 @@ public class CameraController : SingletonMono<CameraController>
 		{
 			// プレイヤー間の距離によって速度を変更
 			zoomRatio -= distanceOfPLayers_Current / distanceOfPlayers_Start / speed_ZoomOut;
+		}
+
+		// プレイヤーがジャンプして一定の高さになったら
+		if ((Fighter1.transform.position.y >= 6.0 || Fighter2.transform.position.y >= 6.0) && transform.position.z > -15.5f)
+		{
+			// Zのズームを許可する
+			zoomFlag_Z = true;
+		}
+		// ズーム(カメラの距離が一定に戻るまで)
+		if (transform.position.z <= -13.0f)
+		{
+			// Zのズームの許可を出さない
+			zoomFlag_Z = false;
+		}
+		// ズームが許可されたら
+		if (zoomFlag_Z)
+		{
+			// ジャンプ用のZのズーム、今までのズームの距離を伸ばしただけ
+			zoomRatio -= 0.1f;
 		}
 		return zoomRatio;
 	}
