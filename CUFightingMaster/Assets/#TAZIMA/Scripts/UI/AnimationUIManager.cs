@@ -18,8 +18,8 @@ public class AnimationUIManager : MonoBehaviour
     public string spriteName;
     private int totalSpriteCount;
     private int nowSpriteCount;
-	public int changeFrame;
-	private int countFrame;
+	public int delayChangeFrame;
+	private int delayCountFrame;
 	public int fadeInFrame;
     public int fadeOutFrame;
     private float currentRemainFadeInFrame;
@@ -34,9 +34,9 @@ public class AnimationUIManager : MonoBehaviour
 
     private void Update()
     {
-		if (changeFrame <= countFrame)
+		if (delayChangeFrame <= delayCountFrame)
 		{
-			countFrame = 0;
+			delayCountFrame = 0;
 			if (isStart)
 			{
 				StartAnimation();
@@ -46,7 +46,7 @@ public class AnimationUIManager : MonoBehaviour
 				StartAnimation();
 			}
 		}
-		else countFrame++;
+		else delayCountFrame++;
     }
 
 	public void Init()
@@ -64,7 +64,7 @@ public class AnimationUIManager : MonoBehaviour
             sprites[i] = Resources.Load<Sprite>(string.Format("{0}/{1}_{2}", path, spriteName,i.ToString("D5")));
         }
         initColor = gameObject.GetComponent<Image>().color;
-		countFrame = 0;
+		delayCountFrame = 0;
         isStart = false;
         ResetUI();
 	}
