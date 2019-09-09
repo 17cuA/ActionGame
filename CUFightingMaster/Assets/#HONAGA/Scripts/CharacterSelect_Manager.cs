@@ -47,6 +47,11 @@ public class CharacterSelect_Manager : SingletonMono<CharacterSelect_Manager>
     // Start is called before the first frame update
     void Start()
     {
+		// 飯塚追加-------------------------------------------
+        Sound.LoadBgm("BGM_Menu", "BGM_Menu");
+        Sound.PlayBgm("BGM_Menu", 0.4f, 1, true);
+        // ---------------------------------------------------
+
         /*pplication.targetFrameRate = 60;*/
         panelAnimFlag = false;
         animFlagCount = 1;
