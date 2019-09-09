@@ -6082,7 +6082,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1184893052}
   - component: {fileID: 1184893051}
-  - component: {fileID: 1184893053}
+  - component: {fileID: 1184893054}
   m_Layer: 0
   m_Name: Logo
   m_TagString: Untagged
@@ -6152,21 +6152,25 @@ Transform:
   m_Father: {fileID: 391040778}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1184893053
-MonoBehaviour:
+--- !u!95 &1184893054
+Animator:
+  serializedVersion: 3
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1184893050}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f4f34493a32780449088c3ca5f43e5d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  visibleImage: {fileID: 0}
-  CheckTime_1: 4.5
-  CheckTime_2: 7
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6da4dd35f1ef77646a31edf33a8e64ec, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!224 &1269635548 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1094768540677155762, guid: a83932a86c972a641b380d484b5afc15,
@@ -6183,7 +6187,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1479932322}
   - component: {fileID: 1479932321}
-  - component: {fileID: 1479932320}
+  - component: {fileID: 1479932319}
   m_Layer: 0
   m_Name: Logo
   m_TagString: Untagged
@@ -6191,21 +6195,25 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1479932320
-MonoBehaviour:
+--- !u!95 &1479932319
+Animator:
+  serializedVersion: 3
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1479932318}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f4f34493a32780449088c3ca5f43e5d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  visibleImage: {fileID: 0}
-  CheckTime_1: 4.5
-  CheckTime_2: 7
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a72b1fc7c578c5948818ca2c102a562d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!212 &1479932321
 SpriteRenderer:
   m_ObjectHideFlags: 0

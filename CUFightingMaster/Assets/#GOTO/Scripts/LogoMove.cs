@@ -44,7 +44,6 @@ public class LogoMove : UIManager_Title
 		}
 		if (checkPoint_2 == true)
 		{
-			ScaleUp(gameObject, 3.0f);
 		}
 	}
 }
