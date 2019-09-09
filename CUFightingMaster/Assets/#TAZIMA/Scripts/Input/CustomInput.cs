@@ -62,71 +62,72 @@ namespace CustomInputClass
         {
 			return Input.GetAxisRaw(_name);
         }
-        #endregion
+		#endregion
 
-        #region GeyKey,GetKeyDown
-        /// <summary>
-        /// 入力されたKeyCodeをstring型で返します
-        /// </summary>
-        /// <returns></returns>
-        private KeyCode GetKeyCode()
-        {
-            foreach (KeyCode code in Enum.GetValues(typeof(KeyCode)))
-            {
-                if (Input.GetKeyDown(code))
-                {
-                    //処理を書く
-                    return code;
-                }
-            }
-            return KeyCode.None;
-        }
+		#region GeyKey,GetKeyDown
+		/// <summary>
+		/// ボタンが押された時の処理
+		/// </summary>
+		/// <param name="_name"></param>
+		/// <returns></returns>
+		public bool GetButtonDown(string _name)
+		{
+			if (Input.anyKeyDown)
+			{
+				return GetName(GetKeyCode().ToString()) == _name;
+			}
+			return false;
+		}
+
+		/// <summary>
+		/// ボタンが押されている時の処理
+		/// </summary>
+		/// <param name="_name"></param>
+		/// <returns></returns>
+		public bool GetButton(string _name)
+		{
+			if (Input.anyKey)
+			{
+				return GetName(GetKeyCode().ToString()) == _name;
+			}
+			return false;
+		}
 
         /// <summary>
         /// コンフィグに保存されているボタンと引数で受け取ったボタンを比較し、
         /// trueならコンフィグに保存されている仮想ボタンを返す
         /// </summary>
-        /// <param name="_positiveButton"></param>
+        /// <param name="_button"></param>
         /// <returns></returns>
-        private string GetName(string _positiveButton)
+        private string GetName(string _button)
         {
             for (int i = 0;i < config.Length;i++)
             {
-                if (config[i].positiveButton == _positiveButton || config[i].altPositiveButton == _positiveButton)
+				if (config[i].positiveButton == _button || config[i].altPositiveButton == _button)
                 {
-                    return config[i].name;
+					Debug.Log(config[i].name);
+					return config[i].name;
                 }
             }
             return "";
-        }
+		}
 
-        /// <summary>
-        /// ボタンが押された時の処理
-        /// </summary>
-        /// <param name="_name"></param>
-        /// <returns></returns>
-        public bool GetButtonDown(string _name)
-        {
-            if (Input.anyKeyDown)
-            {
-                return GetName(GetKeyCode().ToString()) == _name;
-            }
-            return false;
-        }
-
-        /// <summary>
-        /// ボタンが押されている時の処理
-        /// </summary>
-        /// <param name="_name"></param>
-        /// <returns></returns>
-        public bool GetButton(string _name)
-        {
-            if (Input.anyKey)
-            {
-                return GetName(GetKeyCode().ToString()) == _name;
-            }
-            return false;
-        }
-        #endregion
-    }
+		/// <summary>
+		/// 入力されたKeyCodeをstring型で返します
+		/// </summary>
+		/// <returns></returns>
+		private KeyCode GetKeyCode()
+		{
+			foreach (KeyCode code in Enum.GetValues(typeof(KeyCode)))
+			{
+				if (Input.GetKeyDown(code))
+				{
+					//処理を書く
+					return code;
+				}
+			}
+			return KeyCode.None;
+		}
+		#endregion
+	}
 }
