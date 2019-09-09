@@ -207,24 +207,24 @@ public class CameraController : SingletonMono<CameraController>
 			zoomRatio -= distanceOfPLayers_Current / distanceOfPlayers_Start / speed_ZoomOut;
 		}
 
-		// プレイヤーがジャンプして一定の高さになったら
-		if ((Fighter1.transform.position.y >= 6.0 || Fighter2.transform.position.y >= 6.0) && transform.position.z > -15.5f)
-		{
-			// Zのズームを許可する
-			zoomFlag_Z = true;
-		}
-		// ズーム(カメラの距離が一定に戻るまで)
-		if (transform.position.z <= -13.0f)
-		{
-			// Zのズームの許可を出さない
-			zoomFlag_Z = false;
-		}
-		// ズームが許可されたら
-		if (zoomFlag_Z)
-		{
-			// ジャンプ用のZのズーム、今までのズームの距離を伸ばしただけ
-			zoomRatio -= 0.1f;
-		}
+		//// プレイヤーがジャンプして一定の高さになったら
+		//if ((Fighter1.transform.position.y >= 6.0 || Fighter2.transform.position.y >= 6.0) && transform.position.z > -15.5f)
+		//{
+		//	// Zのズームを許可する
+		//	zoomFlag_Z = true;
+		//}
+		//// ズーム(カメラの距離が一定に戻るまで)
+		//if (transform.position.z <= -13.0f)
+		//{
+		//	// Zのズームの許可を出さない
+		//	zoomFlag_Z = false;
+		//}
+		//// ズームが許可されたら
+		//if (zoomFlag_Z)
+		//{
+		//	// ジャンプ用のZのズーム、今までのズームの距離を伸ばしただけ
+		//	zoomRatio -= 0.1f;
+		//}
 		return zoomRatio;
 	}
 	#endregion
