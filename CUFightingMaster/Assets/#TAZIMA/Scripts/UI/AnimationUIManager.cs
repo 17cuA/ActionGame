@@ -44,7 +44,6 @@ public class AnimationUIManager : MonoBehaviour
 			delayFrameCount = 0;
 			if (isStart) StartAnimation();
 			else ResetUI();
-	
 		}
 		else delayFrameCount++;
     }
