@@ -14,6 +14,10 @@ public abstract class AnimationPlayerBase : MonoBehaviour
 {
     //現在再生中のAnimationClip
     [SerializeField] private AnimationClip nowClip = null;
+	public AnimationClip NowClip
+	{
+		get { return nowClip; }
+	}
     //次に再生するAnimationClip
     [SerializeField] private AnimationClip setClip = null;
     //再生中のアニメーションの速度

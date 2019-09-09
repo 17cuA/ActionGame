@@ -36,6 +36,10 @@ public class AnimationUIManager : MonoBehaviour
         {
             StartAnimation();
         }
+		if(isLoop)
+		{
+			StartAnimation();
+		}
     }
 
 	public void Init()

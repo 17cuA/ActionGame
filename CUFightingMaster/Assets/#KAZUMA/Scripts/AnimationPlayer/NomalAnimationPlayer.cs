@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class NomalAnimationPlayer : AnimationPlayerBase
 {
-    // Update is called once per frame
-    void Update()
-    {
-        base.UpdateGame();
-    }
+	// Update is called once per frame
+	public void Updater()
+	{
+		base.UpdateGame();
+	}
 }
