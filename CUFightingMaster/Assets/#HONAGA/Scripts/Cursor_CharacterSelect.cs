@@ -25,6 +25,8 @@ public class Cursor_CharacterSelect : MonoBehaviour
 	public Vector2 inputDir = Vector2.zero;
 	public int selectDir = 0;                           //現在のカーソル位置
 
+    public GameObject cursor;
+
 	[SerializeField]
 	private bool determining_decision;
 	public bool Determining_decision
@@ -77,12 +79,14 @@ public class Cursor_CharacterSelect : MonoBehaviour
 		if (selectDir > 1/*currentSellectCharacter.name == "ObaChan" || currentSellectCharacter.name == "ObaChan(1)"*/)
 		{
 			gameObject.GetComponent<Image>().sprite = images[1];
-		}
+            cursor.transform.localScale = new Vector3(-1.0f,1.0f,1.0f);
+        }
 		else
 		{
 			gameObject.GetComponent<Image>().sprite = images[0];
-		}
-		if(timer.IsPlayCountDown == false)
+            cursor.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
+        }
+        if (timer.IsPlayCountDown == false)
 		{
 			determining_decision = true;
 		}
