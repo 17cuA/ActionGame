@@ -42,10 +42,9 @@ public class AnimationUIManager : MonoBehaviour
 		if (delayChangeFrame <= delayFrameCount)
 		{
 			delayFrameCount = 0;
-			if (isStart)
-			{
-				StartAnimation();
-			}
+			if (isStart) StartAnimation();
+			else ResetUI();
+	
 		}
 		else delayFrameCount++;
     }
@@ -89,45 +88,45 @@ public class AnimationUIManager : MonoBehaviour
 	/// <summary>
 	/// アニメーション開始用メソッド
 	/// </summary>
-    private void StartAnimation()
-    {
-        //アニメーション処理
-        if (nowSpriteCount < totalSpriteCount)
-        {
-            //指定フレームで指定フレーム分止められるようにする
-            var isStopUI = false;
+	private void StartAnimation()
+	{
+		//アニメーション処理
+		if (nowSpriteCount < totalSpriteCount)
+		{
+			//指定フレームで指定フレーム分止められるようにする
+			var isStopUI = false;
 
-            //UIを止めていない時の処理
-            if (!isStopUI)
-            {
-                //パスで次のスプライトを指定して差し替える
-                var sprite = sprites[nowSpriteCount];
-                gameObject.GetComponent<Image>().sprite = sprite;
+			//UIを止めていない時の処理
+			if (!isStopUI)
+			{
+				//パスで次のスプライトを指定して差し替える
+				var sprite = sprites[nowSpriteCount];
+				gameObject.GetComponent<Image>().sprite = sprite;
 				//指定フレームまでフェードイン処理
 				if (nowSpriteCount < fadeInFrame)
 				{
 					FadeInUI();
 				}
-                //指定フレームを過ぎたらフェードアウト処理
-                if (nowSpriteCount > (totalSpriteCount - fadeOutFrame - 1))
-                {
-                    FadeOutUI();
-                }
-                nowSpriteCount++;
-            }
-        }
-        else
-        {
-            if (!isLeave)
-            {
-                //再利用できるように元に戻しておく
-                gameObject.GetComponent<Image>().sprite = defaultSprite;
-                gameObject.GetComponent<Image>().color = initColor;
-                if (!isLoop)    isStart = false;
-                ResetUI();
-            }
-        }
-    }
+				//指定フレームを過ぎたらフェードアウト処理
+				if (nowSpriteCount > (totalSpriteCount - fadeOutFrame - 1))
+				{
+					FadeOutUI();
+				}
+				nowSpriteCount++;
+			}
+		}
+		else
+		{
+			if (!isLeave)
+			{
+				//再利用できるように元に戻しておく
+				if (gameObject.GetComponent<Image>().sprite != defaultSprite) gameObject.GetComponent<Image>().sprite = defaultSprite;
+				if (gameObject.GetComponent<Image>().color != initColor) gameObject.GetComponent<Image>().color = initColor;
+				if (!isLoop) isStart = false;
+				ResetUI();
+			}
+		}
+	}
 
 	/// <summary>
 	/// アニメーションUI停止用メソッド
