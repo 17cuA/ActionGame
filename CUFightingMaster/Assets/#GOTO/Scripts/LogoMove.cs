@@ -17,7 +17,7 @@ public class LogoMove : UIManager_Title
 	// Start is called before the first frame update
 	void Start()
     {
-		secondPos = new Vector3(transform.position.x, 10.0f, 0.0f);
+		secondPos = new Vector3(transform.position.x, 15.0f, 0.0f);
 		lastPos = new Vector3(transform.position.x, 0.5f, 0.0f);
 		checkPoint_1 = false;
 		checkPoint_2 = false;
@@ -44,7 +44,7 @@ public class LogoMove : UIManager_Title
 		}
 		if (checkPoint_2 == true)
 		{
-			ScaleUp(gameObject, 3.0f);
+			//ScaleUp(gameObject, 3.0f);
 		}
 	}
 }
