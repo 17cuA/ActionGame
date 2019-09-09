@@ -67,7 +67,6 @@ public class AnimationUIManager : MonoBehaviour
         }
         initColor = gameObject.GetComponent<Image>().color;
 		delayFrameCount = 0;
-        isStart = false;
         ResetUI();
 	}
 
