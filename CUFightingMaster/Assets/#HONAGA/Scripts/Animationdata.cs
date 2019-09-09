@@ -25,10 +25,9 @@ public class Animationdata : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (animationData.NowClip != animationClip[0] && animFrag == true)
+        if (animationData.NowClip != animationClip[0] && animFrag == false)
         {
             animationData.SetPlayAnimation(animationClip[0], animationSpeed, 0);
-            animFrag = false;
         }
         if (animFrag == true && animationData.NowClip != animationClip[1])
         {
