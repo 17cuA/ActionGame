@@ -27,7 +27,8 @@ MonoBehaviour:
   customHitBox:
   - mode: 4
     frameHitBoxes:
-    - isInfinityFrame: 0
+    - isFalse: 0
+      isInfinityFrame: 0
       hitBox:
         size: {x: 0.5, y: 0.5, z: 0.5}
         localPosition: {x: 0.51, y: 0, z: 0}
@@ -36,7 +37,7 @@ MonoBehaviour:
     hitStop: 5
     hitPoint: 0
     hitStrength: 0
-    damage: 5
+    damage: 500
     stanDamage: 0
     knockBack: 0.5
     airKnockBack: 0
@@ -58,22 +59,32 @@ MonoBehaviour:
       guardEffect: {fileID: 8710753073369587141, guid: 56e30371f66b33a479bc82d7ec31f313,
         type: 3}
       position: {x: 0, y: 0, z: 0}
-    isDown: 1
+    isDown: 0
     isThrow: 0
     isThrowGroundDamage: 0
     isThrowGroundAnimEnd: 0
-    airDamageMovements: []
+    airDamageMovements:
+    - isGravityInvaid: 0
+      isResetStartGravity: 0
+      isResetEndGravity: 0
+      isImpact: 0
+      isBound: 0
+      boundMovements: []
+      movement: {x: 0, y: 0, z: 0}
+      startFrame: 0
     throwGroundDamage: 0
     throwSkill: {fileID: 0}
     enemyThrowSkill: {fileID: 0}
     throwDamages: []
-    isJumpCancel: 0
+    isJumpCancel: 1
     isContinue: 0
     movements:
     - isGravityInvaid: 0
       isResetStartGravity: 1
       isResetEndGravity: 0
       isImpact: 1
+      isBound: 0
+      boundMovements: []
       movement: {x: 0, y: 3, z: 0}
       startFrame: 0
     gravityMoves: []

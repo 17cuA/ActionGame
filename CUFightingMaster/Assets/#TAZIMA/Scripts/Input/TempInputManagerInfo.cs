@@ -171,7 +171,7 @@ public class TempInputManagerInfo
 			descriptiveName = "",
 			descriptiveNegativeName = "",
 			negativeButton = "",
-			positiveButton = "joystick {0} button 0",
+			positiveButton = "joystick{0}button0",
 			altNegativeButton = "",
 			altPositiveButton = "F",
 			gravity = 1000f,

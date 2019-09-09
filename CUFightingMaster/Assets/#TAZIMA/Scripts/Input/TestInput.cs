@@ -1,17 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using CustomInputClass;
 
-//enumを使うために必要
-using System;
 
 public class TestInput : MonoBehaviour {
-	  //正規表現でコマンドを判別するスクリプト
+	CustomInput customInput;
+	//正規表現でコマンドを判別するスクリプト
 	public CommandManager groundMoveCommand; //地上
     public CommandManager airMoveCommand;	//空中
 
     public int playerIndex; //プレイヤー番号
 	public string player;   //Inputでプレイヤー毎の入力を識別するための文字列
+	public int controllerIndex;			//コントローラー番号
     public string controllerName = ""; //使用するコントローラーの名前
 	public Vector2 inputDirection; //ジョイスティックの入力方向
 	public string direction; //現在のジョイスティックの方向
@@ -41,21 +42,15 @@ public class TestInput : MonoBehaviour {
     {
         Application.targetFrameRate = 60;
         player = string.Format("Player{0}_", playerIndex);
-        //プレイヤー番号に対応した現在接続されているコントローラーを設定
-        var controllerNames = Input.GetJoystickNames();
-        if (playerIndex < controllerNames.Length)
-        {
-            if (controllerNames[playerIndex] != "")
-            {
-                controllerName = string.Format("{0}_", controllerNames[playerIndex]);
-            }
-        }
     }
+	private void Start()
+	{
+		customInput = new CustomInput();
+		customInput.SetConfig(playerIndex, controllerIndex);
+	}
 
-
-
-    //追加、初期化処理
-    public void InitCommandManagers(FighterCore _core)
+	//追加、初期化処理
+	public void InitCommandManagers(FighterCore _core)
     {
         //正規表現でコマンドを判別するスクリプトの変数初期化
         groundMoveCommand = gameObject.AddComponent<CommandManager>();
@@ -124,17 +119,21 @@ public class TestInput : MonoBehaviour {
         airMoveCommand.inputCommandName = "";
     }
 
-    public void UpdateGame (FighterCore _core) {
-        //入力管理
+    public void UpdateGame (FighterCore _core)
+	{
+		if (Input.GetKeyDown(KeyCode.F12))	customInput.SetConfig(playerIndex, controllerIndex);
+		//入力管理
 		DownKeyCheck (_core);
 	}
 
-	public void SetAxis () {
+	public void SetAxis ()
+	{
         //X,Yそれぞれの入力を保存
-        inputDirection.x = Input.GetAxisRaw (controllerName + player + "Horizontal");
+        inputDirection.x = customInput.GetAxisRaw (controllerName + player + "Horizontal");
 		inputDirection.y = Input.GetAxisRaw (controllerName + player + "Vertical");
 	}
-	public void SetDirection () {
+	public void SetDirection ()
+	{
 		SetAxis ();
 		float nowDir = 5 + inputDirection.x + (inputDirection.y * -3);
 		//方向を調べる
@@ -183,7 +182,8 @@ public class TestInput : MonoBehaviour {
 	}
 
     //プレイヤーの入力をまとめている関数
-	public void DownKeyCheck (FighterCore _dir) {
+	public void DownKeyCheck (FighterCore _dir)
+	{
 		//ジョイスティックまたはキーボードでの方向入力
 		SetDirection ();
         //攻撃ボタン入力
