@@ -61,7 +61,7 @@ MonoBehaviour:
     stanDamage: 0
     knockBack: 2
     airKnockBack: 0.5
-    guardKnockBack: 0
+    guardKnockBack: 2
     hitEffects:
     - isEnemyPos: 0
       isParant: 1
@@ -74,7 +74,15 @@ MonoBehaviour:
     isThrow: 0
     isThrowGroundDamage: 0
     isThrowGroundAnimEnd: 0
-    airDamageMovements: []
+    airDamageMovements:
+    - isGravityInvaid: 0
+      isResetStartGravity: 1
+      isResetEndGravity: 0
+      isImpact: 0
+      isBound: 0
+      boundMovements: []
+      movement: {x: 0, y: 5, z: 0}
+      startFrame: 0
     throwGroundDamage: 0
     throwSkill: {fileID: 0}
     enemyThrowSkill: {fileID: 0}
@@ -88,13 +96,13 @@ MonoBehaviour:
       isImpact: 0
       isBound: 0
       boundMovements: []
-      movement: {x: -3, y: 4, z: 0}
+      movement: {x: -3, y: 5, z: 0}
       startFrame: 0
     gravityMoves: []
-    isFaceDown: 0
+    isFaceDown: 1
     isPassiveNotPossible: 0
-    hitRigor: 0
-    guardHitRigor: 0
+    hitRigor: 50
+    guardHitRigor: 15
     plusGauge: 5
     enemyPlusGauge: 3
   isContinue: 0
