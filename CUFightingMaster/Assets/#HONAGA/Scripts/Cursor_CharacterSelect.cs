@@ -26,6 +26,7 @@ public class Cursor_CharacterSelect : MonoBehaviour
 	public int selectDir = 0;                           //現在のカーソル位置
 
     public GameObject cursor;
+	public AnimationUIManager accept;
 
 	[SerializeField]
 	private bool determining_decision;
@@ -67,9 +68,15 @@ public class Cursor_CharacterSelect : MonoBehaviour
 		if (Input.GetButtonDown(string.Format("{0}Player{1}_Attack1", controllerName, playerNum)))
 		{
 			if (determining_decision == false)
+			{
 				determining_decision = true;
+				accept.isStart = true;
+			}
 			else
+			{
 				determining_decision = false;
+				accept.isStart = false;
+			}
 			// 飯塚追加-------------------------------------------
 			//Sound.LoadSe("Menu_Decision", "Se_menu_decision");
 			//Sound.PlaySe("Menu_Decision", 1, 0.8f);
