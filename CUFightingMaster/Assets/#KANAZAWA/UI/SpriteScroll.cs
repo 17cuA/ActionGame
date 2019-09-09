@@ -21,7 +21,7 @@ public class SpriteScroll : MonoBehaviour
 		{
 			// 背景を画面の右端に移動させる
 			// transform.position = オブジェクトの位置
-			transform.position = new Vector3(pos, -2.25f, 0.0f);
+			transform.position = new Vector3(pos, transform.position.y, transform.position.z);
 
 		}
 	}
