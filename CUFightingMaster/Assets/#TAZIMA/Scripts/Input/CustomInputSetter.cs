@@ -7,25 +7,28 @@ public class CustomInputSetter : MonoBehaviour
 
     private const int playerNum = 2;
     public GameObject[] obj = new GameObject[playerNum];
-    public string[] controllerNames = new string[playerNum];
-	public int[] setControllerNum = new int[playerNum];
+	private string[] controllerNames = new string[playerNum];
+	private int[] setControllerNum = new int[playerNum];
 
 	void Awake()
 	{
 		var nowControllerNames = Input.GetJoystickNames();
 		for (int i = 0; i < playerNum; i++)
 		{
-			controllerNames[i] = nowControllerNames[i];
+			if (i < nowControllerNames.Length) controllerNames[i] = nowControllerNames[i];
+			else controllerNames[i] = "";
 			
 			if (controllerNames[i] == "")
 			{
 				obj[i].GetComponent<TestInput>().controllerName = controllerNames[i];
-				setControllerNum[i] = -1;
+				setControllerNum[i] = -1 * i;
+				obj[i].GetComponent<TestInput>().controllerIndex = setControllerNum[i];
 			}
 			else
 			{
 				obj[i].GetComponent<TestInput>().controllerName = controllerNames[i] + "_";
 				setControllerNum[i] = i;
+				obj[i].GetComponent<TestInput>().controllerIndex = setControllerNum[i];
 			}
 		}
 	}
@@ -51,13 +54,15 @@ public class CustomInputSetter : MonoBehaviour
 					obj[i].GetComponent<TestInput>().controllerName = nowControllerNames[j] + "_";
 					controllerNames[i] = nowControllerNames[j];
 					setControllerNum[i] = j;
+					obj[i].GetComponent<TestInput>().controllerIndex = setControllerNum[i];
 					continue;
 				}
 			}
 			//コントローラーがなかった場合キーボード操作
 			obj[i].GetComponent<TestInput>().controllerName = "";
 			controllerNames[i] = "";
-			setControllerNum[i] = -1;
+			setControllerNum[i] = -1 * i;
+			obj[i].GetComponent<TestInput>().controllerIndex = setControllerNum[i];
 		}
     }
 	//コントローラーが他のInputで使われているかどうか判定しbool値を返す
