@@ -9,8 +9,6 @@ public class SceneChange_Manager : MonoBehaviour
 {
     public CanvasController_CharacterSelect canvasController_CharacterSelect;
     public CharacterSelect_Manager Manager;
-    public Image Canvas_One;
-    public Image Canvas_Two;
 
     [SerializeField]
     private AsyncOperation async;
@@ -26,17 +24,16 @@ public class SceneChange_Manager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (canvasController_CharacterSelect.UpCurtain())
+        if (Manager.sceneChangeJughe == false)
         {
-            if (Manager.sceneChangeJughe == true && Manager.FadeFrame >= 1.0f)
-            {
-                Canvas_One.color += new Color(0.0f, 0.0f, 0.0f, 0.02f);
-                Canvas_Two.color += new Color(0.0f, 0.0f, 0.0f, 0.02f);
-            }
+            canvasController_CharacterSelect.UpCurtain();
         }
-        if (Canvas_One.color.a >= 1.0f && Canvas_Two.color.a >= 1.0f && canvasController_CharacterSelect.DownCurtain())
+        if (Manager.sceneChangeJughe == true && Manager.FadeFrame >= 2.0f)
         {
-            async.allowSceneActivation = true;
+            if (canvasController_CharacterSelect.DownCurtain())
+            {
+                async.allowSceneActivation = true;
+            }
         }
     }
 }
