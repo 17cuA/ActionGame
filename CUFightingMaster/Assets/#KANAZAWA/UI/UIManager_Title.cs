@@ -16,7 +16,7 @@ public class UIManager_Title : MonoBehaviour
 {     
 	public Image visibleImage;  //	点滅させるImage
 
-	[SerializeField] private float scaleTime;     // 現在時間
+	private float scaleTime;     // 現在時間
 	private float scaleTime_Start;	// 処理を開始する時間
 	private float scaleTime_Max;    // 処理を終了する時間
 	private float scaleValue;	// 拡大の割合
@@ -28,6 +28,7 @@ public class UIManager_Title : MonoBehaviour
 		scaleValue = 0.75f;
 		// 画像を透明にしておく
 		visibleImage.color = new Color(1, 1, 1, 0);
+		visibleImage.transform.position = transform.position;
 	}
 	//	--------------------
 	//	アップデート
