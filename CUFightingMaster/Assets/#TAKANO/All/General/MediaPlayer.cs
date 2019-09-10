@@ -3,18 +3,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Video;
+using UnityEngine.UI;
 
 public class MediaPlayer : MonoBehaviour
 {
 	public VideoPlayer videoPlayer;
+    public RawImage rawImage;
 
 	/// <summary>
 	/// 再生
 	/// </summary>
 	public void PlayVideo()
 	{
-		videoPlayer.Play();
+        videoPlayer.Play();
 	}
+
+    public void EnabledRenderTexture()
+    {
+        rawImage.enabled = true;
+    }
 
 	/// <summary>
 	/// 再生終了時にTrue
@@ -36,6 +43,7 @@ public class MediaPlayer : MonoBehaviour
 	public void StopVideo()
 	{
 		videoPlayer.Stop();
+        rawImage.enabled = false;
 	}
 
     // Start is called before the first frame update
@@ -47,13 +55,13 @@ public class MediaPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-		if(Input.GetKeyDown("x"))
-		{
-			videoPlayer.Stop();
-		}
-		if (Input.GetKeyDown("z"))
-		{
-			videoPlayer.Play();
-		}
+		//if(Input.GetKeyDown("x"))
+		//{
+		//	videoPlayer.Stop();
+		//}
+		//if (Input.GetKeyDown("z"))
+		//{
+		//	videoPlayer.Play();
+		//}
 	}
 }
