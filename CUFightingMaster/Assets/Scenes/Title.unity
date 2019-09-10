@@ -215,7 +215,6 @@ GameObject:
   - component: {fileID: 66233849}
   - component: {fileID: 66233848}
   - component: {fileID: 66233847}
-  - component: {fileID: 66233851}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -287,24 +286,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &66233851
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 66233846}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea56444e16f7e884bbdc16982264159a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  activeTitle: 0
-  demoMovie: 0
-  canvasController_Title: {fileID: 580358598}
-  maskOb: {fileID: 0}
-  isBright: 0
-  isPushKey: 0
 --- !u!1 &121332258
 GameObject:
   m_ObjectHideFlags: 0
@@ -6056,6 +6037,50 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+--- !u!1 &1116414039
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1116414041}
+  - component: {fileID: 1116414040}
+  m_Layer: 0
+  m_Name: TitleManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1116414040
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1116414039}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55c89a068a9a4e343ae0f7958e2b0fd4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canvasController_Title: {fileID: 580358598}
+--- !u!4 &1116414041
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1116414039}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -43.526154, y: 940.17017, z: -33.3005}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 16
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1155175465 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3098419182971050109, guid: 6500181de5c29c546a6f10f9864c8e7c,
