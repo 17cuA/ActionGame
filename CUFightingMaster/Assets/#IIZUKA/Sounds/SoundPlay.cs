@@ -92,7 +92,7 @@ public class SoundPlay : MonoBehaviour
                     Sound.PlaySe("HitL", 1, 1, 1);
                     break;
                 case SoundsType.HitM:
-                    Sound.PlaySe("HitM", 1, 1, 1);
+                    Sound.PlaySe("HitS", 1, 1, 1);
                     break;
                 case SoundsType.HitS:
                     Sound.PlaySe("HitS", 1, 1, 1);
@@ -154,24 +154,24 @@ public class SoundPlay : MonoBehaviour
                     Sound.PlaySe("Oba_GetUp_DownCancel", 12, 1, 1);
                     break;
                 case SoundsType.Oba_HitL:
-                    Sound.PlaySe("Oba_HitL", 13, 1, 1);
+                    Sound.PlaySe("HitS", 13, 1, 1);
                     break;
                 case SoundsType.Oba_HitM:
-                    Sound.PlaySe("Oba_HitM", 13, 1, 1);
-                    break;
+                    Sound.PlaySe("HitS", 13, 1, 1);
+					break;
                 case SoundsType.Oba_HitS_Down:
-                    Sound.PlaySe("Oba_HitS_Down", 13, 1, 1);
+                    Sound.PlaySe("HitS", 13, 1, 1);
                     break;
-                case SoundsType.Oba_JobL:
-                    Sound.PlaySe("Oba_JobL", 14, 1, 1);
-                    break;
-                case SoundsType.Oba_JobM_Throw:
-                    Sound.PlaySe("Oba_JobM_Throw", 14, 1, 1);
-                    break;
-                case SoundsType.Oba_JobS:
-                    Sound.PlaySe("Oba_JobS", 14, 1, 1);
-                    break;
-                case SoundsType.Oba_Jump_Step:
+				case SoundsType.Oba_JobL:
+					Sound.PlaySe("Oba_JobL", 14, 1, 1);
+					break;
+				case SoundsType.Oba_JobM_Throw:
+					Sound.PlaySe("Oba_JobM_Throw", 14, 1, 1);
+					break;
+				case SoundsType.Oba_JobS:
+					Sound.PlaySe("Oba_JobS", 14, 1, 1);
+					break;
+				case SoundsType.Oba_Jump_Step:
                     Sound.PlaySe("Oba_Jump_Step", 15, 1, 1);
                     break;
                 case SoundsType.Oba_RoundDraw:
