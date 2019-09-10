@@ -64,11 +64,13 @@ public static class CommonConstants
         public const string Atk2 = "B";
         public const string Atk3 = "C";
         public const string Atk4 = "D";
+        public const string Atk5 = "E";
+        public const string Atk6 = "F";
     }
     public static class Skills
     {
         //一つ増やすたびに増やして
-        public static readonly int SkillCount = 85;
+        public static readonly int SkillCount = 86;
 
         //地上の動き
         public static readonly int Idle = 0;            //待機
@@ -194,6 +196,7 @@ public static class CommonConstants
         public static readonly int Double_Jump_Back = 83;
 
         public static readonly int InGameMotion = 84;//入場シーン
+        public static readonly int SpecialAttack = 85;//超必殺技
     }
     public static void SetLayerRecursively(
     this GameObject self,
@@ -330,4 +333,5 @@ public enum SkillConstants
     Double_Jump_Front = 82,
     Double_Jump_Back = 83,
     InGameMotion = 84,//入場シーン
+    SpecialAttack = 85,//超必殺技
 }
