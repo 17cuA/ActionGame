@@ -22,7 +22,11 @@ public class Hugu_Move : MonoBehaviour
 		if (Input.GetKeyDown(KeyCode.F10))
 		{
 			Instantiate(eff,vector3, Quaternion.identity);
-			Destroy(targetObject);
+			Destroy(this.gameObject);
+			// 飯塚追加-------------------------------------------
+			Sound.LoadSe("explosion", "Se_explosion");
+			Sound.PlaySe("explosion", 1, 0.7f);
+			// ---------------------------------------------------
 		}
 		if (Mathf.Approximately(Time.timeScale, 0f)) return;
 		if (transform.position.z >= -130.0f)

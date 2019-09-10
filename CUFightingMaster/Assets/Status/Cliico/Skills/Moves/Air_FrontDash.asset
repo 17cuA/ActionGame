@@ -16,7 +16,13 @@ MonoBehaviour:
   animationClip: {fileID: 7400000, guid: 133bb630a8e7d6546a2d5d8735b76d75, type: 2}
   animationSpeed: 0.8
   status: 16
-  frameEffects: []
+  frameEffects:
+  - frame: 0
+    effect: {fileID: 6389571469780443139, guid: b7224cc72130e1149aa95967284d9ee5,
+      type: 3}
+    childFlag: 0
+    worldPositionFlag: 0
+    position: {x: 0, y: 0, z: 0}
   frameBullets: []
   cancelFrag: 0
   endNextAnimation: {fileID: 0}
@@ -68,7 +74,7 @@ MonoBehaviour:
     isImpact: 1
     isBound: 0
     boundMovements: []
-    movement: {x: 0, y: 2, z: 0}
+    movement: {x: 0, y: 0, z: 0}
     startFrame: 3
   gravityMoves:
   - movement: {x: 2, y: 0, z: 0}

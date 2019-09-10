@@ -16,16 +16,31 @@ MonoBehaviour:
   animationClip: {fileID: 7400000, guid: a94977a12e1c07440b178be901546009, type: 2}
   animationSpeed: 0.5
   status: 16
-  frameEffects: []
+  frameEffects:
+  - frame: 0
+    effect: {fileID: 6630561596224780481, guid: 2ad88416d5277124d8755db2de02636d,
+      type: 3}
+    childFlag: 0
+    worldPositionFlag: 0
+    position: {x: 0, y: 0, z: 0}
   frameBullets: []
   cancelFrag: 0
+  endNextAnimation: {fileID: 0}
+  endNextWeight: 0
+  groundLandingSkill: {fileID: 0}
+  groundLandingWeight: 0
   barrageCancelFrag: 0
   cancelLayer: 
   inBlend: 0
   outBlend: 0
+  cameraPlay:
+    startFrame: 0
+    rightCamera: {fileID: 0}
+    leftCamera: {fileID: 0}
   isInvincibleBullet: 0
   plusHeadHitBox:
-  - isInfinityFrame: 0
+  - isFalse: 0
+    isInfinityFrame: 0
     hitBox:
       size: {x: 0.3, y: 0, z: 0}
       localPosition: {x: 0, y: -0.91, z: 0}
@@ -33,21 +48,24 @@ MonoBehaviour:
     endFrame: 59
   plusBodyHitBox: []
   plusFootHitBox:
-  - isInfinityFrame: 0
+  - isFalse: 0
+    isInfinityFrame: 0
     hitBox:
       size: {x: 0.3, y: 1, z: 0}
       localPosition: {x: 0, y: 0.5, z: 0}
     startFrame: 0
     endFrame: 59
   plusGrabHitBox:
-  - isInfinityFrame: 0
+  - isFalse: 0
+    isInfinityFrame: 0
     hitBox:
       size: {x: 0, y: -1, z: 0}
       localPosition: {x: 0, y: -0.5, z: 0}
     startFrame: 0
     endFrame: 59
   plusPushingHitBox:
-  - isInfinityFrame: 0
+  - isFalse: 0
+    isInfinityFrame: 0
     hitBox:
       size: {x: 0, y: -1, z: 0}
       localPosition: {x: 0, y: -0.5, z: 0}
@@ -58,6 +76,9 @@ MonoBehaviour:
   isMoveContinue: 0
   movements: []
   gravityMoves: []
+  timeStops:
+    startFrame: 0
+    endFrame: 0
   headFlag: 1
   bodyFlag: 0
   footFlag: 1
