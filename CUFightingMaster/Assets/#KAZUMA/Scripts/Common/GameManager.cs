@@ -64,7 +64,7 @@ public class GameManager : SingletonMono<GameManager>
 		//プレイヤー2生成
 		obj = Instantiate(GameDataStrage.Instance.fighterStatuses[1].fighter,InGameManager.Instance.targetPoint[1].transform.position,Quaternion.identity);
         //入場シーンカメラ生成
-        var cam2 = Instantiate(GameDataStrage.Instance.fighterStatuses[0].InGameTimeline_Two, Vector3.zero, Quaternion.identity);
+        var cam2 = Instantiate(GameDataStrage.Instance.fighterStatuses[1].InGameTimeline_Two, Vector3.zero, Quaternion.identity);
         cam2.PlayCamera();
         InGameManager.Instance.player2_Timeline = cam2;
         if (parantFighter != null)
