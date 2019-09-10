@@ -10,19 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4fbd35985d310504d81036cc55356454, type: 3}
-  m_Name: Landing
+  m_Name: Throw
   m_EditorClassIdentifier: 
   skillLayer: 0
-  animationClip: {fileID: 7400000, guid: a3daa46450cd7e840bec796a911fa932, type: 2}
+  animationClip: {fileID: 7400000, guid: 33fd8b17e7a43a74891cbe32a37e22b9, type: 2}
   animationSpeed: 1
-  status: 16
-  frameEffects:
-  - frame: 0
-    effect: {fileID: 2644580783834542307, guid: 88918cc4b258f124ab85083c1ca1475a,
-      type: 3}
-    childFlag: 0
-    worldPositionFlag: 0
-    position: {x: 0, y: 0, z: 0}
+  status: 1
+  frameEffects: []
   frameBullets: []
   cancelFrag: 0
   endNextAnimation: {fileID: 0}
@@ -42,7 +36,14 @@ MonoBehaviour:
   plusBodyHitBox: []
   plusFootHitBox: []
   plusGrabHitBox: []
-  plusPushingHitBox: []
+  plusPushingHitBox:
+  - isFalse: 1
+    isInfinityFrame: 0
+    hitBox:
+      size: {x: 0, y: 0, z: 0}
+      localPosition: {x: 0, y: 0, z: 0}
+    startFrame: 0
+    endFrame: 59
   customHitBox: []
   isContinue: 0
   isMoveContinue: 0
@@ -51,7 +52,7 @@ MonoBehaviour:
   timeStops:
     startFrame: 0
     endFrame: 0
-  headFlag: 0
+  headFlag: 1
   bodyFlag: 1
   footFlag: 1
   grabFlag: 1

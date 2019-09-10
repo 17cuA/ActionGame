@@ -14,9 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillLayer: 0
   animationClip: {fileID: 7400000, guid: bae4218251434d8459699daa9af04442, type: 2}
-  animationSpeed: 1
+  animationSpeed: 0.8
   status: 16
-  frameEffects: []
+  frameEffects:
+  - frame: 0
+    effect: {fileID: 2341744952696795911, guid: e76f1d7d95d2a3e45adfaf5064c012be,
+      type: 3}
+    childFlag: 0
+    worldPositionFlag: 0
+    position: {x: 0, y: 0, z: 0}
   frameBullets: []
   cancelFrag: 0
   endNextAnimation: {fileID: 0}
@@ -40,7 +46,15 @@ MonoBehaviour:
   customHitBox: []
   isContinue: 0
   isMoveContinue: 0
-  movements: []
+  movements:
+  - isGravityInvaid: 0
+    isResetStartGravity: 0
+    isResetEndGravity: 0
+    isImpact: 0
+    isBound: 0
+    boundMovements: []
+    movement: {x: 1, y: 0, z: 0}
+    startFrame: 0
   gravityMoves: []
   timeStops:
     startFrame: 0
