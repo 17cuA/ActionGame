@@ -15,6 +15,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class CanvasController_Title : MonoBehaviour
 {
@@ -25,18 +26,22 @@ public class CanvasController_Title : MonoBehaviour
     [SerializeField] private ScreenFade screenFade_Display2;
     [SerializeField] private CurtainMover curtainMover_1;
     [SerializeField] private CurtainMover curtainMover_2;
+    [SerializeField] private MediaPlayer mediaPlayer_1;
+    [SerializeField] private MediaPlayer mediaPlayer_2;
 
     // Start is called before the first frame update
 
     private void Awake()
     {
-		if (canvas_Display1 == null || canvas_Display2 == null)
-			Debug.LogError("参照ミス : CanvacControllerにCanvasを追加してください");
+        if (canvas_Display1 == null || canvas_Display2 == null)
+            Debug.LogError("参照ミス : CanvacControllerにCanvasを追加してください");
 
-		screenFade_Display1 = canvas_Display1.transform.Find("ScreenFade").GetComponent<ScreenFade>();
+        screenFade_Display1 = canvas_Display1.transform.Find("ScreenFade").GetComponent<ScreenFade>();
         screenFade_Display2 = canvas_Display2.transform.Find("ScreenFade").GetComponent<ScreenFade>();
         curtainMover_1 = canvas_Display1.transform.Find("Curtain").GetComponent<CurtainMover>();
         curtainMover_2 = canvas_Display2.transform.Find("Curtain").GetComponent<CurtainMover>();
+        mediaPlayer_1 = canvas_Display1.transform.Find("MediaPlayer").GetComponent<MediaPlayer>();
+        mediaPlayer_2 = canvas_Display2.transform.Find("MediaPlayer").GetComponent<MediaPlayer>();
     }
 
     /// <summary>
@@ -112,12 +117,31 @@ public class CanvasController_Title : MonoBehaviour
         curtainMover_2.InitDownCurtain();
     }
 
-    public bool IsEndMoveCurtain()
+    /// <summary>
+    /// ビデオ再生
+    /// </summary>
+    public void PlayVideo()
     {
-        if (curtainMover_1 == true && curtainMover_2 == true)
-        {
-            return true;
-        }
-        return false;
+        mediaPlayer_1.PlayVideo();
+        mediaPlayer_2.PlayVideo();
+    }
+
+    /// <summary>
+    /// ビデオ停止
+    /// </summary>
+    public void EndPlayVideo()
+    {
+        mediaPlayer_1.EndPlayVideo();
+        mediaPlayer_2.PlayVideo();
+    }
+
+    /// <summary>
+    /// ビデオ停止時のコールバックセット
+    /// </summary>
+    /// <param name="action"></param>
+    public void SetEndPlayCallBack(Action action)
+    {
+        mediaPlayer_1.SetEndPlayCallBack(action);
+        mediaPlayer_2.SetEndPlayCallBack(action);
     }
 }

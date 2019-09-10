@@ -22,6 +22,10 @@ public abstract class AnimationPlayerBase : MonoBehaviour
     [SerializeField] private AnimationClip setClip = null;
     //再生中のアニメーションの速度
     [SerializeField] private float animationSpeed = 1.0f;
+    public float AnimationSpeed
+    {
+        set { animationSpeed = value; }
+    }
     //何フレームでアニメーションを移行させるか（ブレンド）
     [SerializeField] private int changeWeightFrame = 0;
     //現在再生中のアニメーションのフレーム数
