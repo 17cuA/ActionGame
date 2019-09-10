@@ -289,30 +289,27 @@ public class InGameManager : SingletonMono<InGameManager>
 		//各プレイヤーが勝ったラウンド数からこの試合の勝敗を決定する
         if (getRoundCount[0].Length > getRoundCount[1].Length)
         {
-			//P1が勝ったことを保存する
-			ShareSceneVariable.P1_info.isWin = 1;
-			ShareSceneVariable.P2_info.isWin = 0;
+            //P1が勝ったことを保存する
+            GameDataStrage.Instance.winFlag_PlayerOne = true;
 
 			if (canvasController.Call_DisplayVictory_winP1() == false)
                 currentUpdate = GameFinish;
         }
         else if (getRoundCount[0].Length < getRoundCount[1].Length)
         {
-			//P2が勝ったことを保存する
-			ShareSceneVariable.P1_info.isWin = 0;
-			ShareSceneVariable.P2_info.isWin = 1;
+            //P2が勝ったことを保存する
+            GameDataStrage.Instance.winFlag_PlayerTwo = true;
 
-			if (canvasController.Call_DisplayVictory_winP2() == false)
+            if (canvasController.Call_DisplayVictory_winP2() == false)
                 currentUpdate = GameFinish;
         }
 		else
 		{
-			ShareSceneVariable.P1_info.isWin = 1;
-			ShareSceneVariable.P2_info.isWin = 1;
-			//試合が引き分けで終わったことを保存する(そのままフェーズ移行処理)
-			if (canvasController.Call_DisplayVictory_draw() == false)
-			currentUpdate = GameFinish;
-		}
+            //試合が引き分けで終わったことを保存する(そのままフェーズ移行処理)
+            if (canvasController.Call_DisplayVictory_draw() == false)
+                currentUpdate = StartRound;
+            //currentUpdate = GameFinish;
+        }
     }
 	#endregion
 

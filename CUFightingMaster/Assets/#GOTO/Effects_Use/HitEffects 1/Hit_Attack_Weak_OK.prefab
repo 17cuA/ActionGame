@@ -14232,7 +14232,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14519382a2c9a5d45ac8e7d9ad25aaef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundsType: 0
+  soundsType: 3
+  destroyFlag: 1
+  frame: 30
 --- !u!1 &9020875880830641573
 GameObject:
   m_ObjectHideFlags: 0
@@ -38020,6 +38022,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 9020875880765705133}
     m_Modifications:
+    - target: {fileID: 4636040646541294741, guid: 46bd02fba22a0284e940cdba03e86fd3,
+        type: 3}
+      propertyPath: m_Name
+      value: Flamepattern_Const
+      objectReference: {fileID: 0}
+    - target: {fileID: 4636040646541294741, guid: 46bd02fba22a0284e940cdba03e86fd3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5477848125702983713, guid: 46bd02fba22a0284e940cdba03e86fd3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -38075,16 +38087,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4636040646541294741, guid: 46bd02fba22a0284e940cdba03e86fd3,
-        type: 3}
-      propertyPath: m_Name
-      value: Flamepattern_Const
-      objectReference: {fileID: 0}
-    - target: {fileID: 4636040646541294741, guid: 46bd02fba22a0284e940cdba03e86fd3,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 432650931417950459, guid: 46bd02fba22a0284e940cdba03e86fd3,
         type: 3}
       propertyPath: ColorModule.gradient.maxGradient.atime0
@@ -38115,6 +38117,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 9020875880765705133}
     m_Modifications:
+    - target: {fileID: 2998143556283647192, guid: da5296d9bad571642b67386232def8ce,
+        type: 3}
+      propertyPath: m_Name
+      value: Continuation_OnePicture_GetBigger (2)
+      objectReference: {fileID: 0}
     - target: {fileID: 2998143556283647173, guid: da5296d9bad571642b67386232def8ce,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -38169,11 +38176,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2998143556283647192, guid: da5296d9bad571642b67386232def8ce,
-        type: 3}
-      propertyPath: m_Name
-      value: Continuation_OnePicture_GetBigger (2)
       objectReference: {fileID: 0}
     - target: {fileID: 2998143556283647195, guid: da5296d9bad571642b67386232def8ce,
         type: 3}

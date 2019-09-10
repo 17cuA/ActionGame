@@ -1591,5 +1591,22 @@ public static class InputManagerInfo {
             axis = 0,
             joyNum = 0,
         },
+        new InputAxis {
+            name = "Player1_Attack6",
+            descriptiveName = "",
+            descriptiveNegativeName = "",
+            negativeButton = "",
+            positiveButton = "",
+            altNegativeButton = "",
+            altPositiveButton = "",
+            gravity = 1000f,
+            dead = 0.001f,
+            sensitivity = 1000f,
+            snap = false,
+            invert = false,
+            type = AxisType.KeyOrMouseButton,
+            axis = 0,
+            joyNum = 0,
+        },
     };
 }

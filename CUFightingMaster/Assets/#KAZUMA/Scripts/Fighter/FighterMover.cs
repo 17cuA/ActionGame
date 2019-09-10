@@ -177,7 +177,10 @@ public class FighterMover
                 if (gravity.Count > 0)
                 {
                     var _gravity = new List<FighterSkill.GravityMove>();
-                    _gravity.Add(gravity[nowPlayGravityNumber]);
+                    if (nowPlayGravityNumber > -1)
+                    {
+                        _gravity.Add(gravity[nowPlayGravityNumber]);
+                    }
                     gravity = _gravity;
                 }
             }
