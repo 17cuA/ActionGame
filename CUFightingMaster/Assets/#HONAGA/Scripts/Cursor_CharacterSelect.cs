@@ -34,8 +34,12 @@ public class Cursor_CharacterSelect : MonoBehaviour
 	{
 		get { return determining_decision; }
 	}
+
+    public bool determining_All;
+
 	void Start()
 	{
+        determining_All = false;
         cursor.GetComponent<AnimationUIManager>().isStart = true;
         determining_decision = false;
 		var controllerNames = Input.GetJoystickNames();
@@ -50,6 +54,10 @@ public class Cursor_CharacterSelect : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
+        if(determining_All == true)
+        {
+            return;
+        }
 		//ポーズ処理
 		if (Mathf.Approximately(Time.timeScale, 0f)) return;
 		//カーソル移動
