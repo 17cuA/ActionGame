@@ -34,6 +34,14 @@ public class TimelinePlayer : CameraBase
     }
     private void Update() 
     {
+        if(CameraController.Instance.boxCollider1.enabled == true)
+        {
+            CameraController.Instance.boxCollider1.enabled = false;
+        }
+        if (CameraController.Instance.boxCollider2.enabled == true)
+        {
+            CameraController.Instance.boxCollider2.enabled = false;
+        }
         if(!cinemaController.isPlay)
         {
             DestroyCamera();
