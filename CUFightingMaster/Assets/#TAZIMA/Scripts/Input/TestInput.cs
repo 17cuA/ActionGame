@@ -218,6 +218,10 @@ public class TestInput : MonoBehaviour {
             {
                 atkButton = "A";
             }
+            else if (Input.GetButtonDown(controllerName + player + "Attack6"))
+            {
+                atkButton = "F";
+            }
         }
         ////何かしら入力されたとき(デバッグ用)
         //if (atkButton != "")

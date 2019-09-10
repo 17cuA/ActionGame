@@ -123,6 +123,13 @@ public class FighterStateMove : StateBaseScriptMonoBehaviour
                 return false;
             }
         }
+        if(stateBase.input.GetPlayerAtk()==CommonConstants.Buttons.Atk6)
+        {
+            if(stateBase.core.SpecialGauge<stateBase.core.Status.SpecialGuage)
+            {
+                return false;
+            }
+        }
         return stateBase.input.GetPlayerAtk() != null;
     }
     //着地
