@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4fbd35985d310504d81036cc55356454, type: 3}
-  m_Name: StartMotion
+  m_Name: Back_Dash
   m_EditorClassIdentifier: 
   skillLayer: 0
-  animationClip: {fileID: 7400000, guid: ab04b5704a917f441af3a3be25200ce6, type: 2}
+  animationClip: {fileID: 7400000, guid: bb96763f94a7605409bf013c15eb9edb, type: 2}
   animationSpeed: 1
   status: 16
   frameEffects: []
@@ -40,7 +40,15 @@ MonoBehaviour:
   customHitBox: []
   isContinue: 0
   isMoveContinue: 0
-  movements: []
+  movements:
+  - isGravityInvaid: 0
+    isResetStartGravity: 0
+    isResetEndGravity: 0
+    isImpact: 0
+    isBound: 0
+    boundMovements: []
+    movement: {x: -3, y: 0, z: 0}
+    startFrame: 0
   gravityMoves: []
   timeStops:
     startFrame: 0

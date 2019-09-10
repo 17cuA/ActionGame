@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4fbd35985d310504d81036cc55356454, type: 3}
-  m_Name: StartMotion
+  m_Name: Guard_Crouching
   m_EditorClassIdentifier: 
   skillLayer: 0
-  animationClip: {fileID: 7400000, guid: ab04b5704a917f441af3a3be25200ce6, type: 2}
+  animationClip: {fileID: 7400000, guid: 083b32d09605b26419f9030693849283, type: 2}
   animationSpeed: 1
   status: 16
   frameEffects: []
@@ -33,10 +33,31 @@ MonoBehaviour:
     leftCamera: {fileID: 0}
   isInvincibleBullet: 0
   plusHeadHitBox: []
-  plusBodyHitBox: []
+  plusBodyHitBox:
+  - isFalse: 0
+    isInfinityFrame: 1
+    hitBox:
+      size: {x: 0, y: 0, z: 0}
+      localPosition: {x: 0, y: -0.34, z: 0}
+    startFrame: 0
+    endFrame: 14
   plusFootHitBox: []
-  plusGrabHitBox: []
-  plusPushingHitBox: []
+  plusGrabHitBox:
+  - isFalse: 0
+    isInfinityFrame: 1
+    hitBox:
+      size: {x: 0, y: -0.5, z: 0}
+      localPosition: {x: 0, y: -0.25, z: 0}
+    startFrame: 0
+    endFrame: 14
+  plusPushingHitBox:
+  - isFalse: 0
+    isInfinityFrame: 1
+    hitBox:
+      size: {x: 0, y: -0.5, z: 0}
+      localPosition: {x: 0, y: -0.25, z: 0}
+    startFrame: 0
+    endFrame: 14
   customHitBox: []
   isContinue: 0
   isMoveContinue: 0
@@ -45,7 +66,7 @@ MonoBehaviour:
   timeStops:
     startFrame: 0
     endFrame: 0
-  headFlag: 1
+  headFlag: 0
   bodyFlag: 1
   footFlag: 1
   grabFlag: 1

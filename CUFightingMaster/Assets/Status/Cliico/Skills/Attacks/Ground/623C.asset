@@ -15,10 +15,10 @@ MonoBehaviour:
   skillLayer: 0
   animationClip: {fileID: 7400000, guid: f4de92968f923da46a5f95d4029dcbaf, type: 2}
   animationSpeed: 1
-  status: 1
+  status: 2
   frameEffects: []
   frameBullets: []
-  cancelFrag: 1
+  cancelFrag: 0
   endNextAnimation: {fileID: 0}
   endNextWeight: 0
   groundLandingSkill: {fileID: 0}
@@ -118,7 +118,14 @@ MonoBehaviour:
     knockBack: 1
     airKnockBack: 0.5
     guardKnockBack: 1
-    hitEffects: []
+    hitEffects:
+    - isEnemyPos: 1
+      isParant: 0
+      isEnemyParant: 0
+      effect: {fileID: 2314571988542883478, guid: 7a9204d95bc398742ab330e066fccfd0,
+        type: 3}
+      guardEffect: {fileID: 0}
+      position: {x: -0.6, y: 4.5, z: 0}
     isDown: 1
     isThrow: 0
     isThrowGroundDamage: 0
