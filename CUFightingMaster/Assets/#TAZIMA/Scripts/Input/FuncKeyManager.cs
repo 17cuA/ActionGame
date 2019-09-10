@@ -19,6 +19,7 @@ public class FuncKeyManager : SingletonMono<FuncKeyManager>
 
 	void Start()
     {
+		Application.targetFrameRate = 60;
 		for (int i = 0; i < SceneManager.sceneCountInBuildSettings; ++i)
 		{
 			Scene scene = SceneManager.GetSceneByBuildIndex(i);
