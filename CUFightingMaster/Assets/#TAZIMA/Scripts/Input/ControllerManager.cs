@@ -10,6 +10,7 @@ public class ControllerManager : MonoBehaviour
     [SerializeField] private const int playerNum = 2;               //プレイヤー数
     public GameObject[] inputManager = new GameObject[playerNum];   //InputManagerオブジェクトを管理
     public string[] controllerNames = new string[playerNum];        //コントローラーの名前を管理
+	private int[] controllerIndex = new int[playerNum];				//接続されているコントローラーの要素数を保存しておく
 
     /// <summary>
     /// 初期化処理
@@ -19,25 +20,50 @@ public class ControllerManager : MonoBehaviour
         for (int i = 0;i < playerNum;i++)
         {
             controllerNames[i] = inputManager[i].GetComponent<TestInput>().controllerName;
+			controllerIndex[i] = i;
         }
     }
 
     void Update()
     {
         var nowControllerNames = Input.GetJoystickNames();
+		var isChange = new bool[playerNum];	//変更が必要な場合trueにする
+		var isSet = new bool[playerNum];			//変更した場合trueにする
         for (int i = 0;i < playerNum; i++)
         {
-            if ( i < nowControllerNames.Length)
-            {
-                //変更が必要かどうか
-				if (inputManager[i].GetComponent<TestInput>().controllerName != nowControllerNames[i] + "_")
+			isChange[i]  =false;
+			isSet[i] = false;
+			//変更が必要かどうか判定する
+			if (controllerIndex[i] == -1)		isChange[i] = true;
+			else
+			{
+				if (inputManager[i].GetComponent<TestInput>().controllerName != nowControllerNames[controllerIndex[i]])
+					isChange[i] = true;
+			}
+			//変更が必要なら
+			if (isChange[i])
+			{
+				for (int j = 0; j < nowControllerNames.Length; j++)
 				{
-					if (nowControllerNames[i] != "")
-						inputManager[i].GetComponent<TestInput>().controllerName = nowControllerNames[i] + "_";
-					else
-						inputManager[i].GetComponent<TestInput>().controllerName = nowControllerNames[i];
+					//現在のコントローラーの要素数をプレイヤー数で割った数が現在設定しているプレイヤーの要素数でなければループ
+					if (j % playerNum != i) continue;
+					//コントローラーが接続されていればそのコントローラーの名前に変更する
+					if (nowControllerNames[j] != "")
+					{
+						inputManager[i].GetComponent<TestInput>().controllerName = nowControllerNames[j] + "_";
+						controllerIndex[i] = j;
+						isSet[i] = true;
+					}
+					//変更された場合このループのその後の処理を無視する
+					if (isSet[i]) break;
 				}
-            }
+				//変更が必要なのに変更されていなかった場合コントローラー名を空にする
+				if (!isSet[i])
+				{
+					inputManager[i].GetComponent<TestInput>().controllerName = "";
+					controllerIndex[i] = -1;
+				}
+			}
         }
     }
 }
