@@ -16,7 +16,7 @@ public class MediaPlayer : MonoBehaviour
 	public void PlayVideo()
 	{
 		//ループ終わりの時に実行するコールバックを設定
-		videoPlayer.loopPointReached += EndPlayVideo;
+		//videoPlayer.loopPointReached += EndPlayVideo;
 		//ビデオを再生
 		videoPlayer.Play();
 	}
@@ -25,7 +25,7 @@ public class MediaPlayer : MonoBehaviour
 	/// 再生終了時に呼ばれる関数
 	/// </summary>
 	/// <returns></returns>
-	public void EndPlayVideo(VideoPlayer videoPlayer)
+	public void EndPlayVideo()
 	{
 		videoPlayer.isLooping = false;
 		callBack_EndPlay();
@@ -43,7 +43,7 @@ public class MediaPlayer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-		videoPlayer.isLooping = true;
+		videoPlayer.isLooping = false;
     }
 
     // Update is called once per frame
