@@ -122,9 +122,9 @@ public class Sound
         Sound.LoadBgm("BGM_Title", "BGM_Title");
 
         // SEロード
-        Sound.LoadSe("HitL", "Se_hit_light");
-        Sound.LoadSe("HitM", "Se_hit_medium");
-        Sound.LoadSe("HitS", "Se_hit_Strong");
+        Sound.LoadSe("HitL", "kakuge_SE1_6");
+        Sound.LoadSe("HitM", "kakuge_SE1_8");
+        Sound.LoadSe("HitS", "kakuge_SE1_6");
         Sound.LoadSe("GuardL", "Se_guard_light");
         Sound.LoadSe("GuardM", "Se_guard_medium");
         Sound.LoadSe("GuardS", "Se_guard_strong");
