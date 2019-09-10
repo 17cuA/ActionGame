@@ -9,7 +9,6 @@ public class ControllerManager : MonoBehaviour
     /// </summary>
     [SerializeField] private const int playerNum = 2;               //プレイヤー数
     public GameObject[] inputManager = new GameObject[playerNum];   //InputManagerオブジェクトを管理
-    public string[] controllerNames = new string[playerNum];        //コントローラーの名前を管理
 	private int[] controllerIndex = new int[playerNum];				//接続されているコントローラーの要素数を保存しておく
 
     /// <summary>
@@ -17,10 +16,22 @@ public class ControllerManager : MonoBehaviour
     /// </summary>
     void Start()
     {
+		var nowControllerNames = Input.GetJoystickNames();
+		//コントローラー名をセット
         for (int i = 0;i < playerNum;i++)
         {
-            controllerNames[i] = inputManager[i].GetComponent<TestInput>().controllerName;
-			controllerIndex[i] = i;
+			if (i < nowControllerNames.Length)
+			{
+				//コントローラーが接続されていればコントローラー名をセット、それ以外なら空
+				if (nowControllerNames[i] != "")
+				{
+					inputManager[i].GetComponent<TestInput>().controllerName = "";
+					controllerIndex[i] = i;
+					continue;
+				}
+			}
+			inputManager[i].GetComponent<TestInput>().controllerName = "";
+			controllerIndex[i] = -1;
         }
     }
 
