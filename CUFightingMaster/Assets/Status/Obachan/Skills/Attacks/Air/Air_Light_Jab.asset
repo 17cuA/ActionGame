@@ -10,50 +10,85 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4fbd35985d310504d81036cc55356454, type: 3}
-  m_Name: Stand_Light_Jab
+  m_Name: Air_Light_Jab
   m_EditorClassIdentifier: 
-  skillLayer: 1
-  animationClip: {fileID: 7400000, guid: e88a7bd01287dc2488f6c0d44f286747, type: 2}
+  skillLayer: 0
+  animationClip: {fileID: 7400000, guid: 96bdefc140e63c942ab003947be43f09, type: 2}
   animationSpeed: 1
-  status: 1
+  status: 16
   frameEffects: []
   frameBullets: []
-  cancelFrag: 10
+  cancelFrag: 0
   endNextAnimation: {fileID: 0}
   endNextWeight: 0
   groundLandingSkill: {fileID: 0}
   groundLandingWeight: 0
   barrageCancelFrag: 1
-  cancelLayer: 01000000
+  cancelLayer: 
   inBlend: 0
   outBlend: 0
   cameraPlay:
     startFrame: 0
     rightCamera: {fileID: 0}
     leftCamera: {fileID: 0}
-  isInvincibleBullet: 0
-  plusHeadHitBox: []
-  plusBodyHitBox: []
-  plusFootHitBox: []
-  plusGrabHitBox: []
-  plusPushingHitBox: []
+  isInvincibleBullet: 1
+  plusHeadHitBox:
+  - isFalse: 1
+    isInfinityFrame: 1
+    hitBox:
+      size: {x: 0, y: 0, z: 0}
+      localPosition: {x: 0, y: 0, z: 0}
+    startFrame: 0
+    endFrame: 14
+  plusBodyHitBox:
+  - isFalse: 0
+    isInfinityFrame: 1
+    hitBox:
+      size: {x: 0.4, y: 0, z: 0}
+      localPosition: {x: 0, y: 0, z: 0}
+    startFrame: 0
+    endFrame: 14
+  plusFootHitBox:
+  - isFalse: 1
+    isInfinityFrame: 1
+    hitBox:
+      size: {x: 0, y: 0, z: 0}
+      localPosition: {x: 0, y: 0, z: 0}
+    startFrame: 0
+    endFrame: 14
+  plusGrabHitBox:
+  - isFalse: 1
+    isInfinityFrame: 1
+    hitBox:
+      size: {x: 0, y: 0, z: 0}
+      localPosition: {x: 0, y: 0, z: 0}
+    startFrame: 3
+    endFrame: 28
+  plusPushingHitBox:
+  - isFalse: 0
+    isInfinityFrame: 0
+    hitBox:
+      size: {x: 0, y: -1.19, z: 0}
+      localPosition: {x: 0, y: 0.56, z: 0}
+    startFrame: 0
+    endFrame: 14
   customHitBox:
   - mode: 0
     frameHitBoxes:
     - isFalse: 0
       isInfinityFrame: 0
       hitBox:
-        size: {x: 1.62, y: 1, z: 1}
-        localPosition: {x: 1.08, y: 2.71, z: 0}
+        size: {x: 1.18, y: 1.31, z: 1}
+        localPosition: {x: 0.65, y: 2.13, z: 0}
       startFrame: 3
-      endFrame: 4
+      endFrame: 5
     hitStop: 5
-    hitPoint: 0
+    hitPoint: 1
     hitStrength: 0
-    damage: 200
+    damage: 300
     stanDamage: 0
-    knockBack: 0.7
-    airKnockBack: 0.5
+    knockBack: 0.3
+    airKnockBack: 0.2
     guardKnockBack: 0.5
     hitEffects:
     - isEnemyPos: 0
@@ -69,7 +104,7 @@ MonoBehaviour:
       effect: {fileID: 0}
       guardEffect: {fileID: 5981531815208451504, guid: fee703b5ebddea545a1e7c160ad9ca2e,
         type: 3}
-      position: {x: -0.93, y: 2.28, z: 0}
+      position: {x: -0.91, y: 1.65, z: 0}
     isDown: 0
     isThrow: 0
     isThrowGroundDamage: 0
@@ -93,12 +128,12 @@ MonoBehaviour:
     gravityMoves: []
     isFaceDown: 0
     isPassiveNotPossible: 0
-    hitRigor: 10
-    guardHitRigor: 9
-    plusGauge: 3
-    enemyPlusGauge: 2
-  isContinue: 0
-  isMoveContinue: 0
+    hitRigor: 14
+    guardHitRigor: 10
+    plusGauge: 5
+    enemyPlusGauge: 3
+  isContinue: 1
+  isMoveContinue: 1
   movements: []
   gravityMoves: []
   timeStops:
@@ -107,5 +142,5 @@ MonoBehaviour:
   headFlag: 1
   bodyFlag: 1
   footFlag: 1
-  grabFlag: 1
+  grabFlag: 0
   pushingFlag: 1

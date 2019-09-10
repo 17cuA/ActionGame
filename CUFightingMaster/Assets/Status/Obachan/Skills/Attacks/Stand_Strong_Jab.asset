@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4fbd35985d310504d81036cc55356454, type: 3}
-  m_Name: Stand_Light_Jab
+  m_Name: Stand_Strong_Jab
   m_EditorClassIdentifier: 
-  skillLayer: 1
-  animationClip: {fileID: 7400000, guid: e88a7bd01287dc2488f6c0d44f286747, type: 2}
+  skillLayer: 3
+  animationClip: {fileID: 7400000, guid: aec5ab6c4c3781748b14f40e89de4851, type: 2}
   animationSpeed: 1
   status: 1
   frameEffects: []
@@ -23,8 +23,8 @@ MonoBehaviour:
   endNextWeight: 0
   groundLandingSkill: {fileID: 0}
   groundLandingWeight: 0
-  barrageCancelFrag: 1
-  cancelLayer: 01000000
+  barrageCancelFrag: 0
+  cancelLayer: 
   inBlend: 0
   outBlend: 0
   cameraPlay:
@@ -43,33 +43,33 @@ MonoBehaviour:
     - isFalse: 0
       isInfinityFrame: 0
       hitBox:
-        size: {x: 1.62, y: 1, z: 1}
-        localPosition: {x: 1.08, y: 2.71, z: 0}
-      startFrame: 3
-      endFrame: 4
-    hitStop: 5
+        size: {x: 2.13, y: 1.81, z: 1}
+        localPosition: {x: 0.81, y: 2.24, z: 0}
+      startFrame: 10
+      endFrame: 12
+    hitStop: 12
     hitPoint: 0
-    hitStrength: 0
-    damage: 200
+    hitStrength: 2
+    damage: 300
     stanDamage: 0
-    knockBack: 0.7
-    airKnockBack: 0.5
-    guardKnockBack: 0.5
+    knockBack: 0.5
+    airKnockBack: 1.6
+    guardKnockBack: 1
     hitEffects:
-    - isEnemyPos: 0
-      isParant: 0
-      isEnemyParant: 0
-      effect: {fileID: 9020875880765705120, guid: 0c0bc8545f68bff4caa2c5ccdfb9bb34,
-        type: 3}
-      guardEffect: {fileID: 0}
-      position: {x: 0, y: 0, z: 0}
     - isEnemyPos: 1
       isParant: 0
       isEnemyParant: 0
-      effect: {fileID: 0}
-      guardEffect: {fileID: 5981531815208451504, guid: fee703b5ebddea545a1e7c160ad9ca2e,
+      effect: {fileID: 2314571988542883478, guid: 7a9204d95bc398742ab330e066fccfd0,
         type: 3}
-      position: {x: -0.93, y: 2.28, z: 0}
+      guardEffect: {fileID: 0}
+      position: {x: -0.27, y: 2.64, z: 0}
+    - isEnemyPos: 0
+      isParant: 0
+      isEnemyParant: 0
+      effect: {fileID: 0}
+      guardEffect: {fileID: 6532350964205856054, guid: 8eea3721bc3fc884eafd65d00f7413aa,
+        type: 3}
+      position: {x: 0, y: 0, z: 0}
     isDown: 0
     isThrow: 0
     isThrowGroundDamage: 0
@@ -81,7 +81,7 @@ MonoBehaviour:
       isImpact: 1
       isBound: 0
       boundMovements: []
-      movement: {x: 0, y: 2, z: 0}
+      movement: {x: 0, y: 3, z: 0}
       startFrame: 0
     throwGroundDamage: 0
     throwSkill: {fileID: 0}
@@ -93,10 +93,10 @@ MonoBehaviour:
     gravityMoves: []
     isFaceDown: 0
     isPassiveNotPossible: 0
-    hitRigor: 10
-    guardHitRigor: 9
-    plusGauge: 3
-    enemyPlusGauge: 2
+    hitRigor: 30
+    guardHitRigor: 20
+    plusGauge: 10
+    enemyPlusGauge: 9
   isContinue: 0
   isMoveContinue: 0
   movements: []
