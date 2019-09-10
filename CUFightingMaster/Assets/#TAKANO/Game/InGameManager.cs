@@ -265,8 +265,8 @@ public class InGameManager : SingletonMono<InGameManager>
             //キャラクターのHPのリセット
             GameManager.Instance.Player_one.HP = GameManager.Instance.Player_one.Status.HP;
             GameManager.Instance.Player_two.HP = GameManager.Instance.Player_two.Status.HP;
-			GameManager.Instance.Player_one.SpecialGauge = GameManager.Instance.Player_one.Status.SpecialGuage;
-			GameManager.Instance.Player_two.SpecialGauge = GameManager.Instance.Player_two.Status.SpecialGuage;
+			// GameManager.Instance.Player_one.SpecialGauge = GameManager.Instance.Player_one.Status.SpecialGuage;
+			// GameManager.Instance.Player_two.SpecialGauge = GameManager.Instance.Player_two.Status.SpecialGuage;
 			canvasController.Call_ResetUIParameter();
 			//hpの初期化
 			canvasController.Call_DisplayPlayerHp(GameManager.Instance.Player_one.HP, GameManager.Instance.Player_two.HP);
