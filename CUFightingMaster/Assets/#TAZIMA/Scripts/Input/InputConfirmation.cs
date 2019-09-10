@@ -7,32 +7,24 @@ using CustomInputClass;
 
 public class InputConfirmation : MonoBehaviour
 {
-    CustomInput customInput = new CustomInput();
+    //CustomInput customInput = new CustomInput();
     void Start()
     {
-        customInput.SetConfig(0,1);
+        //customInput.SetConfig(0,1);
     }
     void Update()
     {
 		if (Input.anyKeyDown)
         {
-            if (customInput.GetButtonDown("Player0_Attack1")/*Input.GetKeyDown(code)*/)
+            //if (customInput.GetButtonDown("Player0_Attack1"))
+            //{
+            //    //処理を書く
+            //    Debug.Log(true);
+            //}
+            foreach (KeyCode code in Enum.GetValues(typeof(KeyCode)))
             {
-                //処理を書く
-                Debug.Log(true);
+                if (Input.GetKeyDown(code)) Debug.Log(code);
             }
         }
     }
-    /*private KeyCode GetAxisRaw()
-    {
-        foreach (KeyCode code in Enum.GetValues(typeof(KeyCode)))
-        {
-            if (Input.GetAxisRaw())
-            {
-                //処理を書く
-                return code;
-            }
-        }
-        return KeyCode.None;
-    } */
 }
