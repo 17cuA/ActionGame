@@ -16,23 +16,19 @@ public class InputConfirmation : MonoBehaviour
     {
 		if (Input.anyKeyDown)
         {
-            if (customInput.GetButtonDown("Player0_Attack1")/*Input.GetKeyDown(code)*/)
+            //if (customInput.GetButtonDown("Player0_Attack1")/*Input.GetKeyDown(code)*/)
+            //{
+            //    //処理を書く
+            //    Debug.Log(true);
+            //}
+            foreach (KeyCode code in Enum.GetValues(typeof(KeyCode)))
             {
-                //処理を書く
-                Debug.Log(true);
+                if (Input.GetKeyDown(code))
+                {
+                    //処理を書く
+                    Debug.Log(code);
+                }
             }
         }
     }
-    /*private KeyCode GetAxisRaw()
-    {
-        foreach (KeyCode code in Enum.GetValues(typeof(KeyCode)))
-        {
-            if (Input.GetAxisRaw())
-            {
-                //処理を書く
-                return code;
-            }
-        }
-        return KeyCode.None;
-    } */
 }
