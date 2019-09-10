@@ -43,7 +43,6 @@ public class AnimationUIManager : MonoBehaviour
 		{
 			delayFrameCount = 0;
 			if (isStart) StartAnimation();
-			else ResetUI();
 		}
 		else delayFrameCount++;
     }
@@ -71,7 +70,9 @@ public class AnimationUIManager : MonoBehaviour
 	}
 	private void ResetUI()
     {
-        nowSpriteCount = 0;
+		nowSpriteCount = 0;
+		gameObject.GetComponent<Image>().sprite = defaultSprite;
+		gameObject.GetComponent<Image>().color = initColor;
 		currentRemainFadeInFrame = fadeInFrame;
         currentRemainFadeOutFrame = fadeOutFrame;
         if (stopUIs.Count != 0)
@@ -118,10 +119,18 @@ public class AnimationUIManager : MonoBehaviour
 			if (!isLeave)
 			{
 				//再利用できるように元に戻しておく
-				if (gameObject.GetComponent<Image>().sprite != defaultSprite) gameObject.GetComponent<Image>().sprite = defaultSprite;
-				if (gameObject.GetComponent<Image>().color != initColor) gameObject.GetComponent<Image>().color = initColor;
-				if (!isLoop) isStart = false;
-				ResetUI();
+				
+				if (!isLoop)
+				{
+					isStart = false;
+					ResetUI();
+				} 
+				else
+				{
+					//リセットしてからもう一度呼び出す
+					ResetUI();
+					StartAnimation();
+				}
 			}
 		}
 	}
