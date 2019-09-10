@@ -57,7 +57,8 @@ public class GameManager : SingletonMono<GameManager>
 			obj.transform.parent = parantFighter.transform;
 		}
 		FighterCore _co = obj.GetComponent<FighterCore>();
-		_co.SetPlayerNumber(PlayerNumber.Player1);
+        _co.SetEnemyNumber(PlayerNumber.Player2);
+        _co.SetPlayerNumber(PlayerNumber.Player1);
 		oneState.core = _co;
 		Player_one = _co;
         CommonConstants.SetLayerRecursively(_co.gameObject, LayerMask.NameToLayer(CommonConstants.Layers.Player_One));
@@ -72,7 +73,8 @@ public class GameManager : SingletonMono<GameManager>
 			obj.transform.parent = parantFighter.transform;
 		}
 		_co = obj.GetComponent<FighterCore>();
-		_co.SetPlayerNumber(PlayerNumber.Player2);
+        _co.SetEnemyNumber(PlayerNumber.Player1);
+        _co.SetPlayerNumber(PlayerNumber.Player2);
 		twoState.core = _co;
 		Player_two = _co;
         CommonConstants.SetLayerRecursively(_co.gameObject, LayerMask.NameToLayer(CommonConstants.Layers.Player_Two));
