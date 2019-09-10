@@ -15,14 +15,14 @@ public class BeamBullet : BulletCore
 	{
 		base.UpdateGame();
 		transform.Translate(move.x, move.y, move.z);
-		if (hitAttackNum > 0)
+		// if (hitAttackNum > 0)
+		// {
+		// 	isDestroyFlag = true;
+		// }
+		if (allFrame > 60)
 		{
 			isDestroyFlag = true;
 		}
-		//if (allFrame > 180)
-		//{
-		//	isDestroyFlag = true;
-		//}
 		//if (isWallHit)
 		//{
 		//	isDestroyFlag = true;

@@ -10,27 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4fbd35985d310504d81036cc55356454, type: 3}
-  m_Name: 236A
+  m_Name: WakeUp
   m_EditorClassIdentifier: 
   skillLayer: 0
-  animationClip: {fileID: 7400000, guid: 4568e503decd31f459e7c7310d649ae3, type: 2}
-  animationSpeed: 0.6
-  status: 2
-  frameEffects:
-  - frame: 0
-    effect: {fileID: 3290719917607872172, guid: bee80f70f0c0fd14a93ec83f4b2645eb,
-      type: 3}
-    childFlag: 0
-    worldPositionFlag: 0
-    position: {x: 0, y: 0, z: 0}
-  frameBullets:
-  - frame: 13
-    bullet: {fileID: 8618637245289201335, guid: 9ba4c59172ab6a3449a94b8c4507ce90,
-      type: 3}
-    childFlag: 0
-    worldPositionFlag: 0
-    position: {x: 1.77, y: 1.62, z: 0}
-  cancelFrag: 0
+  animationClip: {fileID: 7400000, guid: b891710700fba9d448ae6f7855819c72, type: 2}
+  animationSpeed: 1
+  status: 1
+  frameEffects: []
+  frameBullets: []
+  cancelFrag: 1
   endNextAnimation: {fileID: 0}
   endNextWeight: 0
   groundLandingSkill: {fileID: 0}
@@ -57,8 +45,8 @@ MonoBehaviour:
   timeStops:
     startFrame: 0
     endFrame: 0
-  headFlag: 1
-  bodyFlag: 1
-  footFlag: 1
-  grabFlag: 1
+  headFlag: 0
+  bodyFlag: 0
+  footFlag: 0
+  grabFlag: 0
   pushingFlag: 1

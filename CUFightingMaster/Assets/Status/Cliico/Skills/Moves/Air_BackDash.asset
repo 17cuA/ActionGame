@@ -79,7 +79,7 @@ MonoBehaviour:
   isContinue: 0
   isMoveContinue: 0
   movements:
-  - isGravityInvaid: 0
+  - isGravityInvaid: 1
     isResetStartGravity: 1
     isResetEndGravity: 0
     isImpact: 1
@@ -87,6 +87,14 @@ MonoBehaviour:
     boundMovements: []
     movement: {x: 0, y: 0, z: 0}
     startFrame: 3
+  - isGravityInvaid: 0
+    isResetStartGravity: 0
+    isResetEndGravity: 0
+    isImpact: 0
+    isBound: 0
+    boundMovements: []
+    movement: {x: 0, y: 0, z: 0}
+    startFrame: 10
   gravityMoves:
   - movement: {x: -2, y: 0, z: 0}
     limitMove: {x: -2, y: 0, z: 0}
