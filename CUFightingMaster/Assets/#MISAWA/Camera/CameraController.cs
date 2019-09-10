@@ -36,33 +36,35 @@ public class CameraController : SingletonMono<CameraController>
 {
 	#region 変数宣言
 	[SerializeField]
-	private float offsetY;                      // カメラのY座標の基準値
+	private GameObject Fighter1;		// プレイヤー1
 	[SerializeField]
-	private float speed_ZoomIn;                 // カメラのズーム時の速度
+	private GameObject Fighter2;		// プレイヤー2
+
+	[SerializeField]
+	private float offsetY;							// カメラのY座標の基準値
+	[SerializeField]
+	private float speed_ZoomIn;				// カメラのズーム時の速度
 	[SerializeField]
 	private float speed_ZoomOut;				// カメラのズームアウト時の速度
+	[SerializeField]
+	private float distanceMin = 0.55f;		// プレイヤー間の最小距離?
+	[SerializeField]
+ 	private float distanceMax = 0.6f;			// プレイヤー間の最大距離?
 
 	private float distance_CamToPlayer;				// カメラからキャラまでの距離
 	private float distanceOfPlayers_Start;			// ゲーム開始時のプレイヤー同士の距離
 	private float distanceOfPLayers_Current;		// 現在のプレイヤー同士の距離
+	private Vector3 pCentorPos;						// プレイヤー同士のセンターを取得
 
 	[SerializeField]
-	private Vector3 cameraPos_Max;          // カメラの最大座標
+	private Vector3 cameraPos_Max;			// カメラの最大座標
 	[SerializeField]
-	public Vector3 cameraPos_Min;				// カメラの最小座標
+	private Vector3 cameraPos_Min;			// カメラの最小座標
 
-	private Vector3 pCentorPos;					// プレイヤー同士のセンターを取得
-
-	public float stageWidth;							// ステージの横幅
-
-	public Vector3 lBottom, rTop;					// 画面左下、右上の座標
+	private float stageWidth;						// ステージの横幅
+	private Vector3 lBottom, rTop;				// 画面左下、右上の座標
 
 	public static CameraController instance;
-
-	// 統合のため追加
-	public GameObject Fighter1;
-	public GameObject Fighter2;
-
 	// 仮で作成(07/29)
 	public GameObject Collider1;
 	public GameObject Collider2;
@@ -70,9 +72,6 @@ public class CameraController : SingletonMono<CameraController>
     public BoxCollider boxCollider2;
 
     public CinemaController cinemaController;
-
-	[SerializeField]
-	private bool zoomFlag_Z = false;
     #endregion
 
     #region 初期化
@@ -89,12 +88,18 @@ public class CameraController : SingletonMono<CameraController>
 		Fighter1 = GameManager.Instance.Player_one.gameObject;
 		Fighter2 = GameManager.Instance.Player_two.gameObject;
 		offsetY = transform.position.y;
-		speed_ZoomIn = 8.0f;
-		speed_ZoomOut = 40.0f;
-		stageWidth = 20.0f;								// ステージの横幅
-		cameraPos_Max = new Vector3(28.0f,0, -9.5f);	// ズームアウトの最大値
-		cameraPos_Min = new Vector3(-28.0f,0,-13.0f);	// ズームインの最小値
-		distanceOfPlayers_Start = 0.4f; // ゲーム開始時のプレイヤー同士の距離
+		//speed_ZoomIn = 8.0f;
+		//speed_ZoomOut = 40.0f;
+		speed_ZoomIn = 5.0f;
+		speed_ZoomOut = 20.0f;
+
+		stageWidth = 10.0f;								// ステージの横幅
+		//cameraPos_Max = new Vector3(28.0f,0, -9.5f);	// ズームアウトの最大値
+		//cameraPos_Min = new Vector3(-28.0f,0,-13.0f);	// ズームインの最小値
+		cameraPos_Max = new Vector3(50.0f,0, -9.5f);	// ズームアウトの最大値
+		cameraPos_Min = new Vector3(-50.0f,0,-13.0f);	// ズームインの最小値
+
+		distanceOfPlayers_Start = 0.3f; // ゲーム開始時のプレイヤー同士の距離
     }
 	#endregion
 
@@ -183,36 +188,17 @@ public class CameraController : SingletonMono<CameraController>
 
 		// ズームの比率を計算
 		// カメラのZ座標が最大値より小さいかつプレイヤー間の距離が0.55未満の時
-		if (transform.position.z < cameraPos_Max.z && distanceOfPLayers_Current < 0.55)
+		if (transform.position.z < cameraPos_Max.z && distanceOfPLayers_Current < distanceMin)
 		{
 			// プレイヤー間の距離によって速度を変更
 			zoomRatio += distanceOfPlayers_Start / distanceOfPLayers_Current / speed_ZoomIn;
 		}
 		// カメラのZ座標が最小値より大きいかつプレイヤー間の距離が0.6より大きい時
-		if (cameraPos_Min.z < transform.position.z && distanceOfPLayers_Current > 0.6)
+		if (cameraPos_Min.z < transform.position.z && distanceOfPLayers_Current > distanceMax)
 		{
 			// プレイヤー間の距離によって速度を変更
 			zoomRatio -= distanceOfPLayers_Current / distanceOfPlayers_Start / speed_ZoomOut;
 		}
-
-		//// プレイヤーがジャンプして一定の高さになったら
-		//if ((Fighter1.transform.position.y >= 6.0 || Fighter2.transform.position.y >= 6.0) && transform.position.z > -15.5f)
-		//{
-		//	// Zのズームを許可する
-		//	zoomFlag_Z = true;
-		//}
-		//// ズーム(カメラの距離が一定に戻るまで)
-		//if (transform.position.z <= -13.0f)
-		//{
-		//	// Zのズームの許可を出さない
-		//	zoomFlag_Z = false;
-		//}
-		//// ズームが許可されたら
-		//if (zoomFlag_Z)
-		//{
-		//	// ジャンプ用のZのズーム、今までのズームの距離を伸ばしただけ
-		//	zoomRatio -= 0.1f;
-		//}
 		return zoomRatio;
 	}
 
