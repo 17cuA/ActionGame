@@ -117,7 +117,7 @@ public class Sound
     {
         // サウンドのロード
         // BGMロード
-      Sound.LoadBgm("BGM_Battle", "BGM_Battle");
+        Sound.LoadBgm("BGM_Battle", "BGM_Battle");
         Sound.LoadBgm("BGM_Menu", "BGM_Menu");
         Sound.LoadBgm("BGM_Title", "BGM_Title");
 
@@ -154,8 +154,6 @@ public class Sound
         Sound.LoadSe("Fight", "Voice_Fight");
         Sound.LoadSe("Ko", "Voice_K.O.");
         Sound.LoadSe("Draw", "Voice_Draw");
-		//9.10
-		Sound.LoadSe("explosion", "Se_explosion");
 
         //まだ未使用組
         Sound.LoadSe("Ko2", "Voice_K.O.2");
@@ -164,164 +162,184 @@ public class Sound
         Sound.LoadSe("Kuidaore", "CharaVoice_Kuidaore");
         Sound.LoadSe("Obachan", "CharaVoice_Oba");
 
+        // キャラボイスクリコ
+        Sound.LoadSe("Clico_CharacterSelect", "Cv_Clico_CharacterSelect");
+        Sound.LoadSe("Clico_GetUp_DownCancel", "Cv_Clico_GetUp_DownCancel");
+        Sound.LoadSe("Clico_HitL", "Cv_Clico_HitL");
+        Sound.LoadSe("Clico_HitM", "Cv_Clico_HitM");
+        Sound.LoadSe("Clico_HitS_Down", "Cv_Clico_HitS_Down");
+        Sound.LoadSe("Clico_JobL", "Cv_Clico_JobL");
+        Sound.LoadSe("Clico_JobM_Throw", "Cv_Clico_JobM_Throw");
+        Sound.LoadSe("Clico_JobS", "Cv_Clico_JobS");
+        Sound.LoadSe("Clico_Jump_Step", "Cv_Clico_Jump_Step");
+        Sound.LoadSe("Clico_RoundDraw", "Cv_Clico_RoundDraw");
+        Sound.LoadSe("Clico_RoundLoss", "Cv_Clico_RoundLoss");
+        Sound.LoadSe("Clico_RoundWin", "Cv_Clico_RoundWin");
+        Sound.LoadSe("Clico_Special1", "Cv_Clico_Special1");
+        Sound.LoadSe("Clico_Special2", "Cv_Clico_Special2");
+        Sound.LoadSe("Clico_Special3", "Cv_Clico_Special3");
+        Sound.LoadSe("Clico_Special4", "Cv_Clico_Special4");
+        Sound.LoadSe("Clico_Thrown", "Cv_Clico_Thrown");
+        Sound.LoadSe("Clico_RoundStart", "Cv_Clico_RoundStart");
 
-		// キャラボイスオバチャン
-		Sound.LoadSe("Oba_CharacterSelect", "Cv_Oba_CharacterSelect");
-		Sound.LoadSe("Oba_GetUp", "Cv_Oba_GetUp");
-		Sound.LoadSe("Oba_HitL", "Cv_Oba_HitL");
-		Sound.LoadSe("Oba_HitM", "Cv_Oba_HitM");
-		Sound.LoadSe("Oba_HitS", "Cv_Oba_HitS");
-		Sound.LoadSe("Oba_JobL", "Cv_Oba_JobL");
-		Sound.LoadSe("Oba_JobM", "Cv_Oba_JobM");
-		Sound.LoadSe("Oba_JobS", "Cv_Oba_JobS");
-		Sound.LoadSe("Oba_Jump", "Cv_Oba_Jump");
-		Sound.LoadSe("Oba_RoundDraw", "Cv_Oba_RoundDraw");
-		Sound.LoadSe("Oba_RoundLoss", "Cv_Oba_RoundLoss");
-		Sound.LoadSe("Oba_RoundWin", "Cv_Oba_RoundWin");
-		Sound.LoadSe("Oba_Special1", "Cv_Oba_Special1");
-		Sound.LoadSe("Oba_Special2", "Cv_Oba_Special2");
-		Sound.LoadSe("Oba_Special3", "Cv_Oba_Special3");
-		Sound.LoadSe("Ova_Special4", "Cv_Ova_Special4");
-		Sound.LoadSe("Oba_Thrown", "Cv_Oba_Thrown");
-		Sound.LoadSe("Ova_RoundStart", "Cv_Ova_RoundStart");
-	}
 
-	/// <summary>
-	/// ※サウンドデータはResources/Soundsフォルダに配置すること
-	/// 引数 : 第一引数アクセスキー(好きに命名可能), 第二引数リソース名(サウンドデータに名前を合わせる)
-	/// BGMサウンド個別ロード（1度だけ呼び出す）
-	/// </summary>
-	/// <param name="key"></param>
-	/// <param name="resName"></param>
-	public static void LoadBgm(string key, string resName)
-	{
-		GetInstance()._LoadBgm(key, resName);
-	}
+        // キャラボイスオバチャン
+        Sound.LoadSe("Oba_CharacterSelect", "Cv_Oba_CharacterSelect");
+        Sound.LoadSe("Oba_GetUp_DownCancel", "Cv_Oba_GetUp_DownCancel");
+        Sound.LoadSe("Oba_HitL", "Cv_Oba_HitL");
+        Sound.LoadSe("Oba_HitM", "Cv_Oba_HitM");
+        Sound.LoadSe("Oba_HitS_Down", "Cv_Oba_HitS_Down");
+        Sound.LoadSe("Oba_JobL", "Cv_Oba_JobL");
+        Sound.LoadSe("Oba_JobM_Throw", "Cv_Oba_JobM_Throw");
+        Sound.LoadSe("Oba_JobS", "Cv_Oba_JobS");
+        Sound.LoadSe("Oba_Jump_Step", "Cv_Oba_Jump_Step");
+        Sound.LoadSe("Oba_RoundDraw", "Cv_Oba_RoundDraw");
+        Sound.LoadSe("Oba_RoundLoss", "Cv_Oba_RoundLoss");
+        Sound.LoadSe("Oba_RoundWin", "Cv_Oba_RoundWin");
+        Sound.LoadSe("Oba_Special1", "Cv_Oba_Special1");
+        Sound.LoadSe("Oba_Special2", "Cv_Oba_Special2");
+        Sound.LoadSe("Oba_Special3", "Cv_Oba_Special3");
+        Sound.LoadSe("Oba_Special4", "Cv_Oba_Special4");
+        Sound.LoadSe("Oba_Thrown", "Cv_Oba_Thrown");
+        Sound.LoadSe("Oba_RoundStart", "Cv_Oba_RoundStart");
+    }
 
-	/// <summary>
-	/// ※サウンドデータはResources/Soundsフォルダに配置すること
-	/// 引数 : 第一引数アクセスキー(好きに命名可能), 第二引数リソース名(サウンドデータに名前を合わせる)
-	/// SEサウンド個別ロード（1度だけ呼び出す）
-	/// </summary>
-	/// <param name="key"></param>
-	/// <param name="resName"></param>
-	public static void LoadSe(string key, string resName)
-	{
-		GetInstance()._LoadSe(key, resName);
-	}
+    /// <summary>
+    /// ※サウンドデータはResources/Soundsフォルダに配置すること
+    /// 引数 : 第一引数アクセスキー(好きに命名可能), 第二引数リソース名(サウンドデータに名前を合わせる)
+    /// BGMサウンド個別ロード（1度だけ呼び出す）
+    /// </summary>
+    /// <param name="key"></param>
+    /// <param name="resName"></param>
+    public static void LoadBgm(string key, string resName)
+    {
+        GetInstance()._LoadBgm(key, resName);
+    }
 
-	void _LoadBgm(string key, string resName)
-	{
-		if (_poolBgm.ContainsKey(key))
-		{
-			// すでに登録済みなのでいったん消す
-			_poolBgm.Remove(key);
-		}
-		_poolBgm.Add(key, new _Data(key, resName));
-	}
-	void _LoadSe(string key, string resName)
-	{
-		if (_poolSe.ContainsKey(key))
-		{
-			// すでに登録済みなのでいったん消す
-			_poolSe.Remove(key);
-		}
-		_poolSe.Add(key, new _Data(key, resName));
-	}
+    /// <summary>
+    /// ※サウンドデータはResources/Soundsフォルダに配置すること
+    /// 引数 : 第一引数アクセスキー(好きに命名可能), 第二引数リソース名(サウンドデータに名前を合わせる)
+    /// SEサウンド個別ロード（1度だけ呼び出す）
+    /// </summary>
+    /// <param name="key"></param>
+    /// <param name="resName"></param>
+    public static void LoadSe(string key, string resName)
+    {
+        GetInstance()._LoadSe(key, resName);
+    }
 
-	/// <summary>
-	/// ※事前に音源をLoadBgmでロードしておくこと
-	/// 引数 : 第一引数アクセスキー, 第二引数音量(0~1), 第三引数ピッチ(-で逆再生), 第四引数ループの有無
-	/// BGMの再生
-	/// </summary>
-	/// <param name="key"></param>
-	/// <param name="volume"></param>
-	/// <param name="pitch"></param>
-	/// <param name="loop"></param>
-	/// <returns></returns>
-	public static bool PlayBgm(string key, float volume = 1, float pitch = 1, bool loop = false)
-	{
-		return GetInstance()._PlayBgm(key, volume, pitch, loop);
-	}
-	bool _PlayBgm(string key, float volume = 1, float pitch = 1, bool loop = false)
-	{
-		if (_poolBgm.ContainsKey(key) == false)
-		{
-			// 対応するキーがない
-			return false;
-		}
+    void _LoadBgm(string key, string resName)
+    {
+        if (_poolBgm.ContainsKey(key))
+        {
+            // すでに登録済みなのでいったん消す
+            _poolBgm.Remove(key);
+        }
+        _poolBgm.Add(key, new _Data(key, resName));
+    }
+    void _LoadSe(string key, string resName)
+    {
+        if (_poolSe.ContainsKey(key))
+        {
+            // すでに登録済みなのでいったん消す
+            _poolSe.Remove(key);
+        }
+        _poolSe.Add(key, new _Data(key, resName));
+    }
 
-		// いったん止める
-		_StopBgm();
+    /// <summary>
+    /// ※事前に音源をLoadBgmでロードしておくこと
+    /// 引数 : 第一引数アクセスキー, 第二引数音量(0~1), 第三引数ピッチ(-で逆再生), 第四引数ループの有無
+    /// BGMの再生
+    /// </summary>
+    /// <param name="key"></param>
+    /// <param name="volume"></param>
+    /// <param name="pitch"></param>
+    /// <param name="loop"></param>
+    /// <returns></returns>
+    public static bool PlayBgm(string key, float volume = 1, float pitch = 1, bool loop = false)
+    {
+        return GetInstance()._PlayBgm(key, volume, pitch, loop);
+    }
+    bool _PlayBgm(string key, float volume = 1, float pitch = 1, bool loop = false)
+    {
+        if (_poolBgm.ContainsKey(key) == false)
+        {
+            // 対応するキーがない
+            return false;
+        }
 
-		// リソースの取得
-		var _data = _poolBgm[key];
+        // いったん止める
+        _StopBgm();
 
-		// 再生
-		var source = _GetAudioSource(eType.Bgm);
-		source.loop = loop;
-		source.clip = _data.Clip;
-		source.volume = volume;
-		source.pitch = pitch;
-		source.Play();
-		return true;
-	}
+        // リソースの取得
+        var _data = _poolBgm[key];
 
-	/// <summary>
-	/// BGMの停止。
-	/// </summary>
-	/// <returns></returns>
-	public static bool StopBgm()
-	{
-		return GetInstance()._StopBgm();
-	}
-	bool _StopBgm(bool fadeOutFlag = false)
-	{
-		_GetAudioSource(eType.Bgm).Stop();
-		return true;
-	}
-	/// <summary>
-	/// ※事前に音源をLoadSeでロードしておくこと
-	/// 引数 :  第一引数アクセスキー, 第二引数使うチャンネル, 第三引数音量(0~1), 第四引数ピッチ(-で逆再生)
-	/// SEの再生
-	/// 音を合成させないで連続で鳴らしたいときは固定のチャンネルを使う。
-	/// </summary>
-	/// <param name="key"></param>
-	/// <param name="channel"></param>
-	/// <param name="volume"></param>
-	/// <returns></returns>
-	public static bool PlaySe(string key, int channel = 1, float volume = 1, float pitch = 1)
-	{
-		return GetInstance()._PlaySe(key, channel, volume, pitch);
-	}
-	bool _PlaySe(string key, int channel = 1, float volume = 1, float pitch = 1)
-	{
-		if (_poolSe.ContainsKey(key) == false)
-		{
-			// 対応するキーがない
-			return false;
-		}
+        // 再生
+        var source = _GetAudioSource(eType.Bgm);
+        source.loop = loop;
+        source.clip = _data.Clip;
+        source.volume = volume;
+        source.pitch = pitch;
+        source.Play();
+        return true;
+    }
 
-		// リソースの取得
-		var _data = _poolSe[key];
+    /// <summary>
+    /// BGMの停止。
+    /// </summary>
+    /// <returns></returns>
+    public static bool StopBgm()
+    {
+        return GetInstance()._StopBgm();
+    }
+    bool _StopBgm(bool fadeOutFlag = false)
+    {
+        _GetAudioSource(eType.Bgm).Stop();
+        return true;
+    }
+    /// <summary>
+    /// ※事前に音源をLoadSeでロードしておくこと
+    /// 引数 :  第一引数アクセスキー, 第二引数使うチャンネル, 第三引数音量(0~1), 第四引数ピッチ(-で逆再生)
+    /// SEの再生
+    /// 音を合成させないで連続で鳴らしたいときは固定のチャンネルを使う。
+    /// </summary>
+    /// <param name="key"></param>
+    /// <param name="channel"></param>
+    /// <param name="volume"></param>
+    /// <returns></returns>
+    public static bool PlaySe(string key, int channel = 1, float volume = 1, float pitch = 1)
+    {
+        return GetInstance()._PlaySe(key, channel, volume, pitch);
+    }
+    bool _PlaySe(string key, int channel = 1, float volume = 1, float pitch = 1)
+    {
+        if (_poolSe.ContainsKey(key) == false)
+        {
+            // 対応するキーがない
+            return false;
+        }
 
-		if (0 <= channel && channel < SE_CHANNEL)
-		{
-			// チャンネル指定
-			var source = _GetAudioSource(eType.Se, channel);
-			source.clip = _data.Clip;
-			source.volume = volume;
-			source.pitch = pitch;
-			source.Play();
-		}
-		else
-		{
-			// デフォルトで再生
-			var source = _GetAudioSource(eType.Se);
-			source.volume = volume;
-			source.pitch = pitch;
-			source.PlayOneShot(_data.Clip);
-		}
-		return true;
-	}
+        // リソースの取得
+        var _data = _poolSe[key];
+
+        if (0 <= channel && channel < SE_CHANNEL)
+        {
+            // チャンネル指定
+            var source = _GetAudioSource(eType.Se, channel);
+            source.clip = _data.Clip;
+            source.volume = volume;
+            source.pitch = pitch;
+            source.Play();
+        }
+        else
+        {
+            // デフォルトで再生
+            var source = _GetAudioSource(eType.Se);
+            source.volume = volume;
+            source.pitch = pitch;
+            source.PlayOneShot(_data.Clip);
+        }
+        return true;
+    }
 }
