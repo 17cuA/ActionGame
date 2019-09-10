@@ -8,36 +8,34 @@ public class MediaPlayer : MonoBehaviour
 {
 	public VideoPlayer videoPlayer;
 
-	private Action callBack_EndPlay;
-
 	/// <summary>
 	/// 再生
 	/// </summary>
 	public void PlayVideo()
 	{
-		//ループ終わりの時に実行するコールバックを設定
-		//videoPlayer.loopPointReached += EndPlayVideo;
-		//ビデオを再生
 		videoPlayer.Play();
 	}
 
 	/// <summary>
-	/// 再生終了時に呼ばれる関数
+	/// 再生終了時にTrue
 	/// </summary>
 	/// <returns></returns>
-	public void EndPlayVideo()
+	public bool IsEndPlayVideo()
 	{
-		videoPlayer.isLooping = false;
-		callBack_EndPlay();
+		if ((ulong)videoPlayer.frame == (videoPlayer.frameCount - 1))
+		{
+
+			return true;
+		}
+		return false;
 	}
-	
+
 	/// <summary>
-	/// 再生終了時にコールバックする関数の登録
+	/// 停止
 	/// </summary>
-	/// <param name="action"></param>
-	public void SetEndPlayCallBack(Action action )
+	public void StopVideo()
 	{
-		callBack_EndPlay = action;
+		videoPlayer.Stop();
 	}
 
     // Start is called before the first frame update
@@ -49,5 +47,13 @@ public class MediaPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-    }
+		if(Input.GetKeyDown("x"))
+		{
+			videoPlayer.Stop();
+		}
+		if (Input.GetKeyDown("z"))
+		{
+			videoPlayer.Play();
+		}
+	}
 }
