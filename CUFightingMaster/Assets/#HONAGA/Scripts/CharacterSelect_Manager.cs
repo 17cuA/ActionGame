@@ -47,6 +47,8 @@ public class CharacterSelect_Manager : SingletonMono<CharacterSelect_Manager>
     // Start is called before the first frame update
     void Start()
     {
+        QualitySettings.vSyncCount = 0;
+		Application.targetFrameRate = 60;
 		// 飯塚追加-------------------------------------------
         Sound.LoadBgm("BGM_Menu", "BGM_Menu");
         Sound.PlayBgm("BGM_Menu", 0.4f, 1, true);
@@ -71,7 +73,7 @@ public class CharacterSelect_Manager : SingletonMono<CharacterSelect_Manager>
                 previewModel[i + 4] = Instantiate(currentCharacter[i].PlayerModel2, createCharaPos[1].transform.position, Quaternion.identity);
                 nomalAnimationPlayers[i] = previewModel[i].GetComponent<Animationdata>();
                 nomalAnimationPlayers[i + 4] = previewModel[i + 4].GetComponent<Animationdata>();
-				nomalAnimationPlayers[i + 4].ScaleObject.transform.localScale = new Vector3(1, 1, -1);
+                nomalAnimationPlayers[i + 4].ScaleObject.transform.localScale = new Vector3(1, 1, -1);
 				nomalAnimationPlayers[i + 4].RotationObject.transform.rotation = Quaternion.Euler(0, 0, 0);
 			}
 			if ((i + 1) % 2 == 0)

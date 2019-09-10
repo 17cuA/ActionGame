@@ -1581,7 +1581,7 @@ public static class InputManagerInfo {
             negativeButton = "",
             positiveButton = "",
             altNegativeButton = "",
-            altPositiveButton = "",
+            altPositiveButton = "enter",
             gravity = 1000f,
             dead = 0.001f,
             sensitivity = 1000f,
