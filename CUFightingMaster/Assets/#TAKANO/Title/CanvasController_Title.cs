@@ -28,6 +28,8 @@ public class CanvasController_Title : MonoBehaviour
     [SerializeField] private CurtainMover curtainMover_2;
     [SerializeField] private MediaPlayer mediaPlayer_1;
     [SerializeField] private MediaPlayer mediaPlayer_2;
+	[SerializeField] private LogoAnimation logoAnimation_1;
+	[SerializeField] private LogoAnimation logoAnimation_2;
 
     // Start is called before the first frame update
 
@@ -42,7 +44,9 @@ public class CanvasController_Title : MonoBehaviour
         curtainMover_2 = canvas_Display2.transform.Find("Curtain").GetComponent<CurtainMover>();
         mediaPlayer_1 = canvas_Display1.transform.Find("MediaPlayer").GetComponent<MediaPlayer>();
         mediaPlayer_2 = canvas_Display2.transform.Find("MediaPlayer").GetComponent<MediaPlayer>();
-    }
+		logoAnimation_1 = canvas_Display1.transform.Find("LogoAnimator").GetComponent<LogoAnimation>();
+		logoAnimation_2 = canvas_Display1.transform.Find("LogoAnimator").GetComponent<LogoAnimation>();
+	}
 
     /// <summary>
     /// 二画面を徐々に明るくする
@@ -80,7 +84,6 @@ public class CanvasController_Title : MonoBehaviour
         screenFade_Display1.BrackOut();
         screenFade_Display2.BrackOut();
     }
-
 
     /// <summary>
     ///徐々に 幕を開ける
@@ -127,21 +130,38 @@ public class CanvasController_Title : MonoBehaviour
     }
 
     /// <summary>
-    /// ビデオ停止
+    /// ビデオ停止を通知
     /// </summary>
-    public void EndPlayVideo()
+    public bool IsEndPlayVideo()
     {
-        mediaPlayer_1.EndPlayVideo();
-        mediaPlayer_2.PlayVideo();
+        bool isEnd1 = mediaPlayer_1.IsEndPlayVideo();
+        bool isEnd2 = mediaPlayer_2.IsEndPlayVideo();
+
+		if (isEnd1 && isEnd2)
+			return true;
+		return false;
     }
 
-    /// <summary>
-    /// ビデオ停止時のコールバックセット
-    /// </summary>
-    /// <param name="action"></param>
-    public void SetEndPlayCallBack(Action action)
-    {
-        mediaPlayer_1.SetEndPlayCallBack(action);
-        mediaPlayer_2.SetEndPlayCallBack(action);
-    }
+	/// <summary>
+	/// ビデオ停止
+	/// </summary>
+	public void StopVideo()
+	{
+		mediaPlayer_1.StopVideo();
+		mediaPlayer_2.StopVideo();
+	}
+
+	public void InitLogoAnimation()
+	{
+		logoAnimation_1.InitLogoAnimation();
+		logoAnimation_2.InitLogoAnimation();
+	}
+
+	public void PlayLogoAnimation()
+	{
+		logoAnimation_1.PlayLogoAnimation();
+		logoAnimation_2.PlayLogoAnimation();
+	}
+
+
 }
