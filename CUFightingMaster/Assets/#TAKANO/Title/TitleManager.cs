@@ -9,13 +9,16 @@ using UnityEngine.SceneManagement;
 
 public class TitleManager : MonoBehaviour
 {
-    public NomalAnimationPlayer animationPlayer;
-
 	private Action currentUpdate;
 
+    [SerializeField] private LogoAnimation logoAnimation;
 	[SerializeField] private CanvasController_Title canvasController_Title;
 
     public bool isRunDemoMovie = false;
+
+     public float waitPlayDemoMovieTime;
+
+    private float time;
 
     public GameObject[] pressAnykey;
 
@@ -23,23 +26,24 @@ public class TitleManager : MonoBehaviour
 	{
 		//画面を暗くする
 		canvasController_Title.BrackOut();
-		currentUpdate = StartTitle;
-
+        //幕を閉じた状態から始まる
+        canvasController_Title.InitDownCurtain();
+        currentUpdate = StartTitle;
 	}
 
 	private void StartTitle()
 	{
-		//幕を閉じた状態から始まる
-		canvasController_Title.InitDownCurtain();
-		//BGMの再生開始
-		Sound.LoadBgm("BGM_Title", "BGM_Title");
-		Sound.PlayBgm("BGM_Title", 0.4f, 1, true);
+        //BGMの再生開始
+        Sound.LoadBgm("BGM_Title", "BGM_Title");
+        Sound.PlayBgm("BGM_Title", 0.4f, 1, true);
 
-		//Logoアニメーションの初期化
-		canvasController_Title.InitLogoAnimation();
+        //Logoアニメーションの初期化
+        logoAnimation.InitLogoAnimation();
 
-		//画面を明るくする
-		if (canvasController_Title.StartFadeIn())
+        time = waitPlayDemoMovieTime;
+
+        //画面を明るくする
+        if (canvasController_Title.StartFadeIn())
 		{
 			currentUpdate = UpCurtain;
 		}
@@ -57,23 +61,28 @@ public class TitleManager : MonoBehaviour
 	private void TitleUpdate()
 	{
 		//Logoアニメーション開始
-		canvasController_Title.PlayLogoAnimation();
+		logoAnimation.PlayLogoAnimation();
 
-		Debug.Log("Update");
+        if(canvasController_Title.IsEndLogoAnime())
+              canvasController_Title.PlayPressAnyButton();
+
+        Debug.Log("Update");
 		//キーの入力受付
 		if (Input.anyKeyDown && !Input.GetKeyDown(KeyCode.Escape) && !Input.GetKeyDown(KeyCode.F1) && !Input.GetKeyDown(KeyCode.F2) && !Input.GetKeyDown(KeyCode.F3) && !Input.GetKeyDown(KeyCode.F4))
 		{
-			if (pressAnykey[0].activeSelf == true && pressAnykey[1].activeSelf == true)
+            if (pressAnykey[0].activeSelf == true && pressAnykey[1].activeSelf == true)
 			{
 				Sound.LoadSe("Menu_Decision", "Se_menu_decision");
 				Sound.PlaySe("Menu_Decision", 1, 0.3f);
 				currentUpdate = DownCurtain;
 			}
 		}
-		if (isRunDemoMovie == true)
-		{
-			currentUpdate = StartDemoMovie_FadeOut;
 
+        time -= Time.deltaTime;
+
+		if (time <= 0)
+		{
+			//currentUpdate = StartDemoMovie_FadeOut;
 		}
 	}
 
@@ -83,23 +92,28 @@ public class TitleManager : MonoBehaviour
     private void StartDemoMovie_FadeOut()
     {
         if (canvasController_Title.StartFadeOut())
-            currentUpdate = FadeIn;
+        {
+            canvasController_Title.EnabledRenderTexture();
+            currentUpdate = StartDemoMovie_Fadein;
+        }
+
     }
 
     /// <summary>
     /// 画面を明るくする
     /// </summary>
     /// <param name="action">コールバック</param>
-    private void FadeIn()
+    private void StartDemoMovie_Fadein()
     {
 		if (canvasController_Title.StartFadeIn())
 			currentUpdate = PlayDemoMovie;
     }
 
-	/// <summary>
-	/// DemoMovie再生する
-	/// </summary>
-	private void PlayDemoMovie()
+
+    /// <summary>
+    /// DemoMovie再生する
+    /// </summary>
+    private void PlayDemoMovie()
 	{
 		canvasController_Title.PlayVideo();
 		currentUpdate = DemoMovieUpdate;
@@ -115,15 +129,30 @@ public class TitleManager : MonoBehaviour
 			currentUpdate = DownCurtain;
 		}
 
-			//デモムービーの再生が終わったら
+		//デモムービーの再生が終わったら
 		if (canvasController_Title.IsEndPlayVideo())
 		{
 			canvasController_Title.StopVideo();
-			currentUpdate = StartDemoMovie_FadeOut;
+			currentUpdate = EndDemoMovie_FadeOut;
 		}
 	}
 
-	private void DownCurtain()
+    private void EndDemoMovie_FadeOut()
+    {
+        if (canvasController_Title.StartFadeOut())
+            currentUpdate = EndDemoMovie_FadeIn;
+    }
+
+    private void EndDemoMovie_FadeIn()
+    {
+        //Logoアニメーションの初期化
+        logoAnimation.InitLogoAnimation();
+
+        if (canvasController_Title.StartFadeIn())
+            currentUpdate = StartTitle;
+    }
+
+    private void DownCurtain()
 	{
 		if(canvasController_Title.DownCurtain())
 		{

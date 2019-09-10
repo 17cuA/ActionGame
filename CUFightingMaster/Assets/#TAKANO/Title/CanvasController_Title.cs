@@ -29,7 +29,8 @@ public class CanvasController_Title : MonoBehaviour
     [SerializeField] private MediaPlayer mediaPlayer_1;
     [SerializeField] private MediaPlayer mediaPlayer_2;
 	[SerializeField] private LogoAnimation logoAnimation_1;
-	[SerializeField] private LogoAnimation logoAnimation_2;
+    [SerializeField] private AnimationUIManager pressAnyButton_1;
+    [SerializeField] private AnimationUIManager pressAnyButton_2;
 
     // Start is called before the first frame update
 
@@ -44,9 +45,9 @@ public class CanvasController_Title : MonoBehaviour
         curtainMover_2 = canvas_Display2.transform.Find("Curtain").GetComponent<CurtainMover>();
         mediaPlayer_1 = canvas_Display1.transform.Find("MediaPlayer").GetComponent<MediaPlayer>();
         mediaPlayer_2 = canvas_Display2.transform.Find("MediaPlayer").GetComponent<MediaPlayer>();
-		logoAnimation_1 = canvas_Display1.transform.Find("LogoAnimator").GetComponent<LogoAnimation>();
-		logoAnimation_2 = canvas_Display1.transform.Find("LogoAnimator").GetComponent<LogoAnimation>();
-	}
+        pressAnyButton_1 = canvas_Display1.transform.Find("PressAnyButton").GetComponent<AnimationUIManager>();
+        pressAnyButton_2 = canvas_Display2.transform.Find("PressAnyButton").GetComponent<AnimationUIManager>();
+    }
 
     /// <summary>
     /// 二画面を徐々に明るくする
@@ -129,6 +130,12 @@ public class CanvasController_Title : MonoBehaviour
         mediaPlayer_2.PlayVideo();
     }
 
+    public void EnabledRenderTexture()
+    {
+        mediaPlayer_1.EnabledRenderTexture();
+        mediaPlayer_2.EnabledRenderTexture();
+    }
+
     /// <summary>
     /// ビデオ停止を通知
     /// </summary>
@@ -151,17 +158,19 @@ public class CanvasController_Title : MonoBehaviour
 		mediaPlayer_2.StopVideo();
 	}
 
-	public void InitLogoAnimation()
-	{
-		logoAnimation_1.InitLogoAnimation();
-		logoAnimation_2.InitLogoAnimation();
-	}
+    public void PlayPressAnyButton()
+    {
+        pressAnyButton_1.isStart = true;
+        pressAnyButton_2.isStart = true;
+    }
 
-	public void PlayLogoAnimation()
-	{
-		logoAnimation_1.PlayLogoAnimation();
-		logoAnimation_2.PlayLogoAnimation();
-	}
+    public bool IsEndLogoAnime()
+    {
+        bool isEnd1 = logoAnimation_1.logoAnimation[0].EndAnimFrag;
+        bool isEnd2 = logoAnimation_1.logoAnimation[1].EndAnimFrag;
 
-
+        if (isEnd1 && isEnd2)
+            return true;
+        return false;
+    }
 }
