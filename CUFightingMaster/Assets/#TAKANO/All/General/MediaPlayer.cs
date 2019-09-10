@@ -15,20 +15,26 @@ public class MediaPlayer : MonoBehaviour
 	/// </summary>
 	public void PlayVideo()
 	{
-		//ループ終わりの時に実行するコールバックを設定
-		videoPlayer.loopPointReached += EndPlayVideo;
-		//ビデオを再生
-		videoPlayer.Play();
+        if(callBack_EndPlay != null)
+        {
+            //ループ終わりの時に実行するコールバックを設定
+            videoPlayer.loopPointReached += EndPlayVideo;
+            //ビデオを再生
+            videoPlayer.Play();
+        }
 	}
 
 	/// <summary>
-	/// 再生終了時に呼ばれる関数
+	/// 再生終了時に呼ぶ関数
 	/// </summary>
 	/// <returns></returns>
 	public void EndPlayVideo(VideoPlayer videoPlayer)
 	{
 		videoPlayer.isLooping = false;
-		callBack_EndPlay();
+        if( callBack_EndPlay != null )
+        {
+            callBack_EndPlay();
+        }
 	}
 	
 	/// <summary>
