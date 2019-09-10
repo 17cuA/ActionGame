@@ -44,14 +44,18 @@ public class CommandManager :MonoBehaviour
     /// </summary>
     /// <param name="_data"></param>
 	private void CheckInputData(string _data)
-	{
-		//前回の入力とデータが同じ、もしくはニュートラル状態（５）のときはスキップ
-		if (_data != inputData)
-		{
-            if (_data != "5")
+    {
+        // if (_data != inputData)
+        // {
+        //     if (_data != "5")
+        //     {
+        //入力された値をそれぞれのコマンド確認用変数に移す
+        for (int i = 0; i < attackParameters.Count; i++)
+        {
+            //前回の入力とデータが同じ、もしくはニュートラル状態（５）のときはスキップ,また最初の入力は常時格納
+            if (_data != inputData || attackParameters[i].checkCommadStr == "")
             {
-                //入力された値をそれぞれのコマンド確認用変数に移す
-                for (int i = 0; i < attackParameters.Count; i++)
+                if (_data != "5")
                 {
                     var check = false;
                     while (!check)
@@ -71,14 +75,23 @@ public class CommandManager :MonoBehaviour
                         //そうでない場合リセットし、要素数0番目の入力処理でなければもう一度入力を行う
                         else
                         {
-                            if (attackParameters[i].checkCommadStr.Length != 0) attackParameters[i].checkCommadStr = "";
-                            else check = true;
+                            if (attackParameters[i].checkCommadStr != _data)
+                            {
+                                if (attackParameters[i].checkCommadStr.Length != 0) attackParameters[i].checkCommadStr = "";
+                                else check = true;
+                            }
+                            else
+                            {
+                                check = true;
+                            }
                         }
                     }
                 }
+                //         }
+                // }
             }
-			inputData = _data;
-		}
+        }
+        inputData = _data;
     }
 
     /// <summary>

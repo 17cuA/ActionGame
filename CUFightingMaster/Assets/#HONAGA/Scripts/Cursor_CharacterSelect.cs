@@ -26,7 +26,7 @@ public class Cursor_CharacterSelect : MonoBehaviour
 	public int selectDir = 0;                           //現在のカーソル位置
 
     public GameObject cursor;
-	public AnimationUIManager accept;
+	public GameObject accept;
 
 	[SerializeField]
 	private bool determining_decision;
@@ -36,7 +36,8 @@ public class Cursor_CharacterSelect : MonoBehaviour
 	}
 	void Start()
 	{
-		determining_decision = false;
+        cursor.GetComponent<AnimationUIManager>().isStart = true;
+        determining_decision = false;
 		var controllerNames = Input.GetJoystickNames();
 		if (playerNum < controllerNames.Length)
 		{
@@ -70,12 +71,12 @@ public class Cursor_CharacterSelect : MonoBehaviour
 			if (determining_decision == false)
 			{
 				determining_decision = true;
-				accept.isStart = true;
+				accept.GetComponent<AnimationUIManager>().isStart = true;
 			}
 			else
 			{
 				determining_decision = false;
-				accept.isStart = false;
+				accept.GetComponent<AnimationUIManager>().isStart = false;
 			}
 			// 飯塚追加-------------------------------------------
 			//Sound.LoadSe("Menu_Decision", "Se_menu_decision");
@@ -87,11 +88,13 @@ public class Cursor_CharacterSelect : MonoBehaviour
 		{
 			gameObject.GetComponent<Image>().sprite = images[1];
             cursor.transform.localScale = new Vector3(-1.0f,1.0f,1.0f);
+            accept.transform.localScale = new Vector3(-1.0f, 1.0f, 1.0f);
         }
 		else
 		{
 			gameObject.GetComponent<Image>().sprite = images[0];
             cursor.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
+            accept.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
         }
         if (timer.IsPlayCountDown == false)
 		{

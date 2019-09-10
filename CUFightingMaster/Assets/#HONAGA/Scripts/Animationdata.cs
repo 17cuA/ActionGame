@@ -33,9 +33,9 @@ public class Animationdata : MonoBehaviour
         {
             animationData.SetPlayAnimation(animationClip[1], animationSpeed, 0);
         }
-		if (animationData!=null)
-		{
-			animationData.Updater();
-		}
+		//if (animationData!=null)
+		//{
+		//	animationData.Update();
+		//}
     }
 }

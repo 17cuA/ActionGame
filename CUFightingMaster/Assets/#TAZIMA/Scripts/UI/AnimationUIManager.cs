@@ -44,7 +44,6 @@ public class AnimationUIManager : MonoBehaviour
 			delayFrameCount = 0;
 			if (isStart) StartAnimation();
 			else ResetUI();
-	
 		}
 		else delayFrameCount++;
     }
@@ -68,7 +67,6 @@ public class AnimationUIManager : MonoBehaviour
         }
         initColor = gameObject.GetComponent<Image>().color;
 		delayFrameCount = 0;
-        isStart = false;
         ResetUI();
 	}
 	private void ResetUI()

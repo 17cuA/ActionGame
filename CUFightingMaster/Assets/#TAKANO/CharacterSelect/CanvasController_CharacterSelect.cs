@@ -21,8 +21,8 @@ public class CanvasController_CharacterSelect : MonoBehaviour
     public Canvas canvas_Display1;
     public Canvas canvas_Display2;
 
-    [SerializeField] private ScreenFade screenFade_Display1;
-    [SerializeField] private ScreenFade screenFade_Display2;
+    //[SerializeField] private ScreenFade screenFade_Display1;
+    //[SerializeField] private ScreenFade screenFade_Display2;
     [SerializeField] private CurtainMover curtainMover_1;
     [SerializeField] private CurtainMover curtainMover_2;
 
@@ -30,8 +30,8 @@ public class CanvasController_CharacterSelect : MonoBehaviour
 
     private void Awake()
     {
-        if (canvas_Display1 == null || canvas_Display2 == null)
-            Debug.LogError("参照ミス : CanvacControllerにCanvasを追加してください");
+        //if (canvas_Display1 == null || canvas_Display2 == null)
+        //    Debug.LogError("参照ミス : CanvacControllerにCanvasを追加してください");
 
         curtainMover_1 = canvas_Display1.transform.Find("Curtain").GetComponent<CurtainMover>();
         curtainMover_2 = canvas_Display2.transform.Find("Curtain").GetComponent<CurtainMover>();
@@ -40,11 +40,11 @@ public class CanvasController_CharacterSelect : MonoBehaviour
     /// <summary>
     /// 二画面を黒くする
     /// </summary>
-    public void BrackOut()
-    {
-        screenFade_Display1.BrackOut();
-        screenFade_Display2.BrackOut();
-    }
+    //public void BrackOut()
+    //{
+    //    screenFade_Display1.BrackOut();
+    //    screenFade_Display2.BrackOut();
+    //}
 
     /// <summary>
     ///徐々に 幕を開ける
