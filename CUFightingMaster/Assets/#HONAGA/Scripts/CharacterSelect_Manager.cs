@@ -276,8 +276,7 @@ public class CharacterSelect_Manager : SingletonMono<CharacterSelect_Manager>
         {
             for(int i = 0;i<4;i++)
             {
-                nomalAnimationPlayers[i].animFrag = true;
-            }
+                nomalAnimationPlayers[i].animFrag = true;            }
         }
         else
         {
@@ -306,7 +305,7 @@ public class CharacterSelect_Manager : SingletonMono<CharacterSelect_Manager>
         if (characterSelectBool[0] && characterSelectBool[1] && characterSelectBool[2] && characterSelectBool[3])
         {
             panelAnimFlag = true;
-        }
+		}
 		else
 		{
 			fadeFrame = 0;

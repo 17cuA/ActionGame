@@ -154,6 +154,8 @@ public class Sound
         Sound.LoadSe("Fight", "Voice_Fight");
         Sound.LoadSe("Ko", "Voice_K.O.");
         Sound.LoadSe("Draw", "Voice_Draw");
+		//9.10
+		Sound.LoadSe("explosion", "Se_explosion");
 
         //まだ未使用組
         Sound.LoadSe("Ko2", "Voice_K.O.2");
