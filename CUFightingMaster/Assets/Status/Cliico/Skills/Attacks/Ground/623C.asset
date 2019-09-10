@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 623C
   m_EditorClassIdentifier: 
   skillLayer: 0
-  animationClip: {fileID: 0}
+  animationClip: {fileID: 7400000, guid: f4de92968f923da46a5f95d4029dcbaf, type: 2}
   animationSpeed: 1
   status: 1
   frameEffects: []
@@ -32,16 +32,154 @@ MonoBehaviour:
     rightCamera: {fileID: 0}
     leftCamera: {fileID: 0}
   isInvincibleBullet: 0
-  plusHeadHitBox: []
-  plusBodyHitBox: []
-  plusFootHitBox: []
-  plusGrabHitBox: []
+  plusHeadHitBox:
+  - isFalse: 1
+    isInfinityFrame: 0
+    hitBox:
+      size: {x: 0, y: 0, z: 0}
+      localPosition: {x: 0, y: 0, z: 0}
+    startFrame: 3
+    endFrame: 5
+  - isFalse: 0
+    isInfinityFrame: 0
+    hitBox:
+      size: {x: 0, y: 0, z: 0}
+      localPosition: {x: 0, y: 0, z: 0}
+    startFrame: 6
+    endFrame: 19
+  - isFalse: 1
+    isInfinityFrame: 0
+    hitBox:
+      size: {x: 0, y: 0, z: 0}
+      localPosition: {x: 0, y: 0, z: 0}
+    startFrame: 32
+    endFrame: 37
+  plusBodyHitBox:
+  - isFalse: 1
+    isInfinityFrame: 0
+    hitBox:
+      size: {x: 0, y: 0, z: 0}
+      localPosition: {x: 0, y: 0, z: 0}
+    startFrame: 3
+    endFrame: 5
+  - isFalse: 0
+    isInfinityFrame: 0
+    hitBox:
+      size: {x: 0, y: 0, z: 0}
+      localPosition: {x: 0, y: 0, z: 0}
+    startFrame: 6
+    endFrame: 43
+  plusFootHitBox:
+  - isFalse: 1
+    isInfinityFrame: 0
+    hitBox:
+      size: {x: 0, y: 0, z: 0}
+      localPosition: {x: 0, y: 0, z: 0}
+    startFrame: 3
+    endFrame: 5
+  - isFalse: 0
+    isInfinityFrame: 0
+    hitBox:
+      size: {x: 0, y: 0, z: 0}
+      localPosition: {x: 0, y: 0, z: 0}
+    startFrame: 6
+    endFrame: 43
+  plusGrabHitBox:
+  - isFalse: 1
+    isInfinityFrame: 0
+    hitBox:
+      size: {x: 0, y: 0, z: 0}
+      localPosition: {x: 0, y: 0, z: 0}
+    startFrame: 3
+    endFrame: 25
+  - isFalse: 0
+    isInfinityFrame: 0
+    hitBox:
+      size: {x: 0, y: 0, z: 0}
+      localPosition: {x: 0, y: 0, z: 0}
+    startFrame: 26
+    endFrame: 43
   plusPushingHitBox: []
-  customHitBox: []
+  customHitBox:
+  - mode: 0
+    frameHitBoxes:
+    - isFalse: 0
+      isInfinityFrame: 0
+      hitBox:
+        size: {x: 1.41, y: 4.13, z: 1}
+        localPosition: {x: 0.85, y: 2.77, z: 0}
+      startFrame: 5
+      endFrame: 11
+    hitStop: 10
+    hitPoint: 0
+    hitStrength: 0
+    damage: 1000
+    stanDamage: 0
+    knockBack: 1
+    airKnockBack: 0.5
+    guardKnockBack: 1
+    hitEffects: []
+    isDown: 1
+    isThrow: 0
+    isThrowGroundDamage: 0
+    isThrowGroundAnimEnd: 0
+    airDamageMovements:
+    - isGravityInvaid: 0
+      isResetStartGravity: 1
+      isResetEndGravity: 0
+      isImpact: 1
+      isBound: 0
+      boundMovements: []
+      movement: {x: 0, y: 3, z: 0}
+      startFrame: 0
+    throwGroundDamage: 0
+    throwSkill: {fileID: 0}
+    enemyThrowSkill: {fileID: 0}
+    throwDamages: []
+    isJumpCancel: 0
+    isContinue: 0
+    movements:
+    - isGravityInvaid: 0
+      isResetStartGravity: 1
+      isResetEndGravity: 0
+      isImpact: 1
+      isBound: 0
+      boundMovements: []
+      movement: {x: -0.5, y: 3, z: 0}
+      startFrame: 0
+    gravityMoves: []
+    isFaceDown: 0
+    isPassiveNotPossible: 0
+    hitRigor: 100
+    guardHitRigor: 30
+    plusGauge: 6
+    enemyPlusGauge: 4
   isContinue: 0
   isMoveContinue: 0
-  movements: []
-  gravityMoves: []
+  movements:
+  - isGravityInvaid: 1
+    isResetStartGravity: 1
+    isResetEndGravity: 0
+    isImpact: 0
+    isBound: 0
+    boundMovements: []
+    movement: {x: 2, y: 6.5, z: 0}
+    startFrame: 4
+  - isGravityInvaid: 0
+    isResetStartGravity: 0
+    isResetEndGravity: 0
+    isImpact: 0
+    isBound: 0
+    boundMovements: []
+    movement: {x: 0, y: 0, z: 0}
+    startFrame: 33
+  gravityMoves:
+  - movement: {x: -0.05, y: -0.4, z: 0}
+    limitMove: {x: -1, y: -20, z: 0}
+    startFrame: 4
+  - movement: {x: 0, y: 0, z: 0}
+    limitMove: {x: 0, y: 0, z: 0}
+    startFrame: 33
   timeStops:
     startFrame: 0
     endFrame: 0

@@ -66,6 +66,7 @@ public class TitleManager : MonoBehaviour
 	void Start()
     {
 		currentUpdate = InitTitle;
+        currentUpdate();
     }
 
     // Update is called once per frame

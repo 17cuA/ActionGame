@@ -21,13 +21,6 @@ public class InputConfirmation : MonoBehaviour
                 //処理を書く
                 Debug.Log(true);
             }
-            foreach (KeyCode code in Enum.GetValues(typeof(KeyCode)))
-            {
-                if (Input.GetAxisRaw (code.ToString()) != 0)
-                {
-                    Debug.Log(code);
-                }
-            }
         }
     }
     /*private KeyCode GetAxisRaw()
