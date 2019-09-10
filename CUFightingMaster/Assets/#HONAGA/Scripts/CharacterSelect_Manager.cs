@@ -272,19 +272,38 @@ public class CharacterSelect_Manager : SingletonMono<CharacterSelect_Manager>
         characterSelectBool[2] = cursor2_1.Determining_decision;    // Display2の1Pカーソルがキャラクターを選択しているかのフラグ
         characterSelectBool[3] = cursor2_2.Determining_decision;    // Display2の2Pカーソルがキャラクターを選択しているかのフラグ
 
-		for (int i = 0; i < 4; i++)
-		{
-			if (characterSelectBool[i] == true)
-			{
-				nomalAnimationPlayers[i].animFrag = true;
-			}
-			else
-			{
-				nomalAnimationPlayers[i].animFrag = false;
-			}
-		}
-		// 1Pと2Pがキャラを選択したら、フラグをtrueにする
-		if (characterSelectBool[0] && characterSelectBool[1] && characterSelectBool[2] && characterSelectBool[3])
+        if (characterSelectBool[0] == true)
+        {
+            for(int i = 0;i<4;i++)
+            {
+                nomalAnimationPlayers[i].animFrag = true;
+            }
+        }
+        else
+        {
+            for (int i = 0; i < 4; i++)
+            {
+                nomalAnimationPlayers[i].animFrag = false;
+            }
+        }
+        
+        if(CharacterSelectBool[1] == true)
+        {
+            for (int i = 4; i < 8; i++)
+            {
+                nomalAnimationPlayers[i].animFrag = true;
+            }
+        }
+        else
+        {
+            for (int i = 4; i < 8; i++)
+            {
+                nomalAnimationPlayers[i].animFrag = false;
+            }
+        }
+
+        // 1Pと2Pがキャラを選択したら、フラグをtrueにする
+        if (characterSelectBool[0] && characterSelectBool[1] && characterSelectBool[2] && characterSelectBool[3])
         {
             panelAnimFlag = true;
         }
