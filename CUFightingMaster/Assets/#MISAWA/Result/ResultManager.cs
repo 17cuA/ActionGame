@@ -62,12 +62,12 @@ public class ResultManager : MonoBehaviour
         var obj2 = Instantiate(GameDataStrage.Instance.fighterStatuses[1].fighter, targetPos[1].transform.position, Quaternion.identity);
         obj.gameObject.layer = LayerMask.NameToLayer(CommonConstants.Layers.Player_Two);
 
-        //if (1Pが勝ったら)
+        //if (GameDataStrage.winFlag_PlayerOne == true)
         // {
         //    obj.GetComponent<NomalAnimationPlayer>().SetPlayAnimation(勝利アニメーション);
         //    obj2.GetComponent<NomalAnimationPlayer>().SetPlayAnimation(敗北アニメーション);
         //}
-        //else
+        //else if(GameDataStrage._PlayerTwo == true)
         //{
         //    obj.GetComponent<NomalAnimationPlayer>().SetPlayAnimation(敗北アニメーション);
         //    obj2.GetComponent<NomalAnimationPlayer>().SetPlayAnimation(勝利アニメーション);
