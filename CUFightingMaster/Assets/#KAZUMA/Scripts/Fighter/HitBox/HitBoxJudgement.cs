@@ -137,7 +137,6 @@ public class HitBoxJudgement
 	}
     public void UpdateGame()
     {
-		Debug.Log(DamageEnemyNumber);
         ChangeSkillInit();
         isPushWall = false;
         if (core.Direction == PlayerDirection.Right)
