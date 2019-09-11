@@ -18,9 +18,13 @@ public class TitleManager : MonoBehaviour
 
 	public bool isRunDemoMovie = false;
 
-     public float waitPlayDemoMovieTime;
+    public float waitPlayDemoMovieTime;
 
     private float time;
+
+    public float demoMoveTimeMax;
+
+    public float demoMoveTime;
 
     public GameObject[] pressAnykey;
 
@@ -30,13 +34,12 @@ public class TitleManager : MonoBehaviour
 		canvasController_Title.BrackOut();
         //幕を閉じた状態から始まる
         canvasController_Title.InitDownCurtain();
+        canvasController_Title.StopPressAnyButton();
         currentUpdate = StartTitle;
 	}
 
 	private void StartTitle()
 	{
-
-
         time = waitPlayDemoMovieTime;
 
         //画面を明るくする
@@ -53,9 +56,10 @@ public class TitleManager : MonoBehaviour
 		Sound.LoadBgm("BGM_Title", "BGM_Title");
 		Sound.PlayBgm("BGM_Title", 0.3f, 1, true);
 
-		//Logoアニメーションの初期化
-		logoAnimation.InitLogoAnimation();
-		if (canvasController_Title.UpCurtain())
+        //Logoアニメーションの初期化
+        logoAnimation.InitLogoAnimation();
+
+        if (canvasController_Title.UpCurtain())
 		{
 			currentUpdate = TitleUpdate;	
 		}
@@ -95,6 +99,7 @@ public class TitleManager : MonoBehaviour
     private void StartDemoMovie_FadeOut()
     {
 		Sound.StopBgm();
+
 		if (canvasController_Title.StartFadeOut())
         {
             if(canvasController_Title.IsEnabledRenderTexture() == true)
@@ -110,6 +115,7 @@ public class TitleManager : MonoBehaviour
     /// <param name="action">コールバック</param>
     private void StartDemoMovie_Fadein()
     {
+
 		if (canvasController_Title.StartFadeIn())
 			currentUpdate = DemoMovieUpdate;
     }
@@ -120,8 +126,8 @@ public class TitleManager : MonoBehaviour
     /// </summary>
     private void PlayDemoMovie()
 	{
-		
-		canvasController_Title.PlayVideo();
+        demoMoveTime = demoMoveTimeMax;
+        canvasController_Title.PlayVideo();
 		currentUpdate = StartDemoMovie_Fadein;
 	}
 
@@ -130,6 +136,7 @@ public class TitleManager : MonoBehaviour
 	/// </summary>
 	private void DemoMovieUpdate()
 	{
+        demoMoveTime -= Time.deltaTime;
 		//音量を徐々に上げる
 		demoMovie_Sound.Volume_Up();
 
@@ -137,25 +144,22 @@ public class TitleManager : MonoBehaviour
 		{
 			currentUpdate = DownCurtain;
 		}
-
-		//デモムービーの再生が終わったら
-		if (canvasController_Title.IsEndPlayVideo())
+        //デモムービーの再生が終わったら
+        if (demoMoveTime <= 0)
 		{
 			demoMovie_Sound.Volume_Down();
-			canvasController_Title.StopVideo();
 			currentUpdate = EndDemoMovie_FadeOut;
 		}
 	}
 
     private void EndDemoMovie_FadeOut()
     {
-			if(canvasController_Title.IsDisabledRenderTexture() == true)
-			{
-			if (canvasController_Title.StartFadeOut())
-			{
-				currentUpdate = EndDemoMovie_FadeIn;
-			}
-		}
+        if (canvasController_Title.StartFadeOut())
+        {
+            canvasController_Title.StopVideo();
+            canvasController_Title.DisabledRenderTexture();
+            currentUpdate = InitTitle;
+        }
     }
 
     private void EndDemoMovie_FadeIn()
@@ -164,7 +168,7 @@ public class TitleManager : MonoBehaviour
         logoAnimation.InitLogoAnimation();
 
         if (canvasController_Title.StartFadeIn())
-            currentUpdate = StartTitle;
+            currentUpdate = InitTitle;
     }
 
     private void DownCurtain()
@@ -180,7 +184,6 @@ public class TitleManager : MonoBehaviour
 		Application.targetFrameRate = 60;
 
 		currentUpdate = InitTitle;
-        currentUpdate();
 
        // canvasController_Title.PlayVideo();
     }
