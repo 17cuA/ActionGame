@@ -70,9 +70,8 @@ public class UI_Gauge : MonoBehaviour
 	private void GuageEfects()
 	{
 		var guageNum = value / (valueMax / guageIndex);
-		if ((value / (valueMax / guageIndex)) != 0)
+		if (guageNum != 0)
 		{
-			Debug.Log(value / (valueMax / guageIndex));
 			for (int i = 0;i < guageIndex;i++)
 			{
 				if (i < guageNum)
@@ -80,14 +79,6 @@ public class UI_Gauge : MonoBehaviour
 					if (guageAnims[i].isStart == false)
 					{
 						guageAnims[i].isStart = true;
-						guageAnims[i].isLoop = true;
-					}
-				}
-				else
-				{
-					if (guageAnims[i].isStart == true)
-					{
-						guageAnims[i].isLoop = false;
 					}
 				}
 			}
