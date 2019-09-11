@@ -306,8 +306,7 @@ public class InGameManager : SingletonMono<InGameManager>
 		{
             //試合が引き分けで終わったことを保存する(そのままフェーズ移行処理)
             if (canvasController.Call_DisplayVictory_draw() == false)
-                currentUpdate = StartRound;
-            //currentUpdate = GameFinish;
+                currentUpdate = GameFinish;
         }
     }
 	#endregion
@@ -357,7 +356,7 @@ public class InGameManager : SingletonMono<InGameManager>
 		//画面暗転
 		canvasController.Call_InitDownCurtain();
         currentUpdate = StartGame;
-        Sound.PlayBgm("BGM_Battle", 0.4f, 1, true);
+        Sound.PlayBgm("BGM_Battle", 0.3f, 1, true);
 
 	}
 
