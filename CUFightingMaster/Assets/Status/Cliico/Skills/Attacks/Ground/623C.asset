@@ -124,7 +124,14 @@ MonoBehaviour:
     knockBack: 1
     airKnockBack: 0.5
     guardKnockBack: 1
-    hitEffects: []
+    hitEffects:
+    - isEnemyPos: 0
+      isParant: 0
+      isEnemyParant: 0
+      effect: {fileID: 2314571988542883478, guid: 7a9204d95bc398742ab330e066fccfd0,
+        type: 3}
+      guardEffect: {fileID: 0}
+      position: {x: 0, y: 0, z: 0}
     isDown: 1
     isThrow: 0
     isThrowGroundDamage: 0

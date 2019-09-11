@@ -53,9 +53,13 @@ public class CanvasController_CharacterSelect : MonoBehaviour
     {
         bool isEnd1 = curtainMover_1.UpCurtain();
         bool isEnd2 = curtainMover_2.UpCurtain();
+		CharacterSelect_Manager.Instance.makuFlag = true;
 
-        if (isEnd1 && isEnd2)
-            return true;
+		if (isEnd1 && isEnd2)
+		{
+			CharacterSelect_Manager.Instance.makuFlag = false;
+			return true;
+		}
         return false;
     }
 
@@ -67,9 +71,11 @@ public class CanvasController_CharacterSelect : MonoBehaviour
         bool isEnd1 = curtainMover_1.DownCurtain();
         bool isEnd2 = curtainMover_2.DownCurtain();
 
-        if (isEnd1 && isEnd2)
-            return true;
-        return false;
+		if (isEnd1 && isEnd2)
+		{
+			return true;
+		}
+		return false;
     }
 
     /// <summary>
