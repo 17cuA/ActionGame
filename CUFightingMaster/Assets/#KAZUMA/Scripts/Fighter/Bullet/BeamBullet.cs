@@ -19,7 +19,7 @@ public class BeamBullet : BulletCore
 		// {
 		// 	isDestroyFlag = true;
 		// }
-		if (allFrame > 60)
+		if (allFrame > 120)
 		{
 			isDestroyFlag = true;
 		}

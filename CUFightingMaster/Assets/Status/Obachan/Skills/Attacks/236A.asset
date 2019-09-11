@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 236A
   m_EditorClassIdentifier: 
   skillLayer: 0
-  animationClip: {fileID: 0}
+  animationClip: {fileID: 7400000, guid: ca4d6dc66b57630459e358d9b63d47de, type: 2}
   animationSpeed: 1
   status: 2
   frameEffects:
@@ -23,7 +23,13 @@ MonoBehaviour:
     childFlag: 0
     worldPositionFlag: 0
     position: {x: 0, y: 0, z: 0}
-  frameBullets: []
+  frameBullets:
+  - frame: 13
+    bullet: {fileID: 3899005171303539919, guid: ac7b719f9ae53414c9073f80e7647fc2,
+      type: 3}
+    childFlag: 0
+    worldPositionFlag: 0
+    position: {x: 1.43, y: 2.11, z: 0}
   cancelFrag: 0
   endNextAnimation: {fileID: 0}
   endNextWeight: 0

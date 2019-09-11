@@ -26,6 +26,10 @@ public class UI_Gauge : MonoBehaviour
 
 	private float guageWidth;
 
+	private static int guageIndex = 3;
+
+	public AnimationUIManager[] guageAnims = new AnimationUIManager[guageIndex];
+
 	[SerializeField]private int valueMax = 0;
 	public int value = 0;
 
@@ -62,17 +66,34 @@ public class UI_Gauge : MonoBehaviour
 		valueMax = _maxValue;
 	}
 
+	//ゲージが一定量溜まったらエフェクトでわかりやすいようにする
+	private void GuageEfects()
+	{
+		var guageNum = value / (valueMax / guageIndex);
+		if (guageNum != 0)
+		{
+			for (int i = 0;i < guageIndex;i++)
+			{
+				if (i < guageNum)
+				{
+					if (guageAnims[i].isStart == false)
+					{
+						guageAnims[i].isStart = true;
+					}
+				}
+			}
+		}
+
+
+	}
 	private void Start()
 	{
 		guageWidth = guage.GetComponent<RectTransform>().sizeDelta.x;
-		// guagePosition.localPosition += new Vector3(valueMax, 0, 0);
 	}
 
 	private void Update()
 	{
-		//if(Input.GetKeyDown("x"))
-		//{
-		    UpdateGuage(value);
-		//}
+		UpdateGuage(value);
+		GuageEfects();
 	}
 }
