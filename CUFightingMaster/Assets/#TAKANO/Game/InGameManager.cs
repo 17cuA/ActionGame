@@ -192,7 +192,6 @@ public class InGameManager : SingletonMono<InGameManager>
                 }
                 else
                 {
-                    //DoubleKO
                     getRoundCount[0] += "3";
                     getRoundCount[1] += "3";
                     gameRoundCount++;
