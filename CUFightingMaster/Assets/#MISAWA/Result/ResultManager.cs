@@ -21,62 +21,102 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class ResultManager : MonoBehaviour
 {
-	public Canvas canvas_1;
-	[SerializeField] private ResultController resultController_1;
+    public GameObject[] animationUIManagers = new GameObject[2];
+    public GameObject[] winOrlose = new GameObject[2];
+    public Sprite win;
+    public Sprite lose;
+    public AnimationClip[] animationClips;
 
-	public Canvas canvas_2;
-	[SerializeField] private ResultController resultController_2;
+    public AnimationClip resultLose_clico;
+    public AnimationClip resultWin_clico;
+    public AnimationClip resultLose_oba;
+    public AnimationClip resultWin_oba;
+
+    public Canvas canvas_1;
+    [SerializeField] private ResultController resultController_1;
+
+    public Canvas canvas_2;
+    [SerializeField] private ResultController resultController_2;
 
     [SerializeField] private CanvasController_Result canvasController_Result;
 
-    [SerializeField] private Result_Manager result_Manager;
+    public GameObject[] targetPos = new GameObject[2];
+
+    public CinemaController cinemaController;
 
     private Action currentUpdate;
 
-	void Awake()
-	{
+    void Awake()
+    {
         canvasController_Result.InitDownCurtain();
 
         resultController_1 = canvas_1.transform.Find("ResultController").GetComponent<ResultController>();
-		resultController_2 = canvas_2.transform.Find("ResultController").GetComponent<ResultController>();
-	
+        resultController_2 = canvas_2.transform.Find("ResultController").GetComponent<ResultController>();
+
+        var obj = Instantiate(GameDataStrage.Instance.fighterStatuses[0].fighter, targetPos[0].transform.position, Quaternion.identity);
+        obj.gameObject.layer = LayerMask.NameToLayer(CommonConstants.Layers.Player_One);
+        var obj2 = Instantiate(GameDataStrage.Instance.fighterStatuses[1].fighter, targetPos[1].transform.position, Quaternion.identity);
+        obj.gameObject.layer = LayerMask.NameToLayer(CommonConstants.Layers.Player_Two);
+
+        //if (GameDataStrage.winFlag_PlayerOne == true)
+        // {
+        //    obj.GetComponent<NomalAnimationPlayer>().SetPlayAnimation(勝利アニメーション);
+        //    obj2.GetComponent<NomalAnimationPlayer>().SetPlayAnimation(敗北アニメーション);
+        //}
+        //else if(GameDataStrage._PlayerTwo == true)
+        //{
+        //    obj.GetComponent<NomalAnimationPlayer>().SetPlayAnimation(敗北アニメーション);
+        //    obj2.GetComponent<NomalAnimationPlayer>().SetPlayAnimation(勝利アニメーション);
+        //}
+
         currentUpdate = UpCurtain;
+
 
     }
 
-	void Update()
+    void Update()
     {
-		//ポーズ処理
-		if (Mathf.Approximately(Time.timeScale, 0f)) return;
+        //ポーズ処理
+        if (Mathf.Approximately(Time.timeScale, 0f)) return;
 
         currentUpdate();
 
-	}
+    }
 
-	//キャラの生成
-	void CreateFighter()
-	{
-		result_Manager.CreateFighter();
-		currentUpdate = UpCurtain;
-	}
-
-	//カーテンが上がる
+    //カーテンが上がる
     void UpCurtain()
     {
-        if(canvasController_Result.UpCurtain())
+        if (canvasController_Result.UpCurtain())
         {
-            currentUpdate = PlayUIAnime;
+            if (cinemaController.isPlay == false)
+            {
+                currentUpdate = PlayUIAnime;
+            }
         }
 
     }
 
-	//ResultAnime
+    //ResultAnime
     void PlayUIAnime()
     {
-        result_Manager.FirstPlayUIAnime();
+        if (GameDataStrage.Instance.winFlag_PlayerOne)
+        {
+            winOrlose[0].GetComponent<Image>().sprite = win;
+            winOrlose[1].GetComponent<Image>().sprite = lose;
+            winOrlose[0].GetComponent<NomalAnimationPlayer>().SetPlayAnimation(animationClips[0], 1.0f, 0);
+            winOrlose[1].GetComponent<NomalAnimationPlayer>().SetPlayAnimation(animationClips[1], 1.0f, 0);
+        }
+        else if (GameDataStrage.Instance.winFlag_PlayerTwo)
+        {
+            winOrlose[1].GetComponent<Image>().sprite = win;
+            winOrlose[0].GetComponent<Image>().sprite = lose;
+            winOrlose[0].GetComponent<NomalAnimationPlayer>().SetPlayAnimation(animationClips[1], 1.0f, 0);
+            winOrlose[1].GetComponent<NomalAnimationPlayer>().SetPlayAnimation(animationClips[0], 1.0f, 0);
+        }
         canvasController_Result.PlayUIAnime();
         currentUpdate = ResultUpdate;
     }
@@ -91,7 +131,7 @@ public class ResultManager : MonoBehaviour
 
     void DownCurtain()
     {
-        if(canvasController_Result.DownCurtain())
+        if (canvasController_Result.DownCurtain())
         {
             currentUpdate = FadeOut;
         }
@@ -99,7 +139,7 @@ public class ResultManager : MonoBehaviour
 
     void FadeOut()
     {
-        if(canvasController_Result.StartFadeOut())
+        if (canvasController_Result.StartFadeOut())
         {
             SceneManager.LoadScene("JECLogo");
         }

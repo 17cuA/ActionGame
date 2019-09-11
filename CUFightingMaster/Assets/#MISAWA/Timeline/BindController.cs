@@ -29,8 +29,12 @@ public class BindController : MonoBehaviour
 {
 	[SerializeField] PlayableDirector director;
 	[SerializeField] int PlayerNum;
+    public int PlayerNum_
+    {
+        set { PlayerNum = value; }
+    }
 
-	public CinemachineBrain cinemachineBrain;		// カメラごとにcinemachineBrainセット
+    public CinemachineBrain cinemachineBrain;		// カメラごとにcinemachineBrainセット
 	public string trackName;									// トラック名の指名
 
 	private void Start()
