@@ -127,10 +127,10 @@ public class TitleManager : MonoBehaviour
     /// </summary>
     private void PlayDemoMovie()
 	{
-		//帯追加
 		for (int i = 0;i < blackBackLine.Length;i++)
 		{
 			blackBackLine[i].GetComponent<AnimationUIManager>().isStart = true;
+			blackBackLine[i].GetComponent<AnimationUIManager>().isLoop = true;
 		}
         demoMoveTime = demoMoveTimeMax;
         canvasController_Title.PlayVideo();
@@ -153,6 +153,10 @@ public class TitleManager : MonoBehaviour
         //デモムービーの再生が終わったら
         if (demoMoveTime <= 0)
 		{
+			for (int i = 0;i < blackBackLine.Length;i++)
+			{
+				blackBackLine[i].GetComponent<AnimationUIManager>().isLoop = false;
+			}
 			demoMovie_Sound.Volume_Down();
 			currentUpdate = EndDemoMovie_FadeOut;
 		}
