@@ -31,11 +31,6 @@ public class ResultManager : MonoBehaviour
     public Sprite lose;
     public AnimationClip[] animationClips;
 
-    public AnimationClip resultLose_clico;
-    public AnimationClip resultWin_clico;
-    public AnimationClip resultLose_oba;
-    public AnimationClip resultWin_oba;
-
     public Canvas canvas_1;
     [SerializeField] private ResultController resultController_1;
 
@@ -48,6 +43,8 @@ public class ResultManager : MonoBehaviour
 
     public CinemaController cinemaController;
 
+    public BindController[] bindControllers = new BindController[2];
+
     private Action currentUpdate;
 
     void Awake()
@@ -56,22 +53,46 @@ public class ResultManager : MonoBehaviour
 
         resultController_1 = canvas_1.transform.Find("ResultController").GetComponent<ResultController>();
         resultController_2 = canvas_2.transform.Find("ResultController").GetComponent<ResultController>();
-
+        
         var obj = Instantiate(GameDataStrage.Instance.fighterStatuses[0].fighter, targetPos[0].transform.position, Quaternion.identity);
         obj.gameObject.layer = LayerMask.NameToLayer(CommonConstants.Layers.Player_One);
         var obj2 = Instantiate(GameDataStrage.Instance.fighterStatuses[1].fighter, targetPos[1].transform.position, Quaternion.identity);
         obj.gameObject.layer = LayerMask.NameToLayer(CommonConstants.Layers.Player_Two);
 
-        //if (GameDataStrage.winFlag_PlayerOne == true)
-        // {
-        //    obj.GetComponent<NomalAnimationPlayer>().SetPlayAnimation(勝利アニメーション);
-        //    obj2.GetComponent<NomalAnimationPlayer>().SetPlayAnimation(敗北アニメーション);
-        //}
-        //else if(GameDataStrage._PlayerTwo == true)
-        //{
-        //    obj.GetComponent<NomalAnimationPlayer>().SetPlayAnimation(敗北アニメーション);
-        //    obj2.GetComponent<NomalAnimationPlayer>().SetPlayAnimation(勝利アニメーション);
-        //}
+        if (GameDataStrage.Instance.winFlag_PlayerOne == true)
+        {
+            obj.GetComponent<NomalAnimationPlayer>().SetPlayAnimation(obj.GetComponent<FighterStatus>().winnerResultAnimation, 0.5f, 0);
+            obj2.GetComponent<NomalAnimationPlayer>().SetPlayAnimation(obj.GetComponent<FighterStatus>().loseResultAnimation, 0.5f, 0);
+            if(obj.GetComponent<FighterStatus>().PlayerID == 0)
+            {
+                bindControllers[0].PlayerNum_ = 0;
+            }
+            else if(obj.GetComponent<FighterStatus>().PlayerID == 1)
+            {
+                bindControllers[1].PlayerNum_ = 0;
+            }
+        }
+        else if (GameDataStrage.Instance.winFlag_PlayerTwo == true)
+        {
+            obj.GetComponent<NomalAnimationPlayer>().SetPlayAnimation(obj.GetComponent<FighterStatus>().loseResultAnimation, 0.5f,0);
+            obj2.GetComponent<NomalAnimationPlayer>().SetPlayAnimation(obj.GetComponent<FighterStatus>().winnerResultAnimation, 0.5f, 0);
+            if (obj.GetComponent<FighterStatus>().PlayerID == 0)
+            {
+                bindControllers[0].PlayerNum_ = 1;
+            }
+            else if (obj.GetComponent<FighterStatus>().PlayerID == 1)
+            {
+                bindControllers[1].PlayerNum_ = 1;
+            }
+        }
+        else if(GameDataStrage.Instance.winFlag_PlayerOne == false && GameDataStrage.Instance.winFlag_PlayerTwo == false)
+        {
+            obj.GetComponent<NomalAnimationPlayer>().SetPlayAnimation(obj.GetComponent<FighterStatus>().loseResultAnimation, 0.5f, 0);
+            obj2.GetComponent<NomalAnimationPlayer>().SetPlayAnimation(obj.GetComponent<FighterStatus>().loseResultAnimation, 0.5f, 0);
+            
+        }
+
+
 
         currentUpdate = UpCurtain;
 
