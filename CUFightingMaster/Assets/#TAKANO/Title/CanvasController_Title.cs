@@ -146,15 +146,11 @@ public class CanvasController_Title : MonoBehaviour
 	/// <summary>
 	/// ビデオを非表示する
 	/// </summary>
-	public bool IsDisabledRenderTexture()
+	public void DisabledRenderTexture()
 	{
-		bool isEnd1 = mediaPlayer_1.DisabledRenderTexture();
-		bool isEnd2 = mediaPlayer_2.DisabledRenderTexture();
-
-		if (isEnd1 && isEnd2)
-			return true;
-		return false;
-	}
+        mediaPlayer_1.DisabledRenderTexture();
+        mediaPlayer_2.DisabledRenderTexture();
+    }
 
 	/// <summary>
 	/// ビデオ停止を通知
@@ -182,6 +178,12 @@ public class CanvasController_Title : MonoBehaviour
     {
         pressAnyButton_1.isStart = true;
         pressAnyButton_2.isStart = true;
+    }
+
+    public void StopPressAnyButton()
+    {
+        pressAnyButton_1.Init();
+        pressAnyButton_2.Init();
     }
 
     public bool IsEndLogoAnime()
