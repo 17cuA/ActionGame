@@ -1,4 +1,4 @@
-﻿using System;
+﻿	using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -18,10 +18,23 @@ public class MediaPlayer : MonoBehaviour
         videoPlayer.Play();
 	}
 
-    public void EnabledRenderTexture()
+    public bool EnabledRenderTexture()
     {
         rawImage.enabled = true;
-    }
+		if (rawImage.enabled == true)
+			return true;
+
+		return false;
+	}
+
+	public bool DisabledRenderTexture()
+	{
+		rawImage.enabled =false;
+		if (rawImage.enabled == false)
+			return true;
+
+		return false;
+	}
 
 	/// <summary>
 	/// 再生終了時にTrue
@@ -43,7 +56,6 @@ public class MediaPlayer : MonoBehaviour
 	public void StopVideo()
 	{
 		videoPlayer.Stop();
-        rawImage.enabled = false;
 	}
 
     // Start is called before the first frame update
