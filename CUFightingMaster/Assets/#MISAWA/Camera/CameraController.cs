@@ -196,11 +196,19 @@ public class CameraController : SingletonMono<CameraController>
 		if (transform.position.z < cameraPos_Max.z && distanceOfPLayers_Current < distance_StartZoomIn)
 		{
 			// プレイヤー間の距離によって速度を変更
+			if(distanceOfPLayers_Current == 0||speed_ZoomIn==0)
+			{
+				return zoomRatio;
+			}
 			zoomRatio += distanceOfPlayers_Start / distanceOfPLayers_Current / speed_ZoomIn;
 		}
 		// カメラのZ座標が最小値より大きいかつプレイヤー間の距離が0.6より大きい時
 		if (cameraPos_Min.z < transform.position.z && distanceOfPLayers_Current > distance_StartZoomOut)
 		{
+			if (distanceOfPLayers_Current == 0 || speed_ZoomIn == 0)
+			{
+				return zoomRatio;
+			}
 			// プレイヤー間の距離によって速度を変更
 			zoomRatio -= distanceOfPLayers_Current / distanceOfPlayers_Start / speed_ZoomOut;
 		}
