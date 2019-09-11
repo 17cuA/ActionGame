@@ -71,10 +71,13 @@ public class FigterEditor : EditorWindow
     private void StatusTabDraw()
     {
         EditorGUILayout.BeginVertical("Box");
-		fighterStatus.characterImage = EditorGUILayout.ObjectField("キャラクターイメージ",fighterStatus.characterImage, typeof(Sprite), false) as Sprite;
+        fighterStatus.PlayerID = EditorGUILayout.IntField("ID", fighterStatus.PlayerID);
+        fighterStatus.characterImage = EditorGUILayout.ObjectField("キャラクターイメージ",fighterStatus.characterImage, typeof(Sprite), false) as Sprite;
         fighterStatus.fighter = EditorGUILayout.ObjectField("本体", fighterStatus.fighter, typeof(FighterCore), false) as FighterCore;
         fighterStatus.InGameTimeline_One = EditorGUILayout.ObjectField("入場シーン1P",fighterStatus.InGameTimeline_One, typeof(CameraBase), false) as CameraBase;
         fighterStatus.InGameTimeline_Two = EditorGUILayout.ObjectField("入場シーン2P", fighterStatus.InGameTimeline_Two, typeof(CameraBase), false) as CameraBase;
+        fighterStatus.winnerResultAnimation = EditorGUILayout.ObjectField("勝利アニメーション", fighterStatus.winnerResultAnimation, typeof(AnimationClip), false) as AnimationClip;
+        fighterStatus.loseResultAnimation = EditorGUILayout.ObjectField("敗北アニメーション", fighterStatus.loseResultAnimation, typeof(AnimationClip), false) as AnimationClip;
         fighterStatus.HP = EditorGUILayout.IntField("HP", fighterStatus.HP);
         fighterStatus.airBraking = EditorGUILayout.FloatField("空中制動", fighterStatus.airBraking);
         fighterStatus.StanGuage = EditorGUILayout.IntField("スタン値", fighterStatus.StanGuage);

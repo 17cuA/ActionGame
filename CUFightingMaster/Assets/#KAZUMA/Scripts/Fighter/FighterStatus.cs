@@ -38,8 +38,10 @@ public class FighterStatus : ScriptableObject
 		public Material[] nomalMaterial = { };
 		public Material[] inversionMaterial = { };
 	}
-
-	public int HP = 100;
+    public int PlayerID = 0;
+    public AnimationClip winnerResultAnimation = null;
+    public AnimationClip loseResultAnimation = null;
+    public int HP = 100;
 	public int StanGuage = 100;
 	public int SpecialGuage = 100;
 	public float airBraking = 0.5f;//空中制動

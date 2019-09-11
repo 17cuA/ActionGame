@@ -6,6 +6,7 @@ public class TimelinePlayer : CameraBase
 {
     public CinemaController cinemaController;
     public GameObject destroyObject;
+    public PlayerNumber playerNumber;
     public override void PlayCamera()
     {
         ProductionCameraManager.Instance.cinemachine[0].gameObject.SetActive(true);
