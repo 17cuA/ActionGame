@@ -47,7 +47,28 @@ MonoBehaviour:
       type: 3}
   isInvincibleBullet: 1
   plusHeadHitBox: []
-  plusBodyHitBox: []
+  plusBodyHitBox:
+  - isFalse: 1
+    isInfinityFrame: 0
+    hitBox:
+      size: {x: 0, y: 0, z: 0}
+      localPosition: {x: 0.71, y: 0, z: 0}
+    startFrame: 0
+    endFrame: 62
+  - isFalse: 0
+    isInfinityFrame: 0
+    hitBox:
+      size: {x: 0.48, y: 0, z: 0}
+      localPosition: {x: 0.83, y: -0.7, z: 0}
+    startFrame: 63
+    endFrame: 70
+  - isFalse: 1
+    isInfinityFrame: 0
+    hitBox:
+      size: {x: 0, y: 0, z: 0}
+      localPosition: {x: 0, y: 0, z: 0}
+    startFrame: 71
+    endFrame: 129
   plusFootHitBox: []
   plusGrabHitBox: []
   plusPushingHitBox: []
@@ -64,14 +85,14 @@ MonoBehaviour:
     - isFalse: 0
       isInfinityFrame: 0
       hitBox:
-        size: {x: 4, y: 4, z: 0}
+        size: {x: 4, y: 4, z: 1}
         localPosition: {x: 0, y: 1.8, z: 0}
       startFrame: 77
       endFrame: 87
     - isFalse: 0
       isInfinityFrame: 0
       hitBox:
-        size: {x: 4, y: 4, z: 0}
+        size: {x: 4, y: 4, z: 1}
         localPosition: {x: 0, y: 1.8, z: 0}
       startFrame: 88
       endFrame: 98
@@ -157,7 +178,7 @@ MonoBehaviour:
     startFrame: 0
     endFrame: 65
   headFlag: 0
-  bodyFlag: 0
+  bodyFlag: 1
   footFlag: 0
   grabFlag: 0
   pushingFlag: 1

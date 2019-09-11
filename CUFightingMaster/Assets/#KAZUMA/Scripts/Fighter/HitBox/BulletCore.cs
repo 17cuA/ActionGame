@@ -16,7 +16,7 @@ public abstract class BulletCore : MonoBehaviour,IEventable
 	public int RightLeft = 1;
 	public PlayerNumber playerNumber = PlayerNumber.None;
 
-	protected int nowFrame = -1;//現在のフレーム
+    protected int nowFrame = -1;//現在のフレーム
     protected int allFrame = -1;//全体フレーム
     protected bool isEndFrame = false;//フレームの最大数を超えた時
     protected int hitAttackNum = 0;//攻撃が当たった回数
@@ -24,6 +24,7 @@ public abstract class BulletCore : MonoBehaviour,IEventable
     protected bool isNotCheck = false;//当たり判定を無くす
     protected bool isWallHit = false;
     protected bool isGroundHit = false;
+    protected bool isNotDestroy = false;
 
     public virtual void Start()
 	{
@@ -202,9 +203,13 @@ public abstract class BulletCore : MonoBehaviour,IEventable
                 {
                     foreach (var hit in bulletHit.offsetEffects)
                     {
-                        Instantiate(hit.effect, hit.position + transform.position, Quaternion.identity);
+                        Instantiate(hit.effect,c.gameObject.transform.position + hit.position, Quaternion.identity);
                     }
-                    isDestroyFlag = true;
+                    if (!isNotDestroy)
+                    {
+                        isDestroyFlag = true;
+                    }
+                    attackHit = true;
                     return;
                 }
                 hitAttackNum++;
@@ -224,9 +229,13 @@ public abstract class BulletCore : MonoBehaviour,IEventable
                 {
                     foreach (var hit in bulletHit.offsetEffects)
                     {
-                        Instantiate(hit.effect, hit.position + transform.position, Quaternion.identity);
+                        Instantiate(hit.effect,c.gameObject.transform.position + hit.position, Quaternion.identity);
                     }
-                    isDestroyFlag = true;
+                    if (!isNotDestroy)
+                    {
+                        isDestroyFlag = true;
+                    }
+                    attackHit = true;
                     return;
                 }
             }

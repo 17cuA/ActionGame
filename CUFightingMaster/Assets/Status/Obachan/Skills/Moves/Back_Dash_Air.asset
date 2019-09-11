@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4fbd35985d310504d81036cc55356454, type: 3}
-  m_Name: Front_Dash_Air
+  m_Name: Back_Dash_Air
   m_EditorClassIdentifier: 
   skillLayer: 0
   animationClip: {fileID: 7400000, guid: c938d20629966ac4ea922b5d7e117469, type: 2}
@@ -23,10 +23,11 @@ MonoBehaviour:
     worldPositionFlag: 0
     position: {x: 0, y: 0, z: 0}
   - frame: 0
-    effect: {fileID: 746022660898988562, guid: 4ed14fdbd306ec14198e0d857d56e194, type: 3}
+    effect: {fileID: 6389571469780443139, guid: b7224cc72130e1149aa95967284d9ee5,
+      type: 3}
     childFlag: 0
     worldPositionFlag: 0
-    position: {x: -1.03, y: 1.46, z: 0}
+    position: {x: 0.53, y: 1.54, z: 0}
   frameBullets: []
   cancelFrag: 0
   endNextAnimation: {fileID: 0}
@@ -92,7 +93,7 @@ MonoBehaviour:
     isImpact: 0
     isBound: 0
     boundMovements: []
-    movement: {x: 2.5, y: 0, z: 0}
+    movement: {x: -2.5, y: 0, z: 0}
     startFrame: 0
   - isGravityInvaid: 0
     isResetStartGravity: 0
@@ -100,7 +101,7 @@ MonoBehaviour:
     isImpact: 0
     isBound: 0
     boundMovements: []
-    movement: {x: 1, y: 0, z: 0}
+    movement: {x: -1, y: 0, z: 0}
     startFrame: 12
   gravityMoves: []
   timeStops:
