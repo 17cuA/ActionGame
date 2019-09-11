@@ -148,7 +148,7 @@ MonoBehaviour:
   fadeInFrame: 0
   fadeOutFrame: 0
   stopUIs: []
-  isStart: 1
+  isStart: 0
   isLoop: 0
   isLeave: 0
 --- !u!114 &518618
@@ -164,7 +164,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.2869586, g: 0.2588235, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -218,6 +218,8 @@ GameObject:
   - component: {fileID: 67625287}
   - component: {fileID: 67625289}
   - component: {fileID: 67625288}
+  - component: {fileID: 67625291}
+  - component: {fileID: 67625290}
   m_Layer: 5
   m_Name: VS
   m_TagString: Untagged
@@ -281,6 +283,43 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 67625286}
   m_CullTransparentMesh: 0
+--- !u!114 &67625290
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 67625286}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5fc81cb16d4c7e448a5ab4153963e6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nowClip: {fileID: 0}
+  setClip: {fileID: 0}
+  animationSpeed: 1
+  changeWeightFrame: 0
+  nowFrame: 0
+  frameCount: 0
+--- !u!95 &67625291
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 67625286}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &150198953
 GameObject:
   m_ObjectHideFlags: 0
@@ -18229,6 +18268,8 @@ GameObject:
   - component: {fileID: 1081263047}
   - component: {fileID: 1081263049}
   - component: {fileID: 1081263048}
+  - component: {fileID: 1081263051}
+  - component: {fileID: 1081263050}
   m_Layer: 5
   m_Name: VS
   m_TagString: Untagged
@@ -18292,6 +18333,43 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1081263046}
   m_CullTransparentMesh: 0
+--- !u!114 &1081263050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1081263046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5fc81cb16d4c7e448a5ab4153963e6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nowClip: {fileID: 0}
+  setClip: {fileID: 0}
+  animationSpeed: 1
+  changeWeightFrame: 0
+  nowFrame: 0
+  frameCount: 0
+--- !u!95 &1081263051
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1081263046}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1094500550
 GameObject:
   m_ObjectHideFlags: 0
@@ -23909,6 +23987,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1348061268}
   - component: {fileID: 1348061269}
+  - component: {fileID: 1348061271}
+  - component: {fileID: 1348061270}
   m_Layer: 5
   m_Name: UI_CountDownTimer
   m_TagString: Untagged
@@ -23965,6 +24045,43 @@ MonoBehaviour:
   - {fileID: 21300014, guid: c176bd317ab7a404e96d019afb97c182, type: 3}
   - {fileID: 21300016, guid: c176bd317ab7a404e96d019afb97c182, type: 3}
   - {fileID: 21300018, guid: c176bd317ab7a404e96d019afb97c182, type: 3}
+--- !u!114 &1348061270
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1348061267}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5fc81cb16d4c7e448a5ab4153963e6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nowClip: {fileID: 0}
+  setClip: {fileID: 0}
+  animationSpeed: 1
+  changeWeightFrame: 0
+  nowFrame: 0
+  frameCount: 0
+--- !u!95 &1348061271
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1348061267}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1413274285
 GameObject:
   m_ObjectHideFlags: 0
@@ -25824,6 +25941,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1552958353}
   - component: {fileID: 1552958354}
+  - component: {fileID: 1552958356}
+  - component: {fileID: 1552958355}
   m_Layer: 5
   m_Name: UI_CountDownTimer
   m_TagString: Untagged
@@ -25880,6 +25999,43 @@ MonoBehaviour:
   - {fileID: 21300014, guid: c176bd317ab7a404e96d019afb97c182, type: 3}
   - {fileID: 21300016, guid: c176bd317ab7a404e96d019afb97c182, type: 3}
   - {fileID: 21300018, guid: c176bd317ab7a404e96d019afb97c182, type: 3}
+--- !u!114 &1552958355
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1552958352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5fc81cb16d4c7e448a5ab4153963e6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nowClip: {fileID: 0}
+  setClip: {fileID: 0}
+  animationSpeed: 1
+  changeWeightFrame: 0
+  nowFrame: 0
+  frameCount: 0
+--- !u!95 &1552958356
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1552958352}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1558035962
 GameObject:
   m_ObjectHideFlags: 0
@@ -25916,7 +26072,7 @@ MonoBehaviour:
   fadeInFrame: 0
   fadeOutFrame: 0
   stopUIs: []
-  isStart: 1
+  isStart: 0
   isLoop: 0
   isLeave: 0
 --- !u!114 &1558035964
@@ -25932,7 +26088,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.2688679, b: 0.2688679, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -26049,7 +26205,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 520, y: -0.000015258789}
+  m_AnchoredPosition: {x: 520, y: -0.00001525879}
   m_SizeDelta: {x: 300, y: 500}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1580913464
@@ -26224,7 +26380,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 7bae8b74f25491a45884f4fb1a1f985c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5847bc7545365304c995a80f62074490, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -26305,6 +26461,7 @@ MonoBehaviour:
   cursor1_2: {fileID: 586045555}
   cursor2_1: {fileID: 1000260539}
   cursor2_2: {fileID: 1470746476}
+  makuFlag: 0
   CharacterNamePanels:
   - {fileID: 741554399}
   - {fileID: 1583690196}
@@ -26346,6 +26503,10 @@ MonoBehaviour:
   panelAnimFlag: 0
   animFlagCount: 0
   fadeFrame: 0
+  timerAnim:
+  - {fileID: 1552958355}
+  - {fileID: 1348061270}
+  timerTnimClip: {fileID: 7400000, guid: de2918c04f8141847ba416cfda8189b1, type: 2}
 --- !u!4 &1618172208
 Transform:
   m_ObjectHideFlags: 0
@@ -26976,7 +27137,7 @@ MonoBehaviour:
   fadeInFrame: 0
   fadeOutFrame: 0
   stopUIs: []
-  isStart: 1
+  isStart: 0
   isLoop: 0
   isLeave: 0
 --- !u!114 &1850617275
@@ -26992,7 +27153,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.24056602, b: 0.24056602, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -27219,7 +27380,7 @@ MonoBehaviour:
   fadeInFrame: 0
   fadeOutFrame: 0
   stopUIs: []
-  isStart: 1
+  isStart: 0
   isLoop: 0
   isLeave: 0
 --- !u!114 &1962944625
@@ -27235,7 +27396,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.19339621, g: 0.30094367, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
