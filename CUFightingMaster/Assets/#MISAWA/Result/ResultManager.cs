@@ -53,44 +53,44 @@ public class ResultManager : MonoBehaviour
 
         resultController_1 = canvas_1.transform.Find("ResultController").GetComponent<ResultController>();
         resultController_2 = canvas_2.transform.Find("ResultController").GetComponent<ResultController>();
-        
-        var obj = Instantiate(GameDataStrage.Instance.fighterStatuses[0].fighter, targetPos[0].transform.position, Quaternion.identity);
-        obj.gameObject.layer = LayerMask.NameToLayer(CommonConstants.Layers.Player_One);
-        var obj2 = Instantiate(GameDataStrage.Instance.fighterStatuses[1].fighter, targetPos[1].transform.position, Quaternion.identity);
-        obj.gameObject.layer = LayerMask.NameToLayer(CommonConstants.Layers.Player_Two);
 
-        if (GameDataStrage.Instance.winFlag_PlayerOne == true)
-        {
-            obj.GetComponent<NomalAnimationPlayer>().SetPlayAnimation(obj.GetComponent<FighterStatus>().winnerResultAnimation, 0.5f, 0);
-            obj2.GetComponent<NomalAnimationPlayer>().SetPlayAnimation(obj.GetComponent<FighterStatus>().loseResultAnimation, 0.5f, 0);
-            if(obj.GetComponent<FighterStatus>().PlayerID == 0)
-            {
-                bindControllers[0].PlayerNum_ = 0;
-            }
-            else if(obj.GetComponent<FighterStatus>().PlayerID == 1)
-            {
-                bindControllers[1].PlayerNum_ = 0;
-            }
-        }
-        else if (GameDataStrage.Instance.winFlag_PlayerTwo == true)
-        {
-            obj.GetComponent<NomalAnimationPlayer>().SetPlayAnimation(obj.GetComponent<FighterStatus>().loseResultAnimation, 0.5f,0);
-            obj2.GetComponent<NomalAnimationPlayer>().SetPlayAnimation(obj.GetComponent<FighterStatus>().winnerResultAnimation, 0.5f, 0);
-            if (obj.GetComponent<FighterStatus>().PlayerID == 0)
-            {
-                bindControllers[0].PlayerNum_ = 1;
-            }
-            else if (obj.GetComponent<FighterStatus>().PlayerID == 1)
-            {
-                bindControllers[1].PlayerNum_ = 1;
-            }
-        }
-        else if(GameDataStrage.Instance.winFlag_PlayerOne == false && GameDataStrage.Instance.winFlag_PlayerTwo == false)
-        {
-            obj.GetComponent<NomalAnimationPlayer>().SetPlayAnimation(obj.GetComponent<FighterStatus>().loseResultAnimation, 0.5f, 0);
-            obj2.GetComponent<NomalAnimationPlayer>().SetPlayAnimation(obj.GetComponent<FighterStatus>().loseResultAnimation, 0.5f, 0);
-            
-        }
+        //var obj = Instantiate(GameDataStrage.Instance.fighterStatuses[0].fighter, targetPos[0].transform.position, Quaternion.identity);
+        //obj.gameObject.layer = LayerMask.NameToLayer(CommonConstants.Layers.Player_One);
+        //var obj2 = Instantiate(GameDataStrage.Instance.fighterStatuses[1].fighter, targetPos[1].transform.position, Quaternion.identity);
+        //obj.gameObject.layer = LayerMask.NameToLayer(CommonConstants.Layers.Player_Two);
+
+        //if (GameDataStrage.Instance.winFlag_PlayerOne == true)
+        //{
+        //    obj.GetComponent<NomalAnimationPlayer>().SetPlayAnimation(obj.GetComponent<FighterStatus>().winnerResultAnimation, 0.5f, 0);
+        //    obj2.GetComponent<NomalAnimationPlayer>().SetPlayAnimation(obj.GetComponent<FighterStatus>().loseResultAnimation, 0.5f, 0);
+        //    if(obj.GetComponent<FighterStatus>().PlayerID == 0)
+        //    {
+        //        bindControllers[0].PlayerNum_ = 0;
+        //    }
+        //    else if(obj.GetComponent<FighterStatus>().PlayerID == 1)
+        //    {
+        //        bindControllers[1].PlayerNum_ = 0;
+        //    }
+        //}
+        //else if (GameDataStrage.Instance.winFlag_PlayerTwo == true)
+        //{
+        //    obj.GetComponent<NomalAnimationPlayer>().SetPlayAnimation(obj.GetComponent<FighterStatus>().loseResultAnimation, 0.5f,0);
+        //    obj2.GetComponent<NomalAnimationPlayer>().SetPlayAnimation(obj.GetComponent<FighterStatus>().winnerResultAnimation, 0.5f, 0);
+        //    if (obj.GetComponent<FighterStatus>().PlayerID == 0)
+        //    {
+        //        bindControllers[0].PlayerNum_ = 1;
+        //    }
+        //    else if (obj.GetComponent<FighterStatus>().PlayerID == 1)
+        //    {
+        //        bindControllers[1].PlayerNum_ = 1;
+        //    }
+        //}
+        //else if(GameDataStrage.Instance.winFlag_PlayerOne == false && GameDataStrage.Instance.winFlag_PlayerTwo == false)
+        //{
+        //    obj.GetComponent<NomalAnimationPlayer>().SetPlayAnimation(obj.GetComponent<FighterStatus>().loseResultAnimation, 0.5f, 0);
+        //    obj2.GetComponent<NomalAnimationPlayer>().SetPlayAnimation(obj.GetComponent<FighterStatus>().loseResultAnimation, 0.5f, 0);
+
+        //}
 
 
 
@@ -113,10 +113,11 @@ public class ResultManager : MonoBehaviour
     {
         if (canvasController_Result.UpCurtain())
         {
-            if (cinemaController.isPlay == false)
-            {
-                currentUpdate = PlayUIAnime;
-            }
+            currentUpdate = PlayUIAnime;
+            //if (cinemaController.isPlay == false)
+            //{
+            //    currentUpdate = PlayUIAnime;
+            //}
         }
 
     }
