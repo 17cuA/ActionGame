@@ -53,7 +53,9 @@ public class CameraController : SingletonMono<CameraController>
 
 	private float distance_CamToPlayer;				// カメラからキャラまでの距離
 	private float distanceOfPlayers_Start;			// ゲーム開始時のプレイヤー同士の距離
-	private float distanceOfPLayers_Current;		// 現在のプレイヤー同士の距離
+	private float distanceOfPLayers_Current;        // 現在のプレイヤー同士の距離
+	private float distanceOfPreviousFrame;
+	public float speed = 5.0f;
 	private Vector3 pCentorPos;						// プレイヤー同士のセンターを取得
 
 	[SerializeField]
@@ -133,7 +135,9 @@ public class CameraController : SingletonMono<CameraController>
 		CameraPos();
 		TargetPos();
 		// カメラの移動・ズーム
-		transform.Translate(pCentorPos.x - transform.position.x, 0, Zoom());
+		//transform.Translate(pCentorPos.x - transform.position.x, 0, Zoom());
+		//transform.Translate(0, 0, Zoom());
+		transform.position = Vector3.Lerp(new Vector3(transform.position.x, transform.position.y, transform.position.z), new Vector3(pCentorPos.x, transform.position.y, transform.position.z + Zoom()), Time.time * speed / distanceOfPreviousFrame);
 		// カメラの座標を制限(現在Y軸移動はここで行っている)
 		transform.position = new Vector3(Mathf.Clamp(transform.position.x, cameraPos_Min.x, cameraPos_Max.x), pCentorPos.y + offsetY, transform.position.z);
 	}
@@ -146,6 +150,7 @@ public class CameraController : SingletonMono<CameraController>
 	{
 		pCentorPos = (Fighter1.transform.position + Fighter2.transform.position) / 2;
 		distanceOfPLayers_Current = Vector3.Distance(Camera.main.WorldToViewportPoint(Fighter1.transform.position), Camera.main.WorldToViewportPoint(Fighter2.transform.position));
+		distanceOfPreviousFrame = Vector3.Distance(transform.position, pCentorPos);
 	}
 
 	/// <summary>
