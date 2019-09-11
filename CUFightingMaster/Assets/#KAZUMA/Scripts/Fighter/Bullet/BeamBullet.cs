@@ -10,7 +10,8 @@ public class BeamBullet : BulletCore
 	{
 		base.Start();
 		core = GameManager.Instance.GetPlayFighterCore(playerNumber);
-	}
+        isNotDestroy = true;
+    }
 	public override void UpdateGame()
 	{
 		base.UpdateGame();
