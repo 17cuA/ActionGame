@@ -120,7 +120,7 @@ public class Cursor_CharacterSelect : MonoBehaviour
 		{
 			determining_decision = true;
 		}
-
+		transform.parent = characterPanels[selectDir].transform;
 	}
 	public void SelectChara(Vector2 _dir)
 	{
