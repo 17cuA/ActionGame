@@ -61,15 +61,15 @@ public class UI_StartRound : MonoBehaviour
         {
             case 0:
                 Sound.LoadSe("RoundOne", "Voice_Round1");
-                Sound.PlaySe("RoundOne", 3, 0.8f);
+                Sound.PlaySe("RoundOne", 3, 1);
                 break;
             case 1:
                 Sound.LoadSe("RoundTwo", "Voice_Round2");
-                Sound.PlaySe("RoundTwo", 3, 0.8f);
+                Sound.PlaySe("RoundTwo", 3, 1);
                 break;
             case 2:
                 Sound.LoadSe("RoundThree", "Voice_Final_Round");
-                Sound.PlaySe("RoundThree", 3, 0.8f);
+                Sound.PlaySe("RoundThree", 3, 1);
                 break;
         }
 		// ---------------------------------------------------
@@ -77,7 +77,7 @@ public class UI_StartRound : MonoBehaviour
 		yield return new WaitForSeconds(interval01);
 		// 飯塚追加-------------------------------------------
         Sound.LoadSe("Fight", "Voice_Fight");
-        Sound.PlaySe("Fight", 3, 0.8f);
+        Sound.PlaySe("Fight", 3, 1);
         // ---------------------------------------------------
 		yield return new WaitForSeconds(interval02);
 		isPlay = false;	

@@ -181,10 +181,13 @@ public class Sound
         Sound.LoadSe("Clico_Special4", "Cv_Clico_Special4");
         Sound.LoadSe("Clico_Thrown", "Cv_Clico_Thrown");
         Sound.LoadSe("Clico_RoundStart", "Cv_Clico_RoundStart");
+		Sound.LoadSe("Clico_Tackle", "CV_Clico_Tackle");
 
 
-        // キャラボイスオバチャン
-        Sound.LoadSe("Oba_CharacterSelect", "Cv_Oba_CharacterSelect");
+
+
+		// キャラボイスオバチャン
+		Sound.LoadSe("Oba_CharacterSelect", "Cv_Oba_CharacterSelect");
         Sound.LoadSe("Oba_GetUp_DownCancel", "Cv_Oba_GetUp_DownCancel");
         Sound.LoadSe("Oba_HitL", "Cv_Oba_HitL");
         Sound.LoadSe("Oba_HitM", "Cv_Oba_HitM");
@@ -202,16 +205,16 @@ public class Sound
         Sound.LoadSe("Oba_Special4", "Cv_Oba_Special4");
         Sound.LoadSe("Oba_Thrown", "Cv_Oba_Thrown");
         Sound.LoadSe("Oba_RoundStart", "Cv_Oba_RoundStart");
-    }
+	}
 
-    /// <summary>
-    /// ※サウンドデータはResources/Soundsフォルダに配置すること
-    /// 引数 : 第一引数アクセスキー(好きに命名可能), 第二引数リソース名(サウンドデータに名前を合わせる)
-    /// BGMサウンド個別ロード（1度だけ呼び出す）
-    /// </summary>
-    /// <param name="key"></param>
-    /// <param name="resName"></param>
-    public static void LoadBgm(string key, string resName)
+	/// <summary>
+	/// ※サウンドデータはResources/Soundsフォルダに配置すること
+	/// 引数 : 第一引数アクセスキー(好きに命名可能), 第二引数リソース名(サウンドデータに名前を合わせる)
+	/// BGMサウンド個別ロード（1度だけ呼び出す）
+	/// </summary>
+	/// <param name="key"></param>
+	/// <param name="resName"></param>
+	public static void LoadBgm(string key, string resName)
     {
         GetInstance()._LoadBgm(key, resName);
     }
