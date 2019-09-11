@@ -13,15 +13,15 @@ MonoBehaviour:
   m_Name: Air_BackDash
   m_EditorClassIdentifier: 
   skillLayer: 0
-  animationClip: {fileID: 7400000, guid: cb594b02982be6948ade842041971ba5, type: 2}
-  animationSpeed: 0.8
+  animationClip: {fileID: 7400000, guid: 1f21036bf092c4847b1ce74a58b6f6f1, type: 2}
+  animationSpeed: 1
   status: 16
   frameEffects:
   - frame: 0
     effect: {fileID: 746022660898988562, guid: 4ed14fdbd306ec14198e0d857d56e194, type: 3}
     childFlag: 0
     worldPositionFlag: 0
-    position: {x: 0, y: 0, z: 0}
+    position: {x: 0.4, y: 1.93, z: 0}
   - frame: 0
     effect: {fileID: 5920375906062293545, guid: 8c2dc19f3739bcf4da696a534c2dce11,
       type: 3}
@@ -80,7 +80,7 @@ MonoBehaviour:
   isMoveContinue: 0
   movements:
   - isGravityInvaid: 1
-    isResetStartGravity: 1
+    isResetStartGravity: 0
     isResetEndGravity: 0
     isImpact: 1
     isBound: 0
@@ -88,7 +88,7 @@ MonoBehaviour:
     movement: {x: 0, y: 0, z: 0}
     startFrame: 3
   - isGravityInvaid: 0
-    isResetStartGravity: 0
+    isResetStartGravity: 1
     isResetEndGravity: 0
     isImpact: 0
     isBound: 0
