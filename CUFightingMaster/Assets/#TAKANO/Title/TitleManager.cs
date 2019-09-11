@@ -15,6 +15,7 @@ public class TitleManager : MonoBehaviour
     [SerializeField] private LogoAnimation logoAnimation;
 	[SerializeField] private CanvasController_Title canvasController_Title;
 	[SerializeField] private DemoMovie_Sound demoMovie_Sound;
+	public GameObject[] blackBackLine;
 
 	public bool isRunDemoMovie = false;
 
@@ -126,6 +127,11 @@ public class TitleManager : MonoBehaviour
     /// </summary>
     private void PlayDemoMovie()
 	{
+		//帯追加
+		for (int i = 0;i < blackBackLine.Length;i++)
+		{
+			blackBackLine[i].GetComponent<AnimationUIManager>().isStart = true;
+		}
         demoMoveTime = demoMoveTimeMax;
         canvasController_Title.PlayVideo();
 		currentUpdate = StartDemoMovie_Fadein;
