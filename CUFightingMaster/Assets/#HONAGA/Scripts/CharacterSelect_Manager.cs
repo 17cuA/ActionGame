@@ -13,6 +13,8 @@ public class CharacterSelect_Manager : SingletonMono<CharacterSelect_Manager>
     public Cursor_CharacterSelect cursor2_1;
     public Cursor_CharacterSelect cursor2_2;
 
+	public bool makuFlag = false;
+
     [SerializeField]
     static int charaMax = 4;
 
@@ -43,7 +45,9 @@ public class CharacterSelect_Manager : SingletonMono<CharacterSelect_Manager>
     {
         get { return fadeFrame; }
     }
-    #endregion
+	public NomalAnimationPlayer[] timerAnim = new NomalAnimationPlayer[2];
+	public AnimationClip timerTnimClip;
+	#endregion
     // Start is called before the first frame update
     void Start()
     {
@@ -91,6 +95,7 @@ public class CharacterSelect_Manager : SingletonMono<CharacterSelect_Manager>
 
     void Update()
     {
+
         #region 1Pのキャラ選択の処理
         if (cursor1_1 == null)
         {
@@ -152,7 +157,12 @@ public class CharacterSelect_Manager : SingletonMono<CharacterSelect_Manager>
                 // Display1の表示されているキャラ名をおばちゃんにする
                 CharacterNamePanels[0].GetComponent<Image>().sprite = SelectCharacterNamePanels[2];
             }
-            PreviewModelsActiveSet(2, 1);
+			if (CharacterNamePanels[2] != null)
+			{
+				// Display2の表示されているキャラ名を別グリコにする
+				CharacterNamePanels[2].GetComponent<Image>().sprite = SelectCharacterNamePanels[2];
+			}
+			PreviewModelsActiveSet(2, 1);
         }
         // 3 なら別おばちゃん
         else if (cursor1_1.selectDir == 3)
@@ -312,7 +322,8 @@ public class CharacterSelect_Manager : SingletonMono<CharacterSelect_Manager>
             cursor1_2.determining_All = true;
             cursor2_1.determining_All = true;
             cursor2_2.determining_All = true;
-        }
+
+		}
 		else
 		{
 			fadeFrame = 0;
@@ -341,7 +352,10 @@ public class CharacterSelect_Manager : SingletonMono<CharacterSelect_Manager>
             cursor2_1.characterPanels[1].GetComponent<Animation>().Play();  // Display2の左から２番目のパネル
             cursor2_1.characterPanels[2].GetComponent<Animation>().Play();  // Display2の右から２番目のパネル
             cursor2_1.characterPanels[3].GetComponent<Animation>().Play();  // Display2の一番右のパネル
-        }
+
+			timerAnim[0].SetPlayAnimation(timerTnimClip, 1.0f, 0);
+			timerAnim[1].SetPlayAnimation(timerTnimClip, 1.0f, 0);
+		}
     }
     // selectCharacterが１ならグリコ、２なら別グリコ、3ならおばちゃん、４なら別おばちゃん
     public void PreviewModelsActiveSet(int selectCharacterNum, int playerNum)

@@ -54,7 +54,7 @@ public class Cursor_CharacterSelect : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-        if(determining_All == true)
+        if(determining_All == true ||CharacterSelect_Manager.Instance.makuFlag == true)
         {
             return;
         }

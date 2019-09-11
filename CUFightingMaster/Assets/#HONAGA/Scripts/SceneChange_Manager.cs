@@ -16,7 +16,7 @@ public class SceneChange_Manager : MonoBehaviour
     void Start()
     {
         canvasController_CharacterSelect.InitDownCurtain();
-        Manager = GameObject.Find("Manager").GetComponent<CharacterSelect_Manager>();
+		Manager = GameObject.Find("Manager").GetComponent<CharacterSelect_Manager>();
         async = SceneManager.LoadSceneAsync("Battle");
         async.allowSceneActivation = false;
     }
@@ -26,8 +26,9 @@ public class SceneChange_Manager : MonoBehaviour
     {
         if (Manager.sceneChangeJughe == false)
         {
-            canvasController_CharacterSelect.UpCurtain();
-        }
+			canvasController_CharacterSelect.UpCurtain();
+
+		}
         if (Manager.sceneChangeJughe == true && Manager.FadeFrame >= 2.0f)
         {
             if (canvasController_CharacterSelect.DownCurtain())
