@@ -162,7 +162,21 @@ MonoBehaviour:
     countValid: 1
     validShotFrame: 6
     skill: {fileID: 11400000, guid: d6cd15b97858e2f49a94d31f9362c102, type: 2}
-  airAttackSkills: []
+  - name: TATTUMAKI
+    command: 214
+    trigger: B
+    skillCost: 0
+    countValid: 1
+    validShotFrame: 6
+    skill: {fileID: 11400000, guid: d70c95dedc1758945a0139b67a0374c7, type: 2}
+  airAttackSkills:
+  - name: TELE
+    command: 214
+    trigger: B
+    skillCost: 0
+    countValid: 1
+    validShotFrame: 6
+    skill: {fileID: 11400000, guid: ac13b0be3484e35489edd3fd686ec7a0, type: 2}
   groundMoveSkills:
   - skillCost: 0
     countValid: 1
@@ -179,9 +193,9 @@ MonoBehaviour:
     countValid: 1
     name: Air_Dash_Back
     command: 44
-    skill: {fileID: 0}
+    skill: {fileID: 11400000, guid: c12b04292a46cc54785cbb06435f614b, type: 2}
   - skillCost: 0
     countValid: 1
     name: Air_Dash_Front
     command: 66
-    skill: {fileID: 11400000, guid: ac13b0be3484e35489edd3fd686ec7a0, type: 2}
+    skill: {fileID: 11400000, guid: 108d3a20c0a1d0b409ca64034152c748, type: 2}

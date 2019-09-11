@@ -197,7 +197,7 @@ public class SoundPlay : MonoBehaviour
                     Sound.PlaySe("Oba_Special1", 17, 0.5f, 1);
                     break;
                 case SoundsType.Oba_Special2:
-                    Sound.PlaySe("Oba_Special2", 17, 0.5f, 1);
+                    Sound.PlaySe("Oba_Special2", 14, 0.5f, 1);
                     break;
                 case SoundsType.Oba_Special3:
                     Sound.PlaySe("Oba_Special3", 17, 0.5f, 1);

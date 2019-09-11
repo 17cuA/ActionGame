@@ -182,6 +182,8 @@ public class CanvasController_Title : MonoBehaviour
 
     public void StopPressAnyButton()
     {
+        pressAnyButton_1.isStart = false;
+        pressAnyButton_2.isStart = false;
         pressAnyButton_1.Init();
         pressAnyButton_2.Init();
     }

@@ -15,16 +15,31 @@ MonoBehaviour:
   maxFrame: 60
   isLoop: 0
   isOffset: 0
+  isNotEnemyOffset: 1
   isInvincibleDis: 0
-  offsetEffects: []
+  offsetEffects:
+  - isEnemyPos: 0
+    isParant: 0
+    isEnemyParant: 0
+    effect: {fileID: 5827488931131362554, guid: 905fd9c4df131224186f199cac616a0d,
+      type: 3}
+    guardEffect: {fileID: 0}
+    position: {x: -0.73, y: 3, z: 0}
+  - isEnemyPos: 0
+    isParant: 0
+    isEnemyParant: 0
+    effect: {fileID: 5827488931131362554, guid: 905fd9c4df131224186f199cac616a0d,
+      type: 3}
+    guardEffect: {fileID: 0}
+    position: {x: 0.76, y: 3, z: 0}
   customHitBox:
   - mode: 4
     frameHitBoxes:
     - isFalse: 0
       isInfinityFrame: 0
       hitBox:
-        size: {x: 50, y: 1, z: 1}
-        localPosition: {x: 24.3, y: 1, z: 0}
+        size: {x: 12, y: 1, z: 1}
+        localPosition: {x: 6, y: 1, z: 0}
       startFrame: 4
       endFrame: 7
     - isFalse: 0
@@ -38,14 +53,14 @@ MonoBehaviour:
       isInfinityFrame: 0
       hitBox:
         size: {x: 50, y: 1, z: 0}
-        localPosition: {x: 24.3, y: 0, z: 0}
+        localPosition: {x: 24.3, y: 1, z: 0}
       startFrame: 13
       endFrame: 16
     - isFalse: 0
       isInfinityFrame: 0
       hitBox:
         size: {x: 50, y: 1, z: 0}
-        localPosition: {x: 24.3, y: 0, z: 0}
+        localPosition: {x: 24.3, y: 1, z: 0}
       startFrame: 17
       endFrame: 21
     hitStop: 4
