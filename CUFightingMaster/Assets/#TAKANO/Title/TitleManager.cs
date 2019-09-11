@@ -35,12 +35,7 @@ public class TitleManager : MonoBehaviour
 
 	private void StartTitle()
 	{
-        //BGMの再生開始
-        Sound.LoadBgm("BGM_Title", "BGM_Title");
-        Sound.PlayBgm("BGM_Title", 0.3f, 1, true);
 
-        //Logoアニメーションの初期化
-        logoAnimation.InitLogoAnimation();
 
         time = waitPlayDemoMovieTime;
 
@@ -54,7 +49,13 @@ public class TitleManager : MonoBehaviour
 	//カーテンを開ける
 	private void UpCurtain()
 	{
-		if(canvasController_Title.UpCurtain())
+		//BGMの再生開始
+		Sound.LoadBgm("BGM_Title", "BGM_Title");
+		Sound.PlayBgm("BGM_Title", 0.3f, 1, true);
+
+		//Logoアニメーションの初期化
+		logoAnimation.InitLogoAnimation();
+		if (canvasController_Title.UpCurtain())
 		{
 			currentUpdate = TitleUpdate;	
 		}
@@ -98,7 +99,7 @@ public class TitleManager : MonoBehaviour
         {
             if(canvasController_Title.IsEnabledRenderTexture() == true)
 			{
-				currentUpdate = StartDemoMovie_Fadein;
+				currentUpdate = PlayDemoMovie;
 			}
         }
     }
@@ -110,7 +111,7 @@ public class TitleManager : MonoBehaviour
     private void StartDemoMovie_Fadein()
     {
 		if (canvasController_Title.StartFadeIn())
-			currentUpdate = PlayDemoMovie;
+			currentUpdate = DemoMovieUpdate;
     }
 
 
@@ -121,7 +122,7 @@ public class TitleManager : MonoBehaviour
 	{
 		
 		canvasController_Title.PlayVideo();
-		currentUpdate = DemoMovieUpdate;
+		currentUpdate = StartDemoMovie_Fadein;
 	}
 
 	/// <summary>
@@ -148,9 +149,9 @@ public class TitleManager : MonoBehaviour
 
     private void EndDemoMovie_FadeOut()
     {
-        if (canvasController_Title.StartFadeOut())
-		{
 			if(canvasController_Title.IsDisabledRenderTexture() == true)
+			{
+			if (canvasController_Title.StartFadeOut())
 			{
 				currentUpdate = EndDemoMovie_FadeIn;
 			}

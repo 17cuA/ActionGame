@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.UI;
 
 public class UI_HP_New : MonoBehaviour
 {
@@ -9,7 +10,7 @@ public class UI_HP_New : MonoBehaviour
 
 	private float hpBarWidth;    //hpバーの画像の長さ
 
-	public float redAlpha;          //赤いところのAlpha値
+	public float redAlpha = 1.0f;          //赤いところのAlpha値
 	public float transparentSpeed = 0.015f;
 
 	private int beforeHp = 100;
@@ -18,7 +19,12 @@ public class UI_HP_New : MonoBehaviour
 	private int reciveDamage;
 	private int totalDamage;
 
+	public int frameCnt = 0;
+	public int startTransRedFrame = 90;	//赤が透明になりはじめるまでのフレーム
+
 	public bool isUpdateHp = false;
+
+	public Image redImage;
 
 	public RectTransform maskPos;
 	public RectTransform redPos;
@@ -68,7 +74,7 @@ public class UI_HP_New : MonoBehaviour
 	private void ReceiveMoveRed()
 	{
 		redPos.localPosition = new Vector3(totalDamage - 1, 0, 0);
-		currentUpdate = RedTransparentUpdate;
+		currentUpdate = BeforeRedTransparentUpdate;
 	}
 
 	/// <summary>
@@ -76,7 +82,18 @@ public class UI_HP_New : MonoBehaviour
 	/// </summary>
 	private void BeforeRedTransparentUpdate()
 	{
-
+		frameCnt++;
+		//設定されたフレーム数を過ぎたら透明にしはじめる
+		if(frameCnt < startTransRedFrame)
+		{
+			currentUpdate = RedTransparentUpdate;
+		}
+		//攻撃をうけたら
+		if(isUpdateHp == true)
+		{
+			frameCnt = 0;
+			currentUpdate = ReceiveMoveRed;
+		}
 	}
 
 	/// <summary>
@@ -84,14 +101,19 @@ public class UI_HP_New : MonoBehaviour
 	/// </summary>
 	private void RedTransparentUpdate()
 	{
+		frameCnt = 0;
+
 		//赤いところが透明になるまでに	
-		if(redAlpha >= 0.0f)
+		if (redAlpha >= 0.0f)
 		{
 			//透明化は進む
 			redAlpha -= transparentSpeed;
+			redImage.color = new Color(redImage.color.r, redImage.color.g, redImage.color.b, redAlpha);
+
 			//HPの更新があった場合
-			if(isUpdateHp == true)
+			if (isUpdateHp == true)
 			{
+
 				currentUpdate = MoveRedToGreen;
 			}
 		}
@@ -107,7 +129,11 @@ public class UI_HP_New : MonoBehaviour
 	/// </summary>
 	private void MoveRedToGreen()
 	{
-
+		//実体化する
+		redAlpha = 1.0f;
+		redImage.color = new Color(redImage.color.r, redImage.color.g, redImage.color.b, redAlpha);
+		//移動させる
+		redPos.localPosition = maskPos.localPosition;
 	}
 
 	/// <summary>

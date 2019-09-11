@@ -10,7 +10,7 @@ public class TestSceneManager : MonoBehaviour
     {
         if (Input.anyKeyDown)
 		{
-			obj.GetComponent<AnimationUIManager>().isStart = true;
+			//obj.GetComponent<AnimationUIManager>().isStart = true;
 		}
     }
 }

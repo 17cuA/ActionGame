@@ -1006,7 +1006,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1580848306
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1831,13 +1831,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc9139e33f261ae4095c969aaf2d682f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Name: 
-  m_EditorClassIdentifier: 
   playerType: 0
-  maxHp: 0
+  redAlpha: 0
+  transparentSpeed: 0.015
+  maxHp: 100
+  frameCnt: 0
+  startTransRedFrame: 90
+  isUpdateHp: 0
+  redImage: {fileID: 0}
   maskPos: {fileID: 504244992}
   redPos: {fileID: 1390306773}
-  reactionRedPos: {fileID: 1580848306}
+  reactionRedPos: {fileID: 0}
   hpObjects:
   - {fileID: 1390306772}
   - {fileID: 1072504620}
