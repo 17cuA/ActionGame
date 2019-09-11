@@ -108,7 +108,7 @@ public class UI_HP : MonoBehaviour
 	private IEnumerator ReceiveDamageAction()
 	{
 		//Instantiate(effectsObject, initHpGuagePositon, Quaternion.identity);
-
+				
 		//ダメージを受けたときにHpバーの色が変わるやつ
 		hpObjects[4].SetActive(true);
 		hitRedGuage.localPosition = new Vector3(CalcMove(maxHp, totalDamage), 0, 0);
