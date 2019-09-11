@@ -91,11 +91,11 @@ public class FighterStateGuard : StateBaseScriptMonoBehaviour
         //遠距離の場合は相手側ノックバックなし
         if (box.mode != HitBoxMode.Bullet)
 		{
-			stateBase.core.SetKnockBack(box.guardKnockBack, stateBase.core.EnemyNumber, tmpDir);
+			stateBase.core.SetKnockBack(false, box.guardKnockBack, stateBase.core.EnemyNumber, tmpDir);
 		}
 		else
 		{
-			stateBase.core.SetKnockBack(box.guardKnockBack, stateBase.core.EnemyNumber, tmpDir, false);
+			stateBase.core.SetKnockBack(true, box.guardKnockBack, stateBase.core.EnemyNumber, tmpDir, false);
 		}
 
 		//ダメージを受けたのでリセット

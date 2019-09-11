@@ -14,6 +14,7 @@ public class HitBoxJudgement
     private List<ComponentObjectPool<BoxCollider>.Objs> nowPlayCollider = new List<ComponentObjectPool<BoxCollider>.Objs>();
 
     private bool isPushWall = false;//壁に当たったかどうか
+	private bool isBullet = false;
 
     //コンボ
     private int validComboFrame = 0;
@@ -136,6 +137,7 @@ public class HitBoxJudgement
 	}
     public void UpdateGame()
     {
+		Debug.Log(DamageEnemyNumber);
         ChangeSkillInit();
         isPushWall = false;
         if (core.Direction == PlayerDirection.Right)
@@ -700,7 +702,7 @@ public class HitBoxJudgement
 		}
 		t.parent.transform.position += new Vector3(knockBackMinus * (rl), 0, 0);
         float x = CheckDefaultPushingWall(pushingCollider);
-        if (DamageEnemyNumber != PlayerNumber.None)
+        if (DamageEnemyNumber != PlayerNumber.None&&!isBullet)
         {
 
 			if (Mathf.Abs(x) > 0)
@@ -709,7 +711,7 @@ public class HitBoxJudgement
 				{
 					if (GameManager.Instance.GetPlayFighterCore(DamageEnemyNumber).GroundCheck() == true && isKnockEnemy)
 					{
-						GameManager.Instance.GetPlayFighterCore(DamageEnemyNumber).SetKnockBack(knockBackPower - (knockBackMinus - Mathf.Abs(x)), PlayerNumber.None, PlayerDirection.Left, true, Knock_Back_Count - countKnockBack);
+						GameManager.Instance.GetPlayFighterCore(DamageEnemyNumber).SetKnockBack(false, knockBackPower - (knockBackMinus - Mathf.Abs(x)), PlayerNumber.None, PlayerDirection.Left, true, Knock_Back_Count - countKnockBack);
 					}
 				}
 				else
@@ -717,7 +719,7 @@ public class HitBoxJudgement
 					if (GameManager.Instance.GetPlayFighterCore(DamageEnemyNumber).GroundCheck() == true & isKnockEnemy)
 					{
 
-						GameManager.Instance.GetPlayFighterCore(DamageEnemyNumber).SetKnockBack(knockBackPower - (knockBackMinus - Mathf.Abs(x)), PlayerNumber.None, PlayerDirection.Right, true, Knock_Back_Count - countKnockBack);
+						GameManager.Instance.GetPlayFighterCore(DamageEnemyNumber).SetKnockBack(false, knockBackPower - (knockBackMinus - Mathf.Abs(x)), PlayerNumber.None, PlayerDirection.Right, true, Knock_Back_Count - countKnockBack);
 					}
 				}
 				GameManager.Instance.GetPlayFighterCore(DamageEnemyNumber).KnockBackUpdate();
@@ -731,8 +733,9 @@ public class HitBoxJudgement
         countKnockBack++;
     }
     //ノックバックの初期化
-    public void SetKnockBack(float _power,PlayerNumber _number,PlayerDirection _dir,bool isEnKnock = true, int? _count = null)
+    public void SetKnockBack(bool isBullet,float _power,PlayerNumber _number,PlayerDirection _dir,bool isEnKnock = true, int? _count = null)
 	{
+		this.isBullet = isBullet;
 		knockBackPower = _power;
         if(_count == null)
         {

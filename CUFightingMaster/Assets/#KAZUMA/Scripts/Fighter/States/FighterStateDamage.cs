@@ -176,11 +176,11 @@ public class FighterStateDamage : StateBaseScriptMonoBehaviour
         //遠距離の場合は相手側ノックバックなし
         if (box.mode != HitBoxMode.Bullet)
         {
-            stateBase.core.SetKnockBack(box.knockBack, stateBase.core.EnemyNumber, tmpDir);
+            stateBase.core.SetKnockBack(false, box.knockBack, stateBase.core.EnemyNumber, tmpDir);
         }
         else
         {
-            stateBase.core.SetKnockBack(box.knockBack, stateBase.core.EnemyNumber, tmpDir, false);
+            stateBase.core.SetKnockBack(true, box.knockBack, stateBase.core.EnemyNumber, tmpDir, false);
         }
         //ゲージ増加
         stateBase.core.SpecialGauge += box.enemyPlusGauge;
@@ -288,11 +288,11 @@ public class FighterStateDamage : StateBaseScriptMonoBehaviour
 		//遠距離の場合は相手側ノックバックなし
 		if (box.mode != HitBoxMode.Bullet)
 		{
-			stateBase.core.SetKnockBack(box.airKnockBack, stateBase.core.EnemyNumber, tmpDir);
+			stateBase.core.SetKnockBack(false, box.airKnockBack, stateBase.core.EnemyNumber, tmpDir);
 		}
 		else
 		{
-			stateBase.core.SetKnockBack(box.airKnockBack, stateBase.core.EnemyNumber, tmpDir, false);
+			stateBase.core.SetKnockBack(true, box.airKnockBack, stateBase.core.EnemyNumber, tmpDir, false);
 		}
         //ゲージ増加
         stateBase.core.SpecialGauge += box.enemyPlusGauge;
@@ -354,11 +354,11 @@ public class FighterStateDamage : StateBaseScriptMonoBehaviour
 		//遠距離の場合は相手側ノックバックなし
 		if (box.mode != HitBoxMode.Bullet)
 		{
-			stateBase.core.SetKnockBack(box.airKnockBack, stateBase.core.EnemyNumber, tmpDir);
+			stateBase.core.SetKnockBack(false, box.airKnockBack, stateBase.core.EnemyNumber, tmpDir);
 		}
 		else
 		{
-			stateBase.core.SetKnockBack(box.airKnockBack, stateBase.core.EnemyNumber, tmpDir, false);
+			stateBase.core.SetKnockBack(true, box.airKnockBack, stateBase.core.EnemyNumber, tmpDir, false);
 		}
         //ゲージ増加
         stateBase.core.SpecialGauge += box.enemyPlusGauge;
@@ -447,7 +447,7 @@ public class FighterStateDamage : StateBaseScriptMonoBehaviour
 	//受け身再生
 	public void PlayPassive()
 	{
-        stateBase.core.SetKnockBack(0,PlayerNumber.None, PlayerDirection.Right);
+        stateBase.core.SetKnockBack(false, 0,PlayerNumber.None, PlayerDirection.Right);
         Direction dir = stateBase.input.GetPlayerMoveDirection(stateBase);
 		if (dir == Direction.Back)
 		{
