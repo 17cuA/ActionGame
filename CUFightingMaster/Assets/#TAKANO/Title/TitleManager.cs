@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using UnityEngine.SceneManagement;
+using UnityEngine.Video;
 
 public class TitleManager : MonoBehaviour
 {
@@ -13,12 +14,17 @@ public class TitleManager : MonoBehaviour
 
     [SerializeField] private LogoAnimation logoAnimation;
 	[SerializeField] private CanvasController_Title canvasController_Title;
+	[SerializeField] private DemoMovie_Sound demoMovie_Sound;
 
-    public bool isRunDemoMovie = false;
+	public bool isRunDemoMovie = false;
 
-     public float waitPlayDemoMovieTime;
+    public float waitPlayDemoMovieTime;
 
     private float time;
+
+    public float demoMoveTimeMax;
+
+    public float demoMoveTime;
 
     public GameObject[] pressAnykey;
 
@@ -28,18 +34,12 @@ public class TitleManager : MonoBehaviour
 		canvasController_Title.BrackOut();
         //幕を閉じた状態から始まる
         canvasController_Title.InitDownCurtain();
+        canvasController_Title.StopPressAnyButton();
         currentUpdate = StartTitle;
 	}
 
 	private void StartTitle()
 	{
-        //BGMの再生開始
-        Sound.LoadBgm("BGM_Title", "BGM_Title");
-        Sound.PlayBgm("BGM_Title", 0.3f, 1, true);
-
-        //Logoアニメーションの初期化
-        logoAnimation.InitLogoAnimation();
-
         time = waitPlayDemoMovieTime;
 
         //画面を明るくする
@@ -52,7 +52,14 @@ public class TitleManager : MonoBehaviour
 	//カーテンを開ける
 	private void UpCurtain()
 	{
-		if(canvasController_Title.UpCurtain())
+		//BGMの再生開始
+		Sound.LoadBgm("BGM_Title", "BGM_Title");
+		Sound.PlayBgm("BGM_Title", 0.3f, 1, true);
+
+        //Logoアニメーションの初期化
+        logoAnimation.InitLogoAnimation();
+
+        if (canvasController_Title.UpCurtain())
 		{
 			currentUpdate = TitleUpdate;	
 		}
@@ -87,27 +94,30 @@ public class TitleManager : MonoBehaviour
 	}
 
     /// <summary>
-    /// 画面を暗くする
+    /// 画面を暗くする、デモムービーへの入り
     /// </summary>
     private void StartDemoMovie_FadeOut()
     {
-        if (canvasController_Title.StartFadeOut())
+		Sound.StopBgm();
+
+		if (canvasController_Title.StartFadeOut())
         {
             if(canvasController_Title.IsEnabledRenderTexture() == true)
 			{
-				currentUpdate = StartDemoMovie_Fadein;
+				currentUpdate = PlayDemoMovie;
 			}
         }
     }
 
     /// <summary>
-    /// 画面を明るくする
+    /// 画面を明るくする、デモムービーへの入り
     /// </summary>
     /// <param name="action">コールバック</param>
     private void StartDemoMovie_Fadein()
     {
+
 		if (canvasController_Title.StartFadeIn())
-			currentUpdate = PlayDemoMovie;
+			currentUpdate = DemoMovieUpdate;
     }
 
 
@@ -116,8 +126,9 @@ public class TitleManager : MonoBehaviour
     /// </summary>
     private void PlayDemoMovie()
 	{
-		canvasController_Title.PlayVideo();
-		currentUpdate = DemoMovieUpdate;
+        demoMoveTime = demoMoveTimeMax;
+        canvasController_Title.PlayVideo();
+		currentUpdate = StartDemoMovie_Fadein;
 	}
 
 	/// <summary>
@@ -125,15 +136,18 @@ public class TitleManager : MonoBehaviour
 	/// </summary>
 	private void DemoMovieUpdate()
 	{
+        demoMoveTime -= Time.deltaTime;
+		//音量を徐々に上げる
+		demoMovie_Sound.Volume_Up();
+
 		if (Input.anyKeyDown && !Input.GetKeyDown(KeyCode.Escape) && !Input.GetKeyDown(KeyCode.F1) && !Input.GetKeyDown(KeyCode.F2) && !Input.GetKeyDown(KeyCode.F3) && !Input.GetKeyDown(KeyCode.F4))
 		{
 			currentUpdate = DownCurtain;
 		}
-
-		//デモムービーの再生が終わったら
-		if (canvasController_Title.IsEndPlayVideo())
+        //デモムービーの再生が終わったら
+        if (demoMoveTime <= 0)
 		{
-			canvasController_Title.StopVideo();
+			demoMovie_Sound.Volume_Down();
 			currentUpdate = EndDemoMovie_FadeOut;
 		}
 	}
@@ -141,12 +155,11 @@ public class TitleManager : MonoBehaviour
     private void EndDemoMovie_FadeOut()
     {
         if (canvasController_Title.StartFadeOut())
-		{
-			if(canvasController_Title.IsDisabledRenderTexture() == true)
-			{
-				currentUpdate = EndDemoMovie_FadeIn;
-			}
-		}
+        {
+            canvasController_Title.StopVideo();
+            canvasController_Title.DisabledRenderTexture();
+            currentUpdate = InitTitle;
+        }
     }
 
     private void EndDemoMovie_FadeIn()
@@ -155,7 +168,7 @@ public class TitleManager : MonoBehaviour
         logoAnimation.InitLogoAnimation();
 
         if (canvasController_Title.StartFadeIn())
-            currentUpdate = StartTitle;
+            currentUpdate = InitTitle;
     }
 
     private void DownCurtain()
@@ -171,7 +184,6 @@ public class TitleManager : MonoBehaviour
 		Application.targetFrameRate = 60;
 
 		currentUpdate = InitTitle;
-        currentUpdate();
 
        // canvasController_Title.PlayVideo();
     }

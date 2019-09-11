@@ -11,7 +11,7 @@ public class MediaPlayer : MonoBehaviour
     public RawImage rawImage;
 
 	/// <summary>
-	/// 再生
+	/// 再生	
 	/// </summary>
 	public void PlayVideo()
 	{
@@ -27,13 +27,9 @@ public class MediaPlayer : MonoBehaviour
 		return false;
 	}
 
-	public bool DisabledRenderTexture()
+	public void DisabledRenderTexture()
 	{
-		rawImage.enabled =false;
-		if (rawImage.enabled == false)
-			return true;
-
-		return false;
+        rawImage.enabled = false;
 	}
 
 	/// <summary>
@@ -42,10 +38,10 @@ public class MediaPlayer : MonoBehaviour
 	/// <returns></returns>
 	public bool IsEndPlayVideo()
 	{
-		if ((ulong)videoPlayer.frame == (videoPlayer.frameCount - 1))
+        if ((ulong)videoPlayer.frame == (videoPlayer.frameCount) )
 		{
-
-			return true;
+            Debug.Log("b");
+            return true;
 		}
 		return false;
 	}
@@ -61,6 +57,7 @@ public class MediaPlayer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Application.targetFrameRate = 60;
 		videoPlayer.isLooping = false;
     }
 

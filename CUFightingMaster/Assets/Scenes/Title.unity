@@ -856,6 +856,8 @@ GameObject:
   - component: {fileID: 656211002}
   - component: {fileID: 656211001}
   - component: {fileID: 656211004}
+  - component: {fileID: 656211005}
+  - component: {fileID: 656211006}
   m_Layer: 5
   m_Name: MediaPlayer
   m_TagString: Untagged
@@ -937,9 +939,9 @@ VideoPlayer:
   m_AspectRatio: 2
   m_DataSource: 0
   m_PlaybackSpeed: 1
-  m_AudioOutputMode: 2
+  m_AudioOutputMode: 1
   m_TargetAudioSources:
-  - {fileID: 0}
+  - {fileID: 656211005}
   m_DirectAudioVolumes:
   - 0
   m_Url: 
@@ -947,7 +949,7 @@ VideoPlayer:
   m_DirectAudioMutes: 00
   m_ControlledAudioTrackCount: 1
   m_PlayOnAwake: 0
-  m_SkipOnDrop: 1
+  m_SkipOnDrop: 0
   m_Looping: 0
   m_WaitForFirstFrame: 1
   m_FrameReadyEventEnabled: 0
@@ -965,6 +967,115 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   videoPlayer: {fileID: 656211003}
   rawImage: {fileID: 656211001}
+--- !u!82 &656211005
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 656210999}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 0
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &656211006
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 656210999}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ba747ae39c00474ab145ab7fc60230e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioSource: {fileID: 656211005}
 --- !u!1 &684434931
 GameObject:
   m_ObjectHideFlags: 0
@@ -1150,7 +1261,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 84a40b3f4f2999648afda9a8b9db0096, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 09d47b07bfc6c214c94718349e9022f7, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1179,10 +1290,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae586ca7055677142960095fb0ee3abf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteName: PLESS ANY BUTTON
-  delayChangeFrame: 5
-  fadeInFrame: 0
-  fadeOutFrame: 0
+  spriteName: PRESS ANY BUTTON
+  delayChangeFrame: 1
+  fadeInFrame: 4
+  fadeOutFrame: 4
   stopUIs: []
   isStart: 0
   isLoop: 1
@@ -6021,6 +6132,7 @@ GameObject:
   - component: {fileID: 1116414041}
   - component: {fileID: 1116414040}
   - component: {fileID: 1116414042}
+  - component: {fileID: 1116414043}
   m_Layer: 0
   m_Name: TitleManager
   m_TagString: Untagged
@@ -6042,8 +6154,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   logoAnimation: {fileID: 1116414042}
   canvasController_Title: {fileID: 580358598}
+  demoMovie_Sound: {fileID: 656211006}
   isRunDemoMovie: 0
-  waitPlayDemoMovieTime: 20
+  waitPlayDemoMovieTime: 30
+  demoMoveTimeMax: 52
+  demoMoveTime: 0
   pressAnykey:
   - {fileID: 1835560083}
   - {fileID: 829143946}
@@ -6083,6 +6198,21 @@ MonoBehaviour:
   - {fileID: 7400000, guid: 4a9d13579f94dcc4ab07a9ba5a93d301, type: 2}
   pressAnyKey:
   - {fileID: 1835560083}
+  - {fileID: 829143946}
+--- !u!114 &1116414043
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1116414039}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5157f7a812e59234cb23b5a124a3865a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameObjects:
+  - {fileID: 829143946}
   - {fileID: 829143946}
 --- !u!114 &1155175465 stripped
 MonoBehaviour:
@@ -11415,7 +11545,7 @@ PrefabInstance:
     - target: {fileID: 3098419182971050109, guid: 6500181de5c29c546a6f10f9864c8e7c,
         type: 3}
       propertyPath: fadeSpeed
-      value: 0.03
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 3098419182971050082, guid: 6500181de5c29c546a6f10f9864c8e7c,
         type: 3}
@@ -11582,7 +11712,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 84a40b3f4f2999648afda9a8b9db0096, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 09d47b07bfc6c214c94718349e9022f7, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -11611,10 +11741,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae586ca7055677142960095fb0ee3abf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteName: PLESS ANY BUTTON
-  delayChangeFrame: 8
-  fadeInFrame: 0
-  fadeOutFrame: 0
+  spriteName: PRESS ANY BUTTON
+  delayChangeFrame: 1
+  fadeInFrame: 4
+  fadeOutFrame: 4
   stopUIs: []
   isStart: 0
   isLoop: 1
@@ -16444,7 +16574,7 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 0
-  m_Camera: {fileID: 0}
+  m_Camera: {fileID: 286293506}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -16598,7 +16728,7 @@ VideoPlayer:
   m_DirectAudioMutes: 00
   m_ControlledAudioTrackCount: 1
   m_PlayOnAwake: 0
-  m_SkipOnDrop: 1
+  m_SkipOnDrop: 0
   m_Looping: 0
   m_WaitForFirstFrame: 1
   m_FrameReadyEventEnabled: 0
@@ -16661,7 +16791,7 @@ PrefabInstance:
     - target: {fileID: 3098419182971050109, guid: 6500181de5c29c546a6f10f9864c8e7c,
         type: 3}
       propertyPath: fadeSpeed
-      value: 0.03
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 3098419182971050082, guid: 6500181de5c29c546a6f10f9864c8e7c,
         type: 3}
