@@ -11,7 +11,7 @@ public class MediaPlayer : MonoBehaviour
     public RawImage rawImage;
 
 	/// <summary>
-	/// 再生
+	/// 再生	
 	/// </summary>
 	public void PlayVideo()
 	{
