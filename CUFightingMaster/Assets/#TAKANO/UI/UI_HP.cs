@@ -24,7 +24,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using System;
 
 public class UI_HP : MonoBehaviour
 {
@@ -114,7 +113,7 @@ public class UI_HP : MonoBehaviour
 		hpObjects[4].SetActive(true);
 		hitRedGuage.localPosition = new Vector3(CalcMove(maxHp, totalDamage), 0, 0);
 		//HPゲージを震わす
-		StartCoroutine(VibrationHPGuage());
+		Shake(0.5f, 100f);
 		yield return new WaitForSeconds(0.1f);
 		//HPゲージを元の位置に
 		hpGuagePosition.position = initHpGuagePositon;
@@ -122,42 +121,42 @@ public class UI_HP : MonoBehaviour
 		hpObjects[4].SetActive(false);
 	}
 
+#region 揺らす処理
 	/// <summary>
 	/// ふるえるHP
 	/// </summary>
-	/// <returns></returns>
-	private IEnumerator VibrationHPGuage()
+	/// <param name="duration">揺れる期間</param>
+	/// <param name="magnitude">揺れの大きさ</param>
+	void Shake(float duration, float magnitude)
 	{
-		limitHpGuagePosition = hpGuagePosition.position;
-		limitHpGuagePosition += new Vector3(vibrationValue, vibrationValue, 0);
+		StartCoroutine(DoShake(duration, magnitude));
+	}
 
-		Vector3 vec3 = hpGuagePosition.position;
-		for (int i = 0; i < 5; i++)
+	/// <summary>
+	/// 揺らす値を受け取り揺らす
+	/// </summary>
+	/// <param name="duration">揺れる期間</param>
+	/// <param name="magnitude">揺れの大きさ</param>
+	/// <returns></returns>
+	IEnumerator DoShake(float duration, float magnitude)
+	{
+		// 経過時間
+		var elapsed = 0f;
+
+		while (elapsed < duration)
 		{
-			int rand = UnityEngine.Random.Range(0, 3);
-			if (rand == 0 && hpGuagePosition.position.y < limitHpGuagePosition.y)
-			{
-				vec3.y += vibrationValue;
-				yield return new WaitForSeconds(0.01f);
-			}
-			else if (rand == 1 && hpGuagePosition.position.y > (limitHpGuagePosition.y * -1))
-			{
-				vec3.y -= vibrationValue;
-				yield return new WaitForSeconds(0.01f);
-			}
-			else if (rand == 2 && hpGuagePosition.position.x < limitHpGuagePosition.x)
-			{
-				vec3.x += vibrationValue;
-				yield return new WaitForSeconds(0.01f);
-			}
-			else if (rand == 3 && hpGuagePosition.position.x > (limitHpGuagePosition.x * -1))
-			{
-				vec3.x -= vibrationValue;
-				yield return new WaitForSeconds(0.01f);
-			}
-			hpGuagePosition.position = vec3;
+			var x = transform.position.x + Random.Range(-0.1f, 0.1f) * magnitude;
+			var y = transform.position.y + Random.Range(-0.1f, 0.1f) * magnitude;
+
+			transform.position = new Vector3(x, y, transform.position.z);
+
+			elapsed += Time.deltaTime;
+
+			yield return null;
+			transform.position = initHpGuagePositon;
 		}
-    }
+	}
+	#endregion
 
 	/// <summary>
 	/// 赤いところの操作
