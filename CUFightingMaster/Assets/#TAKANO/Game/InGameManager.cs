@@ -307,8 +307,7 @@ public class InGameManager : SingletonMono<InGameManager>
 		{
             //試合が引き分けで終わったことを保存する(そのままフェーズ移行処理)
             if (canvasController.Call_DisplayVictory_draw() == false)
-                currentUpdate = StartRound;
-            //currentUpdate = GameFinish;
+                currentUpdate = GameFinish;
         }
     }
 	#endregion

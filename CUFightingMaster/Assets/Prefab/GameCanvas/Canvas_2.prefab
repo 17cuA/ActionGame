@@ -1327,7 +1327,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300014, guid: 34745bcc329d8d14e9db37e430a9850a, type: 3}
+  m_Sprite: {fileID: 21300010, guid: 34745bcc329d8d14e9db37e430a9850a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1350,8 +1350,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerType: 0
   fighterImage:
-  - {fileID: 21300016, guid: 34745bcc329d8d14e9db37e430a9850a, type: 3}
-  - {fileID: 21300018, guid: 34745bcc329d8d14e9db37e430a9850a, type: 3}
+  - {fileID: 21300010, guid: 34745bcc329d8d14e9db37e430a9850a, type: 3}
+  - {fileID: 21300012, guid: 34745bcc329d8d14e9db37e430a9850a, type: 3}
   playerNumber: 0
 --- !u!1 &5998693297189622812
 GameObject:
@@ -2011,6 +2011,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteName: DRAW
+  delayChangeFrame: 0
   fadeInFrame: 0
   fadeOutFrame: 7
   stopUIs: []
@@ -2539,6 +2540,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteName: TIME UP
+  delayChangeFrame: 0
   fadeInFrame: 0
   fadeOutFrame: 5
   stopUIs:
@@ -2716,6 +2718,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteName: ROUND2 Movie
+  delayChangeFrame: 0
   fadeInFrame: 0
   fadeOutFrame: 40
   stopUIs: []
@@ -3681,6 +3684,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteName: YOU WINS
+  delayChangeFrame: 0
   fadeInFrame: 0
   fadeOutFrame: 7
   stopUIs: []
@@ -3901,6 +3905,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteName: YOU LOSE
+  delayChangeFrame: 0
   fadeInFrame: 0
   fadeOutFrame: 7
   stopUIs: []
@@ -4497,6 +4502,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteName: FINAL ROUND Movie
+  delayChangeFrame: 0
   fadeInFrame: 0
   fadeOutFrame: 40
   stopUIs: []
@@ -4761,6 +4767,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteName: ROUND1 Movie
+  delayChangeFrame: 0
   fadeInFrame: 0
   fadeOutFrame: 40
   stopUIs: []
@@ -4863,6 +4870,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteName: K.O. movie
+  delayChangeFrame: 0
   fadeInFrame: 0
   fadeOutFrame: 5
   stopUIs: []
@@ -5356,7 +5364,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300014, guid: 34745bcc329d8d14e9db37e430a9850a, type: 3}
+  m_Sprite: {fileID: 21300012, guid: 34745bcc329d8d14e9db37e430a9850a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5463,11 +5471,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7015910189629850808}
     m_Modifications:
-    - target: {fileID: 1280973242033737015, guid: 5f832819b9095d74badbcb9a45b15a40,
-        type: 3}
-      propertyPath: m_Name
-      value: UI_SP_P2
-      objectReference: {fileID: 0}
     - target: {fileID: 1280973242033737014, guid: 5f832819b9095d74badbcb9a45b15a40,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5583,6 +5586,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 0.76
       objectReference: {fileID: 0}
+    - target: {fileID: 1280973242033737015, guid: 5f832819b9095d74badbcb9a45b15a40,
+        type: 3}
+      propertyPath: m_Name
+      value: UI_SP_P2
+      objectReference: {fileID: 0}
     - target: {fileID: 1280973242186913387, guid: 5f832819b9095d74badbcb9a45b15a40,
         type: 3}
       propertyPath: m_SizeDelta.y
@@ -5608,11 +5616,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7015910189629850808}
     m_Modifications:
-    - target: {fileID: 2312916272505508624, guid: 58b01505aaf9dae4bb8a6c45b1559edf,
-        type: 3}
-      propertyPath: m_Name
-      value: UI_SP_P1
-      objectReference: {fileID: 0}
     - target: {fileID: 2312916272505508625, guid: 58b01505aaf9dae4bb8a6c45b1559edf,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5728,6 +5731,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.x
       value: 0.63
       objectReference: {fileID: 0}
+    - target: {fileID: 2312916272505508624, guid: 58b01505aaf9dae4bb8a6c45b1559edf,
+        type: 3}
+      propertyPath: m_Name
+      value: UI_SP_P1
+      objectReference: {fileID: 0}
     - target: {fileID: 2312916272505508628, guid: 58b01505aaf9dae4bb8a6c45b1559edf,
         type: 3}
       propertyPath: playerType
@@ -5738,6 +5746,12 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2312916272505508626, guid: 58b01505aaf9dae4bb8a6c45b1559edf,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300018, guid: 34745bcc329d8d14e9db37e430a9850a,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 58b01505aaf9dae4bb8a6c45b1559edf, type: 3}
 --- !u!224 &5501199721802689190 stripped
