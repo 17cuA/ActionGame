@@ -183,15 +183,36 @@ public abstract class BulletCore : MonoBehaviour,IEventable
                     {
                         Instantiate(hit.effect, hit.position + transform.position, Quaternion.identity);
                     }
-                    isDestroyFlag = true;
-					BulletCore enCore = c.gameObject.transform.parent.parent.GetComponent<BulletCore>();
-					if (enCore!=null)
-					{
-						if (enCore.bulletHit.isOffset)
-						{
-							enCore.isDestroyFlag = true;
-						}
-					}
+                    if (!isDestroyFlag)
+                    {
+                        isDestroyFlag = true;
+                        BulletCore enCore = c.gameObject.transform.parent.parent.GetComponent<BulletCore>();
+                        if (enCore != null)
+                        {
+                            if (enCore.bulletHit.isOffset)
+                            {
+                                enCore.isDestroyFlag = true;
+                            }
+                            if (enCore.bulletHit.isNotEnemyOffset)
+                            {
+                                isDestroyFlag = false;
+                            }
+                        }
+                        continue;
+                    }
+					//既に消される判定がされていたら
+                    else
+                    {
+                        isDestroyFlag = true;
+                        BulletCore enCore = c.gameObject.transform.parent.parent.GetComponent<BulletCore>();
+                        if (enCore != null)
+                        {
+                            if (enCore.bulletHit.isOffset)
+                            {
+                                enCore.isDestroyFlag = true;
+                            }
+                        }
+                    }
                 }
                 return;
             }
