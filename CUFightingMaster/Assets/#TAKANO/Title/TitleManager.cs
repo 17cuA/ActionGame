@@ -35,7 +35,7 @@ public class TitleManager : MonoBehaviour
 	{
         //BGMの再生開始
         Sound.LoadBgm("BGM_Title", "BGM_Title");
-        Sound.PlayBgm("BGM_Title", 0.4f, 1, true);
+        Sound.PlayBgm("BGM_Title", 0.3f, 1, true);
 
         //Logoアニメーションの初期化
         logoAnimation.InitLogoAnimation();
@@ -82,7 +82,7 @@ public class TitleManager : MonoBehaviour
 
 		if (time <= 0)
 		{
-			//currentUpdate = StartDemoMovie_FadeOut;
+			currentUpdate = StartDemoMovie_FadeOut;
 		}
 	}
 
@@ -93,10 +93,11 @@ public class TitleManager : MonoBehaviour
     {
         if (canvasController_Title.StartFadeOut())
         {
-            canvasController_Title.EnabledRenderTexture();
-            currentUpdate = StartDemoMovie_Fadein;
+            if(canvasController_Title.IsEnabledRenderTexture() == true)
+			{
+				currentUpdate = StartDemoMovie_Fadein;
+			}
         }
-
     }
 
     /// <summary>
@@ -140,7 +141,12 @@ public class TitleManager : MonoBehaviour
     private void EndDemoMovie_FadeOut()
     {
         if (canvasController_Title.StartFadeOut())
-            currentUpdate = EndDemoMovie_FadeIn;
+		{
+			if(canvasController_Title.IsDisabledRenderTexture() == true)
+			{
+				currentUpdate = EndDemoMovie_FadeIn;
+			}
+		}
     }
 
     private void EndDemoMovie_FadeIn()

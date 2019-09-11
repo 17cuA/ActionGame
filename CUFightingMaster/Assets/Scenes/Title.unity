@@ -880,7 +880,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1920, y: 1080}
+  m_SizeDelta: {x: 1920, y: 1920}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &656211001
 MonoBehaviour:
@@ -941,14 +941,14 @@ VideoPlayer:
   m_TargetAudioSources:
   - {fileID: 0}
   m_DirectAudioVolumes:
-  - 1
+  - 0
   m_Url: 
   m_EnabledAudioTracks: 01
   m_DirectAudioMutes: 00
   m_ControlledAudioTrackCount: 1
   m_PlayOnAwake: 0
   m_SkipOnDrop: 1
-  m_Looping: 1
+  m_Looping: 0
   m_WaitForFirstFrame: 1
   m_FrameReadyEventEnabled: 0
 --- !u!114 &656211004
@@ -6043,7 +6043,7 @@ MonoBehaviour:
   logoAnimation: {fileID: 1116414042}
   canvasController_Title: {fileID: 580358598}
   isRunDemoMovie: 0
-  waitPlayDemoMovieTime: 20
+  waitPlayDemoMovieTime: 3
   pressAnykey:
   - {fileID: 1835560083}
   - {fileID: 829143946}
@@ -11412,11 +11412,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: ScreenFade
       objectReference: {fileID: 0}
-    - target: {fileID: 3098419182971050109, guid: 6500181de5c29c546a6f10f9864c8e7c,
-        type: 3}
-      propertyPath: fadeSpeed
-      value: 0.03
-      objectReference: {fileID: 0}
     - target: {fileID: 3098419182971050082, guid: 6500181de5c29c546a6f10f9864c8e7c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -11521,6 +11516,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3098419182971050109, guid: 6500181de5c29c546a6f10f9864c8e7c,
+        type: 3}
+      propertyPath: fadeSpeed
+      value: 0.03
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6500181de5c29c546a6f10f9864c8e7c, type: 3}
@@ -16592,7 +16592,7 @@ VideoPlayer:
   m_TargetAudioSources:
   - {fileID: 0}
   m_DirectAudioVolumes:
-  - 1
+  - 0
   m_Url: 
   m_EnabledAudioTracks: 01
   m_DirectAudioMutes: 00
@@ -16657,11 +16657,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ScreenFade
-      objectReference: {fileID: 0}
-    - target: {fileID: 3098419182971050109, guid: 6500181de5c29c546a6f10f9864c8e7c,
-        type: 3}
-      propertyPath: fadeSpeed
-      value: 0.03
       objectReference: {fileID: 0}
     - target: {fileID: 3098419182971050082, guid: 6500181de5c29c546a6f10f9864c8e7c,
         type: 3}
@@ -16767,6 +16762,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3098419182971050109, guid: 6500181de5c29c546a6f10f9864c8e7c,
+        type: 3}
+      propertyPath: fadeSpeed
+      value: 0.03
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6500181de5c29c546a6f10f9864c8e7c, type: 3}

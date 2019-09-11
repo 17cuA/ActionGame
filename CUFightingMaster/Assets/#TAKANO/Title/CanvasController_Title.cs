@@ -130,16 +130,36 @@ public class CanvasController_Title : MonoBehaviour
         mediaPlayer_2.PlayVideo();
     }
 
-    public void EnabledRenderTexture()
+	/// <summary>
+	/// ビデオを表示する
+	/// </summary>
+    public bool IsEnabledRenderTexture()
     {
-        mediaPlayer_1.EnabledRenderTexture();
-        mediaPlayer_2.EnabledRenderTexture();
-    }
+		bool isEnd1 = mediaPlayer_1.EnabledRenderTexture();
+		bool isEnd2 = mediaPlayer_2.EnabledRenderTexture();
 
-    /// <summary>
-    /// ビデオ停止を通知
-    /// </summary>
-    public bool IsEndPlayVideo()
+		if (isEnd1 && isEnd2)
+			return true;
+		return false;
+	}
+
+	/// <summary>
+	/// ビデオを非表示する
+	/// </summary>
+	public bool IsDisabledRenderTexture()
+	{
+		bool isEnd1 = mediaPlayer_1.DisabledRenderTexture();
+		bool isEnd2 = mediaPlayer_2.DisabledRenderTexture();
+
+		if (isEnd1 && isEnd2)
+			return true;
+		return false;
+	}
+
+	/// <summary>
+	/// ビデオ停止を通知
+	/// </summary>
+	public bool IsEndPlayVideo()
     {
         bool isEnd1 = mediaPlayer_1.IsEndPlayVideo();
         bool isEnd2 = mediaPlayer_2.IsEndPlayVideo();

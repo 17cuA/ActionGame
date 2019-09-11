@@ -37,6 +37,7 @@ public class UI_HP : MonoBehaviour
 	public Image redImage;
 	public RectTransform hpGuagePosition;
 	public RectTransform greenRect, redRect, grayRect;
+	public RectTransform hitRedGuage;
 
 	public Vector3 initHpGuagePositon;
 	public Vector3 limitHpGuagePosition;
@@ -107,11 +108,11 @@ public class UI_HP : MonoBehaviour
 	/// <returns></returns>
 	private IEnumerator ReceiveDamageAction()
 	{
-
 		//Instantiate(effectsObject, initHpGuagePositon, Quaternion.identity);
 
 		//ダメージを受けたときにHpバーの色が変わるやつ
 		hpObjects[4].SetActive(true);
+		hitRedGuage.localPosition = new Vector3(CalcMove(maxHp, totalDamage), 0, 0);
 		//HPゲージを震わす
 		StartCoroutine(VibrationHPGuage());
 		yield return new WaitForSeconds(0.1f);
@@ -236,6 +237,7 @@ public class UI_HP : MonoBehaviour
 	{
         //画像の横のサイズを取得
         hpBarWidth = hpObjects[0].GetComponent<RectTransform>().sizeDelta.x;
+
 
 		//描画順番を指定
 		for (int i = 0; i < 5; i++)
