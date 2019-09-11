@@ -93,7 +93,7 @@ public class AnimationUIManager : MonoBehaviour
 		if (nowSpriteCount < totalSpriteCount)
 		{
 			//指定フレームで指定フレーム分止められるようにする
-			var isStopUI = false;
+			var isStopUI = StopUI();
 
 			//UIを止めていない時の処理
 			if (!isStopUI)
