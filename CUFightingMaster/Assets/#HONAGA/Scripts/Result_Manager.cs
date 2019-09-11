@@ -59,9 +59,19 @@ public class Result_Manager : MonoBehaviour
             winOrlose[1].GetComponent<NomalAnimationPlayer>().SetPlayAnimation(animationClips[0], 1.0f, 0);
         }
     }
-
-    // Update is called once per frame
-    void Update()
+	
+	/// <summary>
+	/// キャラの生成
+	/// </summary>
+	public void CreateFighter()
+	{
+		var obj = Instantiate(GameDataStrage.Instance.fighterStatuses[0].fighter, targetPos[0].transform.position, Quaternion.identity);
+		obj.gameObject.layer = LayerMask.NameToLayer(CommonConstants.Layers.Player_One);
+		var obj2 = Instantiate(GameDataStrage.Instance.fighterStatuses[1].fighter, targetPos[1].transform.position, Quaternion.identity);
+		obj.gameObject.layer = LayerMask.NameToLayer(CommonConstants.Layers.Player_Two);
+	}
+	// Update is called once per frame
+	void Update()
     {
         //if (Input.anyKeyDown && !Input.GetKeyDown(KeyCode.Escape) && !Input.GetKeyDown(KeyCode.F1) && !Input.GetKeyDown(KeyCode.F2) && !Input.GetKeyDown(KeyCode.F3) && !Input.GetKeyDown(KeyCode.F4))
         //{
