@@ -31,7 +31,7 @@ public class AnimationUIManager : MonoBehaviour
 	private float currentRemainFadeOutFrame;	//フェードアウトが完了するまでの残りのフレーム
 	private Sprite[] sprites;		//読み込んだスプライトを格納
     private Color initColor;		//初期化用のカラー
-    private Sprite defaultSprite;	//アニメーションUIを出していないときに出しておくスプライト
+    public Sprite defaultSprite;	//アニメーションUIを出していないときに出しておくスプライト
     public List<StopUIClass> stopUIs = null;    //アニメーションUIを指定したフレームで指定したフレーム数停止させるクラスの変数
 	public bool isStart;			//アニメーションUI開始用フラグ
     public bool isLoop;				//アニメーションUI停止用フラグ
