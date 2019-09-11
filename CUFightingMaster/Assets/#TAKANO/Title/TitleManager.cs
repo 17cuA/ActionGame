@@ -7,6 +7,7 @@ using UnityEngine;
 using System;
 using UnityEngine.SceneManagement;
 using UnityEngine.Video;
+using UnityEngine.UI;
 
 public class TitleManager : MonoBehaviour
 {
@@ -130,7 +131,6 @@ public class TitleManager : MonoBehaviour
 		for (int i = 0;i < blackBackLine.Length;i++)
 		{
 			blackBackLine[i].GetComponent<AnimationUIManager>().isStart = true;
-			blackBackLine[i].GetComponent<AnimationUIManager>().isLoop = true;
 		}
         demoMoveTime = demoMoveTimeMax;
         canvasController_Title.PlayVideo();
@@ -153,10 +153,6 @@ public class TitleManager : MonoBehaviour
         //デモムービーの再生が終わったら
         if (demoMoveTime <= 0)
 		{
-			for (int i = 0;i < blackBackLine.Length;i++)
-			{
-				blackBackLine[i].GetComponent<AnimationUIManager>().isLoop = false;
-			}
 			demoMovie_Sound.Volume_Down();
 			currentUpdate = EndDemoMovie_FadeOut;
 		}
@@ -166,6 +162,11 @@ public class TitleManager : MonoBehaviour
     {
         if (canvasController_Title.StartFadeOut())
         {
+			for (int i = 0;i < blackBackLine.Length;i++)
+			{
+				blackBackLine[i].GetComponent<AnimationUIManager>().isStart = false;
+				blackBackLine[i].GetComponent<Image>().sprite = blackBackLine[i].GetComponent<AnimationUIManager>().defaultSprite;
+			}
             canvasController_Title.StopVideo();
             canvasController_Title.DisabledRenderTexture();
             currentUpdate = InitTitle;
