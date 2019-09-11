@@ -56,8 +56,14 @@ public class ResultManager : MonoBehaviour
 
 	}
 
+	//キャラの生成
+	void CreateFighter()
+	{
+		result_Manager.CreateFighter();
+		currentUpdate = UpCurtain;
+	}
 
-
+	//カーテンが上がる
     void UpCurtain()
     {
         if(canvasController_Result.UpCurtain())
@@ -67,6 +73,7 @@ public class ResultManager : MonoBehaviour
 
     }
 
+	//ResultAnime
     void PlayUIAnime()
     {
         result_Manager.FirstPlayUIAnime();

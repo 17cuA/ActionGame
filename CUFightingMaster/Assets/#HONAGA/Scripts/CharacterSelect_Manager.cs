@@ -47,11 +47,15 @@ public class CharacterSelect_Manager : SingletonMono<CharacterSelect_Manager>
     }
 	public NomalAnimationPlayer[] timerAnim = new NomalAnimationPlayer[2];
 	public AnimationClip timerTnimClip;
+	private float canselTime;
+	private bool canselFrame;
 	#endregion
     // Start is called before the first frame update
     void Start()
     {
-        QualitySettings.vSyncCount = 0;
+		canselTime = 0.0f;
+		canselFrame = false;
+		QualitySettings.vSyncCount = 0;
 		Application.targetFrameRate = 60;
 		// 飯塚追加-------------------------------------------
         Sound.LoadBgm("BGM_Menu", "BGM_Menu");
@@ -317,16 +321,28 @@ public class CharacterSelect_Manager : SingletonMono<CharacterSelect_Manager>
         // 1Pと2Pがキャラを選択したら、フラグをtrueにする
         if (characterSelectBool[0] && characterSelectBool[1] && characterSelectBool[2] && characterSelectBool[3])
         {
-            panelAnimFlag = true;
-            cursor1_1.determining_All = true;
-            cursor1_2.determining_All = true;
-            cursor2_1.determining_All = true;
-            cursor2_2.determining_All = true;
-
+			canselFrame = true;
 		}
 		else
 		{
 			fadeFrame = 0;
+			canselFrame = false;
+		}
+		if(canselFrame == true)
+		{
+			canselTime += Time.deltaTime;
+		}
+		else
+		{
+			canselTime = 0.0f;
+		}
+		if(canselTime >= 3.0f)
+		{
+			panelAnimFlag = true;
+			cursor1_1.determining_All = true;
+			cursor1_2.determining_All = true;
+			cursor2_1.determining_All = true;
+			cursor2_2.determining_All = true;
 		}
         // キャラ選択した後の時間を計測、managerからシーンの変更を許可
         if (panelAnimFlag)
@@ -384,7 +400,7 @@ public class CharacterSelect_Manager : SingletonMono<CharacterSelect_Manager>
             {
                 if (previewModel[i+4] != null && previewModel[i+4].active == true)
                 {
-					Debug.Log(previewModel[i + 4]);
+
 					if(i != selectCharacterNum)
 					{
 						previewModel[i + 4].SetActive(false);
