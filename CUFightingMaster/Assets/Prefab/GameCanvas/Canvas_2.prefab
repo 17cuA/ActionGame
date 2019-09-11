@@ -435,6 +435,7 @@ MonoBehaviour:
   greenRect: {fileID: 6365013494656916721}
   redRect: {fileID: 25850926363299215}
   grayRect: {fileID: 3536523036694682531}
+  hitRedGuage: {fileID: 1519199513005455823}
   initHpGuagePositon: {x: 0, y: 0, z: 0}
   limitHpGuagePosition: {x: 0, y: 0, z: 0}
   initPosition: {x: 0, y: 0, z: 0}
@@ -579,6 +580,7 @@ MonoBehaviour:
   greenRect: {fileID: 4670459614022077142}
   redRect: {fileID: 7524738036680348710}
   grayRect: {fileID: 2586740330968844113}
+  hitRedGuage: {fileID: 946825377965692546}
   initHpGuagePositon: {x: 0, y: 0, z: 0}
   limitHpGuagePosition: {x: 0, y: 0, z: 0}
   initPosition: {x: 0, y: 0, z: 0}
@@ -642,7 +644,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.9811321, g: 0, b: 0.11055018, a: 0.75686276}
+  m_Color: {r: 0.9811321, g: 0, b: 0.11055018, a: 0.3137255}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1370,7 +1372,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1519199513005455823
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1411,7 +1413,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.9811321, g: 0, b: 0.11055018, a: 0.75686276}
+  m_Color: {r: 0.9811321, g: 0.013883919, b: 0.1222157, a: 0.31764707}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -2011,6 +2013,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteName: DRAW
+  delayChangeFrame: 0
   fadeInFrame: 0
   fadeOutFrame: 7
   stopUIs: []
@@ -2539,6 +2542,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteName: TIME UP
+  delayChangeFrame: 0
   fadeInFrame: 0
   fadeOutFrame: 5
   stopUIs:
@@ -2716,6 +2720,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteName: ROUND2 Movie
+  delayChangeFrame: 0
   fadeInFrame: 0
   fadeOutFrame: 40
   stopUIs: []
@@ -3681,6 +3686,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteName: YOU WINS
+  delayChangeFrame: 0
   fadeInFrame: 0
   fadeOutFrame: 7
   stopUIs: []
@@ -3901,6 +3907,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteName: YOU LOSE
+  delayChangeFrame: 0
   fadeInFrame: 0
   fadeOutFrame: 7
   stopUIs: []
@@ -4497,6 +4504,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteName: FINAL ROUND Movie
+  delayChangeFrame: 0
   fadeInFrame: 0
   fadeOutFrame: 40
   stopUIs: []
@@ -4761,6 +4769,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteName: ROUND1 Movie
+  delayChangeFrame: 0
   fadeInFrame: 0
   fadeOutFrame: 40
   stopUIs: []
@@ -4863,6 +4872,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteName: K.O. movie
+  delayChangeFrame: 0
   fadeInFrame: 0
   fadeOutFrame: 5
   stopUIs: []
@@ -5463,11 +5473,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7015910189629850808}
     m_Modifications:
-    - target: {fileID: 1280973242033737015, guid: 5f832819b9095d74badbcb9a45b15a40,
-        type: 3}
-      propertyPath: m_Name
-      value: UI_SP_P2
-      objectReference: {fileID: 0}
     - target: {fileID: 1280973242033737014, guid: 5f832819b9095d74badbcb9a45b15a40,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5583,6 +5588,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 0.76
       objectReference: {fileID: 0}
+    - target: {fileID: 1280973242033737015, guid: 5f832819b9095d74badbcb9a45b15a40,
+        type: 3}
+      propertyPath: m_Name
+      value: UI_SP_P2
+      objectReference: {fileID: 0}
     - target: {fileID: 1280973242186913387, guid: 5f832819b9095d74badbcb9a45b15a40,
         type: 3}
       propertyPath: m_SizeDelta.y
@@ -5608,11 +5618,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7015910189629850808}
     m_Modifications:
-    - target: {fileID: 2312916272505508624, guid: 58b01505aaf9dae4bb8a6c45b1559edf,
-        type: 3}
-      propertyPath: m_Name
-      value: UI_SP_P1
-      objectReference: {fileID: 0}
     - target: {fileID: 2312916272505508625, guid: 58b01505aaf9dae4bb8a6c45b1559edf,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5727,6 +5732,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.x
       value: 0.63
+      objectReference: {fileID: 0}
+    - target: {fileID: 2312916272505508624, guid: 58b01505aaf9dae4bb8a6c45b1559edf,
+        type: 3}
+      propertyPath: m_Name
+      value: UI_SP_P1
       objectReference: {fileID: 0}
     - target: {fileID: 2312916272505508628, guid: 58b01505aaf9dae4bb8a6c45b1559edf,
         type: 3}
