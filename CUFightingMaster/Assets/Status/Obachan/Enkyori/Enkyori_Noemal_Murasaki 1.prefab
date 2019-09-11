@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7147068084814676595}
   - component: {fileID: 5341400920593878254}
   - component: {fileID: 5375304471477854230}
-  m_Layer: 1
+  m_Layer: 16
   m_Name: particle glow master (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4791,7 +4791,7 @@ GameObject:
   - component: {fileID: 3880174765857720116}
   - component: {fileID: 27758729640538889}
   - component: {fileID: 1697691867505288355}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: smoke (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4835,7 +4835,7 @@ ParticleSystem:
   startDelay:
     serializedVersion: 2
     minMaxState: 0
-    scalar: 0.4
+    scalar: 0
     minScalar: 0
     maxCurve:
       serializedVersion: 2
@@ -9498,7 +9498,7 @@ GameObject:
   - component: {fileID: 136891294419344963}
   - component: {fileID: 2913820436075479550}
   - component: {fileID: 2615927483544343264}
-  m_Layer: 1
+  m_Layer: 16
   m_Name: particle glow master (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9543,7 +9543,7 @@ ParticleSystem:
   startDelay:
     serializedVersion: 2
     minMaxState: 0
-    scalar: 0.5
+    scalar: 0
     minScalar: 0
     maxCurve:
       serializedVersion: 2
@@ -14278,7 +14278,7 @@ GameObject:
   - component: {fileID: 4075942701834566980}
   - component: {fileID: 6133907211632158278}
   - component: {fileID: 567418887487833433}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: lens
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19034,8 +19034,9 @@ GameObject:
   - component: {fileID: 1554253021316017307}
   - component: {fileID: 7543190273653459559}
   - component: {fileID: 104743304963456900}
-  m_Layer: 0
-  m_Name: Enkyori_Noemal_Murasaki
+  - component: {fileID: 3899005171303539919}
+  m_Layer: 16
+  m_Name: Enkyori_Noemal_Murasaki 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19050,7 +19051,7 @@ Transform:
   m_GameObject: {fileID: 3415715019896158093}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.55, y: 2, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7147068084814676595}
   - {fileID: 1004696789958240977}
@@ -19071,7 +19072,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3415715019896158093}
   serializedVersion: 6
-  lengthInSec: 10
+  lengthInSec: 20
   simulationSpeed: 1
   stopAction: 2
   cullingMode: 0
@@ -19086,7 +19087,7 @@ ParticleSystem:
   startDelay:
     serializedVersion: 2
     minMaxState: 0
-    scalar: 0
+    scalar: 0.09
     minScalar: 0
     maxCurve:
       serializedVersion: 2
@@ -19136,7 +19137,7 @@ ParticleSystem:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  moveWithTransform: 1
+  moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
   randomSeed: 0
@@ -19146,7 +19147,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 10
+      scalar: 20
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -19315,7 +19316,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 2.23
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -23949,6 +23950,22 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!114 &3899005171303539919
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3415715019896158093}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7d263a682ed50e42b2782bb27f31f2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletHit: {fileID: 11400000, guid: 2e7e0ec212ea7b343adba97a84caa389, type: 2}
+  RightLeft: 1
+  playerNumber: 4
+  move: {x: 0.2, y: 0, z: 0}
 --- !u!1 &3453291258752860790
 GameObject:
   m_ObjectHideFlags: 0
@@ -23960,7 +23977,7 @@ GameObject:
   - component: {fileID: 8797001406074591020}
   - component: {fileID: 6547579113206700127}
   - component: {fileID: 1611758038673867446}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: particle glow slave birth
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28532,7 +28549,7 @@ GameObject:
   - component: {fileID: 4798063281746352902}
   - component: {fileID: 4262127010685667162}
   - component: {fileID: 4679979848312368784}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: ray
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28576,7 +28593,7 @@ ParticleSystem:
   startDelay:
     serializedVersion: 2
     minMaxState: 0
-    scalar: 0.4
+    scalar: 0
     minScalar: 0
     maxCurve:
       serializedVersion: 2
@@ -33230,7 +33247,7 @@ GameObject:
   - component: {fileID: 1004696789958240977}
   - component: {fileID: 1807224797141700903}
   - component: {fileID: 3464966212610242267}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: smoke
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37937,7 +37954,7 @@ GameObject:
   - component: {fileID: 7111317142429149234}
   - component: {fileID: 5396762481948091978}
   - component: {fileID: 3472547295176243793}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Particle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42635,7 +42652,7 @@ GameObject:
   - component: {fileID: 1848663037545192053}
   - component: {fileID: 6092054219065099310}
   - component: {fileID: 5825505157983552524}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Star
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47333,7 +47350,7 @@ GameObject:
   - component: {fileID: 6034055340704185882}
   - component: {fileID: 1935375389342929706}
   - component: {fileID: 3262251638376552459}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: particle glow slave birth
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -148,13 +148,20 @@ MonoBehaviour:
   InGameTimeline_Two: {fileID: 6454210272307787186, guid: a3e56dae7db70bf47abc3b9dcc4523d1,
     type: 3}
   groundAttackSkills:
-  - name: Debug
+  - name: HADOKEN
     command: 236
-    trigger: B
+    trigger: A
     skillCost: 0
     countValid: 1
     validShotFrame: 6
-    skill: {fileID: 0}
+    skill: {fileID: 11400000, guid: eb7871f3720d69f428cb3348e148b620, type: 2}
+  - name: SYORYU
+    command: 623
+    trigger: C
+    skillCost: 0
+    countValid: 1
+    validShotFrame: 6
+    skill: {fileID: 11400000, guid: d6cd15b97858e2f49a94d31f9362c102, type: 2}
   airAttackSkills: []
   groundMoveSkills:
   - skillCost: 0
@@ -167,4 +174,14 @@ MonoBehaviour:
     name: Back_Dash
     command: 44
     skill: {fileID: 11400000, guid: 6db1cb8c943e5c84992d3b907163dab6, type: 2}
-  airMoveSkills: []
+  airMoveSkills:
+  - skillCost: 0
+    countValid: 1
+    name: Air_Dash_Back
+    command: 44
+    skill: {fileID: 0}
+  - skillCost: 0
+    countValid: 1
+    name: Air_Dash_Front
+    command: 66
+    skill: {fileID: 11400000, guid: ac13b0be3484e35489edd3fd686ec7a0, type: 2}
