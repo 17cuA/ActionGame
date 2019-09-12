@@ -37,7 +37,7 @@ public class AnimationUIManager : MonoBehaviour
     public bool isLoop;				//アニメーションUIをループさせたいときに立てるフラグ
     public bool isLeave;            //アニメーションUIを最後のスプライトで止めたいときに立てる用フラグ
 	public bool isInvisible;		//アニメーションUI再生中に非表示にするどうか判定するフラグ
-	public bool isInterruption;				//アニメーションUI停止用に非表示にするどうか判定するフラグ
+	public bool isInterruption;		//アニメーションUI停止用に非表示にするどうか判定するフラグ
     private void Update()
     {
 		if (delayChangeFrame <= delayFrameCount)
@@ -76,8 +76,6 @@ public class AnimationUIManager : MonoBehaviour
 		gameObject.GetComponent<Image>().color = initColor;
 		currentRemainFadeInFrame = fadeInFrame;
         currentRemainFadeOutFrame = fadeOutFrame;
-		isInvisible = false;
-		isInterruption = false;
         if (stopUIs.Count != 0)
         {
             for (int i = 0; i < stopUIs.Count; i++)
@@ -127,12 +125,13 @@ public class AnimationUIManager : MonoBehaviour
 		}
 		else
 		{
-			if (!isLeave)
+			if (!isLeave || isInterruption)
 			{
 				//再利用できるように元に戻しておく
 				if (!isLoop || isInterruption)
 				{
 					isStart = false;
+					isInterruption = false;
 					ResetUI();
 				} 
 				else
