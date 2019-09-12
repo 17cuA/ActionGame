@@ -15,6 +15,7 @@ public class MediaPlayer : MonoBehaviour
 	/// </summary>
 	public void PlayVideo()
 	{
+		Application.targetFrameRate = 60;
         videoPlayer.Play();
 	}
 

@@ -140,6 +140,7 @@ public class TitleManager : MonoBehaviour
 	/// </summary>
 	private void DemoMovieUpdate()
 	{
+
         demoMoveTime -= Time.deltaTime;
 		//音量を徐々に上げる
 		demoMovie_Sound.Volume_Up();
