@@ -99,9 +99,13 @@ public class CharacterSelect_Manager : SingletonMono<CharacterSelect_Manager>
 
     void Update()
     {
+		cursor1_1.CursorUpdate();
+		cursor1_2.CursorUpdate();
+		cursor2_1.CursorUpdate();
+		cursor2_2.CursorUpdate();
 
-        #region 1Pのキャラ選択の処理
-        if (cursor1_1 == null)
+		#region 1Pのキャラ選択の処理
+		if (cursor1_1 == null)
         {
             return;
         }

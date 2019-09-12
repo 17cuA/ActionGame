@@ -68,7 +68,7 @@ public class FuncKeyManager : SingletonMono<FuncKeyManager>
 				Sound.StopBgm();
 			}
 			//1シーン分進む
-			if (Input.GetKeyDown(KeyCode.F2))
+			if (Input.GetKeyDown(KeyCode.F2)/* && SceneManager.GetActiveScene().name != "CharacterSelect"*/)
 			{
 				sceneIndex = Mathf.Clamp(sceneIndex + 1, 0, sceneNames.Length - 1);
 				SceneManager.LoadScene(sceneNames[sceneIndex]);

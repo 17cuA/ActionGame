@@ -15,7 +15,6 @@ public class Cursor_CharacterSelect : MonoBehaviour
 	public string controllerName = "";
 
 	private const int maxChara = 4;
-	public GameObject[] character = new GameObject[maxChara];         //キャラクターゲームオブジェクト
 	public GameObject[] characterPanels = new GameObject[maxChara];   //キャラクターパネル
 	public Sprite[] characterName = new Sprite[maxChara];            //キャラクターの名前画像
 
@@ -55,7 +54,7 @@ public class Cursor_CharacterSelect : MonoBehaviour
 		}
 	}
 	// Update is called once per frame
-	void Update()
+	public void CursorUpdate()
 	{
         if(determining_All == true)
         {
