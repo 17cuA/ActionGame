@@ -65,21 +65,23 @@ public class ResultManager : MonoBehaviour
         resultController_1 = canvas_1.transform.Find("ResultController").GetComponent<ResultController>();
         resultController_2 = canvas_2.transform.Find("ResultController").GetComponent<ResultController>();
 
+		// キャラの生成
 		obj = Instantiate(/*GameDataStrage.Instance.fighterStatuses[0].PlayerModel*/debug[0].PlayerModel, targetPos[0].transform.position, targetPos[0].transform.rotation);
 		obj.gameObject.layer = LayerMask.NameToLayer(CommonConstants.Layers.Player_One);
 		obj2 = Instantiate(/*GameDataStrage.Instance.fighterStatuses[1].PlayerModel*/debug[1].PlayerModel, targetPos[1].transform.position, targetPos[0].transform.rotation);
 		obj.gameObject.layer = LayerMask.NameToLayer(CommonConstants.Layers.Player_Two);
 
+		// １Pが勝ったら
 		if (GameDataStrage.Instance.winFlag_PlayerOne == true)
 		{
+			// １Pの勝利カメラと２Pの敗北カメラをアクティブ
 			camelas[0].SetActive(true);
 			camelas[1].SetActive(false);
 			camelas[2].SetActive(false);
 			camelas[3].SetActive(true);
 
-			obj.GetComponent<Animationdata>().ResultAnimation(FighterClips[0]);
-			obj2.GetComponent<Animationdata>().ResultAnimation(FighterClips[3]);
-			obj.GetComponent<Animationdata>().resultFlag = true;
+			// ２Pの敗北モーションをセット
+			obj2.GetComponent<Animationdata>().ResultAnimation(FighterClips[3],0.5f);
 			obj2.GetComponent<Animationdata>().resultFlag = true;
 
 			//obj.GetComponent<Animationdata>().animationData.SetPlayAnimation(FighterClips[0], 0.5f, 0);
@@ -89,6 +91,9 @@ public class ResultManager : MonoBehaviour
 
 			if (debug[0].PlayerID == 0)
 			{
+				obj.GetComponent<Animationdata>().ResultAnimation(FighterClips[0],0.5f);
+				obj.GetComponent<Animationdata>().resultFlag = true;
+				// 1Pのクリコ勝利タイムラインを表示
 				timelines[0].SetActive(true);
 				timelines[1].SetActive(false);
 				timelines[2].SetActive(false);
@@ -97,6 +102,9 @@ public class ResultManager : MonoBehaviour
 			}
 			else if (debug[0].PlayerID == 1)
 			{
+				obj.GetComponent<Animationdata>().ResultAnimation(FighterClips[2],1.0f);
+				obj.GetComponent<Animationdata>().resultFlag = true;
+				// 1Pのおばちゃん勝利タイムラインを表示
 				timelines[0].SetActive(false);
 				timelines[1].SetActive(true);
 				timelines[2].SetActive(false);
@@ -105,29 +113,39 @@ public class ResultManager : MonoBehaviour
 
 			}
 		}
+		//2Pが勝ったら
 		else if (GameDataStrage.Instance.winFlag_PlayerTwo == true)
 		{
+			// 1Pの敗北カメラと2Pの勝利カメラをアクティブ
 			camelas[0].SetActive(false);
 			camelas[1].SetActive(true);
 			camelas[2].SetActive(true);
 			camelas[3].SetActive(false);
 
-			obj.GetComponent<Animationdata>().ResultAnimation(FighterClips[1]);
-			obj2.GetComponent<Animationdata>().ResultAnimation(FighterClips[0]);
+			// １Pの敗北アニメーションをセット
+			obj.GetComponent<Animationdata>().ResultAnimation(FighterClips[1],0.5f);
 			obj.GetComponent<Animationdata>().resultFlag = true;
-			obj2.GetComponent<Animationdata>().resultFlag = true;
 
+			// 1Pのキャラがクリコだったら
 			if (debug[1].PlayerID == 0)
 			{
+				obj2.GetComponent<Animationdata>().ResultAnimation(FighterClips[0],0.5f);
+				obj2.GetComponent<Animationdata>().resultFlag = true;
+
+				// 2Pのクリコ勝利タイムラインを表示
 				timelines[0].SetActive(false);
 				timelines[1].SetActive(false);
 				timelines[2].SetActive(true);
 				timelines[3].SetActive(false);
 				cinemaController = cinemaControllers[2];
-
 			}
+
 			else if (debug[1].PlayerID == 1)
 			{
+				obj2.GetComponent<Animationdata>().ResultAnimation(FighterClips[2],1.0f);
+				obj2.GetComponent<Animationdata>().resultFlag = true;
+
+				// 2Pのおばちゃん勝利タイムラインを表示
 				timelines[0].SetActive(false);
 				timelines[1].SetActive(false);
 				timelines[2].SetActive(false);
@@ -138,8 +156,13 @@ public class ResultManager : MonoBehaviour
 		}
 		else if (GameDataStrage.Instance.winFlag_PlayerOne == false && GameDataStrage.Instance.winFlag_PlayerTwo == false)
 		{
-			obj.GetComponent<NomalAnimationPlayer>().SetPlayAnimation(obj.GetComponent<FighterStatus>().loseResultAnimation, 0.5f, 0);
-			obj2.GetComponent<NomalAnimationPlayer>().SetPlayAnimation(obj.GetComponent<FighterStatus>().loseResultAnimation, 0.5f, 0);
+			obj.GetComponent<Animationdata>().ResultAnimation(FighterClips[1],0.5f);
+			obj2.GetComponent<Animationdata>().ResultAnimation(FighterClips[3],0.5f);
+			camelas[0].SetActive(false);
+			camelas[1].SetActive(true);
+			camelas[2].SetActive(false);
+			camelas[3].SetActive(true);
+			cinemaController = null;
 		}
 
 
@@ -165,7 +188,7 @@ public class ResultManager : MonoBehaviour
     {
         if (canvasController_Result.UpCurtain())
         {
-			if (cinemaController.isPlay == false)
+			if (cinemaController.isPlay == false || cinemaController == null)
 			{
 				currentUpdate = PlayUIAnime;
 			}
