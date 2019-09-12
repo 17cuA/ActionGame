@@ -11,7 +11,7 @@ public class DemoMovie_Sound : MonoBehaviour
 	
 	public void Volume_Up()
 	{
-		if(vol < 1)
+		if(vol < 0.5)
 		{
 			vol += 0.01f;
 			audioSource.volume = vol;

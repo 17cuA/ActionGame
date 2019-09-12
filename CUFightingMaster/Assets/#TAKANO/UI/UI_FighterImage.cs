@@ -52,7 +52,7 @@ public class UI_FighterImage : MonoBehaviour
 		else
 		{
 			//青にする
-			displayImage.color = new Color(0, 0.4f, 0.7f);
+			displayImage.color = new Color(0, 0.5f, 1.0f);
 			//反転する
 			transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
 		}
