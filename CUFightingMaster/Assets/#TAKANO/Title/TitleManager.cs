@@ -167,7 +167,7 @@ public class TitleManager : MonoBehaviour
         {
 			for (int i = 0;i < blackBackLine.Length;i++)
 			{
-				blackBackLine[i].GetComponent<AnimationUIManager>().isStart = true;
+				blackBackLine[i].GetComponent<AnimationUIManager>().isStop = true;
 			}
             canvasController_Title.StopVideo();
             canvasController_Title.DisabledRenderTexture();

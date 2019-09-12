@@ -130,7 +130,7 @@ public class AnimationUIManager : MonoBehaviour
 			if (!isLeave)
 			{
 				//再利用できるように元に戻しておく
-				if (!isLoop)
+				if (!isLoop || isStop)
 				{
 					isStart = false;
 					ResetUI();
