@@ -167,8 +167,7 @@ public class TitleManager : MonoBehaviour
         {
 			for (int i = 0;i < blackBackLine.Length;i++)
 			{
-				blackBackLine[i].GetComponent<AnimationUIManager>().isStart = false;
-				blackBackLine[i].GetComponent<Image>().sprite = blackBackLine[i].GetComponent<AnimationUIManager>().defaultSprite;
+				blackBackLine[i].GetComponent<AnimationUIManager>().isStart = true;
 			}
             canvasController_Title.StopVideo();
             canvasController_Title.DisabledRenderTexture();
@@ -178,8 +177,6 @@ public class TitleManager : MonoBehaviour
 
     private void EndDemoMovie_FadeIn()
     {
-
-
         if (canvasController_Title.StartFadeIn())
             currentUpdate = InitTitle;
     }
@@ -213,7 +210,5 @@ public class TitleManager : MonoBehaviour
 		if (Mathf.Approximately(Time.timeScale, 0f)) return;
 
 		currentUpdate();
-
-        
     }
 }
