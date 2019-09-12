@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -122,7 +122,12 @@ PrefabInstance:
     - target: {fileID: 1586910182425128763, guid: 5f593fdc3e3b7f249a0e3055d2ea8dc6,
         type: 3}
       propertyPath: m_Name
-      value: ResultTimeline_ObachanWin (1)
+      value: ResultTimeline_ObachanWin P2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1586910182425128763, guid: 5f593fdc3e3b7f249a0e3055d2ea8dc6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1586910182425128766, guid: 5f593fdc3e3b7f249a0e3055d2ea8dc6,
         type: 3}
@@ -183,6 +188,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_InitialState
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5219405407551536469, guid: 5f593fdc3e3b7f249a0e3055d2ea8dc6,
+        type: 3}
+      propertyPath: m_Name
+      value: TimelineP2Oba
+      objectReference: {fileID: 0}
+    - target: {fileID: 7682777414719314015, guid: 5f593fdc3e3b7f249a0e3055d2ea8dc6,
+        type: 3}
+      propertyPath: m_Priority
+      value: 11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5f593fdc3e3b7f249a0e3055d2ea8dc6, type: 3}
@@ -736,6 +751,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6894756918498784940, guid: 4b28529f2afacc94ca51690c0845947e,
+        type: 3}
+      propertyPath: m_Name
+      value: TimelineP1Guriko
+      objectReference: {fileID: 0}
+    - target: {fileID: 7290242883448126045, guid: 4b28529f2afacc94ca51690c0845947e,
+        type: 3}
+      propertyPath: m_Priority
+      value: 11
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b28529f2afacc94ca51690c0845947e, type: 3}
 --- !u!1001 &255270896
@@ -832,7 +857,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!81 &259273778
 AudioListener:
   m_ObjectHideFlags: 0
@@ -871,7 +896,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 129335
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 1
@@ -1131,7 +1156,17 @@ PrefabInstance:
     - target: {fileID: 2140006359887680256, guid: af8c819c01698714097b6d19594eff15,
         type: 3}
       propertyPath: PlayerNum
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6894756918498784940, guid: af8c819c01698714097b6d19594eff15,
+        type: 3}
+      propertyPath: m_Name
+      value: TimelineP2Guriko
+      objectReference: {fileID: 0}
+    - target: {fileID: 7290242883448126045, guid: af8c819c01698714097b6d19594eff15,
+        type: 3}
+      propertyPath: m_Priority
+      value: 11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: af8c819c01698714097b6d19594eff15, type: 3}
@@ -1543,6 +1578,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a92df541e7ae3114ca1f6b5ac88b2d35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &732500261 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1586910183379032209, guid: 5f593fdc3e3b7f249a0e3055d2ea8dc6,
+    type: 3}
+  m_PrefabInstance: {fileID: 43940297}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &732500262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 732500261}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d0177c4a0658a24187a95822eade881, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  director: {fileID: 0}
+  PlayerNum: 1
+  cinemachineBrain: {fileID: 0}
+  trackName: 
 --- !u!1 &735119187
 GameObject:
   m_ObjectHideFlags: 0
@@ -1706,6 +1763,25 @@ RectTransform:
   m_AnchoredPosition: {x: 180, y: -135}
   m_SizeDelta: {x: 2500, y: 1500}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &790518411 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5219405407551536469, guid: 5f593fdc3e3b7f249a0e3055d2ea8dc6,
+    type: 3}
+  m_PrefabInstance: {fileID: 1076581073}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &790518413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 790518411}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffb833ca4013b1341ac7018084cd8b20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isPlay: 0
 --- !u!224 &814308756 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1094768540677155762, guid: a83932a86c972a641b380d484b5afc15,
@@ -1724,6 +1800,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48dcc1c712ef58442b51688cb1f70dfd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &827169521 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1586910182425128763, guid: 5f593fdc3e3b7f249a0e3055d2ea8dc6,
+    type: 3}
+  m_PrefabInstance: {fileID: 1076581073}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &841357847 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1094768540677155762, guid: a83932a86c972a641b380d484b5afc15,
@@ -1917,7 +1999,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 128311
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -2152,7 +2234,12 @@ PrefabInstance:
     - target: {fileID: 1586910182425128763, guid: 5f593fdc3e3b7f249a0e3055d2ea8dc6,
         type: 3}
       propertyPath: m_Name
-      value: ResultTimeline_ObachanWin
+      value: ResultTimeline_ObachanWinP1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1586910182425128763, guid: 5f593fdc3e3b7f249a0e3055d2ea8dc6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1586910182425128766, guid: 5f593fdc3e3b7f249a0e3055d2ea8dc6,
         type: 3}
@@ -2214,6 +2301,16 @@ PrefabInstance:
       propertyPath: m_InitialState
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5219405407551536469, guid: 5f593fdc3e3b7f249a0e3055d2ea8dc6,
+        type: 3}
+      propertyPath: m_Name
+      value: TimelineP1Oba
+      objectReference: {fileID: 0}
+    - target: {fileID: 7682777414719314015, guid: 5f593fdc3e3b7f249a0e3055d2ea8dc6,
+        type: 3}
+      propertyPath: m_Priority
+      value: 11
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5f593fdc3e3b7f249a0e3055d2ea8dc6, type: 3}
 --- !u!1 &1076581074 stripped
@@ -2231,10 +2328,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1076581074}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ffb833ca4013b1341ac7018084cd8b20, type: 3}
+  m_Script: {fileID: 11500000, guid: 9d0177c4a0658a24187a95822eade881, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isPlay: 0
+  director: {fileID: 0}
+  PlayerNum: 0
+  cinemachineBrain: {fileID: 0}
+  trackName: 
 --- !u!1 &1225507039
 GameObject:
   m_ObjectHideFlags: 0
@@ -2602,9 +2702,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   obj: {fileID: 0}
   obj2: {fileID: 0}
-  debug:
-  - {fileID: 11400000, guid: 6a1a4a742ddfe19438728f253d220818, type: 2}
-  - {fileID: 11400000, guid: 6a1a4a742ddfe19438728f253d220818, type: 2}
   camelas:
   - {fileID: 1742049105}
   - {fileID: 893066981}
@@ -2612,9 +2709,9 @@ MonoBehaviour:
   - {fileID: 259273777}
   timelines:
   - {fileID: 1474706725}
+  - {fileID: 827169521}
   - {fileID: 974885059}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1560954734}
   animationUIManagers:
   - {fileID: 71320897}
   - {fileID: 754156053}
@@ -2641,9 +2738,9 @@ MonoBehaviour:
   - {fileID: 435706202}
   cinemaControllers:
   - {fileID: 428604967}
+  - {fileID: 790518413}
   - {fileID: 1604571516}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 2125778367}
   cinemaController: {fileID: 0}
 --- !u!82 &1335748129
 AudioSource:
@@ -2897,9 +2994,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   obj: {fileID: 0}
   obj2: {fileID: 0}
-  debug:
-  - {fileID: 0}
-  - {fileID: 0}
   camelas:
   - {fileID: 0}
   - {fileID: 0}
@@ -3009,7 +3103,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 129335
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 1
@@ -3066,6 +3160,12 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: Cinemachine.CinemachineBrain+VcamEvent, Assembly-CSharp, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!1 &1560954734 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1586910182425128763, guid: 5f593fdc3e3b7f249a0e3055d2ea8dc6,
+    type: 3}
+  m_PrefabInstance: {fileID: 43940297}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1585702743
 GameObject:
   m_ObjectHideFlags: 0
@@ -3306,7 +3406,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 128311
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -3819,6 +3919,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2119763089}
   m_CullTransparentMesh: 0
+--- !u!1 &2125778365 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5219405407551536469, guid: 5f593fdc3e3b7f249a0e3055d2ea8dc6,
+    type: 3}
+  m_PrefabInstance: {fileID: 43940297}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2125778367
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2125778365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffb833ca4013b1341ac7018084cd8b20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isPlay: 0
 --- !u!1 &2142148098
 GameObject:
   m_ObjectHideFlags: 0
