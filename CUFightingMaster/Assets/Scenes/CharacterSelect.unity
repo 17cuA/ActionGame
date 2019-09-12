@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4465782, g: 0.49641252, b: 0.5748167, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -6802,7 +6802,7 @@ PrefabInstance:
     - target: {fileID: 5316512511684616720, guid: 1ea4eef4998c3b24eb6594f68107eb79,
         type: 3}
       propertyPath: m_Color.a
-      value: 0.5803922
+      value: 0.89411765
       objectReference: {fileID: 0}
     - target: {fileID: 3015939825573852135, guid: 1ea4eef4998c3b24eb6594f68107eb79,
         type: 3}
@@ -6947,7 +6947,7 @@ RectTransform:
   m_GameObject: {fileID: 281046438}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 0.5, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 190207940}
   m_RootOrder: 3
@@ -26284,7 +26284,7 @@ RectTransform:
   m_GameObject: {fileID: 2063887387}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 0.5, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 190207940}
   m_RootOrder: 2
@@ -31861,16 +31861,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5316512511433759820}
     m_Modifications:
-    - target: {fileID: 6922822887097812705, guid: ebcf9049fc4ad72428b7ae006f47fa05,
-        type: 3}
-      propertyPath: m_Name
-      value: CharacterSelectParticle
-      objectReference: {fileID: 0}
-    - target: {fileID: 6922822887097812705, guid: ebcf9049fc4ad72428b7ae006f47fa05,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6922822887097812704, guid: ebcf9049fc4ad72428b7ae006f47fa05,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -31976,10 +31966,15 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 6922822887097812719, guid: ebcf9049fc4ad72428b7ae006f47fa05,
+    - target: {fileID: 6922822887097812705, guid: ebcf9049fc4ad72428b7ae006f47fa05,
         type: 3}
-      propertyPath: m_MaxParticleSize
-      value: 0.5
+      propertyPath: m_Name
+      value: CharacterSelectParticle
+      objectReference: {fileID: 0}
+    - target: {fileID: 6922822887097812705, guid: ebcf9049fc4ad72428b7ae006f47fa05,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6922822887097812718, guid: ebcf9049fc4ad72428b7ae006f47fa05,
         type: 3}
@@ -31990,6 +31985,11 @@ PrefabInstance:
         type: 3}
       propertyPath: UVModule.enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6922822887097812719, guid: ebcf9049fc4ad72428b7ae006f47fa05,
+        type: 3}
+      propertyPath: m_MaxParticleSize
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ebcf9049fc4ad72428b7ae006f47fa05, type: 3}
@@ -36751,7 +36751,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.5803922}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.89411765}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
