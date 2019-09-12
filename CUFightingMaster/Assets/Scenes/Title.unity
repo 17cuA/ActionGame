@@ -885,8 +885,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 840, y: -510}
-  m_SizeDelta: {x: 250, y: 60}
+  m_AnchoredPosition: {x: 760, y: -510}
+  m_SizeDelta: {x: 400, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &599209424
 MonoBehaviour:
@@ -909,6 +909,8 @@ MonoBehaviour:
   isStart: 0
   isLoop: 1
   isLeave: 0
+  isInvisible: 0
+  isInterruption: 0
 --- !u!114 &599209425
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1030,7 +1032,7 @@ VideoPlayer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 656210999}
   m_Enabled: 1
-  m_VideoClip: {fileID: 32900000, guid: 7d4d7d02692a8734aa1be0e73b79b42a, type: 3}
+  m_VideoClip: {fileID: 32900000, guid: 18ba3ad944fc78f4cbcb6791bf3cbb65, type: 3}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 0}
@@ -1402,6 +1404,8 @@ MonoBehaviour:
   isStart: 0
   isLoop: 1
   isLeave: 0
+  isInvisible: 0
+  isInterruption: 0
 --- !u!1 &853898281
 GameObject:
   m_ObjectHideFlags: 0
@@ -6262,10 +6266,9 @@ MonoBehaviour:
   blackBackLine:
   - {fileID: 1398329090}
   - {fileID: 599209422}
-  isRunDemoMovie: 0
   waitPlayDemoMovieTime: 30
-  demoMoveTimeMax: 52
-  demoMoveTime: 0
+  demoMoveTimeMax: 85
+  demoMovieVolume: 0.7
   pressAnykey:
   - {fileID: 1835560083}
   - {fileID: 829143946}
@@ -6486,8 +6489,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 840, y: -510}
-  m_SizeDelta: {x: 250, y: 60}
+  m_AnchoredPosition: {x: 760, y: -510}
+  m_SizeDelta: {x: 400, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1398329092
 MonoBehaviour:
@@ -6510,6 +6513,8 @@ MonoBehaviour:
   isStart: 0
   isLoop: 1
   isLeave: 0
+  isInvisible: 0
+  isInterruption: 0
 --- !u!114 &1398329093
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11743,11 +11748,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 3098419182971050109, guid: 6500181de5c29c546a6f10f9864c8e7c,
-        type: 3}
-      propertyPath: fadeSpeed
-      value: 0.01
-      objectReference: {fileID: 0}
     - target: {fileID: 3098419182971050082, guid: 6500181de5c29c546a6f10f9864c8e7c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -11853,6 +11853,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 3098419182971050109, guid: 6500181de5c29c546a6f10f9864c8e7c,
+        type: 3}
+      propertyPath: fadeSpeed
+      value: 0.01
+      objectReference: {fileID: 0}
     - target: {fileID: 3098419182971050083, guid: 6500181de5c29c546a6f10f9864c8e7c,
         type: 3}
       propertyPath: m_Color.a
@@ -11956,6 +11961,8 @@ MonoBehaviour:
   isStart: 0
   isLoop: 1
   isLeave: 0
+  isInvisible: 0
+  isInterruption: 0
 --- !u!1 &2015311289
 GameObject:
   m_ObjectHideFlags: 0
@@ -16915,7 +16922,7 @@ VideoPlayer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2085902303}
   m_Enabled: 1
-  m_VideoClip: {fileID: 32900000, guid: 7d4d7d02692a8734aa1be0e73b79b42a, type: 3}
+  m_VideoClip: {fileID: 32900000, guid: 18ba3ad944fc78f4cbcb6791bf3cbb65, type: 3}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 0}
@@ -17001,11 +17008,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3098419182971050109, guid: 6500181de5c29c546a6f10f9864c8e7c,
-        type: 3}
-      propertyPath: fadeSpeed
-      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 3098419182971050082, guid: 6500181de5c29c546a6f10f9864c8e7c,
         type: 3}
@@ -17111,6 +17113,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3098419182971050109, guid: 6500181de5c29c546a6f10f9864c8e7c,
+        type: 3}
+      propertyPath: fadeSpeed
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 3098419182971050083, guid: 6500181de5c29c546a6f10f9864c8e7c,
         type: 3}

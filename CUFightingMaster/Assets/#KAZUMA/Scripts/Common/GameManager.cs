@@ -37,6 +37,9 @@ public class GameManager : SingletonMono<GameManager>
     public bool isTimeStop_One = false;
     public bool isTimeStop_Two = false;
 
+    public GameObject p1Command = null;
+    public GameObject p2Command = null;
+
     public List<IEventable> UpdateBulletList = new List<IEventable>();
     public List<IEventable> LateUpdateBulletList = new List<IEventable>();
     public List<IEventable> DeleteBulletList = new List<IEventable>();

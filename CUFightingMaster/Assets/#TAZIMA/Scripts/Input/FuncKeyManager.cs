@@ -88,9 +88,25 @@ public class FuncKeyManager : SingletonMono<FuncKeyManager>
 				SceneManager.LoadScene(sceneNames[sceneIndex]);
 				Sound.StopBgm();
 			}
-			#endregion
-			#region バトルシーンで使用するキー
-			if (sceneNames[sceneIndex] == "Battle")
+            //if (Input.GetKeyDown(KeyCode.F10))
+            //{
+            //    if (GameManager.Instance != null)
+            //    {
+            //        if (GameManager.Instance.p1Command.activeSelf)
+            //        {
+            //            GameManager.Instance.p1Command.SetActive(false);
+            //            GameManager.Instance.p2Command.SetActive(false);
+            //        }
+            //        else
+            //        {
+            //            GameManager.Instance.p1Command.SetActive(true);
+            //            GameManager.Instance.p2Command.SetActive(true);
+            //        }
+            //    }
+            //}
+            #endregion
+            #region バトルシーンで使用するキー
+            if (sceneNames[sceneIndex] == "Battle")
 			{
 				//1P側の体力を5減らす
 				if (Input.GetKeyDown(KeyCode.F5))
@@ -117,7 +133,7 @@ public class FuncKeyManager : SingletonMono<FuncKeyManager>
 				{
 					canvasController.Call_ResumeCountdown();
 				}
-			}
+            }
 			#endregion
 		}
 	}
