@@ -33,11 +33,11 @@ public class AnimationUIManager : MonoBehaviour
     private Color initColor;		//初期化用のカラー
     public Sprite defaultSprite;	//アニメーションUIを出していないときに出しておくスプライト
     public List<StopUIClass> stopUIs = null;    //アニメーションUIを指定したフレームで指定したフレーム数停止させるクラスの変数
-	public bool isStart;             //アニメーションUI開始用フラグ
-    public bool isLoop;				//アニメーションUI停止用フラグ
-    public bool isLeave;            //アニメーションUI消去用フラグ
-	public bool isInvisible;			//アニメーションUI再生中に非表示にするどうか判定するフラグ
-
+	public bool isStart;            //アニメーションUIを開始するときに立てるフラグ
+    public bool isLoop;				//アニメーションUIをループさせたいときに立てるフラグ
+    public bool isLeave;            //アニメーションUIを最後のスプライトで止めたいときに立てる用フラグ
+	public bool isInvisible;		//アニメーションUI再生中に非表示にするどうか判定するフラグ
+	public bool isStop;				//アニメーションUI停止用に非表示にするどうか判定するフラグ
     private void Update()
     {
 		if (delayChangeFrame <= delayFrameCount)
@@ -54,7 +54,7 @@ public class AnimationUIManager : MonoBehaviour
 	public void Init()
 	{
         //各スプライトを格納
-        //デフォルトのスプライト
+        //デフォルトのスプライトをインスペクタで設定していなければデフォルトのスプライトを設定
         path = "Sprites/UI/AnimationUI/";
 		if (defaultSprite == null)	defaultSprite = Resources.Load<Sprite>(string.Format("{0}{1}", path, "DefaultImage"));
         //表示するスプライト
@@ -77,6 +77,7 @@ public class AnimationUIManager : MonoBehaviour
 		currentRemainFadeInFrame = fadeInFrame;
         currentRemainFadeOutFrame = fadeOutFrame;
 		isInvisible = false;
+		isStop = false;
         if (stopUIs.Count != 0)
         {
             for (int i = 0; i < stopUIs.Count; i++)
@@ -92,7 +93,7 @@ public class AnimationUIManager : MonoBehaviour
 	private void StartAnimation()
 	{
 		//アニメーション処理
-		if (nowSpriteCount < totalSpriteCount)
+		if (nowSpriteCount < totalSpriteCount && !isStop)
 		{
 			//指定フレームで指定フレーム分止められるようにする
 			var isStopUI = StopUI();
@@ -129,7 +130,6 @@ public class AnimationUIManager : MonoBehaviour
 			if (!isLeave)
 			{
 				//再利用できるように元に戻しておく
-				
 				if (!isLoop)
 				{
 					isStart = false;
