@@ -32,6 +32,7 @@ public class InGameUIController : MonoBehaviour
 	[SerializeField] GameObject Player02;
 
 	[SerializeField] CountDownTimer uI_countDownTimer;
+
 	[SerializeField] UI_HP uI_hp_P1;
 	[SerializeField] UI_HP uI_hp_P2;
 	[SerializeField] UI_Gauge uI_sp_P1;
@@ -180,7 +181,7 @@ public class InGameUIController : MonoBehaviour
 	/// </summary>
 	public void StopCountDown()
 	{
-		uI_countDownTimer.PlayCountDown(false);
+		uI_countDownTimer.StopTimer();
 	}
 
     /// <summary>

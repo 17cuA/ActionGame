@@ -18,7 +18,7 @@ public class TitleManager : MonoBehaviour
 	[SerializeField] private DemoMovie_Sound demoMovie_Sound;
 	public GameObject[] blackBackLine;
 
-	public bool isRunDemoMovie = false;
+	private bool isRunDemoMovie = false;
 
     public float waitPlayDemoMovieTime;
 
@@ -26,7 +26,9 @@ public class TitleManager : MonoBehaviour
 
     public float demoMoveTimeMax;
 
-    public float demoMoveTime;
+    public float demoMovieVolume = 0.7f;
+
+    private float demoMoveTime;
 
     public GameObject[] pressAnykey;
 
@@ -143,7 +145,7 @@ public class TitleManager : MonoBehaviour
 
         demoMoveTime -= Time.deltaTime;
 		//音量を徐々に上げる
-		demoMovie_Sound.Volume_Up();
+		demoMovie_Sound.Volume_Up( demoMovieVolume );
 
 		if (Input.anyKeyDown && !Input.GetKeyDown(KeyCode.Escape) && !Input.GetKeyDown(KeyCode.F1) && !Input.GetKeyDown(KeyCode.F2) && !Input.GetKeyDown(KeyCode.F3) && !Input.GetKeyDown(KeyCode.F4))
 		{
