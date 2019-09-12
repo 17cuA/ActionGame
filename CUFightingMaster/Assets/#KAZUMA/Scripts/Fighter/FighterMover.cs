@@ -16,6 +16,7 @@ public class FighterMover
     private CameraBase nowPlayCamera = null;
     private bool isCameraCreate = false;
     private int gravityFrame = 0;   //技ごとの重力用のフレーム数
+    private List<GameObject> deleteObject = new List<GameObject>();
 
     //エフェクト
     private List<FighterSkill.FrameEffects> effects = new List<FighterSkill.FrameEffects>();
@@ -99,6 +100,11 @@ public class FighterMover
         isCameraCreate = false;//カメラフラグ
         if (core.NowPlaySkill != null)
         {
+            foreach (var o in deleteObject)
+            {
+                Object.Destroy(o);
+            }
+            deleteObject = new List<GameObject>();
             if (nowPlayCamera != null)
             {
                 nowPlayCamera.DestroyCamera();
@@ -403,6 +409,10 @@ public class FighterMover
                     if (effects[nowPlayEffectNumber].worldPositionFlag)
                     {
                         obj = Object.Instantiate(effects[nowPlayEffectNumber].effect, effects[nowPlayEffectNumber].position, Quaternion.identity);
+                        if (effects[nowPlayEffectNumber].isDeleteObj)
+                        {
+                            deleteObject.Add(obj);
+                        }
                     }
                     else
                     {
@@ -410,7 +420,7 @@ public class FighterMover
                         {
                             obj = Object.Instantiate(effects[nowPlayEffectNumber].effect, core.transform.position + (new Vector3(effects[nowPlayEffectNumber].position.x * RightLeft, effects[nowPlayEffectNumber].position.y, effects[nowPlayEffectNumber].position.z)), Quaternion.identity);
                         }
-                        else if(effects[nowPlayEffectNumber].isScaled&&RightLeft == -1)
+                        else if (effects[nowPlayEffectNumber].isScaled && RightLeft == -1)
                         {
                             obj = Object.Instantiate(effects[nowPlayEffectNumber].effect, core.transform.position + (new Vector3(effects[nowPlayEffectNumber].position.x * RightLeft, effects[nowPlayEffectNumber].position.y, effects[nowPlayEffectNumber].position.z)), Quaternion.Euler(0, 0, 0));
                             obj.gameObject.transform.localScale = new Vector3(-1, 1, 1);
@@ -418,6 +428,10 @@ public class FighterMover
                         else if (RightLeft == -1)
                         {
                             obj = Object.Instantiate(effects[nowPlayEffectNumber].effect, core.transform.position + (new Vector3(effects[nowPlayEffectNumber].position.x * RightLeft, effects[nowPlayEffectNumber].position.y, effects[nowPlayEffectNumber].position.z)), Quaternion.Euler(0, 180, 0));
+                        }
+                        if (effects[nowPlayEffectNumber].isDeleteObj)
+                        {
+                            deleteObject.Add(obj);
                         }
                     }
                     if (obj != null)

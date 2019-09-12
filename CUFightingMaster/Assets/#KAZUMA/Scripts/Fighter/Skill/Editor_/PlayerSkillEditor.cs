@@ -727,6 +727,7 @@ public class PlayerSkillEditor : EditorWindow
             playerSkill.frameEffects[i].childFlag = EditorGUILayout.Toggle("親子関係", playerSkill.frameEffects[i].childFlag);
             playerSkill.frameEffects[i].worldPositionFlag = EditorGUILayout.Toggle("ワールド座標", playerSkill.frameEffects[i].worldPositionFlag);
             playerSkill.frameEffects[i].isScaled = EditorGUILayout.Toggle("スケール反転", playerSkill.frameEffects[i].isScaled);
+            playerSkill.frameEffects[i].isDeleteObj = EditorGUILayout.Toggle("関連付け", playerSkill.frameEffects[i].isDeleteObj);
 
             EditorGUILayout.EndHorizontal();
             playerSkill.frameEffects[i].effect = EditorGUILayout.ObjectField("エフェクト", playerSkill.frameEffects[i].effect, typeof(GameObject), false) as GameObject;

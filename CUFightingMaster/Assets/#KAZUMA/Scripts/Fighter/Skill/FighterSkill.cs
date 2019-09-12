@@ -10,21 +10,21 @@ public class FighterSkill : ScriptableObject
 {
     #region 構造体、クラス
     //当たり判定の基礎構造体
-	[System.Serializable]
-	public struct HitBox_
-	{
-		public Vector3 size;
-		public Vector3 localPosition;
-	}
+    [System.Serializable]
+    public struct HitBox_
+    {
+        public Vector3 size;
+        public Vector3 localPosition;
+    }
     //当たり判定
-	[System.Serializable]
-	public class FrameHitBox
-	{
+    [System.Serializable]
+    public class FrameHitBox
+    {
         public bool isFalse = false;
         public bool isInfinityFrame;//アニメーション再生終了後も継続
         public HitBox_ hitBox;
-		public int startFrame;
-		public int endFrame;        
+        public int startFrame;
+        public int endFrame;
     }
     [System.Serializable]
     public class HitEffects
@@ -33,7 +33,7 @@ public class FighterSkill : ScriptableObject
         public bool isParant;
         public bool isEnemyParant;
         public GameObject effect;
-		public GameObject guardEffect;
+        public GameObject guardEffect;
         public Vector3 position;
     }
     // 投げのダメージ
@@ -51,22 +51,23 @@ public class FighterSkill : ScriptableObject
         public GameObject effect;
         public bool childFlag;
         public bool worldPositionFlag;
+        public bool isDeleteObj;
         public bool isScaled;//反転をスケールで行う
         public Vector3 position;
     }
-	//フレームエフェクト
-	[System.Serializable]
-	public class FrameBullets
-	{
-		public int frame;
-		public BulletCore bullet;
-		public bool childFlag;
-		public bool worldPositionFlag;
-		public Vector3 position;
-	}
+    //フレームエフェクト
+    [System.Serializable]
+    public class FrameBullets
+    {
+        public int frame;
+        public BulletCore bullet;
+        public bool childFlag;
+        public bool worldPositionFlag;
+        public Vector3 position;
+    }
 
-	//当たり判定群
-	[System.Serializable]
+    //当たり判定群
+    [System.Serializable]
     public class CustomHitBox
     {
         public HitBoxMode mode;
@@ -85,12 +86,12 @@ public class FighterSkill : ScriptableObject
         public bool isThrow = false;    //投げかどうか
         public bool isThrowGroundDamage = false;//投げ技の時、接地時にダメージを喰らう
         public bool isThrowGroundAnimEnd = false;//投げ技の時、接地時にアニメーション終了
-		public List<Move> airDamageMovements = new List<Move>();//空中で当たった時の動き
+        public List<Move> airDamageMovements = new List<Move>();//空中で当たった時の動き
         public int throwGroundDamage = 0;
         public FighterSkill throwSkill;//投げ技
         public FighterSkill enemyThrowSkill;
         public List<ThrowDamage> throwDamages = new List<ThrowDamage>();
-		public bool isJumpCancel = false;
+        public bool isJumpCancel = false;
         //ダウン時の移動
         public bool isContinue = false;
         public List<Move> movements = new List<Move>();
@@ -105,8 +106,8 @@ public class FighterSkill : ScriptableObject
     }
     //移動量
     [System.Serializable]
-	public class Move
-	{
+    public class Move
+    {
         public bool isGravityInvaid;
         public bool isResetStartGravity;
         public bool isResetEndGravity;
@@ -114,15 +115,15 @@ public class FighterSkill : ScriptableObject
         public bool isBound = false;//バウンド
         public List<Move> boundMovements = new List<Move>();//バウンド移動量
         public Vector3 movement;
-		public int startFrame;
-	}
+        public int startFrame;
+    }
     //重力用
-	[System.Serializable]
-	public class GravityMove
-	{
-		public Vector3 movement;
-		public Vector3 limitMove;
-		public int startFrame;
+    [System.Serializable]
+    public class GravityMove
+    {
+        public Vector3 movement;
+        public Vector3 limitMove;
+        public int startFrame;
     }
     [System.Serializable]
     public class TimeStop
@@ -143,8 +144,8 @@ public class FighterSkill : ScriptableObject
     public float animationSpeed = 1;            //アニメーションの速度
     public SkillStatus status = SkillStatus.Normal;                  //Normal,Special等
     public List<FrameEffects> frameEffects = new List<FrameEffects>(); //TODO::エフェクトリスト
-	public List<FrameBullets> frameBullets = new List<FrameBullets>();
-    public SkillStatus cancelFrag = (SkillStatus)(1<<0);//キャンセルできるもの(ビット)
+    public List<FrameBullets> frameBullets = new List<FrameBullets>();
+    public SkillStatus cancelFrag = (SkillStatus)(1 << 0);//キャンセルできるもの(ビット)
     public FighterSkill endNextAnimation = null;//終了時スキル
     public int endNextWeight = 0;
     public FighterSkill groundLandingSkill = null;//着地時スキル
@@ -161,18 +162,18 @@ public class FighterSkill : ScriptableObject
     //当たり判定
     public bool isInvincibleBullet = false;//飛び道具無効
     public List<FrameHitBox> plusHeadHitBox = new List<FrameHitBox>();//頭
-	public List<FrameHitBox> plusBodyHitBox = new List<FrameHitBox>();//体
-	public List<FrameHitBox> plusFootHitBox = new List<FrameHitBox>();//足
+    public List<FrameHitBox> plusBodyHitBox = new List<FrameHitBox>();//体
+    public List<FrameHitBox> plusFootHitBox = new List<FrameHitBox>();//足
     public List<FrameHitBox> plusGrabHitBox = new List<FrameHitBox>();//掴み
-	public List<FrameHitBox> plusPushingHitBox = new List<FrameHitBox>();//押し合い
+    public List<FrameHitBox> plusPushingHitBox = new List<FrameHitBox>();//押し合い
 
     public List<CustomHitBox> customHitBox = new List<CustomHitBox>();//カスタム
 
-	//重力継続判定
-	public bool isContinue = false;
-	public bool isMoveContinue = false;
-	//移動
-	public List<Move> movements = new List<Move>();
+    //重力継続判定
+    public bool isContinue = false;
+    public bool isMoveContinue = false;
+    //移動
+    public List<Move> movements = new List<Move>();
     public List<GravityMove> gravityMoves = new List<GravityMove>();
     public TimeStop timeStops = new TimeStop();
 
@@ -181,7 +182,7 @@ public class FighterSkill : ScriptableObject
     public bool bodyFlag = true;
     public bool footFlag = true;
     public bool grabFlag = true;
-	public bool pushingFlag = true;
+    public bool pushingFlag = true;
 
     #region EDITOR_
 #if UNITY_EDITOR
