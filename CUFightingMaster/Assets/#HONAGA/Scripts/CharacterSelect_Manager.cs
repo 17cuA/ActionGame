@@ -8,6 +8,8 @@ using CUEngine.Pattern;
 public class CharacterSelect_Manager : SingletonMono<CharacterSelect_Manager>
 {
     #region 変数宣言
+    public AnimationUIManager[] animation_Ready = new AnimationUIManager[4];
+
     public Cursor_CharacterSelect cursor1_1;
     public Cursor_CharacterSelect cursor1_2;
     public Cursor_CharacterSelect cursor2_1;
@@ -297,6 +299,13 @@ public class CharacterSelect_Manager : SingletonMono<CharacterSelect_Manager>
             {
                 nomalAnimationPlayers[i].animFrag = true;
             }
+            if(animation_Ready[0].isStart == false && animation_Ready[2].isStart == false)
+            {
+                animation_Ready[0].isInterruption = false;
+                animation_Ready[2].isInterruption = false;
+                animation_Ready[0].isStart = true;
+                animation_Ready[2].isStart = true;
+            }
         }
         else
         {
@@ -305,12 +314,29 @@ public class CharacterSelect_Manager : SingletonMono<CharacterSelect_Manager>
                 nomalAnimationPlayers[i].animFrag = false;
             }
         }
-        
-        if(CharacterSelectBool[1] == true)
+        if(characterSelectBool[0] == false && characterSelectBool[2] == false)
+        {
+            animation_Ready[0].isInterruption = true;
+            animation_Ready[2].isInterruption = true;
+        }
+        if(characterSelectBool[1] == false && characterSelectBool[3] == false)
+        {
+            animation_Ready[1].isInterruption = true;
+            animation_Ready[3].isInterruption = true;
+        }
+
+        if (CharacterSelectBool[1] == true)
         {
             for (int i = 4; i < 8; i++)
             {
                 nomalAnimationPlayers[i].animFrag = true;
+            }
+            if(animation_Ready[1].isStart == false && animation_Ready[3].isStart == false)
+            {
+                animation_Ready[1].isInterruption = false;
+                animation_Ready[3].isInterruption = false;
+                animation_Ready[1].isStart = true;
+                animation_Ready[3].isStart = true;
             }
         }
         else
