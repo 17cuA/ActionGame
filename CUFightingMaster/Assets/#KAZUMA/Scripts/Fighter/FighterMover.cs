@@ -410,6 +410,11 @@ public class FighterMover
                         {
                             obj = Object.Instantiate(effects[nowPlayEffectNumber].effect, core.transform.position + (new Vector3(effects[nowPlayEffectNumber].position.x * RightLeft, effects[nowPlayEffectNumber].position.y, effects[nowPlayEffectNumber].position.z)), Quaternion.identity);
                         }
+                        else if(effects[nowPlayEffectNumber].isScaled&&RightLeft == -1)
+                        {
+                            obj = Object.Instantiate(effects[nowPlayEffectNumber].effect, core.transform.position + (new Vector3(effects[nowPlayEffectNumber].position.x * RightLeft, effects[nowPlayEffectNumber].position.y, effects[nowPlayEffectNumber].position.z)), Quaternion.Euler(0, 0, 0));
+                            obj.gameObject.transform.localScale = new Vector3(-1, 1, 1);
+                        }
                         else if (RightLeft == -1)
                         {
                             obj = Object.Instantiate(effects[nowPlayEffectNumber].effect, core.transform.position + (new Vector3(effects[nowPlayEffectNumber].position.x * RightLeft, effects[nowPlayEffectNumber].position.y, effects[nowPlayEffectNumber].position.z)), Quaternion.Euler(0, 180, 0));

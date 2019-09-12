@@ -51,6 +51,7 @@ public class FighterSkill : ScriptableObject
         public GameObject effect;
         public bool childFlag;
         public bool worldPositionFlag;
+        public bool isScaled;//反転をスケールで行う
         public Vector3 position;
     }
 	//フレームエフェクト
