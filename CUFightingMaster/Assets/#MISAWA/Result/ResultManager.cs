@@ -28,7 +28,7 @@ public class ResultManager : MonoBehaviour
 	public GameObject obj;
 	public GameObject obj2;
 
-	public FighterStatus[] debug = new FighterStatus[2];
+	//public FighterStatus[] debug = new FighterStatus[2];
 
 	public GameObject[] camelas = new GameObject[4];
 	public GameObject[] timelines = new GameObject[4];
@@ -66,10 +66,10 @@ public class ResultManager : MonoBehaviour
         resultController_2 = canvas_2.transform.Find("ResultController").GetComponent<ResultController>();
 
 		// キャラの生成
-		obj = Instantiate(/*GameDataStrage.Instance.fighterStatuses[0].PlayerModel*/debug[0].PlayerModel, targetPos[0].transform.position, targetPos[0].transform.rotation);
-		obj.gameObject.layer = LayerMask.NameToLayer(CommonConstants.Layers.Player_One);
-		obj2 = Instantiate(/*GameDataStrage.Instance.fighterStatuses[1].PlayerModel*/debug[1].PlayerModel, targetPos[1].transform.position, targetPos[0].transform.rotation);
-		obj.gameObject.layer = LayerMask.NameToLayer(CommonConstants.Layers.Player_Two);
+		obj = Instantiate(GameDataStrage.Instance.fighterStatuses[0].PlayerModel, targetPos[0].transform.position, targetPos[0].transform.rotation);
+		//obj.gameObject.layer = LayerMask.NameToLayer(CommonConstants.Layers.Player_One);
+		obj2 = Instantiate(GameDataStrage.Instance.fighterStatuses[1].PlayerModel2, targetPos[1].transform.position, targetPos[0].transform.rotation);
+		//obj.gameObject.layer = LayerMask.NameToLayer(CommonConstants.Layers.Player_Two);
 
 		// １Pが勝ったら
 		if (GameDataStrage.Instance.winFlag_PlayerOne == true)
@@ -89,7 +89,7 @@ public class ResultManager : MonoBehaviour
 			//obj.GetComponent<Animationdata>().animFrag = true;
 			//obj2.GetComponent<Animationdata>().animFrag = true;
 
-			if (debug[0].PlayerID == 0)
+			if (GameDataStrage.Instance.fighterStatuses[0].PlayerID == 0)
 			{
 				obj.GetComponent<Animationdata>().ResultAnimation(FighterClips[0],0.5f);
 				obj.GetComponent<Animationdata>().resultFlag = true;
@@ -100,9 +100,9 @@ public class ResultManager : MonoBehaviour
 				timelines[3].SetActive(false);
 				cinemaController = cinemaControllers[0];
 			}
-			else if (debug[0].PlayerID == 1)
+			else if (GameDataStrage.Instance.fighterStatuses[0].PlayerID == 1)
 			{
-				obj.GetComponent<Animationdata>().ResultAnimation(FighterClips[2],1.0f);
+				obj.GetComponent<Animationdata>().ResultAnimation(FighterClips[2],0.5f);
 				obj.GetComponent<Animationdata>().resultFlag = true;
 				// 1Pのおばちゃん勝利タイムラインを表示
 				timelines[0].SetActive(false);
@@ -126,8 +126,8 @@ public class ResultManager : MonoBehaviour
 			obj.GetComponent<Animationdata>().ResultAnimation(FighterClips[1],0.5f);
 			obj.GetComponent<Animationdata>().resultFlag = true;
 
-			// 1Pのキャラがクリコだったら
-			if (debug[1].PlayerID == 0)
+			// 2Pのキャラがクリコだったら
+			if (GameDataStrage.Instance.fighterStatuses[1].PlayerID == 0)
 			{
 				obj2.GetComponent<Animationdata>().ResultAnimation(FighterClips[0],0.5f);
 				obj2.GetComponent<Animationdata>().resultFlag = true;
@@ -140,9 +140,9 @@ public class ResultManager : MonoBehaviour
 				cinemaController = cinemaControllers[2];
 			}
 
-			else if (debug[1].PlayerID == 1)
+			else if (GameDataStrage.Instance.fighterStatuses[1].PlayerID == 1)
 			{
-				obj2.GetComponent<Animationdata>().ResultAnimation(FighterClips[2],1.0f);
+				obj2.GetComponent<Animationdata>().ResultAnimation(FighterClips[2],0.5f);
 				obj2.GetComponent<Animationdata>().resultFlag = true;
 
 				// 2Pのおばちゃん勝利タイムラインを表示

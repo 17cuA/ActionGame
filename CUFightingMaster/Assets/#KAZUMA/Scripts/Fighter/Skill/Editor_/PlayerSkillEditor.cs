@@ -726,6 +726,8 @@ public class PlayerSkillEditor : EditorWindow
             EditorGUILayout.BeginHorizontal();
             playerSkill.frameEffects[i].childFlag = EditorGUILayout.Toggle("親子関係", playerSkill.frameEffects[i].childFlag);
             playerSkill.frameEffects[i].worldPositionFlag = EditorGUILayout.Toggle("ワールド座標", playerSkill.frameEffects[i].worldPositionFlag);
+            playerSkill.frameEffects[i].isScaled = EditorGUILayout.Toggle("スケール反転", playerSkill.frameEffects[i].isScaled);
+
             EditorGUILayout.EndHorizontal();
             playerSkill.frameEffects[i].effect = EditorGUILayout.ObjectField("エフェクト", playerSkill.frameEffects[i].effect, typeof(GameObject), false) as GameObject;
             //Vector3入力
