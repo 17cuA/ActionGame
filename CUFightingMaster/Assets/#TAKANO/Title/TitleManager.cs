@@ -32,7 +32,7 @@ public class TitleManager : MonoBehaviour
 
 	private void InitTitle()
 	{
-        canvasController_Title.StopPressAnyButton();
+		canvasController_Title.StopPressAnyButton();
         currentUpdate = StartTitle;
 	}
 
@@ -45,31 +45,32 @@ public class TitleManager : MonoBehaviour
 		{
 			currentUpdate = UpCurtain;
 		}
+
+		logoAnimation.InitLogoAnimation();
 	}
 
 	//カーテンを開ける
 	private void UpCurtain()
 	{
-		//BGMの再生開始
-		Sound.LoadBgm("BGM_Title", "BGM_Title");
-		Sound.PlayBgm("BGM_Title", 0.3f, 1, true);
+		Debug.Log(canvasController_Title.UpCurtain());
 
-        //Logoアニメーションの初期化
-        logoAnimation.InitLogoAnimation();
-
-        if (canvasController_Title.UpCurtain())
+		if (canvasController_Title.UpCurtain() == true)
 		{
+			//Logoアニメーションの初期化
+			//BGMの再生開始
+			Sound.LoadBgm("BGM_Title", "BGM_Title");
+			Sound.PlayBgm("BGM_Title", 0.3f, 1, true);
+			
 			currentUpdate = TitleUpdate;	
 		}
-		//Logoアニメーション開始
-		logoAnimation.PlayLogoAnimation();
 	}
 
 	private void TitleUpdate()
 	{
+		//Logoアニメーション開始
+		logoAnimation.PlayLogoAnimation();
 
-
-        if(canvasController_Title.IsEndLogoAnime())
+		if (canvasController_Title.IsEndLogoAnime())
               canvasController_Title.PlayPressAnyButton();
 
         Debug.Log("Update");
@@ -145,11 +146,13 @@ public class TitleManager : MonoBehaviour
 
 		if (Input.anyKeyDown && !Input.GetKeyDown(KeyCode.Escape) && !Input.GetKeyDown(KeyCode.F1) && !Input.GetKeyDown(KeyCode.F2) && !Input.GetKeyDown(KeyCode.F3) && !Input.GetKeyDown(KeyCode.F4))
 		{
-			currentUpdate = DownCurtain;
+			currentUpdate = EndDemoMovie_FadeOut;
+
 		}
         //デモムービーの再生が終わったら
         if (demoMoveTime <= 0)
 		{
+			logoAnimation.InitLogoAnimation();
 			demoMovie_Sound.Volume_Down();
 			currentUpdate = EndDemoMovie_FadeOut;
 		}
@@ -172,8 +175,7 @@ public class TitleManager : MonoBehaviour
 
     private void EndDemoMovie_FadeIn()
     {
-        //Logoアニメーションの初期化
-        logoAnimation.InitLogoAnimation();
+
 
         if (canvasController_Title.StartFadeIn())
             currentUpdate = InitTitle;
