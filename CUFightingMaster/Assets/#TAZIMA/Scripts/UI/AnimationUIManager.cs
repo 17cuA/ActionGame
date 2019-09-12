@@ -26,16 +26,17 @@ public class AnimationUIManager : MonoBehaviour
 	public int delayChangeFrame;	//スプライトを次に移すフレームまでに挟むフレーム
 	private int delayFrameCount;	//スプライトを次に移すフレームまでに挟むフレームのカウントをする
 	public int fadeInFrame;			//フェードイン後完了するまでのフレーム
-    public int fadeOutFrame;		//フェードアウトが完了するまでのフレーム
+    public int fadeOutFrame;			//フェードアウトが完了するまでのフレーム
     private float currentRemainFadeInFrame;		//フェードインが完了するまでの残りのフレーム
 	private float currentRemainFadeOutFrame;	//フェードアウトが完了するまでの残りのフレーム
 	private Sprite[] sprites;		//読み込んだスプライトを格納
     private Color initColor;		//初期化用のカラー
     public Sprite defaultSprite;	//アニメーションUIを出していないときに出しておくスプライト
     public List<StopUIClass> stopUIs = null;    //アニメーションUIを指定したフレームで指定したフレーム数停止させるクラスの変数
-	public bool isStart;			//アニメーションUI開始用フラグ
+	public bool isStart;             //アニメーションUI開始用フラグ
     public bool isLoop;				//アニメーションUI停止用フラグ
-    public bool isLeave;			//アニメーションUI消去用フラグ
+    public bool isLeave;            //アニメーションUI消去用フラグ
+	public bool isInvisible;			//アニメーションUI再生中に非表示にするどうか判定するフラグ
 
     private void Update()
     {
@@ -55,7 +56,7 @@ public class AnimationUIManager : MonoBehaviour
         //各スプライトを格納
         //デフォルトのスプライト
         path = "Sprites/UI/AnimationUI/";
-        defaultSprite = Resources.Load<Sprite>(string.Format("{0}{1}", path, "DefaultImage"));
+		if (defaultSprite == null)	defaultSprite = Resources.Load<Sprite>(string.Format("{0}{1}", path, "DefaultImage"));
         //表示するスプライト
         path += spriteName;
         totalSpriteCount = Resources.LoadAll(path).Length / 2;
@@ -98,9 +99,17 @@ public class AnimationUIManager : MonoBehaviour
 			//UIを止めていない時の処理
 			if (!isStopUI)
 			{
-				//パスで次のスプライトを指定して差し替える
-				var sprite = sprites[nowSpriteCount];
-				gameObject.GetComponent<Image>().sprite = sprite;
+				if (!isInvisible)
+				{
+					//パスで次のスプライトを指定して差し替える
+					var sprite = sprites[nowSpriteCount];
+					gameObject.GetComponent<Image>().sprite = sprite;
+				}
+				else if (gameObject.GetComponent<Image>().sprite != defaultSprite )
+				{
+					//デフォルトスプライトをセット
+					gameObject.GetComponent<Image>().sprite = defaultSprite;
+				}
 				//指定フレームまでフェードイン処理
 				if (nowSpriteCount < fadeInFrame)
 				{

@@ -10,7 +10,11 @@ public class AnimationUISetting : MonoBehaviour
     {
         for (int i = 0;i < gameObjects.Length;i++)
         {
-            gameObjects[i].GetComponent<AnimationUIManager>().Init();
-        }
+			var animUIManagers = gameObjects[i].GetComponents<AnimationUIManager>();
+			for (int j = 0;j < animUIManagers.Length; j++)
+			{
+				animUIManagers[j].Init();
+			}
+		}
     }
 }

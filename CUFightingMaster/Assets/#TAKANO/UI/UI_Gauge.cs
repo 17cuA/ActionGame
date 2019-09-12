@@ -70,16 +70,21 @@ public class UI_Gauge : MonoBehaviour
 	private void GuageEfects()
 	{
 		var guageNum = value / (valueMax / guageIndex);
-		if (guageNum != 0)
+		//何本光らせるか処理
+		for (int i = 0; i < guageIndex; i++)
 		{
-			for (int i = 0;i < guageIndex;i++)
+			if (i < guageNum)
 			{
-				if (i < guageNum)
+				if (guageAnims[i].isInvisible)
 				{
-					if (guageAnims[i].isStart == false)
-					{
-						guageAnims[i].isStart = true;
-					}
+					guageAnims[i].isInvisible = false;
+				}
+			}
+			else
+			{
+				if (!guageAnims[i].isInvisible)
+				{
+					guageAnims[i].isInvisible = true;
 				}
 			}
 		}

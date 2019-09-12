@@ -26,8 +26,8 @@ class UI_RoundWinCounter : MonoBehaviour
 	public Sprite default_Image;
 
     //参照
-    public UI_RoundWin[] RoundCounter_P1 = new UI_RoundWin[3];
-    public UI_RoundWin[] RoundCounter_P2 = new UI_RoundWin[3];
+    public GameObject[] RoundCounter_P1 = new GameObject[3];
+    public GameObject[] RoundCounter_P2 = new GameObject[3];
 
 	/// <summary>
 	/// ラウンドカウンターを更新する
@@ -38,17 +38,17 @@ class UI_RoundWinCounter : MonoBehaviour
     {
 		if (winP1cnt.Length > 0)
 		{
-			Debug.Log(Mathf.Clamp(winP1cnt.Length - 1, 0, 2));
+			//Debug.Log(Mathf.Clamp(winP1cnt.Length - 1, 0, 2));
 			switch (winP1cnt[Mathf.Clamp(winP1cnt.Length - 1,0,2)])
 			{
 				case '1':
-					RoundCounter_P1[Mathf.Clamp(winP1cnt.Length - 1, 0, 2)].UpdateImage(KO_Image);
+					RoundCounter_P1[Mathf.Clamp(winP1cnt.Length - 1, 0, 2)].GetComponents<AnimationUIManager>()[0].isStart = true;
 					break;
 				case'2':
-					RoundCounter_P1[Mathf.Clamp(winP1cnt.Length - 1, 0, 2)].UpdateImage(DoubleKO_Image);
+					RoundCounter_P1[Mathf.Clamp(winP1cnt.Length - 1, 0, 2)].GetComponents<AnimationUIManager>()[1].isStart = true;
 					break;
 				case '3':
-					RoundCounter_P1[Mathf.Clamp(winP1cnt.Length - 1, 0, 2)].UpdateImage(timeOver_Image);
+					RoundCounter_P1[Mathf.Clamp(winP1cnt.Length - 1, 0, 2)].GetComponents<AnimationUIManager>()[2].isStart = true;
 					break;
 				default:
 					break;
@@ -59,13 +59,13 @@ class UI_RoundWinCounter : MonoBehaviour
 			switch (winP2cnt[Mathf.Clamp(winP2cnt.Length - 1, 0, 2)])
 			{
 				case '1':
-					RoundCounter_P2[Mathf.Clamp(winP2cnt.Length - 1, 0, 2)].UpdateImage(KO_Image);
+					RoundCounter_P2[Mathf.Clamp(winP2cnt.Length - 1, 0, 2)].GetComponents<AnimationUIManager>()[0].isStart = true;
 					break;
 				case '2':
-					RoundCounter_P2[Mathf.Clamp(winP2cnt.Length - 1, 0, 2)].UpdateImage(DoubleKO_Image);
+					RoundCounter_P2[Mathf.Clamp(winP2cnt.Length - 1, 0, 2)].GetComponents<AnimationUIManager>()[1].isStart = true;
 					break;
 				case '3':
-					RoundCounter_P2[Mathf.Clamp(winP2cnt.Length - 1, 0, 2)].UpdateImage(timeOver_Image);
+					RoundCounter_P2[Mathf.Clamp(winP2cnt.Length - 1, 0, 2)].GetComponents<AnimationUIManager>()[2].isStart = true;
 					break;
 				default:
 					break;
@@ -78,14 +78,14 @@ class UI_RoundWinCounter : MonoBehaviour
 	/// </summary>
 	public void ResetWinCounter()
 	{
-		foreach( UI_RoundWin uI_RoundWin in RoundCounter_P1 )
-		{
-			uI_RoundWin.UpdateImage(default_Image);
-		}
-		foreach( UI_RoundWin uI_RoundWin in RoundCounter_P2 )
-		{
-			uI_RoundWin.UpdateImage(default_Image);
-		}
+		//foreach( GameObject uI_RoundWin in RoundCounter_P1 )
+		//{
+		//	uI_RoundWin.UpdateImage(default_Image);
+		//}
+		//foreach( GameObject uI_RoundWin in RoundCounter_P2 )
+		//{
+		//	uI_RoundWin.UpdateImage(default_Image);
+		//}
 	}
 }
 
