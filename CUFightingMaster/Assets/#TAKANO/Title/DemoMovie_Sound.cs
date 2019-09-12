@@ -9,9 +9,13 @@ public class DemoMovie_Sound : MonoBehaviour
 	float vol = 0;
 	public AudioSource audioSource;
 	
-	public void Volume_Up()
+    /// <summary>
+    /// ボリュームを徐々に上げる(0.0 ~ 1.0)
+    /// </summary>
+    /// <param name="max"></param>
+	public void Volume_Up( float max)
 	{
-		if(vol < 0.5)
+		if(vol < max)
 		{
 			vol += 0.01f;
 			audioSource.volume = vol;
