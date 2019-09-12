@@ -29,7 +29,7 @@ public class UI_Gauge : MonoBehaviour
 	private static int guageIndex = 3;
 
 	public AnimationUIManager[] guageAnims = new AnimationUIManager[guageIndex];
-
+	public AnimationUIManager pushEx;
 	[SerializeField]private int valueMax = 0;
 	public int value = 0;
 
@@ -87,6 +87,9 @@ public class UI_Gauge : MonoBehaviour
 					guageAnims[i].isInvisible = true;
 				}
 			}
+			//PUSH EX 表示
+			if (guageNum == guageIndex)	pushEx.isInvisible = false;
+			else pushEx.isInvisible = true;
 		}
 
 

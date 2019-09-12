@@ -50,6 +50,104 @@ MonoBehaviour:
   - {fileID: 887475077386284442}
   - {fileID: 3771305506980899414}
   - {fileID: 4507126411555136413}
+--- !u!1 &685301167623949375
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3734864449880892870}
+  - component: {fileID: 1126047397248272569}
+  - component: {fileID: 2585746909257790324}
+  - component: {fileID: 7379823305278036848}
+  m_Layer: 5
+  m_Name: PushEX
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &3734864449880892870
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 685301167623949375}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2312916272505508625}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 300, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &1126047397248272569
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 685301167623949375}
+  m_CullTransparentMesh: 0
+--- !u!114 &2585746909257790324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 685301167623949375}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 21300000, guid: 935f220f3f3d7ee4697f6c960c283b50, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+--- !u!114 &7379823305278036848
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 685301167623949375}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae586ca7055677142960095fb0ee3abf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteName: PUSH EX
+  delayChangeFrame: 2
+  fadeInFrame: 10
+  fadeOutFrame: 10
+  defaultSprite: {fileID: 0}
+  stopUIs: []
+  isStart: 1
+  isLoop: 1
+  isLeave: 0
+  isInvisible: 1
+  isInterruption: 0
 --- !u!1 &887475077386284442
 GameObject:
   m_ObjectHideFlags: 0
@@ -147,6 +245,7 @@ MonoBehaviour:
   isLoop: 1
   isLeave: 0
   isInvisible: 1
+  isInterruption: 0
 --- !u!1 &2312916271494921136
 GameObject:
   m_ObjectHideFlags: 0
@@ -307,6 +406,7 @@ GameObject:
   - component: {fileID: 2312916272505508627}
   - component: {fileID: 2312916272505508626}
   - component: {fileID: 2312916272505508628}
+  - component: {fileID: 419163182285942944}
   m_Layer: 5
   m_Name: UI_SP_P1
   m_TagString: Untagged
@@ -328,6 +428,7 @@ RectTransform:
   - {fileID: 2312916272616966220}
   - {fileID: 2312916271494921137}
   - {fileID: 4452501577680994693}
+  - {fileID: 3734864449880892870}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -392,8 +493,23 @@ MonoBehaviour:
   - {fileID: 375527446101565534}
   - {fileID: 6607398558121589686}
   - {fileID: 660718300645467138}
+  pushEx: {fileID: 7379823305278036848}
   valueMax: 631
   value: 0
+--- !u!114 &419163182285942944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2312916272505508624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5157f7a812e59234cb23b5a124a3865a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameObjects:
+  - {fileID: 685301167623949375}
 --- !u!1 &2312916272616966219
 GameObject:
   m_ObjectHideFlags: 0
@@ -580,6 +696,7 @@ MonoBehaviour:
   isLoop: 1
   isLeave: 0
   isInvisible: 1
+  isInterruption: 0
 --- !u!1 &4507126411555136413
 GameObject:
   m_ObjectHideFlags: 0
@@ -677,3 +794,4 @@ MonoBehaviour:
   isLoop: 1
   isLeave: 0
   isInvisible: 1
+  isInterruption: 0
