@@ -40,8 +40,8 @@ public class Animationdata : MonoBehaviour
 		//	animationData.Update();
 		//}
 	}
-	public void ResultAnimation(AnimationClip animationClip)
+	public void ResultAnimation(AnimationClip animationClip,float f)
 	{
-		animationData.SetPlayAnimation(animationClip, 0.5f, 0);
+		animationData.SetPlayAnimation(animationClip, f, 0);
 	}
 }
