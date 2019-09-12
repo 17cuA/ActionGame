@@ -62,7 +62,6 @@ public class CharacterSelect_Manager : SingletonMono<CharacterSelect_Manager>
         Sound.PlayBgm("BGM_Menu", 0.3f, 1, true);
         // ---------------------------------------------------
 
-        /*pplication.targetFrameRate = 60;*/
         panelAnimFlag = false;
         animFlagCount = 1;
         fadeFrame = 0;

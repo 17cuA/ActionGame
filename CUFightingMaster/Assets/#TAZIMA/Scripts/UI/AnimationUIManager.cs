@@ -56,7 +56,7 @@ public class AnimationUIManager : MonoBehaviour
         //各スプライトを格納
         //デフォルトのスプライト
         path = "Sprites/UI/AnimationUI/";
-        defaultSprite = Resources.Load<Sprite>(string.Format("{0}{1}", path, "DefaultImage"));
+		if (defaultSprite == null)	defaultSprite = Resources.Load<Sprite>(string.Format("{0}{1}", path, "DefaultImage"));
         //表示するスプライト
         path += spriteName;
         totalSpriteCount = Resources.LoadAll(path).Length / 2;

@@ -1879,6 +1879,9 @@ GameObject:
   - component: {fileID: 7015910188656240844}
   - component: {fileID: 7015910188656240843}
   - component: {fileID: 7015910188656240842}
+  - component: {fileID: 5343613856993327994}
+  - component: {fileID: 6440583764640335763}
+  - component: {fileID: 6914655736362002558}
   m_Layer: 5
   m_Name: 2
   m_TagString: Untagged
@@ -1902,8 +1905,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 4, y: 490}
-  m_SizeDelta: {x: 25, y: 25}
+  m_AnchoredPosition: {x: 4, y: 500}
+  m_SizeDelta: {x: 40, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7015910188656240844
 CanvasRenderer:
@@ -1954,6 +1957,72 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc9a75c25472b7d4795132da748d982d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5343613856993327994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7015910188656240841}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae586ca7055677142960095fb0ee3abf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteName: VICTORY ICON
+  delayChangeFrame: 0
+  fadeInFrame: 0
+  fadeOutFrame: 0
+  defaultSprite: {fileID: 21300018, guid: 3f24504db5a710e42969d9479f3b8326, type: 3}
+  stopUIs: []
+  isStart: 0
+  isLoop: 0
+  isLeave: 1
+  isInvisible: 0
+--- !u!114 &6440583764640335763
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7015910188656240841}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae586ca7055677142960095fb0ee3abf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteName: DRAW ICON
+  delayChangeFrame: 0
+  fadeInFrame: 0
+  fadeOutFrame: 0
+  defaultSprite: {fileID: 21300018, guid: 3f24504db5a710e42969d9479f3b8326, type: 3}
+  stopUIs: []
+  isStart: 0
+  isLoop: 0
+  isLeave: 1
+  isInvisible: 0
+--- !u!114 &6914655736362002558
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7015910188656240841}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae586ca7055677142960095fb0ee3abf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteName: TIME UP ICON
+  delayChangeFrame: 0
+  fadeInFrame: 0
+  fadeOutFrame: 0
+  defaultSprite: {fileID: 21300018, guid: 3f24504db5a710e42969d9479f3b8326, type: 3}
+  stopUIs: []
+  isStart: 0
+  isLoop: 0
+  isLeave: 1
+  isInvisible: 0
 --- !u!1 &7015910188692215483
 GameObject:
   m_ObjectHideFlags: 0
@@ -2016,11 +2085,12 @@ MonoBehaviour:
   delayChangeFrame: 0
   fadeInFrame: 0
   fadeOutFrame: 7
-  defaultSprite: {fileID: 0}
+  defaultSprite: {fileID: 21300000, guid: 84a40b3f4f2999648afda9a8b9db0096, type: 3}
   stopUIs: []
   isStart: 0
   isLoop: 0
   isLeave: 0
+  isInvisible: 0
 --- !u!114 &7015910188692215484
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2546,7 +2616,7 @@ MonoBehaviour:
   delayChangeFrame: 0
   fadeInFrame: 0
   fadeOutFrame: 5
-  defaultSprite: {fileID: 0}
+  defaultSprite: {fileID: 21300000, guid: 84a40b3f4f2999648afda9a8b9db0096, type: 3}
   stopUIs:
   - StartFrame: 19
     StopFrame: 45
@@ -2554,6 +2624,7 @@ MonoBehaviour:
   isStart: 0
   isLoop: 0
   isLeave: 0
+  isInvisible: 0
 --- !u!114 &7015910188879137329
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2636,11 +2707,11 @@ MonoBehaviour:
   timeOver_Image: {fileID: 21300034, guid: 3f24504db5a710e42969d9479f3b8326, type: 3}
   default_Image: {fileID: 21300018, guid: 3f24504db5a710e42969d9479f3b8326, type: 3}
   RoundCounter_P1:
-  - {fileID: 7015910189176189068}
-  - {fileID: 7015910188656240842}
+  - {fileID: 7015910189176189064}
+  - {fileID: 7015910188656240841}
   RoundCounter_P2:
-  - {fileID: 7015910190233888283}
-  - {fileID: 7015910190104278895}
+  - {fileID: 7015910190233888279}
+  - {fileID: 7015910190104278894}
 --- !u!1 &7015910188946317194
 GameObject:
   m_ObjectHideFlags: 0
@@ -2725,11 +2796,12 @@ MonoBehaviour:
   delayChangeFrame: 0
   fadeInFrame: 0
   fadeOutFrame: 40
-  defaultSprite: {fileID: 0}
+  defaultSprite: {fileID: 21300000, guid: 84a40b3f4f2999648afda9a8b9db0096, type: 3}
   stopUIs: []
   isStart: 0
   isLoop: 0
   isLeave: 0
+  isInvisible: 0
 --- !u!222 &7015910188950442291
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3101,6 +3173,9 @@ GameObject:
   - component: {fileID: 7015910189176189067}
   - component: {fileID: 7015910189176189066}
   - component: {fileID: 7015910189176189068}
+  - component: {fileID: 2024378707890027350}
+  - component: {fileID: 6420401564870212798}
+  - component: {fileID: 7351895848378182663}
   m_Layer: 5
   m_Name: 1
   m_TagString: Untagged
@@ -3124,8 +3199,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -48, y: 490}
-  m_SizeDelta: {x: 25, y: 25}
+  m_AnchoredPosition: {x: -48, y: 500}
+  m_SizeDelta: {x: 40, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7015910189176189067
 CanvasRenderer:
@@ -3176,6 +3251,72 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc9a75c25472b7d4795132da748d982d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2024378707890027350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7015910189176189064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae586ca7055677142960095fb0ee3abf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteName: VICTORY ICON
+  delayChangeFrame: 0
+  fadeInFrame: 0
+  fadeOutFrame: 0
+  defaultSprite: {fileID: 21300018, guid: 3f24504db5a710e42969d9479f3b8326, type: 3}
+  stopUIs: []
+  isStart: 0
+  isLoop: 0
+  isLeave: 1
+  isInvisible: 0
+--- !u!114 &6420401564870212798
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7015910189176189064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae586ca7055677142960095fb0ee3abf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteName: DRAW ICON
+  delayChangeFrame: 0
+  fadeInFrame: 0
+  fadeOutFrame: 0
+  defaultSprite: {fileID: 21300018, guid: 3f24504db5a710e42969d9479f3b8326, type: 3}
+  stopUIs: []
+  isStart: 0
+  isLoop: 0
+  isLeave: 1
+  isInvisible: 0
+--- !u!114 &7351895848378182663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7015910189176189064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae586ca7055677142960095fb0ee3abf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteName: TIME UP ICON
+  delayChangeFrame: 0
+  fadeInFrame: 0
+  fadeOutFrame: 0
+  defaultSprite: {fileID: 21300018, guid: 3f24504db5a710e42969d9479f3b8326, type: 3}
+  stopUIs: []
+  isStart: 0
+  isLoop: 0
+  isLeave: 1
+  isInvisible: 0
 --- !u!1 &7015910189219932031
 GameObject:
   m_ObjectHideFlags: 0
@@ -3692,11 +3833,12 @@ MonoBehaviour:
   delayChangeFrame: 0
   fadeInFrame: 0
   fadeOutFrame: 7
-  defaultSprite: {fileID: 0}
+  defaultSprite: {fileID: 21300000, guid: 84a40b3f4f2999648afda9a8b9db0096, type: 3}
   stopUIs: []
   isStart: 0
   isLoop: 0
   isLeave: 0
+  isInvisible: 0
 --- !u!114 &7015910189411202998
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3735,6 +3877,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7015910189492402681}
+  - component: {fileID: 3852986682086458749}
   m_Layer: 5
   m_Name: UI_RoundWinCount_P2
   m_TagString: Untagged
@@ -3763,6 +3906,21 @@ RectTransform:
   m_AnchoredPosition: {x: -150, y: -19.5}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &3852986682086458749
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7015910189492402680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5157f7a812e59234cb23b5a124a3865a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameObjects:
+  - {fileID: 7015910190233888279}
+  - {fileID: 7015910190104278894}
 --- !u!1 &7015910189508530765
 GameObject:
   m_ObjectHideFlags: 0
@@ -3914,11 +4072,12 @@ MonoBehaviour:
   delayChangeFrame: 0
   fadeInFrame: 0
   fadeOutFrame: 7
-  defaultSprite: {fileID: 0}
+  defaultSprite: {fileID: 21300000, guid: 84a40b3f4f2999648afda9a8b9db0096, type: 3}
   stopUIs: []
   isStart: 0
   isLoop: 0
   isLeave: 0
+  isInvisible: 0
 --- !u!114 &7015910189585373986
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4041,6 +4200,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7015910189784246739}
+  - component: {fileID: 902267172490292181}
   m_Layer: 5
   m_Name: UI_RoundWinCount_P1
   m_TagString: Untagged
@@ -4069,6 +4229,21 @@ RectTransform:
   m_AnchoredPosition: {x: 150, y: -19.5}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &902267172490292181
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7015910189784246738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5157f7a812e59234cb23b5a124a3865a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameObjects:
+  - {fileID: 7015910189176189064}
+  - {fileID: 7015910188656240841}
 --- !u!1 &7015910189871479191
 GameObject:
   m_ObjectHideFlags: 0
@@ -4265,6 +4440,9 @@ GameObject:
   - component: {fileID: 7015910190104278801}
   - component: {fileID: 7015910190104278800}
   - component: {fileID: 7015910190104278895}
+  - component: {fileID: 5432459264324646423}
+  - component: {fileID: 1031066708752021385}
+  - component: {fileID: 7737471433854289086}
   m_Layer: 5
   m_Name: 2
   m_TagString: Untagged
@@ -4288,8 +4466,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -4, y: 490}
-  m_SizeDelta: {x: 25, y: 25}
+  m_AnchoredPosition: {x: -4, y: 500}
+  m_SizeDelta: {x: 40, y: 504}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7015910190104278801
 CanvasRenderer:
@@ -4340,6 +4518,72 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc9a75c25472b7d4795132da748d982d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5432459264324646423
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7015910190104278894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae586ca7055677142960095fb0ee3abf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteName: VICTORY ICON
+  delayChangeFrame: 0
+  fadeInFrame: 0
+  fadeOutFrame: 0
+  defaultSprite: {fileID: 21300018, guid: 3f24504db5a710e42969d9479f3b8326, type: 3}
+  stopUIs: []
+  isStart: 0
+  isLoop: 0
+  isLeave: 1
+  isInvisible: 0
+--- !u!114 &1031066708752021385
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7015910190104278894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae586ca7055677142960095fb0ee3abf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteName: DRAW ICON
+  delayChangeFrame: 0
+  fadeInFrame: 0
+  fadeOutFrame: 0
+  defaultSprite: {fileID: 21300018, guid: 3f24504db5a710e42969d9479f3b8326, type: 3}
+  stopUIs: []
+  isStart: 0
+  isLoop: 0
+  isLeave: 1
+  isInvisible: 0
+--- !u!114 &7737471433854289086
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7015910190104278894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae586ca7055677142960095fb0ee3abf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteName: TIME UP ICON
+  delayChangeFrame: 0
+  fadeInFrame: 0
+  fadeOutFrame: 0
+  defaultSprite: {fileID: 21300018, guid: 3f24504db5a710e42969d9479f3b8326, type: 3}
+  stopUIs: []
+  isStart: 0
+  isLoop: 0
+  isLeave: 1
+  isInvisible: 0
 --- !u!1 &7015910190140479232
 GameObject:
   m_ObjectHideFlags: 0
@@ -4512,11 +4756,12 @@ MonoBehaviour:
   delayChangeFrame: 0
   fadeInFrame: 0
   fadeOutFrame: 40
-  defaultSprite: {fileID: 0}
+  defaultSprite: {fileID: 21300000, guid: 84a40b3f4f2999648afda9a8b9db0096, type: 3}
   stopUIs: []
   isStart: 0
   isLoop: 0
   isLeave: 0
+  isInvisible: 0
 --- !u!114 &7015910190230679348
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4558,6 +4803,9 @@ GameObject:
   - component: {fileID: 7015910190233888282}
   - component: {fileID: 7015910190233888281}
   - component: {fileID: 7015910190233888283}
+  - component: {fileID: 1033757864218214412}
+  - component: {fileID: 4221753349140786645}
+  - component: {fileID: 6448864279703238079}
   m_Layer: 5
   m_Name: 1
   m_TagString: Untagged
@@ -4581,8 +4829,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 48, y: 490}
-  m_SizeDelta: {x: 25, y: 25}
+  m_AnchoredPosition: {x: 48, y: 500}
+  m_SizeDelta: {x: 40, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7015910190233888282
 CanvasRenderer:
@@ -4633,6 +4881,72 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc9a75c25472b7d4795132da748d982d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1033757864218214412
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7015910190233888279}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae586ca7055677142960095fb0ee3abf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteName: VICTORY ICON
+  delayChangeFrame: 0
+  fadeInFrame: 0
+  fadeOutFrame: 0
+  defaultSprite: {fileID: 21300018, guid: 3f24504db5a710e42969d9479f3b8326, type: 3}
+  stopUIs: []
+  isStart: 0
+  isLoop: 0
+  isLeave: 1
+  isInvisible: 0
+--- !u!114 &4221753349140786645
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7015910190233888279}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae586ca7055677142960095fb0ee3abf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteName: DRAW ICON
+  delayChangeFrame: 0
+  fadeInFrame: 0
+  fadeOutFrame: 0
+  defaultSprite: {fileID: 21300018, guid: 3f24504db5a710e42969d9479f3b8326, type: 3}
+  stopUIs: []
+  isStart: 0
+  isLoop: 0
+  isLeave: 1
+  isInvisible: 0
+--- !u!114 &6448864279703238079
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7015910190233888279}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae586ca7055677142960095fb0ee3abf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteName: TIME UP ICON
+  delayChangeFrame: 0
+  fadeInFrame: 0
+  fadeOutFrame: 0
+  defaultSprite: {fileID: 21300018, guid: 3f24504db5a710e42969d9479f3b8326, type: 3}
+  stopUIs: []
+  isStart: 0
+  isLoop: 0
+  isLeave: 1
+  isInvisible: 0
 --- !u!1 &7015910190248353142
 GameObject:
   m_ObjectHideFlags: 0
@@ -4778,11 +5092,12 @@ MonoBehaviour:
   delayChangeFrame: 0
   fadeInFrame: 0
   fadeOutFrame: 40
-  defaultSprite: {fileID: 0}
+  defaultSprite: {fileID: 21300000, guid: 84a40b3f4f2999648afda9a8b9db0096, type: 3}
   stopUIs: []
   isStart: 0
   isLoop: 0
   isLeave: 0
+  isInvisible: 0
 --- !u!222 &7015910190470739227
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4882,11 +5197,12 @@ MonoBehaviour:
   delayChangeFrame: 0
   fadeInFrame: 0
   fadeOutFrame: 5
-  defaultSprite: {fileID: 0}
+  defaultSprite: {fileID: 21300000, guid: 84a40b3f4f2999648afda9a8b9db0096, type: 3}
   stopUIs: []
   isStart: 0
   isLoop: 0
   isLeave: 0
+  isInvisible: 0
 --- !u!114 &7015910190536920335
 MonoBehaviour:
   m_ObjectHideFlags: 0
