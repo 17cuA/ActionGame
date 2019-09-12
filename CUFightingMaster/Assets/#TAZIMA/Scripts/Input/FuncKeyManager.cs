@@ -14,8 +14,9 @@ public class FuncKeyManager : SingletonMono<FuncKeyManager>
 	private string[] sceneNames = { "JECLogo", "Title", "CharacterSelect", "Battle", "Result" };
 	private int sceneIndex;
 
-	[SerializeField] private CountDownTimer countDownTimer_1;
-	[SerializeField] private CountDownTimer countDownTimer_2;
+	[SerializeField] CanvasController canvasController;
+	CountDownTimer countDownTimer_1;
+	CountDownTimer countDownTimer_2;
 
 	void Start()
     {
@@ -33,8 +34,8 @@ public class FuncKeyManager : SingletonMono<FuncKeyManager>
 		if(sceneNames[sceneIndex] == "Battle")
 		{
 			//参照チェック
-			if (countDownTimer_2 == null || countDownTimer_2 == null)
-				Debug.LogError("参照ミス : FunckeyManagerにcountDownTimerの参照を追加してください");
+			if (canvasController == null)
+				Debug.LogError("参照ミス : FunckeyManagerにcanvascontrollerの参照を追加してください");
 		}
 	}
     void Update()
@@ -94,30 +95,27 @@ public class FuncKeyManager : SingletonMono<FuncKeyManager>
 				//1P側の体力を5減らす
 				if (Input.GetKeyDown(KeyCode.F5))
 				{
-					GameManager.Instance.Player_one.HP -= 25;
+					GameManager.Instance.Player_one.HP -= 400;
 				}
 				//2P側の体力を5減らす
 				if (Input.GetKeyDown(KeyCode.F6))
 				{
-					GameManager.Instance.Player_two.HP -= 25;
+					GameManager.Instance.Player_two.HP -= 400;
 				}
 				//タイマーカウントダウンを止める
 				if (Input.GetKeyDown(KeyCode.F7))
 				{
-					countDownTimer_1.PlayCountDown(false);
-					countDownTimer_2.PlayCountDown(false);
+					canvasController.Call_StopCountDown();
 				}
 				//タイマーカウントダウンを進める
 				if (Input.GetKeyDown(KeyCode.F8))
 				{
-					countDownTimer_1.PlayCountDown(true);
-					countDownTimer_2.PlayCountDown(true);
+					canvasController.Call_ResumeCountdown();
 				}
 				//タイマーカウントを10ずつ進める
 				if (Input.GetKeyDown(KeyCode.F9))
 				{
-					countDownTimer_1.CountTenSeconds();
-					countDownTimer_2.CountTenSeconds();
+					canvasController.Call_ResumeCountdown();
 				}
 			}
 			#endregion

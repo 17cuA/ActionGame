@@ -55,13 +55,10 @@ public class CountDownTimer : MonoBehaviour
 	/// </summary>
 	public void PlayCountDown(bool flag)
 	{
-		if (flag)
-		{
+
 			isPlay = true;
 			isEndCont = true;
 
-		}
-		else isPlay = false;
 	}
 
 	/// <summary>
@@ -91,7 +88,6 @@ public class CountDownTimer : MonoBehaviour
 	{
 		if(currentTime <= (fromNumber + 1))
 		{
-
 			firstDigit.color = new Color(255, 0, 0, 1);
 			secondDigit.color = new Color(255, 0, 0, 1);
 		}
@@ -108,7 +104,7 @@ public class CountDownTimer : MonoBehaviour
 
 	public void StopTimer()
 	{
-
+		isPlay = false;
 	}
 
     private void Start()
@@ -121,7 +117,6 @@ public class CountDownTimer : MonoBehaviour
         if (currentTime <= 0.0f)
         {
             isEndCont = false;
-			isPlay = false;
         }
 
         if (isPlay == true)
