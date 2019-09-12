@@ -153,6 +153,7 @@ MonoBehaviour:
   isLoop: 0
   isLeave: 0
   isInvisible: 0
+  isInterruption: 0
 --- !u!114 &518618
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -221,7 +222,6 @@ GameObject:
   - component: {fileID: 67625289}
   - component: {fileID: 67625288}
   - component: {fileID: 67625291}
-  - component: {fileID: 67625290}
   m_Layer: 5
   m_Name: VS
   m_TagString: Untagged
@@ -285,24 +285,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 67625286}
   m_CullTransparentMesh: 0
---- !u!114 &67625290
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 67625286}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a5fc81cb16d4c7e448a5ab4153963e6f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nowClip: {fileID: 0}
-  setClip: {fileID: 0}
-  animationSpeed: 1
-  changeWeightFrame: 0
-  nowFrame: 0
-  frameCount: 0
 --- !u!95 &67625291
 Animator:
   serializedVersion: 3
@@ -17330,6 +17312,7 @@ MonoBehaviour:
   isLoop: 0
   isLeave: 1
   isInvisible: 0
+  isInterruption: 0
 --- !u!114 &705980072
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18071,6 +18054,7 @@ MonoBehaviour:
   isLoop: 1
   isLeave: 0
   isInvisible: 0
+  isInterruption: 0
 --- !u!114 &922936114
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18740,6 +18724,7 @@ MonoBehaviour:
   isLoop: 1
   isLeave: 0
   isInvisible: 0
+  isInterruption: 0
 --- !u!114 &1178317668
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24479,6 +24464,7 @@ MonoBehaviour:
   isLoop: 1
   isLeave: 0
   isInvisible: 0
+  isInterruption: 0
 --- !u!114 &1509198844
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24736,6 +24722,7 @@ MonoBehaviour:
   isLoop: 0
   isLeave: 0
   isInvisible: 0
+  isInterruption: 0
 --- !u!114 &1558035964
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25114,6 +25101,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dontDs: 0
+  animation_Ready:
+  - {fileID: 2066567530}
+  - {fileID: 705980071}
+  - {fileID: 2144086143}
+  - {fileID: 1855755946}
   cursor1_1: {fileID: 1580913464}
   cursor1_2: {fileID: 586045555}
   cursor2_1: {fileID: 1000260539}
@@ -25773,6 +25765,7 @@ MonoBehaviour:
   isLoop: 0
   isLeave: 0
   isInvisible: 0
+  isInterruption: 0
 --- !u!114 &1850617275
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25963,6 +25956,7 @@ MonoBehaviour:
   isLoop: 0
   isLeave: 1
   isInvisible: 0
+  isInterruption: 0
 --- !u!114 &1855755947
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26115,6 +26109,7 @@ MonoBehaviour:
   isLoop: 0
   isLeave: 0
   isInvisible: 0
+  isInterruption: 0
 --- !u!114 &1962944625
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26231,6 +26226,7 @@ MonoBehaviour:
   isLoop: 1
   isLeave: 0
   isInvisible: 0
+  isInterruption: 0
 --- !u!114 &2037797118
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31251,6 +31247,7 @@ MonoBehaviour:
   isLoop: 0
   isLeave: 1
   isInvisible: 0
+  isInterruption: 0
 --- !u!114 &2066567531
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31644,6 +31641,7 @@ MonoBehaviour:
   isLoop: 0
   isLeave: 1
   isInvisible: 0
+  isInterruption: 0
 --- !u!114 &2144086144
 MonoBehaviour:
   m_ObjectHideFlags: 0
