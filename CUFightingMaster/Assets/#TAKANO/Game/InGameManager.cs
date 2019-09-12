@@ -209,6 +209,7 @@ public class InGameManager : SingletonMono<InGameManager>
     /// </summary>
     private void FinishRound_KO()
     {
+		canvasController.Call_StopCountDown();
         if (canvasController.Call_PlayFinishRound_KO() == false)
         {
             currentUpdate = DoGameFinish;

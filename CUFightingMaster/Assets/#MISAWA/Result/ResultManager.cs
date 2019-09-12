@@ -47,6 +47,9 @@ public class ResultManager : MonoBehaviour
 
     private Action currentUpdate;
 
+	private float sceneChangeTime = 10;
+	private float time;
+
     void Awake()
     {
         canvasController_Result.InitDownCurtain();
@@ -96,11 +99,13 @@ public class ResultManager : MonoBehaviour
 
         currentUpdate = UpCurtain;
 
-
+		time = sceneChangeTime;
     }
 
     void Update()
     {
+
+
         //ポーズ処理
         if (Mathf.Approximately(Time.timeScale, 0f)) return;
 
@@ -156,7 +161,13 @@ public class ResultManager : MonoBehaviour
         {
             currentUpdate = DownCurtain;
         }
-    }
+		time -= Time.deltaTime;
+
+		if (time < 0)
+		{
+			currentUpdate = DownCurtain;
+		}
+	}
 
     void DownCurtain()
     {
