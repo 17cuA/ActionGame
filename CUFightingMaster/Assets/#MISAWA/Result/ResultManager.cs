@@ -158,7 +158,10 @@ public class ResultManager : MonoBehaviour
 		{
 			obj.GetComponent<Animationdata>().ResultAnimation(FighterClips[1],0.5f);
 			obj2.GetComponent<Animationdata>().ResultAnimation(FighterClips[3],0.5f);
-			camelas[0].SetActive(false);
+            obj.GetComponent<Animationdata>().resultFlag = true;
+            obj2.GetComponent<Animationdata>().resultFlag = true;
+
+            camelas[0].SetActive(false);
 			camelas[1].SetActive(true);
 			camelas[2].SetActive(false);
 			camelas[3].SetActive(true);
@@ -188,7 +191,7 @@ public class ResultManager : MonoBehaviour
     {
         if (canvasController_Result.UpCurtain())
         {
-			if (cinemaController.isPlay == false || cinemaController == null)
+			if (cinemaController == null||cinemaController.isPlay == false)
 			{
 				currentUpdate = PlayUIAnime;
 			}
