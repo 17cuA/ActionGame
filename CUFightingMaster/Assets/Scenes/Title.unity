@@ -367,6 +367,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Curtain
       objectReference: {fileID: 0}
+    - target: {fileID: 1094768540677155773, guid: a83932a86c972a641b380d484b5afc15,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1094768540677155762, guid: a83932a86c972a641b380d484b5afc15,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -657,8 +662,8 @@ RectTransform:
   - {fileID: 1835560084}
   - {fileID: 656211000}
   - {fileID: 1269635548}
-  - {fileID: 1155175468}
   - {fileID: 1398329091}
+  - {fileID: 1155175468}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -876,7 +881,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2073100153}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1429,7 +1434,7 @@ MonoBehaviour:
   canvas_Display1: {fileID: 391040777}
   canvas_Display2: {fileID: 2073100152}
   screenFade_Display1: {fileID: 804534536}
-  screenFade_Display2: {fileID: 1155175465}
+  screenFade_Display2: {fileID: 804534536}
   curtainMover_1: {fileID: 1494538354}
   curtainMover_2: {fileID: 1494538354}
   mediaPlayer_1: {fileID: 656211004}
@@ -6316,18 +6321,6 @@ MonoBehaviour:
   gameObjects:
   - {fileID: 829143946}
   - {fileID: 829143946}
---- !u!114 &1155175465 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3098419182971050109, guid: 6500181de5c29c546a6f10f9864c8e7c,
-    type: 3}
-  m_PrefabInstance: {fileID: 2123593981}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a92df541e7ae3114ca1f6b5ac88b2d35, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!224 &1155175468 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3098419182971050082, guid: 6500181de5c29c546a6f10f9864c8e7c,
@@ -6489,7 +6482,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 391040778}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -11616,6 +11609,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Curtain
       objectReference: {fileID: 0}
+    - target: {fileID: 1094768540677155773, guid: a83932a86c972a641b380d484b5afc15,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1094768540677155762, guid: a83932a86c972a641b380d484b5afc15,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -11740,10 +11738,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ScreenFade
       objectReference: {fileID: 0}
-    - target: {fileID: 3098419182971050109, guid: 6500181de5c29c546a6f10f9864c8e7c,
+    - target: {fileID: 3098419182971050108, guid: 6500181de5c29c546a6f10f9864c8e7c,
         type: 3}
-      propertyPath: fadeSpeed
-      value: 0.01
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3098419182971050082, guid: 6500181de5c29c546a6f10f9864c8e7c,
         type: 3}
@@ -11783,7 +11781,7 @@ PrefabInstance:
     - target: {fileID: 3098419182971050082, guid: 6500181de5c29c546a6f10f9864c8e7c,
         type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3098419182971050082, guid: 6500181de5c29c546a6f10f9864c8e7c,
         type: 3}
@@ -11849,6 +11847,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3098419182971050109, guid: 6500181de5c29c546a6f10f9864c8e7c,
+        type: 3}
+      propertyPath: fadeSpeed
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 3098419182971050083, guid: 6500181de5c29c546a6f10f9864c8e7c,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6500181de5c29c546a6f10f9864c8e7c, type: 3}
@@ -16800,8 +16808,8 @@ RectTransform:
   - {fileID: 537707708}
   - {fileID: 2085902304}
   - {fileID: 1494538353}
-  - {fileID: 804534539}
   - {fileID: 599209423}
+  - {fileID: 804534539}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -16989,10 +16997,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ScreenFade
       objectReference: {fileID: 0}
-    - target: {fileID: 3098419182971050109, guid: 6500181de5c29c546a6f10f9864c8e7c,
+    - target: {fileID: 3098419182971050108, guid: 6500181de5c29c546a6f10f9864c8e7c,
         type: 3}
-      propertyPath: fadeSpeed
-      value: 0.01
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3098419182971050082, guid: 6500181de5c29c546a6f10f9864c8e7c,
         type: 3}
@@ -17032,7 +17040,7 @@ PrefabInstance:
     - target: {fileID: 3098419182971050082, guid: 6500181de5c29c546a6f10f9864c8e7c,
         type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3098419182971050082, guid: 6500181de5c29c546a6f10f9864c8e7c,
         type: 3}
@@ -17098,6 +17106,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3098419182971050109, guid: 6500181de5c29c546a6f10f9864c8e7c,
+        type: 3}
+      propertyPath: fadeSpeed
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 3098419182971050083, guid: 6500181de5c29c546a6f10f9864c8e7c,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6500181de5c29c546a6f10f9864c8e7c, type: 3}

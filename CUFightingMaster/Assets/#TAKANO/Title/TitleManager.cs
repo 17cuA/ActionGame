@@ -32,10 +32,6 @@ public class TitleManager : MonoBehaviour
 
 	private void InitTitle()
 	{
-		//画面を暗くする
-		canvasController_Title.BrackOut();
-        //幕を閉じた状態から始まる
-        canvasController_Title.InitDownCurtain();
         canvasController_Title.StopPressAnyButton();
         currentUpdate = StartTitle;
 	}
@@ -65,12 +61,13 @@ public class TitleManager : MonoBehaviour
 		{
 			currentUpdate = TitleUpdate;	
 		}
+		//Logoアニメーション開始
+		logoAnimation.PlayLogoAnimation();
 	}
 
 	private void TitleUpdate()
 	{
-		//Logoアニメーション開始
-		logoAnimation.PlayLogoAnimation();
+
 
         if(canvasController_Title.IsEndLogoAnime())
               canvasController_Title.PlayPressAnyButton();
@@ -189,15 +186,20 @@ public class TitleManager : MonoBehaviour
 			SceneManager.LoadScene("CharacterSelect");
 		}
 	}
-    // Start is called before the first frame update
-    void Start()
+	// Start is called before the first frame update
+	void Start()
     {
 		Application.targetFrameRate = 60;
 
+		//画面を暗くする
+		canvasController_Title.BrackOut();
+
 		currentUpdate = InitTitle;
 
-       // canvasController_Title.PlayVideo();
-    }
+		//幕を閉じた状態から始まる
+		canvasController_Title.InitDownCurtain();
+		// canvasController_Title.PlayVideo();
+	}
 
     // Update is called once per frame
     void Update()

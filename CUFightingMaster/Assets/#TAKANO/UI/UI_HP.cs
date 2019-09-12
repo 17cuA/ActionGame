@@ -113,7 +113,7 @@ public class UI_HP : MonoBehaviour
 		hpObjects[4].SetActive(true);
 		hitRedGuage.localPosition = new Vector3(CalcMove(maxHp, totalDamage), 0, 0);
 		//HPゲージを震わす
-		Shake(0.5f, 100f);
+		Shake(0.1f, 100f);
 		yield return new WaitForSeconds(0.1f);
 		//HPゲージを元の位置に
 		hpGuagePosition.position = initHpGuagePositon;
