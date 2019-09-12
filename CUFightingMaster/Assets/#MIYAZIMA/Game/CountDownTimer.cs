@@ -76,8 +76,9 @@ public class CountDownTimer : MonoBehaviour
     /// <param name="count"></param>
     private void UpdateDisplay(int count)
     {
-        firstDigit.sprite = numSprite[count % 10];
-        secondDigit.sprite = numSprite[count / 10];
+		var castCount = Mathf.Clamp(count,0,99);
+        firstDigit.sprite = numSprite[castCount % 10];
+        secondDigit.sprite = numSprite[castCount / 10];
     }
 	
 	/// <summary>

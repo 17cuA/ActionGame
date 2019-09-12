@@ -76,6 +76,7 @@ public class AnimationUIManager : MonoBehaviour
 		gameObject.GetComponent<Image>().color = initColor;
 		currentRemainFadeInFrame = fadeInFrame;
         currentRemainFadeOutFrame = fadeOutFrame;
+		isInvisible = false;
         if (stopUIs.Count != 0)
         {
             for (int i = 0; i < stopUIs.Count; i++)
