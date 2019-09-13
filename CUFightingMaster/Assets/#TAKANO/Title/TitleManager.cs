@@ -61,7 +61,7 @@ public class TitleManager : MonoBehaviour
 			//Logoアニメーションの初期化
 			//BGMの再生開始
 			Sound.LoadBgm("BGM_Title", "BGM_Title");
-			Sound.PlayBgm("BGM_Title", 0.3f, 1, true);
+			Sound.PlayBgm("BGM_Title", 1, 1, true);
 			
 			currentUpdate = TitleUpdate;	
 		}
@@ -82,7 +82,7 @@ public class TitleManager : MonoBehaviour
             if (pressAnykey[0].activeSelf == true && pressAnykey[1].activeSelf == true)
 			{
 				Sound.LoadSe("Menu_Decision", "Se_menu_decision");
-				Sound.PlaySe("Menu_Decision", 1, 0.3f);
+				Sound.PlaySe("Menu_Decision", 1, 1);
 				currentUpdate = DownCurtain;
 			}
 		}
@@ -168,6 +168,7 @@ public class TitleManager : MonoBehaviour
 			for (int i = 0;i < blackBackLine.Length;i++)
 			{
 				blackBackLine[i].GetComponent<AnimationUIManager>().isInterruption = true;
+				pressAnykey[i].GetComponent<AnimationUIManager>().isInterruption = true;
 			}
             canvasController_Title.StopVideo();
             canvasController_Title.DisabledRenderTexture();
