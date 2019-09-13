@@ -205,16 +205,22 @@ public class Sound
         Sound.LoadSe("Oba_Special4", "Cv_Oba_Special4");
         Sound.LoadSe("Oba_Thrown", "Cv_Oba_Thrown");
         Sound.LoadSe("Oba_RoundStart", "Cv_Oba_RoundStart");
-	}
 
-	/// <summary>
-	/// ※サウンドデータはResources/Soundsフォルダに配置すること
-	/// 引数 : 第一引数アクセスキー(好きに命名可能), 第二引数リソース名(サウンドデータに名前を合わせる)
-	/// BGMサウンド個別ロード（1度だけ呼び出す）
-	/// </summary>
-	/// <param name="key"></param>
-	/// <param name="resName"></param>
-	public static void LoadBgm(string key, string resName)
+        Sound.LoadSe("SE_Beams", "SE_Beams");
+        Sound.LoadSe("SV_Nice", "SV_Nice");
+        Sound.LoadSe("SV_Great", "SV_Great");
+        Sound.LoadSe("SV_Excellent", "SV_Excellent");
+
+    }
+
+    /// <summary>
+    /// ※サウンドデータはResources/Soundsフォルダに配置すること
+    /// 引数 : 第一引数アクセスキー(好きに命名可能), 第二引数リソース名(サウンドデータに名前を合わせる)
+    /// BGMサウンド個別ロード（1度だけ呼び出す）
+    /// </summary>
+    /// <param name="key"></param>
+    /// <param name="resName"></param>
+    public static void LoadBgm(string key, string resName)
     {
         GetInstance()._LoadBgm(key, resName);
     }

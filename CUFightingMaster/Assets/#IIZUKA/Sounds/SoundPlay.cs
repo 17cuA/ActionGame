@@ -70,8 +70,14 @@ public class SoundPlay : MonoBehaviour
         Clico_RoundStart,
 
 		Oba_Hit,
-		Clico_Tackle
-	}
+		Clico_Tackle,
+        Beams,
+        Nice,
+        Great,
+        Excellent
+
+
+    }
     public SoundsType soundsType;
 
     int i = 0;
@@ -269,9 +275,22 @@ public class SoundPlay : MonoBehaviour
 				case SoundsType.Clico_Tackle:
 					Sound.PlaySe("Clico_Tackle", 19, 0.5f, 1);
 					break;
+                case SoundsType.Beams:
+                    Sound.PlaySe("SE_Beams", 18, 0.5f, 1);
+                    break;
+                case SoundsType.Nice:
+                    Sound.PlaySe("SV_Nice", 19, 1, 1);
+                    break;
+                case SoundsType.Great:
+                    Sound.PlaySe("SV_Great", 19, 0.5f, 1);
+                    break;
+                case SoundsType.Excellent:
+                    Sound.PlaySe("SV_Excellent", 19, 0.5f, 1);
+                    break;
 
-			}
-			i++;
+
+            }
+            i++;
         }
 
         if (destroyFlag)

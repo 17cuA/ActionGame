@@ -191,7 +191,7 @@ public class ResultManager : MonoBehaviour
     {
         if (canvasController_Result.UpCurtain())
         {
-			if (cinemaController == null||cinemaController.isPlay == false)
+			if (cinemaController != null||cinemaController.isPlay == false)
 			{
 				currentUpdate = PlayUIAnime;
 			}
