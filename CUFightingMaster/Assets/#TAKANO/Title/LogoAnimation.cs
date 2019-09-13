@@ -10,8 +10,6 @@ public class LogoAnimation : MonoBehaviour
 
     public void InitLogoAnimation()
     {
-		pressAnyKey[0].SetActive(false);
-		pressAnyKey[1].SetActive(false);
 		logoAnimation[0].SetPlayAnimation(animationClip[0], 0.8f, 0);
         logoAnimation[1].SetPlayAnimation(animationClip[2], 0.8f, 0);
     }
@@ -29,12 +27,12 @@ public class LogoAnimation : MonoBehaviour
         if (logoAnimation[0].EndAnimFrag == true)
         {
             logoAnimation[0].SetPlayAnimation(animationClip[1], 1.0f, 0);
-			pressAnyKey[0].SetActive(true);
+			pressAnyKey[0].GetComponent<AnimationUIManager>().isStart = true;
 		}
 		if (logoAnimation[1].EndAnimFrag == true)
         {
             logoAnimation[1].SetPlayAnimation(animationClip[3], 1.0f, 0);
-			pressAnyKey[1].SetActive(true);
+			pressAnyKey[1].GetComponent<AnimationUIManager>().isStart = true;
 		}
     }
 

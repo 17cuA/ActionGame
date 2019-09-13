@@ -410,7 +410,7 @@ PrefabInstance:
     - target: {fileID: 1094768540677155762, guid: a83932a86c972a641b380d484b5afc15,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1094768540677155762, guid: a83932a86c972a641b380d484b5afc15,
         type: 3}
@@ -659,10 +659,10 @@ RectTransform:
   m_Children:
   - {fileID: 1184893052}
   - {fileID: 684434933}
-  - {fileID: 1835560084}
   - {fileID: 656211000}
-  - {fileID: 1269635548}
+  - {fileID: 1835560084}
   - {fileID: 1398329091}
+  - {fileID: 1269635548}
   - {fileID: 1155175468}
   m_Father: {fileID: 0}
   m_RootOrder: 2
@@ -746,7 +746,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2073100153}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &537707709
 SpriteRenderer:
@@ -881,7 +881,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2073100153}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -982,7 +982,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 391040778}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1032,7 +1032,7 @@ VideoPlayer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 656210999}
   m_Enabled: 1
-  m_VideoClip: {fileID: 32900000, guid: 18ba3ad944fc78f4cbcb6791bf3cbb65, type: 3}
+  m_VideoClip: {fileID: 32900000, guid: 7d4d7d02692a8734aa1be0e73b79b42a, type: 3}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 0}
@@ -1339,7 +1339,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2073100153}
-  m_RootOrder: 0
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -6267,7 +6267,7 @@ MonoBehaviour:
   - {fileID: 1398329090}
   - {fileID: 599209422}
   waitPlayDemoMovieTime: 30
-  demoMoveTimeMax: 85
+  demoMoveTimeMax: 52
   demoMovieVolume: 0.7
   pressAnykey:
   - {fileID: 1835560083}
@@ -6485,7 +6485,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 391040778}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -6668,7 +6668,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2073100153}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!224 &1494538353 stripped
 RectTransform:
@@ -11657,7 +11657,7 @@ PrefabInstance:
     - target: {fileID: 1094768540677155762, guid: a83932a86c972a641b380d484b5afc15,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1094768540677155762, guid: a83932a86c972a641b380d484b5afc15,
         type: 3}
@@ -11747,6 +11747,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3098419182971050109, guid: 6500181de5c29c546a6f10f9864c8e7c,
+        type: 3}
+      propertyPath: fadeSpeed
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 3098419182971050082, guid: 6500181de5c29c546a6f10f9864c8e7c,
         type: 3}
@@ -11853,11 +11858,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 3098419182971050109, guid: 6500181de5c29c546a6f10f9864c8e7c,
-        type: 3}
-      propertyPath: fadeSpeed
-      value: 0.01
-      objectReference: {fileID: 0}
     - target: {fileID: 3098419182971050083, guid: 6500181de5c29c546a6f10f9864c8e7c,
         type: 3}
       propertyPath: m_Color.a
@@ -11896,7 +11896,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 391040778}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -16810,12 +16810,12 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
-  - {fileID: 829143947}
   - {fileID: 1479932322}
   - {fileID: 537707708}
   - {fileID: 2085902304}
-  - {fileID: 1494538353}
+  - {fileID: 829143947}
   - {fileID: 599209423}
+  - {fileID: 1494538353}
   - {fileID: 804534539}
   m_Father: {fileID: 0}
   m_RootOrder: 5
@@ -16872,7 +16872,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2073100153}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -16922,7 +16922,7 @@ VideoPlayer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2085902303}
   m_Enabled: 1
-  m_VideoClip: {fileID: 32900000, guid: 18ba3ad944fc78f4cbcb6791bf3cbb65, type: 3}
+  m_VideoClip: {fileID: 32900000, guid: 7d4d7d02692a8734aa1be0e73b79b42a, type: 3}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 0}
@@ -17008,6 +17008,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3098419182971050109, guid: 6500181de5c29c546a6f10f9864c8e7c,
+        type: 3}
+      propertyPath: fadeSpeed
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 3098419182971050082, guid: 6500181de5c29c546a6f10f9864c8e7c,
         type: 3}
@@ -17113,11 +17118,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3098419182971050109, guid: 6500181de5c29c546a6f10f9864c8e7c,
-        type: 3}
-      propertyPath: fadeSpeed
-      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 3098419182971050083, guid: 6500181de5c29c546a6f10f9864c8e7c,
         type: 3}
