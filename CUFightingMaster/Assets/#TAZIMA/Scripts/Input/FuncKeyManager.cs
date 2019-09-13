@@ -18,9 +18,9 @@ public class FuncKeyManager : SingletonMono<FuncKeyManager>
 	CountDownTimer countDownTimer_1;
 	CountDownTimer countDownTimer_2;
 
-	void Start()
-    {
-		Application.targetFrameRate = 60;
+	public void Init()
+	{
+		if (Application.targetFrameRate != 60) Application.targetFrameRate = 60;
 		for (int i = 0; i < SceneManager.sceneCountInBuildSettings; ++i)
 		{
 			Scene scene = SceneManager.GetSceneByBuildIndex(i);
@@ -31,14 +31,14 @@ public class FuncKeyManager : SingletonMono<FuncKeyManager>
 			}
 		}
 
-		if(sceneNames[sceneIndex] == "Battle")
+		if (sceneNames[sceneIndex] == "Battle")
 		{
 			//参照チェック
 			if (canvasController == null)
 				Debug.LogError("参照ミス : FunckeyManagerにcanvascontrollerの参照を追加してください");
 		}
 	}
-    void Update()
+	void Update()
     {
 		InputFuncKey();
 	}

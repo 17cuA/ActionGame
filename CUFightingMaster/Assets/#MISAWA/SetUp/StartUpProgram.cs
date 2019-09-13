@@ -19,6 +19,7 @@ using UnityEngine;
 public class StartUpProgram : MonoBehaviour
 {
 	private static StartUpProgram instance = null;
+	public GameObject obj;
 
 	void Awake()
 	{
@@ -28,5 +29,6 @@ public class StartUpProgram : MonoBehaviour
 		Application.targetFrameRate = 60;
 		CameraSetUp.DualCameraSetUp cameraSetup = new CameraSetUp.DualCameraSetUp();
 		instance = FindObjectOfType<StartUpProgram>();
+		obj.GetComponent<FuncKeyManager>().Init();
 	}
 }
