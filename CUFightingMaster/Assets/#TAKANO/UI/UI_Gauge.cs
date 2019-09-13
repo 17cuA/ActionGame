@@ -37,17 +37,17 @@ public class UI_Gauge : MonoBehaviour
 	/// 増やす量を計算
 	/// </summary>
 	/// <returns></returns>
-	private float CalcMove(float valueMax, float damage)
+	private float CalcMove(float _valueMax, float damage)
 	{
-		float temp = valueMax + damage;
+		float temp = _valueMax + damage;
 
 		if (temp != 0)
 		{
 			if (playerType == PlayerType.P1)
 			{
-				return guageWidth * (valueMax + valueMax - temp) / valueMax * -1;
+				return guageWidth * (_valueMax + _valueMax - temp) / _valueMax * -1;
 			}
-			return guageWidth * (valueMax + valueMax - temp) / valueMax;
+			return guageWidth * (_valueMax + _valueMax - temp) / _valueMax;
 		}
 		return 0;
 	}
