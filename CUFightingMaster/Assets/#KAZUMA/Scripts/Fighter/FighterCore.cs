@@ -5,6 +5,10 @@ using UnityEngine;
 using UnityEditor;
 #endif
 
+/*
+ * 9.13　中村コンボカウントを取得するために変更いたしました 264行目
+ */
+
 public class FighterCore : MonoBehaviour
 {
     [SerializeField] private GameObject playerModel = null;//プレイヤーモデル
@@ -256,6 +260,13 @@ public class FighterCore : MonoBehaviour
             BoundCount = 0;
         }
     }
+	/////////////////////////
+	//// コンボカウントの受け渡し 中村変更
+	public int GetComboCount()
+	{
+		return comboCount;
+	}
+	////////////////////////
 	public void SetMaterial(Material[] _material)
 	{
 		for(int i = 0;i<_material.Length;i++) 
