@@ -70,7 +70,7 @@ public class GameDataStrage : MonoBehaviour
 	//デバッグ用のダメージ
 	public void SetPlusDamage(PlayerNumber _num,int _dam)
 	{
-		if(_num==PlayerNumber.Player1)
+		if(_num ==PlayerNumber.Player1)
 		{
 			plusAttackDamage_One += _dam;
 		}
