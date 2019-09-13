@@ -101,18 +101,14 @@ public class particle : MonoBehaviour
 				break;
 
 			case 2:
-				particle.startColor = new Color(0.7f, 1, 0);           // 黄midori色
-				break;
-
-			case 3:
 				particle.startColor = new Color(1, 1, 0);			// 黄色
 				break;
 
-			case 4:
+			case 3:
 				particle.startColor = new Color(1, 0.55f, 0);			// 橙色
 				break;
 
-			case 5:
+			case 4:
 				particle.startColor = new Color(1, 0, 0);			// 赤色
 				break;
 
