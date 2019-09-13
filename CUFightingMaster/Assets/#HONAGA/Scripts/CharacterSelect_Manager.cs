@@ -61,7 +61,7 @@ public class CharacterSelect_Manager : SingletonMono<CharacterSelect_Manager>
 		Application.targetFrameRate = 60;
 		// 飯塚追加-------------------------------------------
         Sound.LoadBgm("BGM_Menu", "BGM_Menu");
-        Sound.PlayBgm("BGM_Menu", 0.3f, 1, true);
+        Sound.PlayBgm("BGM_Menu", 1, 1, true);
         // ---------------------------------------------------
 
         panelAnimFlag = false;
