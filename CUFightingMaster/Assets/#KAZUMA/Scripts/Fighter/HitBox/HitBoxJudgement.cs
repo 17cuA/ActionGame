@@ -499,11 +499,14 @@ public class HitBoxJudgement
     {
         Transform t = _bCol.gameObject.transform;
         Collider[] col = Physics.OverlapBox(new Vector3(t.position.x + _bCol.center.x, t.position.y + _bCol.center.y, t.position.z + _bCol.center.z), _bCol.size/2, Quaternion.identity, -1 - (1 << LayerMask.NameToLayer(CommonConstants.Layers.GetPlayerNumberLayer(core.PlayerNumber))));
-        foreach(Collider c in col)
+        int i = 0;
+        foreach (Collider c in col)
         {
             //通常攻撃
             if((c.gameObject.tag == CommonConstants.Tags.GetTags(HitBoxMode.HurtBox))&&(_cHit.isThrow == false))
             {
+                i++;
+                Debug.Log(i+_bCol.name);
 				FighterCore cr = GameManager.Instance.GetPlayFighterCore(c.gameObject.layer);
                 //ダメージを与える
 				cr.SetDamage(_cHit,_bCol);

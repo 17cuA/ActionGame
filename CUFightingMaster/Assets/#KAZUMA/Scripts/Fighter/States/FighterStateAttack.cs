@@ -535,6 +535,10 @@ public class FighterStateAttack : StateBaseScriptMonoBehaviour
     }
     public bool IsEndAirAttack()
     {
+        if (stateBase.core.NowPlaySkill.isGroundEnd)
+        {
+            return false;
+        }
         return stateBase.core.AnimationPlayerCompornent.EndAnimFrag;
     }
     #endregion

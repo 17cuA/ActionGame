@@ -150,6 +150,7 @@ public class FighterSkill : ScriptableObject
     public int endNextWeight = 0;
     public FighterSkill groundLandingSkill = null;//着地時スキル
     public int groundLandingWeight = 0;
+    public bool isGroundEnd = false;//地上まで継続
 
     //TODO::飛び道具
     public bool barrageCancelFrag = false;      //連打キャンセル

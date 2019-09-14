@@ -61,7 +61,6 @@ public class ComboUIManager : MonoBehaviour
 			for (int i = 0; i < length; i++)
 			{
 				var outputComboCount = Mathf.Clamp(comboCount, 0, max:99);
-				Debug.Log(outputComboCount);
 				comboNumObj[i].GetComponent<Image>().sprite = comboNumSprite[(i == 0) ? outputComboCount / 10: outputComboCount % 10];
 				isCombo[i] = true;
 			}
