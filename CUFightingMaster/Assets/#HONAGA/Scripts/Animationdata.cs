@@ -40,8 +40,9 @@ public class Animationdata : MonoBehaviour
 		//	animationData.Update();
 		//}
 	}
-	public void ResultAnimation(AnimationClip animationClip,float f)
+	public void ResultAnimation(AnimationClip animationClip,float f,AnimationClip _idle)
 	{
 		animationData.SetPlayAnimation(animationClip, f, 0);
+        animationData.SetIdling(_idle,f);
 	}
 }
