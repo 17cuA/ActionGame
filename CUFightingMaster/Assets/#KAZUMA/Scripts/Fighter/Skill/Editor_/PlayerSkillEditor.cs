@@ -193,6 +193,7 @@ public class PlayerSkillEditor : EditorWindow
         EditorGUILayout.BeginHorizontal();
         playerSkill.groundLandingSkill = EditorGUILayout.ObjectField("スキル", playerSkill.groundLandingSkill, typeof(FighterSkill), false) as FighterSkill;
         playerSkill.groundLandingWeight = EditorGUILayout.IntField("ウェイト", playerSkill.groundLandingWeight);
+        playerSkill.isGroundEnd = EditorGUILayout.Toggle("着地まで技を変えない", playerSkill.isGroundEnd);
         EditorGUILayout.EndHorizontal();
         if (GUILayout.Button("キャンセルレイヤー作成", GUILayout.Width(150), GUILayout.Height(15)))
         {

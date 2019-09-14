@@ -17,7 +17,7 @@ MonoBehaviour:
   loseResultAnimation: {fileID: 7400000, guid: 79e5c7d6633d36e47ad9589710e67dfd, type: 2}
   HP: 10000
   StanGuage: 100
-  SpecialGuage: 100
+  SpecialGuage: 105
   airBraking: 0.5
   characterImage: {fileID: 21300012, guid: 34745bcc329d8d14e9db37e430a9850a, type: 3}
   PlayerModel: {fileID: 8909664302368228193, guid: 000a0f240088cd64f9a5a51403d06486,
@@ -188,6 +188,13 @@ MonoBehaviour:
     skill: {fileID: 11400000, guid: d6cd15b97858e2f49a94d31f9362c102, type: 2}
   - name: 6236
     command: 6236
+    trigger: C
+    skillCost: 0
+    countValid: 1
+    validShotFrame: 6
+    skill: {fileID: 11400000, guid: d6cd15b97858e2f49a94d31f9362c102, type: 2}
+  - name: 636
+    command: 636
     trigger: C
     skillCost: 0
     countValid: 1
