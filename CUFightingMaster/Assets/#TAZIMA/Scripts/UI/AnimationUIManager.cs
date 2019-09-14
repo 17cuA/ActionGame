@@ -69,6 +69,10 @@ public class AnimationUIManager : MonoBehaviour
 		delayFrameCount = 0;
         ResetUI();
 	}
+
+	/// <summary>
+	/// リセット用メソッド
+	/// </summary>
 	private void ResetUI()
     {
 		nowSpriteCount = 0;

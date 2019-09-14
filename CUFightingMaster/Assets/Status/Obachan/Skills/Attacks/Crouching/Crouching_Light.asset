@@ -12,31 +12,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fbd35985d310504d81036cc55356454, type: 3}
   m_Name: Crouching_Light
   m_EditorClassIdentifier: 
-  skillLayer: 0
+  skillLayer: 1
   animationClip: {fileID: 7400000, guid: fab9f99a373bc9a4fae0af0eefd7a345, type: 2}
   animationSpeed: 1
-  status: 16
+  status: 1
   frameEffects:
   - frame: 0
     effect: {fileID: 3054531724707059269, guid: 54e9d685be50602478b0beade7783d84,
       type: 3}
     childFlag: 0
     worldPositionFlag: 0
+    isDeleteObj: 0
+    isScaled: 0
     position: {x: 0, y: 0, z: 0}
   - frame: 0
     effect: {fileID: 6391761994472495774, guid: 2aa855773b9e67549aaa381657293946,
       type: 3}
     childFlag: 0
     worldPositionFlag: 0
+    isDeleteObj: 0
+    isScaled: 0
     position: {x: 0, y: 0, z: 0}
   frameBullets: []
-  cancelFrag: 0
+  cancelFrag: 10
   endNextAnimation: {fileID: 0}
   endNextWeight: 0
   groundLandingSkill: {fileID: 0}
   groundLandingWeight: 0
+  isGroundEnd: 0
   barrageCancelFrag: 1
-  cancelLayer: 02000000
+  cancelLayer: 0200000001000000
   inBlend: 0
   outBlend: 0
   cameraPlay:
