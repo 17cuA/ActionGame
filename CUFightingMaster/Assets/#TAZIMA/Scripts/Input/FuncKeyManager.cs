@@ -18,6 +18,8 @@ public class FuncKeyManager : SingletonMono<FuncKeyManager>
 	CountDownTimer countDownTimer_1;
 	CountDownTimer countDownTimer_2;
 
+    public bool isOnCommandUI = true;
+
 	public void Init()
 	{
 		if (Application.targetFrameRate != 60) Application.targetFrameRate = 60;
@@ -88,6 +90,10 @@ public class FuncKeyManager : SingletonMono<FuncKeyManager>
 				SceneManager.LoadScene(sceneNames[sceneIndex]);
 				Sound.StopBgm();
 			}
+            if(Input.GetKeyDown(KeyCode.F12))
+            {
+                isOnCommandUI = !isOnCommandUI;
+            }
             //if (Input.GetKeyDown(KeyCode.F10))
             //{
             //    if (GameManager.Instance != null)

@@ -73,6 +73,7 @@ public class FigterEditor : EditorWindow
         EditorGUILayout.BeginVertical("Box");
         fighterStatus.PlayerID = EditorGUILayout.IntField("ID", fighterStatus.PlayerID);
         fighterStatus.characterImage = EditorGUILayout.ObjectField("キャラクターイメージ",fighterStatus.characterImage, typeof(Sprite), false) as Sprite;
+        fighterStatus.commandSprite = EditorGUILayout.ObjectField("コマンド画像", fighterStatus.commandSprite, typeof(Sprite), false) as Sprite;
         fighterStatus.fighter = EditorGUILayout.ObjectField("本体", fighterStatus.fighter, typeof(FighterCore), false) as FighterCore;
         fighterStatus.InGameTimeline_One = EditorGUILayout.ObjectField("入場シーン1P",fighterStatus.InGameTimeline_One, typeof(CameraBase), false) as CameraBase;
         fighterStatus.InGameTimeline_Two = EditorGUILayout.ObjectField("入場シーン2P", fighterStatus.InGameTimeline_Two, typeof(CameraBase), false) as CameraBase;
