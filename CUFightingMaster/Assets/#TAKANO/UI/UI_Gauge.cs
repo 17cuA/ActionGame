@@ -26,9 +26,7 @@ public class UI_Gauge : MonoBehaviour
 
 	private float guageWidth;
 
-	private static int guageIndex = 3;
-
-	public AnimationUIManager[] guageAnims = new AnimationUIManager[guageIndex];
+	public AnimationUIManager guageAnim;
 	public AnimationUIManager pushEx;
 	[SerializeField]private int valueMax = 0;
 	public int value = 0;
@@ -69,30 +67,17 @@ public class UI_Gauge : MonoBehaviour
 	//ゲージが一定量溜まったらエフェクトでわかりやすいようにする
 	private void GuageEfects()
 	{
-		var guageNum = value / (valueMax / guageIndex);
-		//何本光らせるか処理
-		for (int i = 0; i < guageIndex; i++)
+		//光らせる処理とPUSH EX 表示
+		if (value < valueMax)
 		{
-			if (i < guageNum)
-			{
-				if (guageAnims[i].isInvisible)
-				{
-					guageAnims[i].isInvisible = false;
-				}
-			}
-			else
-			{
-				if (!guageAnims[i].isInvisible)
-				{
-					guageAnims[i].isInvisible = true;
-				}
-			}
-			//PUSH EX 表示
-			if (guageNum == guageIndex)	pushEx.isInvisible = false;
-			else pushEx.isInvisible = true;
+			guageAnim.isInvisible = true;
+			pushEx.isInvisible = true;
 		}
-
-
+		else
+		{
+			guageAnim.isInvisible = false;
+			pushEx.isInvisible = false;
+		}
 	}
 	private void Start()
 	{
