@@ -46,6 +46,7 @@ public class FighterStatus : ScriptableObject
 	public int SpecialGuage = 100;
 	public float airBraking = 0.5f;//空中制動
 	public Sprite characterImage = null;
+    public Sprite commandSprite = null;
 	public GameObject PlayerModel;
 	public GameObject PlayerModel2;
 	public FighterMaterials[] playerMaterials = { new FighterMaterials(), new FighterMaterials() };

@@ -76,12 +76,12 @@ MonoBehaviour:
       hitBox:
         size: {x: 2.35, y: 1.99, z: 1}
         localPosition: {x: 0.91, y: 1.07, z: 0}
-      startFrame: 8
+      startFrame: 15
       endFrame: 28
     hitStop: 15
-    hitPoint: 1
-    hitStrength: 0
-    damage: 300
+    hitPoint: 0
+    hitStrength: 2
+    damage: 500
     stanDamage: 0
     knockBack: 0.1
     airKnockBack: 0.3
@@ -126,7 +126,7 @@ MonoBehaviour:
       isImpact: 0
       isBound: 0
       boundMovements: []
-      movement: {x: 0, y: 3, z: 0}
+      movement: {x: 0, y: 4, z: 0}
       startFrame: 0
     throwGroundDamage: 0
     throwSkill: {fileID: 0}
@@ -136,20 +136,23 @@ MonoBehaviour:
     isContinue: 0
     movements:
     - isGravityInvaid: 0
-      isResetStartGravity: 0
+      isResetStartGravity: 1
       isResetEndGravity: 0
       isImpact: 1
       isBound: 0
       boundMovements: []
-      movement: {x: 0, y: 5.2, z: 0}
+      movement: {x: 0, y: 6, z: 0}
       startFrame: 0
-    gravityMoves: []
+    gravityMoves:
+    - movement: {x: 1, y: 0, z: 0}
+      limitMove: {x: 1, y: 0, z: 0}
+      startFrame: 0
     isFaceDown: 0
     isPassiveNotPossible: 0
-    hitRigor: 20
-    guardHitRigor: 6
-    plusGauge: 2
-    enemyPlusGauge: 1
+    hitRigor: 50
+    guardHitRigor: 20
+    plusGauge: 4
+    enemyPlusGauge: 5
   - mode: 1
     frameHitBoxes:
     - isFalse: 0
@@ -157,7 +160,7 @@ MonoBehaviour:
       hitBox:
         size: {x: 1.85, y: 1.41, z: 1}
         localPosition: {x: 1.15, y: 1.43, z: 0}
-      startFrame: 7
+      startFrame: 10
       endFrame: 28
     hitStop: 0
     hitPoint: 0
@@ -204,8 +207,8 @@ MonoBehaviour:
     isImpact: 0
     isBound: 0
     boundMovements: []
-    movement: {x: 2, y: -2, z: 0}
-    startFrame: 7
+    movement: {x: 4, y: -4, z: 0}
+    startFrame: 20
   gravityMoves: []
   timeStops:
     startFrame: 0

@@ -356,8 +356,8 @@ public class HitBoxJudgement
                 if (!customs[i].frameHitBoxes[nowPlayCustomNumber[i]].isInfinityFrame)
                 {
                     nowPlayCollider[i].gameObject.SetActive(false);
+                    continue;
                 }
-                continue;
             }
             else
             {

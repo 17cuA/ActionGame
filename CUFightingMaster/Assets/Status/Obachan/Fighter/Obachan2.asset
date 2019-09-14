@@ -13,13 +13,15 @@ MonoBehaviour:
   m_Name: Obachan2
   m_EditorClassIdentifier: 
   PlayerID: 1
-  winnerResultAnimation: {fileID: 0}
+  winnerResultAnimation: {fileID: 7400000, guid: ba0bd7d2b6d552f418ad9c89a0ad6458,
+    type: 2}
   loseResultAnimation: {fileID: 7400000, guid: 732e3eeb0b31cd94a9dc8cdbaecb4f46, type: 2}
   HP: 10000
   StanGuage: 100
   SpecialGuage: 105
   airBraking: 0.5
   characterImage: {fileID: 21300012, guid: 34745bcc329d8d14e9db37e430a9850a, type: 3}
+  commandSprite: {fileID: 21300002, guid: 100aa951c5d6ff943a4a0c268ac79d58, type: 3}
   PlayerModel: {fileID: 8909664302368228193, guid: ed08277eb213f5e4d83937b647af6b7c,
     type: 3}
   PlayerModel2: {fileID: 8909664302368228193, guid: 682327b06c59f9245ba9eefc9da354f5,
@@ -208,6 +210,27 @@ MonoBehaviour:
     countValid: 1
     validShotFrame: 6
     skill: {fileID: 11400000, guid: ac13b0be3484e35489edd3fd686ec7a0, type: 2}
+  - name: 2147
+    command: 2147
+    trigger: B
+    skillCost: 0
+    countValid: 1
+    validShotFrame: 6
+    skill: {fileID: 11400000, guid: ac13b0be3484e35489edd3fd686ec7a0, type: 2}
+  - name: 236
+    command: 236
+    trigger: A
+    skillCost: 0
+    countValid: 1
+    validShotFrame: 6
+    skill: {fileID: 11400000, guid: e5b04900f07b87c4587cfb864bc50b54, type: 2}
+  - name: 26
+    command: 26
+    trigger: A
+    skillCost: 0
+    countValid: 1
+    validShotFrame: 6
+    skill: {fileID: 11400000, guid: e5b04900f07b87c4587cfb864bc50b54, type: 2}
   groundMoveSkills:
   - skillCost: 0
     countValid: 1

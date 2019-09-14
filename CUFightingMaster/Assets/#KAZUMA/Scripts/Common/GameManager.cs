@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using CUEngine.Pattern;
 using CUEngine;
+using UnityEngine.UI;
 using System;
 
 public class GameManager : SingletonMono<GameManager>
@@ -37,8 +38,8 @@ public class GameManager : SingletonMono<GameManager>
     public bool isTimeStop_One = false;
     public bool isTimeStop_Two = false;
 
-    public GameObject p1Command = null;
-    public GameObject p2Command = null;
+    public Image p1Command = null;
+    public Image p2Command = null;
 
     public List<IEventable> UpdateBulletList = new List<IEventable>();
     public List<IEventable> LateUpdateBulletList = new List<IEventable>();
@@ -53,6 +54,8 @@ public class GameManager : SingletonMono<GameManager>
 		var obj = Instantiate(GameDataStrage.Instance.fighterStatuses[0].fighter,InGameManager.Instance.targetPoint[0].transform.position,Quaternion.identity);
         //入場シーンカメラ生成
         var camera = Instantiate(GameDataStrage.Instance.fighterStatuses[0].InGameTimeline_One, Vector3.zero, Quaternion.identity);
+        //コマンドスプライト作成
+        p1Command.sprite = GameDataStrage.Instance.fighterStatuses[0].commandSprite;
         InGameManager.Instance.player1_Timeline = camera;
         camera.PlayCamera();//再生
         if (parantFighter != null)
@@ -69,6 +72,8 @@ public class GameManager : SingletonMono<GameManager>
 		obj = Instantiate(GameDataStrage.Instance.fighterStatuses[1].fighter,InGameManager.Instance.targetPoint[1].transform.position,Quaternion.identity);
         //入場シーンカメラ生成
         var cam2 = Instantiate(GameDataStrage.Instance.fighterStatuses[1].InGameTimeline_Two, Vector3.zero, Quaternion.identity);
+        //コマンドスプライト作成
+        p2Command.sprite = GameDataStrage.Instance.fighterStatuses[1].commandSprite;
         cam2.PlayCamera();
         InGameManager.Instance.player2_Timeline = cam2;
         if (parantFighter != null)
