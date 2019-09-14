@@ -17,7 +17,6 @@ public class TitleManager : MonoBehaviour
 	[SerializeField] private CanvasController_Title canvasController_Title;
 	[SerializeField] private DemoMovie_Sound demoMovie_Sound;
 	public GameObject[] blackBackLine;
-
 	private bool isRunDemoMovie = false;
 
     public float waitPlayDemoMovieTime;
@@ -31,6 +30,7 @@ public class TitleManager : MonoBehaviour
     private float demoMoveTime;
 
     public GameObject[] pressAnykey;
+	public GameObject[] pressAnykey2;
 
 	private void InitTitle()
 	{
@@ -106,6 +106,12 @@ public class TitleManager : MonoBehaviour
         {
             if(canvasController_Title.IsEnabledRenderTexture() == true)
 			{
+				for (int i = 0;i < blackBackLine.Length;i++)
+				{
+					blackBackLine[i].GetComponent<AnimationUIManager>().isStart = true;
+					pressAnykey[i].GetComponent<AnimationUIManager>().isInterruption = true;
+					pressAnykey2[i].GetComponent<AnimationUIManager>().isStart = true;
+				}
 				currentUpdate = PlayDemoMovie;
 			}
         }
@@ -117,7 +123,6 @@ public class TitleManager : MonoBehaviour
     /// <param name="action">コールバック</param>
     private void StartDemoMovie_Fadein()
     {
-
 		if (canvasController_Title.StartFadeIn())
 			currentUpdate = DemoMovieUpdate;
     }
@@ -128,10 +133,6 @@ public class TitleManager : MonoBehaviour
     /// </summary>
     private void PlayDemoMovie()
 	{
-		for (int i = 0;i < blackBackLine.Length;i++)
-		{
-			blackBackLine[i].GetComponent<AnimationUIManager>().isStart = true;
-		}
         demoMoveTime = demoMoveTimeMax;
         canvasController_Title.PlayVideo();
 		currentUpdate = StartDemoMovie_Fadein;
@@ -168,7 +169,7 @@ public class TitleManager : MonoBehaviour
 			for (int i = 0;i < blackBackLine.Length;i++)
 			{
 				blackBackLine[i].GetComponent<AnimationUIManager>().isInterruption = true;
-				pressAnykey[i].GetComponent<AnimationUIManager>().isInterruption = true;
+				pressAnykey2[i].GetComponent<AnimationUIManager>().isInterruption = true;
 			}
             canvasController_Title.StopVideo();
             canvasController_Title.DisabledRenderTexture();
