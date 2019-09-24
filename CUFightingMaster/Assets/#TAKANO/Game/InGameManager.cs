@@ -361,7 +361,7 @@ public class InGameManager : SingletonMono<InGameManager>
 		//画面暗転
 		canvasController.Call_InitDownCurtain();
         currentUpdate = StartGame;
-        Sound.PlayBgm("BGM_Battle", 1, 0.8f, true);
+        Sound.PlayBgm("BGM_Battle", 1, 1.0f, true);
 
 	}
 
