@@ -45,11 +45,10 @@ public class ControllerManager : MonoBehaviour
 			isChange[i]  =false;
 			isSet[i] = false;
 			//変更が必要かどうか判定する
-			if (controllerIndex[i] == -1)		isChange[i] = true;
-			else
+			if (controllerIndex[i] == -1)	isChange[i] = true;
+			else if (inputManager[i].GetComponent<TestInput>().controllerName != nowControllerNames[controllerIndex[i]])
 			{
-				if (inputManager[i].GetComponent<TestInput>().controllerName != nowControllerNames[controllerIndex[i]])
-					isChange[i] = true;
+				isChange[i] = true;
 			}
 			//変更が必要なら
 			if (isChange[i])

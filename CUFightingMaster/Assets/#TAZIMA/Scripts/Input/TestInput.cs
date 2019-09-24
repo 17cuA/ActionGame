@@ -1,11 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using CustomInputClass;
 
 
 public class TestInput : MonoBehaviour {
-	CustomInput customInput;
 	//正規表現でコマンドを判別するスクリプト
 	public CommandManager groundMoveCommand; //地上
     public CommandManager airMoveCommand;	//空中
@@ -43,11 +41,6 @@ public class TestInput : MonoBehaviour {
         Application.targetFrameRate = 60;
         player = string.Format("Player{0}_", playerIndex);
     }
-	private void Start()
-	{
-		customInput = new CustomInput();
-		customInput.SetConfig(playerIndex, controllerIndex);
-	}
 
 	//追加、初期化処理
 	public void InitCommandManagers(FighterCore _core)
@@ -121,7 +114,6 @@ public class TestInput : MonoBehaviour {
 
     public void UpdateGame (FighterCore _core)
 	{
-		if (Input.GetKeyDown(KeyCode.F12))	customInput.SetConfig(playerIndex, controllerIndex);
 		//入力管理
 		DownKeyCheck (_core);
 	}
@@ -129,7 +121,7 @@ public class TestInput : MonoBehaviour {
 	public void SetAxis ()
 	{
         //X,Yそれぞれの入力を保存
-        inputDirection.x = customInput.GetAxisRaw (controllerName + player + "Horizontal");
+        inputDirection.x = Input.GetAxisRaw (controllerName + player + "Horizontal");
 		inputDirection.y = Input.GetAxisRaw (controllerName + player + "Vertical");
 	}
 	public void SetDirection ()
