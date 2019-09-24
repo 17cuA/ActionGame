@@ -3,15 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using CustomInputClass;
 
 public class InputConfirmation : MonoBehaviour
 {
-    CustomInput customInput = new CustomInput();
-    void Start()
-    {
-        customInput.SetConfig(0,1);
-    }
     void Update()
     {
 		if (Input.anyKeyDown)
