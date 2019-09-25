@@ -1,7 +1,8 @@
-﻿//アニメーションUI表示用スクリプト
+﻿//--------------------------------------------------------
+//連番で書き出されたスプライトをアニメーションUIとして表示させる
+//
 using System.Collections.Generic;
 using UnityEngine;
-using System.IO;
 using UnityEngine.UI;
 
 public class AnimationUIManager : MonoBehaviour
@@ -17,11 +18,11 @@ public class AnimationUIManager : MonoBehaviour
         public int CountFrame;
     }
 	/// <summary>
-	/// AnimationUIの変数
+	/// AnimationUIManagerの変数
 	/// </summary>
     private string path;			//スプライトの場所を参照するパス
     public string spriteName;		//スプライトの名前
-    private int totalSpriteCount;	//合計スプライト数
+    private int totalSpriteCount;		//合計スプライト数
     private int nowSpriteCount;		//現在のスプライトの番号をカウント
 	public int delayChangeFrame;	//スプライトを次に移すフレームまでに挟むフレーム
 	private int delayFrameCount;	//スプライトを次に移すフレームまでに挟むフレームのカウントをする
@@ -33,11 +34,11 @@ public class AnimationUIManager : MonoBehaviour
     private Color initColor;		//初期化用のカラー
     public Sprite defaultSprite;	//アニメーションUIを出していないときに出しておくスプライト
     public List<StopUIClass> stopUIs = null;    //アニメーションUIを指定したフレームで指定したフレーム数停止させるクラスの変数
-	public bool isStart;            //アニメーションUIを開始するときに立てるフラグ
-    public bool isLoop;				//アニメーションUIをループさせたいときに立てるフラグ
-    public bool isLeave;            //アニメーションUIを最後のスプライトで止めたいときに立てる用フラグ
-	public bool isInvisible;		//アニメーションUI再生中に非表示にするどうか判定するフラグ
-	public bool isInterruption;		//アニメーションUI停止用に非表示にするどうか判定するフラグ
+	public bool isStart;            //アニメーションを開始するか判定するフラグ
+    public bool isLoop;				//アニメーションをループさせるか判定するフラグ
+    public bool isLeave;            //アニメーションUIを最後のスプライトで止めるか判定をするフラグ
+	public bool isInvisible;        //アニメーションUI再生中に非表示にするか判定をするフラグ
+	public bool isInterruption;		//アニメーションUIの再生を中断させるか判定をするフラグ
     private void Update()
     {
 		if (delayChangeFrame <= delayFrameCount)
