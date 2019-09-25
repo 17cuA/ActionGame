@@ -33,12 +33,21 @@ MonoBehaviour:
     isDeleteObj: 0
     isScaled: 0
     position: {x: 0, y: 0, z: 0}
+  - frame: 0
+    effect: {fileID: 6161554951967098717, guid: 5f1182be0f19237458d2c18d466a096a,
+      type: 3}
+    childFlag: 1
+    worldPositionFlag: 0
+    isDeleteObj: 1
+    isScaled: 1
+    position: {x: 0, y: 0, z: 0}
   frameBullets: []
   cancelFrag: 10
   endNextAnimation: {fileID: 0}
   endNextWeight: 0
   groundLandingSkill: {fileID: 0}
   groundLandingWeight: 0
+  isGroundEnd: 0
   barrageCancelFrag: 0
   cancelLayer: 
   inBlend: 0
@@ -59,8 +68,8 @@ MonoBehaviour:
     - isFalse: 0
       isInfinityFrame: 0
       hitBox:
-        size: {x: 3.39, y: 1.81, z: 1}
-        localPosition: {x: 1.35, y: 2.24, z: 0}
+        size: {x: 2.5, y: 1.5, z: 1}
+        localPosition: {x: 0.75, y: 2.5, z: 0}
       startFrame: 10
       endFrame: 12
     hitStop: 12
