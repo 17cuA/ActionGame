@@ -7,7 +7,7 @@ using System;
 public class FighterStateBase : StateBaseScriptMonoBehaviour
 {
     public FighterCore core;
-    public TestInput input = null;
+    public InputControl input = null;
 	public FighterStateGuard stateGuard;
     public FighterSkill.CustomHitBox nowDamage;
     //格納用
@@ -35,10 +35,10 @@ public class FighterStateBase : StateBaseScriptMonoBehaviour
         switch (core.PlayerNumber)
         {
             case PlayerNumber.Player1:
-                input = InputManager.Instance.testInput[0];
+                input = InputControlManager.Instance.testInput[0];
                 break;
             case PlayerNumber.Player2:
-                input = InputManager.Instance.testInput[1];
+                input = InputControlManager.Instance.testInput[1];
                 break;
         }
         stateGuard = GetComponent<FighterStateGuard>();

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using CUEngine.Pattern;
 
-public class InputManager : SingletonMono<InputManager>
+public class InputControlManager : SingletonMono<InputControlManager>
 {
-    public TestInput[] testInput;
+    public InputControl[] testInput;
 }

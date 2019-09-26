@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class TestInput : MonoBehaviour {
+public class InputControl : MonoBehaviour {
 	//正規表現でコマンドを判別するスクリプト
 	public CommandManager groundMoveCommand; //地上
     public CommandManager airMoveCommand;	//空中

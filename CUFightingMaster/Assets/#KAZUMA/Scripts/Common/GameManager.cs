@@ -22,8 +22,8 @@ public class GameManager : SingletonMono<GameManager>
 
     public FighterCore Player_one;
     public FighterCore Player_two;
-	public TestInput input_one;
-	public TestInput input_two;
+	public InputControl input_one;
+	public InputControl input_two;
 
     public bool isStartGame = false;
     public bool isEndRound = false;

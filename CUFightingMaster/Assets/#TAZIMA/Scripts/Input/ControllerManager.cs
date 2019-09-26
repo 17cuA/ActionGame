@@ -25,12 +25,12 @@ public class ControllerManager : MonoBehaviour
 				//コントローラーが接続されていればコントローラー名をセット、それ以外なら空
 				if (nowControllerNames[i] != "")
 				{
-					inputManager[i].GetComponent<TestInput>().controllerName = "";
+					inputManager[i].GetComponent<InputControl>().controllerName = "";
 					controllerIndex[i] = i;
 					continue;
 				}
 			}
-			inputManager[i].GetComponent<TestInput>().controllerName = "";
+			inputManager[i].GetComponent<InputControl>().controllerName = "";
 			controllerIndex[i] = -1;
         }
     }
@@ -46,7 +46,7 @@ public class ControllerManager : MonoBehaviour
 			isSet[i] = false;
 			//変更が必要かどうか判定する
 			if (controllerIndex[i] == -1)	isChange[i] = true;
-			else if (inputManager[i].GetComponent<TestInput>().controllerName != nowControllerNames[controllerIndex[i]])
+			else if (inputManager[i].GetComponent<InputControl>().controllerName != nowControllerNames[controllerIndex[i]])
 			{
 				isChange[i] = true;
 			}
@@ -60,7 +60,7 @@ public class ControllerManager : MonoBehaviour
 					//コントローラーが接続されていればそのコントローラーの名前に変更する
 					if (nowControllerNames[j] != "")
 					{
-						inputManager[i].GetComponent<TestInput>().controllerName = nowControllerNames[j] + "_";
+						inputManager[i].GetComponent<InputControl>().controllerName = nowControllerNames[j] + "_";
 						controllerIndex[i] = j;
 						isSet[i] = true;
 					}
@@ -70,7 +70,7 @@ public class ControllerManager : MonoBehaviour
 				//変更が必要なのに変更されていなかった場合コントローラー名を空にする
 				if (!isSet[i])
 				{
-					inputManager[i].GetComponent<TestInput>().controllerName = "";
+					inputManager[i].GetComponent<InputControl>().controllerName = "";
 					controllerIndex[i] = -1;
 				}
 			}
