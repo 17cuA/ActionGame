@@ -8,7 +8,7 @@ public class CommandManager :MonoBehaviour
     /// <summary>
     /// CommandManagerの変数
     /// </summary>
-    InputControl testInput;                            //入力を管理するスクリプト
+    InputControl inputControl;                            //入力を管理するスクリプト
 	public string inputData = "0";			        //入力した方向を保存する変数
     public string inputCommandName = "";            //入力したコマンドを保存する変数
     public bool isCommandInterval = false;          //コマンド発動中かどうか
@@ -21,7 +21,7 @@ public class CommandManager :MonoBehaviour
     /// </summary>
     public void Init()
 	{
-        testInput = gameObject.GetComponent<InputControl>();
+        inputControl = gameObject.GetComponent<InputControl>();
         //コマンド確認用変数の初期化
         for (int i = 0; i < attackParameters.Count; i++) attackParameters[i].checkCommadStr = "";
 	}
@@ -126,10 +126,10 @@ public class CommandManager :MonoBehaviour
                 //これまでに入力されていたデータをリセット（空にする）
                 attackParameters[i].checkCommadStr = "";
             }
-            if (attackParameters[i].isShot == true && Regex.IsMatch(attackParameters[i].shotTrigger, testInput.atkButton) && isShotCommand == false)
+            if (attackParameters[i].isShot == true && Regex.IsMatch(attackParameters[i].shotTrigger, inputControl.atkButton) && isShotCommand == false)
             {
                 //コマンド攻撃処理
-                if (testInput.atkButton != "")
+                if (inputControl.atkButton != "")
                 {
                     //コマンドを保存
                     inputCommandName = attackParameters[i].commandName + attackParameters[i].shotTrigger;

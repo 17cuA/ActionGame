@@ -5,5 +5,5 @@ using CUEngine.Pattern;
 
 public class InputControlManager : SingletonMono<InputControlManager>
 {
-    public InputControl[] testInput;
+    public InputControl[] inputControl;
 }

@@ -14,10 +14,10 @@ public class FighterInputState : StateBaseScriptMonoBehaviour
         switch (state.fighter.PlayerNumber)
         {
             case PlayerNumber.Player1:
-                input = InputControlManager.Instance.testInput[0];
+                input = InputControlManager.Instance.inputControl[0];
                 break;
             case PlayerNumber.Player2:
-                input = InputControlManager.Instance.testInput[1];
+                input = InputControlManager.Instance.inputControl[1];
                 break;
         }
     }
