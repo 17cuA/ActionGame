@@ -36,48 +36,46 @@ public class CameraController : SingletonMono<CameraController>
 {
 	#region 変数宣言
 	[SerializeField]
-	private GameObject Fighter1;		// プレイヤー1
+	private GameObject Fighter1;	// プレイヤー1
 	[SerializeField]
-	private GameObject Fighter2;		// プレイヤー2
+	private GameObject Fighter2;	// プレイヤー2
 
 	[SerializeField]
-	private float offsetY;							// カメラのY座標の基準値
+	private float offsetY;			// カメラのY座標の基準値
+	[SerializeField]
+	private Vector3 cameraPos_Max;  // カメラの最大座標
+	[SerializeField]
+	private Vector3 cameraPos_Min;  // カメラの最小座標
 	[SerializeField]
 	private float speed_ZoomIn;				// カメラのズーム時の速度
 	[SerializeField]
-	private float speed_ZoomOut;				// カメラのズームアウト時の速度
+	private float speed_ZoomOut;			// カメラのズームアウト時の速度
 	[SerializeField]
-	private float distance_StartZoomIn = 0.55f;		// ズームインを開始するプレイヤー間の距離
+	private float distance_StartZoomIn;		// ズームインを開始するプレイヤー間の距離
 	[SerializeField]
- 	private float distance_StartZoomOut = 0.6f;            // ズームアウトを開始するプレイヤー間の距離
+ 	private float distance_StartZoomOut;	// ズームアウトを開始するプレイヤー間の距離
 
-	private float distance_CamToPlayer;				// カメラからキャラまでの距離
-	private float distanceOfPlayers_Start;			// ゲーム開始時のプレイヤー同士の距離
-	private float distanceOfPLayers_Current;        // 現在のプレイヤー同士の距離
-	private float distanceOfPreviousFrame;
-	public float speed = 5.0f;
-	private Vector3 pCentorPos;						// プレイヤー同士のセンターを取得
+	private float distanceOfCamToPlayerPreviousFrame;   // 1フレーム前のカメラからキャラまでの距離
+	private float distanceOfCamToPlayer;				// カメラからキャラまでの距離
+	private float distanceOfPlayers_Start;				// ゲーム開始時のプレイヤー同士の距離
+	private float distanceOfPLayers_Current;			// 現在のプレイヤー同士の距離
+	private Vector3 PlayersCentorPos;					// プレイヤー同士のセンターを取得
 
-	[SerializeField]
-	private Vector3 cameraPos_Max;			// カメラの最大座標
-	[SerializeField]
-	private Vector3 cameraPos_Min;			// カメラの最小座標
+	private float moveSpeed;		// カメラの移動速度
+	private float stageWidth;		// ステージの横幅
+	private Vector3 lBottom, rTop;	// 画面左下、右上の座標
 
-	private float stageWidth;						// ステージの横幅
-	private Vector3 lBottom, rTop;				// 画面左下、右上の座標
-
-	public static CameraController instance;
-	// 仮で作成(07/29)
-	public GameObject Collider1;
+	public GameObject Collider1;		// 画面端のオブジェクト
 	public GameObject Collider2;
-    public BoxCollider boxCollider1;
-    public BoxCollider boxCollider2;
+	public BoxCollider boxCollider1;    // 画面端のオブジェクトの当たり判定
+	public BoxCollider boxCollider2;
 
     public CinemaController cinemaController;
-    #endregion
+	public static CameraController instance;
+	#endregion
 
-    #region 初期化
-    private void Awake()
+	#region 初期化
+	private void Awake()
     {
         instance = GetComponent<CameraController>();
         boxCollider1 = Collider1.GetComponent<BoxCollider>();
@@ -90,14 +88,14 @@ public class CameraController : SingletonMono<CameraController>
 		Fighter1 = GameManager.Instance.Player_one.gameObject;
 		Fighter2 = GameManager.Instance.Player_two.gameObject;
 		offsetY = transform.position.y;
-		//speed_ZoomIn = 8.0f;
-		//speed_ZoomOut = 40.0f;
+
 		speed_ZoomIn = 5.0f;
 		speed_ZoomOut = 20.0f;
+		distance_StartZoomIn = 0.55f;
+		distance_StartZoomOut = 0.6f;
 
-		stageWidth = 10.0f;								// ステージの横幅
-		//cameraPos_Max = new Vector3(28.0f,0, -9.5f);	// ズームアウトの最大値
-		//cameraPos_Min = new Vector3(-28.0f,0,-13.0f);	// ズームインの最小値
+		moveSpeed = 5.0f;
+		stageWidth = 10.0f;
 		cameraPos_Max = new Vector3(50.0f,0, -9.5f);	// ズームアウトの最大値
 		cameraPos_Min = new Vector3(-50.0f,0,-13.0f);	// ズームインの最小値
 
@@ -128,19 +126,19 @@ public class CameraController : SingletonMono<CameraController>
         }
         CameraUpdate();
 	}
-	#endregion
 
 	void CameraUpdate()
 	{
 		CameraPos();
 		TargetPos();
 		// カメラの移動・ズーム
-		//transform.Translate(pCentorPos.x - transform.position.x, 0, Zoom());
-		//transform.Translate(0, 0, Zoom());
-		transform.position = Vector3.Lerp(new Vector3(transform.position.x, transform.position.y, transform.position.z), new Vector3(pCentorPos.x, transform.position.y, transform.position.z + Zoom()), Time.time * speed / distanceOfPreviousFrame);
+		transform.position = Vector3.Lerp(new Vector3(transform.position.x, transform.position.y, transform.position.z), 
+										  new Vector3(PlayersCentorPos.x, transform.position.y, transform.position.z + Zoom()), 
+										  Time.time * moveSpeed / distanceOfCamToPlayerPreviousFrame);
 		// カメラの座標を制限(現在Y軸移動はここで行っている)
-		transform.position = new Vector3(Mathf.Clamp(transform.position.x, cameraPos_Min.x, cameraPos_Max.x), pCentorPos.y + offsetY, transform.position.z);
+		transform.position = new Vector3(Mathf.Clamp(transform.position.x, cameraPos_Min.x, cameraPos_Max.x), PlayersCentorPos.y + offsetY, transform.position.z);
 	}
+	#endregion
 
 	#region カメラの座標
 	/// <summary>
@@ -148,9 +146,9 @@ public class CameraController : SingletonMono<CameraController>
 	/// </summary>
 	void TargetPos()
 	{
-		pCentorPos = (Fighter1.transform.position + Fighter2.transform.position) / 2;
+		PlayersCentorPos = (Fighter1.transform.position + Fighter2.transform.position) / 2;
 		distanceOfPLayers_Current = Vector3.Distance(Camera.main.WorldToViewportPoint(Fighter1.transform.position), Camera.main.WorldToViewportPoint(Fighter2.transform.position));
-		distanceOfPreviousFrame = Vector3.Distance(transform.position, pCentorPos);
+		distanceOfCamToPlayerPreviousFrame = Vector3.Distance(transform.position, PlayersCentorPos);
 	}
 
 	/// <summary>
@@ -159,13 +157,13 @@ public class CameraController : SingletonMono<CameraController>
 	void CameraPos()
 	{
 		// カメラからプレイヤーまでの距離の計算
-		distance_CamToPlayer = Vector3.Distance(transform.position, pCentorPos);
+		distanceOfCamToPlayer = Vector3.Distance(transform.position, PlayersCentorPos);
 		#region 座標を求める
 		// カメラの左下座標を求める
-		lBottom = Camera.main.ViewportToWorldPoint(new Vector3(0, 0, distance_CamToPlayer));
+		lBottom = Camera.main.ViewportToWorldPoint(new Vector3(0, 0, distanceOfCamToPlayer));
 		Collider1.transform.position = new Vector3(lBottom.x, transform.position.y, 0);
 		// カメラの右上座標を求める
-		rTop = Camera.main.ViewportToWorldPoint(new Vector3(1, 1, distance_CamToPlayer));
+		rTop = Camera.main.ViewportToWorldPoint(new Vector3(1, 1, distanceOfCamToPlayer));
 		Collider2.transform.position = new Vector3(rTop.x, transform.position.y, 0);
 		#endregion
 	}
@@ -214,7 +212,6 @@ public class CameraController : SingletonMono<CameraController>
 		}
 		return zoomRatio;
 	}
-
 	#endregion
 
 	#region カメラを揺らす処理
