@@ -29,7 +29,7 @@ public class CreateInputManagerWindow : EditorWindow
 	/// <summary>
 	/// アセットパス
 	/// </summary>
-	private static readonly string ASSET_PATH = "Assets/Resources/ScriptableInputManager.asset";
+	private static readonly string ASSET_PATH = "Assets/#TAZIMA/Scripts/Input/ScriptableInputManager.asset";
     [MenuItem("Editor/InputManagerSetter")]
     static void Create()
     {
