@@ -42,13 +42,13 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4572593609615137428}
   serializedVersion: 6
-  lengthInSec: 1
+  lengthInSec: 5
   simulationSpeed: 1
   stopAction: 2
   cullingMode: 0
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
-  looping: 0
+  looping: 1
   prewarm: 0
   playOnAwake: 1
   useUnscaledTime: 0
@@ -57,7 +57,7 @@ ParticleSystem:
   startDelay:
     serializedVersion: 2
     minMaxState: 0
-    scalar: 4
+    scalar: 0
     minScalar: 0
     maxCurve:
       serializedVersion: 2
@@ -116,7 +116,7 @@ ParticleSystem:
     enabled: 1
     startLifetime:
       serializedVersion: 2
-      minMaxState: 1
+      minMaxState: 0
       scalar: 0.5
       minScalar: 5
       maxCurve:
@@ -867,7 +867,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 5000
+      scalar: 500
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -4775,7 +4775,7 @@ PrefabInstance:
     - target: {fileID: 1149318623686363287, guid: def7f0202ab175b4bbdd5b2bb79f2fb0,
         type: 3}
       propertyPath: startDelay.scalar
-      value: 2.75
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1149318623686363287, guid: def7f0202ab175b4bbdd5b2bb79f2fb0,
         type: 3}
@@ -4930,7 +4930,7 @@ PrefabInstance:
     - target: {fileID: 1149318623686363287, guid: def7f0202ab175b4bbdd5b2bb79f2fb0,
         type: 3}
       propertyPath: startDelay.scalar
-      value: 2.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1149318623686363287, guid: def7f0202ab175b4bbdd5b2bb79f2fb0,
         type: 3}
