@@ -54,10 +54,10 @@ public class GameManager : SingletonMono<GameManager>
 		var obj = Instantiate(GameDataStrage.Instance.fighterStatuses[0].fighter,InGameManager.Instance.targetPoint[0].transform.position,Quaternion.identity);
         //入場シーンカメラ生成
         var camera = Instantiate(GameDataStrage.Instance.fighterStatuses[0].InGameTimeline_One, Vector3.zero, Quaternion.identity);
-        //コマンドスプライト作成
-        p1Command.sprite = GameDataStrage.Instance.fighterStatuses[0].commandSprite;
-        InGameManager.Instance.player1_Timeline = camera;
-        camera.PlayCamera();//再生
+		InGameManager.Instance.player1_Timeline = camera;
+		camera.PlayCamera();//再生
+		//コマンドスプライト作成
+		p1Command.sprite = GameDataStrage.Instance.fighterStatuses[0].commandSprite;
         if (parantFighter != null)
 		{
 			obj.transform.parent = parantFighter.transform;
@@ -72,10 +72,10 @@ public class GameManager : SingletonMono<GameManager>
 		obj = Instantiate(GameDataStrage.Instance.fighterStatuses[1].fighter,InGameManager.Instance.targetPoint[1].transform.position,Quaternion.identity);
         //入場シーンカメラ生成
         var cam2 = Instantiate(GameDataStrage.Instance.fighterStatuses[1].InGameTimeline_Two, Vector3.zero, Quaternion.identity);
-        //コマンドスプライト作成
-        p2Command.sprite = GameDataStrage.Instance.fighterStatuses[1].commandSprite;
-        cam2.PlayCamera();
-        InGameManager.Instance.player2_Timeline = cam2;
+		cam2.PlayCamera();
+		InGameManager.Instance.player2_Timeline = cam2;
+		//コマンドスプライト作成
+		p2Command.sprite = GameDataStrage.Instance.fighterStatuses[1].commandSprite;
         if (parantFighter != null)
 		{
 			obj.transform.parent = parantFighter.transform;
@@ -106,16 +106,19 @@ public class GameManager : SingletonMono<GameManager>
 		{
             lis.UpdateGame();
         }
-
+		//入力の更新
 		input_one.UpdateGame(Player_one);
 		input_two.UpdateGame(Player_two);
+		//プレイヤーステートの更新
 		UpdateManager.Instance.UpdateGame();
+		//時間停止演出処理
         bool _timeF = Player_one.AnimationPlayerCompornent.CheckTimeStop(PlayerNumber.Player1,Player_two.AnimationPlayerCompornent.CheckTimeStop(PlayerNumber.Player2,false));
         Player_two.AnimationPlayerCompornent.CheckTimeStop(PlayerNumber.Player2,_timeF);
         //ヒットストップがない時
         if ((!isTimeStop_One)&&((hitStop_one <= 0) || (!isHitStop_one)))
 		{
 			isHitStop_one = false;
+			//Player1の更新
 			Player_one.UpdateGame();
             //コマンドの削除
             input_one.DeleteCommand();
@@ -124,12 +127,15 @@ public class GameManager : SingletonMono<GameManager>
 		//ヒットストップ中
 		else
 		{
+			//Player1のHitStop中の更新
 			Player_one.HitStopUpdate();
 			hitStop_one--;
 		}
+		//ヒットストップがない時
 		if ((!isTimeStop_Two)&&((hitStop_two <= 0) || (!isHitStop_two)))
 		{
 			isHitStop_two = false;
+			//Player2の更新
 			Player_two.UpdateGame();
             //コマンドの削除
             input_two.DeleteCommand();
@@ -137,11 +143,11 @@ public class GameManager : SingletonMono<GameManager>
         }
 		else
 		{
+			//Player2のHitStop中の更新
 			Player_two.HitStopUpdate();
 			hitStop_two--;
 		}
-
-
+		//ノックバック処理Player1
 		if (((hitStop_one <= 0) || (!isHitStop_one))&&(!isTimeStop_One))
 		{
 			if(hitStop_one<=0)
@@ -149,6 +155,7 @@ public class GameManager : SingletonMono<GameManager>
 				Player_one.KnockBackUpdate();
 			}
         }
+		//ノックバック処理Player2
 		if (((hitStop_two <= 0) || (!isHitStop_two))&&(!isTimeStop_Two))
 		{
 			if (hitStop_one <= 0)
@@ -156,18 +163,15 @@ public class GameManager : SingletonMono<GameManager>
 				Player_two.KnockBackUpdate();
 			}
         }
-
-
 		if(hitStop_one>0)
 		{
-			isHitStop_one = true;
-			
+			isHitStop_one = true;	
 		}
 		if(hitStop_two>0)
 		{
 			isHitStop_two = true;
 		}
-		//UpdateManagerで使用するため、Gameobjectの削除はUpdateManagerより後
+		//UpdateManagerで使用するため、Bullet(遠距離)の削除はUpdateManagerより後
 		foreach(var lis in LateUpdateBulletList)
 		{
             lis.LateUpdateGame();
@@ -176,14 +180,15 @@ public class GameManager : SingletonMono<GameManager>
         foreach(var del in DeleteBulletList)
 		{
             i++;
-            UpdateBulletList.Remove(del);
+			//遠距離技の削除
+			UpdateBulletList.Remove(del);
             LateUpdateBulletList.Remove(del);
         }
 		if(i>0)
 		{
             DeleteBulletList = new List<IEventable>();//削除用
         }
-
+		//ラウンド終了時にコンボカウントを0にする
 		if(isEndRound)
 		{
             Player_one.SetComboCount(0);
@@ -191,8 +196,8 @@ public class GameManager : SingletonMono<GameManager>
         }
 		Player_one.Mover.SetAirXMove(0);
 		Player_two.Mover.SetAirXMove(0);
-
 	}
+	//対戦中キャラの情報の取得
 	public FighterCore GetPlayFighterCore(PlayerNumber _mode)
 	{
 		switch (_mode)
@@ -204,6 +209,19 @@ public class GameManager : SingletonMono<GameManager>
         }
         return null;
     }
+	public FighterCore GetPlayFighterCore(int _layer)
+	{
+		if (_layer == LayerMask.NameToLayer(CommonConstants.Layers.Player_One))
+		{
+			return Player_one;
+		}
+		else if (_layer == LayerMask.NameToLayer(CommonConstants.Layers.Player_Two))
+		{
+			return Player_two;
+		}
+		return null;
+	}
+	//HitStop情報の取得
 	public int GetHitStop(PlayerNumber _mode)
 	{
 		switch (_mode)
@@ -215,6 +233,7 @@ public class GameManager : SingletonMono<GameManager>
 		}
 		return 0;
 	}
+	//HitStopの設定
 	public void SetHitStop(PlayerNumber _mode,int _stop)
 	{
 		switch (_mode)
@@ -229,16 +248,4 @@ public class GameManager : SingletonMono<GameManager>
 				break;
 		}
 	}
-	public FighterCore GetPlayFighterCore(int _layer)
-	{
-		if(_layer == LayerMask.NameToLayer(CommonConstants.Layers.Player_One))
-		{
-            return Player_one;
-        }
-		else if(_layer == LayerMask.NameToLayer(CommonConstants.Layers.Player_Two))
-		{
-            return Player_two;
-        }
-        return null;
-    }
 }

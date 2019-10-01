@@ -1,4 +1,11 @@
-﻿using System.Collections;
+﻿//--------------------------------------------------------
+//ファイル名：ComboUIManager.cs
+//作成者　　：田嶋颯
+//作成日　　：20190904
+//
+//コンボを表示する
+//--------------------------------------------------------
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;

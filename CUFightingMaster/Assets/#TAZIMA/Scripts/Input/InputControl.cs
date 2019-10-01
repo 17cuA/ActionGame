@@ -1,10 +1,24 @@
-﻿using System.Collections;
+﻿//--------------------------------------------------------
+//ファイル名：InputControl.cs
+//作成者　　：田嶋颯
+//作成日　　：20190530
+//
+//プレイヤーの入力を管理するスクリプト
+//--------------------------------------------------------
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 
 public class InputControl : MonoBehaviour {
-	//正規表現でコマンドを判別するスクリプト
+
+	public enum InputMode
+	{
+		Manual,
+		CPU,
+	}
+	public InputMode inputMode = InputMode.Manual;
+	//正規表現を使ってコマンドを判別するスクリプト
 	public CommandManager groundMoveCommand; //地上
     public CommandManager airMoveCommand;	//空中
 
@@ -64,7 +78,7 @@ public class InputControl : MonoBehaviour {
             groundMoveCommand.attackParameters.Add(param);
         }
         //地上コマンド攻撃
-        foreach(var co in _core.Status.groundAttackSkills)
+        foreach (var co in _core.Status.groundAttackSkills)
         {
             var param = new AttackParameter();
             param.commandName = co.name;
@@ -118,13 +132,13 @@ public class InputControl : MonoBehaviour {
 		DownKeyCheck (_core);
 	}
 
-	public void SetAxis ()
+	public void SetAxis()
 	{
         //X,Yそれぞれの入力を保存
         inputDirection.x = Input.GetAxisRaw (controllerName + player + "Horizontal");
 		inputDirection.y = Input.GetAxisRaw (controllerName + player + "Vertical");
 	}
-	public void SetDirection ()
+	public void SetDirection()
 	{
 		SetAxis ();
 		float nowDir = 5 + inputDirection.x + (inputDirection.y * -3);
@@ -176,10 +190,17 @@ public class InputControl : MonoBehaviour {
     //プレイヤーの入力をまとめている関数
 	public void DownKeyCheck (FighterCore _dir)
 	{
-		//ジョイスティックまたはキーボードでの方向入力
-		SetDirection ();
-        //攻撃ボタン入力
-        SetAtkBotton();
+		if (inputMode == InputMode.Manual)
+		{
+			//ジョイスティックまたはキーボードでの方向入力
+			SetDirection();
+			//攻撃ボタン入力
+			SetAtkBotton();
+		}
+		else if(inputMode == InputMode.CPU)
+		{
+
+		}
         //コマンドの判別
 
         groundMoveCommand.GetCommandData(((int)GetPlayerMoveDirection(_dir)).ToString());

@@ -16,6 +16,7 @@ namespace CUEngine
         public List<IEventable> updateList = new List<IEventable>();
         protected override void Awake()
         {
+			base.Awake();
             dontDs = false;     //そのシーンだけしか残らないようにする
         }
         /// <summary>
