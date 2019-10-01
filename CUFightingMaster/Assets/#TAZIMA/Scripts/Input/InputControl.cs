@@ -11,6 +11,13 @@ using UnityEngine;
 
 
 public class InputControl : MonoBehaviour {
+
+	public enum InputMode
+	{
+		Manual,
+		CPU,
+	}
+	public InputMode inputMode = InputMode.Manual;
 	//正規表現を使ってコマンドを判別するスクリプト
 	public CommandManager groundMoveCommand; //地上
     public CommandManager airMoveCommand;	//空中
@@ -183,10 +190,17 @@ public class InputControl : MonoBehaviour {
     //プレイヤーの入力をまとめている関数
 	public void DownKeyCheck (FighterCore _dir)
 	{
-		//ジョイスティックまたはキーボードでの方向入力
-		SetDirection();
-        //攻撃ボタン入力
-        SetAtkBotton();
+		if (inputMode == InputMode.Manual)
+		{
+			//ジョイスティックまたはキーボードでの方向入力
+			SetDirection();
+			//攻撃ボタン入力
+			SetAtkBotton();
+		}
+		else if(inputMode == InputMode.CPU)
+		{
+
+		}
         //コマンドの判別
 
         groundMoveCommand.GetCommandData(((int)GetPlayerMoveDirection(_dir)).ToString());
