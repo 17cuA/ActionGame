@@ -1,4 +1,11 @@
-﻿using System.Collections;
+﻿//--------------------------------------------------------
+//ファイル名：CommandManager.cs
+//作成者　　：田嶋颯
+//作成日　　：20190811
+//
+//正規表現を使ってコマンドを判別するスクリプト
+//--------------------------------------------------------
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Text.RegularExpressions;
@@ -8,7 +15,7 @@ public class CommandManager :MonoBehaviour
     /// <summary>
     /// CommandManagerの変数
     /// </summary>
-    InputControl inputControl;                            //入力を管理するスクリプト
+    InputControl inputControl;                      //入力を管理するスクリプト
 	public string inputData = "0";			        //入力した方向を保存する変数
     public string inputCommandName = "";            //入力したコマンドを保存する変数
     public bool isCommandInterval = false;          //コマンド発動中かどうか
