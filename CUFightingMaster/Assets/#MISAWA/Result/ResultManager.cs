@@ -28,8 +28,6 @@ public class ResultManager : MonoBehaviour
 	public GameObject obj;
 	public GameObject obj2;
 
-	//public FighterStatus[] debug = new FighterStatus[2];
-
 	public GameObject[] camelas = new GameObject[4];
 	public GameObject[] timelines = new GameObject[4];
 
@@ -67,9 +65,7 @@ public class ResultManager : MonoBehaviour
 
 		// キャラの生成
 		obj = Instantiate(GameDataStrage.Instance.fighterStatuses[0].PlayerModel, targetPos[0].transform.position, targetPos[0].transform.rotation);
-		//obj.gameObject.layer = LayerMask.NameToLayer(CommonConstants.Layers.Player_One);
 		obj2 = Instantiate(GameDataStrage.Instance.fighterStatuses[1].PlayerModel2, targetPos[1].transform.position, targetPos[0].transform.rotation);
-		//obj.gameObject.layer = LayerMask.NameToLayer(CommonConstants.Layers.Player_Two);
 
 		// １Pが勝ったら
 		if (GameDataStrage.Instance.winFlag_PlayerOne == true)
@@ -83,11 +79,6 @@ public class ResultManager : MonoBehaviour
 			// ２Pの敗北モーションをセット
 			obj2.GetComponent<Animationdata>().ResultAnimation(FighterClips[3],0.5f,FighterClips[7]);
 			obj2.GetComponent<Animationdata>().resultFlag = true;
-
-			//obj.GetComponent<Animationdata>().animationData.SetPlayAnimation(FighterClips[0], 0.5f, 0);
-			//obj2.GetComponent<Animationdata>().animationData.SetPlayAnimation(FighterClips[3], 0.5f, 0);
-			//obj.GetComponent<Animationdata>().animFrag = true;
-			//obj2.GetComponent<Animationdata>().animFrag = true;
 
 			if (GameDataStrage.Instance.fighterStatuses[0].PlayerID == 0)
 			{
