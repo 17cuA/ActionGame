@@ -370,6 +370,104 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
+--- !u!1 &2790116124164980715
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5687023451834256927}
+  - component: {fileID: 2802966735377735285}
+  - component: {fileID: 1135142845590152438}
+  - component: {fileID: 8633645194585434294}
+  m_Layer: 0
+  m_Name: UI_RoundStart_Fight
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &5687023451834256927
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2790116124164980715}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7015910188645798051}
+  m_RootOrder: 15
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 1920, y: 1080}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &2802966735377735285
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2790116124164980715}
+  m_CullTransparentMesh: 0
+--- !u!114 &1135142845590152438
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2790116124164980715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae586ca7055677142960095fb0ee3abf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteName: FIGHT ef
+  delayChangeFrame: 0
+  fadeInFrame: 0
+  fadeOutFrame: 10
+  defaultSprite: {fileID: 21300000, guid: 84a40b3f4f2999648afda9a8b9db0096, type: 3}
+  stopUIs: []
+  isStart: 0
+  isLoop: 0
+  isLeave: 0
+  isInvisible: 0
+  isInterruption: 0
+--- !u!114 &8633645194585434294
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2790116124164980715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 21300000, guid: 84a40b3f4f2999648afda9a8b9db0096, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
 --- !u!1 &2865538142988798576
 GameObject:
   m_ObjectHideFlags: 0
@@ -935,7 +1033,7 @@ RectTransform:
   - {fileID: 4501894078833769489}
   - {fileID: 6867201490957848494}
   m_Father: {fileID: 7015910188645798051}
-  m_RootOrder: 21
+  m_RootOrder: 22
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1771,6 +1869,7 @@ RectTransform:
   - {fileID: 7015910190470739229}
   - {fileID: 7015910188950442293}
   - {fileID: 7015910190230679351}
+  - {fileID: 5687023451834256927}
   - {fileID: 7015910190536920370}
   - {fileID: 7015910188879137332}
   - {fileID: 7015910189411203001}
@@ -1867,6 +1966,7 @@ MonoBehaviour:
   - {fileID: 7015910189411202997}
   - {fileID: 7015910189585373985}
   - {fileID: 7015910188692215483}
+  - {fileID: 2790116124164980715}
 --- !u!1 &7015910188656240841
 GameObject:
   m_ObjectHideFlags: 0
@@ -1979,7 +2079,7 @@ MonoBehaviour:
   isLoop: 0
   isLeave: 1
   isInvisible: 0
-  isStop: 0
+  isInterruption: 0
 --- !u!114 &6440583764640335763
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2002,7 +2102,7 @@ MonoBehaviour:
   isLoop: 0
   isLeave: 1
   isInvisible: 0
-  isStop: 0
+  isInterruption: 0
 --- !u!114 &6914655736362002558
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2025,7 +2125,7 @@ MonoBehaviour:
   isLoop: 0
   isLeave: 1
   isInvisible: 0
-  isStop: 0
+  isInterruption: 0
 --- !u!1 &7015910188692215483
 GameObject:
   m_ObjectHideFlags: 0
@@ -2057,7 +2157,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7015910188645798051}
-  m_RootOrder: 19
+  m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2094,7 +2194,7 @@ MonoBehaviour:
   isLoop: 0
   isLeave: 0
   isInvisible: 0
-  isStop: 0
+  isInterruption: 0
 --- !u!114 &7015910188692215484
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2589,7 +2689,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7015910188645798051}
-  m_RootOrder: 16
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2629,7 +2729,7 @@ MonoBehaviour:
   isLoop: 0
   isLeave: 0
   isInvisible: 0
-  isStop: 0
+  isInterruption: 0
 --- !u!114 &7015910188879137329
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2797,17 +2897,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae586ca7055677142960095fb0ee3abf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteName: ROUND2 Movie
+  spriteName: ROUND2 ef
   delayChangeFrame: 0
   fadeInFrame: 0
-  fadeOutFrame: 40
+  fadeOutFrame: 10
   defaultSprite: {fileID: 21300000, guid: 84a40b3f4f2999648afda9a8b9db0096, type: 3}
   stopUIs: []
   isStart: 0
   isLoop: 0
   isLeave: 0
   isInvisible: 0
-  isStop: 0
+  isInterruption: 0
 --- !u!222 &7015910188950442291
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3279,7 +3379,7 @@ MonoBehaviour:
   isLoop: 0
   isLeave: 1
   isInvisible: 0
-  isStop: 0
+  isInterruption: 0
 --- !u!114 &6420401564870212798
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3302,7 +3402,7 @@ MonoBehaviour:
   isLoop: 0
   isLeave: 1
   isInvisible: 0
-  isStop: 0
+  isInterruption: 0
 --- !u!114 &7351895848378182663
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3325,7 +3425,7 @@ MonoBehaviour:
   isLoop: 0
   isLeave: 1
   isInvisible: 0
-  isStop: 0
+  isInterruption: 0
 --- !u!1 &7015910189219932031
 GameObject:
   m_ObjectHideFlags: 0
@@ -3618,6 +3718,7 @@ MonoBehaviour:
   - {fileID: 7015910190470739225}
   - {fileID: 7015910188950442289}
   - {fileID: 7015910190230679347}
+  fightObj: {fileID: 2790116124164980715}
 --- !u!1 &7015910189342344054
 GameObject:
   m_ObjectHideFlags: 0
@@ -3811,7 +3912,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7015910188645798051}
-  m_RootOrder: 17
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3848,7 +3949,7 @@ MonoBehaviour:
   isLoop: 0
   isLeave: 0
   isInvisible: 0
-  isStop: 0
+  isInterruption: 0
 --- !u!114 &7015910189411202998
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4051,7 +4152,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7015910188645798051}
-  m_RootOrder: 18
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -4088,7 +4189,7 @@ MonoBehaviour:
   isLoop: 0
   isLeave: 0
   isInvisible: 0
-  isStop: 0
+  isInterruption: 0
 --- !u!114 &7015910189585373986
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4551,7 +4652,7 @@ MonoBehaviour:
   isLoop: 0
   isLeave: 1
   isInvisible: 0
-  isStop: 0
+  isInterruption: 0
 --- !u!114 &1031066708752021385
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4574,7 +4675,7 @@ MonoBehaviour:
   isLoop: 0
   isLeave: 1
   isInvisible: 0
-  isStop: 0
+  isInterruption: 0
 --- !u!114 &7737471433854289086
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4597,7 +4698,7 @@ MonoBehaviour:
   isLoop: 0
   isLeave: 1
   isInvisible: 0
-  isStop: 0
+  isInterruption: 0
 --- !u!1 &7015910190140479232
 GameObject:
   m_ObjectHideFlags: 0
@@ -4766,17 +4867,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae586ca7055677142960095fb0ee3abf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteName: FINAL ROUND Movie
+  spriteName: FINAL ROUND ef
   delayChangeFrame: 0
   fadeInFrame: 0
-  fadeOutFrame: 40
+  fadeOutFrame: 10
   defaultSprite: {fileID: 21300000, guid: 84a40b3f4f2999648afda9a8b9db0096, type: 3}
   stopUIs: []
   isStart: 0
   isLoop: 0
   isLeave: 0
   isInvisible: 0
-  isStop: 0
+  isInterruption: 0
 --- !u!114 &7015910190230679348
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4918,7 +5019,7 @@ MonoBehaviour:
   isLoop: 0
   isLeave: 1
   isInvisible: 0
-  isStop: 0
+  isInterruption: 0
 --- !u!114 &4221753349140786645
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4941,7 +5042,7 @@ MonoBehaviour:
   isLoop: 0
   isLeave: 1
   isInvisible: 0
-  isStop: 0
+  isInterruption: 0
 --- !u!114 &6448864279703238079
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4964,7 +5065,7 @@ MonoBehaviour:
   isLoop: 0
   isLeave: 1
   isInvisible: 0
-  isStop: 0
+  isInterruption: 0
 --- !u!1 &7015910190248353142
 GameObject:
   m_ObjectHideFlags: 0
@@ -5092,7 +5193,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1920, y: 1080}
+  m_SizeDelta: {x: 1200, y: 380}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &7015910190470739228
 MonoBehaviour:
@@ -5106,17 +5207,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae586ca7055677142960095fb0ee3abf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteName: ROUND1 Movie
+  spriteName: ROUND1 ef
   delayChangeFrame: 0
   fadeInFrame: 0
-  fadeOutFrame: 40
+  fadeOutFrame: 10
   defaultSprite: {fileID: 21300000, guid: 84a40b3f4f2999648afda9a8b9db0096, type: 3}
   stopUIs: []
   isStart: 0
   isLoop: 0
   isLeave: 0
   isInvisible: 0
-  isStop: 0
+  isInterruption: 0
 --- !u!222 &7015910190470739227
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5185,7 +5286,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7015910188645798051}
-  m_RootOrder: 15
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -5222,7 +5323,7 @@ MonoBehaviour:
   isLoop: 0
   isLeave: 0
   isInvisible: 0
-  isStop: 0
+  isInterruption: 0
 --- !u!114 &7015910190536920335
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5359,7 +5460,7 @@ RectTransform:
   - {fileID: 5891295425980304147}
   - {fileID: 5055182906895994459}
   m_Father: {fileID: 7015910188645798051}
-  m_RootOrder: 20
+  m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -5817,6 +5918,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7015910189629850808}
     m_Modifications:
+    - target: {fileID: 1280973242033737015, guid: 5f832819b9095d74badbcb9a45b15a40,
+        type: 3}
+      propertyPath: m_Name
+      value: UI_SP_P2
+      objectReference: {fileID: 0}
     - target: {fileID: 1280973242033737014, guid: 5f832819b9095d74badbcb9a45b15a40,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5846,11 +5952,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1280973242033737015, guid: 5f832819b9095d74badbcb9a45b15a40,
-        type: 3}
-      propertyPath: m_Name
-      value: UI_SP_P2
       objectReference: {fileID: 0}
     - target: {fileID: 1280973242033737011, guid: 5f832819b9095d74badbcb9a45b15a40,
         type: 3}
@@ -5872,6 +5973,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7015910189629850808}
     m_Modifications:
+    - target: {fileID: 2312916272505508624, guid: 58b01505aaf9dae4bb8a6c45b1559edf,
+        type: 3}
+      propertyPath: m_Name
+      value: UI_SP_P1
+      objectReference: {fileID: 0}
     - target: {fileID: 2312916272505508625, guid: 58b01505aaf9dae4bb8a6c45b1559edf,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5901,11 +6007,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2312916272505508624, guid: 58b01505aaf9dae4bb8a6c45b1559edf,
-        type: 3}
-      propertyPath: m_Name
-      value: UI_SP_P1
       objectReference: {fileID: 0}
     - target: {fileID: 2312916272505508628, guid: 58b01505aaf9dae4bb8a6c45b1559edf,
         type: 3}

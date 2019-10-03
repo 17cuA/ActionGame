@@ -79,18 +79,26 @@ public class CommandManager :MonoBehaviour
                             attackParameters[i].checkCommadStr += _data;
                             check = true;
                         }
-                        //そうでない場合リセットし、要素数0番目の入力処理でなければもう一度入力を行う
+                        //そうでない場合ミスを1カウントし、ミスが指定した数を超えたらリセットし要素数0番目の入力処理でなければもう一度入力を行う
                         else
                         {
-                            if (attackParameters[i].checkCommadStr != _data)
-                            {
-                                if (attackParameters[i].checkCommadStr.Length != 0) attackParameters[i].checkCommadStr = "";
-                                else check = true;
-                            }
-                            else
-                            {
-                                check = true;
-                            }
+							if (attackParameters[i].nowMissInput < attackParameters[i].ignoredMissInput)
+							{
+								attackParameters[i].nowMissInput++; 
+							}
+							else
+							{
+								attackParameters[i].nowMissInput = 0;
+								if (attackParameters[i].checkCommadStr != _data)
+								{
+									if (attackParameters[i].checkCommadStr.Length != 0) attackParameters[i].checkCommadStr = "";
+									else check = true;
+								}
+								else
+								{
+									check = true;
+								}
+							}
                         }
                     }
                 }
@@ -102,7 +110,7 @@ public class CommandManager :MonoBehaviour
     }
 
     /// <summary>
-    /// 美優力がコマンドに当てはまるか確認し、コマンド発動処理を行う
+    /// 入力がコマンドに当てはまるか確認し、コマンド発動処理を行う
     /// </summary>
     private void InputCommandApplyCheck()
     {
@@ -122,7 +130,9 @@ public class CommandManager :MonoBehaviour
                 StartCoroutine(CheckSaveCommand(attackParameters[i]));
                 //これまでに入力されていたデータをリセット（空にする）
                 attackParameters[i].checkCommadStr = "";
-            }
+				//ミスのカウントを0にする
+				attackParameters[i].nowMissInput = 0;
+			}
             //同時押しのために猶予フレームが0の技は押されていたら有効に
             if (attackParameters[i].validShotFrame == 0 && attackParameters[i].command == inputData)
             {
@@ -132,7 +142,9 @@ public class CommandManager :MonoBehaviour
                 StartCoroutine(CheckSaveCommand(attackParameters[i]));
                 //これまでに入力されていたデータをリセット（空にする）
                 attackParameters[i].checkCommadStr = "";
-            }
+				//ミスのカウントを0にする
+				attackParameters[i].nowMissInput = 0;
+			}
             if (attackParameters[i].isShot == true && Regex.IsMatch(attackParameters[i].shotTrigger, inputControl.atkButton) && isShotCommand == false)
             {
                 //コマンド攻撃処理
