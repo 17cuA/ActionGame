@@ -3,7 +3,7 @@
 //作成者　　：田嶋颯
 //作成日　　：20190904
 //
-//コンボを表示する
+//FIghterCoreスクリプトからコンボ数を受け取り表示する
 //--------------------------------------------------------
 using System.Collections;
 using System.Collections.Generic;

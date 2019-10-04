@@ -52,10 +52,6 @@ public class CommandManager :MonoBehaviour
     /// <param name="_data"></param>
 	private void CheckInputData(string _data)
     {
-        // if (_data != inputData)
-        // {
-        //     if (_data != "5")
-        //     {
         //入力された値をそれぞれのコマンド確認用変数に移す
         for (int i = 0; i < attackParameters.Count; i++)
         {
@@ -65,30 +61,33 @@ public class CommandManager :MonoBehaviour
                 if (_data != "5")
                 {
                     var check = false;
-                    while (!check)
-                    {
-                        //入力された値がコマンドの次の入力と同じであれば格納
-                        if (_data == attackParameters[i].command[attackParameters[i].checkCommadStr.Length].ToString())
-                        {
-                            if (attackParameters[i].nowCoroutine != null)
-                            {
-                                StopCoroutine(attackParameters[i].nowCoroutine);
-                            }
-                            //コマンド確認用変数への最初の入力だった場合、ここに入力受付カウント処理を追加
-                            attackParameters[i].nowCoroutine = StartCoroutine(CheckInputCommand(attackParameters[i]));
-                            attackParameters[i].checkCommadStr += _data;
-                            check = true;
-                        }
-                        //そうでない場合ミスを1カウントし、ミスが指定した数を超えたらリセットし要素数0番目の入力処理でなければもう一度入力を行う
-                        else
-                        {
-							if (attackParameters[i].nowMissInput < attackParameters[i].ignoredMissInput)
+					while (!check)
+					{
+						//入力された値がコマンドの次の入力と同じであれば格納
+						if (_data == attackParameters[i].command[attackParameters[i].checkCommadStr.Length].ToString())
+						{
+							if (attackParameters[i].nowCoroutine != null)
 							{
-								attackParameters[i].nowMissInput++; 
+								StopCoroutine(attackParameters[i].nowCoroutine);
 							}
-							else
-							{
-								attackParameters[i].nowMissInput = 0;
+							//入力受付カウント処理を追加
+							attackParameters[i].nowCoroutine = StartCoroutine(CheckInputCommand(attackParameters[i]));
+							attackParameters[i].checkCommadStr += _data;
+							check = true;
+						}
+						//そうでない場合ミスを1カウントし、ミスが指定した数を超えたらリセットし要素数0番目の入力処理でなければもう一度入力を行う
+						else
+						{
+							//if (attackParameters[i].nowMissInput < attackParameters[i].ignoredMissInput)
+							//{
+							//	attackParameters[i].nowMissInput++;
+							//	Debug.Log("ミス" + attackParameters[i].nowMissInput);
+							//}
+							//else
+							//{
+							//	//ミスの回数をリセットする
+							//	attackParameters[i].nowMissInput = 0;
+							//	//
 								if (attackParameters[i].checkCommadStr != _data)
 								{
 									if (attackParameters[i].checkCommadStr.Length != 0) attackParameters[i].checkCommadStr = "";
@@ -98,12 +97,10 @@ public class CommandManager :MonoBehaviour
 								{
 									check = true;
 								}
-							}
-                        }
-                    }
+							//}
+						}
+					}
                 }
-                //         }
-                // }
             }
         }
         inputData = _data;
