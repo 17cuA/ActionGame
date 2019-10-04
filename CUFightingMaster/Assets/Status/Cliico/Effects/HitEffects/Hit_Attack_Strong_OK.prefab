@@ -168,7 +168,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 8
+      scalar: 15
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -975,7 +975,7 @@ ParticleSystem:
       countCurve:
         serializedVersion: 2
         minMaxState: 0
-        scalar: 20
+        scalar: 100
         minScalar: 30
         maxCurve:
           serializedVersion: 2
@@ -9468,8 +9468,8 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 1902df5a01f0449468ff3fcdeedf062d, type: 2}
-  - {fileID: 0}
+  - {fileID: 2100000, guid: a5a7fc97c3484ea43b4eee95c47b1cc3, type: 2}
+  - {fileID: 2100000, guid: a5a7fc97c3484ea43b4eee95c47b1cc3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -14248,7 +14248,7 @@ ParticleSystemRenderer:
   m_RenderMode: 0
   m_SortMode: 0
   m_MinParticleSize: 0
-  m_MaxParticleSize: 0.5
+  m_MaxParticleSize: 2
   m_CameraVelocityScale: 0
   m_VelocityScale: 0
   m_LengthScale: 2
@@ -19192,8 +19192,8 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 2.5
-      minScalar: 1.5
+      scalar: 5
+      minScalar: 3
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -23896,7 +23896,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 3
       scalar: 0.7
-      minScalar: 0.35
+      minScalar: 0.5
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -23949,7 +23949,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 3
       scalar: 10
-      minScalar: 8
+      minScalar: 16
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -33544,8 +33544,8 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 0.5
-      minScalar: 0.2
+      scalar: 1
+      minScalar: 0.4
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -34235,7 +34235,7 @@ ParticleSystem:
       countCurve:
         serializedVersion: 2
         minMaxState: 0
-        scalar: 10
+        scalar: 30
         minScalar: 30
         maxCurve:
           serializedVersion: 2
@@ -38108,16 +38108,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1722284782620667806}
     m_Modifications:
-    - target: {fileID: 2998143556283647192, guid: da5296d9bad571642b67386232def8ce,
-        type: 3}
-      propertyPath: m_Name
-      value: Continuation_OnePicture_GetBigger (2)
-      objectReference: {fileID: 0}
-    - target: {fileID: 2998143556283647192, guid: da5296d9bad571642b67386232def8ce,
-        type: 3}
-      propertyPath: m_Layer
-      value: 16
-      objectReference: {fileID: 0}
     - target: {fileID: 2998143556283647173, guid: da5296d9bad571642b67386232def8ce,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -38172,6 +38162,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2998143556283647192, guid: da5296d9bad571642b67386232def8ce,
+        type: 3}
+      propertyPath: m_Name
+      value: Continuation_OnePicture_GetBigger (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2998143556283647192, guid: da5296d9bad571642b67386232def8ce,
+        type: 3}
+      propertyPath: m_Layer
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 2998143556283647195, guid: da5296d9bad571642b67386232def8ce,
         type: 3}
@@ -38303,16 +38303,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1722284782620667806}
     m_Modifications:
-    - target: {fileID: 4636040646541294741, guid: 46bd02fba22a0284e940cdba03e86fd3,
-        type: 3}
-      propertyPath: m_Name
-      value: Flamepattern_Const
-      objectReference: {fileID: 0}
-    - target: {fileID: 4636040646541294741, guid: 46bd02fba22a0284e940cdba03e86fd3,
-        type: 3}
-      propertyPath: m_Layer
-      value: 16
-      objectReference: {fileID: 0}
     - target: {fileID: 5477848125702983713, guid: 46bd02fba22a0284e940cdba03e86fd3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -38367,6 +38357,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4636040646541294741, guid: 46bd02fba22a0284e940cdba03e86fd3,
+        type: 3}
+      propertyPath: m_Name
+      value: Flamepattern_Const
+      objectReference: {fileID: 0}
+    - target: {fileID: 4636040646541294741, guid: 46bd02fba22a0284e940cdba03e86fd3,
+        type: 3}
+      propertyPath: m_Layer
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 432650931417950459, guid: 46bd02fba22a0284e940cdba03e86fd3,
         type: 3}

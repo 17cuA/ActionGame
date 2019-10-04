@@ -22,13 +22,24 @@ MonoBehaviour:
       type: 3}
     childFlag: 0
     worldPositionFlag: 0
+    isDeleteObj: 0
+    isScaled: 0
     position: {x: 0, y: 0, z: 0}
+  - frame: 0
+    effect: {fileID: 4360620834853529259, guid: eaac09650f7550f408f2ea33235c18a4,
+      type: 3}
+    childFlag: 1
+    worldPositionFlag: 0
+    isDeleteObj: 1
+    isScaled: 1
+    position: {x: 0.75, y: 3, z: 0}
   frameBullets: []
   cancelFrag: 0
   endNextAnimation: {fileID: 0}
   endNextWeight: 0
   groundLandingSkill: {fileID: 0}
   groundLandingWeight: 0
+  isGroundEnd: 0
   barrageCancelFrag: 0
   cancelLayer: 
   inBlend: 0
@@ -65,7 +76,7 @@ MonoBehaviour:
     - isEnemyPos: 0
       isParant: 0
       isEnemyParant: 0
-      effect: {fileID: 537173260980545929, guid: 61704b3d6a6ed2e4d9e67b07de91466e,
+      effect: {fileID: 1722284782620667795, guid: fc923a13308d53749ac62f505c756f19,
         type: 3}
       guardEffect: {fileID: 0}
       position: {x: 0, y: 1.89, z: 0}
