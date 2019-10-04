@@ -18,6 +18,10 @@ public class AttackParameter
     public bool isShot;
     //コマンドが入力されているか確認するための変数
     public string checkCommadStr;
+	//一度のコマンド入力時にミスできる回数
+	public int ignoredMissInput = 5;
+	//現在ミスした回数
+	public int nowMissInput = 0;
 
-    public Coroutine nowCoroutine = null;
+	public Coroutine nowCoroutine = null;
 }

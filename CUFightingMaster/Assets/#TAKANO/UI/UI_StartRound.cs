@@ -30,6 +30,7 @@ public class UI_StartRound : MonoBehaviour
 	public bool isCalled= false;    //既に呼ばれているか(コルーチンの再生を一度きりに使う)
 
 	public GameObject[] roundNumber = new GameObject[3];
+	public GameObject fightObj;
 
 	void DisplayRoundNumberImage(int roundCnt)
 	{
@@ -54,7 +55,6 @@ public class UI_StartRound : MonoBehaviour
 	IEnumerator StartRoundCoroutine(int roundCount)
 	{
         isPlay = true;
-		// 飯塚追加-------------------------------------------
         // Sound.LoadBgm("BGM_Battle", "BGM_Battle");
         // Sound.PlayBgm("BGM_Battle", 0.4f, 1, true);
 		switch (roundCount)
@@ -72,13 +72,11 @@ public class UI_StartRound : MonoBehaviour
                 Sound.PlaySe("RoundThree", 3, 1);
                 break;
         }
-		// ---------------------------------------------------
 		DisplayRoundNumberImage(roundCount);
 		yield return new WaitForSeconds(interval01);
-		// 飯塚追加-------------------------------------------
-        Sound.LoadSe("Fight", "Voice_Fight");
+		fightObj.GetComponent<AnimationUIManager>().isStart = true;
+		Sound.LoadSe("Fight", "Voice_Fight");
         Sound.PlaySe("Fight", 3, 1);
-        // ---------------------------------------------------
 		yield return new WaitForSeconds(interval02);
 		isPlay = false;	
     }
