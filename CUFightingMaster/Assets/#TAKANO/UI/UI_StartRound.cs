@@ -60,23 +60,23 @@ public class UI_StartRound : MonoBehaviour
 		switch (roundCount)
         {
             case 0:
-                Sound.LoadSe("RoundOne", "Voice_Round1");
-                Sound.PlaySe("RoundOne", 3, 1);
+                Sound.LoadSE("RoundOne", "Voice_Round1");
+                Sound.PlaySE("RoundOne", 3, 1);
                 break;
             case 1:
-                Sound.LoadSe("RoundTwo", "Voice_Round2");
-                Sound.PlaySe("RoundTwo", 3, 1);
+                Sound.LoadSE("RoundTwo", "Voice_Round2");
+                Sound.PlaySE("RoundTwo", 3, 1);
                 break;
             case 2:
-                Sound.LoadSe("RoundThree", "Voice_Final_Round");
-                Sound.PlaySe("RoundThree", 3, 1);
+                Sound.LoadSE("RoundThree", "Voice_Final_Round");
+                Sound.PlaySE("RoundThree", 3, 1);
                 break;
         }
 		DisplayRoundNumberImage(roundCount);
 		yield return new WaitForSeconds(interval01);
 		fightObj.GetComponent<AnimationUIManager>().isStart = true;
-		Sound.LoadSe("Fight", "Voice_Fight");
-        Sound.PlaySe("Fight", 3, 1);
+		Sound.LoadSE("Fight", "Voice_Fight");
+        Sound.PlaySE("Fight", 3, 1);
 		yield return new WaitForSeconds(interval02);
 		isPlay = false;	
     }

@@ -244,7 +244,7 @@ public class InGameManager : SingletonMono<InGameManager>
         if (getRoundCount[0].Length >= winRound || getRoundCount[1].Length >= winRound)
         {
             currentUpdate = GameVictory;
-			Sound.StopBgm();
+			Sound.StopBGM();
         }
         else
         {
@@ -361,7 +361,7 @@ public class InGameManager : SingletonMono<InGameManager>
 		//画面暗転
 		canvasController.Call_InitDownCurtain();
         currentUpdate = StartGame;
-        Sound.PlayBgm("BGM_Battle", 1, 1.0f, true);
+        Sound.PlayBGM("BGM_Battle", 1, 1.0f, true);
 
 	}
 

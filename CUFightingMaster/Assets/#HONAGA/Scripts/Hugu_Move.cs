@@ -24,8 +24,8 @@ public class Hugu_Move : MonoBehaviour
 			Instantiate(eff,vector3, Quaternion.identity);
 			Destroy(this.gameObject);
 			// 飯塚追加-------------------------------------------
-			Sound.LoadSe("explosion", "Se_explosion");
-			Sound.PlaySe("explosion", 1, 0.7f);
+			Sound.LoadSE("explosion", "Se_explosion");
+			Sound.PlaySE("explosion", 1, 0.7f);
 			// ---------------------------------------------------
 		}
 		if (Mathf.Approximately(Time.timeScale, 0f)) return;

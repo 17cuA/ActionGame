@@ -41,8 +41,8 @@ public class UI_FinishRound_KO: MonoBehaviour
     IEnumerator RoundFinish_KOCoroutine()
     {
 		// 飯塚追加-------------------------------------------
-        Sound.LoadSe("Ko", "Voice_K.O");
-        Sound.PlaySe("Ko", 19, 1);
+        Sound.LoadSE("Ko", "Voice_K.O");
+        Sound.PlaySE("Ko", 19, 1);
         // ---------------------------------------------------
         isPlay = true;
 		ko.GetComponent<AnimationUIManager>().isStart = true;
