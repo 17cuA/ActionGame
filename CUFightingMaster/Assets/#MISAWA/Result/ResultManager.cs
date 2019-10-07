@@ -28,7 +28,7 @@ public class ResultManager : MonoBehaviour
 	public GameObject obj;
 	public GameObject obj2;
 
-	public GameObject[] camelas = new GameObject[4];
+	public GameObject[] cameras = new GameObject[4];
 	public GameObject[] timelines = new GameObject[4];
 
     public GameObject[] animationUIManagers = new GameObject[2];
@@ -71,10 +71,10 @@ public class ResultManager : MonoBehaviour
 		if (GameDataStrage.Instance.winFlag_PlayerOne == true)
 		{
 			// １Pの勝利カメラと２Pの敗北カメラをアクティブ
-			camelas[0].SetActive(true);
-			camelas[1].SetActive(false);
-			camelas[2].SetActive(false);
-			camelas[3].SetActive(true);
+			cameras[0].SetActive(true);
+			cameras[1].SetActive(false);
+			cameras[2].SetActive(false);
+			cameras[3].SetActive(true);
 
 			// ２Pの敗北モーションをセット
 			obj2.GetComponent<Animationdata>().ResultAnimation(FighterClips[3],0.5f,FighterClips[7]);
@@ -108,10 +108,10 @@ public class ResultManager : MonoBehaviour
 		else if (GameDataStrage.Instance.winFlag_PlayerTwo == true)
 		{
 			// 1Pの敗北カメラと2Pの勝利カメラをアクティブ
-			camelas[0].SetActive(false);
-			camelas[1].SetActive(true);
-			camelas[2].SetActive(true);
-			camelas[3].SetActive(false);
+			cameras[0].SetActive(false);
+			cameras[1].SetActive(true);
+			cameras[2].SetActive(true);
+			cameras[3].SetActive(false);
 
 			// １Pの敗北アニメーションをセット
 			obj.GetComponent<Animationdata>().ResultAnimation(FighterClips[1],0.5f, FighterClips[5]);
@@ -152,15 +152,12 @@ public class ResultManager : MonoBehaviour
             obj.GetComponent<Animationdata>().resultFlag = true;
             obj2.GetComponent<Animationdata>().resultFlag = true;
 
-            camelas[0].SetActive(false);
-			camelas[1].SetActive(true);
-			camelas[2].SetActive(false);
-			camelas[3].SetActive(true);
+            cameras[0].SetActive(false);
+			cameras[1].SetActive(true);
+			cameras[2].SetActive(false);
+			cameras[3].SetActive(true);
 			cinemaController = null;
 		}
-
-
-
 		currentUpdate = UpCurtain;
 
 		time = sceneChangeTime;
@@ -168,8 +165,6 @@ public class ResultManager : MonoBehaviour
 
     void Update()
     {
-
-
         //ポーズ処理
         if (Mathf.Approximately(Time.timeScale, 0f)) return;
 

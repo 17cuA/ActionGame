@@ -39,9 +39,6 @@ public class InGameManager : SingletonMono<InGameManager>
     [SerializeField] private CharacterCreater characterCreater;
 	[SerializeField] private CanvasController canvasController;
 
-	[SerializeField] private CharacterStatus characterStatus_P1;
-    [SerializeField] private CharacterStatus characterStatus_P2;
-
 	// 三沢が追加(後できれいにしてください)
 	public GameObject player1;
 	public GameObject player2;
