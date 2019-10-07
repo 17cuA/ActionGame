@@ -34,8 +34,8 @@ public class BindController : MonoBehaviour
         set { PlayerNum = value; }
     }
 
-    public CinemachineBrain cinemachineBrain;		// カメラごとにcinemachineBrainセット
-	public string trackName;									// トラック名の指名
+    public CinemachineBrain cinemachineBrain;	// カメラごとにcinemachineBrainセット
+	public string trackName;					// トラック名の指名
 
 	private void Start()
 	{

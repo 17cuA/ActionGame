@@ -85,8 +85,8 @@ public class Cursor_CharacterSelect : MonoBehaviour
 					determining_decision = true;
 					accept.GetComponent<AnimationUIManager>().isStart = true;
 					// 飯塚追加-------------------------------------------
-					Sound.LoadSe("Menu_Decision", "Se_menu_decision");
-					Sound.PlaySe("Menu_Decision", 1, 1);
+					Sound.LoadSE("Menu_Decision", "Se_menu_decision");
+					Sound.PlaySE("Menu_Decision", 1, 1);
 					// ---------------------------------------------------
 				}
 				else
@@ -94,8 +94,8 @@ public class Cursor_CharacterSelect : MonoBehaviour
 					determining_decision = false;
 					accept.GetComponent<AnimationUIManager>().isStart = false;
 					// 飯塚追加-------------------------------------------
-					Sound.LoadSe("Menu_Cancel", "Se_menu_cancel");
-					Sound.PlaySe("Menu_Cancel", 1, 1);
+					Sound.LoadSE("Menu_Cancel", "Se_menu_cancel");
+					Sound.PlaySE("Menu_Cancel", 1, 1);
 					// ---------------------------------------------------
 				}
 
@@ -129,8 +129,8 @@ public class Cursor_CharacterSelect : MonoBehaviour
 		if (_dir.x == -1)
 		{
 			// 飯塚追加-------------------------------------------
-			Sound.LoadSe("Menu_MoveCursor", "Se_menu_moveCursor");
-			Sound.PlaySe("Menu_MoveCursor", 1, 0.8f);
+			Sound.LoadSE("Menu_MoveCursor", "Se_menu_moveCursor");
+			Sound.PlaySE("Menu_MoveCursor", 1, 0.8f);
 			// ---------------------------------------------------
 			if (x > 0)
 			{
@@ -163,8 +163,8 @@ public class Cursor_CharacterSelect : MonoBehaviour
 		else if (_dir.x == 1)
 		{
 			// 飯塚追加-------------------------------------------
-			Sound.LoadSe("Menu_MoveCursor", "Se_menu_moveCursor");
-			Sound.PlaySe("Menu_MoveCursor", 1, 0.8f);
+			Sound.LoadSE("Menu_MoveCursor", "Se_menu_moveCursor");
+			Sound.PlaySE("Menu_MoveCursor", 1, 0.8f);
 			// ---------------------------------------------------
 			if (x < 3)
 			{

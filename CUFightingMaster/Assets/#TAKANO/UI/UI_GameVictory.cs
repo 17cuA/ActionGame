@@ -40,8 +40,8 @@ public class UI_GameVictory : MonoBehaviour
 		 // 飯塚追加-------------------------------------------
         if (flag)
         {
-            Sound.LoadSe("PlayerOneWin", "Voice_Player1_Win");
-            Sound.PlaySe("PlayerOneWin", 3, 1);
+            Sound.LoadSE("PlayerOneWin", "Voice_Player1_Win");
+            Sound.PlaySE("PlayerOneWin", 3, 1);
             flag = false;
         }
 		// ---------------------------------------------------
@@ -55,8 +55,8 @@ public class UI_GameVictory : MonoBehaviour
 		 // 飯塚追加-------------------------------------------
         if (flag)
         {
-            Sound.LoadSe("Voice_PlayerTwoWin", "Voice_Player2_Win");
-            Sound.PlaySe("Voice_PlayerTwoWin", 3, 1);
+            Sound.LoadSE("Voice_PlayerTwoWin", "Voice_Player2_Win");
+            Sound.PlaySE("Voice_PlayerTwoWin", 3, 1);
             flag = false;
         }
 		// ---------------------------------------------------
@@ -70,8 +70,8 @@ public class UI_GameVictory : MonoBehaviour
 		// 飯塚追加------------------------------------------
 		if (flag)
 		{
-			Sound.LoadSe("Draw", "Voice_Draw");
-			Sound.PlaySe("Draw", 3, 1);
+			Sound.LoadSE("Draw", "Voice_Draw");
+			Sound.PlaySE("Draw", 3, 1);
 			flag = false;
 		}
 		// -------------------------------------------------

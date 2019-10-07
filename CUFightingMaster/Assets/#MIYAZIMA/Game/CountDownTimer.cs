@@ -20,17 +20,16 @@ using UnityEngine.UI;
 
 public class CountDownTimer : MonoBehaviour
 {
-	private float maxTime = 99;   //初期値
-    private float currentTime = 99; //現在値
-	private int EmphasizTime = 10;   //強調表示する時間
-
+	private float maxTime = 99;		//初期値
+    private float currentTime = 99;	//現在値
+	private int EmphasizTime = 10;	//強調表示する時間
 	private int displayTime;
 
 	public bool isPlay = false;
     bool isEndCont = false;
 
-    public Image firstDigit;    //一桁目のimage
-    public Image secondDigit;   //二桁目のimage
+    public Image firstDigit;	//一桁目のimage
+    public Image secondDigit;	//二桁目のimage
 
     public Sprite[] numSprite = new Sprite[10];
 
@@ -55,10 +54,8 @@ public class CountDownTimer : MonoBehaviour
 	/// </summary>
 	public void PlayCountDown(bool flag)
 	{
-
-			isPlay = true;
-			isEndCont = true;
-
+		isPlay = true;
+		isEndCont = true;
 	}
 
 	/// <summary>
@@ -85,7 +82,7 @@ public class CountDownTimer : MonoBehaviour
 	/// タイマーの強調表示
 	/// </summary>
 	/// <param name="fromNumber"></param>
-	private void EmphasizNumber( int fromNumber)
+	private void EmphasizNumber(int fromNumber)
 	{
 		if(currentTime <= (fromNumber + 1))
 		{

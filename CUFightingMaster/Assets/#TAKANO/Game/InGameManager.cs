@@ -39,9 +39,6 @@ public class InGameManager : SingletonMono<InGameManager>
     [SerializeField] private CharacterCreater characterCreater;
 	[SerializeField] private CanvasController canvasController;
 
-	[SerializeField] private CharacterStatus characterStatus_P1;
-    [SerializeField] private CharacterStatus characterStatus_P2;
-
 	// 三沢が追加(後できれいにしてください)
 	public GameObject player1;
 	public GameObject player2;
@@ -244,7 +241,7 @@ public class InGameManager : SingletonMono<InGameManager>
         if (getRoundCount[0].Length >= winRound || getRoundCount[1].Length >= winRound)
         {
             currentUpdate = GameVictory;
-			Sound.StopBgm();
+			Sound.StopBGM();
         }
         else
         {
@@ -361,7 +358,7 @@ public class InGameManager : SingletonMono<InGameManager>
 		//画面暗転
 		canvasController.Call_InitDownCurtain();
         currentUpdate = StartGame;
-        Sound.PlayBgm("BGM_Battle", 1, 1.0f, true);
+        Sound.PlayBGM("BGM_Battle", 1, 1.0f, true);
 
 	}
 
