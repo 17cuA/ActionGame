@@ -52,15 +52,15 @@ public class CommandManager :MonoBehaviour
     /// <param name="_data"></param>
 	private void CheckInputData(string _data)
     {
-        //入力された値をそれぞれのコマンド確認用変数に移す
-        for (int i = 0; i < attackParameters.Count; i++)
-        {
-            //前回の入力とデータが同じ、もしくはニュートラル状態（５）のときはスキップ,また最初の入力は常時格納
-            if (_data != inputData || attackParameters[i].checkCommadStr == "")
-            {
-                if (_data != "5")
-                {
-                    var check = false;
+		//入力された値をそれぞれのコマンド確認用変数に移す
+		for (int i = 0; i < attackParameters.Count; i++)
+		{
+			//前回の入力とデータが同じ、もしくはニュートラル状態（５）のときはスキップ,また最初の入力は常時格納
+			if (_data != inputData || attackParameters[i].checkCommadStr == "")
+			{
+				if (_data != "5")
+				{
+					var check = false;
 					while (!check)
 					{
 						//入力された値がコマンドの次の入力と同じであれば格納
@@ -78,16 +78,16 @@ public class CommandManager :MonoBehaviour
 						//そうでない場合ミスを1カウントし、ミスが指定した数を超えたらリセットし要素数0番目の入力処理でなければもう一度入力を行う
 						else
 						{
-							//if (attackParameters[i].nowMissInput < attackParameters[i].ignoredMissInput)
-							//{
-							//	attackParameters[i].nowMissInput++;
-							//	Debug.Log("ミス" + attackParameters[i].nowMissInput);
-							//}
-							//else
-							//{
-							//	//ミスの回数をリセットする
-							//	attackParameters[i].nowMissInput = 0;
-							//	//
+							if (attackParameters[i].checkCommadStr.Length > 0 && attackParameters[i].nowMissInput < attackParameters[i].ignoredMissInput)
+							{
+								attackParameters[i].nowMissInput++;
+								Debug.Log(attackParameters[i].commandName + " ミス " + attackParameters[i].nowMissInput);
+							}
+							else
+							{
+								//ミスの回数をリセットする
+								attackParameters[i].nowMissInput = 0;
+								//
 								if (attackParameters[i].checkCommadStr != _data)
 								{
 									if (attackParameters[i].checkCommadStr.Length != 0) attackParameters[i].checkCommadStr = "";
@@ -97,12 +97,12 @@ public class CommandManager :MonoBehaviour
 								{
 									check = true;
 								}
-							//}
+							}
 						}
 					}
-                }
-            }
-        }
+				}
+			}
+		}
         inputData = _data;
     }
 
