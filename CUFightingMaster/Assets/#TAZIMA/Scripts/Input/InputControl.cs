@@ -116,7 +116,6 @@ public class InputControl : MonoBehaviour {
             param.intervalFrame = 0;
             airMoveCommand.attackParameters.Add(param);
         }
-
         airMoveCommand.Init();
     }
 	//コマンド消去
@@ -236,11 +235,6 @@ public class InputControl : MonoBehaviour {
                 atkButton = "F";
             }
         }
-        ////何かしら入力されたとき(デバッグ用)
-        //if (atkButton != "")
-        //{
-        //    Debug.Log(atkButton);
-        //}
     }
 
 	public string GetPlayerAtk()

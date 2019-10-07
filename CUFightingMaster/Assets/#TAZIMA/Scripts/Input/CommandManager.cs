@@ -87,7 +87,6 @@ public class CommandManager :MonoBehaviour
 							{
 								//ミスの回数をリセットする
 								attackParameters[i].nowMissInput = 0;
-								//
 								if (attackParameters[i].checkCommadStr != _data)
 								{
 									if (attackParameters[i].checkCommadStr.Length != 0) attackParameters[i].checkCommadStr = "";
@@ -112,8 +111,6 @@ public class CommandManager :MonoBehaviour
     private void InputCommandApplyCheck()
     {
         //コマンド発動後のインターバル中ではない時のみこの処理を行う
-        // if (!isCommandInterval)
-        // {
         var isShotCommand = false;
         for (int i = 0; attackParameters.Count > i; i++)
         {
@@ -166,7 +163,6 @@ public class CommandManager :MonoBehaviour
                     StartCoroutine(CheckInterval(attackParameters[i]));
                 }
             }
-            // }
         }
     }
 
@@ -181,6 +177,7 @@ public class CommandManager :MonoBehaviour
         yield return new WaitForSeconds(time);
         //入力中のコマンドをリセットする
         _attackParameter.checkCommadStr = "";
+		 _attackParameter.nowMissInput = 0;
     }
 
     /// <summary>
