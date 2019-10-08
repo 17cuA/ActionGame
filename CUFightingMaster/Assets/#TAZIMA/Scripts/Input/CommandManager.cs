@@ -75,9 +75,11 @@ public class CommandManager :MonoBehaviour
 							attackParameters[i].checkCommadStr += _data;
 							check = true;
 						}
-						//そうでない場合ミスを1カウントし、ミスが指定した数を超えたらリセットし要素数0番目の入力処理でなければもう一度入力を行う
+						//そうでない場合ミスを1カウント
+						//ミスが指定した数を超えたらリセットし、現在の処理が要素数0番目の入力でなければもう一度入力処理を行う
 						else
 						{
+							//そのコマンドの入力処理を開始している状態で、現在のミスが設定した回数を超えていなければ１加算
 							if (attackParameters[i].checkCommadStr.Length > 0 && attackParameters[i].nowMissInput < attackParameters[i].ignoredMissInput)
 							{
 								attackParameters[i].nowMissInput++;
@@ -87,10 +89,9 @@ public class CommandManager :MonoBehaviour
 							{
 								//ミスの回数をリセットする
 								attackParameters[i].nowMissInput = 0;
-								if (attackParameters[i].checkCommadStr != _data)
+								if (attackParameters[i].checkCommadStr != _data && attackParameters[i].checkCommadStr.Length != 0)
 								{
-									if (attackParameters[i].checkCommadStr.Length != 0) attackParameters[i].checkCommadStr = "";
-									else check = true;
+									attackParameters[i].checkCommadStr = "";
 								}
 								else
 								{

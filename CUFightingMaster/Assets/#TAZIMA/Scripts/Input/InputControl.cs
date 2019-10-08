@@ -142,48 +142,8 @@ public class InputControl : MonoBehaviour {
 		SetAxis ();
 		float nowDir = 5 + inputDirection.x + (inputDirection.y * -3);
 		//方向を調べる
-		switch (nowDir) {
-			case (int) DirJS.d1:
-				lastDir = (int) DirJS.d1;
-				playerDirection = "1";
-				break;
-			case (int) DirJS.d2:
-				lastDir = (int) DirJS.d2;
-				playerDirection = "2";
-				break;
-			case (int) DirJS.d3:
-				lastDir = (int) DirJS.d3;
-				playerDirection = "3";
-				break;
-			case (int) DirJS.d4:
-				lastDir = (int) DirJS.d4;
-				playerDirection = "4";
-				break;
-			case (int) DirJS.d5:
-				lastDir = (int) DirJS.d5;
-				playerDirection = "5";
-				break;
-			case (int) DirJS.d6:
-				lastDir = (int) DirJS.d6;
-				playerDirection = "6";
-				break;
-			case (int) DirJS.d7:
-				lastDir = (int) DirJS.d7;
-				playerDirection = "7";
-				break;
-			case (int) DirJS.d8:
-				lastDir = (int) DirJS.d8;
-				playerDirection = "8";
-				break;
-			case (int) DirJS.d9:
-				lastDir = (int) DirJS.d9;
-				playerDirection = "9";
-				break;
-			default:
-				lastDir = 5;
-                playerDirection = "5";
-				break;
-		}
+		playerDirection = nowDir.ToString();
+		lastDir = (int)nowDir;
 	}
 
     //プレイヤーの入力をまとめている関数

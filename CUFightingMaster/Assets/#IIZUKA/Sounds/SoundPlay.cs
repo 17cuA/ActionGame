@@ -253,7 +253,7 @@ public class SoundPlay : MonoBehaviour
                     break;
                 case SoundsType.Clico_RoundWin:
                     Sound.PlaySE("Clico_RoundWin", 16, 0.5f, 1);
-                    break;
+					break;
                 case SoundsType.Clico_Special1:
                     Sound.PlaySE("Clico_Special1", 17, 0.7f, 1);
                     break;
@@ -286,9 +286,7 @@ public class SoundPlay : MonoBehaviour
                     break;
                 case SoundsType.Excellent:
                     Sound.PlaySE("SV_Excellent", 19, 0.5f, 1);
-                    break;
-
-
+					break;
             }
             i++;
         }
