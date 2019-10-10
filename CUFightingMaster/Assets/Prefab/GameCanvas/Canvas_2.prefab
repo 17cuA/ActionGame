@@ -2162,7 +2162,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1920, y: 1080}
+  m_SizeDelta: {x: 816, y: 240}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7015910188692215486
 CanvasRenderer:
@@ -2185,11 +2185,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteName: DRAW ef
-  delayChangeFrame: 0
+  delayChangeFrame: 1
   fadeInFrame: 0
-  fadeOutFrame: 7
+  fadeOutFrame: 0
   defaultSprite: {fileID: 21300000, guid: 84a40b3f4f2999648afda9a8b9db0096, type: 3}
-  stopUIs: []
+  stopUIs:
+  - StartFrame: 21
+    StopFrame: 30
+    CountFrame: 0
   isStart: 0
   isLoop: 0
   isLeave: 0
@@ -2694,7 +2697,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1920, y: 1080}
+  m_SizeDelta: {x: 840, y: 224}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7015910188879137331
 CanvasRenderer:
@@ -2716,14 +2719,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae586ca7055677142960095fb0ee3abf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteName: TIME UP ef
+  spriteName: TIMEUP ef
   delayChangeFrame: 0
   fadeInFrame: 0
-  fadeOutFrame: 5
+  fadeOutFrame: 0
   defaultSprite: {fileID: 21300000, guid: 84a40b3f4f2999648afda9a8b9db0096, type: 3}
   stopUIs:
-  - StartFrame: 19
-    StopFrame: 45
+  - StartFrame: 61
+    StopFrame: 30
     CountFrame: 0
   isStart: 0
   isLoop: 0
@@ -3917,7 +3920,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1920, y: 1080}
+  m_SizeDelta: {x: 816, y: 240}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7015910189411203000
 CanvasRenderer:
@@ -3940,11 +3943,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteName: YOUWIN ef
-  delayChangeFrame: 0
+  delayChangeFrame: 1
   fadeInFrame: 0
-  fadeOutFrame: 7
+  fadeOutFrame: 0
   defaultSprite: {fileID: 21300000, guid: 84a40b3f4f2999648afda9a8b9db0096, type: 3}
-  stopUIs: []
+  stopUIs:
+  - StartFrame: 21
+    StopFrame: 30
+    CountFrame: 0
   isStart: 0
   isLoop: 0
   isLeave: 0
@@ -4117,7 +4123,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ac67da61b6973349a6cf2a91890972c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interval01: 1
+  interval01: 3
   isPlay: 0
   isCalled: 0
   timeOver: {fileID: 7015910188879137328}
@@ -4157,7 +4163,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1920, y: 1080}
+  m_SizeDelta: {x: 816, y: 240}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7015910189585373988
 CanvasRenderer:
@@ -4180,11 +4186,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteName: YOULOSE ef
-  delayChangeFrame: 0
+  delayChangeFrame: 1
   fadeInFrame: 0
-  fadeOutFrame: 7
+  fadeOutFrame: 0
   defaultSprite: {fileID: 21300000, guid: 84a40b3f4f2999648afda9a8b9db0096, type: 3}
-  stopUIs: []
+  stopUIs:
+  - StartFrame: 21
+    StopFrame: 30
+    CountFrame: 0
   isStart: 0
   isLoop: 0
   isLeave: 0
@@ -5316,7 +5325,7 @@ MonoBehaviour:
   spriteName: K.O. ef v2
   delayChangeFrame: 0
   fadeInFrame: 0
-  fadeOutFrame: 5
+  fadeOutFrame: 0
   defaultSprite: {fileID: 21300000, guid: 84a40b3f4f2999648afda9a8b9db0096, type: 3}
   stopUIs: []
   isStart: 0
@@ -5918,6 +5927,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7015910189629850808}
     m_Modifications:
+    - target: {fileID: 1280973242033737015, guid: 5f832819b9095d74badbcb9a45b15a40,
+        type: 3}
+      propertyPath: m_Name
+      value: UI_SP_P2
+      objectReference: {fileID: 0}
     - target: {fileID: 1280973242033737014, guid: 5f832819b9095d74badbcb9a45b15a40,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5947,11 +5961,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1280973242033737015, guid: 5f832819b9095d74badbcb9a45b15a40,
-        type: 3}
-      propertyPath: m_Name
-      value: UI_SP_P2
       objectReference: {fileID: 0}
     - target: {fileID: 1280973242033737011, guid: 5f832819b9095d74badbcb9a45b15a40,
         type: 3}
@@ -5973,6 +5982,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7015910189629850808}
     m_Modifications:
+    - target: {fileID: 2312916272505508624, guid: 58b01505aaf9dae4bb8a6c45b1559edf,
+        type: 3}
+      propertyPath: m_Name
+      value: UI_SP_P1
+      objectReference: {fileID: 0}
     - target: {fileID: 2312916272505508625, guid: 58b01505aaf9dae4bb8a6c45b1559edf,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6002,11 +6016,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2312916272505508624, guid: 58b01505aaf9dae4bb8a6c45b1559edf,
-        type: 3}
-      propertyPath: m_Name
-      value: UI_SP_P1
       objectReference: {fileID: 0}
     - target: {fileID: 2312916272505508628, guid: 58b01505aaf9dae4bb8a6c45b1559edf,
         type: 3}

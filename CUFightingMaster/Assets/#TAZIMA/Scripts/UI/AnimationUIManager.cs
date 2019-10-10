@@ -30,7 +30,7 @@ public class AnimationUIManager : MonoBehaviour
     private int nowSpriteCount;		//現在のスプライトの番号をカウント
 	public int delayChangeFrame;	//スプライトを次に移すフレームまでに挟むフレーム
 	private int delayFrameCount;	//スプライトを次に移すフレームまでに挟むフレームのカウントをする
-	public int fadeInFrame;			//フェードイン後完了するまでのフレーム
+	public int fadeInFrame;			//フェードインが完了するまでのフレーム
     public int fadeOutFrame;			//フェードアウトが完了するまでのフレーム
     private float currentRemainFadeInFrame;		//フェードインが完了するまでの残りのフレーム
 	private float currentRemainFadeOutFrame;	//フェードアウトが完了するまでの残りのフレーム
@@ -38,11 +38,16 @@ public class AnimationUIManager : MonoBehaviour
     private Color initColor;		//初期化用のカラー
     public Sprite defaultSprite;	//アニメーションUIを出していないときに出しておくスプライト
     public List<StopUIClass> stopUIs = null;    //アニメーションUIを指定したフレームで指定したフレーム数停止させるクラスの変数
+	private bool isUnusedStopUI = false;		//stopUIsをを使っている場合true、使っていない場合falseになる変数
 	public bool isStart;            //アニメーションを開始するか判定するフラグ
     public bool isLoop;				//アニメーションをループさせるか判定するフラグ
     public bool isLeave;            //アニメーションUIを最後のスプライトで止めるか判定をするフラグ
 	public bool isInvisible;        //アニメーションUI再生中に非表示にするか判定をするフラグ
 	public bool isInterruption;		//アニメーションUIの再生を中断させるか判定をするフラグ
+
+	/// <summary>
+	/// 常時処理
+	/// </summary>
     private void Update()
     {
 		if (delayChangeFrame <= delayFrameCount)
@@ -64,14 +69,14 @@ public class AnimationUIManager : MonoBehaviour
 		if (defaultSprite == null)	defaultSprite = Resources.Load<Sprite>(string.Format("{0}{1}", path, "DefaultImage"));
         //表示するスプライト
         path += spriteName;
-        totalSpriteCount = Resources.LoadAll(path).Length / 2;
+        totalSpriteCount = Resources.LoadAll<Sprite>(path).Length;
         sprites = new Sprite[totalSpriteCount];
-        for (int i = 0; i < totalSpriteCount; i++)
+		initColor = gameObject.GetComponent<Image>().color;
+		delayFrameCount = 0;
+		for (int i = 0; i < totalSpriteCount; i++)
         {
             sprites[i] = Resources.Load<Sprite>(string.Format("{0}/{1}_{2}", path, spriteName,i.ToString("D5")));
         }
-        initColor = gameObject.GetComponent<Image>().color;
-		delayFrameCount = 0;
         ResetUI();
 	}
 
@@ -81,17 +86,15 @@ public class AnimationUIManager : MonoBehaviour
 	private void ResetUI()
     {
 		nowSpriteCount = 0;
+		currentRemainFadeInFrame = fadeInFrame;
+		currentRemainFadeOutFrame = fadeOutFrame;
 		gameObject.GetComponent<Image>().sprite = defaultSprite;
 		gameObject.GetComponent<Image>().color = initColor;
-		currentRemainFadeInFrame = fadeInFrame;
-        currentRemainFadeOutFrame = fadeOutFrame;
-        if (stopUIs.Count != 0)
-        {
-            for (int i = 0; i < stopUIs.Count; i++)
-            {
-                stopUIs[i].CountFrame = 0;
-            }
-        }
+		for (int i = 0; i < stopUIs.Count; i++)
+		{
+			if (!isUnusedStopUI) isUnusedStopUI = true;
+			stopUIs[i].CountFrame = 0;
+		}
     }
 
 	/// <summary>
@@ -100,7 +103,7 @@ public class AnimationUIManager : MonoBehaviour
 	private void StartAnimation()
 	{
 		//アニメーション処理
-		if (nowSpriteCount < totalSpriteCount && !isInterruption)
+		if (nowSpriteCount < totalSpriteCount && !isInterruption || isUnusedStopUI)
 		{
 			//指定フレームで指定フレーム分止められるようにする
 			var isStopUI = StopUI();
@@ -120,12 +123,12 @@ public class AnimationUIManager : MonoBehaviour
 					gameObject.GetComponent<Image>().sprite = defaultSprite;
 				}
 				//指定フレームまでフェードイン処理
-				if (nowSpriteCount < fadeInFrame)
+				if ((nowSpriteCount) < fadeInFrame)
 				{
 					FadeInUI();
 				}
 				//指定フレームを過ぎたらフェードアウト処理
-				if (nowSpriteCount > (totalSpriteCount - fadeOutFrame - 1))
+				if ((nowSpriteCount) > (totalSpriteCount - fadeOutFrame - 1))
 				{
 					FadeOutUI();
 				}
@@ -142,7 +145,6 @@ public class AnimationUIManager : MonoBehaviour
 					isStart = false;
 					isInterruption = false;
 					ResetUI();
-
 				} 
 			}
 			else
@@ -166,6 +168,7 @@ public class AnimationUIManager : MonoBehaviour
 			if (nowSpriteCount == stopUIs[i].StartFrame && stopUIs[i].CountFrame < stopUIs[i].StopFrame)
 			{
 				stopUIs[i].CountFrame++;
+				if (stopUIs[stopUIs.Count - 1].CountFrame == stopUIs[stopUIs.Count - 1].StopFrame && isUnusedStopUI) isUnusedStopUI = false;
 				return true;
 			}
 		}
