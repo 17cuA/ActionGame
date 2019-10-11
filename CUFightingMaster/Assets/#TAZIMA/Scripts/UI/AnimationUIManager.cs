@@ -33,7 +33,9 @@ public class AnimationUIManager : MonoBehaviour
 	public int fadeInFrame;			//フェードインが完了するまでのフレーム
     public int fadeOutFrame;			//フェードアウトが完了するまでのフレーム
     private float currentRemainFadeInFrame;		//フェードインが完了するまでの残りのフレーム
-	private float currentRemainFadeOutFrame;	//フェードアウトが完了するまでの残りのフレーム
+	private float currentRemainFadeOutFrame;    //フェードアウトが完了するまでの残りのフレーム
+	private int nowStopFrame;
+	private int totalStopFrame = 0;
 	private Sprite[] sprites;		//読み込んだスプライトを格納
     private Color initColor;		//初期化用のカラー
     public Sprite defaultSprite;	//アニメーションUIを出していないときに出しておくスプライト
@@ -77,6 +79,10 @@ public class AnimationUIManager : MonoBehaviour
         {
             sprites[i] = Resources.Load<Sprite>(string.Format("{0}/{1}_{2}", path, spriteName,i.ToString("D5")));
         }
+		for (int i = 0; i < stopUIs.Count; i++)
+		{
+			totalStopFrame += stopUIs[i].StopFrame;
+		}
         ResetUI();
 	}
 
@@ -86,6 +92,7 @@ public class AnimationUIManager : MonoBehaviour
 	private void ResetUI()
     {
 		nowSpriteCount = 0;
+		nowStopFrame = 0;
 		currentRemainFadeInFrame = fadeInFrame;
 		currentRemainFadeOutFrame = fadeOutFrame;
 		gameObject.GetComponent<Image>().sprite = defaultSprite;
@@ -117,22 +124,18 @@ public class AnimationUIManager : MonoBehaviour
 					var sprite = sprites[nowSpriteCount];
 					gameObject.GetComponent<Image>().sprite = sprite;
 				}
-				else if (gameObject.GetComponent<Image>().sprite != defaultSprite )
+				else if (gameObject.GetComponent<Image>().sprite != defaultSprite)
 				{
 					//デフォルトスプライトをセット
 					gameObject.GetComponent<Image>().sprite = defaultSprite;
 				}
-				//指定フレームまでフェードイン処理
-				if ((nowSpriteCount) < fadeInFrame)
-				{
-					FadeInUI();
-				}
-				//指定フレームを過ぎたらフェードアウト処理
-				if ((nowSpriteCount) > (totalSpriteCount - fadeOutFrame - 1))
-				{
-					FadeOutUI();
-				}
+				FadeManager();
 				nowSpriteCount++;
+			}
+			else
+			{
+				FadeManager();
+				nowStopFrame++;
 			}
 		}
 		else
@@ -173,6 +176,23 @@ public class AnimationUIManager : MonoBehaviour
 			}
 		}
 		return false;
+	}
+
+	/// <summary>
+	/// フェードイン、フェードアウト処理
+	/// </summary>
+	private void FadeManager()
+	{
+		//指定フレームまでフェードイン処理
+		if ((nowSpriteCount + nowStopFrame) < fadeInFrame)
+		{
+			FadeInUI();
+		}
+		//指定フレームを過ぎたらフェードアウト処理
+		if ((nowSpriteCount + nowStopFrame) > (totalSpriteCount + totalStopFrame - fadeOutFrame - 1))
+		{
+			FadeOutUI();
+		}
 	}
 
 	/// <summary>
