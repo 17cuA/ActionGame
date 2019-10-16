@@ -208,6 +208,7 @@ public class Sound
         Sound.LoadSE("SV_Great", "SV_Great");
         Sound.LoadSE("SV_Excellent", "SV_Excellent");
 
+		Sound.LoadSE("ATField", "ATField");
     }
 
     /// <summary>

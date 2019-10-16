@@ -48,7 +48,6 @@ public class SoundPlay : MonoBehaviour
         Oba_Thrown,
         Oba_RoundStart,
 
-
         // CV_Culico
         Clico_CharacterSelect,
         Clico_GetUp_DownCancel,
@@ -74,9 +73,9 @@ public class SoundPlay : MonoBehaviour
         Beams,
         Nice,
         Great,
-        Excellent
+        Excellent,
 
-
+		ATField
     }
     public SoundsType soundsType;
 
@@ -286,6 +285,9 @@ public class SoundPlay : MonoBehaviour
                     break;
                 case SoundsType.Excellent:
                     Sound.PlaySE("SV_Excellent", 19, 0.5f, 1);
+					break;
+				case SoundsType.ATField:
+					Sound.PlaySE("ATField", 2, 1, 1);
 					break;
             }
             i++;
