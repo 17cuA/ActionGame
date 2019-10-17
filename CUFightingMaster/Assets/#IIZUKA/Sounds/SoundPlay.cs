@@ -75,7 +75,8 @@ public class SoundPlay : MonoBehaviour
         Great,
         Excellent,
 
-		ATField
+		EV_ATField,
+		EV_NExtStage
     }
     public SoundsType soundsType;
 
@@ -286,8 +287,9 @@ public class SoundPlay : MonoBehaviour
                 case SoundsType.Excellent:
                     Sound.PlaySE("SV_Excellent", 19, 0.5f, 1);
 					break;
-				case SoundsType.ATField:
-					Sound.PlaySE("ATField", 2, 1, 1);
+				
+					case SoundsType.EV_ATField:
+					Sound.PlaySE("EV_ATField", 2, 1, 1);
 					break;
             }
             i++;

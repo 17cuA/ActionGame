@@ -208,17 +208,18 @@ public class Sound
         Sound.LoadSE("SV_Great", "SV_Great");
         Sound.LoadSE("SV_Excellent", "SV_Excellent");
 
-		Sound.LoadSE("ATField", "ATField");
-    }
+		Sound.LoadSE("EV_ATField", "EV_ATField");
+		Sound.LoadSE("EV_NextStage", "EV_NextStage");
+	}
 
-    /// <summary>
-    /// ※サウンドデータはResources/Soundsフォルダに配置すること
-    /// 引数 : 第一引数アクセスキー(好きに命名可能), 第二引数リソース名(サウンドデータに名前を合わせる)
-    /// BGMサウンド個別ロード（1度だけ呼び出す）
-    /// </summary>
-    /// <param name="key"></param>
-    /// <param name="resName"></param>
-    public static void LoadBGM(string key, string resName)
+	/// <summary>
+	/// ※サウンドデータはResources/Soundsフォルダに配置すること
+	/// 引数 : 第一引数アクセスキー(好きに命名可能), 第二引数リソース名(サウンドデータに名前を合わせる)
+	/// BGMサウンド個別ロード（1度だけ呼び出す）
+	/// </summary>
+	/// <param name="key"></param>
+	/// <param name="resName"></param>
+	public static void LoadBGM(string key, string resName)
     {
         GetInstance()._LoadBgm(key, resName);
     }
