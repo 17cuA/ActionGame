@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using UnityEditor;
 using System.IO;
 
@@ -12,6 +13,7 @@ public class UI_Editor : EditorWindow
 	}
 	
 	private ScriptableObject_UI _sample;
+	public Texture2D aaa;
 	private const string ASSET_PATH = "Assets/#HONAGA/Scripts/ScriptableObject_UI.asset";
 
 	private void OnGUI()
@@ -25,10 +27,10 @@ public class UI_Editor : EditorWindow
 		{
 			using (new GUILayout.HorizontalScope())
 			{
-				_sample.ImageSizeWidth = EditorGUILayout.FloatField("横", _sample.ImageSizeWidth);
-				_sample.ImageSizeHeight = EditorGUILayout.FloatField("縦", _sample.ImageSizeHeight);
-			}	
-			//_sample.Us = EditorGUILayout.
+				//_sample.ImageSizeWidth = EditorGUILayout.FloatField("横", _sample.ImageSizeWidth);
+				//_sample.ImageSizeHeight = EditorGUILayout.FloatField("縦", _sample.ImageSizeHeight);
+			}
+			//_sample.Us.Add() = EditorGUILayout.ObjectField("画像", aaa, typeof(Texture2D), false) as Texture2D;
 		}
 		using (new GUILayout.HorizontalScope())
 		{

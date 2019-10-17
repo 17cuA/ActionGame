@@ -6,10 +6,10 @@ using UnityEngine.UI;
 
 public class ScriptableObject_UI : ScriptableObject
 {
-	[SerializeField]
-	private float _imageSizeWidth;
-	[SerializeField]
-	private float _imageSizeHeight;
+	//[SerializeField]
+	//private float _imageSizeWidth;
+	//[SerializeField]
+	//private float _imageSizeHeight;
 	[SerializeField]
 	private List<UIImageClass> us = new List<UIImageClass>();
 	public List<UIImageClass> Us
@@ -19,6 +19,11 @@ public class ScriptableObject_UI : ScriptableObject
 		set { us = value; }
 #endif
 	}
+}
+
+public class UIImageClass
+{
+	private float _imageSizeWidth;
 	public float ImageSizeWidth
 	{
 		get { return _imageSizeWidth; }
@@ -26,6 +31,7 @@ public class ScriptableObject_UI : ScriptableObject
 		set { _imageSizeWidth = Mathf.Clamp(value, 0, float.MaxValue); }
 #endif
 	}
+	private float _imageSizeHeight;
 	public float ImageSizeHeight
 	{
 		get { return _imageSizeHeight; }
@@ -33,10 +39,7 @@ public class ScriptableObject_UI : ScriptableObject
 		set { _imageSizeHeight = Mathf.Clamp(value, 0, float.MaxValue); }
 #endif
 	}
-}
-
-public class UIImageClass
-{
 	string name;
-	Image image;
+	Texture2D image;
+	//Image image;
 }
