@@ -67,18 +67,15 @@ public class ScriptableInputManager : ScriptableObject
     public static int MaxButtonNum = 16;
     //1ボタン当たりに設定する項目数
     public static int SetButtonInfo = 3;
-    //コントローラー設定用
-    [System.Serializable]
-	public class InputControllerButton
+
+	[SerializeField]
+	private List<InputControllerButton> _testInputControllerButtons;
+	public List<InputControllerButton> TestInputControllerButtons
 	{
-        //ボタンの名前
-		public string Name;
-        //ボタンのラベルを判別するのに使用
-		public int InputButtonNum;
-        //設定用ラベル名を格納
-		public string[] ButtonLabel;
-        //デバッグ用のキーを設定するのに使用
-		public string AltButton;
+		get { return _testInputControllerButtons; }
+#if UNITY_EDITOR
+		set { _testInputControllerButtons = value; }
+#endif
 	}
 
 	[SerializeField]
@@ -112,8 +109,26 @@ public class ScriptableInputManager : ScriptableObject
         _buttonNum = sobj.ButtonNum;
         _setButtonNum = sobj.SetButtonNum;
         _inputControllerButtons = sobj.InputControllerButtons;
+		_testInputControllerButtons = sobj.TestInputControllerButtons;
 		_isSetStick = sobj._isSetStick;
 	}
 #endif
 	#endregion
+}
+//コントローラー設定用
+[System.Serializable]
+public class InputControllerButton
+{
+	//ボタンの名前
+	[SerializeField]
+	public string Name;
+	//ボタンのラベルを判別するのに使用
+	[SerializeField]
+	public int InputButtonNum;
+	//設定用ラベル名を格納
+	[SerializeField]
+	public string[] ButtonLabel;
+	//デバッグ用のキーを設定するのに使用
+	[SerializeField]
+	public string AltButton;
 }

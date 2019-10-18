@@ -23,6 +23,7 @@ public class CreateInputManagerWindow : EditorWindow
     Vector2 scrollPos = Vector2.zero;								//スクロールバー用位置変数
 	private string[] playerTab = { "プレイヤー1", "プレイヤー2" };	//設定するプレイヤーを変更する為の変数
 	private int playerTabNum = 0;
+	private int settingIndex;
 	private bool[,] isOpen;
 
 	/// <summary>
@@ -157,8 +158,9 @@ public class CreateInputManagerWindow : EditorWindow
                     //変更された場合表示を変える
                     if (index != playerTabNum)  playerTabNum = index;
                 }
-                //ボタン分ループ
-                for (int i = 0; i < _obj.SetButtonNum; i++)
+				settingIndex = _obj.SetButtonNum;
+				//ボタン分ループ
+				for (int i = 0; i < _obj.SetButtonNum; i++)
                 {
 					//開いている場合ボタン設定できるようにする
 					isOpen[playerTabNum, i] = EditorGUILayout.Foldout(isOpen[playerTabNum, i], string.Format("ボタン{0}", i + 1));
@@ -171,15 +173,26 @@ public class CreateInputManagerWindow : EditorWindow
 							//各ボタンをセット
 							switch (j)
 							{
+								//case 0:
+								//	_obj.TestInputControllerButtons[i].Name = EditorGUILayout.TextField("名前", _obj.TestInputControllerButtons[i].Name);
+								//	break;
+								//case 1:
+								//	_obj.TestInputControllerButtons[i].InputButtonNum =
+								//		Mathf.Clamp(EditorGUILayout.IntField("ボタン", _obj.TestInputControllerButtons[i].InputButtonNum), 0, 15);
+								//	break;
+								//case 2:
+								//	_obj.TestInputControllerButtons[i].AltButton = EditorGUILayout.TextField("デバッグキー", _obj.TestInputControllerButtons[i].AltButton);
+								//	break;
+
 								case 0:
-									_obj.InputControllerButtons[playerTabNum][i].Name = EditorGUILayout.TextField("名前", _obj.InputControllerButtons[playerTabNum][i].Name);
+									_obj.TestInputControllerButtons[j + (i * settingIndex)].Name = EditorGUILayout.TextField("名前", _obj.TestInputControllerButtons[j + (i * settingIndex)].Name);
 									break;
 								case 1:
-									_obj.InputControllerButtons[playerTabNum][i].InputButtonNum =
-										Mathf.Clamp(EditorGUILayout.IntField("ボタン", _obj.InputControllerButtons[playerTabNum][i].InputButtonNum), 0, 15);
+									_obj.TestInputControllerButtons[j + (i * settingIndex)].InputButtonNum =
+										Mathf.Clamp(EditorGUILayout.IntField("ボタン", _obj.TestInputControllerButtons[j + (i * settingIndex)].InputButtonNum), 0, 15);
 									break;
 								case 2:
-									_obj.InputControllerButtons[playerTabNum][i].AltButton = EditorGUILayout.TextField("デバッグキー", _obj.InputControllerButtons[playerTabNum][i].AltButton);
+									_obj.TestInputControllerButtons[j + (i * settingIndex)].AltButton = EditorGUILayout.TextField("デバッグキー", _obj.TestInputControllerButtons[j + (i * settingIndex)].AltButton);
 									break;
 							}
 						}
@@ -223,21 +236,22 @@ public class CreateInputManagerWindow : EditorWindow
             _obj.SetButtonNum = _obj.ButtonNum;
 			//必要な初期化を行う
 			isOpen = new bool[_obj.SetPlayerNum, _obj.SetButtonNum];
-			var playerList = new List<List<ScriptableInputManager.InputControllerButton>>();
-            //プレイヤー分ループ
-            for (int i = 0; i < _obj.SetPlayerNum; i++)
+			//var playerList = new List<List<InputControllerButton>>();
+			var controllerList = new List<InputControllerButton>();
+			//プレイヤー分ループ
+			for (int i = 0; i < _obj.SetPlayerNum; i++)
             {
-                var controllerList = new List<ScriptableInputManager.InputControllerButton>();
+                //var controllerList = new List<InputControllerButton>();
                 //ボタン分ループ
                 for (int j = 0; j < _obj.SetButtonNum; j++)
                 {
-                    var bottonList = new ScriptableInputManager.InputControllerButton();
+                    var bottonList = new InputControllerButton();
 					controllerList.Add(bottonList);
 					isOpen[i, j] = false;
 				}
-                playerList.Add(controllerList);
+                //playerList.Add(controllerList);
             }
-            _obj.InputControllerButtons = playerList;
+            _obj.TestInputControllerButtons = controllerList;
         }
     }
     #endregion
@@ -263,8 +277,8 @@ public class CreateInputManagerWindow : EditorWindow
 			AssetDatabase.Refresh();
 			return;
 		}
-        //コピーする
-        _obj.Copy(sample);
+		//コピーする
+		_obj.Copy(sample);
 	}
     #endregion
     #region 保存
