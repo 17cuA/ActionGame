@@ -73,7 +73,6 @@ public class ScriptableInputManager : ScriptableObject
 	{
         //ボタンの名前
 		public string Name;
-        //コントローラーのボタンを設定するのに使用
         //ボタンのラベルを判別するのに使用
 		public int InputButtonNum;
         //設定用ラベル名を格納

@@ -140,10 +140,10 @@ public class AnimationUIManager : MonoBehaviour
 		}
 		else
 		{
-			if (!isLoop)
+			if (!isLeave || isInterruption)
 			{
 				//再利用できるように元に戻しておく
-				if (!isLeave || isInterruption)
+				if (!isLeave || !isLoop)
 				{
 					isStart = false;
 					isInterruption = false;
