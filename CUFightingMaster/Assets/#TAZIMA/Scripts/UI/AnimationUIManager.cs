@@ -143,7 +143,7 @@ public class AnimationUIManager : MonoBehaviour
 			if (!isLeave || isInterruption)
 			{
 				//再利用できるように元に戻しておく
-				if (!isLoop  || isInterruption)
+				if (!isLoop || isInterruption)
 				{
 					isStart = false;
 					isInterruption = false;
@@ -155,12 +155,6 @@ public class AnimationUIManager : MonoBehaviour
 					ResetUI();
 					StartAnimation();
 				}
-			}
-			else
-			{
-				//リセットしてからもう一度呼び出す
-				ResetUI();
-				StartAnimation();
 			}
 		}
 	}
