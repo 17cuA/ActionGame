@@ -19,18 +19,16 @@ public class CreateInputManagerWindow : EditorWindow
     /// <summary>
     /// ScriptableInputManagerの変数
     /// </summary>
-    private ScriptableInputManager _saveObj = null, _obj = null;
-    //スクロールバー用位置変数
-    Vector2 scrollPos = Vector2.zero;
-    //設定するプレイヤーを変更する為の変数
-    private string[] playerTab = { "プレイヤー1", "プレイヤー2" };
-    private int playerTabNum = 0;
+    private ScriptableInputManager _saveObj = null, _obj = null;	//セーブ用変数、エディタ使用変数
+    Vector2 scrollPos = Vector2.zero;								//スクロールバー用位置変数
+	private string[] playerTab = { "プレイヤー1", "プレイヤー2" };	//設定するプレイヤーを変更する為の変数
+	private int playerTabNum = 0;
 	private bool[,] isOpen;
 
 	/// <summary>
 	/// アセットパス
 	/// </summary>
-	private static readonly string ASSET_PATH = "Assets/#TAZIMA/Scripts/Input/ScriptableInputManager.asset";
+	private static readonly string ASSET_PATH = "Assets/#TAZIMA/Scripts/Input/ScriptableObjects/ScriptableInputManager.asset";
     [MenuItem("Editor/InputManagerSetter")]
     static void Create()
     {
@@ -299,7 +297,7 @@ public class CreateInputManagerWindow : EditorWindow
         sample.Copy(_saveObj);
 
 		////インスペクターから設定できないようにする
-		_obj.hideFlags = HideFlags.NotEditable;
+		_saveObj.hideFlags = HideFlags.NotEditable;
 		//更新通知
 		EditorUtility.SetDirty(_saveObj);
 		//保存

@@ -52,16 +52,18 @@ public class FuncKeyManager : SingletonMono<FuncKeyManager>
 			#region すべてのシーンで使用するキー（Ecs,F1 - F4）
 			if (Input.GetKeyDown(KeyCode.Escape))
 			{
-				if (isPause == false)
-				{
-					Time.timeScale = 0f;
-					isPause = true;
-				}
-				else
-				{
-					Time.timeScale = 1f;
-					isPause = false;
-				}
+				//終了
+				Application.Quit();
+				//if (isPause == false)
+				//{
+				//	Time.timeScale = 0f;
+				//	isPause = true;
+				//}
+				//else
+				//{
+				//	Time.timeScale = 1f;
+				//	isPause = false;
+				//}
 			}
 			//1シーン分戻る
 			if (Input.GetKeyDown(KeyCode.F1))

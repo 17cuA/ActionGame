@@ -72,17 +72,13 @@ public class ScriptableInputManager : ScriptableObject
 	public class InputControllerButton
 	{
         //ボタンの名前
-		[SerializeField]
 		public string Name;
         //コントローラーのボタンを設定するのに使用
         //ボタンのラベルを判別するのに使用
-		[SerializeField]
 		public int InputButtonNum;
         //設定用ラベル名を格納
-        [SerializeField]
 		public string[] ButtonLabel;
         //デバッグ用のキーを設定するのに使用
-		[SerializeField]
 		public string AltButton;
 	}
 
