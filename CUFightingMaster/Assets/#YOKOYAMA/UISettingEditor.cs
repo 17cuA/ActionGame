@@ -84,11 +84,13 @@ public class UISettingEditor : EditorWindow
 			// Canvasの確認
 			case Step.step1:
 				Preparation();
-				step++;
+				string temp = EditorGUILayout.TextArea("準備中");
+				step = Step.step2;
 				break;
 			// エディターを描画
 			case Step.step2:
-				Drawing();
+				CreateAsset();
+				Edit();
 				break;
 			default:
 				break;
@@ -100,15 +102,17 @@ public class UISettingEditor : EditorWindow
 	/// </summary>
 	void Preparation()
 	{
+		// Canvasの子供を配列に格納
 		List<Transform> canvasChilds = SubTransform.ChildClass(canvas.transform);
+		// エディター用の変数に格納
 		SetEditorLoadHierarchy(canvasChilds);
 	}
+
 	/// <summary>
-	/// エディターに編集画面を描画する
+	/// エディターに画像をセットすると新しいImageオブジェクトを生成する
 	/// </summary>
-	void Drawing()
+	void CreateAsset()
 	{
-		#region 新しい画像を生成
 		// 画像をアタッチする領域を設定
 		tempSprite = EditorGUILayout.ObjectField("新しいUIを作る 画像をセット→", tempSprite, typeof(Sprite), false) as Sprite;
 		// 画像がセットされたら新しくUIを生成する
@@ -116,8 +120,12 @@ public class UISettingEditor : EditorWindow
 		{
 			CreateNewAsset(tempSprite);
 		}
-		#endregion
-
+	}
+	/// <summary>
+	/// エディターに編集画面を描画する
+	/// </summary>
+	void Edit()
+	{
 		#region UIがあるならエディター上に表示
 		if (assets.Count > 0)
 		{
@@ -322,6 +330,10 @@ public class UISettingEditor : EditorWindow
 		if (assets[_index].ScaleDef != assets[_index].ScaleDef * editorImage[_index].Scale)
 		{
 			assets[_index].Image.rectTransform.localScale = assets[_index].ScaleDef * editorImage[_index].Scale;
+		}
+		else if(assets[_index].Scale == 1)
+		{
+			assets[_index].Image.rectTransform.localScale = assets[_index].ScaleDef;
 		}
 	}
 
