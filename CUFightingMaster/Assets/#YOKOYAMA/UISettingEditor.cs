@@ -36,12 +36,12 @@ public class UISettingEditor : EditorWindow
 		step1,
 		step2
 	}
-	
+
 	// UIプロパティ関連
 	[SerializeField]
 	private GameObject canvas = null;
-	private List<Image> editorImage = new List<Image>();            // 実際に表示しているImage変数を格納
-	private List<UIAsset> assets = new List<UIAsset>();
+	private List<UIAsset> editorImage = new List<UIAsset>();                // 実際に表示しているImage変数を格納
+	private List<UIAsset> assets = new List<UIAsset>();                     // エディターで表示している変数
 
 	Step step = Step.step1;
 	// 制限数値関連
@@ -67,7 +67,8 @@ public class UISettingEditor : EditorWindow
 			UISettingParameter.instance.editor = (UISettingEditor)CreateInstance(typeof(UISettingEditor));
 			// Editor生成
 			UISettingParameter.instance.editor = EditorWindow.GetWindow<UISettingEditor>(_canvas.name);
-			UISettingParameter.instance.editor.canvas = _canvas; 
+			UISettingParameter.instance.editor.canvas = _canvas;
+			UISettingParameter.instance.view = UIView.Open();
 		}
 		// 専用Viewを生成
 		if (UISettingParameter.instance.view == null)
@@ -80,10 +81,12 @@ public class UISettingEditor : EditorWindow
 	{
 		switch (step)
 		{
+			// Canvasの確認
 			case Step.step1:
 				Preparation();
 				step++;
 				break;
+			// エディターを描画
 			case Step.step2:
 				Drawing();
 				break;
@@ -92,6 +95,9 @@ public class UISettingEditor : EditorWindow
 		}
 	}
 
+	/// <summary>
+	/// Canvasの中にあるImageオブジェクトを取得する
+	/// </summary>
 	void Preparation()
 	{
 		List<Transform> canvasChilds = SubTransform.ChildClass(canvas.transform);
@@ -112,13 +118,13 @@ public class UISettingEditor : EditorWindow
 		}
 		#endregion
 
-		// UIがあるならエディター上に表示
+		#region UIがあるならエディター上に表示
 		if (assets.Count > 0)
 		{
 			//ここから下に書かれるものはエディター上でスクロール範囲に含まれるできる
-			scrollAssetsPos = EditorGUILayout.BeginScrollView(scrollAssetsPos, GUI.skin.box);			//エディターをスクロールさせる(開始位置)-------------------------------------------------
+			scrollAssetsPos = EditorGUILayout.BeginScrollView(scrollAssetsPos, GUI.skin.box);           //エディターをスクロールさせる(開始位置)-------------------------------------------------
 
-			EditorGUILayout.BeginVertical(GUI.skin.box, GUILayout.Width(500));							// 縦表示開始---------------------------------------------------------------------------
+			EditorGUILayout.BeginVertical(GUI.skin.box, GUILayout.Width(500));                          // 縦表示開始---------------------------------------------------------------------------
 			for (int i = 0; i < assets.Count; i++)
 			{
 				#region hierarchyでエディターを使わずに削除
@@ -132,7 +138,7 @@ public class UISettingEditor : EditorWindow
 				#endregion
 
 				// ImageのRectTransformを取得
-				RectTransform tempRectTrans = editorImage[i].GetComponent<RectTransform>();
+				RectTransform tempRectTrans = editorImage[i].RectTransform;
 
 				EditorGUILayout.BeginVertical(GUI.skin.box);                                            // 縦表示開始---------------------------------------------------------------------------
 				EditorGUILayout.BeginHorizontal();                                                      // 横表示開始---------------------------------------------------------------------------
@@ -141,16 +147,15 @@ public class UISettingEditor : EditorWindow
 				EditorGUILayout.BeginVertical(GUILayout.Width(100));                                    // 縦表示開始---------------------------------------------------------------------------
 
 				// 画像の名前を変更可能にする
-				assets[i].NameSprite = GUILayout.TextArea(editorImage[i].name);
+				assets[i].Image.name = GUILayout.TextArea(editorImage[i].Image.name);
 				EditorGUIUtility.labelWidth = 70;
-				assets[i].Sprite = EditorGUILayout.ObjectField("", editorImage[i].sprite, typeof(Sprite), true) as Sprite;
+				assets[i].Image.sprite = EditorGUILayout.ObjectField("", editorImage[i].Image.sprite, typeof(Sprite), true) as Sprite;
 				// 画像の色を取得
-				assets[i].Color = EditorGUILayout.ColorField("色変更", editorImage[i].color);
+				assets[i].Image.color = EditorGUILayout.ColorField("色変更", editorImage[i].Image.color);
 				EditorGUILayout.EndVertical();                                                                  // 縦表示終了---------------------------------------------------------------------------
-
 				EditorGUILayout.BeginVertical();                                                                // 縦表示開始---------------------------------------------------------------------------
 																												// 画像の座標を取得する(※Transformではなく、RectTransformで表示)
-				assets[i].RectPos = EditorGUILayout.Vector3Field("Rect座標", tempRectTrans.localPosition);
+				assets[i].Image.rectTransform.localPosition = EditorGUILayout.Vector3Field("Rect座標", tempRectTrans.localPosition);
 
 				#region pivot定義
 				// 画像のpivotを取得する(※上記はCanvasのアンカー座標、ここでは画像そのもののアンカー座標(ギズモまたはpivot))
@@ -159,6 +164,21 @@ public class UISettingEditor : EditorWindow
 				tempPivot.x = EditorGUILayout.Slider("画像のギズモ設定X(0～1) ", tempPivot.x, pivotMin, pivotMax);
 				tempPivot.y = EditorGUILayout.Slider("画像のギズモ設定Y(0～1) ", tempPivot.y, pivotMin, pivotMax);
 				#endregion
+
+				assets[i].IsScale = GUILayout.Toolbar(assets[i].IsScale, new string[] { "画像比を保つ", "自由変形" });
+
+				switch (assets[i].IsScale)
+				{
+					case 0:
+						assets[i].Scale = EditorGUILayout.FloatField("スケール変更(比率維持)", editorImage[i].Scale);
+						LimitSpriteScale(i);
+						break;
+					case 1:
+
+						break;
+					default:
+						break;
+				}
 
 				#region anchor定義
 				EditorGUILayout.LabelField("画面比率(〇％～□％)の位置に配置する");
@@ -171,9 +191,9 @@ public class UISettingEditor : EditorWindow
 
 				#region 制限処理
 				// anchor数値に制限をかける
-				tempAnchorMin = LimitAnchor(tempAnchorMin);					// アンカー座標の数値に制限をかける(0~100)
-				tempAnchorMax = LimitAnchor(tempAnchorMax);					// アンカー座標の数値に制限をかける(0~100)
-				LimitSpriteSize(i, tempAnchorMin, tempAnchorMax);			// アンカー座標の数値が同じ場合、Image画像の比率をデフォルトにする
+				tempAnchorMin = LimitAnchor(tempAnchorMin);                 // アンカー座標の数値に制限をかける(0~100)
+				tempAnchorMax = LimitAnchor(tempAnchorMax);                 // アンカー座標の数値に制限をかける(0~100)
+				LimitSpriteSize(i, tempAnchorMin, tempAnchorMax);           // アンカー座標の数値が同じ場合、Image画像の比率をデフォルトにする
 				#endregion
 
 				// エディターで編集した数値をImageオブジェクトに対応させる
@@ -184,7 +204,7 @@ public class UISettingEditor : EditorWindow
 				if (GUILayout.Button("削除", GUILayout.Width(100)))
 				{
 					// hierarchy上(Scene)のImageオブジェクトを消す
-					DestroyImmediate(editorImage[i].gameObject);
+					DestroyImmediate(editorImage[i].Image.gameObject);
 					// エディター用の変数を消す(エディターに反映)
 					DeleteAssetDateOnEditor(i);
 				}
@@ -199,6 +219,7 @@ public class UISettingEditor : EditorWindow
 			//ここから上に書かれるものはエディター上でスクロール範囲に含まれる
 			EditorGUILayout.EndScrollView();                                                                //エディターをスクロールさせる(終了位置)---------------------------------------------
 		}
+		#endregion
 	}
 
 	/// <summary>
@@ -209,12 +230,12 @@ public class UISettingEditor : EditorWindow
 	/// <returns></returns>
 	Image CreateImage(string _name)
 	{
-		// hierarchyWindowに表示するオブジェクトを生成する
+		// hierarchyWindowに生成する
 		var canvasObject = new GameObject(_name);        // (”オブジェクトの名前”)
 														 // Imageオブジェクトに変換(正しくはImageの特性を加える)
 		var tempImage = canvasObject.AddComponent<Image>();
 		// Carnvasの子供に設定
-		tempImage.transform.SetParent(GameObject.Find("Canvas").transform);
+		tempImage.transform.SetParent(canvas.transform);
 		// 画面中央に生成する
 		tempImage.GetComponent<RectTransform>().localPosition = Vector3.zero;
 
@@ -277,17 +298,30 @@ public class UISettingEditor : EditorWindow
 	{
 		if (_anchorMin.x == _anchorMax.x)
 		{
-			editorImage[_num].GetComponent<RectTransform>().sizeDelta = new Vector2(100, 100);
+			editorImage[_num].RectTransform.sizeDelta = new Vector2(100, 100);
 		}
 		if (_anchorMin.y == _anchorMax.y)
 		{
-			editorImage[_num].GetComponent<RectTransform>().sizeDelta = new Vector2(100, 100);
+			editorImage[_num].RectTransform.sizeDelta = new Vector2(100, 100);
 		}
 
 		else
 		{
-			editorImage[_num].GetComponent<RectTransform>().offsetMin = Vector2.zero;
-			editorImage[_num].GetComponent<RectTransform>().offsetMax = Vector2.zero;
+			editorImage[_num].RectTransform.offsetMin = Vector2.zero;
+			editorImage[_num].RectTransform.offsetMax = Vector2.zero;
+		}
+	}
+
+	/// <summary>
+	/// エディター上のスケール値をImageオブジェクトに適応する
+	/// </summary>
+	/// <param name="_index"></param>
+	void LimitSpriteScale(int _index)
+	{
+		Debug.Log(assets[_index].ScaleDef);
+		if (assets[_index].ScaleDef != assets[_index].ScaleDef * editorImage[_index].Scale)
+		{
+			assets[_index].Image.rectTransform.localScale = assets[_index].ScaleDef * editorImage[_index].Scale;
 		}
 	}
 
@@ -320,26 +354,17 @@ public class UISettingEditor : EditorWindow
 	void AddEditorAssets(Image _image)
 	{
 		RectTransform tempRectTransform = _image.GetComponent<RectTransform>();
-		// アンカー数値を100％表示に変換
-		Vector2 tempAnchorMin = _image.GetComponent<RectTransform>().anchorMin * 100.0f;
-		Vector2 tempAnchorMax = _image.GetComponent<RectTransform>().anchorMax * 100.0f;
 
-		//// Image
-		editorImage.Add(_image);                                                // Image
 		// UIの情報を構造体に格納
 		UIAsset temp = new UIAsset
 		{
-			Sprite = _image.sprite,					// 画像
-			NameSprite = _image.name,				// 画像の名前
-			Color = _image.color,					// RGB
-			RectPos = tempRectTransform.position,	// 座標
-			Pivot = tempRectTransform.pivot,		// ピボット
-			AnchorMax = tempAnchorMax,				// アンカーMax
-			AnchorMin = tempAnchorMin,				// アンカーMin
-			Scale = tempRectTransform.localScale	// スケール
+			Image = _image,
+			RectTransform = tempRectTransform,
+			ScaleDef = tempRectTransform.localScale
 		};
 
 		// 構造体をリストに追加
+		editorImage.Add(temp);                                                // Image
 		assets.Add(temp);
 	}
 
@@ -351,25 +376,18 @@ public class UISettingEditor : EditorWindow
 	/// <param name="_pivot">pivot数値で画像の中心点を決める</param>
 	void UpdateEditorAsset(int _Index, Vector2 _pivot, Vector2 _anchorMin, Vector2 _anchorMax)
 	{
-		RectTransform tempRectTransform = editorImage[_Index].GetComponent<RectTransform>();
+		RectTransform tempRectTransform = editorImage[_Index].RectTransform;
 
 		// エディターに適応
-		assets[_Index].Pivot = _pivot;
-		assets[_Index].AnchorMin = _anchorMin;
-		assets[_Index].AnchorMax = _anchorMax;
-		assets[_Index].Scale = tempRectTransform.localScale;
+		assets[_Index].RectTransform.pivot = _pivot;
+		assets[_Index].RectTransform.anchorMin = _anchorMin;
+		assets[_Index].RectTransform.anchorMax = _anchorMax;
 
 		// Imageオブジェクトに適応
 		editorImage[_Index] = editorImage[_Index];                                                                                                  // オブジェクト更新
-		editorImage[_Index].name = assets[_Index].NameSprite;                                                                                   // 名前を更新
-		editorImage[_Index].sprite = assets[_Index].Sprite;                                                                                 // 画像更新
-		editorImage[_Index].color = assets[_Index].Color;                                                                                       // 色更新
-
-		tempRectTransform.localPosition = assets[_Index].RectPos;                 // 座標更新
-		tempRectTransform.anchorMin = assets[_Index].AnchorMin / 100.0f;      // anchor座標更新
-		tempRectTransform.anchorMax = assets[_Index].AnchorMax / 100.0f;  // anchor座標更新
-		tempRectTransform.pivot = assets[_Index].Pivot;                                   // pivot更新
-		tempRectTransform.localScale = assets[_Index].Scale;                                // scale更新
+		tempRectTransform.anchorMin = assets[_Index].RectTransform.anchorMin / 100.0f;      // anchor座標更新
+		tempRectTransform.anchorMax = assets[_Index].RectTransform.anchorMax / 100.0f;  // anchor座標更新
+		tempRectTransform.pivot = assets[_Index].Image.rectTransform.pivot;                                   // pivot更新
 	}
 
 	/// <summary>

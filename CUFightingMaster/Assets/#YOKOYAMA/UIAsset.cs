@@ -8,59 +8,41 @@ public class UIAsset
 	// UIのプロパティ
 	[SerializeField]
 	#region // オブジェクト関係
-	private Sprite sprite;                // 画像
-	public Sprite Sprite
+	private Image image;
+	public Image Image
 	{
-		get { return sprite; }
-		set { sprite = value; }
-	}
-
-	private string nameSprite;			   // 画像の名前
-	public string NameSprite
-	{
-		get { return nameSprite; }
-		set { nameSprite = value; }
-	}
-
-	private Color color;                   // 画像の色
-	public Color Color
-	{
-		get { return color; }
-		set { color = value; }
+		get { return image; }
+		set { image = value; }
 	}
 	#endregion
 
-	#region		// RectTransform関係
-	private Vector3 rectPos;     // 座標(RectTransform)
-	public Vector3 RectPos
+	#region        // RectTransform関係
+	private RectTransform rectTransform;
+	public RectTransform RectTransform
 	{
-		get { return rectPos; }
-		set { rectPos = value; }
+		get { return rectTransform; }
+		set { rectTransform = value; }
 	}
+	#endregion
 
-	private Vector2 pivot;           // pivot座標
-	public Vector2 Pivot
+	#region // 画像比率を保つかどうか
+	private int isScale;
+	public int IsScale
 	{
-		get { return pivot; }
-		set { pivot = value; }
+		get { return isScale; }
+		set { isScale = value; }
 	}
+	#endregion
 
-	private Vector2 anchorMax;   // Canvasからみた座標(最低値)
-	public Vector2 AnchorMax
+	#region // 画像比率を保ったままスケールを変更する
+	private Vector3 scaleDef;
+	public Vector3 ScaleDef
 	{
-		get { return anchorMax; }
-		set { anchorMax = value; }
+		get { return scaleDef; }
+		set { scaleDef = value; }
 	}
-
-	private Vector2 anchorMin;   // Canvasからみた座標(最大値)
-	public Vector2 AnchorMin
-	{
-		get { return anchorMin; }
-		set { anchorMin = value; }
-	}
-
-	private Vector2 scale;           // Canvasからみた座標(最大値)
-	public Vector2 Scale
+	private float scale = 1.0f;
+	public float Scale
 	{
 		get { return scale; }
 		set { scale = value; }

@@ -29,8 +29,3 @@ public static class SubTransform
         return children;
     }
 }
-
-public static class SubChilds
-{
-
-}

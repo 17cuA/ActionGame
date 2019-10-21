@@ -17,7 +17,7 @@ public class UIView : SceneView
 	public const float UISETTING_VIEW_PLACE_Y = +600.0f;            // UIViewのカメラ配置(Y軸)
 	public const float UISETTING_VIEW_PLACE_Z = -1500.0f;       // UIViewのカメラ配置(Z軸)
 
-	public static UIView Open(string _name)
+	public static UIView Open()
 	{
 		var window = ScriptableObject.CreateInstance<UIView>();
 		window.Show();
@@ -33,8 +33,6 @@ public class UIView : SceneView
 													Camera.main.transform.position.y + UISETTING_VIEW_PLACE_Y,
 													Camera.main.transform.position.z + UISETTING_VIEW_PLACE_Z),
 													window.rotation, 1);
-		// Viewの名前を設定
-		window.name = _name;
 
 		return window;
 	}
