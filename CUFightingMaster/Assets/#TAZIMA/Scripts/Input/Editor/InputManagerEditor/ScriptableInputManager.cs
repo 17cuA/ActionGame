@@ -69,8 +69,8 @@ public class ScriptableInputManager : ScriptableObject
     public static int SetButtonInfo = 3;
 
 	[SerializeField]
-	private List<InputControllerButton> _testInputControllerButtons;
-	public List<InputControllerButton> TestInputControllerButtons
+	private List<CustomControllerButton> _testInputControllerButtons;
+	public List<CustomControllerButton> TestInputControllerButtons
 	{
 		get { return _testInputControllerButtons; }
 #if UNITY_EDITOR
@@ -79,8 +79,8 @@ public class ScriptableInputManager : ScriptableObject
 	}
 
 	[SerializeField]
-    private List<List<InputControllerButton>> _inputControllerButtons;
-	public List<List<InputControllerButton>> InputControllerButtons
+    private List<List<CustomControllerButton>> _inputControllerButtons;
+	public List<List<CustomControllerButton>> InputControllerButtons
     {
         get { return _inputControllerButtons; }
 #if UNITY_EDITOR
@@ -104,20 +104,22 @@ public class ScriptableInputManager : ScriptableObject
     public void Copy(ScriptableInputManager sobj)
 	{
 		_controllerName = sobj.ControllerName;
-        _playerNum = sobj._playerNum;
-        _setPlayerNum = sobj._setPlayerNum;
+        _playerNum = sobj.PlayerNum;
+        _setPlayerNum = sobj.SetPlayerNum;
         _buttonNum = sobj.ButtonNum;
         _setButtonNum = sobj.SetButtonNum;
-        _inputControllerButtons = sobj.InputControllerButtons;
+
 		_testInputControllerButtons = sobj.TestInputControllerButtons;
-		_isSetStick = sobj._isSetStick;
+		_isSetStick = sobj.IsSetStick;
 	}
 #endif
 	#endregion
 }
+
+
 //コントローラー設定用
 [System.Serializable]
-public class InputControllerButton
+public class CustomControllerButton
 {
 	//ボタンの名前
 	[SerializeField]
@@ -125,9 +127,6 @@ public class InputControllerButton
 	//ボタンのラベルを判別するのに使用
 	[SerializeField]
 	public int InputButtonNum;
-	//設定用ラベル名を格納
-	[SerializeField]
-	public string[] ButtonLabel;
 	//デバッグ用のキーを設定するのに使用
 	[SerializeField]
 	public string AltButton;
