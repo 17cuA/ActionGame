@@ -156,12 +156,6 @@ public class AnimationUIManager : MonoBehaviour
 					StartAnimation();
 				}
 			}
-			else
-			{
-				//リセットしてからもう一度呼び出す
-				ResetUI();
-				StartAnimation();
-			}
 		}
 	}
 
