@@ -69,24 +69,14 @@ public class ScriptableInputManager : ScriptableObject
     public static int SetButtonInfo = 3;
 
 	[SerializeField]
-	private List<CustomControllerButton> _testInputControllerButtons;
-	public List<CustomControllerButton> TestInputControllerButtons
+	private List<SettingControllerClass> _inputControllers;
+	public List<SettingControllerClass> InputControllers
 	{
-		get { return _testInputControllerButtons; }
+		get { return _inputControllers; }
 #if UNITY_EDITOR
-		set { _testInputControllerButtons = value; }
+		set { _inputControllers = value; }
 #endif
 	}
-
-	[SerializeField]
-    private List<List<CustomControllerButton>> _inputControllerButtons;
-	public List<List<CustomControllerButton>> InputControllerButtons
-    {
-        get { return _inputControllerButtons; }
-#if UNITY_EDITOR
-        set { _inputControllerButtons = value; }
-#endif
-    }
 
 	//スティックの設定を追加するか
 	[SerializeField]
@@ -109,17 +99,24 @@ public class ScriptableInputManager : ScriptableObject
         _buttonNum = sobj.ButtonNum;
         _setButtonNum = sobj.SetButtonNum;
 
-		_testInputControllerButtons = sobj.TestInputControllerButtons;
+		_inputControllers = sobj.InputControllers;
 		_isSetStick = sobj.IsSetStick;
 	}
 #endif
 	#endregion
 }
 
-
 //コントローラー設定用
 [System.Serializable]
-public class CustomControllerButton
+public class SettingControllerClass
+{
+	[SerializeField]
+	public List<SettingButtonClass> Buttons;
+}
+　
+//ボタン設定用
+[System.Serializable]
+public class SettingButtonClass
 {
 	//ボタンの名前
 	[SerializeField]

@@ -85,15 +85,15 @@ public class InputManagerSetter
             var button = "";
 			if (_controller.ControllerName == "")
 			{
-				name = string.Format("Player{0}_{1}", _player, _controller.InputControllerButtons[_player][i].Name);
+				name = string.Format("Player{0}_{1}", _player, _controller.InputControllers[_player].Buttons[i].Name);
 			}
 			else
 			{
-				name = string.Format("{0}_Player{1}_{2}", _controller.ControllerName, _player, _controller.InputControllerButtons[_player][i].Name);
-				button = string.Format("joystick {0} button {1}", joystickNum, _controller.InputControllerButtons[_player][i].InputButtonNum);
+				name = string.Format("{0}_Player{1}_{2}", _controller.ControllerName, _player, _controller.InputControllers[_player].Buttons[i].Name);
+				button = string.Format("joystick {0} button {1}", joystickNum, _controller.InputControllers[_player].Buttons[i].InputButtonNum);
 			}
             //デバッグ用のキー
-            var key = _controller.InputControllerButtons[_player][i].AltButton;
+            var key = _controller.InputControllers[_player].Buttons[i].AltButton;
             //キーを設定
             _inputManagerGenerator.AddAxis(InputAxis.CreateButton(name, button, key));
         }

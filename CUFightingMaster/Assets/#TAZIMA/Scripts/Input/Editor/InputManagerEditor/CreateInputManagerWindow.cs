@@ -23,7 +23,7 @@ public class CreateInputManagerWindow : EditorWindow
     Vector2 scrollPos = Vector2.zero;								//スクロールバー用位置変数
 	private string[] playerTab = { "プレイヤー1", "プレイヤー2" };	//設定するプレイヤーを変更する為の変数
 	private int playerTabNum = 0;
-	private bool[] isOpen;
+	private bool[,] isOpen;
 
 	/// <summary>
 	/// アセットパス
@@ -46,7 +46,7 @@ public class CreateInputManagerWindow : EditorWindow
         {
             //読み込み
             Import();
-            _obj.TestInputControllerButtons = null;
+            _obj.InputControllers = null;
         }
 
         Color defaultColor = GUI.backgroundColor;
@@ -63,7 +63,7 @@ public class CreateInputManagerWindow : EditorWindow
             using (new GUILayout.HorizontalScope())
             {
                 //リセット
-                if (GUILayout.Button("リセット"))
+                if (GUILayout.Button("　　　 リセット 　　　"))
                 {
                     inputManagerSetter.ClearInputManager();
                 }
@@ -157,8 +157,8 @@ public class CreateInputManagerWindow : EditorWindow
 				for (int i = 0; i < _obj.SetButtonNum; i++)
                 {
 					//開いている場合ボタン設定できるようにする
-					isOpen[i + (playerTabNum * _obj.SetButtonNum)] = EditorGUILayout.Foldout(isOpen[i + (playerTabNum * _obj.SetButtonNum)], string.Format("ボタン{0}", i + 1));
-					if (isOpen[i + (playerTabNum * _obj.SetButtonNum)])
+					isOpen[playerTabNum ,i] = EditorGUILayout.Foldout(isOpen[playerTabNum, i], string.Format("ボタン{0}", i + 1));
+					if (isOpen[playerTabNum, i])
 					{
 						EditorGUI.indentLevel++;
 						//1ボタン当たりに設定する項目数分ループ
@@ -167,28 +167,17 @@ public class CreateInputManagerWindow : EditorWindow
 							//各ボタンをセット
 							switch (j)
 							{
-								//case 0:
-								//	_obj.TestInputControllerButtons[i].Name = EditorGUILayout.TextField("名前", _obj.TestInputControllerButtons[i].Name);
-								//	break;
-								//case 1:
-								//	_obj.TestInputControllerButtons[i].InputButtonNum =
-								//		Mathf.Clamp(EditorGUILayout.IntField("ボタン", _obj.TestInputControllerButtons[i].InputButtonNum), 0, 15);
-								//	break;
-								//case 2:
-								//	_obj.TestInputControllerButtons[i].AltButton = EditorGUILayout.TextField("デバッグキー", _obj.TestInputControllerButtons[i].AltButton);
-								//	break;
-
 								case 0:
-									_obj.TestInputControllerButtons[i + (playerTabNum * _obj.SetButtonNum)].Name 
-                                        = EditorGUILayout.TextField("名前", _obj.TestInputControllerButtons[i + (playerTabNum * _obj.SetButtonNum)].Name);
+									_obj.InputControllers[playerTabNum].Buttons[i].Name 
+                                        = EditorGUILayout.TextField("名前", _obj.InputControllers[playerTabNum].Buttons[i].Name);
 									break;
 								case 1:
-									_obj.TestInputControllerButtons[i + (playerTabNum * _obj.SetButtonNum)].InputButtonNum
-                                        = Mathf.Clamp(EditorGUILayout.IntField("ボタン", _obj.TestInputControllerButtons[i + (playerTabNum * _obj.SetButtonNum)].InputButtonNum), 0, 15);
+									_obj.InputControllers[playerTabNum].Buttons[i].InputButtonNum
+                                        = Mathf.Clamp(EditorGUILayout.IntField("ボタン", _obj.InputControllers[playerTabNum].Buttons[i].InputButtonNum), 0, 15);
 									break;
 								case 2:
-									_obj.TestInputControllerButtons[i + (playerTabNum * _obj.SetButtonNum)].AltButton
-                                        = EditorGUILayout.TextField("デバッグキー", _obj.TestInputControllerButtons[i + (playerTabNum * _obj.SetButtonNum)].AltButton);
+									_obj.InputControllers[playerTabNum].Buttons[i].AltButton
+                                        = EditorGUILayout.TextField("デバッグキー", _obj.InputControllers[playerTabNum].Buttons[i].AltButton);
                                     break;
 							}
 						}
@@ -225,29 +214,29 @@ public class CreateInputManagerWindow : EditorWindow
     private void SetController()
     {
 		//リストの作成及び追加、削除を行ったときの表示エラーを回避するための初期化
-		if (_obj.TestInputControllerButtons == null || _obj.PlayerNum != _obj.SetPlayerNum || _obj.ButtonNum != _obj.SetButtonNum)
+		if (_obj.InputControllers == null || _obj.PlayerNum != _obj.SetPlayerNum || _obj.ButtonNum != _obj.SetButtonNum)
         {
             //設定用変数に入力用変数の値を格納
             _obj.SetPlayerNum = _obj.PlayerNum;
             _obj.SetButtonNum = _obj.ButtonNum;
 			//必要な初期化を行う
-			isOpen = new bool[(_obj.SetPlayerNum * _obj.SetButtonNum)];
-			//var playerList = new List<List<InputControllerButton>>();
-			var controllerList = new List<CustomControllerButton>();
+			isOpen = new bool[_obj.SetPlayerNum , _obj.SetButtonNum];
+			var controllerList = new List<SettingControllerClass>();
 			//プレイヤー分ループ
 			for (int i = 0; i < _obj.SetPlayerNum; i++)
             {
-                //var controllerList = new List<InputControllerButton>();
-                //ボタン分ループ
-                for (int j = 0; j < _obj.SetButtonNum; j++)
+				var controller = new SettingControllerClass();
+				controller.Buttons = new List<SettingButtonClass>();
+				//ボタン分ループ
+				for (int j = 0; j < _obj.SetButtonNum; j++)
                 {
-                    var bottonList = new CustomControllerButton();
-					controllerList.Add(bottonList);
-					isOpen[(i * _obj.SetButtonNum) + j] = false;
+                    var button = new SettingButtonClass();
+					controller.Buttons.Add(button);
+					isOpen[i, j] = false;
 				}
-                //playerList.Add(controllerList);
-            }
-            _obj.TestInputControllerButtons = controllerList;
+				controllerList.Add(controller);
+			}
+            _obj.InputControllers = controllerList;
         }
     }
     #endregion
