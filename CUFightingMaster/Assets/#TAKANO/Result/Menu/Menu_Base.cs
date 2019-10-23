@@ -1,18 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using System;
 
 public class Menu_Base : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+	[SerializeField] ResultMenuController resultMenuController;
+	[SerializeField] private Image image;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+	[SerializeField] public Type beforeMenu;
+	[SerializeField] public Type afterMenu;
+
+	public virtual void Decide() { }
+	public virtual Type CreateInstance(Menu_Base menu_Base) { return menu_Base.GetType(); }
 }

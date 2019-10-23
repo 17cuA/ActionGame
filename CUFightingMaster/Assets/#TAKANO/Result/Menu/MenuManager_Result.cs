@@ -3,10 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Menu_Rematch : Menu_Base
+public class MenuManager_Result : MonoBehaviour
 {
-	public override void Decide()
-	{
-		SceneManager.LoadScene("CharacterSelect");
-	}
 }
