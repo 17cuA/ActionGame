@@ -6,23 +6,24 @@ using UnityEngine.UI;
 
 public class ScriptableObject_UI : ScriptableObject
 {
-	//[SerializeField]
-	//private float _imageSizeWidth;
-	//[SerializeField]
-	//private float _imageSizeHeight;
 	[SerializeField]
-	private List<UIImageClass> us = new List<UIImageClass>();
-	public List<UIImageClass> Us
+	private List<UIImageClass> ui = new List<UIImageClass>();
+	public List<UIImageClass> Ui
 	{
-		get { return us; }
+		get { return ui; }
 #if UNITY_EDITOR
-		set { us = value; }
+		set { ui = value; }
 #endif
 	}
 }
 
+// imageの設定用
+[System.Serializable]
 public class UIImageClass
 {
+	public string name = "no name";
+	public Texture2D image;
+	public float imageSetInterval;
 	private float _imageSizeWidth;
 	public float ImageSizeWidth
 	{
@@ -39,7 +40,15 @@ public class UIImageClass
 		set { _imageSizeHeight = Mathf.Clamp(value, 0, float.MaxValue); }
 #endif
 	}
-	string name;
-	Texture2D image;
-	//Image image;
+    public void Copy(UIImageClass US)
+    {
+        if (US != null)
+        {
+            name = US.name;
+            image = US.image;
+            imageSetInterval = US.imageSetInterval;
+            ImageSizeHeight = US.ImageSizeHeight;
+            ImageSizeWidth = US.ImageSizeWidth;
+        }
+    }
 }
