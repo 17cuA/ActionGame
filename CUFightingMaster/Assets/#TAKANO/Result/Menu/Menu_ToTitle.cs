@@ -7,6 +7,7 @@ public class Menu_ToTitle : Menu_Base
 {
 	public override void Decide()
 	{
-		SceneManager.LoadScene("Title");
+		Debug.Log("タイトル");
+		//SceneManager.LoadScene("Title");
 	}
 }

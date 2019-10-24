@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Menu_ToCharacterSelect : Menu_Base
+public class Menu_ToCharacterSelect : Menu_Base , IMenuItem
 {
-	public override void Decide()
+	public  override void Decide()
 	{
-		SceneManager.LoadScene("CharacterSelect");
+		Debug.Log("キャラセレ");
+		//SceneManager.LoadScene("CharacterSelect");
 	}
 }
