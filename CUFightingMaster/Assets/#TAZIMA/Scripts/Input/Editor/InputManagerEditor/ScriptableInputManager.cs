@@ -98,33 +98,66 @@ public class ScriptableInputManager : ScriptableObject
         _setPlayerNum = sobj.SetPlayerNum;
         _buttonNum = sobj.ButtonNum;
         _setButtonNum = sobj.SetButtonNum;
-
+		//
 		_inputControllers = sobj.InputControllers;
+		//
 		_isSetStick = sobj.IsSetStick;
+
 	}
 #endif
 	#endregion
 }
 
+/// <summary>
+/// ボタン設定用クラス
+/// </summary>
 //コントローラー設定用
 [System.Serializable]
 public class SettingControllerClass
 {
 	[SerializeField]
-	public List<SettingButtonClass> Buttons;
+	private List<SettingButtonClass> _buttons;
+	public List<SettingButtonClass> Buttons
+	{
+		get { return _buttons; }
+#if UNITY_EDITOR
+		set { _buttons = value; }
+#endif
+	}
 }
-　
+
 //ボタン設定用
 [System.Serializable]
 public class SettingButtonClass
 {
 	//ボタンの名前
 	[SerializeField]
-	public string Name;
+	private string _name;
+	public string Name
+	{
+		get { return _name; }
+#if UNITY_EDITOR
+		set { _name = value; }
+#endif
+	}
 	//ボタンのラベルを判別するのに使用
 	[SerializeField]
-	public int InputButtonNum;
+	private int _inputButtonNum;
+	public int InputButtonNum
+	{
+		get { return _inputButtonNum; }
+#if UNITY_EDITOR
+		set { _inputButtonNum = value; }
+#endif
+	}
 	//デバッグ用のキーを設定するのに使用
 	[SerializeField]
-	public string AltButton;
+	private string _altButton;
+	public string AltButton
+	{
+		get { return _altButton; }
+#if UNITY_EDITOR
+		set { _altButton = value; }
+#endif
+	}
 }
