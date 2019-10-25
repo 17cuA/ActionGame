@@ -15,11 +15,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System;
+#if UNITY_EDITOR
 using UnityEditor;
 using UnityEditor.SceneManagement;
-using UnityEditorInternal;
-
+#endif
 #if UNITY_EDITOR
+
 public class UISettingParameter : ScriptableSingleton<UISettingParameter>
 {
 	public UISettingEditor editor = null;             // UIを編集するエディター
@@ -31,11 +33,11 @@ public class UISettingEditor : EditorWindow
 	/*-----------------------------------------------
 	 * 変数宣言
 	-----------------------------------------------*/
-	public enum Step
-	{
-		step1,
-		step2
-	}
+	//public enum Step
+	//{
+	//	step1,
+	//	step2
+	//}
 
 	// UIプロパティ関連
 	[SerializeField]
@@ -43,7 +45,7 @@ public class UISettingEditor : EditorWindow
 	private List<UIAsset> editorImage = new List<UIAsset>();                // 実際に表示しているImage変数を格納
 	private List<UIAsset> assets = new List<UIAsset>();                     // エディターで表示している変数
 
-	Step step = Step.step1;
+	//Step step = Step.step1;
 	// 制限数値関連
 	float pivotMin = 0.0f;      // pivotの上限
 	float pivotMax = 1.0f;      // pivotの下限
@@ -54,6 +56,12 @@ public class UISettingEditor : EditorWindow
 	private Sprite tempSprite = null;
 	Vector2 scrollAssetsPos = Vector2.zero;
 
+	private Action action;
+
+	private void Awake()
+	{
+		action = Preparation;
+	}
 	/// <summary>
 	/// edirorとViewをインスタンス化
 	/// </summary>
@@ -79,39 +87,41 @@ public class UISettingEditor : EditorWindow
 
 	private void OnGUI()
 	{
-		switch (step)
-		{
-			// Canvasの確認
-			case Step.step1:
-				Preparation();
-				string temp = EditorGUILayout.TextArea("準備中");
-				step = Step.step2;
-				break;
-			// エディターを描画
-			case Step.step2:
-				CreateAsset();
-				Edit();
-				break;
-			default:
-				break;
-		}
+		action();
+		//switch (step)
+		//{
+		//	// Canvasの確認
+		//	case Step.step1:
+		//		Preparation();
+		//		string temp = EditorGUILayout.TextArea("準備中");
+		//		step = Step.step2;
+		//		break;
+		//	// エディターを描画
+		//	case Step.step2:
+		//		CreateAsset();
+		//		Edit();
+		//		break;
+		//	default:
+		//		break;
+		//}
 	}
 
 	/// <summary>
 	/// Canvasの中にあるImageオブジェクトを取得する
 	/// </summary>
-	void Preparation()
+	private void Preparation()
 	{
 		// Canvasの子供を配列に格納
 		List<Transform> canvasChilds = SubTransform.ChildClass(canvas.transform);
 		// エディター用の変数に格納
 		SetEditorLoadHierarchy(canvasChilds);
+		action = Edit;
 	}
 
 	/// <summary>
 	/// エディターに画像をセットすると新しいImageオブジェクトを生成する
 	/// </summary>
-	void CreateAsset()
+	private void CreateAsset()
 	{
 		// 画像をアタッチする領域を設定
 		tempSprite = EditorGUILayout.ObjectField("新しいUIを作る 画像をセット→", tempSprite, typeof(Sprite), false) as Sprite;
@@ -126,6 +136,7 @@ public class UISettingEditor : EditorWindow
 	/// </summary>
 	void Edit()
 	{
+		CreateAsset();
 		#region UIがあるならエディター上に表示
 		if (assets.Count > 0)
 		{
@@ -326,12 +337,11 @@ public class UISettingEditor : EditorWindow
 	/// <param name="_index"></param>
 	void LimitSpriteScale(int _index)
 	{
-		Debug.Log(assets[_index].ScaleDef);
 		if (assets[_index].ScaleDef != assets[_index].ScaleDef * editorImage[_index].Scale)
 		{
 			assets[_index].Image.rectTransform.localScale = assets[_index].ScaleDef * editorImage[_index].Scale;
 		}
-		else if(assets[_index].Scale == 1)
+		else if (assets[_index].Scale == 1)
 		{
 			assets[_index].Image.rectTransform.localScale = assets[_index].ScaleDef;
 		}

@@ -12,7 +12,7 @@ using UnityEngine.UI;
 public class TitleManager : MonoBehaviour
 {
 	private Action currentUpdate;
-
+	
     [SerializeField] private LogoAnimation logoAnimation;
 	[SerializeField] private CanvasController_Title canvasController_Title;
 	[SerializeField] private DemoMovie_Sound demoMovie_Sound;

@@ -22,8 +22,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+#if UNITY_EDITOR
 using UnityEditor;
-
 // typeof で渡されたクラスがインスペクタに表示される際に、
 // このカスタムエディタクラスが適用され、
 // 自由にカスタマイズすることが可能になります
@@ -150,3 +150,4 @@ public class EditorExWindow : ScriptableWizard
 		}
 	}
 }
+#endif

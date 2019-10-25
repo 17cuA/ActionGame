@@ -1,15 +1,14 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.SceneManagement;
-using UnityEditor;
-using UnityEditor.SceneManagement;
-using UnityEditorInternal;
-using System.IO;
-using System.Linq;
+﻿//using System.Collections;
+//using System.Collections.Generic;
+//using UnityEngine;
+//using UnityEngine.UI;
+//using UnityEngine.SceneManagement;
+//using UnityEditor;
+//using UnityEditor.SceneManagement;
+//using UnityEditorInternal;
+//using System.IO;
+//using System.Linq;
 
-#if UNITY_EDITOR
 public class UICreateAssets
 {
 	///// <summary>
@@ -242,4 +241,3 @@ public class UICreateAssets
 	//}
 	#endregion
 }
-#endif

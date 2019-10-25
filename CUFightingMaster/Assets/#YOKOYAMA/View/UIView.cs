@@ -6,10 +6,11 @@
  ------------------------------------------------------------------------------------------------------------------------------------------------------*/
 using System.Collections.Generic;
 using UnityEngine;
+#if UNITY_EDITOR
 using UnityEditor;
-using SuperCU;
-using SuperCU.Generic;
+#endif
 
+#if UNITY_EDITOR
 public class UIView : SceneView
 {
 	//座標定数
@@ -37,3 +38,4 @@ public class UIView : SceneView
 		return window;
 	}
 }
+#endif

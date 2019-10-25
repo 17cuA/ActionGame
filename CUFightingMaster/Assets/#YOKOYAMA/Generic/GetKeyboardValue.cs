@@ -10,21 +10,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-namespace SuperCU.Generic
+public static class GetKeyboardValue
 {
-    public static class GetKeyboardValue
-    {
-        public static string DownKeyCheck()
-        {
-            if (Input.anyKey)
-            {
-                foreach (var code in Input.inputString)
-                {
-                    Debug.Log(code);
-                    return code.ToString();
-                }
-            }
-            return " ";
-        }
-    }
+	public static string DownKeyCheck()
+	{
+		if (Input.anyKey)
+		{
+			foreach (var code in Input.inputString)
+			{
+				Debug.Log(code);
+				return code.ToString();
+			}
+		}
+		return " ";
+	}
 }
