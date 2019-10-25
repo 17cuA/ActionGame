@@ -12,7 +12,6 @@ public class SceneChange_Manager : MonoBehaviour
 
     [SerializeField]
     private AsyncOperation async;
-    // Start is called before the first frame update
     void Start()
     {
         canvasController_CharacterSelect.InitDownCurtain();
@@ -21,7 +20,6 @@ public class SceneChange_Manager : MonoBehaviour
         async.allowSceneActivation = false;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (Manager.sceneChangeJughe == false)

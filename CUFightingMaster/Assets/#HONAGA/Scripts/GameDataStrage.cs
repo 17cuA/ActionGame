@@ -72,8 +72,7 @@ public class GameDataStrage : MonoBehaviour
 	{
 		if(_num ==PlayerNumber.Player1)
 		{
-			plusAttackDamage_One += _dam;
-		}
+			plusAttackDamage_One += _dam;	}
 		else if(_num==PlayerNumber.Player2)
 		{
 			plusAttackDamage_Two += _dam;
