@@ -19,7 +19,7 @@ public class CreateInputManagerWindow : EditorWindow
     /// <summary>
     /// ScriptableInputManagerの変数
     /// </summary>
-    private ScriptableInputManager _saveObj = null, _obj = null;	//セーブ用変数、エディタ使用変数
+    private ScriptableInputManager  _obj = null;	//設定用変数
     Vector2 scrollPos = Vector2.zero;								//スクロールバー用位置変数
 	private string[] playerTab = { "プレイヤー1", "プレイヤー2" };	//設定するプレイヤーを変更する為の変数
 	private int playerTabNum = 0;
@@ -46,7 +46,7 @@ public class CreateInputManagerWindow : EditorWindow
         {
             //読み込み
             Import();
-            _obj.InputControllerButtons = null;
+            _obj.InputControllers = null;
         }
 
         Color defaultColor = GUI.backgroundColor;
@@ -63,7 +63,7 @@ public class CreateInputManagerWindow : EditorWindow
             using (new GUILayout.HorizontalScope())
             {
                 //リセット
-                if (GUILayout.Button("リセット"))
+                if (GUILayout.Button("　　　 リセット 　　　"))
                 {
                     inputManagerSetter.ClearInputManager();
                 }
@@ -72,10 +72,6 @@ public class CreateInputManagerWindow : EditorWindow
                 {
                     inputManagerSetter.SetInputManager();
                 }
-            }
-            if (GUILayout.Button("プログラムで設定したInputManagerをセット"))
-            {
-                inputManagerSetter.AutoSetInputManager();
             }
 			if (GUILayout.Button("デフォルトの設定をセット"))
             {
@@ -90,21 +86,21 @@ public class CreateInputManagerWindow : EditorWindow
                 GUILayout.Label("ロード&セーブ");
             }
             GUI.backgroundColor = defaultColor;
-            using (new GUILayout.HorizontalScope())
-            {
-                //読み込みボタン
-                if (GUILayout.Button("ロード"))
-                {
-                    Import();
-                }
-                //書き込みボタン
-                if (GUILayout.Button("セーブ"))
-                {
-                    Export();
-                }
-            }
-            #endregion
-        }
+			using (new GUILayout.HorizontalScope())
+			{
+				//読み込みボタン
+				if (GUILayout.Button("ロード"))
+				{
+					Import();
+				}
+				//書き込みボタン
+				if (GUILayout.Button("セーブ"))
+				{
+					Export();
+				}
+			}
+			#endregion
+		}
 
         using (new GUILayout.VerticalScope())
         {
@@ -157,11 +153,11 @@ public class CreateInputManagerWindow : EditorWindow
                     //変更された場合表示を変える
                     if (index != playerTabNum)  playerTabNum = index;
                 }
-                //ボタン分ループ
-                for (int i = 0; i < _obj.SetButtonNum; i++)
+				//ボタン分ループ
+				for (int i = 0; i < _obj.SetButtonNum; i++)
                 {
 					//開いている場合ボタン設定できるようにする
-					isOpen[playerTabNum, i] = EditorGUILayout.Foldout(isOpen[playerTabNum, i], string.Format("ボタン{0}", i + 1));
+					isOpen[playerTabNum ,i] = EditorGUILayout.Foldout(isOpen[playerTabNum, i], string.Format("ボタン{0}", i + 1));
 					if (isOpen[playerTabNum, i])
 					{
 						EditorGUI.indentLevel++;
@@ -172,15 +168,17 @@ public class CreateInputManagerWindow : EditorWindow
 							switch (j)
 							{
 								case 0:
-									_obj.InputControllerButtons[playerTabNum][i].Name = EditorGUILayout.TextField("名前", _obj.InputControllerButtons[playerTabNum][i].Name);
+									_obj.InputControllers[playerTabNum].Buttons[i].Name 
+                                        = EditorGUILayout.TextField("名前", _obj.InputControllers[playerTabNum].Buttons[i].Name);
 									break;
 								case 1:
-									_obj.InputControllerButtons[playerTabNum][i].InputButtonNum =
-										Mathf.Clamp(EditorGUILayout.IntField("ボタン", _obj.InputControllerButtons[playerTabNum][i].InputButtonNum), 0, 15);
+									_obj.InputControllers[playerTabNum].Buttons[i].InputButtonNum
+                                        = Mathf.Clamp(EditorGUILayout.IntField("ボタン", _obj.InputControllers[playerTabNum].Buttons[i].InputButtonNum), 0, 15);
 									break;
 								case 2:
-									_obj.InputControllerButtons[playerTabNum][i].AltButton = EditorGUILayout.TextField("デバッグキー", _obj.InputControllerButtons[playerTabNum][i].AltButton);
-									break;
+									_obj.InputControllers[playerTabNum].Buttons[i].AltButton
+                                        = EditorGUILayout.TextField("デバッグキー", _obj.InputControllers[playerTabNum].Buttons[i].AltButton);
+                                    break;
 							}
 						}
 						EditorGUI.indentLevel--;
@@ -190,8 +188,8 @@ public class CreateInputManagerWindow : EditorWindow
             EditorGUILayout.EndScrollView();
             #endregion
         }
-        #endregion
-    }
+		#endregion
+	}
 
     #region コントローラの名前確認
     /// <summary>
@@ -216,41 +214,45 @@ public class CreateInputManagerWindow : EditorWindow
     private void SetController()
     {
 		//リストの作成及び追加、削除を行ったときの表示エラーを回避するための初期化
-		if (_obj.InputControllerButtons == null || _obj.PlayerNum != _obj.SetPlayerNum || _obj.ButtonNum != _obj.SetButtonNum)
+		if (true)
+
+		#region 初期化変更頑張る
+		if (_obj.InputControllers == null || _obj.PlayerNum != _obj.SetPlayerNum || _obj.ButtonNum != _obj.SetButtonNum)
         {
             //設定用変数に入力用変数の値を格納
             _obj.SetPlayerNum = _obj.PlayerNum;
             _obj.SetButtonNum = _obj.ButtonNum;
 			//必要な初期化を行う
-			isOpen = new bool[_obj.SetPlayerNum, _obj.SetButtonNum];
-			var playerList = new List<List<ScriptableInputManager.InputControllerButton>>();
-            //プレイヤー分ループ
-            for (int i = 0; i < _obj.SetPlayerNum; i++)
+			isOpen = new bool[_obj.SetPlayerNum , _obj.SetButtonNum];
+			var controllerList = new List<SettingControllerClass>();
+			//プレイヤー分ループ
+			for (int i = 0; i < _obj.SetPlayerNum; i++)
             {
-                var controllerList = new List<ScriptableInputManager.InputControllerButton>();
-                //ボタン分ループ
-                for (int j = 0; j < _obj.SetButtonNum; j++)
+				var controller = new SettingControllerClass();
+				controller.Buttons = new List<SettingButtonClass>();
+				//ボタン分ループ
+				for (int j = 0; j < _obj.SetButtonNum; j++)
                 {
-                    var bottonList = new ScriptableInputManager.InputControllerButton();
-					controllerList.Add(bottonList);
+                    var button = new SettingButtonClass();
+					controller.Buttons.Add(button);
 					isOpen[i, j] = false;
 				}
-                playerList.Add(controllerList);
-            }
-            _obj.InputControllerButtons = playerList;
+				controllerList.Add(controller);
+			}
+            _obj.InputControllers = controllerList;
         }
-    }
-    #endregion
-    #region ロード
-    /// <summary>
-    /// ロード用メソッド
-    /// </summary>
-    private void Import()
+		#endregion
+	}
+#endregion
+	#region ロード
+	/// <summary>
+	/// ロード用メソッド
+	/// </summary>
+	private void Import()
     {
         if (_obj == null)
         {
             _obj = CreateInstance<ScriptableInputManager>();
-            _saveObj = CreateInstance<ScriptableInputManager>();
         }
 
 		ScriptableInputManager sample = AssetDatabase.LoadAssetAtPath<ScriptableInputManager>(ASSET_PATH);
@@ -263,8 +265,8 @@ public class CreateInputManagerWindow : EditorWindow
 			AssetDatabase.Refresh();
 			return;
 		}
-        //コピーする
-        _obj.Copy(sample);
+		//コピーする
+		_obj.Copy(sample);
 	}
     #endregion
     #region 保存
@@ -281,7 +283,7 @@ public class CreateInputManagerWindow : EditorWindow
         }
 
         //新規の場合は作成
-        if (!AssetDatabase.Contains(_saveObj as UnityEngine.Object))
+        if (!AssetDatabase.Contains(sample as UnityEngine.Object))
         {
             string directory = Path.GetDirectoryName(ASSET_PATH);
             if (!Directory.Exists(directory))
@@ -289,17 +291,16 @@ public class CreateInputManagerWindow : EditorWindow
                 Directory.CreateDirectory(directory);
             }
             //アセット作成
-            AssetDatabase.CreateAsset(_saveObj, ASSET_PATH);
+            AssetDatabase.CreateAsset(sample, ASSET_PATH);
         }
 
-        //コピー
-        _saveObj.Copy(_obj);
-        sample.Copy(_saveObj);
+		//コピー
+		sample.Copy(_obj);
 
 		////インスペクターから設定できないようにする
-		_saveObj.hideFlags = HideFlags.NotEditable;
+		sample.hideFlags = HideFlags.NotEditable;
 		//更新通知
-		EditorUtility.SetDirty(_saveObj);
+		EditorUtility.SetDirty(sample);
 		//保存
 		AssetDatabase.SaveAssets();
 		//エディタを最新の状態にする

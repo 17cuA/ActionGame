@@ -67,29 +67,16 @@ public class ScriptableInputManager : ScriptableObject
     public static int MaxButtonNum = 16;
     //1ボタン当たりに設定する項目数
     public static int SetButtonInfo = 3;
-    //コントローラー設定用
-    [System.Serializable]
-	public class InputControllerButton
-	{
-        //ボタンの名前
-		public string Name;
-        //ボタンのラベルを判別するのに使用
-		public int InputButtonNum;
-        //設定用ラベル名を格納
-		public string[] ButtonLabel;
-        //デバッグ用のキーを設定するのに使用
-		public string AltButton;
-	}
 
 	[SerializeField]
-    private List<List<InputControllerButton>> _inputControllerButtons;
-	public List<List<InputControllerButton>> InputControllerButtons
-    {
-        get { return _inputControllerButtons; }
+	private List<SettingControllerClass> _inputControllers;
+	public List<SettingControllerClass> InputControllers
+	{
+		get { return _inputControllers; }
 #if UNITY_EDITOR
-        set { _inputControllerButtons = value; }
+		set { _inputControllers = value; }
 #endif
-    }
+	}
 
 	//スティックの設定を追加するか
 	[SerializeField]
@@ -107,13 +94,70 @@ public class ScriptableInputManager : ScriptableObject
     public void Copy(ScriptableInputManager sobj)
 	{
 		_controllerName = sobj.ControllerName;
-        _playerNum = sobj._playerNum;
-        _setPlayerNum = sobj._setPlayerNum;
+        _playerNum = sobj.PlayerNum;
+        _setPlayerNum = sobj.SetPlayerNum;
         _buttonNum = sobj.ButtonNum;
         _setButtonNum = sobj.SetButtonNum;
-        _inputControllerButtons = sobj.InputControllerButtons;
-		_isSetStick = sobj._isSetStick;
+		//
+		_inputControllers = sobj.InputControllers;
+		//
+		_isSetStick = sobj.IsSetStick;
+
 	}
 #endif
 	#endregion
+}
+
+/// <summary>
+/// ボタン設定用クラス
+/// </summary>
+//コントローラー設定用
+[System.Serializable]
+public class SettingControllerClass
+{
+	[SerializeField]
+	private List<SettingButtonClass> _buttons;
+	public List<SettingButtonClass> Buttons
+	{
+		get { return _buttons; }
+#if UNITY_EDITOR
+		set { _buttons = value; }
+#endif
+	}
+}
+
+//ボタン設定用
+[System.Serializable]
+public class SettingButtonClass
+{
+	//ボタンの名前
+	[SerializeField]
+	private string _name;
+	public string Name
+	{
+		get { return _name; }
+#if UNITY_EDITOR
+		set { _name = value; }
+#endif
+	}
+	//ボタンのラベルを判別するのに使用
+	[SerializeField]
+	private int _inputButtonNum;
+	public int InputButtonNum
+	{
+		get { return _inputButtonNum; }
+#if UNITY_EDITOR
+		set { _inputButtonNum = value; }
+#endif
+	}
+	//デバッグ用のキーを設定するのに使用
+	[SerializeField]
+	private string _altButton;
+	public string AltButton
+	{
+		get { return _altButton; }
+#if UNITY_EDITOR
+		set { _altButton = value; }
+#endif
+	}
 }
