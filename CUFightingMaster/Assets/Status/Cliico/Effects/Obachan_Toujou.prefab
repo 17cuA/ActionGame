@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7023955890234531096}
   - component: {fileID: 7023955890234531097}
   m_Layer: 0
-  m_Name: Obachan_toujou
+  m_Name: Obachan_Toujou
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4791,6 +4791,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.x
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5892563626139267413, guid: 5430cd1e21a15d84a9d6a1f3dc34bc6e,
+        type: 3}
+      propertyPath: m_MaxParticleSize
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7478928732659134591, guid: 5430cd1e21a15d84a9d6a1f3dc34bc6e,
         type: 3}
       propertyPath: UVModule.frameOverTime.maxCurve.m_Curve.Array.size
@@ -5111,11 +5116,6 @@ PrefabInstance:
       propertyPath: SizeModule.curve.scalar
       value: 1.25
       objectReference: {fileID: 0}
-    - target: {fileID: 5892563626139267413, guid: 5430cd1e21a15d84a9d6a1f3dc34bc6e,
-        type: 3}
-      propertyPath: m_MaxParticleSize
-      value: 2
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5430cd1e21a15d84a9d6a1f3dc34bc6e, type: 3}
 --- !u!4 &4295386852770234259 stripped
@@ -5190,6 +5190,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7478928732659134591, guid: 5430cd1e21a15d84a9d6a1f3dc34bc6e,
+        type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 0.0001
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5430cd1e21a15d84a9d6a1f3dc34bc6e, type: 3}
