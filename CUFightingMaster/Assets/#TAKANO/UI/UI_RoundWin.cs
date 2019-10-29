@@ -24,6 +24,11 @@ public class UI_RoundWin : MonoBehaviour
     {
         currentImage.sprite = sprite;
     }
+	public void HideImage()
+	{
+		currentImage.enabled = false;
+		Debug.Log("sa");
+	}
     private void Awake()
     {
         currentImage = gameObject.GetComponent<Image>(); 

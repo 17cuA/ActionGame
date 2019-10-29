@@ -39,6 +39,8 @@ public class InGameUIController : MonoBehaviour
 	[SerializeField] UI_Gauge uI_sp_P2;
 	[SerializeField] UI_Gauge uI_st_P1;
 	[SerializeField] UI_Gauge uI_st_P2;
+	[SerializeField] UI_FighterImage uI_FighterImage_P1;
+	[SerializeField] UI_FighterImage uI_FighterImage_P2;
 
 	[SerializeField] UI_RoundWinCounter uI_RoundWinCounter;
 	[SerializeField] UI_StartRound uI_StartRound;
@@ -66,13 +68,6 @@ public class InGameUIController : MonoBehaviour
 	public void PlayBattleRound()
 	{
 		uI_BatlleRound.DisplayBatlleUI();
-
-		//一時的
-		uI_hp_P1 = uI_InGameUI.transform.Find("UI_HP_P1").GetComponent<UI_HP>();
-		uI_hp_P2 = uI_InGameUI.transform.Find("UI_HP_P2").GetComponent<UI_HP>();
-		uI_countDownTimer = uI_InGameUI.transform.Find("UI_CountDownTimer").GetComponent<CountDownTimer>();
-		uI_sp_P1 = uI_InGameUI.transform.Find("UI_SP_P1").GetComponent<UI_Gauge>();
-		uI_sp_P2 = uI_InGameUI.transform.Find("UI_SP_P2").GetComponent<UI_Gauge>();
 	}
 
 	/// <summary>
@@ -103,7 +98,6 @@ public class InGameUIController : MonoBehaviour
 		uI_hp_P1.SetHpMax(charaHpMax_P1);
 		uI_hp_P2.SetHpMax(charaHpMax_P2);
 	}
-
 
 	/// <summary>
 	/// HPバーにキャラのSPの最大値をセット
@@ -220,9 +214,23 @@ public class InGameUIController : MonoBehaviour
 	}
 
 	/// <summary>
-	///UIのパラメータのリセット
+	/// UIの表示を消す
 	/// </summary>
-	public void ResetUIParameter()
+	public void HideUIImage()
+	{
+		uI_hp_P1.Call_HideImage();
+		uI_hp_P2.Call_HideImage();
+		uI_sp_P1.Call_HideImage();
+		uI_sp_P2.Call_HideImage();
+		uI_FighterImage_P1.Call_HideImage();
+		uI_FighterImage_P2.Call_HideImage();
+		uI_RoundWinCounter.Call_HideImage();
+		uI_countDownTimer.Call_HideImage();
+	}
+		/// <summary>
+		///UIのパラメータのリセット
+		/// </summary>
+		public void ResetUIParameter()
 	{
 		uI_StartRound.Reset_isCalled();
 		uI_FinishRound_KO.isCalled = false;

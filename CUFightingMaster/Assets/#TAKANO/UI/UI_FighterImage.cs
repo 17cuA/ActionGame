@@ -57,5 +57,8 @@ public class UI_FighterImage : MonoBehaviour
 			transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
 		}
 	}
-
+	public void Call_HideImage()
+	{
+		displayImage.enabled = false;
+	}
 }

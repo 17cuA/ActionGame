@@ -34,6 +34,7 @@ public class UI_HP : MonoBehaviour
 	public GameObject effectsObject;
 
 	public Image redImage;
+	public Image waku_Image;
 	public RectTransform hpGuagePosition;
 	public RectTransform greenRect, redRect, grayRect;
 	public RectTransform hitRedGuage;
@@ -73,6 +74,17 @@ public class UI_HP : MonoBehaviour
 			isUpdate = true;
 		}
 		beforeHp = currentHp;
+	}
+
+	public void Call_HideImage()
+	{
+		hpObjects[0].GetComponent<Image>().enabled = false;
+		hpObjects[1].GetComponent<Image>().enabled = false;
+		hpObjects[2].GetComponent<Image>().enabled = false;
+		hpObjects[3].GetComponent<Image>().enabled = false;
+		hpObjects[4].GetComponent<Image>().enabled = false;
+		redImage.enabled = false;
+		waku_Image.enabled = false;
 	}
 
 	/// <summary>
@@ -236,7 +248,6 @@ public class UI_HP : MonoBehaviour
 	{
         //画像の横のサイズを取得
         hpBarWidth = hpObjects[0].GetComponent<RectTransform>().sizeDelta.x;
-
 
 		//描画順番を指定
 		for (int i = 0; i < 5; i++)

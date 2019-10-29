@@ -141,7 +141,9 @@ public class FuncKeyManager : SingletonMono<FuncKeyManager>
 				{
 					canvasController.Call_ResumeCountdown();
 				}
-            }
+				//タイマーカウントを10ずつ進める
+		
+			}
 			#endregion
 		}
 	}

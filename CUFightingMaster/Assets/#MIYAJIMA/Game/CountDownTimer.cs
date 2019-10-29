@@ -126,4 +126,10 @@ public class CountDownTimer : MonoBehaviour
 			EmphasizNumber(EmphasizTime);
 		}
     }
+
+	public void Call_HideImage()
+	{
+		firstDigit.enabled = false;
+		secondDigit.enabled = false;
+	}
 }
