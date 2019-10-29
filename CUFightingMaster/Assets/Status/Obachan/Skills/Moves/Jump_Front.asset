@@ -13,25 +13,31 @@ MonoBehaviour:
   m_Name: Jump_Front
   m_EditorClassIdentifier: 
   skillLayer: 0
-  animationClip: {fileID: 7400000, guid: 6995925584ce8ae4eb153b88fc331bf8, type: 2}
-  animationSpeed: 0.5
+  animationClip: {fileID: 7400000, guid: baeddc2279b1c3d4fb1721c6026ff5b3, type: 3}
+  animationSpeed: 1
   status: 16
   frameEffects:
   - frame: 0
-    effect: {fileID: 6389571469780443139, guid: b7224cc72130e1149aa95967284d9ee5,
+    effect: {fileID: 4679531848076329669, guid: f0c57a013edf6c146bb490c5e8b4911f,
       type: 3}
     childFlag: 0
     worldPositionFlag: 0
+    isDeleteObj: 0
+    isScaled: 0
     position: {x: 0, y: 0, z: 0}
   - frame: 0
     effect: {fileID: 81656776355204868, guid: e21cc19c257f501459fe2c0eac0c4d3a, type: 3}
     childFlag: 0
     worldPositionFlag: 0
+    isDeleteObj: 0
+    isScaled: 0
     position: {x: 0, y: 0, z: 0}
   - frame: 0
     effect: {fileID: 367438150998993214, guid: 6debe9d3bedd31c4d8edbaa23c7639fe, type: 3}
     childFlag: 0
     worldPositionFlag: 0
+    isDeleteObj: 0
+    isScaled: 0
     position: {x: 0, y: 0, z: 0}
   frameBullets: []
   cancelFrag: 0
@@ -39,6 +45,7 @@ MonoBehaviour:
   endNextWeight: 0
   groundLandingSkill: {fileID: 0}
   groundLandingWeight: 0
+  isGroundEnd: 0
   barrageCancelFrag: 0
   cancelLayer: 
   inBlend: 0
