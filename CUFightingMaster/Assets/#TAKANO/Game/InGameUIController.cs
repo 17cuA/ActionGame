@@ -32,6 +32,8 @@ public class InGameUIController : MonoBehaviour
 	[SerializeField] GameObject Player02;
 
 	[SerializeField] CountDownTimer uI_countDownTimer;
+	[SerializeField] ComboUIManager uI_ComboUIManager_P1;
+	[SerializeField] ComboUIManager uI_ComboUIManager_P2;
 
 	[SerializeField] UI_HP uI_hp_P1;
 	[SerializeField] UI_HP uI_hp_P2;
@@ -226,6 +228,8 @@ public class InGameUIController : MonoBehaviour
 		uI_FighterImage_P2.Call_HideImage();
 		uI_RoundWinCounter.Call_HideImage();
 		uI_countDownTimer.Call_HideImage();
+		uI_ComboUIManager_P1.Call_HideUI();
+		uI_ComboUIManager_P2.Call_HideUI();
 	}
 		/// <summary>
 		///UIのパラメータのリセット

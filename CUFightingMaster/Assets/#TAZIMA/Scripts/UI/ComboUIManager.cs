@@ -131,4 +131,11 @@ public class ComboUIManager : MonoBehaviour
 		}
 	}
 	#endregion
+
+	public void Call_HideUI()
+	{
+		comboNumObj[0].GetComponent<Image>().enabled = false;
+		comboNumObj[1].GetComponent<Image>().enabled = false;
+		comboObj.GetComponent<Image>().enabled = false;
+	}
 }

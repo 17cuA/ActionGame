@@ -27,7 +27,6 @@ public class UI_RoundWin : MonoBehaviour
 	public void HideImage()
 	{
 		currentImage.enabled = false;
-		Debug.Log("sa");
 	}
     private void Awake()
     {
