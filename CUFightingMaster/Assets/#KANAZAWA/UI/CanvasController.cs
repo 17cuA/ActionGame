@@ -207,11 +207,10 @@ public class CanvasController : MonoBehaviour
 	/// </summary>
 	/// <param name="currentSp_P1">Player1の現在のSp</param>
 	/// <param name="currentSp_P2">Player2の現在のSp</param>
-	/// 後藤変更currentSp_P1,currentSp_P2の値を直接１００に変更
 	public void Call_DisplayPlayerSp(int currentSp_P1, int currentSp_P2)
 	{
-		inGameUIController_1.DisplayPlayerSp(120,120);
-		inGameUIController_2.DisplayPlayerSp(120,120);
+		inGameUIController_1.DisplayPlayerSp(currentSp_P1, currentSp_P2);
+		inGameUIController_2.DisplayPlayerSp(currentSp_P1, currentSp_P2);
 	}
 
 	/// <summary>
