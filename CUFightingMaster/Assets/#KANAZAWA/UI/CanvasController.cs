@@ -303,4 +303,13 @@ public class CanvasController : MonoBehaviour
         curtainMover_2.InitDownCurtain();
     }
 
+	/// <summary>
+	/// UIの非表示
+	/// </summary>
+	public void Call_HideUI()
+	{
+		inGameUIController_1.HideUIImage();
+		inGameUIController_2.HideUIImage();
+	}
+
 }

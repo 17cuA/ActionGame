@@ -46,6 +46,7 @@ public class InGameManager : SingletonMono<InGameManager>
 	public GameObject[] targetPoint = new GameObject[2];
 
 	bool isBright = false;
+	[SerializeField] private bool hideUI = false;
 
     [SerializeField]bool isPlayCutIn = false;     //ゲーム中のカットシーンフラグ、再生されていたらTrue
     public CameraBase player1_Timeline = null;
@@ -138,11 +139,11 @@ public class InGameManager : SingletonMono<InGameManager>
     /// </summary>
     private void BattleRound()
     {
-        //カットインが再生されていたら
-        if (isPlayCutIn == true)
+		//カットインが再生されていたら
+		if (isPlayCutIn == true)
         {
 
-        }
+		}
         else
         {
             //UIのhp表示の更新
@@ -365,5 +366,9 @@ public class InGameManager : SingletonMono<InGameManager>
     void Update()
     {
 		currentUpdate();
-    }
+		if (hideUI)
+		{
+			canvasController.Call_HideUI();
+		}
+	}
 }

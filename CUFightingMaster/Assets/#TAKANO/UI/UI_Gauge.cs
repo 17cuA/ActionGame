@@ -21,6 +21,10 @@ public class UI_Gauge : MonoBehaviour
 	public PlayerType playerType;
 
 	public GameObject guage;
+	public Image waku_Image;
+	public Image effect_Image;
+	public Image pushEx_Image;
+	public Image back_Image;
 
 	public RectTransform guagePosition;
 
@@ -79,6 +83,19 @@ public class UI_Gauge : MonoBehaviour
 			pushEx.isInvisible = false;
 		}
 	}
+
+	/// <summary>
+	/// UIの表示を消す
+	/// </summary>
+	public void Call_HideImage()
+	{
+		guage.GetComponent<Image>().enabled = false;
+		waku_Image.enabled = false;
+		effect_Image.enabled = false;
+		pushEx.enabled = false;
+		back_Image.enabled = false;
+	}
+
 	private void Start()
 	{
 		guageWidth = guage.GetComponent<RectTransform>().sizeDelta.x;

@@ -87,5 +87,13 @@ class UI_RoundWinCounter : MonoBehaviour
 		//	uI_RoundWin.UpdateImage(default_Image);
 		//}
 	}
+
+	public void Call_HideImage()
+	{
+		RoundCounter_P1[0].GetComponent<UI_RoundWin>().HideImage();
+		RoundCounter_P1[1].GetComponent<UI_RoundWin>().HideImage();
+		RoundCounter_P2[0].GetComponent<UI_RoundWin>().HideImage();
+		RoundCounter_P2[1].GetComponent<UI_RoundWin>().HideImage();
+	}
 }
 
