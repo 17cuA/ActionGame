@@ -66,7 +66,7 @@ public class SoundPlay : MonoBehaviour
         Clico_Special3,
         Clico_Special4,
         Clico_Thrown,
-        Clico_RoundStart,
+		Clico_RoundStart,
 
 		Oba_Hit,
 		Clico_Tackle,
@@ -215,8 +215,8 @@ public class SoundPlay : MonoBehaviour
                     Sound.PlaySE("Oba_Thrown", 18, 0.5f, 1);
                     break;
                 case SoundsType.Oba_RoundStart:
-						Sound.PlaySE("Oba_RoundStart", 19, 1, 1);
-                    break;
+					Sound.PlaySE("Oba_RoundStart", 19, 0, 1);
+					break;
 
                 case SoundsType.Clico_CharacterSelect:
                     Sound.PlaySE("Clico_CharacterSelect", 1, 0.5f, 1);
@@ -270,7 +270,8 @@ public class SoundPlay : MonoBehaviour
                     Sound.PlaySE("Clico_Thrown", 18, 0.5f, 1);
                     break;
                 case SoundsType.Clico_RoundStart:
-					Sound.PlaySE("Clico_RoundStart", 18, 1, 1);
+					Sound.PlaySE("Clico_RoundStart", 18, 2.0f, 1);
+					//Sound.PlaySE("sinji_honke_BGMtuki_kesenai", 18, 3, 1);
 					break;
 				case SoundsType.Clico_Tackle:
 					Sound.PlaySE("Clico_Tackle", 19, 0.5f, 1);

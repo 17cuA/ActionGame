@@ -22,8 +22,10 @@ MonoBehaviour:
   airBraking: 0.5
   characterImage: {fileID: 0}
   commandSprite: {fileID: 0}
-  PlayerModel: {fileID: 100212, guid: 34ac92778da5bf942aa829a615f8d098, type: 3}
-  PlayerModel2: {fileID: 100212, guid: 34ac92778da5bf942aa829a615f8d098, type: 3}
+  PlayerModel: {fileID: 9013603117578237786, guid: bdf0946400436804d8f02c819f1d5f2b,
+    type: 3}
+  PlayerModel2: {fileID: 9013603117578237786, guid: bdf0946400436804d8f02c819f1d5f2b,
+    type: 3}
   playerMaterials:
   - nomalMaterial: []
     inversionMaterial: []
@@ -113,12 +115,12 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  - {fileID: 11400000, guid: 228e2d2065df7864fb362ce1608f8cb1, type: 2}
-  - {fileID: 11400000, guid: 356a55c8fd7f4e94492e7e8821c1c04b, type: 2}
+  - {fileID: 11400000, guid: 725841e54b5dd204ea5780dc31606530, type: 2}
+  - {fileID: 11400000, guid: 49278d8e93880184883099f3b166a474, type: 2}
   - {fileID: 11400000, guid: d06621f4ca69c3040981a0814dd61e5b, type: 2}
   - {fileID: 11400000, guid: 2029dedb7d3a78e4c8aea9ef5f5cc4fb, type: 2}
   - {fileID: 11400000, guid: c877e7445e172104299e484e92e6fc5a, type: 2}
-  - {fileID: 11400000, guid: 4129e357ada94104bb23a9cfe243b76c, type: 2}
+  - {fileID: 11400000, guid: 13468786a8ff19e499a406f72953a7b7, type: 2}
   - {fileID: 11400000, guid: 5806c22edc5d21048baf93e1e2eaba4f, type: 2}
   - {fileID: 11400000, guid: 2416b3a5d04e69042a037669f7726f9e, type: 2}
   - {fileID: 11400000, guid: fd040a1700960164a862e588edbadd0c, type: 2}
@@ -133,12 +135,57 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b43ee93da61f92944ac3d96e123c2df0, type: 2}
   - {fileID: 11400000, guid: 8f9d3e3e108069647ada66167d72322d, type: 2}
   - {fileID: 11400000, guid: 3ada4f6899779f74d8aa5768efaedcd0, type: 2}
-  fighter: {fileID: 0}
+  fighter: {fileID: 9013603117578237787, guid: bdf0946400436804d8f02c819f1d5f2b, type: 3}
   InGameTimeline_One: {fileID: 1574817030436351265, guid: 63db7a0e0598f3a499a3c07fdb0c2663,
     type: 3}
   InGameTimeline_Two: {fileID: 2246286025737827307, guid: 76b13763f287814478934e32205c5380,
     type: 3}
-  groundAttackSkills: []
+  groundAttackSkills:
+  - name: 236A
+    command: 236
+    trigger: A
+    skillCost: 0
+    countValid: 1
+    validShotFrame: 6
+    skill: {fileID: 11400000, guid: 99b70667e13acec44a1fcf13b459c595, type: 2}
+  - name: 214B
+    command: 214
+    trigger: B
+    skillCost: 0
+    countValid: 1
+    validShotFrame: 6
+    skill: {fileID: 11400000, guid: c8923cb53b61d454da3b961a49208f9f, type: 2}
+  - name: 623C
+    command: 623
+    trigger: C
+    skillCost: 0
+    countValid: 1
+    validShotFrame: 6
+    skill: {fileID: 11400000, guid: ad29a2d6a0137ae499283fd7358c0157, type: 2}
+  - name: 41236C
+    command: 123
+    trigger: C
+    skillCost: 0
+    countValid: 1
+    validShotFrame: 6
+    skill: {fileID: 11400000, guid: 3b898d4e3f3e00449b6748ac5b45151f, type: 2}
+  - name: 3C
+    command: 3
+    trigger: C
+    skillCost: 0
+    countValid: 1
+    validShotFrame: 6
+    skill: {fileID: 11400000, guid: b07b116b9bdef5145bf33471f06a5220, type: 2}
   airAttackSkills: []
-  groundMoveSkills: []
+  groundMoveSkills:
+  - skillCost: 0
+    countValid: 1
+    name: Front_Dash
+    command: 66
+    skill: {fileID: 11400000, guid: a42bb79810c631c40a42deb7e7c3d672, type: 2}
+  - skillCost: 0
+    countValid: 1
+    name: Back_Dash
+    command: 44
+    skill: {fileID: 11400000, guid: 6db1cb8c943e5c84992d3b907163dab6, type: 2}
   airMoveSkills: []
