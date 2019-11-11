@@ -20,12 +20,11 @@ public class CharacterSelect_Manager : SingletonMono<CharacterSelect_Manager>
     [SerializeField]
     static int charaMax = 4;
 
-    public GameObject[] CharacterNamePanels = new GameObject[charaMax * 2];    // キャラクターの名前のパネル（２画面２プレイヤーのため、２倍生成）
-    public GameObject[] previewModel = new GameObject[charaMax * 2];    // 生成したキャラクターモデルを入れておく変数（２画面２プレイヤーのため、２倍生成）
-    public Animationdata[] nomalAnimationPlayers = new Animationdata[charaMax * 2];   // 生成したキャラクターモデルのアニメーション情報を入れておく変数（２画面２プレイヤーのため、２倍生成）
-    public GameObject[] createCharaPos = new GameObject[charaMax]; // キャラクターモデルを生成する位置
-
-    public Sprite[] SelectCharacterNamePanels = new Sprite[charaMax];  // キャラクターの名前のパネルを格納しておく変数
+    public GameObject[] CharacterNamePanels = new GameObject[charaMax * 2];			// キャラクターの名前のパネル（２画面２プレイヤーのため、２倍生成）
+    public GameObject[] previewModel = new GameObject[charaMax * 2];						// 生成したキャラクターモデルを入れておく変数（２画面２プレイヤーのため、２倍生成）
+    public Animationdata[] nomalAnimationPlayers = new Animationdata[charaMax * 2];	// 生成したキャラクターモデルのアニメーション情報を入れておく変数（２画面２プレイヤーのため、２倍生成）
+    public GameObject[] createCharaPos = new GameObject[charaMax];							// キャラクターモデルを生成する位置
+    public Sprite[] SelectCharacterNamePanels = new Sprite[charaMax];							// キャラクターの名前のパネルを格納しておく変数
 
     [SerializeField]
     private bool[] characterSelectBool = { false, false, false, false };    // キャラクターを選択したかどうかの判定
@@ -52,7 +51,6 @@ public class CharacterSelect_Manager : SingletonMono<CharacterSelect_Manager>
 	private float canselTime;
 	private bool canselFrame;
 	#endregion
-    // Start is called before the first frame update
     void Start()
     {
 		canselTime = 0.0f;
@@ -72,284 +70,345 @@ public class CharacterSelect_Manager : SingletonMono<CharacterSelect_Manager>
         {
             return;
         }
-        // キャラモデルの生成
-        for (int i = 0; i < charaMax; i++)
-        {
-            if ((i + 1) % 2 == 1)
-            {
-				//Clico
-                previewModel[i] = Instantiate(currentCharacter[i].PlayerModel, createCharaPos[0].transform.position, createCharaPos[0].transform.rotation);
-                previewModel[i + 4] = Instantiate(currentCharacter[i].PlayerModel2, createCharaPos[1].transform.position, Quaternion.identity);
-                nomalAnimationPlayers[i] = previewModel[i].GetComponent<Animationdata>();
-                nomalAnimationPlayers[i + 4] = previewModel[i + 4].GetComponent<Animationdata>();
-                nomalAnimationPlayers[i + 4].ScaleObject.transform.localScale = new Vector3(1, 1, -1);
-				nomalAnimationPlayers[i + 4].RotationObject.transform.rotation = Quaternion.Euler(0, 0, 0);
-			}
-			if ((i + 1) % 2 == 0)
-            {
-				//Obachan
-                previewModel[i] = Instantiate(currentCharacter[i].PlayerModel, createCharaPos[0].transform.position, createCharaPos[0].transform.rotation);
-                previewModel[i + 4] = Instantiate(currentCharacter[i].PlayerModel2, createCharaPos[1].transform.position, Quaternion.identity);
-                nomalAnimationPlayers[i] = previewModel[i].GetComponent<Animationdata>();
-                nomalAnimationPlayers[i + 4] = previewModel[i + 4].GetComponent<Animationdata>();
-				nomalAnimationPlayers[i + 4].ScaleObject.transform.localScale = new Vector3(1, 1, -1);
-				nomalAnimationPlayers[i + 4].RotationObject.transform.rotation = Quaternion.Euler(0, 0, 0);
-			}
-		}    
-    }
+		// キャラモデルの生成
+		CreateModels();
+	}
 
     void Update()
     {
+		// カーソルのUpdate
+		CursorsUpdate();
+
+		// 1Pのキャラ選択
+		CharacterSelection1P();
+		// 2Pのキャラ選択
+		CharacterSelection2P();
+
+		// ディスプレイごとにカーソルがキャラクターを選択しているかのフラグを生成
+		CreateCursorFlags();
+
+		// カーソル選択
+		CursorSelections();
+
+		// 1Pと2Pがキャラを選択したら、フラグをtrueにする
+		CharaterDecisions();
+
+		// キャンセル処理
+		CancelProcessing();
+
+		// キャラ選択した後の時間を計測、managerからシーンの変更を許可
+		SceneChange();
+
+		// パネルのアニメーションを再生
+		PanelAnimationsPlay();
+    }
+
+	#region モデルの生成
+	void CreateModels()
+	{
+		for (int i = 0; i < charaMax; i++)
+		{
+			if ((i + 1) % 2 == 1)
+			{
+				//Clico
+				previewModel[i] = Instantiate(currentCharacter[i].PlayerModel, createCharaPos[0].transform.position, createCharaPos[0].transform.rotation);
+				previewModel[i + 4] = Instantiate(currentCharacter[i].PlayerModel2, createCharaPos[1].transform.position, Quaternion.identity);
+				nomalAnimationPlayers[i] = previewModel[i].GetComponent<Animationdata>();
+				nomalAnimationPlayers[i + 4] = previewModel[i + 4].GetComponent<Animationdata>();
+				nomalAnimationPlayers[i + 4].ScaleObject.transform.localScale = new Vector3(1, 1, -1);
+				nomalAnimationPlayers[i + 4].RotationObject.transform.rotation = Quaternion.Euler(0, 0, 0);
+			}
+			if ((i + 1) % 2 == 0)
+			{
+				//Obachan
+				previewModel[i] = Instantiate(currentCharacter[i].PlayerModel, createCharaPos[0].transform.position, createCharaPos[0].transform.rotation);
+				previewModel[i + 4] = Instantiate(currentCharacter[i].PlayerModel2, createCharaPos[1].transform.position, Quaternion.identity);
+				nomalAnimationPlayers[i] = previewModel[i].GetComponent<Animationdata>();
+				nomalAnimationPlayers[i + 4] = previewModel[i + 4].GetComponent<Animationdata>();
+				nomalAnimationPlayers[i + 4].ScaleObject.transform.localScale = new Vector3(1, 1, -1);
+				nomalAnimationPlayers[i + 4].RotationObject.transform.rotation = Quaternion.Euler(0, 0, 0);
+			}
+		}
+	}
+	#endregion
+
+	#region カーソルのUpdate
+	void CursorsUpdate()
+	{
 		cursor1_1.CursorUpdate();
 		cursor1_2.CursorUpdate();
 		cursor2_1.CursorUpdate();
 		cursor2_2.CursorUpdate();
+	}
+	#endregion
 
-		#region 1Pのキャラ選択の処理
+	#region 1Pのキャラクターセレクト
+	void CharacterSelection1P()
+	{
 		if (cursor1_1 == null)
-        {
-            return;
-        }
-        // 1Pの選択されているキャラの設定(selectDirが0ならグリコ)
-        if (cursor1_1.selectDir == 0)
-        {
-            // GameDataStrageの選択されているキャラをグリコにする
-            GameDataStrage.Instance.fighterStatuses[0] = currentCharacter[0];
-            if (SelectCharacterNamePanels[0] == null)
-            {
-                return;
-            }
-            if (CharacterNamePanels[0] != null)
-            {
-                // Display1の表示されているキャラ名をグリコにする
-                CharacterNamePanels[0].GetComponent<Image>().sprite = SelectCharacterNamePanels[0];
-            }
-            if (CharacterNamePanels[2] != null)
-            {
-                // Display2の表示されているキャラ名をグリコにする
-                CharacterNamePanels[2].GetComponent<Image>().sprite = SelectCharacterNamePanels[0];
-            }
-            PreviewModelsActiveSet(0, 1);
-        }
-        // 1の場合別グリコ
-        else if (cursor1_1.selectDir == 1)
-        {
-            // GameDataStrageの選択されているキャラを別グリコにする
-            GameDataStrage.Instance.fighterStatuses[0] = currentCharacter[1];
-            if (SelectCharacterNamePanels[1] == null)
-            {
-                return;
-            }
-            if (CharacterNamePanels[0] != null)
-            {
-                // Display1の表示されているキャラ名を別グリコにする
-                CharacterNamePanels[0].GetComponent<Image>().sprite = SelectCharacterNamePanels[1];
-            }
-            if (CharacterNamePanels[2] != null)
-            {
-                // Display2の表示されているキャラ名を別グリコにする
-                CharacterNamePanels[2].GetComponent<Image>().sprite = SelectCharacterNamePanels[1];
-            }
-            PreviewModelsActiveSet(1, 1);
-        }
-        // ２ならおばちゃん
-        else if (cursor1_1.selectDir == 2)
-        {
-            // GameDataStrageの選択されているキャラをおばちゃんにする
-            GameDataStrage.Instance.fighterStatuses[0] = currentCharacter[2];
-            if (SelectCharacterNamePanels[1] == null)
-            {
-                return;
-            }
-            if (CharacterNamePanels[0] != null)
-            {
-                // Display1の表示されているキャラ名をおばちゃんにする
-                CharacterNamePanels[0].GetComponent<Image>().sprite = SelectCharacterNamePanels[2];
-            }
+		{
+			return;
+		}
+		// 1Pの選択されているキャラの設定(selectDirが0ならグリコ)
+		if (cursor1_1.selectDir == 0)
+		{
+			// GameDataStrageの選択されているキャラをグリコにする
+			GameDataStrage.Instance.fighterStatuses[0] = currentCharacter[0];
+			if (SelectCharacterNamePanels[0] == null)
+			{
+				return;
+			}
+			if (CharacterNamePanels[0] != null)
+			{
+				// Display1の表示されているキャラ名をグリコにする
+				CharacterNamePanels[0].GetComponent<Image>().sprite = SelectCharacterNamePanels[0];
+			}
+			if (CharacterNamePanels[2] != null)
+			{
+				// Display2の表示されているキャラ名をグリコにする
+				CharacterNamePanels[2].GetComponent<Image>().sprite = SelectCharacterNamePanels[0];
+			}
+			PreviewModelsActiveSet(0, 1);
+		}
+		// 1の場合別グリコ
+		else if (cursor1_1.selectDir == 1)
+		{
+			// GameDataStrageの選択されているキャラを別グリコにする
+			GameDataStrage.Instance.fighterStatuses[0] = currentCharacter[1];
+			if (SelectCharacterNamePanels[1] == null)
+			{
+				return;
+			}
+			if (CharacterNamePanels[0] != null)
+			{
+				// Display1の表示されているキャラ名を別グリコにする
+				CharacterNamePanels[0].GetComponent<Image>().sprite = SelectCharacterNamePanels[1];
+			}
+			if (CharacterNamePanels[2] != null)
+			{
+				// Display2の表示されているキャラ名を別グリコにする
+				CharacterNamePanels[2].GetComponent<Image>().sprite = SelectCharacterNamePanels[1];
+			}
+			PreviewModelsActiveSet(1, 1);
+		}
+		// ２ならおばちゃん
+		else if (cursor1_1.selectDir == 2)
+		{
+			// GameDataStrageの選択されているキャラをおばちゃんにする
+			GameDataStrage.Instance.fighterStatuses[0] = currentCharacter[2];
+			if (SelectCharacterNamePanels[1] == null)
+			{
+				return;
+			}
+			if (CharacterNamePanels[0] != null)
+			{
+				// Display1の表示されているキャラ名をおばちゃんにする
+				CharacterNamePanels[0].GetComponent<Image>().sprite = SelectCharacterNamePanels[2];
+			}
 			if (CharacterNamePanels[2] != null)
 			{
 				// Display2の表示されているキャラ名を別グリコにする
 				CharacterNamePanels[2].GetComponent<Image>().sprite = SelectCharacterNamePanels[2];
 			}
 			PreviewModelsActiveSet(2, 1);
-        }
-        // 3 なら別おばちゃん
-        else if (cursor1_1.selectDir == 3)
-        {
-            // GameDataStrageの選択されているキャラを別おばちゃんにする
-            GameDataStrage.Instance.fighterStatuses[0] = currentCharacter[3];
-            if (SelectCharacterNamePanels[1] == null)
-            {
-                return;
-            }
-            if (CharacterNamePanels[0] != null)
-            {
-                // Display1の表示されているキャラ名を別おばちゃんにする
-                CharacterNamePanels[0].GetComponent<Image>().sprite = SelectCharacterNamePanels[3];
-            }
-            if (CharacterNamePanels[2] != null)
-            {
-                // Display2の表示されているキャラ名を別おばちゃんにする
-                CharacterNamePanels[2].GetComponent<Image>().sprite = SelectCharacterNamePanels[3];
-            }
-            PreviewModelsActiveSet(3, 1);
-        }
-        #endregion
-        #region 2Pのキャラ選択の処理
-        if (cursor1_2 == null)
-        {
-            return;
-        }
-        // 2Pの選択されているキャラの設定(selectDir２未満ならグリコ)
-        if (cursor1_2.selectDir == 0)
-        {
-            // GameDataStrageの選択されているキャラをグリコにする
-            GameDataStrage.Instance.fighterStatuses[1] = currentCharacter[0];
-            if (SelectCharacterNamePanels[1] == null)
-            {
-                return;
-            }
-            if (CharacterNamePanels[1] != null)
-            {
-                // Display1の表示されているキャラ名をグリコにする
-                CharacterNamePanels[1].GetComponent<Image>().sprite = SelectCharacterNamePanels[0];
-            }
-            if (CharacterNamePanels[3] != null)
-            {
-                // Display2の表示されているキャラ名をグリコにする
-                CharacterNamePanels[3].GetComponent<Image>().sprite = SelectCharacterNamePanels[0];
-            }
-            PreviewModelsActiveSet(0, 2);
-        }
-        // １なら別グリコ
-        else if (cursor1_2.selectDir == 1)
-        {
-            // GameDataStrageの選択されているキャラを別グリコにする
-            GameDataStrage.Instance.fighterStatuses[1] = currentCharacter[1];
-            if (SelectCharacterNamePanels[1] == null)
-            {
-                return;
-            }
-            if (CharacterNamePanels[1] != null)
-            {
-                // Display1の表示されているキャラ名を別グリコにする
-                CharacterNamePanels[1].GetComponent<Image>().sprite = SelectCharacterNamePanels[1];
-            }
-            if (CharacterNamePanels[3] != null)
-            {
-                // Display2の表示されているキャラ名を別グリコにする
-                CharacterNamePanels[3].GetComponent<Image>().sprite = SelectCharacterNamePanels[1];
-            }
-            // それ以外をfalse
-            PreviewModelsActiveSet(1, 2);
-        }
-        // ２ならおばちゃん
-        else if (cursor1_2.selectDir == 2)
-        {
-            // GameDataStrageの選択されているキャラをおばちゃんにする
-            GameDataStrage.Instance.fighterStatuses[1] = currentCharacter[2];
-            if (SelectCharacterNamePanels[1] == null)
-            {
-                return;
-            }
-            if (CharacterNamePanels[1] != null)
-            {
-                // Display1の表示されているキャラ名をおばちゃんにする
-                CharacterNamePanels[1].GetComponent<Image>().sprite = SelectCharacterNamePanels[2];
-            }
-            if (CharacterNamePanels[3] != null)
-            {
-                // Display2の表示されているキャラ名をおばちゃんにする
-                CharacterNamePanels[3].GetComponent<Image>().sprite = SelectCharacterNamePanels[2];
-            }
-            PreviewModelsActiveSet(2, 2);
-        }
-        // 3ならおばちゃん
-        else if (cursor1_2.selectDir == 3)
-        {
-            // GameDataStrageの選択されているキャラを別グリコにする
-            GameDataStrage.Instance.fighterStatuses[1] = currentCharacter[3];
-            if (SelectCharacterNamePanels[1] == null)
-            {
-                return;
-            }
-            if (CharacterNamePanels[1] != null)
-            {
-                // Display1の表示されているキャラ名を別グリコにする
-                CharacterNamePanels[1].GetComponent<Image>().sprite = SelectCharacterNamePanels[3];
-            }
-            if (CharacterNamePanels[3] != null)
-            {
-                // Display2の表示されているキャラ名を別グリコにする
-                CharacterNamePanels[3].GetComponent<Image>().sprite = SelectCharacterNamePanels[3];
-            }
-            // それ以外をfalse
-            PreviewModelsActiveSet(3, 2);
-        }
-        #endregion
+		}
+		// 3 なら別おばちゃん
+		else if (cursor1_1.selectDir == 3)
+		{
+			// GameDataStrageの選択されているキャラを別おばちゃんにする
+			GameDataStrage.Instance.fighterStatuses[0] = currentCharacter[3];
+			if (SelectCharacterNamePanels[1] == null)
+			{
+				return;
+			}
+			if (CharacterNamePanels[0] != null)
+			{
+				// Display1の表示されているキャラ名を別おばちゃんにする
+				CharacterNamePanels[0].GetComponent<Image>().sprite = SelectCharacterNamePanels[3];
+			}
+			if (CharacterNamePanels[2] != null)
+			{
+				// Display2の表示されているキャラ名を別おばちゃんにする
+				CharacterNamePanels[2].GetComponent<Image>().sprite = SelectCharacterNamePanels[3];
+			}
+			PreviewModelsActiveSet(3, 1);
+		}
 
-        characterSelectBool[0] = cursor1_1.Determining_decision;    // Display1の1Pカーソルがキャラクターを選択しているかのフラグ
-        characterSelectBool[1] = cursor1_2.Determining_decision;    // Display1の2Pカーソルがキャラクターを選択しているかのフラグ
-        characterSelectBool[2] = cursor2_1.Determining_decision;    // Display2の1Pカーソルがキャラクターを選択しているかのフラグ
-        characterSelectBool[3] = cursor2_2.Determining_decision;    // Display2の2Pカーソルがキャラクターを選択しているかのフラグ
+	}
+	#endregion
 
-        if (characterSelectBool[0] == true)
-        {
-            for(int i = 0;i<4;i++)
-            {
-                nomalAnimationPlayers[i].animFrag = true;
-            }
-            if(animation_Ready[0].isStart == false && animation_Ready[2].isStart == false)
-            {
-                animation_Ready[0].isInterruption = false;
-                animation_Ready[2].isInterruption = false;
-                animation_Ready[0].isStart = true;
-                animation_Ready[2].isStart = true;
-            }
-        }
-        else
-        {
-            for (int i = 0; i < 4; i++)
-            {
-                nomalAnimationPlayers[i].animFrag = false;
-            }
-        }
-        if(characterSelectBool[0] == false && characterSelectBool[2] == false)
-        {
-            animation_Ready[0].isInterruption = true;
-            animation_Ready[2].isInterruption = true;
-        }
-        if(characterSelectBool[1] == false && characterSelectBool[3] == false)
-        {
-            animation_Ready[1].isInterruption = true;
-            animation_Ready[3].isInterruption = true;
-        }
+	#region 2Pのキャラクターセレクト
+	void CharacterSelection2P()
+	{
+		if (cursor1_2 == null)
+		{
+			return;
+		}
+		// 2Pの選択されているキャラの設定(selectDir２未満ならグリコ)
+		if (cursor1_2.selectDir == 0)
+		{
+			// GameDataStrageの選択されているキャラをグリコにする
+			GameDataStrage.Instance.fighterStatuses[1] = currentCharacter[0];
+			if (SelectCharacterNamePanels[1] == null)
+			{
+				return;
+			}
+			if (CharacterNamePanels[1] != null)
+			{
+				// Display1の表示されているキャラ名をグリコにする
+				CharacterNamePanels[1].GetComponent<Image>().sprite = SelectCharacterNamePanels[0];
+			}
+			if (CharacterNamePanels[3] != null)
+			{
+				// Display2の表示されているキャラ名をグリコにする
+				CharacterNamePanels[3].GetComponent<Image>().sprite = SelectCharacterNamePanels[0];
+			}
+			PreviewModelsActiveSet(0, 2);
+		}
+		// １なら別グリコ
+		else if (cursor1_2.selectDir == 1)
+		{
+			// GameDataStrageの選択されているキャラを別グリコにする
+			GameDataStrage.Instance.fighterStatuses[1] = currentCharacter[1];
+			if (SelectCharacterNamePanels[1] == null)
+			{
+				return;
+			}
+			if (CharacterNamePanels[1] != null)
+			{
+				// Display1の表示されているキャラ名を別グリコにする
+				CharacterNamePanels[1].GetComponent<Image>().sprite = SelectCharacterNamePanels[1];
+			}
+			if (CharacterNamePanels[3] != null)
+			{
+				// Display2の表示されているキャラ名を別グリコにする
+				CharacterNamePanels[3].GetComponent<Image>().sprite = SelectCharacterNamePanels[1];
+			}
+			// それ以外をfalse
+			PreviewModelsActiveSet(1, 2);
+		}
+		// ２ならおばちゃん
+		else if (cursor1_2.selectDir == 2)
+		{
+			// GameDataStrageの選択されているキャラをおばちゃんにする
+			GameDataStrage.Instance.fighterStatuses[1] = currentCharacter[2];
+			if (SelectCharacterNamePanels[1] == null)
+			{
+				return;
+			}
+			if (CharacterNamePanels[1] != null)
+			{
+				// Display1の表示されているキャラ名をおばちゃんにする
+				CharacterNamePanels[1].GetComponent<Image>().sprite = SelectCharacterNamePanels[2];
+			}
+			if (CharacterNamePanels[3] != null)
+			{
+				// Display2の表示されているキャラ名をおばちゃんにする
+				CharacterNamePanels[3].GetComponent<Image>().sprite = SelectCharacterNamePanels[2];
+			}
+			PreviewModelsActiveSet(2, 2);
+		}
+		// 3ならおばちゃん
+		else if (cursor1_2.selectDir == 3)
+		{
+			// GameDataStrageの選択されているキャラを別グリコにする
+			GameDataStrage.Instance.fighterStatuses[1] = currentCharacter[3];
+			if (SelectCharacterNamePanels[1] == null)
+			{
+				return;
+			}
+			if (CharacterNamePanels[1] != null)
+			{
+				// Display1の表示されているキャラ名を別グリコにする
+				CharacterNamePanels[1].GetComponent<Image>().sprite = SelectCharacterNamePanels[3];
+			}
+			if (CharacterNamePanels[3] != null)
+			{
+				// Display2の表示されているキャラ名を別グリコにする
+				CharacterNamePanels[3].GetComponent<Image>().sprite = SelectCharacterNamePanels[3];
+			}
+			// それ以外をfalse
+			PreviewModelsActiveSet(3, 2);
+		}
+	}
+	#endregion
 
-        if (CharacterSelectBool[1] == true)
-        {
-            for (int i = 4; i < 8; i++)
-            {
-                nomalAnimationPlayers[i].animFrag = true;
-            }
-            if(animation_Ready[1].isStart == false && animation_Ready[3].isStart == false)
-            {
-                animation_Ready[1].isInterruption = false;
-                animation_Ready[3].isInterruption = false;
-                animation_Ready[1].isStart = true;
-                animation_Ready[3].isStart = true;
-            }
-        }
-        else
-        {
-            for (int i = 4; i < 8; i++)
-            {
-                nomalAnimationPlayers[i].animFrag = false;
-            }
-        }
+	#region カーソルがキャラクターを選択しているかのフラグの生成
+	void CreateCursorFlags()
+	{
+		characterSelectBool[0] = cursor1_1.Determining_decision;    // Display1の1Pカーソルがキャラクターを選択しているかのフラグ
+		characterSelectBool[1] = cursor1_2.Determining_decision;    // Display1の2Pカーソルがキャラクターを選択しているかのフラグ
+		characterSelectBool[2] = cursor2_1.Determining_decision;    // Display2の1Pカーソルがキャラクターを選択しているかのフラグ
+		characterSelectBool[3] = cursor2_2.Determining_decision;    // Display2の2Pカーソルがキャラクターを選択しているかのフラグ
+	}
+	#endregion
 
-        // 1Pと2Pがキャラを選択したら、フラグをtrueにする
-        if (characterSelectBool[0] && characterSelectBool[1] && characterSelectBool[2] && characterSelectBool[3])
-        {
+	#region 1Pと2Pのカーソル選択
+	void CursorSelections()
+	{
+		if (characterSelectBool[0] == true)
+		{
+			for (int i = 0; i < 4; i++)
+			{
+				nomalAnimationPlayers[i].animFrag = true;
+			}
+			if (animation_Ready[0].isStart == false && animation_Ready[2].isStart == false)
+			{
+				animation_Ready[0].isInterruption = false;
+				animation_Ready[2].isInterruption = false;
+				animation_Ready[0].isStart = true;
+				animation_Ready[2].isStart = true;
+			}
+		}
+		else
+		{
+			for (int i = 0; i < 4; i++)
+			{
+				nomalAnimationPlayers[i].animFrag = false;
+			}
+		}
+		if (characterSelectBool[0] == false && characterSelectBool[2] == false)
+		{
+			animation_Ready[0].isInterruption = true;
+			animation_Ready[2].isInterruption = true;
+		}
+
+		if (CharacterSelectBool[1] == true)
+		{
+			for (int i = 4; i < 8; i++)
+			{
+				nomalAnimationPlayers[i].animFrag = true;
+			}
+			if (animation_Ready[1].isStart == false && animation_Ready[3].isStart == false)
+			{
+				animation_Ready[1].isInterruption = false;
+				animation_Ready[3].isInterruption = false;
+				animation_Ready[1].isStart = true;
+				animation_Ready[3].isStart = true;
+			}
+		}
+		else
+		{
+			for (int i = 4; i < 8; i++)
+			{
+				nomalAnimationPlayers[i].animFrag = false;
+			}
+		}
+
+		if (characterSelectBool[1] == false && characterSelectBool[3] == false)
+		{
+			animation_Ready[1].isInterruption = true;
+			animation_Ready[3].isInterruption = true;
+		}
+
+	}
+	#endregion
+
+	#region 1Pと2Pのキャラクター選択後
+	void CharaterDecisions()
+	{
+		if (characterSelectBool[0] && characterSelectBool[1] && characterSelectBool[2] && characterSelectBool[3])
+		{
 			canselFrame = true;
 		}
 		else
@@ -357,7 +416,13 @@ public class CharacterSelect_Manager : SingletonMono<CharacterSelect_Manager>
 			fadeFrame = 0;
 			canselFrame = false;
 		}
-		if(canselFrame == true)
+	}
+	#endregion
+
+	#region キャンセル処理
+	void CancelProcessing()
+	{
+		if (canselFrame == true)
 		{
 			canselTime += Time.deltaTime;
 		}
@@ -365,7 +430,7 @@ public class CharacterSelect_Manager : SingletonMono<CharacterSelect_Manager>
 		{
 			canselTime = 0.0f;
 		}
-		if(canselTime >= 3.0f)
+		if (canselTime >= 3.0f)
 		{
 			panelAnimFlag = true;
 			cursor1_1.determining_All = true;
@@ -373,39 +438,17 @@ public class CharacterSelect_Manager : SingletonMono<CharacterSelect_Manager>
 			cursor2_1.determining_All = true;
 			cursor2_2.determining_All = true;
 		}
-        // キャラ選択した後の時間を計測、managerからシーンの変更を許可
-        if (panelAnimFlag)
-        {
-            fadeFrame += Time.deltaTime;
-            sceneChangeJughe = true;
-        }
-        // パネルのアニメーションをプレイ
-        if (panelAnimFlag == true && animFlagCount > 0)
-        {
-            if (cursor1_1.characterPanels[0] == null)
-            {
-                return;
-            }
-            // １回しか再生させたくないので、カウントの減算
-            animFlagCount--;
-            cursor1_1.characterPanels[0].GetComponent<Animation>().Play();  // Display1の一番左のパネル
-            cursor1_1.characterPanels[1].GetComponent<Animation>().Play();  // Display1の左から２番目のパネル
-            cursor1_1.characterPanels[2].GetComponent<Animation>().Play();  // Display1の右から２番目のパネル
-            cursor1_1.characterPanels[3].GetComponent<Animation>().Play();  // Display1の一番右のパネル
+	}
+	#endregion
 
-            cursor2_1.characterPanels[0].GetComponent<Animation>().Play();  // Display2の一番左のパネル
-            cursor2_1.characterPanels[1].GetComponent<Animation>().Play();  // Display2の左から２番目のパネル
-            cursor2_1.characterPanels[2].GetComponent<Animation>().Play();  // Display2の右から２番目のパネル
-            cursor2_1.characterPanels[3].GetComponent<Animation>().Play();  // Display2の一番右のパネル
-
-			timerAnim[0].SetPlayAnimation(timerTnimClip, 1.0f, 0);
-			timerAnim[1].SetPlayAnimation(timerTnimClip, 1.0f, 0);
-		}
-    }
-    // selectCharacterが１ならグリコ、２なら別グリコ、3ならおばちゃん、４なら別おばちゃん
-    public void PreviewModelsActiveSet(int selectCharacterNum, int playerNum)
+	#region モデルの選択
+	/// <summary>
+	/// selectCharacterが１ならグリコ、２なら別グリコ、3ならおばちゃん、４なら別おばちゃん
+	/// </summary>
+	/// <param name="selectCharacterNum">キャラクターの番号</param>
+	/// <param name="playerNum">プレイヤーが選択している番号</param>
+	void PreviewModelsActiveSet(int selectCharacterNum, int playerNum)
     {
-
         if (playerNum == 1)
         {
             for (int i = 0; i < charaMax; i++)
@@ -442,4 +485,44 @@ public class CharacterSelect_Manager : SingletonMono<CharacterSelect_Manager>
 			}
         }
     }
+	#endregion
+
+	#region シーン変更の許可
+	void SceneChange()
+	{
+		if (panelAnimFlag)
+		{
+			fadeFrame += Time.deltaTime;
+			sceneChangeJughe = true;
+		}
+	}
+	#endregion
+
+	#region パネルのAnimation再生
+	// パネルのAnimation再生
+	void PanelAnimationsPlay()
+	{
+		if (panelAnimFlag == true && animFlagCount > 0)
+		{
+			if (cursor1_1.characterPanels[0] == null)
+			{
+				return;
+			}
+			// １回しか再生させたくないので、カウントの減算
+			animFlagCount--;
+			cursor1_1.characterPanels[0].GetComponent<Animation>().Play();  // Display1の一番左のパネル
+			cursor1_1.characterPanels[1].GetComponent<Animation>().Play();  // Display1の左から２番目のパネル
+			cursor1_1.characterPanels[2].GetComponent<Animation>().Play();  // Display1の右から２番目のパネル
+			cursor1_1.characterPanels[3].GetComponent<Animation>().Play();  // Display1の一番右のパネル
+
+			cursor2_1.characterPanels[0].GetComponent<Animation>().Play();  // Display2の一番左のパネル
+			cursor2_1.characterPanels[1].GetComponent<Animation>().Play();  // Display2の左から２番目のパネル
+			cursor2_1.characterPanels[2].GetComponent<Animation>().Play();  // Display2の右から２番目のパネル
+			cursor2_1.characterPanels[3].GetComponent<Animation>().Play();  // Display2の一番右のパネル
+
+			timerAnim[0].SetPlayAnimation(timerTnimClip, 1.0f, 0);
+			timerAnim[1].SetPlayAnimation(timerTnimClip, 1.0f, 0);
+		}
+	}
+	#endregion
 }
