@@ -75,10 +75,30 @@ public class SoundPlay : MonoBehaviour
         Great,
         Excellent,
 
+		// EVA
 		EV_ATField,
-		EV_NExtStage
-    }
-    public SoundsType soundsType;
+		EV_NExtStage,
+		EV_EVA_Attack1,
+		EV_EVA_Attack2,
+		EV_EVA_Attack3,
+		EV_EVA_Attack4,
+		EV_EVA_Command1,
+		EV_EVA_Command2,
+		EV_EVA_Deathblow,
+		EV_EVA_Guard,
+		EV_EVA_Start,
+		EV_EVA_Victory,
+		EV_SHITO_Attack1,
+		EV_SHITO_Attack2,
+		EV_SHITO_Attack3,
+		EV_SHITO_Command1,
+		EV_SHITO_Command2,
+		EV_SHITO_Command3,
+		EV_SHITO_Deathblow,
+		EV_SHITO_Start,
+		EV_SHITO_Victory,
+	}
+	public SoundsType soundsType;
 
     int i = 0;
     int timeCount = 0;
@@ -155,8 +175,7 @@ public class SoundPlay : MonoBehaviour
                 case SoundsType.Ca_Hit:
                     Sound.PlaySE("Ca_Hit", 11, 0.5f, 1);
                     break;
-
-
+				// Obachan
                 case SoundsType.Oba_CharacterSelect:
                     Sound.PlaySE("Oba_CharacterSelect", 1, 0.5f, 1);
                     break;
@@ -172,12 +191,9 @@ public class SoundPlay : MonoBehaviour
                 case SoundsType.Oba_HitS_Down:
                     Sound.PlaySE("HitS", 13, 1, 1);
                     break;
-
 				case SoundsType.Oba_Hit:
 					Sound.PlaySE("Oba_HitS_Down", 13, 0.3f, 1);
 					break;
-
-
 				case SoundsType.Oba_JobL:
 					Sound.PlaySE("Oba_JobL", 14, 0.5f, 1);
 					break;
@@ -217,7 +233,7 @@ public class SoundPlay : MonoBehaviour
                 case SoundsType.Oba_RoundStart:
 					Sound.PlaySE("Oba_RoundStart", 19, 0, 1);
 					break;
-
+				// Clico
                 case SoundsType.Clico_CharacterSelect:
                     Sound.PlaySE("Clico_CharacterSelect", 1, 0.5f, 1);
                     break;
@@ -288,12 +304,65 @@ public class SoundPlay : MonoBehaviour
                 case SoundsType.Excellent:
                     Sound.PlaySE("SV_Excellent", 19, 0.5f, 1);
 					break;
-				
-					case SoundsType.EV_ATField:
+				case SoundsType.EV_ATField:
 					Sound.PlaySE("EV_ATField", 2, 1, 1);
 					break;
-            }
-            i++;
+				case SoundsType.EV_EVA_Attack1:
+					Sound.PlaySE("EV_EVA_Attack1", 14, 1, 1);
+					break;
+				case SoundsType.EV_EVA_Attack2:
+					Sound.PlaySE("EV_EVA_Attack2", 14, 1, 1);
+					break;
+				case SoundsType.EV_EVA_Attack3:
+					Sound.PlaySE("EV_EVA_Attack3", 14, 1, 1);
+					break;
+				case SoundsType.EV_EVA_Attack4:
+					Sound.PlaySE("EV_EVA_Attack4", 14, 1, 1);
+					break;
+				case SoundsType.EV_EVA_Deathblow:
+					Sound.PlaySE("EV_EVA_Deathblow", 16, 1, 1);
+					break;
+				case SoundsType.EV_EVA_Victory:
+					Sound.PlaySE("EV_EVA_Victory", 16, 1, 1);
+					break;
+				case SoundsType.EV_EVA_Command1:
+					Sound.PlaySE("EV_EVA_Command1", 17, 1, 1);
+					break;
+				case SoundsType.EV_EVA_Command2:
+					Sound.PlaySE("EV_EVA_Command2", 17, 1, 1);
+					break;
+				case SoundsType.EV_EVA_Start:
+					Sound.PlaySE("EV_EVA_Start", 19, 1, 1);
+					break;
+				case SoundsType.EV_SHITO_Attack1:
+					Sound.PlaySE("EV_SHITO_Attack1", 14, 1, 1);
+					break;
+				case SoundsType.EV_SHITO_Attack2:
+					Sound.PlaySE("EV_SHITO_Attack2", 14, 1, 1);
+					break;
+				case SoundsType.EV_SHITO_Attack3:
+					Sound.PlaySE("EV_SHITO_Attack3", 14, 1, 1);
+					break;
+				case SoundsType.EV_SHITO_Deathblow:
+					Sound.PlaySE("EV_SHITO_Deathblow", 16, 1, 1);
+					break;
+				case SoundsType.EV_SHITO_Victory:
+					Sound.PlaySE("EV_SHITO_Victory", 16, 1, 1);
+					break;
+				case SoundsType.EV_SHITO_Command1:
+					Sound.PlaySE("EV_SHITO_Command1", 17, 1, 1);
+					break;
+				case SoundsType.EV_SHITO_Command2:
+					Sound.PlaySE("EV_SHITO_Command2", 17, 1, 1);
+					break;
+				case SoundsType.EV_SHITO_Command3:
+					Sound.PlaySE("EV_SHITO_Command3", 17, 1, 1);
+					break;
+				case SoundsType.EV_SHITO_Start:
+					Sound.PlaySE("EV_SHITO_Start", 19, 1, 1);
+					break;
+			}
+			i++;
         }
 
         if (destroyFlag)
