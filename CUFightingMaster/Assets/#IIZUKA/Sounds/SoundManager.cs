@@ -173,14 +173,16 @@ public class Sound
         Sound.LoadSE("Clico_JobS", "Cv_Clico_JobS");
         Sound.LoadSE("Clico_Jump_Step", "Cv_Clico_Jump_Step");
         Sound.LoadSE("Clico_RoundDraw", "Cv_Clico_RoundDraw");
-        Sound.LoadSE("Clico_RoundLoss", "Cv_Clico_RoundLoss");
-        Sound.LoadSE("Clico_RoundWin", "Cv_Clico_RoundWin");
+		//Sound.LoadSE("Clico_RoundLoss", "Cv_Clico_RoundLoss");
+		Sound.LoadSE("Clico_RoundLoss", "20191030");
+		Sound.LoadSE("Clico_RoundWin", "Cv_Clico_RoundWin");
         Sound.LoadSE("Clico_Special1", "Cv_Clico_Special1");
         Sound.LoadSE("Clico_Special2", "Cv_Clico_Special2");
         Sound.LoadSE("Clico_Special3", "Cv_Clico_Special3");
         Sound.LoadSE("Clico_Special4", "Cv_Clico_Special4");
         Sound.LoadSE("Clico_Thrown", "Cv_Clico_Thrown");
-        Sound.LoadSE("Clico_RoundStart", "Cv_Clico_RoundStart");
+		//Sound.LoadSE("Clico_RoundStart", "Cv_Clico_RoundStart");sinji_honke_BGMtuki_kesenai
+		Sound.LoadSE("Clico_RoundStart", "sinji_honke_BGMtuki_2");
 		Sound.LoadSE("Clico_Tackle", "CV_Clico_Tackle");
 
 		// キャラボイスオバチャン

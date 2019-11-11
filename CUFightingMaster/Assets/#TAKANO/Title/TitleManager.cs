@@ -187,7 +187,7 @@ public class TitleManager : MonoBehaviour
 	{
 		if(canvasController_Title.DownCurtain())
 		{
-			SceneManager.LoadScene("CharacterSelect");
+			SceneManager.LoadScene("EvaTittle");
 		}
 	}
 	// Start is called before the first frame update
