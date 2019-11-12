@@ -79,8 +79,11 @@ public class CameraController : SingletonMono<CameraController>
 
 		moveSpeed = 5.0f;
 		stageWidth = 10.0f;
-		cameraPos_Max = new Vector3(50.0f,0, -9.5f);	// ズームアウトの最大値
-		cameraPos_Min = new Vector3(-50.0f,0,-13.0f);	// ズームインの最小値
+		//cameraPos_Max = new Vector3(50.0f, 0, -9.5f);   // ズームアウトの最大値
+		//cameraPos_Min = new Vector3(-50.0f, 0, -13.0f); // ズームインの最小値
+		// EVA仕様
+		cameraPos_Max = new Vector3(50.0f, 0, -13.5f);   // ズームアウトの最大値
+		cameraPos_Min = new Vector3(-50.0f, 0, -18.0f); // ズームインの最小値
 
 		distanceOfPlayers_Start = 0.3f; // ゲーム開始時のプレイヤー同士の距離
     }
