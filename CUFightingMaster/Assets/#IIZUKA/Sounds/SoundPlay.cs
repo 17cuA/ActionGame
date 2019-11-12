@@ -119,49 +119,49 @@ public class SoundPlay : MonoBehaviour
                 case SoundsType.None:
                     break;
                 case SoundsType.HitL:
-                    Sound.PlaySE("HitL", 1, 1, 1);
+                    Sound.PlaySE("HitL", 1, 0.5f, 1);
                     break;
                 case SoundsType.HitM:
-                    Sound.PlaySE("HitS", 1, 1, 1);
+                    Sound.PlaySE("HitS", 1, 0.5f, 1);
                     break;
                 case SoundsType.HitS:
-                    Sound.PlaySE("HitS", 1, 1, 1);
+                    Sound.PlaySE("HitS", 1, 0.5f, 1);
                     break;
                 case SoundsType.GuardL:
-                    Sound.PlaySE("GuardL", 2, 1, 1);
+                    Sound.PlaySE("GuardL", 2, 0.5f, 1);
                     break;
                 case SoundsType.GuardM:
-                    Sound.PlaySE("GuardM", 2, 1, 1);
+                    Sound.PlaySE("GuardM", 2, 0.5f, 1);
                     break;
                 case SoundsType.GuardS:
-                    Sound.PlaySE("GuardS", 2, 1, 1);
+                    Sound.PlaySE("GuardS", 2, 0.5f, 1);
                     break;
                 case SoundsType.JabL:
-                    Sound.PlaySE("JabL", 3, 0.8f, 1);
+                    Sound.PlaySE("JabL", 3, 0.5f, 1);
                     break;
                 case SoundsType.JabM:
-                    Sound.PlaySE("JabM", 3, 0.8f, 1);
+                    Sound.PlaySE("JabM", 3, 0.5f, 1);
                     break;
                 case SoundsType.JabS:
-                    Sound.PlaySE("JabS", 3, 0.8f, 1);
+                    Sound.PlaySE("JabS", 3, 0.5f, 1);
                     break;
                 case SoundsType.Squat:
                     Sound.PlaySE("Squat", 4, 0.4f, 1);
                     break;
                 case SoundsType.Jump:
-                    Sound.PlaySE("Jump", 4, 0.6f, 1);
+                    Sound.PlaySE("Jump", 4, 0.5f, 1);
                     break;
                 case SoundsType.Step:
-                    Sound.PlaySE("Step", 5, 0.6f, 1);
+                    Sound.PlaySE("Step", 5, 0.5f, 1);
                     break;
                 case SoundsType.Down:
-                    Sound.PlaySE("Down", 6, 1, 1);
+                    Sound.PlaySE("Down", 6, 0.5f, 1);
                     break;
                 case SoundsType.DownCancel:
-                    Sound.PlaySE("DownCancel", 7, 0.6f, 1);
+                    Sound.PlaySE("DownCancel", 7, 0.5f, 1);
                     break;
                 case SoundsType.GetUp:
-                    Sound.PlaySE("GetUp", 8, 0.6f, 1);
+                    Sound.PlaySE("GetUp", 8, 0.5f, 1);
                     break;
                 case SoundsType.Sutan:
                     Sound.PlaySE("Sutan", 1, 0.3f, 1);
@@ -231,7 +231,7 @@ public class SoundPlay : MonoBehaviour
                     Sound.PlaySE("Oba_Thrown", 18, 0.5f, 1);
                     break;
                 case SoundsType.Oba_RoundStart:
-					Sound.PlaySE("Oba_RoundStart", 19, 0, 1);
+					Sound.PlaySE("Oba_RoundStart", 19, 0.5f, 1);
 					break;
 				// Clico
                 case SoundsType.Clico_CharacterSelect:

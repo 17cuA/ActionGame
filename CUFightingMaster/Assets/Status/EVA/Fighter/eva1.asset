@@ -31,7 +31,7 @@ MonoBehaviour:
     inversionMaterial: []
   - nomalMaterial: []
     inversionMaterial: []
-  gravity: {x: 0, y: -0.5, z: 0}
+  gravity: {x: 0, y: -0.25, z: 0}
   gravityMax: {x: 0, y: -20, z: 0}
   headHitBox:
     size: {x: 1, y: 1, z: 1}
@@ -182,10 +182,20 @@ MonoBehaviour:
     countValid: 1
     name: Front_Dash
     command: 66
-    skill: {fileID: 11400000, guid: a42bb79810c631c40a42deb7e7c3d672, type: 2}
+    skill: {fileID: 11400000, guid: 7201b9ee970a9ae4b88ab6e4e2303e59, type: 2}
   - skillCost: 0
     countValid: 1
     name: Back_Dash
     command: 44
-    skill: {fileID: 11400000, guid: 6db1cb8c943e5c84992d3b907163dab6, type: 2}
-  airMoveSkills: []
+    skill: {fileID: 11400000, guid: 1b2a9a5df63cebc42a5cc2ed4632e665, type: 2}
+  airMoveSkills:
+  - skillCost: 0
+    countValid: 1
+    name: Air_Dash_Front
+    command: 66
+    skill: {fileID: 11400000, guid: bea0484a562d91c48beed5ddedd4f6a6, type: 2}
+  - skillCost: 0
+    countValid: 1
+    name: Air_Dash_Back
+    command: 44
+    skill: {fileID: 11400000, guid: cd405d77f1350d843b194efbdd4a84e6, type: 2}
