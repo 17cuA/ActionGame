@@ -36,22 +36,22 @@ public class UISetup : MonoBehaviour
 	/// 現在アクティブなシーンに存在するCanvasを取得する
 	/// </summary>
 	/// <returns></returns>
-	//public static GameObject GetCanvas()
-	//{
-	//	GameObject canvas = null;
-	//	// 現在アクティブなシーンにCanvasがあるか確認する
-	//	foreach (GameObject searchObj in SceneManager.GetActiveScene().GetRootGameObjects())
-	//	{
-	//		// あった場合
-	//		if (searchObj.GetComponent<Canvas>())
-	//		{
-	//			// 引き続きそのCanvasを使う
-	//			canvas = searchObj;
-	//			break;
-	//		}
-	//	}
-	//	return canvas;
-	//}
+	public static GameObject GetCanvas()
+	{
+		GameObject canvas = null;
+		// 現在アクティブなシーンにCanvasがあるか確認する
+		foreach (GameObject searchObj in SceneManager.GetActiveScene().GetRootGameObjects())
+		{
+			// あった場合
+			if (searchObj.GetComponent<Canvas>())
+			{
+				// 引き続きそのCanvasを使う
+				canvas = searchObj;
+				break;
+			}
+		}
+		return canvas;
+	}
 
 	/// <summary>
 	/// Canvasを生成する
