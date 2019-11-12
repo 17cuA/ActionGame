@@ -31,7 +31,7 @@ MonoBehaviour:
     inversionMaterial: []
   - nomalMaterial: []
     inversionMaterial: []
-  gravity: {x: 0, y: -0.5, z: 0}
+  gravity: {x: 0, y: -0.35, z: 0}
   gravityMax: {x: 0, y: -20, z: 0}
   headHitBox:
     size: {x: 1, y: 1, z: 1}
@@ -176,7 +176,28 @@ MonoBehaviour:
     countValid: 1
     validShotFrame: 6
     skill: {fileID: 11400000, guid: b07b116b9bdef5145bf33471f06a5220, type: 2}
-  airAttackSkills: []
+  - name: 63236C
+    command: 63236
+    trigger: C
+    skillCost: 0
+    countValid: 1
+    validShotFrame: 6
+    skill: {fileID: 11400000, guid: ad29a2d6a0137ae499283fd7358c0157, type: 2}
+  airAttackSkills:
+  - name: J2C
+    command: 2
+    trigger: C
+    skillCost: 0
+    countValid: 1
+    validShotFrame: 6
+    skill: {fileID: 11400000, guid: 09a5f47cac776c54794c15f7a460a2fb, type: 2}
+  - name: J236C
+    command: 236
+    trigger: C
+    skillCost: 0
+    countValid: 1
+    validShotFrame: 6
+    skill: {fileID: 11400000, guid: c5ed7da2a37421a498e058e039970c0a, type: 2}
   groundMoveSkills:
   - skillCost: 0
     countValid: 1
@@ -188,4 +209,14 @@ MonoBehaviour:
     name: Back_Dash
     command: 44
     skill: {fileID: 11400000, guid: 6db1cb8c943e5c84992d3b907163dab6, type: 2}
-  airMoveSkills: []
+  airMoveSkills:
+  - skillCost: 0
+    countValid: 1
+    name: Air_Front_Dash
+    command: 66
+    skill: {fileID: 11400000, guid: bea0484a562d91c48beed5ddedd4f6a6, type: 2}
+  - skillCost: 0
+    countValid: 1
+    name: Air_Back_Dash
+    command: 44
+    skill: {fileID: 11400000, guid: cd405d77f1350d843b194efbdd4a84e6, type: 2}
