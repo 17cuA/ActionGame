@@ -18,16 +18,12 @@ MonoBehaviour:
   status: 16
   frameEffects:
   - frame: 0
-    effect: {fileID: 6391761994472495774, guid: 2aa855773b9e67549aaa381657293946,
-      type: 3}
-    childFlag: 0
-    worldPositionFlag: 0
-    position: {x: 0, y: 0, z: 0}
-  - frame: 0
     effect: {fileID: 3054531724707059269, guid: 54e9d685be50602478b0beade7783d84,
       type: 3}
     childFlag: 0
     worldPositionFlag: 0
+    isDeleteObj: 0
+    isScaled: 0
     position: {x: 0, y: 0, z: 0}
   frameBullets: []
   cancelFrag: 0
@@ -35,6 +31,7 @@ MonoBehaviour:
   endNextWeight: 0
   groundLandingSkill: {fileID: 0}
   groundLandingWeight: 0
+  isGroundEnd: 0
   barrageCancelFrag: 1
   cancelLayer: 
   inBlend: 0

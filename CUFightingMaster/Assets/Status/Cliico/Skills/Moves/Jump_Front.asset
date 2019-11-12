@@ -18,22 +18,20 @@ MonoBehaviour:
   status: 16
   frameEffects:
   - frame: 0
-    effect: {fileID: 6553242844514703147, guid: 7d5f83ab4751f1143a74ad53560b0007,
-      type: 3}
-    childFlag: 0
-    worldPositionFlag: 0
-    position: {x: 0, y: 0, z: 0}
-  - frame: 0
     effect: {fileID: 5708031583818599373, guid: 8d7bd9a89996c5d459f1b8425ec79d45,
       type: 3}
     childFlag: 0
     worldPositionFlag: 0
+    isDeleteObj: 0
+    isScaled: 0
     position: {x: 0, y: 0, z: 0}
   - frame: 0
     effect: {fileID: 5920375906062293545, guid: 8c2dc19f3739bcf4da696a534c2dce11,
       type: 3}
     childFlag: 0
     worldPositionFlag: 0
+    isDeleteObj: 0
+    isScaled: 0
     position: {x: 0, y: 0, z: 0}
   frameBullets: []
   cancelFrag: 0
@@ -41,6 +39,7 @@ MonoBehaviour:
   endNextWeight: 0
   groundLandingSkill: {fileID: 0}
   groundLandingWeight: 0
+  isGroundEnd: 0
   barrageCancelFrag: 0
   cancelLayer: 
   inBlend: 0
@@ -86,11 +85,11 @@ MonoBehaviour:
     isImpact: 1
     isBound: 0
     boundMovements: []
-    movement: {x: 0, y: 4.5, z: 0}
+    movement: {x: 0, y: 8, z: 0}
     startFrame: 3
   gravityMoves:
-  - movement: {x: 0.7, y: 0, z: 0}
-    limitMove: {x: 0.7, y: 0, z: 0}
+  - movement: {x: 2, y: 0, z: 0}
+    limitMove: {x: 1.5, y: 0, z: 0}
     startFrame: 0
   timeStops:
     startFrame: 0

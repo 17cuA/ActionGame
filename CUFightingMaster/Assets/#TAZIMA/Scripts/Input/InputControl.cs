@@ -252,10 +252,6 @@ public class InputControl : MonoBehaviour {
 					return Direction.Back;
 				}
 			case "7":
-				if (playerIndex == 0)
-				{
-					return Direction.Neutral;
-				}
 				if (_stateBase.core.Direction == PlayerDirection.Right)
 				{
 					return Direction.UpBack;
@@ -267,14 +263,10 @@ public class InputControl : MonoBehaviour {
 			case "8":
 				if (playerIndex == 0)
 				{
-					return Direction.Neutral;
+					return Direction.Up;
 				}
 				return Direction.Up;
 			case "9":
-				if (playerIndex == 0)
-				{
-					return Direction.Neutral;
-				}
 				if (_stateBase.core.Direction == PlayerDirection.Right)
 				{
 					return Direction.UpFront;

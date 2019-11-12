@@ -155,56 +155,8 @@ public class Sound
         Sound.LoadSE("Ko", "Voice_K.O.");
         Sound.LoadSE("Draw", "Voice_Draw");
 
-        //まだ未使用組
         Sound.LoadSE("Ko2", "Voice_K.O.2");
-        Sound.LoadSE("ADrunk", "CharaVoice_ADrunk");
-        Sound.LoadSE("Clico", "CharaVoice_Clico");
-        Sound.LoadSE("Kuidaore", "CharaVoice_Kuidaore");
-        Sound.LoadSE("Obachan", "CharaVoice_Oba");
-
-        // キャラボイスクリコ
-        Sound.LoadSE("Clico_CharacterSelect", "Cv_Clico_CharacterSelect");
-        Sound.LoadSE("Clico_GetUp_DownCancel", "Cv_Clico_GetUp_DownCancel");
-        Sound.LoadSE("Clico_HitL", "Cv_Clico_HitL");
-        Sound.LoadSE("Clico_HitM", "Cv_Clico_HitM");
-        Sound.LoadSE("Clico_HitS_Down", "Cv_Clico_HitS_Down");
-        Sound.LoadSE("Clico_JobL", "Cv_Clico_JobL");
-        Sound.LoadSE("Clico_JobM_Throw", "Cv_Clico_JobM_Throw");
-        Sound.LoadSE("Clico_JobS", "Cv_Clico_JobS");
-        Sound.LoadSE("Clico_Jump_Step", "Cv_Clico_Jump_Step");
-        Sound.LoadSE("Clico_RoundDraw", "Cv_Clico_RoundDraw");
-		//Sound.LoadSE("Clico_RoundLoss", "Cv_Clico_RoundLoss");
-		Sound.LoadSE("Clico_RoundLoss", "20191030");
-		Sound.LoadSE("Clico_RoundWin", "Cv_Clico_RoundWin");
-        Sound.LoadSE("Clico_Special1", "Cv_Clico_Special1");
-        Sound.LoadSE("Clico_Special2", "Cv_Clico_Special2");
-        Sound.LoadSE("Clico_Special3", "Cv_Clico_Special3");
-        Sound.LoadSE("Clico_Special4", "Cv_Clico_Special4");
-        Sound.LoadSE("Clico_Thrown", "Cv_Clico_Thrown");
-		//Sound.LoadSE("Clico_RoundStart", "Cv_Clico_RoundStart");sinji_honke_BGMtuki_kesenai
-		Sound.LoadSE("Clico_RoundStart", "sinji_honke_BGMtuki_2");
-		Sound.LoadSE("Clico_Tackle", "CV_Clico_Tackle");
-
-		// キャラボイスオバチャン
-		Sound.LoadSE("Oba_CharacterSelect", "Cv_Oba_CharacterSelect");
-        Sound.LoadSE("Oba_GetUp_DownCancel", "Cv_Oba_GetUp_DownCancel");
-        Sound.LoadSE("Oba_HitL", "Cv_Oba_HitL");
-        Sound.LoadSE("Oba_HitM", "Cv_Oba_HitM");
-        Sound.LoadSE("Oba_HitS_Down", "Cv_Oba_HitS_Down");
-        Sound.LoadSE("Oba_JobL", "Cv_Oba_JobL");
-        Sound.LoadSE("Oba_JobM_Throw", "Cv_Oba_JobM_Throw");
-        Sound.LoadSE("Oba_JobS", "Cv_Oba_JobS");
-        Sound.LoadSE("Oba_Jump_Step", "Cv_Oba_Jump_Step");
-        Sound.LoadSE("Oba_RoundDraw", "Cv_Oba_RoundDraw");
-        Sound.LoadSE("Oba_RoundLoss", "Cv_Oba_RoundLoss");
-        Sound.LoadSE("Oba_RoundWin", "Cv_Oba_RoundWin");
-        Sound.LoadSE("Oba_Special1", "Cv_Oba_Special1");
-        Sound.LoadSE("Oba_Special2", "Cv_Oba_Special2");
-        Sound.LoadSE("Oba_Special3", "Cv_Oba_Special3");
-        Sound.LoadSE("Oba_Special4", "Cv_Oba_Special4");
-        Sound.LoadSE("Oba_Thrown", "Cv_Oba_Thrown");
-        Sound.LoadSE("Oba_RoundStart", "Cv_Oba_RoundStart");
-
+        
         Sound.LoadSE("SE_Beams", "SE_Beams");
         Sound.LoadSE("SV_Nice", "SV_Nice");
         Sound.LoadSE("SV_Great", "SV_Great");
