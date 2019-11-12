@@ -81,6 +81,7 @@ public class Sound
             GameObject.DontDestroyOnLoad(_object);
             // AudioSourceを作成
             _sourceBGM = _object.AddComponent<AudioSource>();
+			_sourceBGM.volume = 0.75f;
             _sourceSEDefault = _object.AddComponent<AudioSource>();
             for (int i = 0; i < SE_CHANNEL; i++)
             {
@@ -239,7 +240,7 @@ public class Sound
     /// <param name="pitch"></param>
     /// <param name="loop"></param>
     /// <returns></returns>
-    public static bool PlayBGM(string key, float volume = 1, float pitch = 1, bool loop = false)
+    public static bool PlayBGM(string key, float volume = 0.5f, float pitch = 1, bool loop = false)
     {
         return GetInstance()._PlayBgm(key, volume, pitch, loop);
     }
