@@ -63,7 +63,7 @@ public class Cursor_CharacterSelect : MonoBehaviour
 		//ポーズ処理
 		if (Mathf.Approximately(Time.timeScale, 0f)) return;
 		//カーソル移動
-		if(CharacterSelect_Manager.Instance.makuFlag == false)
+		if(CharacterSelect_Manager.Instance.curtainFlag == false)
 		{
 			inputDir.x = Input.GetAxisRaw(string.Format("{0}Player{1}_Horizontal", controllerName, playerNum));
 			inputDir.y = Input.GetAxisRaw(string.Format("{0}Player{1}_Vertical", controllerName, playerNum));

@@ -10,24 +10,22 @@ public class CharacterSelect_Manager : SingletonMono<CharacterSelect_Manager>
     #region 変数宣言
     public AnimationUIManager[] animation_Ready = new AnimationUIManager[4];
 
-    public Cursor_CharacterSelect cursor1_1;
-    public Cursor_CharacterSelect cursor1_2;
-    public Cursor_CharacterSelect cursor2_1;
-    public Cursor_CharacterSelect cursor2_2;
+    public Cursor_CharacterSelect cursor1_1;	// Display1の1P用カーソル
+    public Cursor_CharacterSelect cursor1_2;	// Display1の2P用カーソル
+    public Cursor_CharacterSelect cursor2_1;	// Display2の1P用カーソル
+    public Cursor_CharacterSelect cursor2_2;	// Display2の2P用カーソル
 
-	public bool makuFlag = false;
+	public bool curtainFlag = false;			// 幕が上がるフラグ
 
-    [SerializeField]
-    static int charaMax = 4;
+	[SerializeField] static int charaMax = 4;
 
     public GameObject[] CharacterNamePanels = new GameObject[charaMax * 2];			// キャラクターの名前のパネル（２画面２プレイヤーのため、２倍生成）
-    public GameObject[] previewModel = new GameObject[charaMax * 2];						// 生成したキャラクターモデルを入れておく変数（２画面２プレイヤーのため、２倍生成）
+    public GameObject[] previewModel = new GameObject[charaMax * 2];				// 生成したキャラクターモデルを入れておく変数（２画面２プレイヤーのため、２倍生成）
     public Animationdata[] nomalAnimationPlayers = new Animationdata[charaMax * 2];	// 生成したキャラクターモデルのアニメーション情報を入れておく変数（２画面２プレイヤーのため、２倍生成）
-    public GameObject[] createCharaPos = new GameObject[charaMax];							// キャラクターモデルを生成する位置
-    public Sprite[] SelectCharacterNamePanels = new Sprite[charaMax];							// キャラクターの名前のパネルを格納しておく変数
+    public GameObject[] createCharaPos = new GameObject[charaMax];					// キャラクターモデルを生成する位置
+    public Sprite[] SelectCharacterNamePanels = new Sprite[charaMax];				// キャラクターの名前のパネルを格納しておく変数
 
-    [SerializeField]
-    private bool[] characterSelectBool = { false, false, false, false };    // キャラクターを選択したかどうかの判定
+	[SerializeField] private bool[] characterSelectBool = { false, false, false, false };    // キャラクターを選択したかどうかの判定
     public bool[] CharacterSelectBool
     {
         get { return characterSelectBool; }
@@ -36,12 +34,9 @@ public class CharacterSelect_Manager : SingletonMono<CharacterSelect_Manager>
 
     public FighterStatus[] currentCharacter = new FighterStatus[charaMax]; // ファイターの情報を格納する変数
 
-    [SerializeField]
-    private bool panelAnimFlag;  // キャラクターパネルのアニメーション許可
-    [SerializeField]
-    private int animFlagCount;  // １回だけアニメーションをさせたいので、作った変数  
-    [SerializeField]
-    private float fadeFrame;     // シーンを変更させるためのフレーム（時間）
+	[SerializeField] private bool panelAnimFlag;	// キャラクターパネルのアニメーション許可
+	[SerializeField] private int animFlagCount;		// １回だけアニメーションをさせたいので、作った変数  
+	[SerializeField] private float fadeFrame;		// シーンを変更させるためのフレーム（時間）
     public float FadeFrame
     {
         get { return fadeFrame; }
@@ -51,6 +46,7 @@ public class CharacterSelect_Manager : SingletonMono<CharacterSelect_Manager>
 	private float canselTime;
 	private bool canselFrame;
 	#endregion
+
     void Start()
     {
 		canselTime = 0.0f;
