@@ -153,6 +153,7 @@ public class SettingButtonClass
 	//デバッグ用のキーを設定するのに使用
 	[SerializeField]
 	private string _altButton;
+
 	public string AltButton
 	{
 		get { return _altButton; }
