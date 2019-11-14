@@ -1,5 +1,5 @@
 ﻿//---------------------------------------
-// Resultメニューの中心
+// Resultメニューの要素
 //---------------------------------------
 // 作成者:高野
 // 作成日:2019.10.24
@@ -20,7 +20,7 @@ using System;
 
 public class ResultMenuItems : MonoBehaviour
 {	
-	[SerializeField] public  Menu_Rematch menu_Rematch;
+	[SerializeField] public Menu_Rematch menu_Rematch;
 	[SerializeField] public Menu_ToCharacterSelect menu_ToCharacterSelect;
 	[SerializeField] public Menu_ToTitle menu_ToTitle;
 }

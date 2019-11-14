@@ -30,4 +30,20 @@ public class Menu_Base : MonoBehaviour , IMenuItem
 	/// 決定された時の動作
 	/// </summary>
 	public virtual void  Decide(){}
+
+	/// <summary>
+	/// 表示
+	/// </summary>
+	public void Display()
+	{
+		image.enabled = true;
+	}
+
+	/// <summary>
+	/// 非表示
+	/// </summary>
+	public void Invisivle()
+	{
+		image.enabled = false;
+	}
 }

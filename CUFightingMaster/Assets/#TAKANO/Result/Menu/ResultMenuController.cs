@@ -1,5 +1,5 @@
 ﻿//---------------------------------------
-// メニューのコントローラー
+// リザルトのメニューのコントローラー
 //---------------------------------------
 // 作成者:高野
 // 作成日:2019.10.24
@@ -24,6 +24,22 @@ public class ResultMenuController : MonoBehaviour
 	[SerializeField] GameObject  cursor;
 
 	[SerializeField] public Menu_Base currentMenu_Base;
+
+	/// <summary>
+	/// メニューの表示
+	/// </summary>
+	public void Call_MenuDisplay()
+	{
+		currentMenu_Base.Display();
+	}
+
+	/// <summary>
+	/// メニューの非表示
+	/// </summary>
+	public void Call_MenuInvisible()
+	{
+		currentMenu_Base.Invisivle();
+	}
 
 	/// <summary>
 	/// 上の入力があったときに呼び出す
