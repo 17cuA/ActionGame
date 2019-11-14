@@ -101,7 +101,6 @@ public class ResultManager : MonoBehaviour
 				timelines[2].SetActive(false);
 				timelines[3].SetActive(false);
 				cinemaController = cinemaControllers[1];
-
 			}
 		}
 		//2Pが勝ったら
@@ -188,28 +187,28 @@ public class ResultManager : MonoBehaviour
     //ResultAnime
     void PlayUIAnime()
     {
-        //if (GameDataStrage.Instance.winFlag_PlayerOne)
-        //{
-        //    winOrlose[0].GetComponent<Image>().sprite = win;
-        //    winOrlose[1].GetComponent<Image>().sprite = lose;
-        //    winOrlose[0].GetComponent<NomalAnimationPlayer>().SetPlayAnimation(animationClips[0], 1.0f, 0);
-        //    winOrlose[1].GetComponent<NomalAnimationPlayer>().SetPlayAnimation(animationClips[1], 1.0f, 0);
-        //}
-        //else if (GameDataStrage.Instance.winFlag_PlayerTwo)
-        //{
-        //    winOrlose[1].GetComponent<Image>().sprite = win;
-        //    winOrlose[0].GetComponent<Image>().sprite = lose;
-        //    winOrlose[0].GetComponent<NomalAnimationPlayer>().SetPlayAnimation(animationClips[1], 1.0f, 0);
-        //    winOrlose[1].GetComponent<NomalAnimationPlayer>().SetPlayAnimation(animationClips[0], 1.0f, 0);
-        //}
-        //else if (GameDataStrage.Instance.winFlag_PlayerOne == false && GameDataStrage.Instance.winFlag_PlayerTwo == false)
-        //{
-        //    winOrlose[1].GetComponent<Image>().sprite = lose;
-        //    winOrlose[0].GetComponent<Image>().sprite = lose;
-        //    winOrlose[0].GetComponent<NomalAnimationPlayer>().SetPlayAnimation(animationClips[1], 1.0f, 0);
-        //    winOrlose[1].GetComponent<NomalAnimationPlayer>().SetPlayAnimation(animationClips[0], 1.0f, 0);
-        //}
-        canvasController_Result.PlayUIAnime();
+		if (GameDataStrage.Instance.winFlag_PlayerOne)
+		{
+			winOrlose[0].GetComponent<Image>().sprite = win;
+			winOrlose[1].GetComponent<Image>().sprite = lose;
+			winOrlose[0].GetComponent<NomalAnimationPlayer>().SetPlayAnimation(animationClips[0], 1.0f, 0);
+			winOrlose[1].GetComponent<NomalAnimationPlayer>().SetPlayAnimation(animationClips[1], 1.0f, 0);
+		}
+		else if (GameDataStrage.Instance.winFlag_PlayerTwo)
+		{
+			winOrlose[1].GetComponent<Image>().sprite = win;
+			winOrlose[0].GetComponent<Image>().sprite = lose;
+			winOrlose[0].GetComponent<NomalAnimationPlayer>().SetPlayAnimation(animationClips[1], 1.0f, 0);
+			winOrlose[1].GetComponent<NomalAnimationPlayer>().SetPlayAnimation(animationClips[0], 1.0f, 0);
+		}
+		else if (GameDataStrage.Instance.winFlag_PlayerOne == false && GameDataStrage.Instance.winFlag_PlayerTwo == false)
+		{
+			winOrlose[1].GetComponent<Image>().sprite = lose;
+			winOrlose[0].GetComponent<Image>().sprite = lose;
+			winOrlose[0].GetComponent<NomalAnimationPlayer>().SetPlayAnimation(animationClips[1], 1.0f, 0);
+			winOrlose[1].GetComponent<NomalAnimationPlayer>().SetPlayAnimation(animationClips[0], 1.0f, 0);
+		}
+		canvasController_Result.PlayUIAnime();
         currentUpdate = ResultUpdate;
     }
 
