@@ -323,7 +323,6 @@ public class InGameManager : SingletonMono<InGameManager>
 	}
 	#endregion
 
-
 	#region 試合終了
 	/// <summary>
 	///  試合終了
