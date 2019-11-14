@@ -185,6 +185,7 @@ public class Sound
 		Sound.LoadSE("EV_SHITO_Deathblow", "EV_SHITO_Deathblow");
 		Sound.LoadSE("EV_SHITO_Start", "EV_SHITO_Start");
 		Sound.LoadSE("EV_SHITO_Victory", "EV_SHITO_Victory");
+		Sound.LoadSE("EV_Shinji_RoundStart", "EV_Shinji_RoundStart");
 	}
 
 	/// <summary>

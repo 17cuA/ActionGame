@@ -97,6 +97,7 @@ public class SoundPlay : MonoBehaviour
 		EV_SHITO_Deathblow,
 		EV_SHITO_Start,
 		EV_SHITO_Victory,
+		EV_Shinji_RoundStart
 	}
 	public SoundsType soundsType;
 
@@ -287,7 +288,6 @@ public class SoundPlay : MonoBehaviour
                     break;
                 case SoundsType.Clico_RoundStart:
 					Sound.PlaySE("Clico_RoundStart", 18, 2.0f, 1);
-					//Sound.PlaySE("sinji_honke_BGMtuki_kesenai", 18, 3, 1);
 					break;
 				case SoundsType.Clico_Tackle:
 					Sound.PlaySE("Clico_Tackle", 19, 0.5f, 1);
@@ -360,6 +360,9 @@ public class SoundPlay : MonoBehaviour
 					break;
 				case SoundsType.EV_SHITO_Start:
 					Sound.PlaySE("EV_SHITO_Start", 19, 1, 1);
+					break;
+				case SoundsType.EV_Shinji_RoundStart:
+					Sound.PlaySE("EV_Shinji_RoundStart", 18, 3, 1);
 					break;
 			}
 			i++;
