@@ -19,7 +19,7 @@ public class CameraMover : MonoBehaviour
 	/// <summary>
 	/// 1Pが勝利したときのカメラをセット
 	/// </summary>
-	public void OnePlayerWonCamera()
+	public void OnePlayerWonCameraSet()
 	{
 		camera_1PWin.SetActive(true);
 		camera_2PLose.SetActive(true);
@@ -27,7 +27,7 @@ public class CameraMover : MonoBehaviour
 	/// <summary>
 	/// 2Pが勝利したときのカメラをセット 
 	/// </summary>
-	public void TwoPlayerWonCamera()
+	public void TwoPlayerWonCameraSet()
 	{
 		camera_2PWin.SetActive(true);
 		camera_1PLose.SetActive(true);

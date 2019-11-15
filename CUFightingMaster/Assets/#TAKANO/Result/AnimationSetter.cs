@@ -1,5 +1,5 @@
 ﻿//---------------------------------------
-// GameDataStorageからアニメーションをとる
+// 生成したファイターにアニメーションをセットする
 //---------------------------------------
 // 作成者:高野
 // 作成日:2019.11.14
@@ -8,6 +8,7 @@
 // 2019.11.14 作成
 //--------------------------------------
 // 仕様 
+// FigthterCreaterクラスから生成したファイターの情報を参照してアニメーションをセットしている
 //----------------------------------------
 // MEMO 
 //----------------------------------------
@@ -19,9 +20,16 @@ public class AnimationSetter : MonoBehaviour
 {
 	[SerializeField] private FighterCreater fighterCreater;
 
+	[SerializeField] private AnimationClip clico_Won;
+	[SerializeField] private AnimationClip clico_Lost;
+	[SerializeField] private AnimationClip clico_LostLoop;
+	[SerializeField] private AnimationClip obachan_Won;
+	[SerializeField] private AnimationClip obachan_Lost;
+	[SerializeField] private AnimationClip obachan_LostLoop;
+
 	public void OnePlayerWinAnimationSet()
 	{
-		//fighterCreater.FighterPlayer1.GetComponent<Animationdata>().ResultAnimation(FighterClips[2], 0.5f, FighterClips[6]);
+		//fighterCreater.Fighter1.GetComponent<Animationdata>().ResultAnimation(FighterClips[2], 0.5f, FighterClips[6]);
 	}
 	public void TwoPlayerWinAnimationSet()
 	{

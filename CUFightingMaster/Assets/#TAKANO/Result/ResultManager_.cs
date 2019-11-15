@@ -27,7 +27,7 @@ public class ResultManager_ : MonoBehaviour
 	/// <summary>
 	/// 勝者の判定
 	/// </summary>
-	private void JudgeWinner()
+	private void DiscriminantWinner()
 	{
 		if(GameDataStrage.Instance.winFlag_PlayerOne == true)
 		{
@@ -37,6 +37,10 @@ public class ResultManager_ : MonoBehaviour
 		{
 			currentUpdate = TwoPlayerWon;
 		}
+		else
+		{
+
+		}
 	}
 
 	/// <summary>
@@ -44,7 +48,7 @@ public class ResultManager_ : MonoBehaviour
 	/// </summary>
 	private void OnePlayerWon()
 	{
-		cameraMover.OnePlayerWonCamera();
+		cameraMover.OnePlayerWonCameraSet();
 	}
 
 	/// <summary>
@@ -52,7 +56,33 @@ public class ResultManager_ : MonoBehaviour
 	/// </summary>
 	private void TwoPlayerWon()
 	{
-		cameraMover.TwoPlayerWonCamera();
+		cameraMover.TwoPlayerWonCameraSet();
+	}
+	
+	/// <summary>
+	/// 引き分けだった時
+	/// </summary>
+	private void Draw()
+	{
+		
+	}
+
+	/// <summary>
+	/// ファイターを判別する
+	/// </summary>
+	private void DiscriminantCharacter()
+	{
+		int cnt = 0;
+		foreach (FighterStatus fighterStatus in GameDataStrage.Instance.fighterStatuses)
+		{
+			switch(GameDataStrage.Instance.fighterStatuses[cnt].PlayerID)
+			{
+				case (int)FighterType.CLICO:
+					break;
+				case (int)FighterType.OBACHAN:
+					break;
+			}
+		}
 	}
 
     // Start is called before the first frame update
