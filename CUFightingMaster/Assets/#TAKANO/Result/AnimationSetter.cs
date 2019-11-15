@@ -20,6 +20,8 @@ public class AnimationSetter : MonoBehaviour
 {
 	[SerializeField] private FighterCreater fighterCreater;
 
+	[SerializeField] private AnimationClip animationClip;
+
 	[SerializeField] private AnimationClip clico_Won;
 	[SerializeField] private AnimationClip clico_Lost;
 	[SerializeField] private AnimationClip clico_LostLoop;
@@ -27,11 +29,12 @@ public class AnimationSetter : MonoBehaviour
 	[SerializeField] private AnimationClip obachan_Lost;
 	[SerializeField] private AnimationClip obachan_LostLoop;
 
-	public void OnePlayerWinAnimationSet()
+	public void ClicoWonAnimationSet( GameObject _fighter)
 	{
-		//fighterCreater.Fighter1.GetComponent<Animationdata>().ResultAnimation(FighterClips[2], 0.5f, FighterClips[6]);
+		_fighter.GetComponent<Animationdata>().ResultAnimation()
 	}
-	public void TwoPlayerWinAnimationSet()
+
+	private void SetAnimation()
 	{
 
 	}
