@@ -98,9 +98,7 @@ public class ScriptableInputManager : ScriptableObject
         _setPlayerNum = sobj.SetPlayerNum;
         _buttonNum = sobj.ButtonNum;
         _setButtonNum = sobj.SetButtonNum;
-		//
 		_inputControllers = sobj.InputControllers;
-		//
 		_isSetStick = sobj.IsSetStick;
 
 	}

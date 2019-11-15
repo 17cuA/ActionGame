@@ -19,7 +19,7 @@ public class CreateInputManagerWindow : EditorWindow
     /// <summary>
     /// ScriptableInputManagerの変数
     /// </summary>
-    private ScriptableInputManager  _obj = null;	//設定用変数
+    private ScriptableInputManager  _obj = null, _saveObj = null;	//設定用変数、保存用変数
     Vector2 scrollPos = Vector2.zero;								//スクロールバー用位置変数
 	private string[] playerTab = { "プレイヤー1", "プレイヤー2" };	//設定するプレイヤーを変更する為の変数
 	private int playerTabNum = 0;
@@ -46,7 +46,7 @@ public class CreateInputManagerWindow : EditorWindow
         {
             //読み込み
             Import();
-            _obj.InputControllers = null;
+            //_obj.InputControllers = null;
         }
 
         Color defaultColor = GUI.backgroundColor;
@@ -287,9 +287,13 @@ public class CreateInputManagerWindow : EditorWindow
 	/// </summary>
 	private void Import()
     {
-        if (_obj == null)
+		if (_obj == null)
+		{
+			_obj = CreateInstance<ScriptableInputManager>();
+		}
+		if (_saveObj == null)
         {
-            _obj = CreateInstance<ScriptableInputManager>();
+            _saveObj = CreateInstance<ScriptableInputManager>();
         }
 
 		ScriptableInputManager sample = AssetDatabase.LoadAssetAtPath<ScriptableInputManager>(ASSET_PATH);
@@ -303,7 +307,7 @@ public class CreateInputManagerWindow : EditorWindow
 			return;
 		}
 		//コピーする
-		_obj.Copy(sample);
+		_saveObj.Copy(sample);
 	}
     #endregion
     #region 保存
@@ -332,7 +336,8 @@ public class CreateInputManagerWindow : EditorWindow
         }
 
 		//コピー
-		sample.Copy(_obj);
+		_saveObj.Copy(_obj);
+		sample.Copy(_saveObj);
 
 		////インスペクターから設定できないようにする
 		sample.hideFlags = HideFlags.NotEditable;
