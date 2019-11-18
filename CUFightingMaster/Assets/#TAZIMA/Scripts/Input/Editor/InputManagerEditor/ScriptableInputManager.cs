@@ -98,9 +98,7 @@ public class ScriptableInputManager : ScriptableObject
         _setPlayerNum = sobj.SetPlayerNum;
         _buttonNum = sobj.ButtonNum;
         _setButtonNum = sobj.SetButtonNum;
-		//
 		_inputControllers = sobj.InputControllers;
-		//
 		_isSetStick = sobj.IsSetStick;
 
 	}
@@ -153,6 +151,7 @@ public class SettingButtonClass
 	//デバッグ用のキーを設定するのに使用
 	[SerializeField]
 	private string _altButton;
+
 	public string AltButton
 	{
 		get { return _altButton; }

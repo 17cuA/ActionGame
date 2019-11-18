@@ -19,7 +19,7 @@ public class CreateInputManagerWindow : EditorWindow
     /// <summary>
     /// ScriptableInputManagerの変数
     /// </summary>
-    private ScriptableInputManager  _obj = null;	//設定用変数
+    private ScriptableInputManager  _obj = null, _saveObj = null;	//設定用変数、保存用変数
     Vector2 scrollPos = Vector2.zero;								//スクロールバー用位置変数
 	private string[] playerTab = { "プレイヤー1", "プレイヤー2" };	//設定するプレイヤーを変更する為の変数
 	private int playerTabNum = 0;
@@ -46,7 +46,7 @@ public class CreateInputManagerWindow : EditorWindow
         {
             //読み込み
             Import();
-            _obj.InputControllers = null;
+            //_obj.InputControllers = null;
         }
 
         Color defaultColor = GUI.backgroundColor;
@@ -213,8 +213,45 @@ public class CreateInputManagerWindow : EditorWindow
     /// </summary>
     private void SetController()
     {
-		//リストの作成及び追加、削除を行ったときの表示エラーを回避するための初期化
-		if (true)
+		//初期化
+		if (_obj.InputControllers == null)
+		{
+			//リスト作成
+			_obj.InputControllers = new List<SettingControllerClass>
+			{
+				new SettingControllerClass()
+			};
+			_obj.InputControllers[0].Buttons = new List<SettingButtonClass>
+			{
+				new SettingButtonClass()
+			};
+
+			_obj.SetPlayerNum = _obj.InputControllers.Count;
+			_obj.SetButtonNum = _obj.InputControllers[0].Buttons.Count;
+			isOpen = new bool[_obj.SetPlayerNum, _obj.SetButtonNum];
+		}
+		//リストを追加、削除したときの処理
+		else if (_obj.PlayerNum != _obj.SetPlayerNum || _obj.ButtonNum != _obj.SetButtonNum)
+		{
+			//追加
+			if (_obj.PlayerNum < _obj.SetPlayerNum)
+			{
+				for (int i = 0; i < _obj.SetPlayerNum - _obj.PlayerNum; i++)
+				{
+					_obj.InputControllers.Add(new SettingControllerClass());
+				}
+			}
+			//削除
+			else if (_obj.PlayerNum > _obj.SetPlayerNum)
+			{
+				for (int i = 0; i < _obj.PlayerNum - _obj.SetPlayerNum; i++)
+				{
+					_obj.InputControllers.RemoveAt(_obj.InputControllers.Count - 1);
+				}
+			}
+
+
+		}
 
 		#region 初期化変更頑張る
 		if (_obj.InputControllers == null || _obj.PlayerNum != _obj.SetPlayerNum || _obj.ButtonNum != _obj.SetButtonNum)
@@ -250,9 +287,13 @@ public class CreateInputManagerWindow : EditorWindow
 	/// </summary>
 	private void Import()
     {
-        if (_obj == null)
+		if (_obj == null)
+		{
+			_obj = CreateInstance<ScriptableInputManager>();
+		}
+		if (_saveObj == null)
         {
-            _obj = CreateInstance<ScriptableInputManager>();
+            _saveObj = CreateInstance<ScriptableInputManager>();
         }
 
 		ScriptableInputManager sample = AssetDatabase.LoadAssetAtPath<ScriptableInputManager>(ASSET_PATH);
@@ -266,7 +307,7 @@ public class CreateInputManagerWindow : EditorWindow
 			return;
 		}
 		//コピーする
-		_obj.Copy(sample);
+		_saveObj.Copy(sample);
 	}
     #endregion
     #region 保存
@@ -295,7 +336,8 @@ public class CreateInputManagerWindow : EditorWindow
         }
 
 		//コピー
-		sample.Copy(_obj);
+		_saveObj.Copy(_obj);
+		sample.Copy(_saveObj);
 
 		////インスペクターから設定できないようにする
 		sample.hideFlags = HideFlags.NotEditable;

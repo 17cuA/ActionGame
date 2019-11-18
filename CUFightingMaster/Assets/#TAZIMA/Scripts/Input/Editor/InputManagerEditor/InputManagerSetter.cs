@@ -31,7 +31,7 @@ public class InputManagerSetter
 		Debug.Log("インプットマネージャーの設定を開始します。");
 		InputManagerGenerator inputManagerGenerator = new InputManagerGenerator();
         //保存されている設定を読み込み
-        ScriptableInputManager scriptableInputManager = AssetDatabase.LoadAssetAtPath<ScriptableInputManager>("Assets/Resources/ScriptableInputManager.asset");
+        ScriptableInputManager scriptableInputManager = AssetDatabase.LoadAssetAtPath<ScriptableInputManager>("Assets/#TAZIMA/Scripts/Input/ScriptableObjects/ScriptableInputManager.asset");
 
         //ファイルが存在しない場合作成しない
         if (scriptableInputManager == null) return;
