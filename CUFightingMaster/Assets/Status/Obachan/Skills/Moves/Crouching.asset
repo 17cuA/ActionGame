@@ -22,6 +22,8 @@ MonoBehaviour:
       type: 3}
     childFlag: 0
     worldPositionFlag: 0
+    isDeleteObj: 0
+    isScaled: 0
     position: {x: 0, y: 0, z: 0}
   frameBullets: []
   cancelFrag: 0
@@ -29,6 +31,7 @@ MonoBehaviour:
   endNextWeight: 0
   groundLandingSkill: {fileID: 0}
   groundLandingWeight: 0
+  isGroundEnd: 0
   barrageCancelFrag: 0
   cancelLayer: 
   inBlend: 0
@@ -44,12 +47,26 @@ MonoBehaviour:
     isInfinityFrame: 1
     hitBox:
       size: {x: 0, y: 0, z: 0}
-      localPosition: {x: 0, y: -0.34, z: 0}
+      localPosition: {x: 0.5, y: -1.5, z: 0}
     startFrame: 0
     endFrame: 59
-  plusFootHitBox: []
+  plusFootHitBox:
+  - isFalse: 0
+    isInfinityFrame: 1
+    hitBox:
+      size: {x: 1.5, y: -1.5, z: 0}
+      localPosition: {x: -0.25, y: -0.75, z: 0}
+    startFrame: 0
+    endFrame: 0
   plusGrabHitBox: []
-  plusPushingHitBox: []
+  plusPushingHitBox:
+  - isFalse: 0
+    isInfinityFrame: 1
+    hitBox:
+      size: {x: 2.5, y: -1.5, z: 0}
+      localPosition: {x: 0.5, y: -0.75, z: 0}
+    startFrame: 0
+    endFrame: 0
   customHitBox: []
   isContinue: 0
   isMoveContinue: 0

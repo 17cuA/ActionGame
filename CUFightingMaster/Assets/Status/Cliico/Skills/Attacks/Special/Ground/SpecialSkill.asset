@@ -13,18 +13,10 @@ MonoBehaviour:
   m_Name: SpecialSkill
   m_EditorClassIdentifier: 
   skillLayer: 0
-  animationClip: {fileID: 7400000, guid: fc717657845ccfd48a526245777b6e0b, type: 2}
-  animationSpeed: 1
+  animationClip: {fileID: 7400000, guid: 9f8317c26fbb4504e89ce49e9fed9471, type: 2}
+  animationSpeed: 0.65
   status: 8
   frameEffects:
-  - frame: 60
-    effect: {fileID: 1037587431129098588, guid: 610eb896adc5f694d834f647b9e2c701,
-      type: 3}
-    childFlag: 1
-    worldPositionFlag: 0
-    isDeleteObj: 0
-    isScaled: 0
-    position: {x: 1.5, y: 2, z: 0}
   - frame: 0
     effect: {fileID: 4176766471126924168, guid: df720043f6ea5f54b89f097335ab544a,
       type: 3}
@@ -33,7 +25,13 @@ MonoBehaviour:
     isDeleteObj: 0
     isScaled: 0
     position: {x: 0, y: 0, z: 0}
-  frameBullets: []
+  frameBullets:
+  - frame: 0
+    bullet: {fileID: 2978368632912520433, guid: 2ecf66a408be7934ea1d9c89c33b8074,
+      type: 3}
+    childFlag: 0
+    worldPositionFlag: 0
+    position: {x: -60, y: 14, z: 0}
   cancelFrag: 0
   endNextAnimation: {fileID: 0}
   endNextWeight: 0
@@ -83,105 +81,52 @@ MonoBehaviour:
     - isFalse: 0
       isInfinityFrame: 0
       hitBox:
-        size: {x: 4, y: 4, z: 1}
-        localPosition: {x: 0, y: 1.8, z: 0}
-      startFrame: 66
-      endFrame: 76
-    - isFalse: 0
-      isInfinityFrame: 0
-      hitBox:
-        size: {x: 4, y: 4, z: 1}
-        localPosition: {x: 0, y: 1.8, z: 0}
-      startFrame: 77
-      endFrame: 87
-    - isFalse: 0
-      isInfinityFrame: 0
-      hitBox:
-        size: {x: 4, y: 4, z: 1}
-        localPosition: {x: 0, y: 1.8, z: 0}
-      startFrame: 88
-      endFrame: 98
-    hitStop: 3
+        size: {x: 1, y: 1, z: 1}
+        localPosition: {x: 0, y: 0, z: 0}
+      startFrame: 0
+      endFrame: 0
+    hitStop: 0
     hitPoint: 0
     hitStrength: 0
-    damage: 2000
+    damage: 0
     stanDamage: 0
     knockBack: 0
     airKnockBack: 0
     guardKnockBack: 0
     hitEffects:
-    - isEnemyPos: 1
+    - isEnemyPos: 0
       isParant: 0
       isEnemyParant: 0
-      effect: {fileID: 6962658446937739587, guid: b86e21239395ab54797c3d7da904ebf3,
+      effect: {fileID: 1552117265370926609, guid: 504b258ce73ca624babdc27952fa428f,
         type: 3}
       guardEffect: {fileID: 0}
-      position: {x: 0, y: 1.78, z: 0}
-    - isEnemyPos: 1
-      isParant: 0
-      isEnemyParant: 1
-      effect: {fileID: 0}
-      guardEffect: {fileID: 6532350964205856054, guid: 8eea3721bc3fc884eafd65d00f7413aa,
-        type: 3}
       position: {x: 0, y: 0, z: 0}
-    isDown: 1
+    isDown: 0
     isThrow: 0
     isThrowGroundDamage: 0
     isThrowGroundAnimEnd: 0
-    airDamageMovements:
-    - isGravityInvaid: 0
-      isResetStartGravity: 1
-      isResetEndGravity: 0
-      isImpact: 1
-      isBound: 0
-      boundMovements: []
-      movement: {x: -1, y: 3, z: 0}
-      startFrame: 0
+    airDamageMovements: []
     throwGroundDamage: 0
     throwSkill: {fileID: 0}
     enemyThrowSkill: {fileID: 0}
     throwDamages: []
     isJumpCancel: 0
     isContinue: 0
-    movements:
-    - isGravityInvaid: 0
-      isResetStartGravity: 1
-      isResetEndGravity: 0
-      isImpact: 1
-      isBound: 0
-      boundMovements: []
-      movement: {x: -1, y: 2, z: 0}
-      startFrame: 0
+    movements: []
     gravityMoves: []
     isFaceDown: 0
     isPassiveNotPossible: 0
-    hitRigor: 20
-    guardHitRigor: 20
+    hitRigor: 0
+    guardHitRigor: 0
     plusGauge: 0
     enemyPlusGauge: 0
   isContinue: 0
   isMoveContinue: 0
-  movements:
-  - isGravityInvaid: 0
-    isResetStartGravity: 0
-    isResetEndGravity: 0
-    isImpact: 0
-    isBound: 0
-    boundMovements: []
-    movement: {x: 0, y: 0, z: 0}
-    startFrame: 0
-  - isGravityInvaid: 0
-    isResetStartGravity: 0
-    isResetEndGravity: 0
-    isImpact: 0
-    isBound: 0
-    boundMovements: []
-    movement: {x: 5, y: 0, z: 0}
-    startFrame: 66
+  movements: []
   gravityMoves: []
   timeStops:
     startFrame: 0
-    endFrame: 65
+    endFrame: 40
   headFlag: 0
   bodyFlag: 1
   footFlag: 0
