@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: daa0c98c961cc2f468fdfd569066f34c, type: 3}
   m_Name: Longinus
   m_EditorClassIdentifier: 
-  maxFrame: 120
+  maxFrame: 180
   isLoop: 0
   isOffset: 1
-  isNotEnemyOffset: 1
+  isNotEnemyOffset: 0
   isInvincibleDis: 0
   offsetEffects: []
   customHitBox:
@@ -25,30 +25,65 @@ MonoBehaviour:
       isInfinityFrame: 0
       hitBox:
         size: {x: 3, y: 1, z: 1}
-        localPosition: {x: 0, y: 0, z: 0}
-      startFrame: 80
+        localPosition: {x: 2, y: -1, z: 0}
+      startFrame: 71
+      endFrame: 75
+    - isFalse: 0
+      isInfinityFrame: 0
+      hitBox:
+        size: {x: 3, y: 1, z: 1}
+        localPosition: {x: 2, y: -0.5, z: 0}
+      startFrame: 76
+      endFrame: 80
+    - isFalse: 0
+      isInfinityFrame: 0
+      hitBox:
+        size: {x: 3, y: 1, z: 1}
+        localPosition: {x: 2, y: -0.5, z: 0}
+      startFrame: 81
+      endFrame: 85
+    - isFalse: 0
+      isInfinityFrame: 0
+      hitBox:
+        size: {x: 3, y: 1, z: 1}
+        localPosition: {x: 2, y: -0.5, z: 0}
+      startFrame: 86
       endFrame: 90
     - isFalse: 0
       isInfinityFrame: 0
       hitBox:
         size: {x: 3, y: 1, z: 1}
-        localPosition: {x: 0, y: 0, z: 0}
-      startFrame: 90
+        localPosition: {x: 2, y: -0.5, z: 0}
+      startFrame: 91
+      endFrame: 95
+    - isFalse: 0
+      isInfinityFrame: 0
+      hitBox:
+        size: {x: 3, y: 1, z: 1}
+        localPosition: {x: 2, y: -0.5, z: 0}
+      startFrame: 96
       endFrame: 100
     - isFalse: 0
       isInfinityFrame: 0
       hitBox:
         size: {x: 3, y: 1, z: 1}
-        localPosition: {x: 0, y: 0, z: 0}
-      startFrame: 100
-      endFrame: 110
+        localPosition: {x: 2, y: -0.5, z: 0}
+      startFrame: 66
+      endFrame: 70
     - isFalse: 0
       isInfinityFrame: 0
       hitBox:
         size: {x: 3, y: 1, z: 1}
-        localPosition: {x: 0, y: 0, z: 0}
-      startFrame: 110
-      endFrame: 120
+        localPosition: {x: 2, y: -0.5, z: 0}
+      startFrame: 61
+      endFrame: 65
+    - isFalse: 0
+      isInfinityFrame: 0
+      hitBox:
+        size: {x: 3, y: 1, z: 1}
+        localPosition: {x: 2, y: -0.5, z: 0}
+      startFrame: 100
+      endFrame: 105
     hitStop: 5
     hitPoint: 0
     hitStrength: 2
