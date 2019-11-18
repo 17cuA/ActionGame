@@ -93,7 +93,7 @@ public class ResultManager : MonoBehaviour
 			}
 			else if (GameDataStrage.Instance.fighterStatuses[0].PlayerID == 1)
 			{
-				obj.GetComponent<Animationdata>().h(FighterClips[2],0.5f, FighterClips[6]);
+				obj.GetComponent<Animationdata>().ResultAnimation(FighterClips[2],0.5f, FighterClips[6]);
 				obj.GetComponent<Animationdata>().resultFlag = true;
 				// 1Pのおばちゃん勝利タイムラインを表示
 				timelines[0].SetActive(false);

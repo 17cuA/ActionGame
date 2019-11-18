@@ -31,7 +31,7 @@ public class AnimationSetter : MonoBehaviour
 
 	public void ClicoWonAnimationSet( GameObject _fighter)
 	{
-		_fighter.GetComponent<Animationdata>().ResultAnimation()
+		//_fighter.GetComponent<Animationdata>().ResultAnimation()
 	}
 
 	private void SetAnimation()
