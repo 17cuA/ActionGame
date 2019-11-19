@@ -31,7 +31,7 @@ MonoBehaviour:
       type: 3}
     childFlag: 0
     worldPositionFlag: 0
-    position: {x: -60, y: 14, z: 0}
+    position: {x: -60, y: 16, z: 0}
   cancelFrag: 0
   endNextAnimation: {fileID: 0}
   endNextWeight: 0
@@ -75,60 +75,16 @@ MonoBehaviour:
   plusFootHitBox: []
   plusGrabHitBox: []
   plusPushingHitBox: []
-  customHitBox:
-  - mode: 0
-    frameHitBoxes:
-    - isFalse: 0
-      isInfinityFrame: 0
-      hitBox:
-        size: {x: 1, y: 1, z: 1}
-        localPosition: {x: 0, y: 0, z: 0}
-      startFrame: 0
-      endFrame: 0
-    hitStop: 0
-    hitPoint: 0
-    hitStrength: 0
-    damage: 0
-    stanDamage: 0
-    knockBack: 0
-    airKnockBack: 0
-    guardKnockBack: 0
-    hitEffects:
-    - isEnemyPos: 0
-      isParant: 0
-      isEnemyParant: 0
-      effect: {fileID: 1552117265370926609, guid: 504b258ce73ca624babdc27952fa428f,
-        type: 3}
-      guardEffect: {fileID: 0}
-      position: {x: 0, y: 0, z: 0}
-    isDown: 0
-    isThrow: 0
-    isThrowGroundDamage: 0
-    isThrowGroundAnimEnd: 0
-    airDamageMovements: []
-    throwGroundDamage: 0
-    throwSkill: {fileID: 0}
-    enemyThrowSkill: {fileID: 0}
-    throwDamages: []
-    isJumpCancel: 0
-    isContinue: 0
-    movements: []
-    gravityMoves: []
-    isFaceDown: 0
-    isPassiveNotPossible: 0
-    hitRigor: 0
-    guardHitRigor: 0
-    plusGauge: 0
-    enemyPlusGauge: 0
+  customHitBox: []
   isContinue: 0
   isMoveContinue: 0
   movements: []
   gravityMoves: []
   timeStops:
     startFrame: 0
-    endFrame: 40
-  headFlag: 0
+    endFrame: 75
+  headFlag: 1
   bodyFlag: 1
-  footFlag: 0
-  grabFlag: 0
+  footFlag: 1
+  grabFlag: 1
   pushingFlag: 1
