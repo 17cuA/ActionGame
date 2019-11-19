@@ -40,47 +40,26 @@ MonoBehaviour:
     startFrame: 0
     rightCamera: {fileID: 0}
     leftCamera: {fileID: 0}
-  isInvincibleBullet: 1
-  plusHeadHitBox:
-  - isFalse: 1
-    isInfinityFrame: 1
-    hitBox:
-      size: {x: 0, y: 0, z: 0}
-      localPosition: {x: 0, y: 0, z: 0}
-    startFrame: 0
-    endFrame: 59
+  isInvincibleBullet: 0
+  plusHeadHitBox: []
   plusBodyHitBox:
   - isFalse: 0
     isInfinityFrame: 1
     hitBox:
-      size: {x: 0.4, y: 0, z: 0}
-      localPosition: {x: 0, y: -0.5, z: 0}
-    startFrame: 0
-    endFrame: 59
-  plusFootHitBox:
-  - isFalse: 1
-    isInfinityFrame: 1
-    hitBox:
       size: {x: 0, y: 0, z: 0}
-      localPosition: {x: 0, y: 0, z: 0}
+      localPosition: {x: 0, y: -2, z: 0}
     startFrame: 0
-    endFrame: 59
-  plusGrabHitBox:
-  - isFalse: 1
-    isInfinityFrame: 1
-    hitBox:
-      size: {x: 0, y: 0, z: 0}
-      localPosition: {x: 0, y: 0, z: 0}
-    startFrame: 0
-    endFrame: 59
-  plusPushingHitBox:
+    endFrame: 29
   - isFalse: 0
     isInfinityFrame: 0
     hitBox:
-      size: {x: 0, y: -1.19, z: 0}
-      localPosition: {x: 0, y: -0.5, z: 0}
-    startFrame: 0
-    endFrame: 55
+      size: {x: 0, y: 0, z: 0}
+      localPosition: {x: 0, y: -4, z: 0}
+    startFrame: 30
+    endFrame: 59
+  plusFootHitBox: []
+  plusGrabHitBox: []
+  plusPushingHitBox: []
   customHitBox: []
   isContinue: 0
   isMoveContinue: 0
@@ -89,7 +68,7 @@ MonoBehaviour:
   timeStops:
     startFrame: 0
     endFrame: 0
-  headFlag: 1
+  headFlag: 0
   bodyFlag: 1
   footFlag: 1
   grabFlag: 1
