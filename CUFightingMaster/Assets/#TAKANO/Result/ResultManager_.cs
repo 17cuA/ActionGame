@@ -34,7 +34,7 @@ public class ResultManager_ : MonoBehaviour
 	/// <summary>
 	/// 勝者の判定
 	/// </summary>
-	private void JudgeWinner()
+	private void DiscriminantWinner()
 	{
 		//キャラクターの生成
 		fighterCreater.FighterCreate();
@@ -47,6 +47,10 @@ public class ResultManager_ : MonoBehaviour
 		{
 			currentUpdate = TwoPlayerWonCameraSet;
 		}
+		else
+		{
+
+		}
 	}
 
 	/// <summary>
@@ -54,7 +58,10 @@ public class ResultManager_ : MonoBehaviour
 	/// </summary>
 	private void OnePlayerWonCameraSet()
 	{
+<<<<<<< HEAD
 		//カメラをセット
+=======
+>>>>>>> f427b8379863ffc4c85f6ba1b7778e80bff047af
 		cameraMover.OnePlayerWonCameraSet();
 	}
 
@@ -63,6 +70,7 @@ public class ResultManager_ : MonoBehaviour
 	/// </summary>
 	private void TwoPlayerWonCameraSet()
 	{
+<<<<<<< HEAD
 		//カメラをセット
 		cameraMover.TwoPlayerWonCameraSet();
 	}
@@ -102,6 +110,34 @@ public class ResultManager_ : MonoBehaviour
 			cameraMover.ObachanLose();
 			//アニメーションセット
 			animationSetter.ObachanWonAnimationSet(fighterCreater.FighterPlayer2);
+=======
+		cameraMover.TwoPlayerWonCameraSet();
+	}
+	
+	/// <summary>
+	/// 引き分けだった時
+	/// </summary>
+	private void Draw()
+	{
+		
+	}
+
+	/// <summary>
+	/// ファイターを判別する
+	/// </summary>
+	private void DiscriminantCharacter()
+	{
+		int cnt = 0;
+		foreach (FighterStatus fighterStatus in GameDataStrage.Instance.fighterStatuses)
+		{
+			switch(GameDataStrage.Instance.fighterStatuses[cnt].PlayerID)
+			{
+				case (int)FighterType.CLICO:
+					break;
+				case (int)FighterType.OBACHAN:
+					break;
+			}
+>>>>>>> f427b8379863ffc4c85f6ba1b7778e80bff047af
 		}
 	}
 

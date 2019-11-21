@@ -13,8 +13,8 @@ using UnityEngine;
 
 public class FighterCreater : MonoBehaviour
 {
-	public GameObject FighterPlayer1 { private set; get; }
-	public GameObject FighterPlayer2 { private set; get; }
+	public GameObject Fighter1 { private set; get; }
+	public GameObject Fighter2 { private set; get; }
 
 	[SerializeField]private GameObject player1CreatePos;
 	[SerializeField]private GameObject player2CreatePos;
@@ -24,7 +24,7 @@ public class FighterCreater : MonoBehaviour
 	/// </summary>
 	public void FighterCreate()
 	{
-		FighterPlayer1 = Instantiate(GameDataStrage.Instance.fighterStatuses[0].PlayerModel, player1CreatePos.transform.position, transform.rotation);
-		FighterPlayer2 = Instantiate(GameDataStrage.Instance.fighterStatuses[1].PlayerModel, player2CreatePos.transform.position, transform.rotation);
+		Fighter1 = Instantiate(GameDataStrage.Instance.fighterStatuses[(int)PlayerNumber.Player1].PlayerModel, player1CreatePos.transform.position, transform.rotation);
+		Fighter2 = Instantiate(GameDataStrage.Instance.fighterStatuses[(int)PlayerNumber.Player2].PlayerModel, player2CreatePos.transform.position, transform.rotation);
 	}
 }
