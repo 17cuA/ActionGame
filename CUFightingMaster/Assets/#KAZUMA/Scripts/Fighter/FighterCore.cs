@@ -129,7 +129,7 @@ public class FighterCore : MonoBehaviour
             }
             HP = status.HP;
 			StanGauge = 0;
-			SpecialGauge = 110; //一時的に１００に変更
+			SpecialGauge = 0; //一時的に１００に変更
             //アニメーションプレイヤーの取得
             animationPlayer = playerModel.GetComponent<FightingAnimationPlayer>();
             mover = new FighterMover(this);
