@@ -145,8 +145,6 @@ public class Sound
         Sound.LoadSE("Menu_MoveCursor", "Se_menu_moveCursor");
         Sound.LoadSE("Menu_Cancel", "Se_menu_cancel");
         Sound.LoadSE("Menu_Decision", "Se_menu_decision");
-
-        //新しく入れたデータ　8.30
         Sound.LoadSE("PlayerOneWin", "Voice_Player1_Win");
         Sound.LoadSE("PlayerTwoWin", "Voice_Player2_Win");
         Sound.LoadSE("RoundOne", "Voice_Round1");
@@ -155,13 +153,7 @@ public class Sound
         Sound.LoadSE("Fight", "Voice_Fight");
         Sound.LoadSE("Ko", "Voice_K.O.");
         Sound.LoadSE("Draw", "Voice_Draw");
-
         Sound.LoadSE("Ko2", "Voice_K.O.2");
-        
-        Sound.LoadSE("SE_Beams", "SE_Beams");
-        Sound.LoadSE("SV_Nice", "SV_Nice");
-        Sound.LoadSE("SV_Great", "SV_Great");
-        Sound.LoadSE("SV_Excellent", "SV_Excellent");
 
 		// EVA_Voise
 		Sound.LoadSE("EV_ATField", "EV_ATField");
