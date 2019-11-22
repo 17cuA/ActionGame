@@ -290,6 +290,8 @@ public class InGameManager : SingletonMono<InGameManager>
             GameDataStrage.Instance.winFlag_PlayerOne = true;
             GameDataStrage .Instance.winFlag_PlayerTwo = false;
 
+			GameDataStrage.Instance.WiningPlayer = PlayerNumber.Player1;
+
 			if (canvasController.Call_DisplayVictory_winP1() == false)
                 currentUpdate = GameFinish;
         }
@@ -299,7 +301,9 @@ public class InGameManager : SingletonMono<InGameManager>
             GameDataStrage.Instance.winFlag_PlayerOne = false;
             GameDataStrage.Instance.winFlag_PlayerTwo = true;
 
-            if (canvasController.Call_DisplayVictory_winP2() == false)
+			GameDataStrage.Instance.WiningPlayer = PlayerNumber.Player2;
+
+			if (canvasController.Call_DisplayVictory_winP2() == false)
                 currentUpdate = GameFinish;
         }
 		else

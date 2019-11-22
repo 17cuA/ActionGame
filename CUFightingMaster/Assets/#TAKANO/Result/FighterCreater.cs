@@ -22,7 +22,7 @@ public class FighterCreater : MonoBehaviour
 	/// <summary>
 	/// キャラクターの生成
 	/// </summary>
-	public void Call_FighterCreate()
+	public void FighterCreate()
 	{
 		Fighter1 = Instantiate(GameDataStrage.Instance.fighterStatuses[(int)PlayerNumber.Player1].PlayerModel, player1CreatePos.transform.position, transform.rotation);
 		Fighter2 = Instantiate(GameDataStrage.Instance.fighterStatuses[(int)PlayerNumber.Player2].PlayerModel, player2CreatePos.transform.position, transform.rotation);

@@ -67,6 +67,8 @@ public class GameDataStrage : MonoBehaviour
     public bool winFlag_PlayerOne = false;
     public bool winFlag_PlayerTwo = true;
 
+	public PlayerNumber WiningPlayer;
+
 	//デバッグ用のダメージ
 	public void SetPlusDamage(PlayerNumber _num,int _dam)
 	{
