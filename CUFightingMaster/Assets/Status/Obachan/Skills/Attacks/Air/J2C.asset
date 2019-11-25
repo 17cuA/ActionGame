@@ -10,37 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4fbd35985d310504d81036cc55356454, type: 3}
-  m_Name: Guard_Stand
+  m_Name: J2C
   m_EditorClassIdentifier: 
   skillLayer: 0
-  animationClip: {fileID: 7400000, guid: 027dc7fa40ad9c44d80b57e3d7c7cee6, type: 2}
+  animationClip: {fileID: 7400000, guid: 4568e503decd31f459e7c7310d649ae3, type: 2}
   animationSpeed: 1
   status: 1
-  frameEffects:
+  frameEffects: []
+  frameBullets:
   - frame: 0
-    effect: {fileID: 2372906014323719300, guid: facf00d3fb0b4d04bb606c7981743de3,
+    bullet: {fileID: 4357157596093694355, guid: eec54defccab5a04e90416a586217b9c,
       type: 3}
     childFlag: 0
     worldPositionFlag: 0
-    isDeleteObj: 0
-    isScaled: 1
-    position: {x: 0.8, y: 2.5, z: 0}
-  - frame: 0
-    effect: {fileID: 1846075397521936885, guid: 20c39e31e5ccefa4c891979fd1c4274c,
-      type: 3}
-    childFlag: 0
-    worldPositionFlag: 0
-    isDeleteObj: 0
-    isScaled: 0
-    position: {x: 0, y: 0, z: 0}
-  - frame: 0
-    effect: {fileID: 938335540899788553, guid: ea946e39537c2ef48ab0f9cd030b3283, type: 3}
-    childFlag: 0
-    worldPositionFlag: 0
-    isDeleteObj: 0
-    isScaled: 0
-    position: {x: -4, y: 4, z: 0}
-  frameBullets: []
+    position: {x: 3.5, y: 4, z: 0}
   cancelFrag: 1
   endNextAnimation: {fileID: 0}
   endNextWeight: 0
@@ -64,7 +47,23 @@ MonoBehaviour:
   customHitBox: []
   isContinue: 0
   isMoveContinue: 0
-  movements: []
+  movements:
+  - isGravityInvaid: 1
+    isResetStartGravity: 0
+    isResetEndGravity: 0
+    isImpact: 0
+    isBound: 0
+    boundMovements: []
+    movement: {x: 0, y: 0, z: 0}
+    startFrame: 0
+  - isGravityInvaid: 0
+    isResetStartGravity: 0
+    isResetEndGravity: 0
+    isImpact: 0
+    isBound: 0
+    boundMovements: []
+    movement: {x: -1, y: 0, z: 0}
+    startFrame: 40
   gravityMoves: []
   timeStops:
     startFrame: 0
