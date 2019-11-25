@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1523218027763192728
+--- !u!1 &3551742790649233088
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,45 +8,45 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1523218027763224504}
-  - component: {fileID: 1523218027766091674}
-  - component: {fileID: 1523218027765124442}
+  - component: {fileID: 3551742790649258720}
+  - component: {fileID: 3551742790645867202}
+  - component: {fileID: 3551742790646964226}
   m_Layer: 0
-  m_Name: Totenkaku_WireMesh
+  m_Name: HATA
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1523218027763224504
+--- !u!4 &3551742790649258720
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1523218027763192728}
-  m_LocalRotation: {x: -0.7071, y: -0.0031043927, z: -0.0031043927, w: 0.7071}
-  m_LocalPosition: {x: 5.903593e-27, y: 2.6321445, z: 0.000000004027766}
-  m_LocalScale: {x: 1.736385, y: 1.736385, z: 1.2709}
+  m_GameObject: {fileID: 3551742790649233088}
+  m_LocalRotation: {x: 0, y: 0, z: 1, w: 0.00000040133924}
+  m_LocalPosition: {x: 0.21278057, y: 0.0084099155, z: 0.01107568}
+  m_LocalScale: {x: 1.820549, y: 1.820549, z: 1.820549}
   m_Children: []
-  m_Father: {fileID: 1523218027763224506}
-  m_RootOrder: 2
+  m_Father: {fileID: 3551742790649258722}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &1523218027766091674
+--- !u!33 &3551742790645867202
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1523218027763192728}
-  m_Mesh: {fileID: 4300004, guid: 5c987e69f4f7fce4b9018d9f099c3951, type: 3}
---- !u!23 &1523218027765124442
+  m_GameObject: {fileID: 3551742790649233088}
+  m_Mesh: {fileID: 4300000, guid: 22a21671870e2fb4d82e7ed26671e824, type: 3}
+--- !u!23 &3551742790646964226
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1523218027763192728}
+  m_GameObject: {fileID: 3551742790649233088}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -57,7 +57,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0fe95205324b5d84f9f272f36c445054, type: 2}
+  - {fileID: 2100000, guid: 738eb2bea9c5d2f4aabe45e7a2fd0de2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -77,7 +77,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!1 &1523218027763192730
+--- !u!1 &3551742790649233090
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -85,32 +85,32 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1523218027763224506}
+  - component: {fileID: 3551742790649258722}
   m_Layer: 0
-  m_Name: Totenkaku
+  m_Name: Flag
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1523218027763224506
+--- !u!4 &3551742790649258722
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1523218027763192730}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.3, y: -0.2, z: 125.8}
-  m_LocalScale: {x: 7.4816732, y: 7.4816732, z: 7.4816732}
+  m_GameObject: {fileID: 3551742790649233090}
+  m_LocalRotation: {x: 0.067527354, y: 0.70387506, z: 0.70387506, w: -0.067527354}
+  m_LocalPosition: {x: 10.03988, y: 2.61, z: 8.923177}
+  m_LocalScale: {x: 1.2441, y: 1.2441, z: 1.2441}
   m_Children:
-  - {fileID: 1523218027763224510}
-  - {fileID: 1523218027763224508}
-  - {fileID: 1523218027763224504}
+  - {fileID: 3551742790649258720}
+  - {fileID: 3551742790649258726}
+  - {fileID: 3551742790649258724}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1523218027763192732
+  m_LocalEulerAnglesHint: {x: -90.00001, y: 0, z: 190.95999}
+--- !u!1 &3551742790649233092
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -118,45 +118,45 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1523218027763224508}
-  - component: {fileID: 1523218027766091676}
-  - component: {fileID: 1523218027765124444}
+  - component: {fileID: 3551742790649258724}
+  - component: {fileID: 3551742790645867206}
+  - component: {fileID: 3551742790646964230}
   m_Layer: 0
-  m_Name: Totenkaku_Pillar
+  m_Name: YOKOBOU
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1523218027763224508
+--- !u!4 &3551742790649258724
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1523218027763192732}
-  m_LocalRotation: {x: -0.7071068, y: 1.6463614e-10, z: 1.6463614e-10, w: 0.7071068}
-  m_LocalPosition: {x: -0, y: 2.6117046, z: 0.00000001316862}
-  m_LocalScale: {x: 1.2709, y: 1.2709, z: 1.2709}
+  m_GameObject: {fileID: 3551742790649233092}
+  m_LocalRotation: {x: 0, y: 0, z: 1, w: 0.00000016292068}
+  m_LocalPosition: {x: 0.21278057, y: 0.0084099155, z: 0.01107568}
+  m_LocalScale: {x: 1.820549, y: 1.820549, z: 1.820549}
   m_Children: []
-  m_Father: {fileID: 1523218027763224506}
-  m_RootOrder: 1
+  m_Father: {fileID: 3551742790649258722}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &1523218027766091676
+--- !u!33 &3551742790645867206
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1523218027763192732}
-  m_Mesh: {fileID: 4300002, guid: 5c987e69f4f7fce4b9018d9f099c3951, type: 3}
---- !u!23 &1523218027765124444
+  m_GameObject: {fileID: 3551742790649233092}
+  m_Mesh: {fileID: 4300004, guid: 22a21671870e2fb4d82e7ed26671e824, type: 3}
+--- !u!23 &3551742790646964230
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1523218027763192732}
+  m_GameObject: {fileID: 3551742790649233092}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -167,7 +167,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a122c75f184192a408404c8a62c58880, type: 2}
+  - {fileID: 2100000, guid: 74aa1a3784402564fadcdab83c69ad01, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -187,7 +187,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!1 &1523218027763192734
+--- !u!1 &3551742790649233094
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -195,45 +195,45 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1523218027763224510}
-  - component: {fileID: 1523218027766091678}
-  - component: {fileID: 1523218027765124446}
+  - component: {fileID: 3551742790649258726}
+  - component: {fileID: 3551742790645867200}
+  - component: {fileID: 3551742790646964224}
   m_Layer: 0
-  m_Name: Totenkaku_Leg
+  m_Name: TATEBOU
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1523218027763224510
+--- !u!4 &3551742790649258726
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1523218027763192734}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
-  m_LocalScale: {x: 1.126324, y: 1.126324, z: 1.5487031}
+  m_GameObject: {fileID: 3551742790649233094}
+  m_LocalRotation: {x: 0, y: 0, z: 1, w: 0.00000016292068}
+  m_LocalPosition: {x: 0.061389286, y: 0.000069723064, z: 1.9367198}
+  m_LocalScale: {x: 1.820549, y: 1.820549, z: 1.820549}
   m_Children: []
-  m_Father: {fileID: 1523218027763224506}
-  m_RootOrder: 0
+  m_Father: {fileID: 3551742790649258722}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &1523218027766091678
+--- !u!33 &3551742790645867200
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1523218027763192734}
-  m_Mesh: {fileID: 4300000, guid: 5c987e69f4f7fce4b9018d9f099c3951, type: 3}
---- !u!23 &1523218027765124446
+  m_GameObject: {fileID: 3551742790649233094}
+  m_Mesh: {fileID: 4300002, guid: 22a21671870e2fb4d82e7ed26671e824, type: 3}
+--- !u!23 &3551742790646964224
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1523218027763192734}
+  m_GameObject: {fileID: 3551742790649233094}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -244,7 +244,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9f2176d1da868d341992fa713f861750, type: 2}
+  - {fileID: 2100000, guid: 470e395c4bc056d438f3659536f79ea7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
