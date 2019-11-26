@@ -157,7 +157,6 @@ public class CommandManager :MonoBehaviour
                 {
                     //コマンドを保存
                     inputCommandName = attackParameters[i].commandName;
-
                     attackParameters[i].isShot = false;
                     isShotCommand = true;
                     //コマンドを受け付けない時間

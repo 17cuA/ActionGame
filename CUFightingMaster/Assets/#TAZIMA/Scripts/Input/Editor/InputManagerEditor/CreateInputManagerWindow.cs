@@ -46,7 +46,6 @@ public class CreateInputManagerWindow : EditorWindow
         {
             //読み込み
             Import();
-            //_obj.InputControllers = null;
         }
 
         Color defaultColor = GUI.backgroundColor;
@@ -113,8 +112,8 @@ public class CreateInputManagerWindow : EditorWindow
             GUI.backgroundColor = defaultColor;
 
             _obj.ControllerName = EditorGUILayout.TextField("コントローラー名", _obj.ControllerName);
-            _obj.ButtonNum = EditorGUILayout.IntField("ボタン設定数", _obj.ButtonNum);
-            _obj.PlayerNum = EditorGUILayout.IntField("プレイヤー数", _obj.PlayerNum);
+			_obj.PlayerNum = EditorGUILayout.IntField("プレイヤー数", _obj.PlayerNum);
+			_obj.ButtonNum = EditorGUILayout.IntField("ボタン設定数", _obj.ButtonNum);
 			_obj.IsSetStick = EditorGUILayout.ToggleLeft("設定時に入力軸の設定を自動追加", _obj.IsSetStick);
 
             //コントローラー名表示ボタン
@@ -253,7 +252,6 @@ public class CreateInputManagerWindow : EditorWindow
 
 		}
 
-		#region 初期化変更頑張る
 		if (_obj.InputControllers == null || _obj.PlayerNum != _obj.SetPlayerNum || _obj.ButtonNum != _obj.SetButtonNum)
         {
             //設定用変数に入力用変数の値を格納
@@ -278,7 +276,6 @@ public class CreateInputManagerWindow : EditorWindow
 			}
             _obj.InputControllers = controllerList;
         }
-		#endregion
 	}
 #endregion
 	#region ロード
@@ -304,6 +301,8 @@ public class CreateInputManagerWindow : EditorWindow
 		}
 		//コピーする
 		_obj.Copy(sample);
+		isOpen = new bool[_obj.SetPlayerNum, _obj.SetButtonNum];
+		Debug.Log("ロード完了");
 	}
     #endregion
     #region 保存
@@ -342,6 +341,7 @@ public class CreateInputManagerWindow : EditorWindow
 		AssetDatabase.SaveAssets();
 		//エディタを最新の状態にする
 		AssetDatabase.Refresh();
+		Debug.Log("セーブ完了");
 	}
     #endregion
 }

@@ -12,14 +12,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18e2215e6e2ac904194b1f4e5099bf42, type: 3}
   m_Name: ScriptableInputManager
   m_EditorClassIdentifier: 
-  _controllerName: asdf
-  _playerNum: 1
-  _setPlayerNum: 1
-  _buttonNum: 1
-  _setButtonNum: 1
+  _controllerName: controller
+  _playerNum: 2
+  _setPlayerNum: 2
+  _buttonNum: 3
+  _setButtonNum: 3
   _inputControllers:
   - _buttons:
-    - _name: 
-      _inputButtonNum: 0
+    - _name: as
+      _inputButtonNum: 3
+      _altButton: 
+    - _name: df
+      _inputButtonNum: 4
+      _altButton: 
+    - _name: fg
+      _inputButtonNum: 7
+      _altButton: 
+  - _buttons:
+    - _name: qw
+      _inputButtonNum: 8
+      _altButton: 
+    - _name: er
+      _inputButtonNum: 9
+      _altButton: 
+    - _name: ty
+      _inputButtonNum: 10
       _altButton: 
   _isSetStick: 0
