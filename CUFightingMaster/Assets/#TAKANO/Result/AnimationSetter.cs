@@ -20,8 +20,6 @@ public class AnimationSetter : MonoBehaviour
 {
 	[SerializeField] private FighterCreater fighterCreater;
 
-<<<<<<< HEAD
-	//AnimationClip
 	[SerializeField] private AnimationClip clico_Won;
 	[SerializeField] private AnimationClip clico_WonLoop;
 	[SerializeField] private AnimationClip clico_Losing;
@@ -46,28 +44,26 @@ public class AnimationSetter : MonoBehaviour
 	/// クリコが負けたときのアニメーションをセット
 	/// </summary>
 	/// <param name="_fighter">ファイターオブジェクト</param>
-	public void ClicoLosingAnimationSet(GameObject _fighter)
-=======
-	[SerializeField] private AnimationClip animationClip;
+	//public void ClicoLosingAnimationSet(GameObject _fighter)
+	//[SerializeField] private AnimationClip animationClip;
 
-	[SerializeField] private AnimationClip clico_Won;
-	[SerializeField] private AnimationClip clico_Lost;
-	[SerializeField] private AnimationClip clico_LostLoop;
-	[SerializeField] private AnimationClip obachan_Won;
-	[SerializeField] private AnimationClip obachan_Lost;
-	[SerializeField] private AnimationClip obachan_LostLoop;
+	//[SerializeField] private AnimationClip clico_Won;
+	//[SerializeField] private AnimationClip clico_Lost;
+	//[SerializeField] private AnimationClip clico_LostLoop;
+	//[SerializeField] private AnimationClip obachan_Won;
+	//[SerializeField] private AnimationClip obachan_Lost;
+	//[SerializeField] private AnimationClip obachan_LostLoop;
 
-	public void ClicoWonAnimationSet( GameObject _fighter)
-	{
-		//_fighter.GetComponent<Animationdata>().ResultAnimation()
-	}
+	//public void ClicoWonAnimationSet( GameObject _fighter)
+	//{
+	//	//_fighter.GetComponent<Animationdata>().ResultAnimation()
+	//}
 
-	private void SetAnimation()
->>>>>>> f427b8379863ffc4c85f6ba1b7778e80bff047af
-	{
-		_fighter.GetComponent<Animationdata>().ResultAnimation(clico_Losing, 0.5f, clico_LosingLoop);
-		_fighter.GetComponent<Animationdata>().resultFlag = true;
-	}
+	//private void SetAnimation()
+	//{
+	//	_fighter.GetComponent<Animationdata>().ResultAnimation(clico_Losing, 0.5f, clico_LosingLoop);
+	//	_fighter.GetComponent<Animationdata>().resultFlag = true;
+	//}
 
 	/// <summary>
 	/// おばちゃんが勝った時のアニメーションをセット

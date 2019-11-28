@@ -58,10 +58,6 @@ public class ResultManager_ : MonoBehaviour
 	/// </summary>
 	private void OnePlayerWonCameraSet()
 	{
-<<<<<<< HEAD
-		//カメラをセット
-=======
->>>>>>> f427b8379863ffc4c85f6ba1b7778e80bff047af
 		cameraMover.OnePlayerWonCameraSet();
 	}
 
@@ -70,76 +66,72 @@ public class ResultManager_ : MonoBehaviour
 	/// </summary>
 	private void TwoPlayerWonCameraSet()
 	{
-<<<<<<< HEAD
-		//カメラをセット
 		cameraMover.TwoPlayerWonCameraSet();
 	}
 
-	/// <summary>
-	/// タイムラインの再生
-	/// </summary>
-	private void PlayTimeline()
-	{
-		//勝ったのファイターの判定
-		if (GameDataStrage.Instance.fighterStatuses[(int)GameDataStrage.Instance.WiningPlayer].PlayerID == (int)FighterType.CLICO)
-		{
-			//カメラワークを再生
-			cameraMover.ClicoWin();
-			//アニメーション再生
-			animationSetter.ClicoWonAnimationSet(fighterCreater.FighterPlayer1);
-		}
-		else if (GameDataStrage.Instance.fighterStatuses[(int)GameDataStrage.Instance.WiningPlayer].PlayerID == (int)FighterType.OBACHAN)
-		{
-			//カメラワークを再生
-			cameraMover.ObachanWin();
-			//アニメーション再生
-			animationSetter.ObachanWonAnimationSet(fighterCreater.FighterPlayer1);
-		}
+	///// <summary>
+	///// タイムラインの再生
+	///// </summary>
+	//private void PlayTimeline()
+	//{
+	//	//勝ったのファイターの判定
+	//	if (GameDataStrage.Instance.fighterStatuses[(int)GameDataStrage.Instance.WiningPlayer].PlayerID == (int)FighterType.CLICO)
+	//	{
+	//		//カメラワークを再生
+	//		cameraMover.ClicoWin();
+	//		//アニメーション再生
+	//		animationSetter.ClicoWonAnimationSet(fighterCreater.FighterPlayer1);
+	//	}
+	//	else if (GameDataStrage.Instance.fighterStatuses[(int)GameDataStrage.Instance.WiningPlayer].PlayerID == (int)FighterType.OBACHAN)
+	//	{
+	//		//カメラワークを再生
+	//		cameraMover.ObachanWin();
+	//		//アニメーション再生
+	//		animationSetter.ObachanWonAnimationSet(fighterCreater.FighterPlayer1);
+	//	}
 
-		//負けたファイターの判定
-		if (GameDataStrage.Instance.fighterStatuses[(int)PlayerNumber.Player2].PlayerID == (int)FighterType.CLICO)
-		{
-			//カメラワークを再生
-			cameraMover.ClicoLose();
-			//アニメーション再生
-			animationSetter.ClicoLosingAnimationSet(fighterCreater.FighterPlayer2);
-		}
-		else if (GameDataStrage.Instance.fighterStatuses[(int)PlayerNumber.Player2].PlayerID == (int)FighterType.OBACHAN)
-		{
-			//カメラワークを再生
-			cameraMover.ObachanLose();
-			//アニメーションセット
-			animationSetter.ObachanWonAnimationSet(fighterCreater.FighterPlayer2);
-=======
-		cameraMover.TwoPlayerWonCameraSet();
-	}
+	//	//負けたファイターの判定
+	//	if (GameDataStrage.Instance.fighterStatuses[(int)PlayerNumber.Player2].PlayerID == (int)FighterType.CLICO)
+	//	{
+	//		//カメラワークを再生
+	//		cameraMover.ClicoLose();
+	//		//アニメーション再生
+	//		animationSetter.ClicoLosingAnimationSet(fighterCreater.FighterPlayer2);
+	//	}
+	//	else if (GameDataStrage.Instance.fighterStatuses[(int)PlayerNumber.Player2].PlayerID == (int)FighterType.OBACHAN)
+	//	{
+	//		//カメラワークを再生
+	//		cameraMover.ObachanLose();
+	//		//アニメーションセット
+	//		animationSetter.ObachanWonAnimationSet(fighterCreater.FighterPlayer2);
+	//	cameraMover.TwoPlayerWonCameraSet();
+	//}
 	
-	/// <summary>
-	/// 引き分けだった時
-	/// </summary>
-	private void Draw()
-	{
+	///// <summary>
+	///// 引き分けだった時
+	///// </summary>
+	//private void Draw()
+	//{
 		
-	}
+	//}
 
-	/// <summary>
-	/// ファイターを判別する
-	/// </summary>
-	private void DiscriminantCharacter()
-	{
-		int cnt = 0;
-		foreach (FighterStatus fighterStatus in GameDataStrage.Instance.fighterStatuses)
-		{
-			switch(GameDataStrage.Instance.fighterStatuses[cnt].PlayerID)
-			{
-				case (int)FighterType.CLICO:
-					break;
-				case (int)FighterType.OBACHAN:
-					break;
-			}
->>>>>>> f427b8379863ffc4c85f6ba1b7778e80bff047af
-		}
-	}
+	///// <summary>
+	///// ファイターを判別する
+	///// </summary>
+	//private void DiscriminantCharacter()
+	//{
+	//	int cnt = 0;
+	//	foreach (FighterStatus fighterStatus in GameDataStrage.Instance.fighterStatuses)
+	//	{
+	//		switch(GameDataStrage.Instance.fighterStatuses[cnt].PlayerID)
+	//		{
+	//			case (int)FighterType.CLICO:
+	//				break;
+	//			case (int)FighterType.OBACHAN:
+	//				break;
+	//		}
+	//	}
+	//}
 
     // Start is called before the first frame update
     void Start()
