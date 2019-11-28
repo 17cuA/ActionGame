@@ -41,7 +41,7 @@ public class particle : MonoBehaviour
 	{
 		//tagObjects.Lengthはオブジェクトの数であれば（tagObjects 。長さ== 0 ）{ デバッグ。Log （tagname + "タグがついたオブジェクトはありません" ）; } } }
 		tagObjects = GameObject.FindGameObjectsWithTag("Effects");
-		Debug.Log(tagObjects.Length);
+		//Debug.Log(tagObjects.Length);
 
 		// 2個目のエフェクトを生成する際位置を調整する
 		if (tagObjects.Length > 0)
