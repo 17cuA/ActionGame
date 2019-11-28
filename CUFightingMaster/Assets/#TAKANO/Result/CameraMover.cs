@@ -33,32 +33,41 @@ public class CameraMover : MonoBehaviour
 		camera_1PLose.SetActive(true);
 	}
 
+	/// <summary>
+	/// 引き分けの時カメラをセット
+	/// </summary>
+	public void DrawCameraSet()
+	{
+		camera_1PLose.SetActive(true);
+		camera_2PLose.SetActive(true);
+	}
+
 	#region カメラワーク
 	/// <summary>
 	/// Clicoの勝利カメラワーク
 	/// </summary>
-	public void ClicoWin()
+	public void PlayClicoWin()
 	{
 		timeline_ClicoWin.SetActive(true);
 	}
 	/// <summary>
 	/// Clicoの敗北カメラワーク
 	/// </summary>
-	public void ClicoLose()
+	public void PlayClicoLose()
 	{
 		timeline_ClicoLose.SetActive(true);
 	}
 	/// <summary>
 	/// Obachanの勝利カメラワーク
 	/// </summary>
-	public void ObachanWin()
+	public void PlayObachanWin()
 	{
 		timeline_ObaWin.SetActive(true);
 	}
 	/// <summary>
 	/// Obachanの敗北カメラワーク
 	/// </summary>
-	public void ObachanLose()
+	public void PlayObachanLose()
 	{
 		timeline_ClicoLose.SetActive(true);
 	}

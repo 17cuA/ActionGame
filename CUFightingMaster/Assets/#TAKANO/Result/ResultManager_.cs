@@ -25,31 +25,40 @@ public class ResultManager_ : MonoBehaviour
 	}
 
 	[SerializeField] FighterCreater fighterCreater;
-	[SerializeField] AnimationSetter animationSetter;
+	[SerializeField] ResultAnimationChanger resultAnimationChanger;
+	[SerializeField] ResultAnimationPlayer resultAnimationPlayer_1;
+	[SerializeField] ResultAnimationPlayer resultAniamtionPlayer_2;
 	[SerializeField] CameraMover cameraMover;
 	[SerializeField] CanvasController_Result canvasController_Result;
 
 	private Action currentUpdate;
+
+	private GameObject fighter1;
+	private GameObject fighter2;
+
+	private int[] elementNum = new int[2];
+
+	private const int CLICO = 0;
+	private const int OBACHAN = 1;
+	private const int WIN = 0;
+	private const int LOSE = 1;
 
 	/// <summary>
 	/// 勝者の判定
 	/// </summary>
 	private void DiscriminantWinner()
 	{
-		//キャラクターの生成
-		fighterCreater.FighterCreate();
-		
-		if (GameDataStrage.Instance.winFlag_PlayerOne == true)
+		if (GameDataStrage.Instance.matchResult == MatchResult.PLAYER1WON)
 		{
 			currentUpdate = OnePlayerWonCameraSet;
 		}
-		else if(GameDataStrage.Instance.winFlag_PlayerTwo == true)
+		else if (GameDataStrage.Instance.matchResult == MatchResult.PLAYER2WON)
 		{
 			currentUpdate = TwoPlayerWonCameraSet;
 		}
-		else
+		else if (GameDataStrage.Instance.matchResult == MatchResult.DRAW)
 		{
-
+			currentUpdate = DrawCameraSet;
 		}
 	}
 
@@ -58,7 +67,12 @@ public class ResultManager_ : MonoBehaviour
 	/// </summary>
 	private void OnePlayerWonCameraSet()
 	{
+		//カメラをセット
 		cameraMover.OnePlayerWonCameraSet();
+
+		//アニメーションをセット
+		resultAnimationChanger.SetAnimation_1(GameDataStrage.Instance.fighterStatuses[(int)PlayerNumber.Player1].PlayerID , WIN);
+		resultAnimationChanger.SetAnimation_2(GameDataStrage.Instance.fighterStatuses[(int)PlayerNumber.Player2].PlayerID , LOSE);
 	}
 
 	/// <summary>
@@ -66,78 +80,65 @@ public class ResultManager_ : MonoBehaviour
 	/// </summary>
 	private void TwoPlayerWonCameraSet()
 	{
+		//カメラをセット
 		cameraMover.TwoPlayerWonCameraSet();
+
+		//アニメーションをセット
+		resultAnimationChanger.SetAnimation_1(GameDataStrage.Instance.fighterStatuses[(int)PlayerNumber.Player1].PlayerID, LOSE);
+		resultAnimationChanger.SetAnimation_2(GameDataStrage.Instance.fighterStatuses[(int)PlayerNumber.Player2].PlayerID, WIN);
 	}
 
-	///// <summary>
-	///// タイムラインの再生
-	///// </summary>
-	//private void PlayTimeline()
-	//{
-	//	//勝ったのファイターの判定
-	//	if (GameDataStrage.Instance.fighterStatuses[(int)GameDataStrage.Instance.WiningPlayer].PlayerID == (int)FighterType.CLICO)
-	//	{
-	//		//カメラワークを再生
-	//		cameraMover.ClicoWin();
-	//		//アニメーション再生
-	//		animationSetter.ClicoWonAnimationSet(fighterCreater.FighterPlayer1);
-	//	}
-	//	else if (GameDataStrage.Instance.fighterStatuses[(int)GameDataStrage.Instance.WiningPlayer].PlayerID == (int)FighterType.OBACHAN)
-	//	{
-	//		//カメラワークを再生
-	//		cameraMover.ObachanWin();
-	//		//アニメーション再生
-	//		animationSetter.ObachanWonAnimationSet(fighterCreater.FighterPlayer1);
-	//	}
 
-	//	//負けたファイターの判定
-	//	if (GameDataStrage.Instance.fighterStatuses[(int)PlayerNumber.Player2].PlayerID == (int)FighterType.CLICO)
-	//	{
-	//		//カメラワークを再生
-	//		cameraMover.ClicoLose();
-	//		//アニメーション再生
-	//		animationSetter.ClicoLosingAnimationSet(fighterCreater.FighterPlayer2);
-	//	}
-	//	else if (GameDataStrage.Instance.fighterStatuses[(int)PlayerNumber.Player2].PlayerID == (int)FighterType.OBACHAN)
-	//	{
-	//		//カメラワークを再生
-	//		cameraMover.ObachanLose();
-	//		//アニメーションセット
-	//		animationSetter.ObachanWonAnimationSet(fighterCreater.FighterPlayer2);
-	//	cameraMover.TwoPlayerWonCameraSet();
-	//}
+	/// <summary>
+	/// 引き分けの時
+	/// </summary>
+	private void DrawCameraSet()
+	{
+		//カメラをセット
+		cameraMover.DrawCameraSet();
+
+		//アニメーションをセット
+		resultAnimationChanger.SetAnimation_1(GameDataStrage.Instance.fighterStatuses[(int)PlayerNumber.Player1].PlayerID, LOSE);
+		resultAnimationChanger.SetAnimation_2(GameDataStrage.Instance.fighterStatuses[(int)PlayerNumber.Player2].PlayerID, LOSE);
+	}
+
+	/// <summary>
+	/// タイムラインの再生
+	/// </summary>
+	private void PlayTimeline()
+	{
+		//GameDataStrage
+	}
+
+	private void JudgeFighterType(FighterStatus _fighterStatus)
+	{
+		if(_fighterStatus.PlayerID == (int)FighterType.CLICO)
+		{
+
+		}
+	}
 	
-	///// <summary>
-	///// 引き分けだった時
-	///// </summary>
-	//private void Draw()
-	//{
+	/// <summary>
+	/// 引き分けだった時
+	/// </summary>
+	private void Draw()
+	{
 		
-	//}
+	}
 
-	///// <summary>
-	///// ファイターを判別する
-	///// </summary>
-	//private void DiscriminantCharacter()
-	//{
-	//	int cnt = 0;
-	//	foreach (FighterStatus fighterStatus in GameDataStrage.Instance.fighterStatuses)
-	//	{
-	//		switch(GameDataStrage.Instance.fighterStatuses[cnt].PlayerID)
-	//		{
-	//			case (int)FighterType.CLICO:
-	//				break;
-	//			case (int)FighterType.OBACHAN:
-	//				break;
-	//		}
-	//	}
-	//}
+	private void PlayAnimation()
+	{
+		resultAnimationPlayer_1.PlayAnimatmion();
+	}
 
     // Start is called before the first frame update
     void Start()
     {
-        
-    }
+		//キャラクターの生成
+		fighterCreater.FighterCreate();
+		fighter1 = fighterCreater.Fighter1;
+		fighter2 = fighterCreater.Fighter2;
+	}
 
     // Update is called once per frame
     void Update()
