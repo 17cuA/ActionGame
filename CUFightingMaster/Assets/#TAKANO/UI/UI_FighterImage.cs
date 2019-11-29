@@ -46,13 +46,13 @@ public class UI_FighterImage : MonoBehaviour
 		if(playerType == PlayerType.P1)
 		{
 			//赤にする
-			displayImage.color = new Color(1.0f, 0, 0);
+			//displayImage.color = new Color(1.0f, 0, 0);	色変更を無効化
 		}
 		//P2の場合
 		else
 		{
 			//青にする
-			displayImage.color = new Color(0, 0.5f, 1.0f);
+			//displayImage.color = new Color(0, 0.5f, 1.0f);	色変更を無効化
 			//反転する
 			transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
 		}
