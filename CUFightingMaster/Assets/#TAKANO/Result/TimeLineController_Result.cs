@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TimeLineController_Result : MonoBehaviour
 {
-	[SerializeField] //AnimationSetter animationSetter;
+	/*[SerializeField]*/ //AnimationSetter animationSetter;
 	[SerializeField] CameraMover cameraMover;
 
 
