@@ -141,7 +141,6 @@ public class ResultManager : MonoBehaviour
 				timelines[2].SetActive(false);
 				timelines[3].SetActive(true);
 				cinemaController = cinemaControllers[3];
-
 			}
 		}
 		else if (GameDataStrage.Instance.winFlag_PlayerOne == false && GameDataStrage.Instance.winFlag_PlayerTwo == false)
