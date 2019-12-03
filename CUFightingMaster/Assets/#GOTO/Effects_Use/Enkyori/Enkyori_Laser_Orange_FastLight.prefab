@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 454770877807467119}
   - component: {fileID: 454770877807467116}
   - component: {fileID: 454770877807467117}
+  - component: {fileID: 8618637245289201335}
   m_Layer: 16
   m_Name: Enkyori_Laser_Orange_FastLight
   m_TagString: Untagged
@@ -40,6 +41,7 @@ Transform:
   - {fileID: 6489207184282335593}
   - {fileID: 5807537130550423250}
   - {fileID: 4311693247908787894}
+  - {fileID: 8922457890998410309}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -53,7 +55,7 @@ ParticleSystem:
   serializedVersion: 6
   lengthInSec: 5
   simulationSpeed: 1
-  stopAction: 2
+  stopAction: 0
   cullingMode: 0
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
@@ -4709,6 +4711,22 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!114 &8618637245289201335
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 454770877807467114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc4640850c173c14298afcd12f60db5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletHit: {fileID: 11400000, guid: 0b2eca1a03908d94f93c1931c0bdcf5a, type: 2}
+  RightLeft: 1
+  playerNumber: 4
+  move: {x: 0, y: 0, z: 0}
 --- !u!1 &1263938181853006014
 GameObject:
   m_ObjectHideFlags: 0
@@ -4749,7 +4767,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1263938181853006014}
   serializedVersion: 6
-  lengthInSec: 4
+  lengthInSec: 0.5
   simulationSpeed: 2
   stopAction: 0
   cullingMode: 0
@@ -9559,7 +9577,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2338955038294912878}
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0.64, y: -0.93, z: 0}
+  m_LocalPosition: {x: 0.64, y: -1.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 454770877807467119}
@@ -9573,7 +9591,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2338955038294912878}
   serializedVersion: 6
-  lengthInSec: 2
+  lengthInSec: 0.5
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 0
@@ -10211,13 +10229,13 @@ ParticleSystem:
     serializedVersion: 6
     enabled: 1
     type: 4
-    angle: 25
+    angle: 20
     length: 5
     boxThickness: {x: 0, y: 0, z: 0}
     radiusThickness: 1
     donutRadius: 0.2
     m_Position: {x: 0, y: 0, z: 0}
-    m_Rotation: {x: 0, y: 0, z: 0}
+    m_Rotation: {x: -5, y: 0, z: 0}
     m_Scale: {x: 1, y: 1, z: 1}
     placementMode: 0
     m_MeshMaterialIndex: 0
@@ -10297,7 +10315,7 @@ ParticleSystem:
     sphericalDirectionAmount: 0
     randomPositionAmount: 0
     radius:
-      value: 1
+      value: 0.5
       mode: 0
       spread: 0
       speed:
@@ -14298,7 +14316,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3476014885140138494}
   serializedVersion: 6
-  lengthInSec: 4
+  lengthInSec: 0.5
   simulationSpeed: 2
   stopAction: 0
   cullingMode: 0
@@ -14313,7 +14331,7 @@ ParticleSystem:
   startDelay:
     serializedVersion: 2
     minMaxState: 0
-    scalar: 0.25
+    scalar: 0
     minScalar: 0
     maxCurve:
       serializedVersion: 2
@@ -14426,7 +14444,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 20
+      scalar: 50
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -19014,7 +19032,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4429130136018533679}
   serializedVersion: 6
-  lengthInSec: 4
+  lengthInSec: 0.5
   simulationSpeed: 2
   stopAction: 0
   cullingMode: 0
@@ -23838,7 +23856,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4678620541135809542}
   serializedVersion: 6
-  lengthInSec: 2
+  lengthInSec: 0.5
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 0
@@ -23853,7 +23871,7 @@ ParticleSystem:
   startDelay:
     serializedVersion: 2
     minMaxState: 0
-    scalar: 0.5
+    scalar: 0
     minScalar: 0
     maxCurve:
       serializedVersion: 2
@@ -23913,7 +23931,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1.5
+      scalar: 0.5
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -28607,7 +28625,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6159925104379314921}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -1.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 454770877807467119}
@@ -28621,7 +28639,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6159925104379314921}
   serializedVersion: 6
-  lengthInSec: 2
+  lengthInSec: 0.5
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 0
@@ -33346,7 +33364,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8905534297807038578}
   serializedVersion: 6
-  lengthInSec: 2.5
+  lengthInSec: 0.5
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 0
@@ -33361,7 +33379,7 @@ ParticleSystem:
   startDelay:
     serializedVersion: 2
     minMaxState: 0
-    scalar: 0.1
+    scalar: 0
     minScalar: 0
     maxCurve:
       serializedVersion: 2
@@ -33421,7 +33439,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 2
+      scalar: 0.5
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -38120,7 +38138,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8905534298162728146}
   serializedVersion: 6
-  lengthInSec: 4
+  lengthInSec: 0.5
   simulationSpeed: 2
   stopAction: 0
   cullingMode: 0
@@ -42944,7 +42962,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8905534298740044550}
   serializedVersion: 6
-  lengthInSec: 4
+  lengthInSec: 0.5
   simulationSpeed: 2
   stopAction: 0
   cullingMode: 0
@@ -42959,7 +42977,7 @@ ParticleSystem:
   startDelay:
     serializedVersion: 2
     minMaxState: 0
-    scalar: 0.25
+    scalar: 0
     minScalar: 0
     maxCurve:
       serializedVersion: 2
@@ -43072,7 +43090,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 20
+      scalar: 50
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -47660,7 +47678,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8905534298900149173}
   serializedVersion: 6
-  lengthInSec: 1.3
+  lengthInSec: 0.5
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 3
@@ -52232,7 +52250,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8905534299050536318}
   serializedVersion: 6
-  lengthInSec: 4
+  lengthInSec: 0.5
   simulationSpeed: 2
   stopAction: 0
   cullingMode: 0
@@ -57039,7 +57057,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8905534299278480390}
   serializedVersion: 6
-  lengthInSec: 1.25
+  lengthInSec: 0.5
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 3
@@ -57114,7 +57132,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 0.5
       minScalar: 0.0001
       maxCurve:
         serializedVersion: 2
@@ -61805,3 +61823,88 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!1001 &7863998591530601641
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 454770877807467119}
+    m_Modifications:
+    - target: {fileID: 2303418047012039971, guid: a8aa51092ea9df845b1a31e7a055979d,
+        type: 3}
+      propertyPath: m_Name
+      value: Zkyun
+      objectReference: {fileID: 0}
+    - target: {fileID: 1652954243705721068, guid: a8aa51092ea9df845b1a31e7a055979d,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1652954243705721068, guid: a8aa51092ea9df845b1a31e7a055979d,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1652954243705721068, guid: a8aa51092ea9df845b1a31e7a055979d,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1652954243705721068, guid: a8aa51092ea9df845b1a31e7a055979d,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 1652954243705721068, guid: a8aa51092ea9df845b1a31e7a055979d,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1652954243705721068, guid: a8aa51092ea9df845b1a31e7a055979d,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1652954243705721068, guid: a8aa51092ea9df845b1a31e7a055979d,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 1652954243705721068, guid: a8aa51092ea9df845b1a31e7a055979d,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 1652954243705721068, guid: a8aa51092ea9df845b1a31e7a055979d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 1652954243705721068, guid: a8aa51092ea9df845b1a31e7a055979d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1652954243705721068, guid: a8aa51092ea9df845b1a31e7a055979d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6542128120420186578, guid: a8aa51092ea9df845b1a31e7a055979d,
+        type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6542128120420186578, guid: a8aa51092ea9df845b1a31e7a055979d,
+        type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 3
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a8aa51092ea9df845b1a31e7a055979d, type: 3}
+--- !u!4 &8922457890998410309 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1652954243705721068, guid: a8aa51092ea9df845b1a31e7a055979d,
+    type: 3}
+  m_PrefabInstance: {fileID: 7863998591530601641}
+  m_PrefabAsset: {fileID: 0}
