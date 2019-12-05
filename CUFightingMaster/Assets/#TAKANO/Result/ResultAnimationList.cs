@@ -4,17 +4,6 @@ using UnityEngine;
 using Cinemachine;
 
 [System.SerializableAttribute]
-public class ResultAnimationList
-{
-	public List<AnimationClip> animeList = new List<AnimationClip>();
-
-	public ResultAnimationList(List<AnimationClip> animationClips)
-	{
-		animeList = animationClips;
-	}
-}
-
-[System.SerializableAttribute]
 public class ResultTrackList
 {
 	public List<ResultTrack> trackList = new List<ResultTrack>();

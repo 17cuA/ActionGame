@@ -31,15 +31,4 @@ public class ResultTrackChanger : MonoBehaviour
 	{
 		return resultTrackList[_fighterNun].trackList[_victoryNum].CinemachineBrain;
 	}
-
-	/// <summary>
-	/// リザルト用アニメーションをセット_2
-	/// </summary>
-	/// <param name="_fighterNun">PlayerID</param>
-	/// <param name="_victoryNum">1=win,2=lose</param>
-	/// <returns></returns>
-	//public void SetAnimation_2(int _fighterNun, int _victoryNum)
-	//{
-	//	resultAnimationPlayer_2.SetAnimetion(animeList[_fighterNun].animeList[_victoryNum]);
-	//}
 }

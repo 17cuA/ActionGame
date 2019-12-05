@@ -26,7 +26,7 @@ public class ResultManager_ : MonoBehaviour
 
 	[SerializeField] GameDataStrage gameDataStrage;
 	[SerializeField] FighterCreater fighterCreater;
-	[SerializeField] ResultAnimationChanger resultAnimationChanger;
+	[SerializeField] ResultTrackChanger resultTrackChanger;
 	[SerializeField] CanvasController_Result canvasController_Result;
 	[SerializeField] AnimaitonBindController animaitonBindController;
 	[SerializeField] CameraBindController cameraBindController;
@@ -47,9 +47,9 @@ public class ResultManager_ : MonoBehaviour
 	{
 		for(int i = 0; i < 2; i++ )
 		{
-			animaitonBindController.AnimationClip = resultAnimationChanger.GetTrack((int)GameDataStrage.Instance.matchResult[0],
+			animaitonBindController.AnimationClip = resultTrackChanger.GetTrack((int)GameDataStrage.Instance.matchResult[0],
 				GameDataStrage.Instance.fighterStatuses[0].PlayerID); 
-			cameraBindController.cinemachineBrain = resultAnimationChanger.GetCinemachineBrain((int)GameDataStrage.Instance.matchResult[0],
+			cameraBindController.cinemachineBrain = resultTrackChanger.GetCinemachineBrain((int)GameDataStrage.Instance.matchResult[0],
 				GameDataStrage.Instance.fighterStatuses[0].PlayerID);
 		}
 	}
