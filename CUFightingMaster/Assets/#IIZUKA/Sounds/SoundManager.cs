@@ -207,9 +207,6 @@ public class Sound
         Sound.LoadSE("SV_Nice", "SV_Nice");
         Sound.LoadSE("SV_Great", "SV_Great");
         Sound.LoadSE("SV_Excellent", "SV_Excellent");
-
-		Sound.LoadSE("EV_ATField", "EV_ATField");
-		Sound.LoadSE("EV_NextStage", "EV_NextStage");
 	}
 
 	/// <summary>
