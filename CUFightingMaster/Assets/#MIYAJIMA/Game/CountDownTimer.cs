@@ -23,31 +23,35 @@ public class CountDownTimer : MonoBehaviour
 	private float maxTime = 99;		//初期値
     private float currentTime = 99;	//現在値
 	private int EmphasizTime = 10;	//強調表示する時間
-	private int displayTime;
+	private float displayTime;
 
 	public bool isPlay = false;
     bool isEndCont = false;
 
     public Image firstDigit;	//一桁目のimage
-    public Image secondDigit;	//二桁目のimage
+    public Image secondDigit;   //二桁目のimage
+	public Image msecondDigit;  //ミリ秒のimage
+	public Image dsecondDigit;	//ディシ秒のimage
 
-    public Sprite[] numSprite = new Sprite[10];
+	public Sprite[] numSprite = new Sprite[10];
 
 	private Color initColor;
 
-    /// <summary>
-    /// タイマーを初期値へ戻す
-    /// </summary>
-    public void ResetTimer()
-    {
+	/// <summary>
+	/// タイマーを初期値へ戻す
+	/// </summary>
+	public void ResetTimer()
+	{
 		isPlay = false;
 		isEndCont = false;
-        currentTime = maxTime;
-        UpdateDisplay((int)currentTime);
+		currentTime = maxTime;
+		UpdateDisplay(currentTime);
 
 		firstDigit.color = initColor;
 		secondDigit.color = initColor;
-    }
+		msecondDigit.color = initColor;
+		dsecondDigit.color = initColor;
+	}
 
 	/// <summary>
 	/// カウントダウンを開始・終了する、引数にtrueだと開始、引数にfalseだと停止
@@ -71,12 +75,14 @@ public class CountDownTimer : MonoBehaviour
     /// タイマー表示の更新
     /// </summary>
     /// <param name="count"></param>
-    private void UpdateDisplay(int count)
+    private void UpdateDisplay(float count)
     {
-		var castCount = Mathf.Clamp(count,0,99);
-        firstDigit.sprite = numSprite[castCount % 10];
-        secondDigit.sprite = numSprite[castCount / 10];
-    }
+		var castCount = Mathf.Clamp(count,0f,99f);
+        firstDigit.sprite = numSprite[(int)(castCount / 1 % 10)];
+        secondDigit.sprite = numSprite[(int)(castCount / 1 / 10)];
+		msecondDigit.sprite = numSprite[(int)(castCount * 10 / 1 % 10)];
+		dsecondDigit.sprite = numSprite[(int)(castCount * 100 / 1 % 10)];
+	}
 	
 	/// <summary>
 	/// タイマーの強調表示
@@ -88,6 +94,8 @@ public class CountDownTimer : MonoBehaviour
 		{
 			firstDigit.color = new Color(255, 0, 0, 1);
 			secondDigit.color = new Color(255, 0, 0, 1);
+			msecondDigit.color = new Color(255, 0, 0, 1);
+			dsecondDigit.color = new Color(255, 0, 0, 1);
 		}
 	}
 
@@ -121,7 +129,7 @@ public class CountDownTimer : MonoBehaviour
         {
             currentTime -= Time.deltaTime;
 
-            displayTime = (int)currentTime;
+            displayTime = currentTime;
             UpdateDisplay(displayTime);
 			EmphasizNumber(EmphasizTime);
 		}
@@ -131,5 +139,7 @@ public class CountDownTimer : MonoBehaviour
 	{
 		firstDigit.enabled = false;
 		secondDigit.enabled = false;
+		msecondDigit.enabled = false;
+		dsecondDigit.enabled = false;
 	}
 }
