@@ -6,6 +6,8 @@
 //--------------------------------------
 // 更新履歴
 // 2019.07.18 コメント追記 by takano
+// 2019.12.09 ミリ秒を表示するためのプログラムを追加　by gotou
+// 2019.12.10 内部電源、外部電源の表記を表示するためのプログラムを追加 by gotou
 //--------------------------------------
 // 仕様
 // 
@@ -31,7 +33,9 @@ public class CountDownTimer : MonoBehaviour
     public Image firstDigit;	//一桁目のimage
     public Image secondDigit;   //二桁目のimage
 	public Image msecondDigit;  //ミリ秒のimage
-	public Image dsecondDigit;	//ディシ秒のimage
+	public Image dsecondDigit;  //ディシ秒のimage
+	public GameObject InternalPower;    //内部電源
+	public GameObject OutsidePower;     //外部電源
 
 	public Sprite[] numSprite = new Sprite[10];
 
@@ -46,6 +50,9 @@ public class CountDownTimer : MonoBehaviour
 		isEndCont = false;
 		currentTime = maxTime;
 		UpdateDisplay(currentTime);
+		//InternalPower.SetActive(false);
+		//OutsidePower.SetActive(true);
+
 
 		firstDigit.color = initColor;
 		secondDigit.color = initColor;
@@ -54,7 +61,7 @@ public class CountDownTimer : MonoBehaviour
 	}
 
 	/// <summary>
-	/// カウントダウンを開始・終了する、引数にtrueだと開始、引数にfalseだと停止
+	/// カウントダウンを開始・停止する、引数にtrueだと開始、引数にfalseだと停止
 	/// </summary>
 	public void PlayCountDown(bool flag)
 	{
@@ -68,7 +75,7 @@ public class CountDownTimer : MonoBehaviour
 	/// <returns></returns>
 	public bool isEndCountDown()
     {
-        return isEndCont;
+		return isEndCont;
     }
 
     /// <summary>
@@ -77,7 +84,7 @@ public class CountDownTimer : MonoBehaviour
     /// <param name="count"></param>
     private void UpdateDisplay(float count)
     {
-		var castCount = Mathf.Clamp(count,0f,99f);
+		var castCount = Mathf.Clamp(count,0,99);
         firstDigit.sprite = numSprite[(int)(castCount / 1 % 10)];
         secondDigit.sprite = numSprite[(int)(castCount / 1 / 10)];
 		msecondDigit.sprite = numSprite[(int)(castCount * 10 / 1 % 10)];
@@ -133,6 +140,17 @@ public class CountDownTimer : MonoBehaviour
             UpdateDisplay(displayTime);
 			EmphasizNumber(EmphasizTime);
 		}
+		if (isPlay == false)
+		{
+			InternalPower.SetActive(false);
+			OutsidePower.SetActive(true);
+		}
+		else
+		{
+			InternalPower.SetActive(true);
+			OutsidePower.SetActive(false);
+		}
+
     }
 
 	public void Call_HideImage()
