@@ -26,16 +26,18 @@ public class CountDownTimer : MonoBehaviour
     private float currentTime = 99;	//現在値
 	private int EmphasizTime = 10;	//強調表示する時間
 	private float displayTime;
+	private float downNum=5;
 
 	public bool isPlay = false;
     bool isEndCont = false;
 
-    public Image firstDigit;	//一桁目のimage
-    public Image secondDigit;   //二桁目のimage
-	public Image msecondDigit;  //ミリ秒のimage
-	public Image dsecondDigit;  //ディシ秒のimage
-	public GameObject InternalPower;    //内部電源
-	public GameObject OutsidePower;     //外部電源
+    public Image firstDigit;		//一桁目のimage
+    public Image secondDigit;		//二桁目のimage
+	public Image msecondDigit;		//ミリ秒のimage
+	public Image dsecondDigit;		//ディシ秒のimage
+	public Image back;				//タイマーの背景
+	public GameObject internalPower;		//内部電源
+	public GameObject outsidePower;		//外部電源
 
 	public Sprite[] numSprite = new Sprite[10];
 
@@ -50,14 +52,12 @@ public class CountDownTimer : MonoBehaviour
 		isEndCont = false;
 		currentTime = maxTime;
 		UpdateDisplay(currentTime);
-		//InternalPower.SetActive(false);
-		//OutsidePower.SetActive(true);
-
 
 		firstDigit.color = initColor;
 		secondDigit.color = initColor;
 		msecondDigit.color = initColor;
 		dsecondDigit.color = initColor;
+		back.color = initColor;
 	}
 
 	/// <summary>
@@ -103,6 +103,7 @@ public class CountDownTimer : MonoBehaviour
 			secondDigit.color = new Color(255, 0, 0, 1);
 			msecondDigit.color = new Color(255, 0, 0, 1);
 			dsecondDigit.color = new Color(255, 0, 0, 1);
+			back.color = new Color(255, 0, 0, 1);
 		}
 	}
 
@@ -140,18 +141,17 @@ public class CountDownTimer : MonoBehaviour
             UpdateDisplay(displayTime);
 			EmphasizNumber(EmphasizTime);
 		}
-		if (isPlay == false)
+		else if (isPlay == false)
 		{
-			InternalPower.SetActive(false);
-			OutsidePower.SetActive(true);
+			internalPower.SetActive(false);
+			outsidePower.SetActive(true);
 		}
 		else
 		{
-			InternalPower.SetActive(true);
-			OutsidePower.SetActive(false);
+			internalPower.SetActive(true);
+			outsidePower.SetActive(false);
 		}
-
-    }
+	}
 
 	public void Call_HideImage()
 	{
@@ -159,5 +159,9 @@ public class CountDownTimer : MonoBehaviour
 		secondDigit.enabled = false;
 		msecondDigit.enabled = false;
 		dsecondDigit.enabled = false;
+	}
+	public void DownTimer()
+	{
+		currentTime -= downNum;
 	}
 }
