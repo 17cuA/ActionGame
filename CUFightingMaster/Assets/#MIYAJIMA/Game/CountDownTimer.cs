@@ -133,7 +133,7 @@ public class CountDownTimer : MonoBehaviour
             isEndCont = false;
         }
 
-        if (isPlay == true)
+        if (isEndCont == true)
         {
             currentTime -= Time.deltaTime;
 
@@ -141,7 +141,7 @@ public class CountDownTimer : MonoBehaviour
             UpdateDisplay(displayTime);
 			EmphasizNumber(EmphasizTime);
 		}
-		else if (isPlay == false)
+		if (isEndCont == false)
 		{
 			internalPower.SetActive(false);
 			outsidePower.SetActive(true);
@@ -159,9 +159,5 @@ public class CountDownTimer : MonoBehaviour
 		secondDigit.enabled = false;
 		msecondDigit.enabled = false;
 		dsecondDigit.enabled = false;
-	}
-	public void DownTimer()
-	{
-		currentTime -= downNum;
 	}
 }
