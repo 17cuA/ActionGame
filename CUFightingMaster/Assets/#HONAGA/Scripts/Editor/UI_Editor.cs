@@ -15,6 +15,7 @@ public class UI_Editor : EditorWindow
     }
     private List<bool> isOpen = new List<bool>();
     private ScriptableObject_UI _obj, _saveTempObj;
+    object obj;
 
     private const string ASSET_PATH = "Assets/#HONAGA/Scripts/ScriptableObject_UI.asset";
 
@@ -53,8 +54,8 @@ public class UI_Editor : EditorWindow
 					{
 						removeFrag = true;
 					}
-					_saveTempObj.Ui[i].name = EditorGUILayout.TextField("名前", _saveTempObj.Ui[i].name);
-                    _saveTempObj.Ui[i].gameObj = EditorGUILayout.ObjectField("親オブジェクト(配置の基準)", _saveTempObj.Ui[i].gameObj, typeof(GameObject), false) as GameObject;
+                    _saveTempObj.Ui[i].name = EditorGUILayout.TextField("名前", _saveTempObj.Ui[i].name);
+                    _saveTempObj.Ui[i].gameObj = EditorGUILayout.ObjectField("親オブジェクト(配置の基準)", _saveTempObj.Ui[i].gameObj, _saveTempObj.Ui[i].gameObj.GetType(),true) as GameObject;
                     //_saveTempObj.Ui[i].ImageSizeHeight = EditorGUILayout.FloatField("縦幅", _saveTempObj.Ui[i].ImageSizeHeight);
                     //_saveTempObj.Ui[i].ImageSizeWidth = EditorGUILayout.FloatField("横幅", _saveTempObj.Ui[i].ImageSizeWidth);
                     _saveTempObj.Ui[i].image = EditorGUILayout.ObjectField("画像", _saveTempObj.Ui[i].image, typeof(Texture2D), false) as Texture2D;

@@ -11,9 +11,7 @@ public class ScriptableObject_UI : ScriptableObject
 	public List<UIImageClass> Ui
 	{
 		get { return ui; }
-#if UNITY_EDITOR
 		set { ui = value; }
-#endif
 	}
 }
 
@@ -23,6 +21,7 @@ public class UIImageClass
 {
 	public string name = "no name";
 	public Texture2D image;
+    [SerializeField]
 	public GameObject gameObj;
 //	private float _imageSizeWidth;
 //	public float ImageSizeWidth
