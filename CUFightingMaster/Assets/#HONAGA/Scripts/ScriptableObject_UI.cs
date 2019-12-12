@@ -23,32 +23,32 @@ public class UIImageClass
 {
 	public string name = "no name";
 	public Texture2D image;
-	public float imageSetInterval;
-	private float _imageSizeWidth;
-	public float ImageSizeWidth
-	{
-		get { return _imageSizeWidth; }
-#if UNITY_EDITOR
-		set { _imageSizeWidth = Mathf.Clamp(value, 0, float.MaxValue); }
-#endif
-	}
-	private float _imageSizeHeight;
-	public float ImageSizeHeight
-	{
-		get { return _imageSizeHeight; }
-#if UNITY_EDITOR
-		set { _imageSizeHeight = Mathf.Clamp(value, 0, float.MaxValue); }
-#endif
-	}
+	public GameObject gameObj;
+//	private float _imageSizeWidth;
+//	public float ImageSizeWidth
+//	{
+//		get { return _imageSizeWidth; }
+//#if UNITY_EDITOR
+//		set { _imageSizeWidth = Mathf.Clamp(value, 0, float.MaxValue); }
+//#endif
+//	//}
+//	private float _imageSizeHeight;
+//	public float ImageSizeHeight
+//	{
+//		get { return _imageSizeHeight; }
+//#if UNITY_EDITOR
+//		set { _imageSizeHeight = Mathf.Clamp(value, 0, float.MaxValue); }
+//#endif
+//	}
     public void Copy(UIImageClass US)
     {
         if (US != null)
         {
             name = US.name;
             image = US.image;
-            imageSetInterval = US.imageSetInterval;
-            ImageSizeHeight = US.ImageSizeHeight;
-            ImageSizeWidth = US.ImageSizeWidth;
+            gameObj = US.gameObj;
+            //ImageSizeHeight = US.ImageSizeHeight;
+            //ImageSizeWidth = US.ImageSizeWidth;
         }
     }
 }
