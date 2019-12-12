@@ -317,7 +317,7 @@ public class InGameManager : SingletonMono<InGameManager>
 	#region プレイヤー位置リセット
 	private IEnumerator Test()
     {
-		BattleCamera.transform.position = new Vector3(0, 3.0f, -14f);
+		BattleCamera.transform.position = new Vector3(0, 3.0f, -18f);
 		player1.transform.position = targetPoint[0].transform.position;
 		player2.transform.position = targetPoint[1].transform.position;
 		yield return null;
