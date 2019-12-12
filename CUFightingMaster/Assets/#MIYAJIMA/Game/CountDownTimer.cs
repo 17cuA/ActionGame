@@ -31,6 +31,7 @@ public class CountDownTimer : MonoBehaviour
 	public bool isPlay = false;
     bool isEndCont = false;
 
+	public Image minutesDigit;		//分のimage
     public Image firstDigit;		//一桁目のimage
     public Image secondDigit;		//二桁目のimage
 	public Image msecondDigit;		//ミリ秒のimage
@@ -53,6 +54,7 @@ public class CountDownTimer : MonoBehaviour
 		currentTime = maxTime;
 		UpdateDisplay(currentTime);
 
+		minutesDigit.color = initColor;
 		firstDigit.color = initColor;
 		secondDigit.color = initColor;
 		msecondDigit.color = initColor;
@@ -84,11 +86,12 @@ public class CountDownTimer : MonoBehaviour
     /// <param name="count"></param>
     private void UpdateDisplay(float count)
     {
-		var castCount = Mathf.Clamp(count,0,99);
-        firstDigit.sprite = numSprite[(int)(castCount / 1 % 10)];
-        secondDigit.sprite = numSprite[(int)(castCount / 1 / 10)];
-		msecondDigit.sprite = numSprite[(int)(castCount * 10 / 1 % 10)];
-		dsecondDigit.sprite = numSprite[(int)(castCount * 100 / 1 % 10)];
+		var castCount = Mathf.Clamp(count,0,maxTime);
+		minutesDigit.sprite = numSprite[(int)(castCount / 60)];
+		firstDigit.sprite = numSprite[(int)((castCount-((int)castCount/60)*60) / 10)];
+        secondDigit.sprite = numSprite[(int)(castCount % 10)];
+		dsecondDigit.sprite = numSprite[(int)(castCount * 10 % 10)];
+		msecondDigit.sprite = numSprite[(int)(castCount * 100 % 10)];
 	}
 	
 	/// <summary>
@@ -141,7 +144,7 @@ public class CountDownTimer : MonoBehaviour
             UpdateDisplay(displayTime);
 			EmphasizNumber(EmphasizTime);
 		}
-		else if (isPlay == false)
+		if (isPlay == false)
 		{
 			internalPower.SetActive(false);
 			outsidePower.SetActive(true);
