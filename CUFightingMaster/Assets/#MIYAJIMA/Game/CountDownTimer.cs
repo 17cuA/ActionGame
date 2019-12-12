@@ -37,8 +37,10 @@ public class CountDownTimer : MonoBehaviour
 	public Image msecondDigit;		//ミリ秒のimage
 	public Image dsecondDigit;		//ディシ秒のimage
 	public Image back;				//タイマーの背景
-	public GameObject internalPower;		//内部電源
-	public GameObject outsidePower;		//外部電源
+	public Image internalPower;		//内部電源
+	public Image outsidePower;		//外部電源
+	public Image racing;
+	public Image normal;
 
 	public Sprite[] numSprite = new Sprite[10];
 
@@ -60,6 +62,10 @@ public class CountDownTimer : MonoBehaviour
 		msecondDigit.color = initColor;
 		dsecondDigit.color = initColor;
 		back.color = initColor;
+		internalPower.color = initColor;
+		outsidePower.color = initColor;
+		racing.color = initColor;
+		normal.color = initColor;
 	}
 
 	/// <summary>
@@ -107,6 +113,8 @@ public class CountDownTimer : MonoBehaviour
 			msecondDigit.color = new Color(255, 0, 0, 1);
 			dsecondDigit.color = new Color(255, 0, 0, 1);
 			back.color = new Color(255, 0, 0, 1);
+			internalPower.color = new Color(255, 0, 0, 1);
+			racing.color = new Color(255, 0, 0, 1);
 		}
 	}
 
@@ -146,13 +154,17 @@ public class CountDownTimer : MonoBehaviour
 		}
 		if (isPlay == false)
 		{
-			internalPower.SetActive(false);
-			outsidePower.SetActive(true);
+			internalPower.enabled = false;
+			racing.enabled = false;
+			outsidePower.enabled = true;
+			normal.enabled = true;
 		}
 		else
 		{
-			internalPower.SetActive(true);
-			outsidePower.SetActive(false);
+			internalPower.enabled = true;
+			racing.enabled = true;
+			outsidePower.enabled = false;
+			normal.enabled = false;
 		}
 	}
 
