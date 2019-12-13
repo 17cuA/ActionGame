@@ -12,8 +12,7 @@ public class Factory_UI : MonoBehaviour
     {
         for(int i = 0; i < SU.Ui.Count; i++)
         {
-            Debug.Log(i);
-            UIDic.Add(SU.Ui[i].name, new CharacterSelectObjectImage(ref SU.Ui[i].gameObj, SU.Ui[i].image));
+            //UIDic.Add(SU.Ui[i].name, new CharacterSelectObjectImage(SU.Ui[i].gameObj, SU.Ui[i].image));
         }
     }
 

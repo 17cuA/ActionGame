@@ -23,23 +23,25 @@ public class UIImageClass
 	public Texture2D image;
     [SerializeField]
 	public GameObject gameObj;
-//	private float _imageSizeWidth;
-//	public float ImageSizeWidth
-//	{
-//		get { return _imageSizeWidth; }
-//#if UNITY_EDITOR
-//		set { _imageSizeWidth = Mathf.Clamp(value, 0, float.MaxValue); }
-//#endif
-//	//}
-//	private float _imageSizeHeight;
-//	public float ImageSizeHeight
-//	{
-//		get { return _imageSizeHeight; }
-//#if UNITY_EDITOR
-//		set { _imageSizeHeight = Mathf.Clamp(value, 0, float.MaxValue); }
-//#endif
-//	}
-    public void Copy(UIImageClass US)
+	//public Image obj;
+
+	//	private float _imageSizeWidth;
+	//	public float ImageSizeWidth
+	//	{
+	//		get { return _imageSizeWidth; }
+	//#if UNITY_EDITOR
+	//		set { _imageSizeWidth = Mathf.Clamp(value, 0, float.MaxValue); }
+	//#endif
+	//	//}
+	//	private float _imageSizeHeight;
+	//	public float ImageSizeHeight
+	//	{
+	//		get { return _imageSizeHeight; }
+	//#if UNITY_EDITOR
+	//		set { _imageSizeHeight = Mathf.Clamp(value, 0, float.MaxValue); }
+	//#endif
+	//	}
+	public void Copy(UIImageClass US)
     {
         if (US != null)
         {

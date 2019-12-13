@@ -8,7 +8,7 @@ public class CharacterSelectObjectImage
 	private RectTransform characterSelectObjectsTransform;
 
 	// コンストラクタ
-	public CharacterSelectObjectImage(ref GameObject _obj,Texture2D _image)
+	public CharacterSelectObjectImage(ref Image _obj ,Texture2D _image)
 	{
         if (_obj != null)
         {
@@ -32,23 +32,22 @@ public class CharacterSelectObjectImage
 		return characterSelectObjectsTransform;
 	}
     // 対象オブジェクトにImageがついていない時、つける
-	void AddImage(ref GameObject _obj ,Texture2D _image)
+	void AddImage(ref Image _obj ,Texture2D _image)
 	{
-		_obj.AddComponent<Image>();
 		RectConversion(ref _obj, _image);
 	}
     // 画像サイズを一定にしたいため、画像の比率のみ変更し、画像を貼り替える
-	void RectConversion(ref GameObject _obj ,Texture2D _image)
+	void RectConversion(ref Image _obj ,Texture2D _image)
 	{
 		// 画像のサイズを取得
-		Vector2 temp = _obj.GetComponent<Image>().sprite.bounds.size;
+		Vector2 temp = _obj.sprite.bounds.size;
 		// xを１として、yの比率を求める
 		temp.y /= temp.x;
 		temp.x /= temp.x;
 		// 正規化
 		temp = temp.normalized;
         // 画像の変更
-        _obj.GetComponent<Image>().sprite = ConvertToSpriteExtensiton.ConvertToSprite(_image);
+        _obj.sprite = ConvertToSpriteExtensiton.ConvertToSprite(_image);
 		// _objのRectTransform.rectの横幅、長さに上の計算で出したtempの値をかける
 		((_obj.transform) as RectTransform).sizeDelta = new Vector2((_obj.transform as RectTransform).rect.width*temp.x,(_obj.transform as RectTransform).rect.height*temp.y);
 	}
