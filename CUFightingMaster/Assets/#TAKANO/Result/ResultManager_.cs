@@ -1,5 +1,5 @@
 ﻿//---------------------------------------
-// Result管理
+// Result進行
 //---------------------------------------
 // 作成者:高野
 // 作成日:2019.11.14
@@ -18,78 +18,52 @@ using System;
 
 public class ResultManager_ : MonoBehaviour
 {
+	enum FighterType
+	{
+		CLICO,		//0
+		OBACHAN,	//1
+	}
+
+	[SerializeField] GameDataStrage gameDataStrage;
 	[SerializeField] FighterCreater fighterCreater;
-	[SerializeField] CameraMover cameraMover;
+	[SerializeField] ResultTrackChanger resultTrackChanger;
 	[SerializeField] CanvasController_Result canvasController_Result;
+	[SerializeField] AnimaitonBindController animaitonBindController;
+	[SerializeField] CameraBindController cameraBindController;
 
 	private Action currentUpdate;
 
-	/// <summary>
-	/// 勝者の判定
-	/// </summary>
-	private void DiscriminantWinner()
-	{
-		if(GameDataStrage.Instance.winFlag_PlayerOne == true)
-		{
-			currentUpdate = OnePlayerWon;
-		}
-		else if(GameDataStrage.Instance.winFlag_PlayerTwo == true)
-		{
-			currentUpdate = TwoPlayerWon;
-		}
-		else
-		{
+	private GameObject fighter1;
+	private GameObject fighter2;
 
-		}
-	}
+	private int[] elementNum = new int[2];
 
-	/// <summary>
-	/// 1Pが勝った時
-	/// </summary>
-	private void OnePlayerWon()
-	{
-		cameraMover.OnePlayerWonCameraSet();
-	}
+	private const int CLICO = 0;
+	private const int OBACHAN = 1;
+	private const int WIN = 0;
+	private const int LOSE = 1;
 
-	/// <summary>
-	/// 2Pが勝った時
-	/// </summary>
-	private void TwoPlayerWon()
+	void BindTimeline()
 	{
-		cameraMover.TwoPlayerWonCameraSet();
-	}
-	
-	/// <summary>
-	/// 引き分けだった時
-	/// </summary>
-	private void Draw()
-	{
-		
-	}
-
-	/// <summary>
-	/// ファイターを判別する
-	/// </summary>
-	private void DiscriminantCharacter()
-	{
-		int cnt = 0;
-		foreach (FighterStatus fighterStatus in GameDataStrage.Instance.fighterStatuses)
+		for(int i = 0; i < 2; i++ )
 		{
-			switch(GameDataStrage.Instance.fighterStatuses[cnt].PlayerID)
-			{
-				case (int)FighterType.CLICO:
-					break;
-				case (int)FighterType.OBACHAN:
-					break;
-			}
+			animaitonBindController.AnimationClip = resultTrackChanger.GetTrack((int)GameDataStrage.Instance.matchResult[0],
+				GameDataStrage.Instance.fighterStatuses[0].PlayerID); 
+			cameraBindController.cinemachineBrain = resultTrackChanger.GetCinemachineBrain((int)GameDataStrage.Instance.matchResult[0],
+				GameDataStrage.Instance.fighterStatuses[0].PlayerID);
 		}
 	}
 
-    // Start is called before the first frame update
-    void Start()
+	// Start is called before the first frame update
+	void Start()
     {
-        
-    }
+		//カーテンを閉じる
+		//canvasController_Result.InitDownCurtain();
+		//キャラクターの生成
+		fighterCreater.FighterCreate();
+		fighter1 = fighterCreater.Fighter1;
+		fighter2 = fighterCreater.Fighter2;
+	}
 
     // Update is called once per frame
     void Update()

@@ -60,12 +60,15 @@ public class GameDataStrage : MonoBehaviour
 	}
 	#endregion
 
+	public AnimationClip[,] animationClips = new AnimationClip[3,3];
 	public FighterStatus[] fighterStatuses = new FighterStatus[2];
 	public int plusAttackDamage_One = 0;
 	public int plusAttackDamage_Two = 0;
 
-    public bool winFlag_PlayerOne = false;
-    public bool winFlag_PlayerTwo = true;
+	public bool winFlag_PlayerOne;
+	public bool winFlag_PlayerTwo;
+
+	public MatchResult[] matchResult = new MatchResult[2];
 
 	//デバッグ用のダメージ
 	public void SetPlusDamage(PlayerNumber _num,int _dam)

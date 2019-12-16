@@ -286,28 +286,29 @@ public class InGameManager : SingletonMono<InGameManager>
 		//各プレイヤーが勝ったラウンド数からこの試合の勝敗を決定する
         if (getRoundCount[0].Length > getRoundCount[1].Length)
         {
-            //P1が勝ったことを保存する
-            GameDataStrage.Instance.winFlag_PlayerOne = true;
-            GameDataStrage .Instance.winFlag_PlayerTwo = false;
+			//P1が勝ったことを保存する
+			GameDataStrage.Instance.matchResult[(int)PlayerNumber.Player1] = MatchResult.WIN;
+			GameDataStrage.Instance.matchResult[(int)PlayerNumber.Player2] = MatchResult.LOSE;
 
 			if (canvasController.Call_DisplayVictory_winP1() == false)
                 currentUpdate = GameFinish;
         }
         else if (getRoundCount[0].Length < getRoundCount[1].Length)
         {
-            //P2が勝ったことを保存する
-            GameDataStrage.Instance.winFlag_PlayerOne = false;
-            GameDataStrage.Instance.winFlag_PlayerTwo = true;
+			//P2が勝ったことを保存する
+			GameDataStrage.Instance.matchResult[(int)PlayerNumber.Player2] = MatchResult.WIN;
+			GameDataStrage.Instance.matchResult[(int)PlayerNumber.Player1] = MatchResult.LOSE;
 
-            if (canvasController.Call_DisplayVictory_winP2() == false)
+			if (canvasController.Call_DisplayVictory_winP2() == false)
                 currentUpdate = GameFinish;
         }
 		else
 		{
-            //試合が引き分けで終わったことを保存する
-            GameDataStrage.Instance.winFlag_PlayerOne = false;
-            GameDataStrage.Instance.winFlag_PlayerTwo = false;
-            if (canvasController.Call_DisplayVictory_draw() == false)
+			//試合が引き分けで終わったことを保存する
+			GameDataStrage.Instance.matchResult[(int)PlayerNumber.Player1] = MatchResult.LOSE;
+			GameDataStrage.Instance.matchResult[(int)PlayerNumber.Player2] = MatchResult.LOSE;
+
+			if (canvasController.Call_DisplayVictory_draw() == false)
                 currentUpdate = GameFinish;
         }
     }
