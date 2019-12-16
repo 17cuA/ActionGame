@@ -330,8 +330,8 @@ RectTransform:
   - {fileID: 8885368492046729020}
   - {fileID: 4244421190556552262}
   - {fileID: 7557642812167022515}
-  - {fileID: 1913785995313603034}
   - {fileID: 2258303374019149476}
+  - {fileID: 1913785995313603034}
   - {fileID: 3098596374489529488}
   - {fileID: 7627339467999153439}
   - {fileID: 3818785659254960138}
@@ -358,10 +358,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPlay: 0
   minutesDigit: {fileID: 4766354433659246701}
-  firstDigit: {fileID: 7933213911753047973}
-  secondDigit: {fileID: 8540930180532074901}
-  msecondDigit: {fileID: 7726677848246797852}
-  dsecondDigit: {fileID: 7672320812501959636}
+  dacaSecondsDigit: {fileID: 7933213911753047973}
+  secondsDigit: {fileID: 8540930180532074901}
+  decisecondsDigit: {fileID: 7672320812501959636}
+  centisecondsDigit: {fileID: 7726677848246797852}
   back: {fileID: 7839659364932521856}
   internalPower: {fileID: 993923392932510554}
   outsidePower: {fileID: 7094832781401025463}
@@ -464,7 +464,7 @@ GameObject:
   - component: {fileID: 7510076335277463883}
   - component: {fileID: 7726677848246797852}
   m_Layer: 5
-  m_Name: MSecond
+  m_Name: CentiSecond
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -482,7 +482,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7185434113566595230}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -538,7 +538,7 @@ GameObject:
   - component: {fileID: 6273635591437331668}
   - component: {fileID: 7672320812501959636}
   m_Layer: 5
-  m_Name: DSecond
+  m_Name: DeciSecond
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -556,7 +556,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7185434113566595230}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2585,7 +2585,7 @@ GameObject:
   - component: {fileID: 5863474279132674334}
   - component: {fileID: 8540930180532074901}
   m_Layer: 5
-  m_Name: Second
+  m_Name: Seconds
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6842,7 +6842,7 @@ GameObject:
   - component: {fileID: 6738264846934592950}
   - component: {fileID: 7933213911753047973}
   m_Layer: 5
-  m_Name: First
+  m_Name: DecaSeconds
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
