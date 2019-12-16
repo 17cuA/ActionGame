@@ -20,7 +20,7 @@ public class ScriptableObject_UI : ScriptableObject
 public class UIImageClass
 {
 	public string name = "no name";
-	public Texture2D image;
+	public Sprite image;
     [SerializeField]
 	public GameObject gameObj;
 	//public Image obj;

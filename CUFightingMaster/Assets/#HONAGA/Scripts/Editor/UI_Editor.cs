@@ -58,7 +58,7 @@ public class UI_Editor : EditorWindow
 					_saveTempObj.Ui[i].gameObj = EditorGUILayout.ObjectField("変えるオブジェクト", _saveTempObj.Ui[i].gameObj, typeof(GameObject), true) as GameObject;
 					//_saveTempObj.Ui[i].ImageSizeHeight = EditorGUILayout.FloatField("縦幅", _saveTempObj.Ui[i].ImageSizeHeight);
 					//_saveTempObj.Ui[i].ImageSizeWidth = EditorGUILayout.FloatField("横幅", _saveTempObj.Ui[i].ImageSizeWidth);
-					_saveTempObj.Ui[i].image = EditorGUILayout.ObjectField("画像", _saveTempObj.Ui[i].image, typeof(Texture2D), true) as Texture2D;
+					_saveTempObj.Ui[i].image = EditorGUILayout.ObjectField("画像", _saveTempObj.Ui[i].image, typeof(Sprite), true) as Sprite;
 					//_saveTempObj.Ui[i].obj = EditorGUILayout.ObjectField("変えるオブジェクト", _saveTempObj.Ui[i].obj, typeof(Image), true) as Image;
 				}
 				if (removeFrag)
@@ -85,10 +85,14 @@ public class UI_Editor : EditorWindow
 					{
 						continue;
 					}
-					if (_saveTempObj.Ui[i].gameObj.GetComponent<Image>().sprite.bounds.size != ConvertToSpriteExtensiton.ConvertToSprite(_saveTempObj.Ui[i].image).bounds.size)
+					if (_saveTempObj.Ui[i].gameObj.GetComponent<Image>().sprite.bounds.size != _saveTempObj.Ui[i].image.bounds.size)
 					{
-						RectConversion(_saveTempObj.Ui[i].gameObj.GetComponent<Image>(), ConvertToSpriteExtensiton.ConvertToSprite(_saveTempObj.Ui[i].image));
+						RectConversion(_saveTempObj.Ui[i].gameObj.GetComponent<Image>(), _saveTempObj.Ui[i].image);
 					}
+					//if (_saveTempObj.Ui[i].gameObj.GetComponent<Image>().sprite.bounds.size != ConvertToSpriteExtensiton.ConvertToSprite(_saveTempObj.Ui[i].image).bounds.size)
+					//{
+					//	RectConversion(_saveTempObj.Ui[i].gameObj.GetComponent<Image>(), ConvertToSpriteExtensiton.ConvertToSprite(_saveTempObj.Ui[i].image));
+					//}
 				}
 				//Export();
 			}
