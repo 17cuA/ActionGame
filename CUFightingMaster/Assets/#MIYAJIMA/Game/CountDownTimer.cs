@@ -22,8 +22,8 @@ using UnityEngine.UI;
 
 public class CountDownTimer : MonoBehaviour
 {
-	private float maxTime = 99;		//初期値
-    private float currentTime = 99;	//現在値
+	private float maxTime = 90;		//初期値
+    private float currentTime = 90;	//現在値
 	private int EmphasizTime = 10;	//強調表示する時間
 	private float displayTime;
 	private float downNum=5;
@@ -39,8 +39,8 @@ public class CountDownTimer : MonoBehaviour
 	public Image back;				//タイマーの背景
 	public Image internalPower;		//内部電源
 	public Image outsidePower;		//外部電源
-	public Image racing;
-	public Image normal;
+	public Image racing;			//内部電源使用時点灯
+	public Image normal;			//外部電源使用時点灯
 
 	public Sprite[] numSprite = new Sprite[10];
 
@@ -93,11 +93,11 @@ public class CountDownTimer : MonoBehaviour
     private void UpdateDisplay(float count)
     {
 		var castCount = Mathf.Clamp(count,0,maxTime);
-		minutesDigit.sprite = numSprite[(int)(castCount / 60)];
-		firstDigit.sprite = numSprite[(int)((castCount-((int)castCount/60)*60) / 10)];
-        secondDigit.sprite = numSprite[(int)(castCount % 10)];
-		dsecondDigit.sprite = numSprite[(int)(castCount * 10 % 10)];
-		msecondDigit.sprite = numSprite[(int)(castCount * 100 % 10)];
+		minutesDigit.sprite = numSprite[(int)(castCount / 60)];								//一桁目の表示（分）
+		firstDigit.sprite = numSprite[(int)((castCount-((int)castCount/60)*60) / 10)];		//二桁目の表示（秒）
+        secondDigit.sprite = numSprite[(int)(castCount % 10)];								//一桁目の表示（秒）
+		dsecondDigit.sprite = numSprite[(int)(castCount * 10 % 10)];						//デシ秒の表示
+		msecondDigit.sprite = numSprite[(int)(castCount * 100 % 10)];                       //ミリ秒の表示
 	}
 	
 	/// <summary>
