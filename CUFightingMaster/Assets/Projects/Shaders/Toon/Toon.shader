@@ -13,9 +13,6 @@ Shader "Toon"
 		[NoScaleOffset]_2st_ShadeMap ("明るい色の影",2D) = "black"{}
 		[NoScaleOffset]_1st_ShadeMap ("暗い色の影",2D) = "black"{}
 
-		_EmissionMap("Emission", 2D) = "black"{}
-		[HDR] _EmissionColor("Emission Color", Color) = (0, 0, 0)
-
 		//__2st_ShadowColor("明るい影の色に上塗り",Color) = (255,255,255,255)
 		//__1st_ShadowColor("暗い影の色に上塗り",Color) = (255,255,255,255)
 
@@ -319,29 +316,6 @@ Shader "Toon"
 		}
 		ENDCG
 		}
-
-		// 光らせる
-		Pass
-		{
-			CGPROGRAM
-			#pragma vertex vert_img
-			#pragma fragment frag
-
-			#include "UnityCG.cginc"
-
-			uniform sampler2D _MainTex;
-			float4 _MainColor;
-
-			uniform sampler2D _EmissionMap;
-			float4 _EmissionColor;
-
-			fixed4 frag(v2f_img i) : SV_Target
-			{
-				fixed4 albedo = tex2D(_MainTex, i.uv) * _MainColor;
-				return albedo + tex2D(_EmissionMap, i.uv) * _EmissionColor;
-			}
-		ENDCG
-		}
 	}
-		FallBack "Diffuse"
+	FallBack "Diffuse"
 }
