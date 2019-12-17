@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1768,7 +1768,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e54e1a8fa2ef7cc409db0a62ddafcc24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timer: {fileID: 1348061269}
+  timer:
+    timerSprites:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    maxTime: 0
+    currentTime: 0
+    displayTime: 0
+    firstDigit: {fileID: 0}
+    secondDigit: {fileID: 0}
   images:
   - {fileID: 21300000, guid: 9b74a903ac3d5dc478cc404e1c3ed9df, type: 3}
   - {fileID: 21300000, guid: 16b387454df6ec14d8039cb0ad97925a, type: 3}
@@ -2808,7 +2824,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e54e1a8fa2ef7cc409db0a62ddafcc24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timer: {fileID: 1552958354}
+  timer:
+    timerSprites:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    maxTime: 0
+    currentTime: 0
+    displayTime: 0
+    firstDigit: {fileID: 0}
+    secondDigit: {fileID: 0}
   images:
   - {fileID: 21300000, guid: 2452f1ea2a00aa94c8beb4a78fbdf8b3, type: 3}
   - {fileID: 21300000, guid: 1a44aa22b34389b449e3779b60e5e9e7, type: 3}
@@ -3131,10 +3163,34 @@ MonoBehaviour:
   m_GameObject: {fileID: 1072433446}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e0435a0c2ab0e2541a4829f492027595, type: 3}
+  m_Script: {fileID: 11500000, guid: fac515d21bed38149b65c809fe1baf9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  panels: []
+  playerNumber: 0
+  inputDir: {x: 0, y: 0}
+  acceptFlag: 0
+  p1Cursol: {fileID: 0}
+  p2Cursol: {fileID: 0}
+  clikoPanel: {fileID: 0}
+  obachanPanel: {fileID: 0}
+  kuidaorePanel: {fileID: 0}
+  timer:
+    timerSprites:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    maxTime: 0
+    currentTime: 0
+    displayTime: 0
+    firstDigit: {fileID: 0}
+    secondDigit: {fileID: 0}
 --- !u!114 &1072433448
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4122,7 +4178,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxTime: 99
   currentTime: 0
+  <CurrentTime>k__BackingField: 0
   displayTime: 0
+  isPlayCountDown: 0
   firstDigit: {fileID: 1413274287}
   secondDigit: {fileID: 1523099068}
   numSprite:
@@ -4410,7 +4468,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e54e1a8fa2ef7cc409db0a62ddafcc24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timer: {fileID: 1552958354}
+  timer:
+    timerSprites:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    maxTime: 0
+    currentTime: 0
+    displayTime: 0
+    firstDigit: {fileID: 0}
+    secondDigit: {fileID: 0}
   images:
   - {fileID: 21300000, guid: 9b74a903ac3d5dc478cc404e1c3ed9df, type: 3}
   - {fileID: 21300000, guid: 16b387454df6ec14d8039cb0ad97925a, type: 3}
@@ -4661,7 +4735,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxTime: 99
   currentTime: 0
+  <CurrentTime>k__BackingField: 0
   displayTime: 0
+  isPlayCountDown: 0
   firstDigit: {fileID: 1583175506}
   secondDigit: {fileID: 254554657}
   numSprite:
@@ -4899,7 +4975,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e54e1a8fa2ef7cc409db0a62ddafcc24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timer: {fileID: 1348061269}
+  timer:
+    timerSprites:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    maxTime: 0
+    currentTime: 0
+    displayTime: 0
+    firstDigit: {fileID: 0}
+    secondDigit: {fileID: 0}
   images:
   - {fileID: 21300000, guid: 2452f1ea2a00aa94c8beb4a78fbdf8b3, type: 3}
   - {fileID: 21300000, guid: 1a44aa22b34389b449e3779b60e5e9e7, type: 3}

@@ -66,7 +66,7 @@ public class Cursor_CharacterSelect : MonoBehaviour
 		if(CharacterSelect_Manager.Instance.curtainFlag == false)
 		{
 			inputDir.x = Input.GetAxisRaw(string.Format("{0}Player{1}_Horizontal", controllerName, playerNum));
-			inputDir.y = Input.GetAxisRaw(string.Format("{0}Player{1}_Vertical", controllerName, playerNum));
+			//inputDir.y = Input.GetAxisRaw(string.Format("{0}Player{1}_Vertical", controllerName, playerNum));
 			moveCursorFrames += Time.deltaTime;
 			if (inputDir != Vector2.zero && this.determining_decision == false)
 			{
@@ -194,5 +194,4 @@ public class Cursor_CharacterSelect : MonoBehaviour
 		}
 		selectDir = x;
 	}
-
 }
