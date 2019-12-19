@@ -17,7 +17,8 @@ public class AnimationData : MonoBehaviour
 	// Start is called before the first frame update
 	void Start()
 	{
-		if (animationData != null && resultFlag ==false)
+        animationSpeed = 0.5f;
+        if (animationData != null && resultFlag ==false)
 		{
 			animationData.SetPlayAnimation(animationClip[0], animationSpeed, 0);
 		}
@@ -30,14 +31,17 @@ public class AnimationData : MonoBehaviour
 		{
 			animationData.SetPlayAnimation(animationClip[0], animationSpeed, 0);
 		}
-		if (animFrag == true && animationData.NowClip != animationClip[1] && resultFlag == false)
-		{
-			animationData.SetPlayAnimation(animationClip[1], animationSpeed, 0);
-		}
 	}
 	public void ResultAnimation(AnimationClip animationClip,float f,AnimationClip _idle)
 	{
 		animationData.SetPlayAnimation(animationClip, f, 0);
         animationData.SetIdling(_idle,f);
 	}
+    public void ChangeAnimation()
+    {
+        if (animFrag == true && animationData.NowClip != animationClip[1] && resultFlag == false)
+        {
+            animationData.SetPlayAnimation(animationClip[1], animationSpeed, 0);
+        }
+    }
 }
