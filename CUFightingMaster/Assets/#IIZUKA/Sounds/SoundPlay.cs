@@ -160,31 +160,31 @@ public class SoundPlay : MonoBehaviour
 					Sound.PlaySE("EV_EVA_Start", 19, 1, 1);
 					break;
 				case SoundsType.EV_SHITO_Attack1:
-					Sound.PlaySE("EV_SHITO_Attack1", 14, 1, 1);
+					Sound.PlaySE("EV_SHITO_Attack1", 14, 0.6f, 1);
 					break;
 				case SoundsType.EV_SHITO_Attack2:
-					Sound.PlaySE("EV_SHITO_Attack2", 14, 1, 1);
+					Sound.PlaySE("EV_SHITO_Attack2", 14, 0.6f, 1);
 					break;
 				case SoundsType.EV_SHITO_Attack3:
-					Sound.PlaySE("EV_SHITO_Attack3", 14, 1, 1);
+					Sound.PlaySE("EV_SHITO_Attack3", 14, 0.6f, 1);
 					break;
 				case SoundsType.EV_SHITO_Deathblow:
-					Sound.PlaySE("EV_SHITO_Deathblow", 16, 1, 1);
+					Sound.PlaySE("EV_SHITO_Deathblow", 16, 0.6f, 1);
 					break;
 				case SoundsType.EV_SHITO_Victory:
-					Sound.PlaySE("EV_SHITO_Victory", 16, 1, 1);
+					Sound.PlaySE("EV_SHITO_Victory", 16, 0.6f, 1);
 					break;
 				case SoundsType.EV_SHITO_Command1:
-					Sound.PlaySE("EV_SHITO_Command1", 17, 1, 1);
+					Sound.PlaySE("EV_SHITO_Command1", 17, 0.6f, 1);
 					break;
 				case SoundsType.EV_SHITO_Command2:
-					Sound.PlaySE("EV_SHITO_Command2", 17, 1, 1);
+					Sound.PlaySE("EV_SHITO_Command2", 17, 0.6f, 1);
 					break;
 				case SoundsType.EV_SHITO_Command3:
-					Sound.PlaySE("EV_SHITO_Command3", 17, 1, 1);
+					Sound.PlaySE("EV_SHITO_Command3", 17, 0.6f, 1);
 					break;
 				case SoundsType.EV_SHITO_Start:
-					Sound.PlaySE("EV_SHITO_Start", 19, 1, 1);
+					Sound.PlaySE("EV_SHITO_Start", 19, 0.6f, 1);
 					break;
 				case SoundsType.EV_Shinji_RoundStart:
 					Sound.PlaySE("EV_Shinji_RoundStart", 18, 3, 1);
