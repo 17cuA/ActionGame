@@ -77,13 +77,13 @@ public class ResultManager : MonoBehaviour
 			cameras[3].SetActive(true);
 
 			// ２Pの敗北モーションをセット
-			obj2.GetComponent<Animationdata>().ResultAnimation(FighterClips[3],0.5f,FighterClips[7]);
-			obj2.GetComponent<Animationdata>().resultFlag = true;
+			obj2.GetComponent<AnimationData>().ResultAnimation(FighterClips[3],0.5f,FighterClips[7]);
+			obj2.GetComponent<AnimationData>().resultFlag = true;
 
 			if (GameDataStrage.Instance.fighterStatuses[0].PlayerID == 0)
 			{
-				obj.GetComponent<Animationdata>().ResultAnimation(FighterClips[0],0.5f, FighterClips[4]);
-				obj.GetComponent<Animationdata>().resultFlag = true;
+				obj.GetComponent<AnimationData>().ResultAnimation(FighterClips[0],0.5f, FighterClips[4]);
+				obj.GetComponent<AnimationData>().resultFlag = true;
 				// 1Pのクリコ勝利タイムラインを表示
 				timelines[0].SetActive(true);
 				timelines[1].SetActive(false);
@@ -93,8 +93,8 @@ public class ResultManager : MonoBehaviour
 			}
 			else if (GameDataStrage.Instance.fighterStatuses[0].PlayerID == 1)
 			{
-				obj.GetComponent<Animationdata>().ResultAnimation(FighterClips[2],0.5f, FighterClips[6]);
-				obj.GetComponent<Animationdata>().resultFlag = true;
+				obj.GetComponent<AnimationData>().ResultAnimation(FighterClips[2],0.5f, FighterClips[6]);
+				obj.GetComponent<AnimationData>().resultFlag = true;
 				// 1Pのおばちゃん勝利タイムラインを表示
 				timelines[0].SetActive(false);
 				timelines[1].SetActive(true);
@@ -113,14 +113,14 @@ public class ResultManager : MonoBehaviour
 			cameras[3].SetActive(false);
 
 			// １Pの敗北アニメーションをセット
-			obj.GetComponent<Animationdata>().ResultAnimation(FighterClips[1],0.5f, FighterClips[5]);
-			obj.GetComponent<Animationdata>().resultFlag = true;
+			obj.GetComponent<AnimationData>().ResultAnimation(FighterClips[1],0.5f, FighterClips[5]);
+			obj.GetComponent<AnimationData>().resultFlag = true;
 
 			// 2Pのキャラがクリコだったら
 			if (GameDataStrage.Instance.fighterStatuses[1].PlayerID == 0)
 			{
-				obj2.GetComponent<Animationdata>().ResultAnimation(FighterClips[0],0.5f, FighterClips[4]);
-				obj2.GetComponent<Animationdata>().resultFlag = true;
+				obj2.GetComponent<AnimationData>().ResultAnimation(FighterClips[0],0.5f, FighterClips[4]);
+				obj2.GetComponent<AnimationData>().resultFlag = true;
 
 				// 2Pのクリコ勝利タイムラインを表示
 				timelines[0].SetActive(false);
@@ -132,8 +132,8 @@ public class ResultManager : MonoBehaviour
 
 			else if (GameDataStrage.Instance.fighterStatuses[1].PlayerID == 1)
 			{
-				obj2.GetComponent<Animationdata>().ResultAnimation(FighterClips[2],0.5f, FighterClips[6]);
-				obj2.GetComponent<Animationdata>().resultFlag = true;
+				obj2.GetComponent<AnimationData>().ResultAnimation(FighterClips[2],0.5f, FighterClips[6]);
+				obj2.GetComponent<AnimationData>().resultFlag = true;
 
 				// 2Pのおばちゃん勝利タイムラインを表示
 				timelines[0].SetActive(false);
@@ -146,10 +146,10 @@ public class ResultManager : MonoBehaviour
 		}
 		else if (GameDataStrage.Instance.winFlag_PlayerOne == false && GameDataStrage.Instance.winFlag_PlayerTwo == false)
 		{
-			obj.GetComponent<Animationdata>().ResultAnimation(FighterClips[1],0.5f, FighterClips[5]);
-			obj2.GetComponent<Animationdata>().ResultAnimation(FighterClips[3],0.5f, FighterClips[7]);
-            obj.GetComponent<Animationdata>().resultFlag = true;
-            obj2.GetComponent<Animationdata>().resultFlag = true;
+			obj.GetComponent<AnimationData>().ResultAnimation(FighterClips[1],0.5f, FighterClips[5]);
+			obj2.GetComponent<AnimationData>().ResultAnimation(FighterClips[3],0.5f, FighterClips[7]);
+            obj.GetComponent<AnimationData>().resultFlag = true;
+            obj2.GetComponent<AnimationData>().resultFlag = true;
 
             cameras[0].SetActive(false);
 			cameras[1].SetActive(true);

@@ -54,11 +54,9 @@ public class CanvasController_CharacterSelect : MonoBehaviour
     {
         bool isEnd1 = curtainMover_1.UpCurtain();
         bool isEnd2 = curtainMover_2.UpCurtain();
-		curtainFlag = true;
 
 		if (isEnd1 && isEnd2)
 		{
-			curtainFlag = false;
 			return true;
 		}
         return false;

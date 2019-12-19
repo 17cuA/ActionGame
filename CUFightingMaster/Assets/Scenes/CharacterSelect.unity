@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1014,7 +1014,7 @@ GameObject:
   - component: {fileID: 278829111}
   - component: {fileID: 278829110}
   m_Layer: 5
-  m_Name: Cliko Panel Frame
+  m_Name: Clico Panel Frame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1768,6 +1768,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e54e1a8fa2ef7cc409db0a62ddafcc24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
   timer:
     timerSprites:
     - {fileID: 0}
@@ -1783,6 +1805,7 @@ MonoBehaviour:
     maxTime: 0
     currentTime: 0
     displayTime: 0
+    isPlayCountDown: 0
     firstDigit: {fileID: 0}
     secondDigit: {fileID: 0}
   images:
@@ -1836,6 +1859,28 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c48810b66803887449a2c05f2b1c030e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
   m_Name: 
   m_EditorClassIdentifier: 
   canvasController_CharacterSelect: {fileID: 1126375942}
@@ -2596,7 +2641,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 912852019}
-  m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
+  m_LocalRotation: {x: 0, y: -1, z: 0, w: 0}
   m_LocalPosition: {x: 1.5, y: -1.3, z: -8}
   m_LocalScale: {x: -1, y: 1, z: 1}
   m_Children: []
@@ -2824,6 +2869,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e54e1a8fa2ef7cc409db0a62ddafcc24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
   timer:
     timerSprites:
     - {fileID: 0}
@@ -2839,6 +2906,7 @@ MonoBehaviour:
     maxTime: 0
     currentTime: 0
     displayTime: 0
+    isPlayCountDown: 0
     firstDigit: {fileID: 0}
     secondDigit: {fileID: 0}
   images:
@@ -3165,12 +3233,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fac515d21bed38149b65c809fe1baf9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cliko: {fileID: 278829108}
-  obachan: {fileID: 773567102}
-  kuidaore: {fileID: 1363549473}
+  clicoStatus: []
+  obachanStatus:
+  - {fileID: 11400000, guid: dc98614acd0005e42ba575e9a2b8b210, type: 2}
+  - {fileID: 11400000, guid: 6a1a4a742ddfe19438728f253d220818, type: 2}
+  clicoPanel: []
+  obachanPanel: []
+  kuidaorePanel: []
   clikoNamePanel: {fileID: 21300016, guid: 3c2c7fc99f64d5347b32e26d7e97795b, type: 3}
   obachanNamePanel: {fileID: 21300008, guid: 3c2c7fc99f64d5347b32e26d7e97795b, type: 3}
   kuidaoreNamePanel: {fileID: 21300004, guid: 3c2c7fc99f64d5347b32e26d7e97795b, type: 3}
+  characterInstancePos: {fileID: 912852019}
   timer:
     timerSprites:
     - {fileID: 21300020, guid: c176bd317ab7a404e96d019afb97c182, type: 3}
@@ -3188,16 +3261,22 @@ MonoBehaviour:
     displayTime: 0
     firstDigit: {fileID: 254554657}
     secondDigit: {fileID: 1583175506}
+  p1CharacterModelData:
+    currentCharacter: {fileID: 0}
+    currentAnimation: {fileID: 0}
+  p2CharacterModelData:
+    currentCharacter: {fileID: 0}
+    currentAnimation: {fileID: 0}
   p1CursolData:
     controllerName: 
     playerNumber: 0
     moveCursorFrame: 0
     limitCursorFrame: 0.2
-    currentCharacter: 1
+    currentCharacter: 0
     cursol: {fileID: 1781283674}
   p2CursolData:
     controllerName: 
-    playerNumber: 0
+    playerNumber: 1
     moveCursorFrame: 0
     limitCursorFrame: 0
     currentCharacter: 0
@@ -4433,6 +4512,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e54e1a8fa2ef7cc409db0a62ddafcc24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
   timer:
     timerSprites:
     - {fileID: 0}
@@ -4448,6 +4549,7 @@ MonoBehaviour:
     maxTime: 0
     currentTime: 0
     displayTime: 0
+    isPlayCountDown: 0
     firstDigit: {fileID: 0}
     secondDigit: {fileID: 0}
   images:
@@ -4909,6 +5011,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e54e1a8fa2ef7cc409db0a62ddafcc24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
   timer:
     timerSprites:
     - {fileID: 0}
@@ -4924,6 +5048,7 @@ MonoBehaviour:
     maxTime: 0
     currentTime: 0
     displayTime: 0
+    isPlayCountDown: 0
     firstDigit: {fileID: 0}
     secondDigit: {fileID: 0}
   images:
@@ -5157,6 +5282,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c25464e82cb8b564d96487a0b23070e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
   dontDs: 0
   animation_Ready:
   - {fileID: 2066567530}
@@ -5194,7 +5341,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 7bae8b74f25491a45884f4fb1a1f985c, type: 3}
   - {fileID: 21300000, guid: 5847bc7545365304c995a80f62074490, type: 3}
   - {fileID: 21300000, guid: 5847bc7545365304c995a80f62074490, type: 3}
-  characterSelectBool: 00000000
+  characterSelectBool: 
   sceneChangeJughe: 0
   currentCharacter:
   - {fileID: 11400000, guid: 831c780268249244cbf36e85c4aafe18, type: 2}
@@ -5208,6 +5355,8 @@ MonoBehaviour:
   - {fileID: 1552958355}
   - {fileID: 1348061270}
   timerTrimClip: {fileID: 0}
+  canselTime: 0
+  canselFrame: 0
 --- !u!4 &1618172208
 Transform:
   m_ObjectHideFlags: 0
@@ -6737,15 +6886,15 @@ RectTransform:
   m_GameObject: {fileID: 2136915599}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 0}
+  m_LocalScale: {x: 1, y: 0.75, z: 0}
   m_Children: []
   m_Father: {fileID: 1053303608}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 16.5, y: -5}
-  m_SizeDelta: {x: 500, y: 300}
+  m_AnchoredPosition: {x: -16.94, y: -3.4}
+  m_SizeDelta: {x: 500, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2136915601
 MonoBehaviour:
@@ -6767,7 +6916,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: b20b87d56d2956c40aaef559c3096789, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5e93340664fc8ca4d9778d6bd5062a88, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Animationdata : MonoBehaviour
+public class AnimationData : MonoBehaviour
 {
 	public NomalAnimationPlayer animationData;
-	public float animationSpeed;
+	public float animationSpeed = 0.5f;
 	public AnimationClip[] animationClip = new AnimationClip[4];
 
 	public GameObject RotationObject;
@@ -34,11 +34,6 @@ public class Animationdata : MonoBehaviour
 		{
 			animationData.SetPlayAnimation(animationClip[1], animationSpeed, 0);
 		}
-		
-		//if (animationData!=null)
-		//{
-		//	animationData.Update();
-		//}
 	}
 	public void ResultAnimation(AnimationClip animationClip,float f,AnimationClip _idle)
 	{

@@ -36,8 +36,8 @@ public class AnimationSetter : MonoBehaviour
 	/// <param name="_fighter">ファイターオブジェクト</param>
 	public void ClicoWonAnimationSet(GameObject _fighter)
 	{
-		_fighter.GetComponent<Animationdata>().ResultAnimation(clico_Won, 0.5f, clico_WonLoop);
-		_fighter.GetComponent<Animationdata>().resultFlag = true;
+		_fighter.GetComponent<AnimationData>().ResultAnimation(clico_Won, 0.5f, clico_WonLoop);
+		_fighter.GetComponent<AnimationData>().resultFlag = true;
 	}
 
 	/// <summary>
@@ -72,8 +72,8 @@ public class AnimationSetter : MonoBehaviour
 
 	public void ObachanWonAnimationSet(GameObject _fighter)
 	{
-		_fighter.GetComponent<Animationdata>().ResultAnimation(obachan_Won, 0.5f, obachan_WonLoop);
-		_fighter.GetComponent<Animationdata>().resultFlag = true;
+		_fighter.GetComponent<AnimationData>().ResultAnimation(obachan_Won, 0.5f, obachan_WonLoop);
+		_fighter.GetComponent<AnimationData>().resultFlag = true;
 	}
 
 	/// <summary>
@@ -82,7 +82,7 @@ public class AnimationSetter : MonoBehaviour
 	/// <param name="_fighter">ファイターオブジェクト</param>
 	public void ObachanLosingAnimationSet(GameObject _fighter)
 	{
-		_fighter.GetComponent<Animationdata>().ResultAnimation(obachan_Losing, 0.5f, obachan_LosingLoop);
-		_fighter.GetComponent<Animationdata>().resultFlag = true;
+		_fighter.GetComponent<AnimationData>().ResultAnimation(obachan_Losing, 0.5f, obachan_LosingLoop);
+		_fighter.GetComponent<AnimationData>().resultFlag = true;
 	}
 }
