@@ -1,0 +1,151 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4555c0d7fe2368a48b3d4bbeb834ba4f, type: 3}
+  m_Name: Kuidaore
+  m_EditorClassIdentifier: 
+  PlayerID: 0
+  winnerResultAnimation: {fileID: 0}
+  loseResultAnimation: {fileID: 0}
+  HP: 10000
+  StanGuage: 100
+  SpecialGuage: 105
+  airBraking: 0.5
+  characterImage: {fileID: 0}
+  commandSprite: {fileID: 0}
+  PlayerModel: {fileID: 0}
+  PlayerModel2: {fileID: 0}
+  playerMaterials:
+  - nomalMaterial: []
+    inversionMaterial: []
+  - nomalMaterial: []
+    inversionMaterial: []
+  gravity: {x: 0, y: -0.25, z: 0}
+  gravityMax: {x: 0, y: 20, z: 0}
+  headHitBox:
+    size: {x: 0.75, y: 1, z: 0.75}
+    localPosition: {x: -0.1, y: 4, z: 0.05}
+  bodyHitBox:
+    size: {x: 1.5, y: 1.75, z: 1}
+    localPosition: {x: 0, y: 2.77, z: 0}
+  footHitBox:
+    size: {x: 1.65, y: 2, z: 1.25}
+    localPosition: {x: 0, y: 1, z: 0}
+  grabHitBox:
+    size: {x: 1.35, y: 3.5, z: 1}
+    localPosition: {x: 0, y: 1.75, z: 0}
+  pushingHitBox:
+    size: {x: 1.35, y: 3.5, z: 1}
+    localPosition: {x: 0, y: 1.75, z: 0}
+  constantsSkills:
+  - {fileID: 11400000, guid: 0d61e03891e94be41aba35b54c56c3a7, type: 2}
+  - {fileID: 11400000, guid: 2910683cffa113f4c97009daffb721e4, type: 2}
+  - {fileID: 11400000, guid: 8f3fb1b58887caa4cb49a3eed6ac4dab, type: 2}
+  - {fileID: 11400000, guid: 13dcf03fcc282f54b91f8656cdf25cad, type: 2}
+  - {fileID: 11400000, guid: faa0710e92c3aec48b6ca9a786f835fd, type: 2}
+  - {fileID: 11400000, guid: 0f81015887908c94b821d6f69869eaa8, type: 2}
+  - {fileID: 11400000, guid: 6bf4362d869cc414f861ae57c295bba5, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 11400000, guid: 3eb081ef8c93df34d9bcc496d3a79e77, type: 2}
+  - {fileID: 11400000, guid: 3eb081ef8c93df34d9bcc496d3a79e77, type: 2}
+  - {fileID: 11400000, guid: 3eb081ef8c93df34d9bcc496d3a79e77, type: 2}
+  - {fileID: 11400000, guid: 3eb081ef8c93df34d9bcc496d3a79e77, type: 2}
+  - {fileID: 11400000, guid: 3eb081ef8c93df34d9bcc496d3a79e77, type: 2}
+  - {fileID: 11400000, guid: 3eb081ef8c93df34d9bcc496d3a79e77, type: 2}
+  - {fileID: 11400000, guid: 3eb081ef8c93df34d9bcc496d3a79e77, type: 2}
+  - {fileID: 11400000, guid: 3eb081ef8c93df34d9bcc496d3a79e77, type: 2}
+  - {fileID: 11400000, guid: 3eb081ef8c93df34d9bcc496d3a79e77, type: 2}
+  - {fileID: 11400000, guid: 7137a4b5a417bad4392ebf8f45a8555e, type: 2}
+  - {fileID: 11400000, guid: 7137a4b5a417bad4392ebf8f45a8555e, type: 2}
+  - {fileID: 11400000, guid: 7137a4b5a417bad4392ebf8f45a8555e, type: 2}
+  - {fileID: 11400000, guid: 7137a4b5a417bad4392ebf8f45a8555e, type: 2}
+  - {fileID: 11400000, guid: 7137a4b5a417bad4392ebf8f45a8555e, type: 2}
+  - {fileID: 11400000, guid: 7137a4b5a417bad4392ebf8f45a8555e, type: 2}
+  - {fileID: 11400000, guid: 7137a4b5a417bad4392ebf8f45a8555e, type: 2}
+  - {fileID: 11400000, guid: 7137a4b5a417bad4392ebf8f45a8555e, type: 2}
+  - {fileID: 11400000, guid: 7137a4b5a417bad4392ebf8f45a8555e, type: 2}
+  - {fileID: 11400000, guid: 9fc9d1f6da4ca8d4bb28c0755a9278ac, type: 2}
+  - {fileID: 11400000, guid: 9fc9d1f6da4ca8d4bb28c0755a9278ac, type: 2}
+  - {fileID: 11400000, guid: 9fc9d1f6da4ca8d4bb28c0755a9278ac, type: 2}
+  - {fileID: 11400000, guid: 9fc9d1f6da4ca8d4bb28c0755a9278ac, type: 2}
+  - {fileID: 11400000, guid: 9fc9d1f6da4ca8d4bb28c0755a9278ac, type: 2}
+  - {fileID: 11400000, guid: 9fc9d1f6da4ca8d4bb28c0755a9278ac, type: 2}
+  - {fileID: 11400000, guid: 9fc9d1f6da4ca8d4bb28c0755a9278ac, type: 2}
+  - {fileID: 11400000, guid: 9fc9d1f6da4ca8d4bb28c0755a9278ac, type: 2}
+  - {fileID: 11400000, guid: 9fc9d1f6da4ca8d4bb28c0755a9278ac, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 11400000, guid: cc47d4161ad040a4ab924747873dd6e6, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 11400000, guid: 65f2b8645be0e3145b72cffa62e6f4b4, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 11400000, guid: 0d61e03891e94be41aba35b54c56c3a7, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 11400000, guid: 122780df28158fc4196db61606cf4f46, type: 2}
+  - {fileID: 0}
+  fighter: {fileID: 7960873146823851506, guid: 2c5dacc9d4e0fb44486a558d7e7b665b, type: 3}
+  InGameTimeline_One: {fileID: 0}
+  InGameTimeline_Two: {fileID: 0}
+  groundAttackSkills: []
+  airAttackSkills: []
+  groundMoveSkills:
+  - skillCost: 0
+    countValid: 1
+    name: Dash_Front
+    command: 66
+    skill: {fileID: 11400000, guid: 23c7f906b9d3d504db273ba9846679a1, type: 2}
+  - skillCost: 0
+    countValid: 1
+    name: Dash_Back
+    command: 44
+    skill: {fileID: 11400000, guid: 6f82e6ef3de63fc4693768a5f89acf55, type: 2}
+  airMoveSkills: []
