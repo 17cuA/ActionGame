@@ -74,10 +74,41 @@ public class TestAnimationUIManager : MonoBehaviour
 		}
 	}
 
+	public static void ChangeAnimationEventHandler(AnimContext context)
+	{
+
+	}
+
 	public interface AnimUIState
 	{
 		AnimUIState DoPlayEvent();
 		AnimUIState DoStopEvent();
 		AnimUIState DoResetEvent();
+	}
+
+	public class AnimContext
+	{
+		//アニメーションの状態
+		private AnimUIState state = null;
+
+		public AnimUIState GetState()
+		{
+			return this.state;
+		}
+
+		public void DoPlay()
+		{
+			this.state = this.state.DoPlayEvent();
+		}
+
+		public void DoStop()
+		{
+			this.state = this.state.DoStopEvent();
+		}
+
+		public void DoReset()
+		{
+			this.state = this.state.DoResetEvent();
+		}
 	}
 }
