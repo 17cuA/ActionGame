@@ -295,6 +295,7 @@ ModelImporter:
     7400018: "\u98DF\u3044\u5012\u308C_\u6253\u3061\u4ED8\u3051"
     7400020: "\u98DF\u3044\u5012\u308C_\u30C0\u30A6\u30F3"
     9500000: //RootNode
+    11100000: //RootNode
     13700000: Clothes
     13700002: Others
     13700004: Skin
@@ -340,9 +341,7 @@ ModelImporter:
       has translation animation that will be discarded.\n\t'Con_Shoulder_L' is inbetween
       humanoid transforms and has rotation animation that will be discarded.\n\t'Con_Hand_L'
       is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'Con_Neck'
-      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'Con_Glasses'
-      has translation animation that will be discarded.\n\t'Con_Glasses' is inbetween
-      humanoid transforms and has rotation animation that will be discarded.\n"
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n"
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
@@ -870,14 +869,6 @@ ModelImporter:
         value: {x: 0, y: 0, z: 0}
         length: 0
         modified: 0
-    - boneName: Bone_Glasses
-      humanName: LeftEye
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
     - boneName: Bone_Thumb_Proximal_L
       humanName: Left Thumb Proximal
       limit:
@@ -998,7 +989,7 @@ ModelImporter:
         value: {x: 0, y: 0, z: 0}
         length: 0
         modified: 0
-    - boneName: Con_Thumb_Proximal_R
+    - boneName: Bone_Thumb_Proximal_R
       humanName: Right Thumb Proximal
       limit:
         min: {x: 0, y: 0, z: 0}
@@ -1006,7 +997,7 @@ ModelImporter:
         value: {x: 0, y: 0, z: 0}
         length: 0
         modified: 0
-    - boneName: Bone_Thumb_Proximal_R
+    - boneName: Bone_Thumb_Intermediate_R
       humanName: Right Thumb Intermediate
       limit:
         min: {x: 0, y: 0, z: 0}
@@ -1014,7 +1005,7 @@ ModelImporter:
         value: {x: 0, y: 0, z: 0}
         length: 0
         modified: 0
-    - boneName: Bone_Thumb_Intermediate_R
+    - boneName: Bone_Thumb_Distal_R
       humanName: Right Thumb Distal
       limit:
         min: {x: 0, y: 0, z: 0}
@@ -1119,13 +1110,13 @@ ModelImporter:
         length: 0
         modified: 0
     skeleton:
-    - name: "\u98DF\u3044\u5012\u308C_\u30C0\u30A6\u30F3\u307E\u3067(Clone)"
+    - name: Kuidaore(Clone)
       parentName: 
       position: {x: 0, y: 0, z: 0}
       rotation: {x: 0, y: 0, z: 0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: Con_ALL
-      parentName: "\u98DF\u3044\u5012\u308C_\u30C0\u30A6\u30F3\u307E\u3067(Clone)"
+      parentName: Kuidaore(Clone)
       position: {x: -1.573045e-12, y: 5.08, z: 7.219114e-16}
       rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
       scale: {x: 0.99999994, y: 0.99999994, z: 0.99999994}
@@ -1799,7 +1790,7 @@ ModelImporter:
       rotation: {x: -1.694066e-21, y: -1.4210855e-14, z: -4.218852e-15, w: 1}
       scale: {x: 1, y: 0.99999994, z: 0.99999994}
     - name: Model
-      parentName: "\u98DF\u3044\u5012\u308C_\u30C0\u30A6\u30F3\u307E\u3067(Clone)"
+      parentName: Kuidaore(Clone)
       position: {x: -0, y: 2.493708, z: 0.3602656}
       rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
       scale: {x: 1, y: 1, z: 1}
@@ -1825,7 +1816,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    rootMotionBoneName: 
+    rootMotionBoneName: Bone_Hips
     hasTranslationDoF: 0
     hasExtraRoot: 1
     skeletonHasParents: 1
