@@ -50,7 +50,6 @@ public class CharacterselectObject : MonoBehaviour
     public Sprite clikoNamePanel;
     public Sprite obachanNamePanel;
     public Sprite kuidaoreNamePanel;
-    public GameObject characterInstancePos;
 
     List<CharacterSelectObjectData> characterSelectObjectDatas = new List<CharacterSelectObjectData>();
 
@@ -69,21 +68,25 @@ public class CharacterselectObject : MonoBehaviour
     private void Awake()
     {
         // キャラクターごとに追加
-        characterSelectObjectDatas.Add(new CharacterSelectObjectData("cliko", ECharacterID.CLIKO, clicoStatus, clikoNamePanel, clicoPanel, characterInstancePos));
-        characterSelectObjectDatas.Add(new CharacterSelectObjectData("obachan", ECharacterID.OBACHAN, obachanStatus, obachanNamePanel, obachanPanel, characterInstancePos));
+        characterSelectObjectDatas.Add(new CharacterSelectObjectData("cliko", ECharacterID.CLIKO, clicoStatus, clikoNamePanel, clicoPanel));
+        characterSelectObjectDatas.Add(new CharacterSelectObjectData("obachan", ECharacterID.OBACHAN, obachanStatus, obachanNamePanel, obachanPanel));
         //characterSelectObjectDatas.Add(new CharacterSelectObjectData("kuidalre",ECharacterID.KUIDAORE, kuidaoreStatus, kuidaoreNamePanel, kuidaorePanel,characterInstancePos));
 
         for (int i = 0; i < characterSelectObjectDatas.Count; i++)
         {
-            p1CharacterModelData.CreateCharacter(characterSelectObjectDatas[i], characterInstancePos,"Player1用モデル");
-            p2CharacterModelData.CreateCharacter(characterSelectObjectDatas[i], characterInstancePos,"Player2用モデル");
-        }
+            p1CharacterModelData.CreateCharacter(characterSelectObjectDatas[i],"Player1用モデル");
+            p2CharacterModelData.CreateCharacter(characterSelectObjectDatas[i],"Player2用モデル");
+		}	
 
         CanvasController_CharacterSelect.CanvasControllerInstance.InitDownCurtain();
 
         timer.Start();
+	}
 
-    }
+	public void Test(params int[] nums)
+	{
+
+	}
 
     private void Update()
     {
@@ -101,14 +104,14 @@ public class CharacterselectObject : MonoBehaviour
         p2CursolData.Update(characterSelectObjectDatas);
         p1NamePanelData.ChangeName(characterSelectObjectDatas[(int)p1CursolData.currentCharacter].NamePanel);
         p2NamePanelData.ChangeName(characterSelectObjectDatas[(int)p2CursolData.currentCharacter].NamePanel);
-        if(p1CursolData.AcceptFlag)
-        {
-            p1CharacterModelData.ChangeAnimation(p1CursolData.currentCharacter);
-        }
-        if (p2CursolData.AcceptFlag)
-        {
-            p2CharacterModelData.ChangeAnimation(p2CursolData.currentCharacter);
-        }
+        //if(p1CursolData.AcceptFlag)
+        //{
+        //    p1CharacterModelData.ChangeAnimation(p1CursolData.currentCharacter);
+        //}
+        //if (p2CursolData.AcceptFlag)
+        //{
+        //    p2CharacterModelData.ChangeAnimation(p2CursolData.currentCharacter);
+        //}
 
     }
 }
@@ -214,21 +217,23 @@ public class NamePanel
 [System.Serializable]
 public class CharacterModel
 {
-    public GameObject currentCharacter;
+	public GameObject characterInstancePos;
+	public GameObject currentCharacter;
     public List<AnimationData> AnimationDatas = new List<AnimationData>();
 
-    public void CreateCharacter(CharacterSelectObjectData _characterSelectObjectDatas, GameObject _characterInstancePos,string _playerNumber)
+    public void CreateCharacter(CharacterSelectObjectData _characterSelectObjectDatas,string _playerNumber)
     {
         for (int i = 0; i < _characterSelectObjectDatas.Model.Length; i++)
         {
-            var temp = GameObject.Instantiate(_characterSelectObjectDatas.Model[i].PlayerModel2, _characterInstancePos.transform.position, _characterInstancePos.transform.rotation);
-            AnimationDatas.Add(temp.GetComponent<AnimationData>());
-            AnimationDatas[i].ScaleObject.transform.localScale = new Vector3(-1, 1, 1);
-            temp.name = _characterSelectObjectDatas.Name + (i + 1) + "Color" + _playerNumber;
+            var temp = GameObject.Instantiate(_characterSelectObjectDatas.Model[i].PlayerModel2, characterInstancePos.transform.position, characterInstancePos.transform.rotation);
+			//temp.GetComponent<AnimationData>().ScaleObject.transform.localScale = new Vector3(-1, 1, 1);
+			AnimationDatas.Add(temp.GetComponent<AnimationData>());
+			AnimationDatas[i].ScaleObject.transform.localScale = new Vector3(-1, 1, 1);
+			temp.name = _characterSelectObjectDatas.Name + (i + 1) + "Color" + _playerNumber;
         }
     }
-    public void ChangeAnimation(ECharacterID _eCharacterID)
-    {
-        AnimationDatas[(int)_eCharacterID].ChangeAnimation();
-    }
+    //public void ChangeAnimation(ECharacterID _eCharacterID)
+    //{
+    //    AnimationDatas[(int)_eCharacterID].ChangeAnimation();
+    //}
 }

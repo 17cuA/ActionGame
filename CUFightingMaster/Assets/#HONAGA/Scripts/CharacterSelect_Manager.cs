@@ -7,70 +7,71 @@
 
 //public class CharacterSelect_Manager : SingletonMono<CharacterSelect_Manager>
 //{
-//    #region 変数宣言
-//    public AnimationUIManager[] animation_Ready = new AnimationUIManager[4];
+//	#region 変数宣言
+//	public AnimationUIManager[] animation_Ready = new AnimationUIManager[4];
 
-//    public Cursor_CharacterSelect cursor1_1;	// Display1の1P用カーソル
-//    public Cursor_CharacterSelect cursor1_2;	// Display1の2P用カーソル
-//    public Cursor_CharacterSelect cursor2_1;	// Display2の1P用カーソル
-//    public Cursor_CharacterSelect cursor2_2;	// Display2の2P用カーソル
+//	public Cursor_CharacterSelect cursor1_1;    // Display1の1P用カーソル
+//	public Cursor_CharacterSelect cursor1_2;    // Display1の2P用カーソル
+//	public Cursor_CharacterSelect cursor2_1;    // Display2の1P用カーソル
+//	public Cursor_CharacterSelect cursor2_2;    // Display2の2P用カーソル
 
-//	public bool curtainFlag = false;			// 幕が上がるフラグ
+//	public bool curtainFlag = false;            // 幕が上がるフラグ
 
 //	[SerializeField] static int charaMax = 4;
 
-//    public GameObject[] previewModel = new GameObject[charaMax * 2];                // 生成したキャラクターモデルを入れておく変数（２画面２プレイヤーのため、２倍生成）
+//	public GameObject[] previewModel = new GameObject[charaMax * 2];                // 生成したキャラクターモデルを入れておく変数（２画面２プレイヤーのため、２倍生成）
 //	public Animationdata[] nomalAnimationPlayers = new Animationdata[charaMax * 2]; // 生成したキャラクターモデルのアニメーション情報を入れておく変数（２画面２プレイヤーのため、２倍生成）
-//	public GameObject[] createCharaPos = new GameObject[charaMax];					// キャラクターモデルを生成する位置
-//    public Sprite[] SelectCharacterNamePanels = new Sprite[charaMax];				// キャラクターの名前のパネルを格納しておく変数
+//	public GameObject[] createCharaPos = new GameObject[charaMax];                  // キャラクターモデルを生成する位置
+//	public Sprite[] SelectCharacterNamePanels = new Sprite[charaMax];               // キャラクターの名前のパネルを格納しておく変数
 
 //	[SerializeField] private bool[] characterSelectBool = { false, false, false, false };    // キャラクターを選択したかどうかの判定
-//    public bool[] CharacterSelectBool
-//    {
-//        get { return characterSelectBool; }
-//    }
-//    public bool sceneChangeJughe;   // シーンの変更を許可
+//	public bool[] CharacterSelectBool
+//	{
+//		get { return characterSelectBool; }
+//	}
+//	public bool sceneChangeJughe;   // シーンの変更を許可
 
-//    public FighterStatus[] currentCharacter = new FighterStatus[charaMax]; // ファイターの情報を格納する変数
+//	public FighterStatus[] currentCharacter = new FighterStatus[charaMax]; // ファイターの情報を格納する変数
 
-//	[SerializeField] private bool panelAnimFlag;	// キャラクターパネルのアニメーション許可
-//	[SerializeField] private int animFlagCount;		// １回だけアニメーションをさせたいので、作った変数  
-//	[SerializeField] private float fadeFrame;		// シーンを変更させるためのフレーム（時間）
-//    public float FadeFrame
-//    {
-//        get { return fadeFrame; }
-//    }
+//	[SerializeField] private bool panelAnimFlag;    // キャラクターパネルのアニメーション許可
+//	[SerializeField] private int animFlagCount;     // １回だけアニメーションをさせたいので、作った変数  
+//	[SerializeField] private float fadeFrame;       // シーンを変更させるためのフレーム（時間）
+//	public float FadeFrame
+//	{
+//		get { return fadeFrame; }
+//	}
 //	public NomalAnimationPlayer[] timerAnim = new NomalAnimationPlayer[2];
 //	public AnimationClip timerTrimClip;
 //	private float canselTime;
 //	private bool canselFrame;
 //	#endregion
 
-//    void Start()
-//    {
+//	void Start()
+//	{
 //		canselTime = 0.0f;
 //		canselFrame = false;
 //		QualitySettings.vSyncCount = 0;
 //		Application.targetFrameRate = 60;
 //		// 飯塚追加-------------------------------------------
-//        Sound.LoadBGM("BGM_Menu", "BGM_Menu");
-//        Sound.PlayBGM("BGM_Menu", 1, 1.0f, true);
-//        // ---------------------------------------------------
+//		Sound.LoadBGM("BGM_Menu", "BGM_Menu");
+//		Sound.PlayBGM("BGM_Menu", 1, 1.0f, true);
+//		// ---------------------------------------------------
 
-//        panelAnimFlag = false;
-//        animFlagCount = 1;
-//        fadeFrame = 0;
-//        sceneChangeJughe = false;
-//        if (currentCharacter[0] == null)
-//        {
-//            return;
-//        }
+//		panelAnimFlag = false;
+//		animFlagCount = 1;
+//		fadeFrame = 0;
+//		sceneChangeJughe = false;
+//		if (currentCharacter[0] == null)
+//		{
+//			return;
+//		}
 //		// キャラモデルの生成
 //		CreateModels();
+
 //	}
 
-//    void Update()
-//    {
+//	void Update()
+//	{
 //		// カーソルのUpdate
 //		CursorsUpdate();
 
@@ -96,7 +97,7 @@
 
 //		// パネルのアニメーションを再生
 //		PanelAnimationsPlay();
-//    }
+//	}
 
 //	#region モデルの生成
 //	void CreateModels()
@@ -366,42 +367,42 @@
 //	/// <param name="selectCharacterNum">キャラクターの番号</param>
 //	/// <param name="playerNum">プレイヤーが選択している番号</param>
 //	void PreviewModelsActiveSet(int selectCharacterNum, int playerNum)
-//    {
-//        if (playerNum == 1)
-//        {
-//            for (int i = 0; i < charaMax; i++)
-//            {
-//                if (previewModel[i] != null && previewModel[i].active == true)
-//                {
-//					if(i != selectCharacterNum)
+//	{
+//		if (playerNum == 1)
+//		{
+//			for (int i = 0; i < charaMax; i++)
+//			{
+//				if (previewModel[i] != null && previewModel[i].active == true)
+//				{
+//					if (i != selectCharacterNum)
 //					{
 //						previewModel[i].SetActive(false);
 //					}
-//                }
-//            }
+//				}
+//			}
 //			if (!previewModel[selectCharacterNum].activeSelf)
 //			{
 //				previewModel[selectCharacterNum].SetActive(true);
 //			}
-//        }
-//        if (playerNum == 2)
-//        {
-//            for (int i = 0; i <charaMax; i++)
-//            {
-//                if (previewModel[i+4] != null && previewModel[i+4].active == true)
-//                {
-//					if(i != selectCharacterNum)
+//		}
+//		if (playerNum == 2)
+//		{
+//			for (int i = 0; i < charaMax; i++)
+//			{
+//				if (previewModel[i + 4] != null && previewModel[i + 4].active == true)
+//				{
+//					if (i != selectCharacterNum)
 //					{
 //						previewModel[i + 4].SetActive(false);
 //					}
 //				}
-//            }
+//			}
 //			if (!previewModel[selectCharacterNum + 4].activeSelf)
 //			{
 //				previewModel[selectCharacterNum + 4].SetActive(true);
 //			}
-//        }
-//    }
+//		}
+//	}
 //	#endregion
 
 //	#region シーン変更の許可

@@ -5,8 +5,8 @@ using UnityEngine;
 public class AnimationData : MonoBehaviour
 {
 	public NomalAnimationPlayer animationData;
-	public float animationSpeed = 0.5f;
-	public AnimationClip[] animationClip = new AnimationClip[4];
+	public float animationSpeed = 1.0f;
+	public AnimationClip[] animationClip;
 
 	public GameObject RotationObject;
 	public GameObject ScaleObject;
@@ -17,7 +17,7 @@ public class AnimationData : MonoBehaviour
 	// Start is called before the first frame update
 	void Start()
 	{
-        animationSpeed = 0.5f;
+        animationSpeed = 1.0f;
         if (animationData != null && resultFlag ==false)
 		{
 			animationData.SetPlayAnimation(animationClip[0], animationSpeed, 0);

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterSelectObjectData 
+public class CharacterSelectObjectData
 {
 	private string name;
 	public string Name { get { return name; } }
@@ -19,17 +19,13 @@ public class CharacterSelectObjectData
 	private GameObject[] panelPosition;
 	public GameObject[] PanelPosition { get { return panelPosition; } }
 
-	private GameObject modelInstancePosition;
-	public GameObject ModelInstancePosition { get { return modelInstancePosition; } }
 
-	public CharacterSelectObjectData(string _name,ECharacterID _charaID, FighterStatus[] _model, Sprite _namePanel, GameObject[] _panelPosition,GameObject _modelInstancePosition)
+	public CharacterSelectObjectData(string _name,ECharacterID _charaID, FighterStatus[] _model, Sprite _namePanel, GameObject[] _panelPosition)
 	{
 		name = _name;
 		charaID = _charaID;
 		model = _model;
 		namePanel = _namePanel;
 		panelPosition = _panelPosition;
-		modelInstancePosition = _modelInstancePosition;
 	}
-
 }
