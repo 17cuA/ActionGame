@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Walk_Back
   m_EditorClassIdentifier: 
   skillLayer: 0
-  animationClip: {fileID: 0}
+  animationClip: {fileID: 7400000, guid: edd5541b51d6b8e46a1dc6fce3ad2280, type: 2}
   animationSpeed: 1
   status: 1
   frameEffects: []
@@ -41,7 +41,15 @@ MonoBehaviour:
   customHitBox: []
   isContinue: 0
   isMoveContinue: 0
-  movements: []
+  movements:
+  - isGravityInvaid: 0
+    isResetStartGravity: 0
+    isResetEndGravity: 0
+    isImpact: 0
+    isBound: 0
+    boundMovements: []
+    movement: {x: -0.8, y: 0, z: 0}
+    startFrame: 0
   gravityMoves: []
   timeStops:
     startFrame: 0
