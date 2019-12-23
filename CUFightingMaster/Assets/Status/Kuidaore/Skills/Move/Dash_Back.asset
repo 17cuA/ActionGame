@@ -41,7 +41,15 @@ MonoBehaviour:
   customHitBox: []
   isContinue: 0
   isMoveContinue: 0
-  movements: []
+  movements:
+  - isGravityInvaid: 0
+    isResetStartGravity: 0
+    isResetEndGravity: 0
+    isImpact: 0
+    isBound: 0
+    boundMovements: []
+    movement: {x: -2, y: 0, z: 0}
+    startFrame: 0
   gravityMoves: []
   timeStops:
     startFrame: 0
