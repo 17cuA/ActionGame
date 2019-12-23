@@ -38,7 +38,66 @@ MonoBehaviour:
   plusFootHitBox: []
   plusGrabHitBox: []
   plusPushingHitBox: []
-  customHitBox: []
+  customHitBox:
+  - mode: 0
+    frameHitBoxes:
+    - isFalse: 0
+      isInfinityFrame: 0
+      hitBox:
+        size: {x: 1, y: 1, z: 1}
+        localPosition: {x: 0, y: 0, z: 0}
+      startFrame: 0
+      endFrame: 0
+    hitStop: 0
+    hitPoint: 1
+    hitStrength: 2
+    damage: 750
+    stanDamage: 0
+    knockBack: 1.5
+    airKnockBack: 0.2
+    guardKnockBack: 1.2
+    hitEffects:
+    - isEnemyPos: 0
+      isParant: 0
+      isEnemyParant: 0
+      effect: {fileID: 1722284782620667795, guid: fc923a13308d53749ac62f505c756f19,
+        type: 3}
+      guardEffect: {fileID: 6532350964205856054, guid: 8eea3721bc3fc884eafd65d00f7413aa,
+        type: 3}
+      position: {x: 0, y: 0, z: 0}
+    - isEnemyPos: 0
+      isParant: 0
+      isEnemyParant: 0
+      effect: {fileID: 172087093480244287, guid: 0027f2e041e2f234fb3b251ecc8ba0b4,
+        type: 3}
+      guardEffect: {fileID: 0}
+      position: {x: 0, y: 0, z: 0}
+    - isEnemyPos: 0
+      isParant: 0
+      isEnemyParant: 0
+      effect: {fileID: 0}
+      guardEffect: {fileID: 938335540899788553, guid: ea946e39537c2ef48ab0f9cd030b3283,
+        type: 3}
+      position: {x: 0, y: 0, z: 0}
+    isDown: 0
+    isThrow: 0
+    isThrowGroundDamage: 0
+    isThrowGroundAnimEnd: 0
+    airDamageMovements: []
+    throwGroundDamage: 0
+    throwSkill: {fileID: 0}
+    enemyThrowSkill: {fileID: 0}
+    throwDamages: []
+    isJumpCancel: 0
+    isContinue: 0
+    movements: []
+    gravityMoves: []
+    isFaceDown: 0
+    isPassiveNotPossible: 0
+    hitRigor: 27
+    guardHitRigor: 13
+    plusGauge: 8
+    enemyPlusGauge: 3
   isContinue: 0
   isMoveContinue: 0
   movements: []
