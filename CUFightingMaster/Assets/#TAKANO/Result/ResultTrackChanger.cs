@@ -11,24 +11,26 @@ public class ResultTrackChanger : MonoBehaviour
 	[SerializeField] private List<ResultTrackList> resultTrackList = new List<ResultTrackList>();
 
 	/// <summary>
-	/// リザルト用アニメーションをゲット
+	/// リザルト用アニメーションを返す
 	/// </summary>
 	/// <param name="_fighterNun">PlayerID</param>
 	/// <param name="_victoryNum">1=win,2=lose</param>
 	/// <returns></returns>
 	public AnimationClip GetTrack(int _fighterNun, int _victoryNum)
 	{
+		Debug.Log(resultTrackList[_fighterNun].trackList[_victoryNum].AnimationClip);
 		return resultTrackList[_fighterNun].trackList[_victoryNum].AnimationClip;
 	}
 
 	/// <summary>
-	/// リザルト用カメラをゲット
+	/// リザルト用カメラの名前を返す
 	/// </summary>
 	/// <param name="_fighterNun"></param>
 	/// <param name="_victoryNum"></param>
 	/// <returns></returns>
-	public CinemachineBrain GetCinemachineBrain(int _fighterNun, int _victoryNum)
+	public string GetCameraTrackName(int _fighterNun, int _victoryNum)
 	{
-		return resultTrackList[_fighterNun].trackList[_victoryNum].CinemachineBrain;
+		Debug.Log(resultTrackList[_fighterNun].trackList[_victoryNum].chinemaTrackName);
+		return resultTrackList[_fighterNun].trackList[_victoryNum].chinemaTrackName;
 	}
 }

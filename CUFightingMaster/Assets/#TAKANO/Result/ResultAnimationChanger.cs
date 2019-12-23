@@ -28,8 +28,8 @@ public class ResultAnimationChanger : MonoBehaviour
 	/// <param name="_fighterNun"></param>
 	/// <param name="_victoryNum"></param>
 	/// <returns></returns>
-	public CinemachineBrain GetCinemachineBrain( int _fighterNun , int _victoryNum)
+	public string GetCameraTrackName( int _fighterNun , int _victoryNum)
 	{
-		return resultTrackList[_fighterNun].trackList[_victoryNum].CinemachineBrain;
+		return resultTrackList[_fighterNun].trackList[_victoryNum].chinemaTrackName;
 	}
 }

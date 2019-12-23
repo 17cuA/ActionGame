@@ -23,7 +23,7 @@ using System.Linq;
 public class AnimaitonBindController : MonoBehaviour
 {
 	[SerializeField] PlayableDirector playableDirector;
-	[SerializeField] Animator animator;
+	[SerializeField] public Animator FigterAnimator; /*{ set; private get; }*/
 	[SerializeField] string trackName = "Animation Track";
 
 	public AnimationClip AnimationClip { set; private get; }

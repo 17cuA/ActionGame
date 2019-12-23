@@ -18,5 +18,5 @@ public class ResultTrackList
 public class ResultTrack
 {
 	public AnimationClip AnimationClip;
-	public CinemachineBrain CinemachineBrain;
+	public string chinemaTrackName;
 }

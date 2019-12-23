@@ -93,4 +93,11 @@ public class GameDataStrage : MonoBehaviour
 		}
 		return 0;
 	}
+
+	public void Start()
+	{
+		matchResult[0] = MatchResult.WIN;
+		matchResult[1] = MatchResult.LOSE;
+
+	}
 }
