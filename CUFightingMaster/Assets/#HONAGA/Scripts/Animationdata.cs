@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class AnimationData : MonoBehaviour
 {
+	// Inspectorからモデルについているアニメーションをセットする
 	public NomalAnimationPlayer animationData;
-	public float animationSpeed = 1.0f;
-	public AnimationClip[] animationClip;
+	public float animationSpeed = 1.0f;		// アニメーションのスピード
+	public AnimationClip defaltClip;			// 元々の
+	public AnimationClip acceptClip;			//  
 
 	public GameObject RotationObject;
 	public GameObject ScaleObject;
@@ -20,7 +22,7 @@ public class AnimationData : MonoBehaviour
         animationSpeed = 1.0f;
         if (animationData != null && resultFlag ==false)
 		{
-			animationData.SetPlayAnimation(animationClip[0], animationSpeed, 0);
+			animationData.SetPlayAnimation(defaltClip, animationSpeed, 0);
 		}
 	}
 
@@ -32,14 +34,9 @@ public class AnimationData : MonoBehaviour
 			animationData.SetPlayAnimation(animationClip[0], animationSpeed, 0);
 		}
 	}
-	public void ResultAnimation(AnimationClip animationClip,float f,AnimationClip _idle)
-	{
-		animationData.SetPlayAnimation(animationClip, f, 0);
-        animationData.SetIdling(_idle,f);
-	}
     public void ChangeAnimation()
     {
-        if (animFrag == true && animationData.NowClip != animationClip[1] && resultFlag == false)
+        if (animFrag == true && animationData.NowClip != acceptClip)
         {
             animationData.SetPlayAnimation(animationClip[1], animationSpeed, 0);
         }

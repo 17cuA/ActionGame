@@ -1839,6 +1839,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1729452135}
     m_Modifications:
+    - target: {fileID: 1094768540677155773, guid: a83932a86c972a641b380d484b5afc15,
+        type: 3}
+      propertyPath: m_Name
+      value: Curtain
+      objectReference: {fileID: 0}
+    - target: {fileID: 1094768540677155773, guid: a83932a86c972a641b380d484b5afc15,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1094768540677155773, guid: a83932a86c972a641b380d484b5afc15,
+        type: 3}
+      propertyPath: m_Layer
+      value: 16
+      objectReference: {fileID: 0}
     - target: {fileID: 1094768540677155762, guid: a83932a86c972a641b380d484b5afc15,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1943,21 +1958,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1094768540677155773, guid: a83932a86c972a641b380d484b5afc15,
-        type: 3}
-      propertyPath: m_Name
-      value: Curtain
-      objectReference: {fileID: 0}
-    - target: {fileID: 1094768540677155773, guid: a83932a86c972a641b380d484b5afc15,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1094768540677155773, guid: a83932a86c972a641b380d484b5afc15,
-        type: 3}
-      propertyPath: m_Layer
-      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 1094768540677155760, guid: a83932a86c972a641b380d484b5afc15,
         type: 3}
@@ -2499,32 +2499,36 @@ MonoBehaviour:
     displayTime: 0
     firstDigit: {fileID: 254554657}
     secondDigit: {fileID: 1583175506}
-  p1CharacterModelData:
-    characterInstancePos: {fileID: 1616275659}
-    currentCharacter: {fileID: 0}
-    AnimationDatas: []
-  p2CharacterModelData:
-    characterInstancePos: {fileID: 912852019}
-    currentCharacter: {fileID: 0}
-    AnimationDatas: []
-  p1CursolData:
-    playerNumber: 0
-    controllerName: 
-    moveCursorFrame: 0
-    limitCursorFrame: 0.2
-    currentCharacter: 0
-    cursol: {fileID: 1781283674}
-  p2CursolData:
-    playerNumber: 1
-    controllerName: 
-    moveCursorFrame: 0
-    limitCursorFrame: 0.2
-    currentCharacter: 0
-    cursol: {fileID: 1461937055}
-  p1NamePanelData:
-    charaNamePanel: {fileID: 1025125255}
-  p2NamePanelData:
-    charaNamePanel: {fileID: 712170286}
+  Player1:
+    cursol:
+      playerNumber: 1
+      controllerName: 
+      moveCursorFrame: 0
+      limitCursorFrame: 0
+      currentCharacter: 0
+      cursol: {fileID: 1781283674}
+    namePanel:
+      charaNamePanel: {fileID: 712170286}
+    characterModel:
+      playerNumber: Player1
+      characterInstancePos: {fileID: 1616275659}
+      currentCharacter: {fileID: 0}
+      AnimationDatas: []
+  Player2:
+    cursol:
+      playerNumber: 2
+      controllerName: 
+      moveCursorFrame: 0
+      limitCursorFrame: 0
+      currentCharacter: 0
+      cursol: {fileID: 1461937055}
+    namePanel:
+      charaNamePanel: {fileID: 712170286}
+    characterModel:
+      playerNumber: Player2
+      characterInstancePos: {fileID: 912852019}
+      currentCharacter: {fileID: 0}
+      AnimationDatas: []
 --- !u!4 &1072433449
 Transform:
   m_ObjectHideFlags: 0
@@ -4228,6 +4232,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 189375485}
     m_Modifications:
+    - target: {fileID: 1094768540677155773, guid: a83932a86c972a641b380d484b5afc15,
+        type: 3}
+      propertyPath: m_Name
+      value: Curtain
+      objectReference: {fileID: 0}
+    - target: {fileID: 1094768540677155773, guid: a83932a86c972a641b380d484b5afc15,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1094768540677155773, guid: a83932a86c972a641b380d484b5afc15,
+        type: 3}
+      propertyPath: m_Layer
+      value: 16
+      objectReference: {fileID: 0}
     - target: {fileID: 1094768540677155762, guid: a83932a86c972a641b380d484b5afc15,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4332,21 +4351,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1094768540677155773, guid: a83932a86c972a641b380d484b5afc15,
-        type: 3}
-      propertyPath: m_Name
-      value: Curtain
-      objectReference: {fileID: 0}
-    - target: {fileID: 1094768540677155773, guid: a83932a86c972a641b380d484b5afc15,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1094768540677155773, guid: a83932a86c972a641b380d484b5afc15,
-        type: 3}
-      propertyPath: m_Layer
-      value: 16
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a83932a86c972a641b380d484b5afc15, type: 3}
