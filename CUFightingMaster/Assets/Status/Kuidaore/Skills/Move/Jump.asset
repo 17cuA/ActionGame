@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Jump
   m_EditorClassIdentifier: 
   skillLayer: 0
-  animationClip: {fileID: 0}
+  animationClip: {fileID: 7400000, guid: 5bccaf5efc011f742a48a88642bff11e, type: 2}
   animationSpeed: 1
-  status: 1
+  status: 16
   frameEffects: []
   frameBullets: []
   cancelFrag: 1
@@ -41,7 +41,15 @@ MonoBehaviour:
   customHitBox: []
   isContinue: 0
   isMoveContinue: 0
-  movements: []
+  movements:
+  - isGravityInvaid: 0
+    isResetStartGravity: 1
+    isResetEndGravity: 0
+    isImpact: 1
+    isBound: 0
+    boundMovements: []
+    movement: {x: 0, y: 4.5, z: 0}
+    startFrame: 3
   gravityMoves: []
   timeStops:
     startFrame: 0
