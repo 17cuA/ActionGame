@@ -17,6 +17,7 @@ public class CharacterSelectPlayer
 		namePanel.ChangeName( _characterSelectObjectDatas[(int)cursol.currentCharacter].NamePanel);
 	}
 }
+#region カーソルのオブジェクト
 //
 //
 // カーソルの位置を変更するクラス
@@ -104,6 +105,8 @@ public class CharacterSelectCursol
         }
     }
 }
+#endregion
+#region キャラ名前パネルのオブジェクト
 // キャラクターの名前パネルを変更するクラス
 [System.Serializable]
 public class NamePanel
@@ -115,6 +118,8 @@ public class NamePanel
         charaNamePanel.GetComponent<Image>().sprite = _selectCharacterSprite;
     }
 }
+#endregion
+#region キャラモデルの管理
 // キャラクターモデルの生成、アニメーションの変更
 [System.Serializable]
 public class CharacterModel
@@ -134,8 +139,6 @@ public class CharacterModel
 			temp.name = _characterSelectObjectDatas.Name + (i + 1) + "Color" + playerNumber;
         }
     }
-    //public void ChangeAnimation(ECharacterID _eCharacterID)
-    //{
-    //    AnimationDatas[(int)_eCharacterID].ChangeAnimation();
-    //}
+	#endregion
+
 }

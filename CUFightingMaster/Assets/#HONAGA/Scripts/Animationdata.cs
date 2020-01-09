@@ -6,39 +6,26 @@ public class AnimationData : MonoBehaviour
 {
 	// Inspectorからモデルについているアニメーションをセットする
 	public NomalAnimationPlayer animationData;
-	public float animationSpeed = 1.0f;		// アニメーションのスピード
-	public AnimationClip defaltClip;			// 元々の
-	public AnimationClip acceptClip;			//  
+	public float animationSpeed;				// アニメーションのスピード
+	public AnimationClip defaltClip;			// 元々のアニメーション
+	public AnimationClip acceptClip;			//  決定した時のアニメーション
 
-	public GameObject RotationObject;
-	public GameObject ScaleObject;
+	public GameObject RotationObject;		// キャラを回転させる
+	public GameObject ScaleObject;			// キャラのサイズを変更するためのオブジェクト
 
 	public bool animFrag;
-	public bool resultFlag = false;
-	public int PlayerNum;
 	// Start is called before the first frame update
 	void Start()
 	{
         animationSpeed = 1.0f;
-        if (animationData != null && resultFlag ==false)
+        if (animationData != null)
 		{
-			animationData.SetPlayAnimation(defaltClip, animationSpeed, 0);
+			animationData.SetPlayAnimation(defaltClip, animationSpeed);
 		}
 	}
-
-	// Update is called once per frame
-	void Update()
+	void ChangeAnimation(bool flag)
 	{
-		if (animationData.NowClip != animationClip[0] && animFrag == false && resultFlag == false)
-		{
-			animationData.SetPlayAnimation(animationClip[0], animationSpeed, 0);
-		}
+		if(flag)	animationData.SetPlayAnimation(acceptClip, animationSpeed);
+		else		animationData.SetPlayAnimation(defaltClip, animationSpeed);
 	}
-    public void ChangeAnimation()
-    {
-        if (animFrag == true && animationData.NowClip != acceptClip)
-        {
-            animationData.SetPlayAnimation(animationClip[1], animationSpeed, 0);
-        }
-    }
 }
