@@ -197,13 +197,13 @@ public class UI_Editor : EditorWindow
 		// xを１として、yの比率を求める
 		temp.y /= temp.x;
 		temp.x /= temp.x;
-		_obj.transform.localScale = temp;
+		//_obj.transform.localScale = temp;
 		// 正規化
-		//temp = temp.normalized;
+		temp = temp.normalized;
 		// 画像の変更
 		_obj.sprite = _image;
 		// _objのRectTransform.rectの横幅、長さに上の計算で出したtempの値をかける
-		//((_obj.transform) as RectTransform).sizeDelta = new Vector2((_obj.transform as RectTransform).rect.width * temp.x, (_obj.transform as RectTransform).rect.height * temp.y);
+		((_obj.transform) as RectTransform).sizeDelta = new Vector2((_obj.transform as RectTransform).rect.width * temp.x, (_obj.transform as RectTransform).rect.height * temp.y);
 	}
 
 }

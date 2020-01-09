@@ -4079,7 +4079,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6757136910751876646}
-  - component: {fileID: 2349018338920582692}
+  - component: {fileID: 5677078295031004365}
   m_Layer: 10
   m_Name: Clico1PCharacterSelect
   m_TagString: Untagged
@@ -4102,7 +4102,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2349018338920582692
+--- !u!114 &5677078295031004365
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4115,15 +4115,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animationData: {fileID: 6126837939386026592}
-  animationSpeed: 0.5
-  animationClip:
-  - {fileID: 7400000, guid: ab04b5704a917f441af3a3be25200ce6, type: 2}
-  - {fileID: 7400000, guid: cf656add7ca4c2e49bdebb34ee146c93, type: 2}
+  animationSpeed: 0
+  defaltClip: {fileID: 7400000, guid: ab04b5704a917f441af3a3be25200ce6, type: 2}
+  acceptClip: {fileID: 7400000, guid: cf656add7ca4c2e49bdebb34ee146c93, type: 2}
   RotationObject: {fileID: 1809200158556797122}
   ScaleObject: {fileID: 7840531109867560848}
   animFrag: 0
-  resultFlag: 0
-  PlayerNum: 0
 --- !u!1 &7840531109867560848
 GameObject:
   m_ObjectHideFlags: 0

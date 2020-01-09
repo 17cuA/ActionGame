@@ -124,6 +124,7 @@ public class NamePanel
 [System.Serializable]
 public class CharacterModel
 {
+	public AnimationData animationData;
 	public string playerNumber;
 	public GameObject characterInstancePos;
 	public GameObject currentCharacter;
@@ -139,6 +140,6 @@ public class CharacterModel
 			temp.name = _characterSelectObjectDatas.Name + (i + 1) + "Color" + playerNumber;
         }
     }
+	//public void
 	#endregion
-
 }

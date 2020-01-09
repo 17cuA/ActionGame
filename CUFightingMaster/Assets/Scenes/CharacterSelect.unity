@@ -1106,7 +1106,7 @@ GameObject:
   m_Component:
   - component: {fileID: 401097922}
   m_Layer: 0
-  m_Name: Canvas
+  m_Name: Canvas_P1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1454,7 +1454,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 500, y: -450}
-  m_SizeDelta: {x: 900, y: 900}
+  m_SizeDelta: {x: 1405.9, y: 900}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &450257679
 MonoBehaviour:
@@ -2136,7 +2136,7 @@ RectTransform:
   m_GameObject: {fileID: 1025125255}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 0.24958949, z: 0}
+  m_LocalScale: {x: 1, y: 0.2496336, z: 0}
   m_Children: []
   m_Father: {fileID: 189375485}
   m_RootOrder: 10
@@ -2501,30 +2501,32 @@ MonoBehaviour:
     secondDigit: {fileID: 1583175506}
   Player1:
     cursol:
-      playerNumber: 1
+      playerNumber: 0
       controllerName: 
       moveCursorFrame: 0
-      limitCursorFrame: 0
+      limitCursorFrame: 0.2
       currentCharacter: 0
       cursol: {fileID: 1781283674}
     namePanel:
-      charaNamePanel: {fileID: 712170286}
+      charaNamePanel: {fileID: 1025125255}
     characterModel:
+      animationData: {fileID: 0}
       playerNumber: Player1
       characterInstancePos: {fileID: 1616275659}
       currentCharacter: {fileID: 0}
       AnimationDatas: []
   Player2:
     cursol:
-      playerNumber: 2
+      playerNumber: 1
       controllerName: 
       moveCursorFrame: 0
-      limitCursorFrame: 0
+      limitCursorFrame: 0.2
       currentCharacter: 0
       cursol: {fileID: 1461937055}
     namePanel:
       charaNamePanel: {fileID: 712170286}
     characterModel:
+      animationData: {fileID: 0}
       playerNumber: Player2
       characterInstancePos: {fileID: 912852019}
       currentCharacter: {fileID: 0}
@@ -3220,7 +3222,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0.0816164, b: 1, a: 1}
+  m_Color: {r: 0, g: 0.0816164, b: 1, a: 0.78431374}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -4022,7 +4024,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 0.78431374}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
