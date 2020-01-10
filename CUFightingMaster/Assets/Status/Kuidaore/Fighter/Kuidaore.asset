@@ -24,10 +24,14 @@ MonoBehaviour:
   PlayerModel: {fileID: 100000, guid: fe9e77700d842d948b090dbfbd7a535b, type: 3}
   PlayerModel2: {fileID: 100000, guid: fe9e77700d842d948b090dbfbd7a535b, type: 3}
   playerMaterials:
-  - nomalMaterial: []
-    inversionMaterial: []
-  - nomalMaterial: []
-    inversionMaterial: []
+  - nomalMaterial:
+    - {fileID: 0}
+    inversionMaterial:
+    - {fileID: 0}
+  - nomalMaterial:
+    - {fileID: 0}
+    inversionMaterial:
+    - {fileID: 0}
   gravity: {x: 0, y: -0.25, z: 0}
   gravityMax: {x: 0, y: 20, z: 0}
   headHitBox:
@@ -133,8 +137,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 122780df28158fc4196db61606cf4f46, type: 2}
   - {fileID: 0}
   fighter: {fileID: 7960873146823851506, guid: 2c5dacc9d4e0fb44486a558d7e7b665b, type: 3}
-  InGameTimeline_One: {fileID: 0}
-  InGameTimeline_Two: {fileID: 0}
+  InGameTimeline_One: {fileID: 5910050961200620768, guid: 5566c416e1dbf4148a4ee49ab6623b4f,
+    type: 3}
+  InGameTimeline_Two: {fileID: 6454210272307787186, guid: a3e56dae7db70bf47abc3b9dcc4523d1,
+    type: 3}
   groundAttackSkills: []
   airAttackSkills: []
   groundMoveSkills:
