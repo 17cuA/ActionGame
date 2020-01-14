@@ -23,7 +23,7 @@ public class ResultTrackChanger : MonoBehaviour
 	}
 
 	/// <summary>
-	/// リザルト用カメラの名前を返す
+	/// リザルト用シネマシーントラックの名前を返す
 	/// </summary>
 	/// <param name="_fighterNun"></param>
 	/// <param name="_victoryNum"></param>

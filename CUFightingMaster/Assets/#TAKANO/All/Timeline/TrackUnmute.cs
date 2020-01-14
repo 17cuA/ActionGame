@@ -44,16 +44,21 @@ public class TrackUnmute : MonoBehaviour
 	{
 		trackAsset = trackAssets.FirstOrDefault(x => x.name == _trackName);
 		trackAsset.muted = false;
+		Debug.Log(_trackName);
 	}
 
-	private void Start()
+	private void Awake()
 	{
 		//タイムラインの全トラックを取得する
 		trackAssets = (playableDirector.playableAsset as TimelineAsset).GetOutputTracks();
 	}
+	private void Start()
+	{
+
+	}
 
 	public void Update()
 	{
-		Debug.Log(trackAsset);
+		Debug.Log(trackAssets);
 	}
 }

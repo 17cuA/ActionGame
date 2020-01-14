@@ -35,7 +35,6 @@ public class ResultManager_ : MonoBehaviour
 
 	private int[] elementNum = new int[2];
 
-
 	void TimelineSet()
 	{
 		resultTimelineController.TrackSet();
@@ -51,13 +50,20 @@ public class ResultManager_ : MonoBehaviour
 		fighterCreater.FighterCreate();
 		fighter1 = fighterCreater.Fighter1;
 		fighter2 = fighterCreater.Fighter2;
-		
 
+		//タイムラインに、動かすモデルのAnimatorをセット
+		resultTimelineController.SetAnimator(fighter1.GetComponentInChildren<Animator>(), fighter2.GetComponentInChildren<Animator>());
+
+		resultTimelineController.TrackSet();
 	}
 
     // Update is called once per frame
     void Update()
     {
-		
-    }
+		if (!Application.isPlaying)
+		{
+			resultTimelineController.MuteTrack();
+			Debug.Log("a");
+		}
+	}
 }

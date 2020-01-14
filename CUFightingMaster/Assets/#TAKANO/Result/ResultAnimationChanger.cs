@@ -17,7 +17,7 @@ public class ResultAnimationChanger : MonoBehaviour
 	/// <param name="_fighterNun">PlayerID</param>
 	/// <param name="_victoryNum">1=win,2=lose</param>
 	/// <returns></returns>
-	public AnimationClip GetTrack( int _fighterNun , int _victoryNum)
+	public AnimationClip GetAnimationTrack( int _fighterNun , int _victoryNum)
 	{
 		return resultTrackList[_fighterNun].trackList[_victoryNum].AnimationClip;
 	}

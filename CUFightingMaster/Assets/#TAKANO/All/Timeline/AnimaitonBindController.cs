@@ -26,19 +26,13 @@ public class AnimaitonBindController : MonoBehaviour
 	[SerializeField] public Animator FigterAnimator; /*{ set; private get; }*/
 	[SerializeField] string trackName = "Animation Track";
 
-	public AnimationClip AnimationClip { set; private get; }
+	public AnimationClip AnimationClip; /*{ set; private get; }*/
 	public PlayableBinding playableBinding;
-
-	private void Start()
-	{
-		playableBinding = playableDirector.playableAsset.outputs.First(c => c.streamName == trackName);
-		if (playableDirector.playOnAwake == true)
-			BindAnimation();
-	}
 
 	public void BindAnimation()
 	{
-		playableDirector.SetGenericBinding(playableBinding.sourceObject, AnimationClip);
+		playableBinding = playableDirector.playableAsset.outputs.First(c => c.streamName == trackName);
+		playableDirector.SetGenericry Binding(playableBinding.sourceObject, AnimationClip);
 	}
 
 	public void PlayAnimation()

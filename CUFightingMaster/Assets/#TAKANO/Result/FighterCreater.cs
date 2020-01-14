@@ -13,9 +13,6 @@ using UnityEngine;
 
 public class FighterCreater : MonoBehaviour
 {
-
-	[SerializeField] ResultTimelineController resultTimelineController;
-
 	public GameObject Fighter1 { private set; get; }
 	public GameObject Fighter2 { private set; get; }
 
@@ -29,7 +26,5 @@ public class FighterCreater : MonoBehaviour
 	{
 		Fighter1 = Instantiate(GameDataStrage.Instance.fighterStatuses[(int)PlayerNumber.Player1].PlayerModel, player1CreatePos.transform.position, transform.rotation);
 		Fighter2 = Instantiate(GameDataStrage.Instance.fighterStatuses[(int)PlayerNumber.Player2].PlayerModel, player2CreatePos.transform.position, transform.rotation);
-
-		resultTimelineController.SetAnimator(Fighter1.GetComponent<Animator>(), Fighter2.GetComponent<Animator>());
 	}
 }
