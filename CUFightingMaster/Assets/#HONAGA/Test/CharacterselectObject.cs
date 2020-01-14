@@ -71,7 +71,8 @@ public class CharacterselectObject : MonoBehaviour
 			Player1.characterModel.CreateCharacter(characterSelectObjectDatas[i]);
 			Player2.characterModel.CreateCharacter(characterSelectObjectDatas[i]);
 		}
-
+		Player1.Init(characterSelectObjectDatas);
+		Player2.Init(characterSelectObjectDatas);
 		CanvasController_CharacterSelect.CanvasControllerInstance.InitDownCurtain();
 
 		timer.Start();
