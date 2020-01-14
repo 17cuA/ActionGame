@@ -159,7 +159,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffb833ca4013b1341ac7018084cd8b20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isPlay: 1
+  isPlay: 0
 --- !u!1 &5266896542763418675
 GameObject:
   m_ObjectHideFlags: 0
@@ -649,6 +649,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5266896543697213538}
   - component: {fileID: 5266896543697213539}
+  - component: {fileID: 6655792725322077410}
   m_Layer: 0
   m_Name: AppearanceTimelineKuidaoreP2
   m_TagString: Untagged
@@ -696,6 +697,20 @@ PlayableDirector:
     m_References:
     - 40e978e16244f724cb685f412f7c3736: {fileID: 5266896542386933937}
     - bd8df2e2743104a4c8a3b2732869be07: {fileID: 5266896542638927251}
+--- !u!114 &6655792725322077410
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5266896543697213536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 054be7e70d1bfa74a9cd815b3f5adb21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cinemaController: {fileID: 5266896542638927250}
+  destroyObject: {fileID: 5266896543697213536}
 --- !u!1 &5266896543806769201
 GameObject:
   m_ObjectHideFlags: 0
