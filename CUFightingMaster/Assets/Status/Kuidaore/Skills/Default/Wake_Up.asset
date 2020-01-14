@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4fbd35985d310504d81036cc55356454, type: 3}
-  m_Name: Dash_Back
+  m_Name: Wake_Up
   m_EditorClassIdentifier: 
   skillLayer: 0
-  animationClip: {fileID: 7400000, guid: 86867a86aa9afb24cbf61755cebcd3ba, type: 2}
-  animationSpeed: 1.4
-  status: 16
+  animationClip: {fileID: 7400000, guid: 12684f0d2d8ead842a21f164bd6c609f, type: 2}
+  animationSpeed: 1
+  status: 1
   frameEffects: []
   frameBullets: []
   cancelFrag: 1
@@ -41,15 +41,7 @@ MonoBehaviour:
   customHitBox: []
   isContinue: 0
   isMoveContinue: 0
-  movements:
-  - isGravityInvaid: 0
-    isResetStartGravity: 0
-    isResetEndGravity: 0
-    isImpact: 0
-    isBound: 0
-    boundMovements: []
-    movement: {x: -2, y: 0, z: 0}
-    startFrame: 0
+  movements: []
   gravityMoves: []
   timeStops:
     startFrame: 0
