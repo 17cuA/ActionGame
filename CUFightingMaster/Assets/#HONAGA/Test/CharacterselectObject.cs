@@ -42,7 +42,7 @@ public class CharacterselectObject : MonoBehaviour
 	#endregion
 	public FighterStatus[] clicoStatus;
 	public FighterStatus[] obachanStatus;
-	//public FighterStatus[] kuidaoreStatus;
+	public FighterStatus[] kuidaoreStatus;
 	public GameObject[] clicoPanel;
 	public GameObject[] obachanPanel;
 	public GameObject[] kuidaorePanel;
@@ -66,13 +66,17 @@ public class CharacterselectObject : MonoBehaviour
 		characterSelectObjectDatas.Add(new CharacterSelectObjectData("obachan", ECharacterID.OBACHAN, obachanStatus, obachanNamePanel, obachanPanel));
 		//characterSelectObjectDatas.Add(new CharacterSelectObjectData("kuidalre",ECharacterID.KUIDAORE, kuidaoreStatus, kuidaoreNamePanel, kuidaorePanel,characterInstancePos));
 
+		// キャラモデルの生成
 		for (int i = 0; i < characterSelectObjectDatas.Count; i++)
 		{
 			Player1.characterModel.CreateCharacter(characterSelectObjectDatas[i]);
 			Player2.characterModel.CreateCharacter(characterSelectObjectDatas[i]);
 		}
+		// カーソルなどプレイヤーごとに初期化処理
 		Player1.Init(characterSelectObjectDatas);
 		Player2.Init(characterSelectObjectDatas);
+
+		// カーテンを一気に下す処理
 		CanvasController_CharacterSelect.CanvasControllerInstance.InitDownCurtain();
 
 		timer.Start();
@@ -92,15 +96,5 @@ public class CharacterselectObject : MonoBehaviour
 		timer.Update();
 		Player1.Update(characterSelectObjectDatas);
 		Player2.Update(characterSelectObjectDatas);
-
-		//if(p1CursolData.AcceptFlag)
-		//{
-		//    p1CharacterModelData.ChangeAnimation(p1CursolData.currentCharacter);
-		//}
-		//if (p2CursolData.AcceptFlag)
-		//{
-		//    p2CharacterModelData.ChangeAnimation(p2CursolData.currentCharacter);
-		//}
-
 	}
 }
