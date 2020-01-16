@@ -43,19 +43,33 @@ public class UI_FighterImage : MonoBehaviour
 	public void DisplayPlayerImage()
 	{
 		//P1の場合
-		if(playerType == PlayerType.P1)
+		if (playerType == PlayerType.P1)
 		{
-			//赤にする
-			displayImage.color = new Color(1.0f, 0, 0);
+			if (GameDataStrage.Instance.fighterStatuses[1].PlayerID == 1)
+			{
+				//青にする
+				displayImage.color = new Color(0, 0.5f, 1.0f);
+			}
+			else
+			{
+				//赤にする
+				displayImage.color = new Color(1.0f, 0, 0);
+			}
 		}
 		//P2の場合
 		else
 		{
-			//青にする
-			displayImage.color = new Color(0, 0.5f, 1.0f);
-			//反転する
+			if (GameDataStrage.Instance.fighterStatuses[1].PlayerID == 1)
+			{
+				//赤にする
+				displayImage.color = new Color(1.0f, 0, 0);
+			}
+			else
+			{
+				//青にする
+				displayImage.color = new Color(0, 0.5f, 1.0f);
+			}
 			transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
 		}
 	}
-
 }
