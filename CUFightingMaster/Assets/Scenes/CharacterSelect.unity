@@ -2470,7 +2470,9 @@ MonoBehaviour:
   obachanStatus:
   - {fileID: 11400000, guid: dc98614acd0005e42ba575e9a2b8b210, type: 2}
   - {fileID: 11400000, guid: 6a1a4a742ddfe19438728f253d220818, type: 2}
-  kuidaoreStatus: []
+  kuidaoreStatus:
+  - {fileID: 11400000, guid: d00a5454219f4f649aabcd70e93c965a, type: 2}
+  - {fileID: 11400000, guid: 6a1a4a742ddfe19438728f253d220818, type: 2}
   clicoPanel:
   - {fileID: 278829108}
   - {fileID: 412109018}
@@ -2498,10 +2500,16 @@ MonoBehaviour:
     maxTime: 30
     currentTime: 0
     displayTime: 0
-    firstDigit: {fileID: 254554657}
-    secondDigit: {fileID: 1583175506}
-  Player1:
+    firstDigit:
+    - {fileID: 254554657}
+    - {fileID: 1523099068}
+    secondDigit:
+    - {fileID: 1583175506}
+    - {fileID: 1413274287}
+  players:
+  - playerName: Player1
     cursol:
+      activeFlag: 0
       inputDeirection: {x: 0, y: 0}
       playerNumber: 0
       controllerName: 
@@ -2509,19 +2517,18 @@ MonoBehaviour:
       limitCursorFrame: 0.2
       currentCharacter: 0
       cursol: {fileID: 1781283674}
+      acceptFlag: 0
     namePanel:
       charaNamePanel: {fileID: 1025125255}
     characterModel:
-      skinnedMeshRenderers: []
       playerNumber: 1
       characterInstancePos: {fileID: 1616275659}
       animationDatas: []
       modelDatas: []
-      materials:
-      - {fileID: 0}
-      - {fileID: 0}
-  Player2:
+      currentModel: {fileID: 0}
+  - playerName: Player2
     cursol:
+      activeFlag: 0
       inputDeirection: {x: 0, y: 0}
       playerNumber: 1
       controllerName: 
@@ -2529,17 +2536,17 @@ MonoBehaviour:
       limitCursorFrame: 0.2
       currentCharacter: 0
       cursol: {fileID: 1461937055}
+      acceptFlag: 0
     namePanel:
       charaNamePanel: {fileID: 712170286}
     characterModel:
-      skinnedMeshRenderers: []
       playerNumber: 2
       characterInstancePos: {fileID: 912852019}
       animationDatas: []
       modelDatas: []
-      materials:
-      - {fileID: 0}
-      - {fileID: 0}
+      currentModel: {fileID: 0}
+  sceneChangeCountDown: 0
+  selectFlag: 0
 --- !u!4 &1072433449
 Transform:
   m_ObjectHideFlags: 0

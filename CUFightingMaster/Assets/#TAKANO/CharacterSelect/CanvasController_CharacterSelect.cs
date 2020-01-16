@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-// Singleton CharacterselectObject.Instance.xxx の形でアクセス可能
+// Singleton CharacterselectObjectManager.Instance.xxx の形でアクセス可能
 public class CanvasController_CharacterSelect : MonoBehaviour
 {
     #region Singleton

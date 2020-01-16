@@ -4080,6 +4080,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6757136910751876646}
   - component: {fileID: 4226745153469279179}
+  - component: {fileID: 2467362082044512271}
   m_Layer: 11
   m_Name: Clico2PCharacterSelect 1
   m_TagString: Untagged
@@ -4120,7 +4121,24 @@ MonoBehaviour:
   acceptClip: {fileID: 7400000, guid: cf656add7ca4c2e49bdebb34ee146c93, type: 2}
   RotationObject: {fileID: 1809200158556797122}
   ScaleObject: {fileID: 7840531109867560848}
-  animFrag: 0
+--- !u!114 &2467362082044512271
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6757136910751876648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: badaf4b59fc8172498b8e870544ea086, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mesh:
+  - {fileID: 4855976381790441495}
+  normalMaterials:
+  - {fileID: 2100000, guid: 4f6014bd4337b674fb8e1b2a5f2bbdbb, type: 2}
+  anotherColorMaterials:
+  - {fileID: 2100000, guid: b44ada37d982d2749a64a63afb51f328, type: 2}
 --- !u!1 &7840531109867560848
 GameObject:
   m_ObjectHideFlags: 0

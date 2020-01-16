@@ -8,15 +8,15 @@ public class Characterselect_Timer
 {
 	public Sprite[] timerSprites = new Sprite[10];
 
-	public float maxTime;   
-	public float currentTime; 
+	public float maxTime;
+	public float currentTime;
 	public int displayTime;
 
- 	private bool isPlayCountDown = false;
-	public bool IsPlayCountDown{get { return isPlayCountDown; }}
+	private bool isPlayCountDown = false;
+	public bool IsPlayCountDown { get { return isPlayCountDown; } }
 
-	public Image firstDigit;    //一桁目のimage
-	public Image secondDigit;   //二桁目のimage
+	public Image[] firstDigit;    //一桁目のimage
+	public Image[] secondDigit;   //二桁目のimage
 
 	/// <summary>
 	/// タイマーを初期値へ戻す
@@ -44,16 +44,22 @@ public class Characterselect_Timer
 	{
 		return isPlayCountDown;
 	}
-/// <summary>
-/// タイマーの画像を変更
-/// </summary>
-/// <param name="_count"></param>
+	/// <summary>
+	/// タイマーの画像を変更
+	/// </summary>
+	/// <param name="_count"></param>
 	private void UpdateDisplay(int _count)
 	{
 		// 10の位の数字を変更
-		firstDigit.sprite = timerSprites[_count / 10];
+		for (int i = 0; i < firstDigit.Length; i++)
+		{
+			firstDigit[i].sprite = timerSprites[_count / 10];
+		}
 		// 1の位の数字を変更
-		secondDigit.sprite = timerSprites[_count % 10];
+		for (int i = 0; i < secondDigit.Length; i++)
+		{
+			secondDigit[i].sprite = timerSprites[_count % 10];
+		}
 	}
 
 	public void Start()

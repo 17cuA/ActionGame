@@ -24,7 +24,7 @@
 //	public Vector2 inputDir = Vector2.zero;
 //	public int selectDir = 0;                           //現在のカーソル位置
 
-//    public GameObject cursor;
+//	public GameObject cursor;
 //	public GameObject accept;
 
 //	[SerializeField]
@@ -34,7 +34,7 @@
 //		get { return determining_decision; }
 //	}
 
-//    public bool determining_All;
+//	public bool determining_All;
 
 //	public Cursor_CharacterSelect characterSelect_Enemy;
 
@@ -42,8 +42,8 @@
 //	{
 //		selectDir = playerNum;
 //		determining_All = false;
-//        cursor.GetComponent<AnimationUIManager>().isStart = true;
-//        determining_decision = false;
+//		cursor.GetComponent<AnimationUIManager>().isStart = true;
+//		determining_decision = false;
 //		var controllerNames = Input.GetJoystickNames();
 //		if (playerNum < controllerNames.Length)
 //		{
@@ -56,18 +56,18 @@
 //	// Update is called once per frame
 //	public void CursorUpdate()
 //	{
-//        if(determining_All == true)
-//        {
-//            return;
-//        }
+//		if (determining_All == true)
+//		{
+//			return;
+//		}
 //		//ポーズ処理
 //		if (Mathf.Approximately(Time.timeScale, 0f)) return;
 //		//カーソル移動
-//		if(CharacterSelect_Manager.Instance.curtainFlag == false)
+//		if (CharacterSelect_Manager.Instance.curtainFlag == false)
 //		{
 //			inputDir.x = Input.GetAxisRaw(string.Format("{0}Player{1}_Horizontal", controllerName, playerNum));
-//            inputDir.y = Input.GetAxisRaw(string.Format("{0}Player{1}_Vertical", controllerName, playerNum));
-//            moveCursorFrames += Time.deltaTime;
+//			inputDir.y = Input.GetAxisRaw(string.Format("{0}Player{1}_Vertical", controllerName, playerNum));
+//			moveCursorFrames += Time.deltaTime;
 //			if (inputDir != Vector2.zero && this.determining_decision == false)
 //			{
 //				if (moveCursorFrames >= limitCursorFrame)
@@ -106,16 +106,16 @@
 //		if (selectDir > 1/*currentSellectCharacter.name == "ObaChan" || currentSellectCharacter.name == "ObaChan(1)"*/)
 //		{
 //			gameObject.GetComponent<Image>().sprite = images[1];
-//            cursor.transform.localScale = new Vector3(-1.0f,1.0f,1.0f);
-//            accept.transform.localScale = new Vector3(-1.0f, 1.0f, 1.0f);
-//        }
+//			cursor.transform.localScale = new Vector3(-1.0f, 1.0f, 1.0f);
+//			accept.transform.localScale = new Vector3(-1.0f, 1.0f, 1.0f);
+//		}
 //		else
 //		{
 //			gameObject.GetComponent<Image>().sprite = images[0];
-//            cursor.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
-//            accept.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
-//        }
-//        if (timer.IsPlayCountDown == false)
+//			cursor.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
+//			accept.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
+//		}
+//		if (timer.IsPlayCountDown == false)
 //		{
 //			determining_decision = true;
 //		}
