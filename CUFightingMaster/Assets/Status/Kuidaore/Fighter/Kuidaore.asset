@@ -13,14 +13,15 @@ MonoBehaviour:
   m_Name: Kuidaore
   m_EditorClassIdentifier: 
   PlayerID: 0
-  winnerResultAnimation: {fileID: 0}
-  loseResultAnimation: {fileID: 0}
+  winnerResultAnimation: {fileID: 7400000, guid: 897b5b71429a06b4d927515491c2b3b0,
+    type: 2}
+  loseResultAnimation: {fileID: 7400000, guid: 732e3eeb0b31cd94a9dc8cdbaecb4f46, type: 2}
   HP: 10000
   StanGuage: 100
   SpecialGuage: 105
   airBraking: 0.5
   characterImage: {fileID: 21300000, guid: ab8fdf57ca5c64b48b4f6158f588b96c, type: 3}
-  commandSprite: {fileID: 0}
+  commandSprite: {fileID: 21300002, guid: 100aa951c5d6ff943a4a0c268ac79d58, type: 3}
   PlayerModel: {fileID: 100000, guid: fe9e77700d842d948b090dbfbd7a535b, type: 3}
   PlayerModel2: {fileID: 100000, guid: fe9e77700d842d948b090dbfbd7a535b, type: 3}
   playerMaterials:
@@ -53,8 +54,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: faa0710e92c3aec48b6ca9a786f835fd, type: 2}
   - {fileID: 11400000, guid: 0f81015887908c94b821d6f69869eaa8, type: 2}
   - {fileID: 11400000, guid: 6bf4362d869cc414f861ae57c295bba5, type: 2}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 18d5322b82344da40852bfe437669685, type: 2}
+  - {fileID: 11400000, guid: 2f9183959ed256b4da627d8240da9a65, type: 2}
   - {fileID: 11400000, guid: 3eb081ef8c93df34d9bcc496d3a79e77, type: 2}
   - {fileID: 11400000, guid: 3eb081ef8c93df34d9bcc496d3a79e77, type: 2}
   - {fileID: 11400000, guid: 3eb081ef8c93df34d9bcc496d3a79e77, type: 2}
@@ -113,25 +114,25 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 11400000, guid: cc47d4161ad040a4ab924747873dd6e6, type: 2}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 1884666e41e937942b05fce5d3a652e7, type: 2}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 11400000, guid: 65f2b8645be0e3145b72cffa62e6f4b4, type: 2}
   - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 9fa4b8cf43b67f84ba19b891ce1cf083, type: 2}
+  - {fileID: 11400000, guid: 2e7ab494b92a2c449a75ff0596196bca, type: 2}
   - {fileID: 11400000, guid: 0d61e03891e94be41aba35b54c56c3a7, type: 2}
   - {fileID: 11400000, guid: 637682dd82ee9034c82c2e25749c7277, type: 2}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: f801c4ab072bd2541b5ab98c3dfefaf0, type: 2}
   - {fileID: 11400000, guid: faa0710e92c3aec48b6ca9a786f835fd, type: 2}
   - {fileID: 11400000, guid: 0f81015887908c94b821d6f69869eaa8, type: 2}
   - {fileID: 11400000, guid: 6bf4362d869cc414f861ae57c295bba5, type: 2}
   - {fileID: 11400000, guid: 122780df28158fc4196db61606cf4f46, type: 2}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: a79fcdb937d738b42961b159ae231c98, type: 2}
   fighter: {fileID: 7960873146823851506, guid: 2c5dacc9d4e0fb44486a558d7e7b665b, type: 3}
   InGameTimeline_One: {fileID: 7289732146297602861, guid: 61ba3703f80bdae42a74e8de31e4905b,
     type: 3}
@@ -150,4 +151,14 @@ MonoBehaviour:
     name: Dash_Back
     command: 44
     skill: {fileID: 11400000, guid: 6f82e6ef3de63fc4693768a5f89acf55, type: 2}
-  airMoveSkills: []
+  airMoveSkills:
+  - skillCost: 0
+    countValid: 1
+    name: Dash_Air_Front
+    command: 66
+    skill: {fileID: 11400000, guid: 0fd7ce7d3442d8d44a420b1d86b88b11, type: 2}
+  - skillCost: 0
+    countValid: 1
+    name: Dash_Air_Back
+    command: 44
+    skill: {fileID: 11400000, guid: db812cd4489de5c47b6c6eba387abb36, type: 2}

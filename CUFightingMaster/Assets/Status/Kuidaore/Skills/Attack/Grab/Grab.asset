@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Grab
   m_EditorClassIdentifier: 
   skillLayer: 0
-  animationClip: {fileID: 0}
+  animationClip: {fileID: 7400000, guid: 411a699a39d0a994d92e689f30b5af7e, type: 2}
   animationSpeed: 1
-  status: 1
+  status: 16
   frameEffects: []
   frameBullets: []
   cancelFrag: 1
@@ -38,7 +38,44 @@ MonoBehaviour:
   plusFootHitBox: []
   plusGrabHitBox: []
   plusPushingHitBox: []
-  customHitBox: []
+  customHitBox:
+  - mode: 0
+    frameHitBoxes:
+    - isFalse: 0
+      isInfinityFrame: 0
+      hitBox:
+        size: {x: 1, y: 1, z: 1}
+        localPosition: {x: 0, y: 0, z: 0}
+      startFrame: 0
+      endFrame: 6
+    hitStop: 0
+    hitPoint: 0
+    hitStrength: 0
+    damage: 0
+    stanDamage: 0
+    knockBack: 0
+    airKnockBack: 0
+    guardKnockBack: 0
+    hitEffects: []
+    isDown: 0
+    isThrow: 0
+    isThrowGroundDamage: 0
+    isThrowGroundAnimEnd: 0
+    airDamageMovements: []
+    throwGroundDamage: 0
+    throwSkill: {fileID: 0}
+    enemyThrowSkill: {fileID: 0}
+    throwDamages: []
+    isJumpCancel: 0
+    isContinue: 0
+    movements: []
+    gravityMoves: []
+    isFaceDown: 0
+    isPassiveNotPossible: 0
+    hitRigor: 0
+    guardHitRigor: 0
+    plusGauge: 0
+    enemyPlusGauge: 0
   isContinue: 0
   isMoveContinue: 0
   movements: []
