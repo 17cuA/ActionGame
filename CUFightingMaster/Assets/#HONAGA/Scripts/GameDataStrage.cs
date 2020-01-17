@@ -62,6 +62,7 @@ public class GameDataStrage : MonoBehaviour
 
 	public AnimationClip[,] animationClips = new AnimationClip[3,3];
 	public FighterStatus[] fighterStatuses = new FighterStatus[2];
+
 	public int plusAttackDamage_One = 0;
 	public int plusAttackDamage_Two = 0;
 
@@ -69,6 +70,9 @@ public class GameDataStrage : MonoBehaviour
 	public bool winFlag_PlayerTwo;
 
 	public MatchResult matchResult = MatchResult.NONE;
+
+	public GameObject fighterModel_P1;
+	public GameObject fighterModel_P2;
 
 	//デバッグ用のダメージ
 	public void SetPlusDamage(PlayerNumber _num,int _dam)

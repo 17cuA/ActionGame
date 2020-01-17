@@ -59,9 +59,6 @@ public class InGameManager : SingletonMono<InGameManager>
     /// </summary>
     private void StartGame()
     {
-		GameDataStrage.Instance.fighterStatuses[0] = GameManager.Instance.Player_one.Status;
-		GameDataStrage.Instance.fighterStatuses[1]= GameManager.Instance.Player_two.Status;
-
 		if (Input.GetKeyDown(KeyCode.F10))
         {
             skipInGame = true;
