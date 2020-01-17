@@ -74,7 +74,7 @@ public class TestAnimationUIManager : MonoBehaviour
 		}
 	}
 
-	public static void ChangeAnimationEventHandler(AnimContext context)
+	public static void ChangeAnimationEventHandler(PlayerContext context)
 	{
 
 	}
@@ -86,10 +86,26 @@ public class TestAnimationUIManager : MonoBehaviour
 		AnimUIState DoResetEvent();
 	}
 
-	public class AnimContext
+	public class UIContext
+	{
+
+	}
+
+	public class PlayerContext
 	{
 		//アニメーションの状態
 		private AnimUIState state = null;
+
+		public UIContext UIContext { get; set; } = null;
+
+		public PlayerContext(UIContext someUIContext)
+		{
+			this.UIContext = someUIContext;
+			if (state == null)
+			{
+				//state = new state;
+			}
+		}
 
 		public AnimUIState GetState()
 		{
