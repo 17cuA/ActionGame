@@ -58,7 +58,9 @@ public class ResultManager : MonoBehaviour
 
     void Awake()
     {
-        canvasController_Result.InitDownCurtain();
+        canvasController_Result.BrackOut();
+
+	
 
         resultController_1 = canvas_1.transform.Find("ResultController").GetComponent<ResultController>();
         resultController_2 = canvas_2.transform.Find("ResultController").GetComponent<ResultController>();
@@ -169,7 +171,8 @@ public class ResultManager : MonoBehaviour
 
         currentUpdate();
 
-    }
+		canvasController_Result.StartFadeIn();
+	}
 
     //カーテンが上がる
     void UpCurtain()
