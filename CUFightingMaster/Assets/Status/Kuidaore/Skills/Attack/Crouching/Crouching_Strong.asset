@@ -33,9 +33,30 @@ MonoBehaviour:
     rightCamera: {fileID: 0}
     leftCamera: {fileID: 0}
   isInvincibleBullet: 0
-  plusHeadHitBox: []
-  plusBodyHitBox: []
-  plusFootHitBox: []
+  plusHeadHitBox:
+  - isFalse: 0
+    isInfinityFrame: 0
+    hitBox:
+      size: {x: 0.5, y: 0.19, z: 0}
+      localPosition: {x: 0.5, y: -1.2, z: 0}
+    startFrame: 0
+    endFrame: 31
+  plusBodyHitBox:
+  - isFalse: 0
+    isInfinityFrame: 0
+    hitBox:
+      size: {x: 0.3, y: -0.5, z: 0}
+      localPosition: {x: 0.19, y: -0.85, z: 0}
+    startFrame: 0
+    endFrame: 31
+  plusFootHitBox:
+  - isFalse: 0
+    isInfinityFrame: 0
+    hitBox:
+      size: {x: 0, y: -0.8, z: 0}
+      localPosition: {x: 0.14, y: -0.3, z: 0}
+    startFrame: 0
+    endFrame: 31
   plusGrabHitBox: []
   plusPushingHitBox: []
   customHitBox:
@@ -47,16 +68,46 @@ MonoBehaviour:
         size: {x: 1.87, y: 1.45, z: 1}
         localPosition: {x: 1.44, y: 0.65, z: 0}
       startFrame: 5
-      endFrame: 23
+      endFrame: 10
+    - isFalse: 0
+      isInfinityFrame: 0
+      hitBox:
+        size: {x: 1.87, y: 1.45, z: 0}
+        localPosition: {x: 1.44, y: 0.65, z: 0}
+      startFrame: 10
+      endFrame: 15
     hitStop: 0
     hitPoint: 2
     hitStrength: 2
-    damage: 800
+    damage: 200
     stanDamage: 0
     knockBack: 2
     airKnockBack: 1
     guardKnockBack: 2
-    hitEffects: []
+    hitEffects:
+    - isEnemyPos: 0
+      isParant: 0
+      isEnemyParant: 0
+      effect: {fileID: 537173260980545929, guid: 61704b3d6a6ed2e4d9e67b07de91466e,
+        type: 3}
+      guardEffect: {fileID: 822153979730028474, guid: 062c122a40345df47aff4840e9096438,
+        type: 3}
+      position: {x: 0, y: 0, z: 0}
+    - isEnemyPos: 0
+      isParant: 0
+      isEnemyParant: 0
+      effect: {fileID: 537173260980545929, guid: 61704b3d6a6ed2e4d9e67b07de91466e,
+        type: 3}
+      guardEffect: {fileID: 0}
+      position: {x: 0, y: 0, z: 0}
+    - isEnemyPos: 1
+      isParant: 0
+      isEnemyParant: 0
+      effect: {fileID: 172087093480244287, guid: 0027f2e041e2f234fb3b251ecc8ba0b4,
+        type: 3}
+      guardEffect: {fileID: 938335540899788553, guid: ea946e39537c2ef48ab0f9cd030b3283,
+        type: 3}
+      position: {x: 2, y: 2, z: 0}
     isDown: 0
     isThrow: 0
     isThrowGroundDamage: 0
@@ -78,7 +129,31 @@ MonoBehaviour:
     enemyPlusGauge: 4
   isContinue: 0
   isMoveContinue: 0
-  movements: []
+  movements:
+  - isGravityInvaid: 0
+    isResetStartGravity: 0
+    isResetEndGravity: 0
+    isImpact: 0
+    isBound: 0
+    boundMovements: []
+    movement: {x: 4, y: 0, z: 0}
+    startFrame: 1
+  - isGravityInvaid: 0
+    isResetStartGravity: 0
+    isResetEndGravity: 0
+    isImpact: 0
+    isBound: 0
+    boundMovements: []
+    movement: {x: 2, y: 0, z: 0}
+    startFrame: 7
+  - isGravityInvaid: 0
+    isResetStartGravity: 0
+    isResetEndGravity: 0
+    isImpact: 0
+    isBound: 0
+    boundMovements: []
+    movement: {x: 0, y: 0, z: 0}
+    startFrame: 11
   gravityMoves: []
   timeStops:
     startFrame: 0

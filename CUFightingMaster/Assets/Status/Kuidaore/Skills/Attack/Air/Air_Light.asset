@@ -35,7 +35,14 @@ MonoBehaviour:
   isInvincibleBullet: 0
   plusHeadHitBox: []
   plusBodyHitBox: []
-  plusFootHitBox: []
+  plusFootHitBox:
+  - isFalse: 0
+    isInfinityFrame: 0
+    hitBox:
+      size: {x: 0, y: 0, z: 0}
+      localPosition: {x: 0.35, y: 0, z: 0}
+    startFrame: 2
+    endFrame: 12
   plusGrabHitBox: []
   plusPushingHitBox: []
   customHitBox:
@@ -98,14 +105,14 @@ MonoBehaviour:
     guardHitRigor: 6
     plusGauge: 2
     enemyPlusGauge: 1
-  isContinue: 0
-  isMoveContinue: 0
+  isContinue: 1
+  isMoveContinue: 1
   movements: []
   gravityMoves: []
   timeStops:
     startFrame: 0
     endFrame: 0
-  headFlag: 1
+  headFlag: 0
   bodyFlag: 1
   footFlag: 1
   grabFlag: 1

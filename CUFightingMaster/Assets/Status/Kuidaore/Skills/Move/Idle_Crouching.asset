@@ -33,9 +33,30 @@ MonoBehaviour:
     rightCamera: {fileID: 0}
     leftCamera: {fileID: 0}
   isInvincibleBullet: 0
-  plusHeadHitBox: []
-  plusBodyHitBox: []
-  plusFootHitBox: []
+  plusHeadHitBox:
+  - isFalse: 0
+    isInfinityFrame: 0
+    hitBox:
+      size: {x: -0.23, y: 0.19, z: 0}
+      localPosition: {x: 0.11, y: -1.01, z: 0}
+    startFrame: 0
+    endFrame: 59
+  plusBodyHitBox:
+  - isFalse: 0
+    isInfinityFrame: 0
+    hitBox:
+      size: {x: 0.3, y: -0.5, z: 0}
+      localPosition: {x: 0, y: -0.85, z: 0}
+    startFrame: 0
+    endFrame: 59
+  plusFootHitBox:
+  - isFalse: 0
+    isInfinityFrame: 0
+    hitBox:
+      size: {x: 0, y: -0.8, z: 0}
+      localPosition: {x: 0, y: -0.3, z: 0}
+    startFrame: 0
+    endFrame: 59
   plusGrabHitBox: []
   plusPushingHitBox: []
   customHitBox: []

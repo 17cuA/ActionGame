@@ -34,8 +34,22 @@ MonoBehaviour:
     leftCamera: {fileID: 0}
   isInvincibleBullet: 0
   plusHeadHitBox: []
-  plusBodyHitBox: []
-  plusFootHitBox: []
+  plusBodyHitBox:
+  - isFalse: 0
+    isInfinityFrame: 0
+    hitBox:
+      size: {x: 0.5, y: 0, z: 0}
+      localPosition: {x: -0.3, y: 0, z: 0}
+    startFrame: 2
+    endFrame: 15
+  plusFootHitBox:
+  - isFalse: 0
+    isInfinityFrame: 0
+    hitBox:
+      size: {x: 0.5, y: -0.3, z: 0}
+      localPosition: {x: 0.7, y: 0, z: 0}
+    startFrame: 2
+    endFrame: 15
   plusGrabHitBox: []
   plusPushingHitBox: []
   customHitBox:
@@ -98,14 +112,14 @@ MonoBehaviour:
     guardHitRigor: 15
     plusGauge: 7
     enemyPlusGauge: 3
-  isContinue: 0
-  isMoveContinue: 0
+  isContinue: 1
+  isMoveContinue: 1
   movements: []
   gravityMoves: []
   timeStops:
     startFrame: 0
     endFrame: 0
-  headFlag: 1
+  headFlag: 0
   bodyFlag: 1
   footFlag: 1
   grabFlag: 1
