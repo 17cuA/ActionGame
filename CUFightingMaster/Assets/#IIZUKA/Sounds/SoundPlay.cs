@@ -162,20 +162,17 @@ public class SoundPlay : MonoBehaviour
                     Sound.PlaySE("Oba_GetUp_DownCancel", 12, 0.5f, 1);
                     break;
                 case SoundsType.Oba_HitL:
-                    Sound.PlaySE("HitS", 13, 1, 1);
+                    Sound.PlaySE("Oba_HitL", 13, 1, 1);
                     break;
                 case SoundsType.Oba_HitM:
-                    Sound.PlaySE("HitS", 13, 1, 1);
+                    Sound.PlaySE("Oba_HitM", 13, 1, 1);
 					break;
                 case SoundsType.Oba_HitS_Down:
-                    Sound.PlaySE("HitS", 13, 1, 1);
+                    Sound.PlaySE("Oba_HitS_Down", 13, 1, 1);
                     break;
-
 				case SoundsType.Oba_Hit:
 					Sound.PlaySE("Oba_HitS_Down", 13, 0.3f, 1);
 					break;
-
-
 				case SoundsType.Oba_JobL:
 					Sound.PlaySE("Oba_JobL", 14, 0.5f, 1);
 					break;
