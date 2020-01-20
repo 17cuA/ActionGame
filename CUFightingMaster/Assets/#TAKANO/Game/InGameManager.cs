@@ -333,7 +333,7 @@ public class InGameManager : SingletonMono<InGameManager>
     {
         if(canvasController.Call_DownCurtain())
         {
-            SceneManager.LoadScene("EvaTitle");
+            SceneManager.LoadScene("Title");
         }
     }
 	#endregion

@@ -10,7 +10,8 @@ public class title : MonoBehaviour
 
 	private void Start()
 	{
-		
+		Sound.LoadBGM("BGM_Title", "BGM_Title");
+		Sound.StopBGM();
 	}
 	// Update is called once per frame
 	void Update()
