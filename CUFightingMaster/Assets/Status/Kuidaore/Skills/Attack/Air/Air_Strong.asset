@@ -18,7 +18,7 @@ MonoBehaviour:
   status: 1
   frameEffects: []
   frameBullets: []
-  cancelFrag: 10
+  cancelFrag: 8
   endNextAnimation: {fileID: 0}
   endNextWeight: 0
   groundLandingSkill: {fileID: 0}
@@ -111,14 +111,38 @@ MonoBehaviour:
     isThrow: 0
     isThrowGroundDamage: 0
     isThrowGroundAnimEnd: 0
-    airDamageMovements: []
+    airDamageMovements:
+    - isGravityInvaid: 0
+      isResetStartGravity: 0
+      isResetEndGravity: 0
+      isImpact: 0
+      isBound: 1
+      boundMovements:
+      - isGravityInvaid: 0
+        isResetStartGravity: 0
+        isResetEndGravity: 0
+        isImpact: 0
+        isBound: 0
+        boundMovements: []
+        movement: {x: 0, y: 0, z: 0}
+        startFrame: 0
+      movement: {x: 0, y: -5, z: 0}
+      startFrame: 0
     throwGroundDamage: 0
     throwSkill: {fileID: 0}
     enemyThrowSkill: {fileID: 0}
     throwDamages: []
     isJumpCancel: 0
     isContinue: 0
-    movements: []
+    movements:
+    - isGravityInvaid: 0
+      isResetStartGravity: 0
+      isResetEndGravity: 0
+      isImpact: 0
+      isBound: 0
+      boundMovements: []
+      movement: {x: 0, y: 5, z: 0}
+      startFrame: 0
     gravityMoves: []
     isFaceDown: 0
     isPassiveNotPossible: 0

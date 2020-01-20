@@ -12,12 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: daa0c98c961cc2f468fdfd569066f34c, type: 3}
   m_Name: SoundBullet
   m_EditorClassIdentifier: 
-  maxFrame: 45
+  maxFrame: 100
   isLoop: 0
   isOffset: 1
   isNotEnemyOffset: 0
   isInvincibleDis: 0
-  offsetEffects: []
+  offsetEffects:
+  - isEnemyPos: 0
+    isParant: 0
+    isEnemyParant: 0
+    effect: {fileID: 8710753073369587141, guid: 56e30371f66b33a479bc82d7ec31f313,
+      type: 3}
+    guardEffect: {fileID: 0}
+    position: {x: 0, y: 0, z: 0}
   customHitBox:
   - mode: 4
     frameHitBoxes:
@@ -27,16 +34,23 @@ MonoBehaviour:
         size: {x: 1, y: 1, z: 1}
         localPosition: {x: 0, y: 0, z: 0}
       startFrame: 0
-      endFrame: 45
+      endFrame: 100
     hitStop: 0
-    hitPoint: 0
+    hitPoint: 1
     hitStrength: 0
-    damage: 350
+    damage: 150
     stanDamage: 0
-    knockBack: 0
-    airKnockBack: 0
+    knockBack: 0.8
+    airKnockBack: 1
     guardKnockBack: 0
-    hitEffects: []
+    hitEffects:
+    - isEnemyPos: 0
+      isParant: 0
+      isEnemyParant: 0
+      effect: {fileID: 8710753073369587141, guid: 56e30371f66b33a479bc82d7ec31f313,
+        type: 3}
+      guardEffect: {fileID: 0}
+      position: {x: 0, y: 0, z: 0}
     isDown: 0
     isThrow: 0
     isThrowGroundDamage: 0
@@ -46,13 +60,13 @@ MonoBehaviour:
     throwSkill: {fileID: 0}
     enemyThrowSkill: {fileID: 0}
     throwDamages: []
-    isJumpCancel: 0
+    isJumpCancel: 1
     isContinue: 0
     movements: []
     gravityMoves: []
     isFaceDown: 0
     isPassiveNotPossible: 0
-    hitRigor: 0
-    guardHitRigor: 0
-    plusGauge: 0
-    enemyPlusGauge: 0
+    hitRigor: 40
+    guardHitRigor: 15
+    plusGauge: 1
+    enemyPlusGauge: 2

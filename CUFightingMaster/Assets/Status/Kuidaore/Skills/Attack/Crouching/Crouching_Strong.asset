@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Crouching_Strong
   m_EditorClassIdentifier: 
   skillLayer: 0
-  animationClip: {fileID: 7400000, guid: 227642c29ace3364484c1b86b5de8b21, type: 2}
+  animationClip: {fileID: 7400000, guid: 83e99db713882ab4c800e9c00d2739af, type: 2}
   animationSpeed: 1
   status: 1
   frameEffects: []
@@ -33,30 +33,9 @@ MonoBehaviour:
     rightCamera: {fileID: 0}
     leftCamera: {fileID: 0}
   isInvincibleBullet: 0
-  plusHeadHitBox:
-  - isFalse: 0
-    isInfinityFrame: 0
-    hitBox:
-      size: {x: 0.5, y: 0.19, z: 0}
-      localPosition: {x: 0.5, y: -1.2, z: 0}
-    startFrame: 0
-    endFrame: 31
-  plusBodyHitBox:
-  - isFalse: 0
-    isInfinityFrame: 0
-    hitBox:
-      size: {x: 0.3, y: -0.5, z: 0}
-      localPosition: {x: 0.19, y: -0.85, z: 0}
-    startFrame: 0
-    endFrame: 31
-  plusFootHitBox:
-  - isFalse: 0
-    isInfinityFrame: 0
-    hitBox:
-      size: {x: 0, y: -0.8, z: 0}
-      localPosition: {x: 0.14, y: -0.3, z: 0}
-    startFrame: 0
-    endFrame: 31
+  plusHeadHitBox: []
+  plusBodyHitBox: []
+  plusFootHitBox: []
   plusGrabHitBox: []
   plusPushingHitBox: []
   customHitBox:
@@ -65,17 +44,10 @@ MonoBehaviour:
     - isFalse: 0
       isInfinityFrame: 0
       hitBox:
-        size: {x: 1.87, y: 1.45, z: 1}
-        localPosition: {x: 1.44, y: 0.65, z: 0}
-      startFrame: 5
-      endFrame: 10
-    - isFalse: 0
-      isInfinityFrame: 0
-      hitBox:
-        size: {x: 1.87, y: 1.45, z: 0}
-        localPosition: {x: 1.44, y: 0.65, z: 0}
-      startFrame: 10
-      endFrame: 15
+        size: {x: 1.5, y: 2.75, z: 1}
+        localPosition: {x: 1.5, y: 2, z: 0}
+      startFrame: 7
+      endFrame: 13
     hitStop: 0
     hitPoint: 2
     hitStrength: 2
@@ -92,13 +64,6 @@ MonoBehaviour:
         type: 3}
       guardEffect: {fileID: 822153979730028474, guid: 062c122a40345df47aff4840e9096438,
         type: 3}
-      position: {x: 0, y: 0, z: 0}
-    - isEnemyPos: 0
-      isParant: 0
-      isEnemyParant: 0
-      effect: {fileID: 537173260980545929, guid: 61704b3d6a6ed2e4d9e67b07de91466e,
-        type: 3}
-      guardEffect: {fileID: 0}
       position: {x: 0, y: 0, z: 0}
     - isEnemyPos: 1
       isParant: 0
@@ -129,31 +94,7 @@ MonoBehaviour:
     enemyPlusGauge: 4
   isContinue: 0
   isMoveContinue: 0
-  movements:
-  - isGravityInvaid: 0
-    isResetStartGravity: 0
-    isResetEndGravity: 0
-    isImpact: 0
-    isBound: 0
-    boundMovements: []
-    movement: {x: 4, y: 0, z: 0}
-    startFrame: 1
-  - isGravityInvaid: 0
-    isResetStartGravity: 0
-    isResetEndGravity: 0
-    isImpact: 0
-    isBound: 0
-    boundMovements: []
-    movement: {x: 2, y: 0, z: 0}
-    startFrame: 7
-  - isGravityInvaid: 0
-    isResetStartGravity: 0
-    isResetEndGravity: 0
-    isImpact: 0
-    isBound: 0
-    boundMovements: []
-    movement: {x: 0, y: 0, z: 0}
-    startFrame: 11
+  movements: []
   gravityMoves: []
   timeStops:
     startFrame: 0

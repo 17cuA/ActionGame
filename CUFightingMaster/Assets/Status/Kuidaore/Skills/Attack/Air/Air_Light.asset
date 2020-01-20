@@ -24,7 +24,7 @@ MonoBehaviour:
   groundLandingSkill: {fileID: 0}
   groundLandingWeight: 0
   isGroundEnd: 0
-  barrageCancelFrag: 0
+  barrageCancelFrag: 1
   cancelLayer: 
   inBlend: 0
   outBlend: 0
@@ -90,12 +90,20 @@ MonoBehaviour:
     isThrow: 0
     isThrowGroundDamage: 0
     isThrowGroundAnimEnd: 0
-    airDamageMovements: []
+    airDamageMovements:
+    - isGravityInvaid: 0
+      isResetStartGravity: 1
+      isResetEndGravity: 0
+      isImpact: 0
+      isBound: 0
+      boundMovements: []
+      movement: {x: 0, y: 3, z: 0}
+      startFrame: 0
     throwGroundDamage: 0
     throwSkill: {fileID: 0}
     enemyThrowSkill: {fileID: 0}
     throwDamages: []
-    isJumpCancel: 0
+    isJumpCancel: 1
     isContinue: 0
     movements: []
     gravityMoves: []
