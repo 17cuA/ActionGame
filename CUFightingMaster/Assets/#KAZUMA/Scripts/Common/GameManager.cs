@@ -57,7 +57,7 @@ public class GameManager : SingletonMono<GameManager>
 		InGameManager.Instance.player1_Timeline = camera;
 		camera.PlayCamera();//再生
 		//コマンドスプライト作成
-		p1Command.sprite = GameDataStrage.Instance.fighterStatuses[0].commandSprite;
+		//p1Command.sprite = GameDataStrage.Instance.fighterStatuses[0].commandSprite;
         if (parantFighter != null)
 		{
 			obj.transform.parent = parantFighter.transform;
@@ -75,7 +75,7 @@ public class GameManager : SingletonMono<GameManager>
 		cam2.PlayCamera();
 		InGameManager.Instance.player2_Timeline = cam2;
 		//コマンドスプライト作成
-		p2Command.sprite = GameDataStrage.Instance.fighterStatuses[1].commandSprite;
+		//p2Command.sprite = GameDataStrage.Instance.fighterStatuses[1].commandSprite;
         if (parantFighter != null)
 		{
 			obj.transform.parent = parantFighter.transform;
