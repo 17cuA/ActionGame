@@ -15,7 +15,7 @@ public class SceneChange_Manager : MonoBehaviour
     {
         canvasController_CharacterSelect.InitDownCurtain();
 		CharacterSelectManager = GameObject.Find("CharacterSelectManager").GetComponent<CharacterSelect_Manager>();
-        async = SceneManager.LoadSceneAsync("Battle");
+        async = SceneManager.LoadSceneAsync("Result");
         async.allowSceneActivation = false;
     }
 

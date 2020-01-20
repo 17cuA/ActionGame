@@ -42,6 +42,10 @@ public class FuncKeyManager : SingletonMono<FuncKeyManager>
 	}
 	void Update()
     {
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            SceneManager.LoadScene("dasfg");
+        }
 		InputFuncKey();
 	}
 	public void InputFuncKey()
