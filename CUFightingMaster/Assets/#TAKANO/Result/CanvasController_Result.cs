@@ -53,6 +53,12 @@ public class CanvasController_Result : MonoBehaviour
         return false;
     }
 
+	public void BrackOut()
+	{
+		screenFade_Display1.BrackOut();
+		screenFade_Display2.BrackOut();
+	}
+
     /// <summary>
     ///一気に幕を下ろす
     /// </summary>

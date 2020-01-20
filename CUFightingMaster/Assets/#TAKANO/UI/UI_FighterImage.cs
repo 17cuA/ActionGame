@@ -18,7 +18,7 @@ public class UI_FighterImage : MonoBehaviour
 	public PlayerType playerType = PlayerType.P1;
 
 	private Image displayImage;
-	[SerializeField]private Sprite[] fighterImage = new Sprite[2];	//0:Clico 1:Oba
+	//[SerializeField]private Sprite[] fighterImage = new Sprite[2];	//0:Clico 1:Oba
 	public PlayerNumber playerNumber;
 
 	private void Awake()

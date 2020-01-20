@@ -59,12 +59,10 @@ public class InGameManager : SingletonMono<InGameManager>
     /// </summary>
     private void StartGame()
     {
-        if(Input.GetKeyDown(KeyCode.F10))
+		if (Input.GetKeyDown(KeyCode.F10))
         {
             skipInGame = true;
         }
-        //if (cinemaController.isPlay) return;
-        //入場シーンの再生（未実装）
         if (isBright)
         {
             if (skipInGame||(!player1_Timeline.GetController().isPlay && !player2_Timeline.GetController().isPlay))
@@ -88,19 +86,19 @@ public class InGameManager : SingletonMono<InGameManager>
                 }
             }
         }
-        //画面を暗くする
-        else if (canvasController.Call_UpCurtain())
-        {
-            isBright = true;
-        }
-    }
-    #endregion
+		//画面を暗くする
+		else if (canvasController.Call_StartFadeIn())
+		{
+			isBright = true;
+		}
+	}
+	#endregion
 
-    #region ラウンド開始
-    /// <summary>
-    /// ラウンド開始
-    /// </summary>
-    private void StartRound()
+	#region ラウンド開始
+	/// <summary>
+	/// ラウンド開始
+	/// </summary>
+	private void StartRound()
     {
         player1_Timeline.DestroyCamera();
         player2_Timeline.DestroyCamera();
@@ -328,7 +326,7 @@ public class InGameManager : SingletonMono<InGameManager>
 	/// </summary>
 	private void GameFinish()
     {
-        if(canvasController.Call_DownCurtain())
+        if(canvasController.Call_StartFadeOut())
         {
             SceneManager.LoadScene("Result");
         }
@@ -354,7 +352,7 @@ public class InGameManager : SingletonMono<InGameManager>
 			getRoundCount[i] = "";
 		}
 		//画面暗転
-		canvasController.Call_InitDownCurtain();
+		canvasController.Call_BrackOut();
         currentUpdate = StartGame;
         Sound.PlayBGM("BGM_Battle", 1, 1.0f, true);
 

@@ -42,13 +42,13 @@ class UI_RoundWinCounter : MonoBehaviour
 			switch (winP1cnt[Mathf.Clamp(winP1cnt.Length - 1,0,2)])
 			{
 				case '1':
-					RoundCounter_P1[Mathf.Clamp(winP1cnt.Length - 1, 0, 2)].GetComponents<AnimationUIManager>()[0].isStart = true;
+					RoundCounter_P1[Mathf.Clamp(winP1cnt.Length - 1, 0, 2)].GetComponents<UI_RoundWin>()[0].UpdateImage(KO_Image);
 					break;
 				case'2':
-					RoundCounter_P1[Mathf.Clamp(winP1cnt.Length - 1, 0, 2)].GetComponents<AnimationUIManager>()[1].isStart = true;
+					RoundCounter_P1[Mathf.Clamp(winP1cnt.Length - 1, 0, 2)].GetComponents<UI_RoundWin>()[0].UpdateImage(KO_Image);
 					break;
 				case '3':
-					RoundCounter_P1[Mathf.Clamp(winP1cnt.Length - 1, 0, 2)].GetComponents<AnimationUIManager>()[2].isStart = true;
+					RoundCounter_P1[Mathf.Clamp(winP1cnt.Length - 1, 0, 2)].GetComponents<UI_RoundWin>()[0].UpdateImage(KO_Image);
 					break;
 				default:
 					break;
@@ -59,13 +59,13 @@ class UI_RoundWinCounter : MonoBehaviour
 			switch (winP2cnt[Mathf.Clamp(winP2cnt.Length - 1, 0, 2)])
 			{
 				case '1':
-					RoundCounter_P2[Mathf.Clamp(winP2cnt.Length - 1, 0, 2)].GetComponents<AnimationUIManager>()[0].isStart = true;
+					RoundCounter_P2[Mathf.Clamp(winP2cnt.Length - 1, 0, 2)].GetComponents<UI_RoundWin>()[0].UpdateImage(KO_Image);
 					break;
 				case '2':
-					RoundCounter_P2[Mathf.Clamp(winP2cnt.Length - 1, 0, 2)].GetComponents<AnimationUIManager>()[1].isStart = true;
+					RoundCounter_P2[Mathf.Clamp(winP2cnt.Length - 1, 0, 2)].GetComponents<UI_RoundWin>()[0].UpdateImage(KO_Image);
 					break;
 				case '3':
-					RoundCounter_P2[Mathf.Clamp(winP2cnt.Length - 1, 0, 2)].GetComponents<AnimationUIManager>()[2].isStart = true;
+					RoundCounter_P2[Mathf.Clamp(winP2cnt.Length - 1, 0, 2)].GetComponents<UI_RoundWin>()[0].UpdateImage(KO_Image); ;
 					break;
 				default:
 					break;

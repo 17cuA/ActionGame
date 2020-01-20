@@ -58,14 +58,17 @@ public class ResultManager : MonoBehaviour
 
     void Awake()
     {
-        canvasController_Result.InitDownCurtain();
-
         resultController_1 = canvas_1.transform.Find("ResultController").GetComponent<ResultController>();
         resultController_2 = canvas_2.transform.Find("ResultController").GetComponent<ResultController>();
 
-		// キャラの生成
+		//キャラの生成
 		obj = Instantiate(GameDataStrage.Instance.fighterStatuses[0].PlayerModel, targetPos[0].transform.position, targetPos[0].transform.rotation);
 		obj2 = Instantiate(GameDataStrage.Instance.fighterStatuses[1].PlayerModel2, targetPos[1].transform.position, targetPos[0].transform.rotation);
+
+
+		//// キャラの生成
+		//var obj = Instantiate(GameDataStrage.Instance.fighterStatuses[0].fighter, targetPos[0].transform.position, targetPos[0].transform.rotation);
+		//var obj2 = Instantiate(GameDataStrage.Instance.fighterStatuses[1].fighter, targetPos[1].transform.position, targetPos[0].transform.rotation);
 
 		// １Pが勝ったら
 		if (GameDataStrage.Instance.winFlag_PlayerOne == true)
@@ -157,7 +160,7 @@ public class ResultManager : MonoBehaviour
 			cameras[3].SetActive(true);
 			cinemaController = null;
 		}
-		currentUpdate = UpCurtain;
+		currentUpdate = BrackOut;
 
 		time = sceneChangeTime;
     }
@@ -168,13 +171,17 @@ public class ResultManager : MonoBehaviour
         if (Mathf.Approximately(Time.timeScale, 0f)) return;
 
         currentUpdate();
+	}
 
-    }
-
+	void BrackOut()
+	{
+		canvasController_Result.BrackOut();
+		currentUpdate = UpCurtain;
+	}
     //カーテンが上がる
     void UpCurtain()
     {
-        if (canvasController_Result.UpCurtain())
+		if (canvasController_Result.StartFadeIn())
         {
 			if (cinemaController != null||cinemaController.isPlay == false)
 			{
@@ -228,18 +235,15 @@ public class ResultManager : MonoBehaviour
 
     void DownCurtain()
     {
-        if (canvasController_Result.DownCurtain())
-        {
-            currentUpdate = FadeOut;
-        }
-    }
+		if (canvasController_Result.StartFadeOut())
+		{
+			SceneManager.LoadScene("JECLogo");
+		}
+	}
 
     void FadeOut()
     {
-        if (canvasController_Result.StartFadeOut())
-        {
-            SceneManager.LoadScene("JECLogo");
-        }
+       
 
     }
 }
