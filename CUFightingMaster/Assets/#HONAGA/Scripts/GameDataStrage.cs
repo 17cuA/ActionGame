@@ -61,7 +61,7 @@ public class GameDataStrage : MonoBehaviour
 	#endregion
 
 	public AnimationClip[,] animationClips = new AnimationClip[3,3];
-	public FighterStatus[] fighterStatuses = new FighterStatus[2];
+	public FighterStatus[] fighterStatuses = new FighterStatus[3];
 
 	public int plusAttackDamage_One = 0;
 	public int plusAttackDamage_Two = 0;
