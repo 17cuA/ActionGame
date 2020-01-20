@@ -187,6 +187,7 @@ public class TitleManager : MonoBehaviour
 	{
 		if(canvasController_Title.DownCurtain())
 		{
+			print("out");
 			SceneManager.LoadScene("EvaTittle");
 		}
 	}
