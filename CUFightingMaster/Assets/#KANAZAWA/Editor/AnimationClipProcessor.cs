@@ -11,20 +11,18 @@ public class AnimationClipProcessor : AssetPostprocessor
     /// <param name="_importer">選択したモデルのModelImporter</param>
     static void SetModelImportSettings(ModelImporter _importer)
     {
-        // Humanoidに設定
-        _importer.animationType = ModelImporterAnimationType.Human;
-
         ArrayList list = new ArrayList();
         ModelImporterClipAnimation clip = new ModelImporterClipAnimation();
-
         clip.firstFrame = 1;
         clip.lastFrame = 60;
         list.Add(clip);
-
         // 引数のオブジェクトのClipAnimationを変更
         _importer.clipAnimations = (ModelImporterClipAnimation[])
-           // リストを配列(ClipAnimation)に変更
-           list.ToArray(typeof(ModelImporterClipAnimation));
+            // リストを配列(ClipAnimation)に変更
+            list.ToArray(typeof(ModelImporterClipAnimation));
+
+        // Humanoidに設定
+        _importer.animationType = ModelImporterAnimationType.Human;
     }
 
     /// <summary>
