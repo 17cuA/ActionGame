@@ -16,7 +16,15 @@ MonoBehaviour:
   animationClip: {fileID: 7400000, guid: 8b364f725528da649b8db423ca15b0b7, type: 2}
   animationSpeed: 1
   status: 2
-  frameEffects: []
+  frameEffects:
+  - frame: 0
+    effect: {fileID: 2910406008509200698, guid: 88a41e7da043c064eaa6b6c271c83e62,
+      type: 3}
+    childFlag: 1
+    worldPositionFlag: 0
+    isDeleteObj: 0
+    isScaled: 0
+    position: {x: 0, y: 0, z: 0}
   frameBullets: []
   cancelFrag: 0
   endNextAnimation: {fileID: 0}
@@ -46,8 +54,15 @@ MonoBehaviour:
       hitBox:
         size: {x: 1, y: 3, z: 1}
         localPosition: {x: 0, y: 2, z: 0}
-      startFrame: 10
-      endFrame: 24
+      startFrame: 14
+      endFrame: 38
+    - isFalse: 0
+      isInfinityFrame: 0
+      hitBox:
+        size: {x: 3, y: 1, z: 1}
+        localPosition: {x: 0, y: 2.8, z: 0}
+      startFrame: 18
+      endFrame: 37
     hitStop: 0
     hitPoint: 0
     hitStrength: 0
@@ -57,11 +72,27 @@ MonoBehaviour:
     airKnockBack: 0
     guardKnockBack: 0
     hitEffects: []
-    isDown: 0
+    isDown: 1
     isThrow: 0
     isThrowGroundDamage: 0
     isThrowGroundAnimEnd: 0
-    airDamageMovements: []
+    airDamageMovements:
+    - isGravityInvaid: 0
+      isResetStartGravity: 1
+      isResetEndGravity: 0
+      isImpact: 1
+      isBound: 0
+      boundMovements:
+      - isGravityInvaid: 0
+        isResetStartGravity: 1
+        isResetEndGravity: 0
+        isImpact: 0
+        isBound: 0
+        boundMovements: []
+        movement: {x: -2, y: 3, z: 0}
+        startFrame: 0
+      movement: {x: 0, y: 0, z: 0}
+      startFrame: 0
     throwGroundDamage: 0
     throwSkill: {fileID: 0}
     enemyThrowSkill: {fileID: 0}
