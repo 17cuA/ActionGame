@@ -6,7 +6,7 @@ using System.Collections;
 public class AnimationClipProcessor : AssetPostprocessor
 {
     // AnimationClipの項目
-    private enum eAnimationClipInfo
+    private enum EAnimationClipInfo
     {
         name,
         firstFrame,
@@ -23,26 +23,26 @@ public class AnimationClipProcessor : AssetPostprocessor
         var list = new ArrayList();
         var text = new TextLoader();
         // 読み込むテキストファイルのパスを渡す
-        text.LoadText("Animation/AnimationClipList");
+        string[,] AnimationClipList = text.GetText("Animation/AnimationClipList");
         // リストに項目を追加
-        for (int i = 0; i < text.textWords.GetLength(0); i++)
+        for (int i = 0; i < AnimationClipList.GetLength(0); i++)
         {
             var clip = new ModelImporterClipAnimation();
-            for (int j = 0; j < text.textWords.GetLength(1); j++)
+            for (int j = 0; j < AnimationClipList.GetLength(1); j++)
             {
                 switch(j)
                 {
-                    case (int)eAnimationClipInfo.name:
-                        clip.name = text.textWords[i, j];
+                    case (int)EAnimationClipInfo.name:
+                        clip.name = AnimationClipList[i, j];
                         break;
-                    case (int)eAnimationClipInfo.firstFrame:
-                        clip.firstFrame = int.Parse(text.textWords[i, j]);
+                    case (int)EAnimationClipInfo.firstFrame:
+                        clip.firstFrame = int.Parse(AnimationClipList[i, j]);
                         break;
-                    case (int)eAnimationClipInfo.lastFrame:
-                        clip.lastFrame = int.Parse(text.textWords[i, j]);
+                    case (int)EAnimationClipInfo.lastFrame:
+                        clip.lastFrame = int.Parse(AnimationClipList[i, j]);
                         break;
-                    case (int)eAnimationClipInfo.isLoop:
-                        if (int.Parse(text.textWords[i, j]) == 0) clip.loopTime = false;
+                    case (int)EAnimationClipInfo.isLoop:
+                        if (int.Parse(AnimationClipList[i, j]) == 0) clip.loopTime = false;
                         else clip.loopTime = true;
                         break;
                 }

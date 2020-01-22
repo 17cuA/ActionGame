@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class TextLoader : MonoBehaviour
 {
-    public string[,] textWords;
-
+    private string[,] textWords; 
     private string[] textMessage;
     private int rowLength;
     private int columnLength;
 
+    /// <summary>
+    /// テキストファイルの読み込み
+    /// </summary>
+    /// <param name="fileName">テキストファイルの名前(パス)</param>
     public void LoadText(string fileName)
     {
         var textAsset = new TextAsset();
@@ -19,15 +22,13 @@ public class TextLoader : MonoBehaviour
             Debug.LogError("テキストファイルが見つかりませんでした。");
             return;
         }
-
         // 取得したファイルを改行で分割
         textMessage = textAsset.text.Split('\n');
         // 改行した数から列数を取得
         rowLength = textMessage.Length;
-        // 一行目のテキストをタブで分割し行数を取得
+        // 一行目のテキストを[,]で分割し行数を取得
         columnLength = textMessage[0].Split(',').Length;
         textWords = new string[rowLength, columnLength];
-
         for(int i = 0; i < rowLength; i++)
         {
             string[] textLine = textMessage[i].Split(',');
@@ -36,5 +37,16 @@ public class TextLoader : MonoBehaviour
                 textWords[i, j] = textLine[j];
             }
         }
+    }
+
+    /// <summary>
+    /// テキストファイルを読み込み、配列にして返す
+    /// </summary>
+    /// <param name="fileName">テキストファイルの名前(パス)</param>
+    /// <returns></returns>
+    public string[,] GetText(string fileName)
+    {
+        LoadText(fileName);
+        return textWords;
     }
 }
