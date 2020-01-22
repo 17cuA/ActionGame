@@ -1,0 +1,115 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: daa0c98c961cc2f468fdfd569066f34c, type: 3}
+  m_Name: TaikoBullet
+  m_EditorClassIdentifier: 
+  maxFrame: 40
+  isLoop: 0
+  isOffset: 1
+  isNotEnemyOffset: 0
+  isInvincibleDis: 0
+  offsetEffects:
+  - isEnemyPos: 0
+    isParant: 0
+    isEnemyParant: 0
+    effect: {fileID: 8710753073369587141, guid: 56e30371f66b33a479bc82d7ec31f313,
+      type: 3}
+    guardEffect: {fileID: 0}
+    position: {x: 0, y: 0, z: 0}
+  customHitBox:
+  - mode: 4
+    frameHitBoxes:
+    - isFalse: 0
+      isInfinityFrame: 0
+      hitBox:
+        size: {x: 1, y: 1, z: 1}
+        localPosition: {x: 0.42, y: 0.75, z: 0}
+      startFrame: 0
+      endFrame: 3
+    - isFalse: 0
+      isInfinityFrame: 0
+      hitBox:
+        size: {x: 1, y: 1, z: 1}
+        localPosition: {x: 1.1, y: 2, z: 0}
+      startFrame: 4
+      endFrame: 7
+    - isFalse: 0
+      isInfinityFrame: 0
+      hitBox:
+        size: {x: 1, y: 1, z: 1}
+        localPosition: {x: 1.8, y: 3.25, z: 0}
+      startFrame: 8
+      endFrame: 11
+    - isFalse: 0
+      isInfinityFrame: 0
+      hitBox:
+        size: {x: 1, y: 1, z: 1}
+        localPosition: {x: 2.5, y: 4.5, z: 0}
+      startFrame: 12
+      endFrame: 32
+    - isFalse: 0
+      isInfinityFrame: 0
+      hitBox:
+        size: {x: 1, y: 1, z: 1}
+        localPosition: {x: 1.8, y: 3.25, z: 0}
+      startFrame: 33
+      endFrame: 35
+    - isFalse: 0
+      isInfinityFrame: 0
+      hitBox:
+        size: {x: 1, y: 1, z: 1}
+        localPosition: {x: 1.1, y: 2, z: 0}
+      startFrame: 36
+      endFrame: 38
+    - isFalse: 0
+      isInfinityFrame: 0
+      hitBox:
+        size: {x: 1, y: 1, z: 1}
+        localPosition: {x: 0.42, y: 0.5, z: 0}
+      startFrame: 39
+      endFrame: 40
+    hitStop: 0
+    hitPoint: 1
+    hitStrength: 0
+    damage: 200
+    stanDamage: 0
+    knockBack: 1
+    airKnockBack: 0.5
+    guardKnockBack: 4
+    hitEffects:
+    - isEnemyPos: 0
+      isParant: 0
+      isEnemyParant: 0
+      effect: {fileID: 537173260980545929, guid: 61704b3d6a6ed2e4d9e67b07de91466e,
+        type: 3}
+      guardEffect: {fileID: 822153979730028474, guid: 062c122a40345df47aff4840e9096438,
+        type: 3}
+      position: {x: 0, y: 0, z: 0}
+    isDown: 0
+    isThrow: 0
+    isThrowGroundDamage: 0
+    isThrowGroundAnimEnd: 0
+    airDamageMovements: []
+    throwGroundDamage: 0
+    throwSkill: {fileID: 0}
+    enemyThrowSkill: {fileID: 0}
+    throwDamages: []
+    isJumpCancel: 1
+    isContinue: 0
+    movements: []
+    gravityMoves: []
+    isFaceDown: 0
+    isPassiveNotPossible: 0
+    hitRigor: 25
+    guardHitRigor: 10
+    plusGauge: 1
+    enemyPlusGauge: 2

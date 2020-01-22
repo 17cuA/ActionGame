@@ -316,7 +316,6 @@ Shader "Toon"
 		}
 		ENDCG
 		}
-
 	}
-		FallBack "Diffuse"
+	FallBack "Diffuse"
 }
