@@ -14,14 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillLayer: 0
   animationClip: {fileID: 7400000, guid: 5016c21f508565747be8b98e2834596f, type: 3}
-  animationSpeed: 1
+  animationSpeed: 3
   status: 1
   frameEffects: []
   frameBullets: []
-  cancelFrag: 8
-  endNextAnimation: {fileID: 0}
+  cancelFrag: 10
+  endNextAnimation: {fileID: 11400000, guid: c7d4be5fd91b99d4188f9fa420f2e305, type: 2}
   endNextWeight: 0
-  groundLandingSkill: {fileID: 0}
+  groundLandingSkill: {fileID: 11400000, guid: 4430c1b3aa8e63e4cb4259df378ed8a3, type: 2}
   groundLandingWeight: 0
   isGroundEnd: 0
   barrageCancelFrag: 0
@@ -46,8 +46,8 @@ MonoBehaviour:
       hitBox:
         size: {x: 0, y: 0, z: 0}
         localPosition: {x: 0, y: 0, z: 0}
-      startFrame: 0
-      endFrame: 0
+      startFrame: 14
+      endFrame: 16
     hitStop: 0
     hitPoint: 0
     hitStrength: 0
@@ -76,10 +76,29 @@ MonoBehaviour:
     guardHitRigor: 0
     plusGauge: 0
     enemyPlusGauge: 0
-  isContinue: 0
+  isContinue: 1
   isMoveContinue: 0
-  movements: []
-  gravityMoves: []
+  movements:
+  - isGravityInvaid: 0
+    isResetStartGravity: 1
+    isResetEndGravity: 0
+    isImpact: 0
+    isBound: 0
+    boundMovements: []
+    movement: {x: 0, y: 33, z: 0}
+    startFrame: 0
+  - isGravityInvaid: 0
+    isResetStartGravity: 1
+    isResetEndGravity: 0
+    isImpact: 0
+    isBound: 0
+    boundMovements: []
+    movement: {x: 0, y: -5, z: 0}
+    startFrame: 14
+  gravityMoves:
+  - movement: {x: 0, y: 0, z: 0}
+    limitMove: {x: 0, y: 0, z: 0}
+    startFrame: 0
   timeStops:
     startFrame: 0
     endFrame: 0
