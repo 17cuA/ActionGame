@@ -12,8 +12,8 @@ public class TextLoader : MonoBehaviour
 
     public void LoadText(string fileName)
     {
-        TextAsset textAsset = new TextAsset();
-        textAsset = Resources.Load<TextAsset>("Animation/" + fileName);
+        var textAsset = new TextAsset();
+        textAsset = Resources.Load<TextAsset>(fileName);
         if (textAsset == null)
         {
             Debug.LogError("テキストファイルが見つかりませんでした。");
@@ -37,5 +37,4 @@ public class TextLoader : MonoBehaviour
             }
         }
     }
-
 }

@@ -5,6 +5,7 @@ using System.Collections;
 
 public class AnimationClipProcessor : AssetPostprocessor
 {
+    // AnimationClipの項目
     private enum eAnimationClipInfo
     {
         name,
@@ -19,13 +20,14 @@ public class AnimationClipProcessor : AssetPostprocessor
     /// <param name="_importer">選択したモデルのModelImporter</param>
     static void SetModelImportSettings(ModelImporter _importer)
     {
-        ArrayList list = new ArrayList();
-        TextLoader text = new TextLoader();
-        text.LoadText("AnimationClipList");
+        var list = new ArrayList();
+        var text = new TextLoader();
+        // 読み込むテキストファイルのパスを渡す
+        text.LoadText("Animation/AnimationClipList");
+        // リストに項目を追加
         for (int i = 0; i < text.textWords.GetLength(0); i++)
         {
-            ModelImporterClipAnimation clip = new ModelImporterClipAnimation();
-
+            var clip = new ModelImporterClipAnimation();
             for (int j = 0; j < text.textWords.GetLength(1); j++)
             {
                 switch(j)
@@ -40,20 +42,23 @@ public class AnimationClipProcessor : AssetPostprocessor
                         clip.lastFrame = int.Parse(text.textWords[i, j]);
                         break;
                     case (int)eAnimationClipInfo.isLoop:
-                        if (text.textWords[i, j] == null)
-                        {
-                            clip.loop = false;
-                        }
-                        else clip.loop = true;
+                        if (int.Parse(text.textWords[i, j]) == 0) clip.loopTime = false;
+                        else clip.loopTime = true;
                         break;
                 }
+                clip.lockRootHeightY = true;
+                clip.lockRootPositionXZ = true;
+                clip.lockRootRotation = true;
+                clip.keepOriginalOrientation = true;
+                clip.keepOriginalPositionXZ = true;
+                clip.keepOriginalPositionY = true;
             }
             list.Add(clip);
         }
-            // 引数のオブジェクトのClipAnimationを変更
-            _importer.clipAnimations = (ModelImporterClipAnimation[])
-            // リストを配列(ClipAnimation)に変更
-            list.ToArray(typeof(ModelImporterClipAnimation));
+        // 引数のオブジェクトのClipAnimationを変更
+        _importer.clipAnimations = (ModelImporterClipAnimation[])
+        // リストを配列(ClipAnimation)に変更
+        list.ToArray(typeof(ModelImporterClipAnimation));
 
         // Humanoidに設定
         _importer.animationType = ModelImporterAnimationType.Human;
