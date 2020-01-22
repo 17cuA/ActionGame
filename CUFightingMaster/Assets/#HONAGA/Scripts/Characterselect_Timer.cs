@@ -3,23 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Characterselect_Timer : MonoBehaviour
+[System.Serializable]
+public class Characterselect_Timer
 {
-	public float maxTime;   //初期値
-	public float currentTime; //現在値
+	public Sprite[] timerSprites = new Sprite[10];
 
+	public float maxTime;
+	public float currentTime;
 	public int displayTime;
 
-	bool isPlayCountDown = false;
-	public bool IsPlayCountDown
-	{
-		get { return isPlayCountDown; }
-	}
+	public bool startFlag = false;
+	private bool isPlayCountDown = false;
+	public bool IsPlayCountDown { get { return isPlayCountDown; } }
 
-	public Image firstDigit;    //一桁目のimage
-	public Image secondDigit;   //二桁目のimage
-
-	public Sprite[] numSprite = new Sprite[10];
+	public Image[] firstDigit;    //一桁目のimage
+	public Image[] secondDigit;   //二桁目のimage
 
 	/// <summary>
 	/// タイマーを初期値へ戻す
@@ -30,13 +28,12 @@ public class Characterselect_Timer : MonoBehaviour
 		currentTime = maxTime;
 		UpdateDisplay((int)currentTime);
 	}
-
 	/// <summary>
 	/// カウントダウンを開始・終了する
 	/// </summary>
-	public void PlayCountDown(bool isPlay)
+	public void PlayCountDown(bool _isPlay)
 	{
-		if (isPlay) isPlayCountDown = true;
+		if (_isPlay) isPlayCountDown = true;
 		else isPlayCountDown = false;
 	}
 
@@ -49,28 +46,36 @@ public class Characterselect_Timer : MonoBehaviour
 		return isPlayCountDown;
 	}
 	/// <summary>
-	/// タイマー表示の更新
+	/// タイマーの画像を変更
 	/// </summary>
-	/// <param name="count"></param>
-	private void UpdateDisplay(int count)
+	/// <param name="_count"></param>
+	private void UpdateDisplay(int _count)
 	{
-		firstDigit.sprite = numSprite[count % 10];
-		secondDigit.sprite = numSprite[count / 10];
+		// 10の位の数字を変更
+		for (int i = 0; i < firstDigit.Length; i++)
+		{
+			firstDigit[i].sprite = timerSprites[_count / 10];
+		}
+		// 1の位の数字を変更
+		for (int i = 0; i < secondDigit.Length; i++)
+		{
+			secondDigit[i].sprite = timerSprites[_count % 10];
+		}
 	}
 
-	private void Start()
+	public void TimerStart()
 	{
+		startFlag = true;
 		isPlayCountDown = true;
 		currentTime = maxTime;
 	}
-	private void Update()
+	public void TimerUpdate()
 	{
 		PlayCountDown(isPlayCountDown);
 		if (currentTime <= 0.0f)
 		{
 			isPlayCountDown = false;
 		}
-
 		if (isPlayCountDown == true)
 		{
 			currentTime -= Time.deltaTime;

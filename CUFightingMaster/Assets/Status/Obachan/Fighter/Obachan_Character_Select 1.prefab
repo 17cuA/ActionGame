@@ -5253,7 +5253,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8909664302368228207}
-  - component: {fileID: 7348480715987724876}
+  - component: {fileID: 749855095394693107}
   m_Layer: 10
   m_Name: Obachan_Character_Select 1
   m_TagString: Untagged
@@ -5268,15 +5268,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8909664302368228193}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5516853978863628729}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7348480715987724876
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!114 &749855095394693107
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5289,15 +5289,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animationData: {fileID: 5540583038785632306}
-  animationSpeed: 1
-  animationClip:
-  - {fileID: 7400000, guid: 2323cc0caba68b44388756df2dcc631a, type: 2}
-  - {fileID: 7400000, guid: 408522352c7dfef49a26caaa1e5309d6, type: 2}
+  animationSpeed: 0.5
+  defaltClip: {fileID: 7400000, guid: 2323cc0caba68b44388756df2dcc631a, type: 2}
+  acceptClip: {fileID: 7400000, guid: 408522352c7dfef49a26caaa1e5309d6, type: 2}
   RotationObject: {fileID: 4573618413736525195}
   ScaleObject: {fileID: 9138509108861710382}
   animFrag: 0
-  resultFlag: 0
-  PlayerNum: 2
 --- !u!1 &9138509108861710382
 GameObject:
   m_ObjectHideFlags: 0
@@ -5323,7 +5320,7 @@ Transform:
   m_GameObject: {fileID: 9138509108861710382}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: -1}
   m_Children:
   - {fileID: 7392943948987115024}
   m_Father: {fileID: 7392943948987115350}
