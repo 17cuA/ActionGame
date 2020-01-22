@@ -7,7 +7,7 @@ public class NomalAnimationPlayer : AnimationPlayerBase
     // Update is called once per frame
     private AnimationClip idlingAnimation = null;
     private float idlingSpeed = 1;
-	private void Update()
+	public void Update()
 	{
 		base.UpdateGame();
         if(idlingAnimation!=null)

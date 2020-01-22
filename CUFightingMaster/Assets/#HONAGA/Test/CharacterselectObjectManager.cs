@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.SceneManagement;
 //
 //
 // キャラクターにIDを持たせて管理
@@ -63,17 +64,17 @@ public class CharacterselectObjectManager : MonoBehaviour
 	public Characterselect_Timer timer;     // カウントダウンタイマー(インスペクターから設定)
 
 	[SerializeField]
-	private CharacterSelectPlayer[] players;			// プレイヤーの数 = 要素数
-
+	private CharacterSelectPlayer[] players;            // プレイヤーの数 = 要素数
 	[SerializeField]
 	private float sceneChangeCountDown = 0.0f;	// 全プレイヤーがキャラ決定した後、シーン移行するまでのカウントダウン
 	[SerializeField]
-	private bool selectFlag;									// 全プレイヤーがキャラを決定しているかどうかのフラグ
+	private bool[] selectFlag;									// 全プレイヤーがキャラを決定しているかどうかのフラグ
 
 	// 各オブジェクトの辞書にデータを登録、初期化処理
 	private void Awake()
 	{
-		selectFlag = false;
+		sceneChangeCountDown = 0;
+		selectFlag = new bool[players.Length];
 
 		Sound.LoadBGM("BGM_Menu", "BGM_Menu");
 		Sound.PlayBGM("BGM_Menu", 1, 1.0f, true);
@@ -95,8 +96,6 @@ public class CharacterselectObjectManager : MonoBehaviour
 
 		// カーテンを一気に下す処理
 		CanvasController_CharacterSelect.CanvasControllerInstance.InitDownCurtain();
-
-		timer.Start();
 	}
 
 	private void Update()
@@ -110,16 +109,41 @@ public class CharacterselectObjectManager : MonoBehaviour
 			CanvasController_CharacterSelect.CanvasControllerInstance.curtainFlag = CanvasController_CharacterSelect.CanvasControllerInstance.UpCurtain();
 			return;
 		}
+		if (timer.startFlag == false)
+		{
+			timer.TimerStart();
+		}
 
-		timer.Update();
-		// プレイヤーごとのUpdate処理
+		timer.TimerUpdate();
+		// プレイヤーごとの処理
 		for(int i = 0;i<players.Length;i++)
 		{
 			players[i].Update(characterSelectObjectDatas);
+			AcceptCharacter(players[i].cursol.currentCharacter, i);
+			selectFlag[i] = players[i].cursol.AcceptFlag;
 		}
-		for(int i=0;i<players.Length;i++)
+		// カウントがゼロになったらシーン遷移させる
+		if (timer.currentTime <= 0 && sceneChangeCountDown == 0)
 		{
-			AcceptCharacter(players[i].cursol.currentCharacter, i );
+			for (int i = 0; i < players.Length; i++)
+			{
+				if (players[i].cursol.ActiveFlag == true)
+				{
+					players[i].cursol.ActiveFlag = false;
+					players[i].cursol.AcceptButton(players[i].cursol.acceptMthod);
+				}
+			}
+			AcceptCharacter();
+		}
+		// 全プレイヤーが選択したらシーンを遷移させる
+		for (int i = 0; i < selectFlag.Length; i++)
+		{
+			if (selectFlag[i] == false)
+			{
+				sceneChangeCountDown = 0;
+				break;
+			}
+			AcceptCharacter();
 		}
 	}
 
@@ -141,6 +165,21 @@ public class CharacterselectObjectManager : MonoBehaviour
 			//case ECharacterID.KUIDAORE:
 			//	GameDataStrage.Instance.fighterStatuses[_playerNumber] = kuidaoreStatus[players[_playerNumber].characterModel.currentModel.GetComponent<CharacterMeshData>().colorNumber - 1];
 			//	break;
+		}
+	}
+	/// <summary>
+	/// シーンを遷移させる処理
+	/// </summary>
+	public void AcceptCharacter()
+	{
+		sceneChangeCountDown += Time.deltaTime;
+		// 5秒待機してからシーン遷移
+		if (sceneChangeCountDown > 5.0f)
+		{
+			if (CanvasController_CharacterSelect.CanvasControllerInstance.DownCurtain())
+			{
+				SceneManager.LoadScene("Battle");
+			}
 		}
 	}
 }

@@ -10,7 +10,7 @@ public class CharacterSelectPlayer
 {
 	public string playerName;
 	public CharacterSelectCursol cursol = new CharacterSelectCursol();	// カーソルオブジェクトの本体
-	public NamePanel namePanel = new NamePanel();							// キャラの名前を表示しているパネルの本体
+	public CharacterSelectSprites characterSelectSprites = new CharacterSelectSprites();							// キャラの名前を表示しているパネルの本体
 	public CharacterModel characterModel = new CharacterModel();		// キャラクターモデルを管理するオブジェクトの本体
 
 	/// <summary>
@@ -29,11 +29,13 @@ public class CharacterSelectPlayer
 	public void Update(List<CharacterSelectObjectData> _characterSelectObjectDatas)
 	{
 		cursol.Update();
-		namePanel.ChangeName(_characterSelectObjectDatas[(int)cursol.currentCharacter].NamePanel);
+		characterSelectSprites.ChangeName(_characterSelectObjectDatas[(int)cursol.currentCharacter].NamePanel);
 		characterModel.Update((int)cursol.currentCharacter);
-		//characterModel.ChangeActive((int)cursol.currentCharacter);
+		characterSelectSprites.CharacterAcceptPanel(cursol.AcceptFlag);
 	}
 }
+
+
 #region カーソルのオブジェクト
 // カーソルの位置を変更するクラス
 [System.Serializable]
@@ -41,8 +43,9 @@ public class CharacterSelectCursol
 {
 	[SerializeField]
 	private bool activeFlag ;					// カーソルを動かすかどうかのフラグ
+	public bool ActiveFlag	{ get { return activeFlag; } set{activeFlag = value;}	}
 	public delegate void AcceptMethod(int _selectCharaNumber);     // キャラが決定されたときの別オブジェクトの処理を委譲
-	AcceptMethod acceptMthod;                    // キャラ決定時の処理の本体
+	public AcceptMethod acceptMthod;                    // キャラ決定時の処理の本体
 
 	public delegate void ColorChangeMethod();     // キャラの色が変更されたときの別オブジェクトの処理を委譲
 	ColorChangeMethod changeMethod;     // 色変更時の処理の本体
@@ -66,7 +69,7 @@ public class CharacterSelectCursol
 	/// <param name="_changeMthod">カラーを変更する時の処理</param>
 	public void CursolInit(List<CharacterSelectObjectData> _characterSelectObjectDatas, AcceptMethod _acceptMthod, ColorChangeMethod _changeMthod)
 	{
-		activeFlag = true;
+		ActiveFlag = true;
 		var controllerNames = Input.GetJoystickNames();
 		if (playerNumber < controllerNames.Length)
 		{
@@ -83,7 +86,7 @@ public class CharacterSelectCursol
 	public void Update()
 	{
 		// カーソルが動けない場合早期リターンで処理を止める
-		if (activeFlag == false) return;
+		if (ActiveFlag == false) return;
 		// カーソルが動いた後のクールタイム
 		moveCursorFrame += Time.deltaTime;
 
@@ -145,10 +148,6 @@ public class CharacterSelectCursol
 		_func((int)currentCharacter);
 	}
 
-	//public void ChangeColorButton(ColorChangeMethod _func)
-	//{
-	//	_func();
-	//}
 	/// <summary>
 	/// カーソルの位置(posirion)を移動させる
 	/// </summary>
@@ -186,12 +185,15 @@ public class CharacterSelectCursol
 	}
 }
 #endregion
+
+
 #region キャラ名前パネルのオブジェクト
 // キャラクターの名前パネルを変更するクラス
 [System.Serializable]
-public class NamePanel
+public class CharacterSelectSprites
 {
 	public GameObject charaNamePanel;
+	public GameObject characterAcceptPanel;
 
 	/// <summary>
 	/// 引数に渡ってきたスプライトの画像に名前パネルを変更する処理
@@ -201,8 +203,25 @@ public class NamePanel
 	{
 		charaNamePanel.GetComponent<Image>().sprite = _selectCharacterSprite;
 	}
+	/// <summary>
+	/// キャラクターを選択したときに出てくるパネルの表示を切り替える
+	/// </summary>
+	/// <param name="_active"></param>
+	public void CharacterAcceptPanel(bool _active)
+	{
+		if (_active)
+		{
+			characterAcceptPanel.active = true;
+		}
+		else
+		{
+			characterAcceptPanel.active = false;
+		}
+	}
 }
 #endregion
+
+
 #region キャラモデルの管理
 // キャラクターモデルの生成、アニメーションの変更
 [System.Serializable]
@@ -243,10 +262,9 @@ public class CharacterModel
 	public void Update(int _selectCharaNumber)
 	{
 		ChangeActive(_selectCharaNumber);
-		ChangeAnimation(_selectCharaNumber);
 		for(int i =0;i<animationDatas.Count;i++)
 		{
-			animationDatas[i].Update();
+			animationDatas[i].CustomUpdate();
 		}
 	}
 	/// <summary>

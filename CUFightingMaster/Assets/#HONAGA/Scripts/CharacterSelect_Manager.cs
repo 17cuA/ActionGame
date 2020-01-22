@@ -27,7 +27,10 @@
 //	[SerializeField] private bool[] characterSelectBool = { false, false, false, false };    // キャラクターを選択したかどうかの判定
 //	public bool[] CharacterSelectBool
 //	{
-//		get { return characterSelectBool; }
+//		get
+//		{
+//			return characterSelectBool;
+//		}
 //	}
 //	public bool sceneChangeJughe;   // シーンの変更を許可
 
@@ -38,7 +41,10 @@
 //	[SerializeField] private float fadeFrame;       // シーンを変更させるためのフレーム（時間）
 //	public float FadeFrame
 //	{
-//		get { return fadeFrame; }
+//		get
+//		{
+//			return fadeFrame;
+//		}
 //	}
 //	public NomalAnimationPlayer[] timerAnim = new NomalAnimationPlayer[2];
 //	public AnimationClip timerTrimClip;

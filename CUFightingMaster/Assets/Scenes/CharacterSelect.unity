@@ -275,7 +275,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &136003525
 Transform:
   m_ObjectHideFlags: 0
@@ -306,7 +306,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &146220535
 Transform:
   m_ObjectHideFlags: 0
@@ -570,7 +570,7 @@ GameObject:
   - component: {fileID: 189375483}
   - component: {fileID: 189375482}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: Canvas_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1106,7 +1106,7 @@ GameObject:
   m_Component:
   - component: {fileID: 401097922}
   m_Layer: 0
-  m_Name: Canvas_P1
+  m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2497,9 +2497,10 @@ MonoBehaviour:
     - {fileID: 21300014, guid: c176bd317ab7a404e96d019afb97c182, type: 3}
     - {fileID: 21300016, guid: c176bd317ab7a404e96d019afb97c182, type: 3}
     - {fileID: 21300018, guid: c176bd317ab7a404e96d019afb97c182, type: 3}
-    maxTime: 30
+    maxTime: 31
     currentTime: 0
     displayTime: 0
+    startFlag: 0
     firstDigit:
     - {fileID: 254554657}
     - {fileID: 1523099068}
@@ -2518,8 +2519,9 @@ MonoBehaviour:
       currentCharacter: 0
       cursol: {fileID: 1781283674}
       acceptFlag: 0
-    namePanel:
+    characterSelectSprites:
       charaNamePanel: {fileID: 1025125255}
+      characterAcceptPanel: {fileID: 146220534}
     characterModel:
       playerNumber: 1
       characterInstancePos: {fileID: 1616275659}
@@ -2537,8 +2539,9 @@ MonoBehaviour:
       currentCharacter: 0
       cursol: {fileID: 1461937055}
       acceptFlag: 0
-    namePanel:
+    characterSelectSprites:
       charaNamePanel: {fileID: 712170286}
+      characterAcceptPanel: {fileID: 136003524}
     characterModel:
       playerNumber: 2
       characterInstancePos: {fileID: 912852019}
@@ -2546,7 +2549,7 @@ MonoBehaviour:
       modelDatas: []
       currentModel: {fileID: 0}
   sceneChangeCountDown: 0
-  selectFlag: 0
+  selectFlag: 
 --- !u!4 &1072433449
 Transform:
   m_ObjectHideFlags: 0
@@ -2812,7 +2815,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1348061268}
   - component: {fileID: 1348061271}
-  - component: {fileID: 1348061270}
   m_Layer: 5
   m_Name: UI_CountDownTimer
   m_TagString: Untagged
@@ -2841,24 +2843,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -100}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1348061270
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1348061267}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a5fc81cb16d4c7e448a5ab4153963e6f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nowClip: {fileID: 0}
-  setClip: {fileID: 0}
-  animationSpeed: 1
-  changeWeightFrame: 0
-  nowFrame: 0
-  frameCount: 0
 --- !u!95 &1348061271
 Animator:
   serializedVersion: 3
@@ -3097,7 +3081,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300004, guid: c176bd317ab7a404e96d019afb97c182, type: 3}
+  m_Sprite: {fileID: 21300020, guid: c176bd317ab7a404e96d019afb97c182, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3346,7 +3330,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1552958353}
   - component: {fileID: 1552958356}
-  - component: {fileID: 1552958355}
   m_Layer: 5
   m_Name: UI_CountDownTimer
   m_TagString: Untagged
@@ -3375,24 +3358,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -100}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1552958355
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1552958352}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a5fc81cb16d4c7e448a5ab4153963e6f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nowClip: {fileID: 0}
-  setClip: {fileID: 0}
-  animationSpeed: 1
-  changeWeightFrame: 0
-  nowFrame: 0
-  frameCount: 0
 --- !u!95 &1552958356
 Animator:
   serializedVersion: 3
@@ -3469,7 +3434,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300004, guid: c176bd317ab7a404e96d019afb97c182, type: 3}
+  m_Sprite: {fileID: 21300020, guid: c176bd317ab7a404e96d019afb97c182, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

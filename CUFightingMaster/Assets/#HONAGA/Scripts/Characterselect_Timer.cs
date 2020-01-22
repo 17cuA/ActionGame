@@ -12,6 +12,7 @@ public class Characterselect_Timer
 	public float currentTime;
 	public int displayTime;
 
+	public bool startFlag = false;
 	private bool isPlayCountDown = false;
 	public bool IsPlayCountDown { get { return isPlayCountDown; } }
 
@@ -62,12 +63,13 @@ public class Characterselect_Timer
 		}
 	}
 
-	public void Start()
+	public void TimerStart()
 	{
+		startFlag = true;
 		isPlayCountDown = true;
 		currentTime = maxTime;
 	}
-	public void Update()
+	public void TimerUpdate()
 	{
 		PlayCountDown(isPlayCountDown);
 		if (currentTime <= 0.0f)

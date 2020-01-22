@@ -7,8 +7,8 @@ public class AnimationData : MonoBehaviour
 	// Inspectorからモデルについているアニメーションをセットする
 	public NomalAnimationPlayer animationData;
 	public float animationSpeed = 1.0f;                // アニメーションのスピード
-	public AnimationClip defaltClip;            // 元々のアニメーション
-	public AnimationClip acceptClip;            //  決定した時のアニメーション
+	public AnimationClip defaltClip;             // 元々のアニメーション
+	public AnimationClip acceptClip;            // 決定した時のアニメーション
 
 	public GameObject RotationObject;       // キャラを回転させる
 	public GameObject ScaleObject;          // キャラのサイズを変更するためのオブジェクト
@@ -18,32 +18,30 @@ public class AnimationData : MonoBehaviour
 	public bool AnimFlag { get; set; }
 	public void Start()
 	{
-		animFlag = false;
+		AnimFlag = false;
 		animationSpeed = 1.0f;
 		if (animationData != null)
 		{
-			animationData.SetPlayAnimation(defaltClip, animationSpeed);
+			animationData.SetPlayAnimation(defaltClip, 1.0f);
 		}
 	}
-	public void Update()
+	public void CustomUpdate()
 	{
-		if(Input.GetKeyDown(KeyCode.Space))
-		{
-			animFlag = true;
-		}
-		if (animFlag == true)
+		if (AnimFlag)
 		{
 			// 今再生しているアニメーションが勝利ポーズじゃなかったら
 			if (animationData.NowClip != acceptClip)
 			{
 				animationData.SetPlayAnimation(acceptClip, animationSpeed);
+				AnimFlag = false;
 			}
 			// 勝利ポーズ再生中に決定を取り消されたとき、defaultポーズに戻る
-			else if (animationData.NowClip != defaltClip)
+			if (animationData.NowClip != defaltClip)
 			{
 				animationData.SetPlayAnimation(defaltClip, animationSpeed);
+				AnimFlag = false;
 			}
-			animFlag = false;
 		}
+		animationData.Update();
 	}
 }
