@@ -81,9 +81,8 @@ public class TestAnimationUIManager : MonoBehaviour
 
 	public interface AnimUIState
 	{
-		AnimUIState DoPlayEvent();
-		AnimUIState DoStopEvent();
-		AnimUIState DoResetEvent();
+		AnimUIState PlaySwitchEvent();
+		AnimUIState ResetEvent();
 	}
 
 	public class UIContext
@@ -112,19 +111,14 @@ public class TestAnimationUIManager : MonoBehaviour
 			return this.state;
 		}
 
-		public void DoPlay()
+		public void PlaySwitch()
 		{
-			this.state = this.state.DoPlayEvent();
+			this.state = this.state.PlaySwitchEvent();
 		}
 
-		public void DoStop()
+		public void Reset()
 		{
-			this.state = this.state.DoStopEvent();
-		}
-
-		public void DoReset()
-		{
-			this.state = this.state.DoResetEvent();
+			this.state = this.state.ResetEvent();
 		}
 	}
 }

@@ -9,7 +9,6 @@ using CUEngine.Pattern;
 
 public class FuncKeyManager : SingletonMono<FuncKeyManager>
 {
-	private bool isPause = false;   //ポーズしているかどうか
 	//シーンの名前
 	private string[] sceneNames = { "JECLogo", "Title", "CharacterSelect", "Battle", "Result" };
 	private int sceneIndex;
@@ -49,21 +48,11 @@ public class FuncKeyManager : SingletonMono<FuncKeyManager>
 		//ファンクションキーの処理
 		if (Input.anyKeyDown)
 		{
-			#region すべてのシーンで使用するキー（Ecs,F1 - F4）
+			#region すべてのシーンで使用するキー（Ecs,F1 - F4,F10,F12）
 			if (Input.GetKeyDown(KeyCode.Escape))
 			{
 				//終了
 				Application.Quit();
-				//if (isPause == false)
-				//{
-				//	Time.timeScale = 0f;
-				//	isPause = true;
-				//}
-				//else
-				//{
-				//	Time.timeScale = 1f;
-				//	isPause = false;
-				//}
 			}
 			//1シーン分戻る
 			if (Input.GetKeyDown(KeyCode.F1))
@@ -73,7 +62,7 @@ public class FuncKeyManager : SingletonMono<FuncKeyManager>
 				Sound.StopBGM();
 			}
 			//1シーン分進む
-			if (Input.GetKeyDown(KeyCode.F2)/* && SceneManager.GetActiveScene().name != "CharacterSelect"*/)
+			if (Input.GetKeyDown(KeyCode.F2))
 			{
 				sceneIndex = Mathf.Clamp(sceneIndex + 1, 0, sceneNames.Length - 1);
 				SceneManager.LoadScene(sceneNames[sceneIndex]);
@@ -96,25 +85,13 @@ public class FuncKeyManager : SingletonMono<FuncKeyManager>
             {
                 isOnCommandUI = !isOnCommandUI;
             }
-            //if (Input.GetKeyDown(KeyCode.F10))
-            //{
-            //    if (GameManager.Instance != null)
-            //    {
-            //        if (GameManager.Instance.p1Command.activeSelf)
-            //        {
-            //            GameManager.Instance.p1Command.SetActive(false);
-            //            GameManager.Instance.p2Command.SetActive(false);
-            //        }
-            //        else
-            //        {
-            //            GameManager.Instance.p1Command.SetActive(true);
-            //            GameManager.Instance.p2Command.SetActive(true);
-            //        }
-            //    }
-            //}
-            #endregion
-            #region バトルシーンで使用するキー
-            if (sceneNames[sceneIndex] == "Battle")
+			if (Input.GetKeyDown(KeyCode.F10))
+			{
+
+			}
+			#endregion
+			#region バトルシーンで使用するキー
+			if (sceneNames[sceneIndex] == "Battle")
 			{
 				//1P側の体力を5減らす
 				if (Input.GetKeyDown(KeyCode.F5))
@@ -141,7 +118,7 @@ public class FuncKeyManager : SingletonMono<FuncKeyManager>
 				{
 					canvasController.Call_ResumeCountdown();
 				}
-            }
+			}
 			#endregion
 		}
 	}
