@@ -79,10 +79,11 @@ public class TestAnimationUIManager : MonoBehaviour
 
 	}
 
-	public interface AnimUIState
+	public interface IState
 	{
-		AnimUIState PlaySwitchEvent();
-		AnimUIState ResetEvent();
+		IState PlaySwitchEvent();
+		IState LoopSwitchEvent();
+		IState ResetEvent();
 	}
 
 	public class UIContext
@@ -93,20 +94,21 @@ public class TestAnimationUIManager : MonoBehaviour
 	public class PlayerContext
 	{
 		//アニメーションの状態
-		private AnimUIState state = null;
+		private IState state = null;
 
 		public UIContext UIContext { get; set; } = null;
 
-		public PlayerContext(UIContext someUIContext)
+		public PlayerContext(/*UIContext someUIContext*/)
 		{
-			this.UIContext = someUIContext;
+			//this.UIContext = someUIContext;
+
 			if (state == null)
 			{
 				//state = new state;
 			}
 		}
 
-		public AnimUIState GetState()
+		public IState GetState()
 		{
 			return this.state;
 		}
