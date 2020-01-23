@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Air_Passive
   m_EditorClassIdentifier: 
   skillLayer: 0
-  animationClip: {fileID: 0}
+  animationClip: {fileID: 7400000, guid: ae57cfcb34194be40be4154ae2bd4c58, type: 2}
   animationSpeed: 1
   status: 1
   frameEffects: []
@@ -41,7 +41,15 @@ MonoBehaviour:
   customHitBox: []
   isContinue: 0
   isMoveContinue: 0
-  movements: []
+  movements:
+  - isGravityInvaid: 0
+    isResetStartGravity: 1
+    isResetEndGravity: 0
+    isImpact: 0
+    isBound: 0
+    boundMovements: []
+    movement: {x: 0, y: 4, z: 0}
+    startFrame: 0
   gravityMoves: []
   timeStops:
     startFrame: 0

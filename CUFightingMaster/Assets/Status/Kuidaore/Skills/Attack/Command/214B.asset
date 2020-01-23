@@ -61,24 +61,32 @@ MonoBehaviour:
       hitBox:
         size: {x: 3, y: 1, z: 1}
         localPosition: {x: 0, y: 2.8, z: 0}
-      startFrame: 18
-      endFrame: 37
+      startFrame: 17
+      endFrame: 38
     hitStop: 0
     hitPoint: 0
     hitStrength: 0
-    damage: 0
+    damage: 250
     stanDamage: 0
-    knockBack: 0
-    airKnockBack: 0
-    guardKnockBack: 0
-    hitEffects: []
+    knockBack: 0.3
+    airKnockBack: 0.1
+    guardKnockBack: 0.1
+    hitEffects:
+    - isEnemyPos: 0
+      isParant: 0
+      isEnemyParant: 0
+      effect: {fileID: 2314571988542883478, guid: 7a9204d95bc398742ab330e066fccfd0,
+        type: 3}
+      guardEffect: {fileID: 6532350964205856054, guid: 8eea3721bc3fc884eafd65d00f7413aa,
+        type: 3}
+      position: {x: 0, y: 0, z: 0}
     isDown: 1
     isThrow: 0
     isThrowGroundDamage: 0
     isThrowGroundAnimEnd: 0
     airDamageMovements:
     - isGravityInvaid: 0
-      isResetStartGravity: 1
+      isResetStartGravity: 0
       isResetEndGravity: 0
       isImpact: 1
       isBound: 0
@@ -99,14 +107,22 @@ MonoBehaviour:
     throwDamages: []
     isJumpCancel: 0
     isContinue: 0
-    movements: []
+    movements:
+    - isGravityInvaid: 0
+      isResetStartGravity: 0
+      isResetEndGravity: 1
+      isImpact: 0
+      isBound: 0
+      boundMovements: []
+      movement: {x: -3, y: 2, z: 0}
+      startFrame: 0
     gravityMoves: []
     isFaceDown: 0
     isPassiveNotPossible: 0
-    hitRigor: 0
-    guardHitRigor: 0
-    plusGauge: 0
-    enemyPlusGauge: 0
+    hitRigor: 20
+    guardHitRigor: 15
+    plusGauge: 2
+    enemyPlusGauge: 3
   isContinue: 0
   isMoveContinue: 0
   movements:
