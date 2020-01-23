@@ -5253,9 +5253,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8909664302368228207}
-  - component: {fileID: 7348480715987724876}
+  - component: {fileID: 836585511687774784}
+  - component: {fileID: 598542345707134005}
   m_Layer: 11
-  m_Name: Obachan_Character_Select
+  m_Name: Obachan_Character_Select 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5276,7 +5277,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7348480715987724876
+--- !u!114 &836585511687774784
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5289,15 +5290,35 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animationData: {fileID: 5540583038785632306}
-  animationSpeed: 1
-  animationClip:
-  - {fileID: 7400000, guid: 2323cc0caba68b44388756df2dcc631a, type: 2}
-  - {fileID: 7400000, guid: 408522352c7dfef49a26caaa1e5309d6, type: 2}
+  animationSpeed: 0.5
+  defaltClip: {fileID: 7400000, guid: 2323cc0caba68b44388756df2dcc631a, type: 2}
+  acceptClip: {fileID: 7400000, guid: 408522352c7dfef49a26caaa1e5309d6, type: 2}
   RotationObject: {fileID: 4573618413736525195}
   ScaleObject: {fileID: 9138509108861710382}
-  animFrag: 0
-  resultFlag: 0
-  PlayerNum: 2
+--- !u!114 &598542345707134005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8909664302368228193}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: badaf4b59fc8172498b8e870544ea086, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mesh:
+  - {fileID: 7392943948976043852}
+  - {fileID: 7392943948976043854}
+  - {fileID: 7392943948976043848}
+  normalMaterials:
+  - {fileID: 2100000, guid: d934151b22e424c47b6eb896e9cbe6bb, type: 2}
+  - {fileID: 2100000, guid: dbd7d354186a4024fab02e8bd43fd129, type: 2}
+  - {fileID: 2100000, guid: 8bae0d67bbc93ce48b7510e01d50a6c3, type: 2}
+  anotherColorMaterials:
+  - {fileID: 2100000, guid: 0a50a04ae20738e44be7d53d12905c78, type: 2}
+  - {fileID: 2100000, guid: 98e632120d1cb6e458f784b099b1ffd4, type: 2}
+  - {fileID: 2100000, guid: 70c6e2172755e8047a7ee3e23aa5c338, type: 2}
 --- !u!1 &9138509108861710382
 GameObject:
   m_ObjectHideFlags: 0
