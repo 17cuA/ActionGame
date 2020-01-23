@@ -10,7 +10,7 @@ public enum ECharacterID
 {
 	CLICO,
 	OBACHAN,
-	//KUIDAORE,
+	KUIDAORE,
 }
 //
 // Singleton CharacterselectObjectManager.CharacterselectObjectInstance.xxx の形でアクセス可能
@@ -82,10 +82,10 @@ public class CharacterselectObjectManager : MonoBehaviour
 		// キャラクターごとに追加
 		characterSelectObjectDatas.Add(new CharacterSelectObjectData("cliko", ECharacterID.CLICO, clicoStatus, clikoNamePanel, clicoPanel));
 		characterSelectObjectDatas.Add(new CharacterSelectObjectData("obachan", ECharacterID.OBACHAN, obachanStatus, obachanNamePanel, obachanPanel));
-		//characterSelectObjectDatas.Add(new CharacterSelectObjectData("kuidalre", ECharacterID.KUIDAORE, kuidaoreStatus, kuidaoreNamePanel, kuidaorePanel));
+		characterSelectObjectDatas.Add(new CharacterSelectObjectData("kuidalre", ECharacterID.KUIDAORE, kuidaoreStatus, kuidaoreNamePanel, kuidaorePanel));
 
 		// キャラモデルの生成、初期化処理
-		for(int i = 0;i<players.Length;i++)
+		for (int i = 0;i<players.Length;i++)
 		{
 			for(int j = 0;j < characterSelectObjectDatas.Count;j++)
 			{
@@ -162,9 +162,9 @@ public class CharacterselectObjectManager : MonoBehaviour
 			case ECharacterID.OBACHAN:
 				GameDataStrage.Instance.fighterStatuses[_playerNumber] = obachanStatus[players[_playerNumber].characterModel.currentModel.GetComponent<CharacterMeshData>().colorNumber-1];
 				break;
-			//case ECharacterID.KUIDAORE:
-			//	GameDataStrage.Instance.fighterStatuses[_playerNumber] = kuidaoreStatus[players[_playerNumber].characterModel.currentModel.GetComponent<CharacterMeshData>().colorNumber - 1];
-			//	break;
+			case ECharacterID.KUIDAORE:
+				GameDataStrage.Instance.fighterStatuses[_playerNumber] = kuidaoreStatus[players[_playerNumber].characterModel.currentModel.GetComponent<CharacterMeshData>().colorNumber - 1];
+				break;
 		}
 	}
 	/// <summary>
@@ -176,6 +176,10 @@ public class CharacterselectObjectManager : MonoBehaviour
 		// 5秒待機してからシーン遷移
 		if (sceneChangeCountDown > 5.0f)
 		{
+			for (int i = 0; i < players.Length; i++)
+			{
+				players[i].cursol.ActiveFlag = false;
+			}
 			if (CanvasController_CharacterSelect.CanvasControllerInstance.DownCurtain())
 			{
 				SceneManager.LoadScene("Battle");
