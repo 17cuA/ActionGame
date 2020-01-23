@@ -54,6 +54,8 @@ public class AnimationClipProcessor : AssetPostprocessor
                 clip.keepOriginalPositionY = true;
             }
             list.Add(clip);
+            //FighterSkill fighterSkill = Resources.Load<FighterSkill>("Skills/Idle");
+            //fighterSkill.animationClip = clip;
         }
         // 引数のオブジェクトのClipAnimationを変更
         _importer.clipAnimations = (ModelImporterClipAnimation[])
