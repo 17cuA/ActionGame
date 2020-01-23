@@ -14,14 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillLayer: 0
   animationClip: {fileID: 7400000, guid: 1eb68e235df59f847b267504d0707edd, type: 2}
-  animationSpeed: 1
+  animationSpeed: 3
   status: 1
   frameEffects: []
   frameBullets: []
-  cancelFrag: 1
-  endNextAnimation: {fileID: 0}
+  cancelFrag: 10
+  endNextAnimation: {fileID: 11400000}
   endNextWeight: 0
-  groundLandingSkill: {fileID: 0}
+  groundLandingSkill: {fileID: 11400000, guid: 4430c1b3aa8e63e4cb4259df378ed8a3, type: 2}
   groundLandingWeight: 0
   isGroundEnd: 0
   barrageCancelFrag: 0
@@ -44,31 +44,53 @@ MonoBehaviour:
     - isFalse: 0
       isInfinityFrame: 0
       hitBox:
-        size: {x: 0, y: 0, z: 0}
-        localPosition: {x: 0, y: 0, z: 0}
+        size: {x: 1.5, y: 1, z: 1}
+        localPosition: {x: 0, y: 1, z: 0}
       startFrame: 0
-      endFrame: 0
+      endFrame: 4
     - isFalse: 0
       isInfinityFrame: 0
       hitBox:
-        size: {x: 0, y: 0, z: 0}
-        localPosition: {x: 0, y: 0, z: 0}
-      startFrame: 0
-      endFrame: 0
+        size: {x: 1.5, y: 1, z: 1}
+        localPosition: {x: 0, y: 1, z: 0}
+      startFrame: 4
+      endFrame: 8
+    - isFalse: 0
+      isInfinityFrame: 0
+      hitBox:
+        size: {x: 1.5, y: 1, z: 1}
+        localPosition: {x: 0, y: 1, z: 0}
+      startFrame: 8
+      endFrame: 12
+    - isFalse: 0
+      isInfinityFrame: 0
+      hitBox:
+        size: {x: 1.5, y: 1, z: 1}
+        localPosition: {x: 0, y: 1, z: 0}
+      startFrame: 12
+      endFrame: 15
     hitStop: 0
     hitPoint: 0
     hitStrength: 0
-    damage: 0
+    damage: 350
     stanDamage: 0
-    knockBack: 0
-    airKnockBack: 0
-    guardKnockBack: 0
+    knockBack: 0.1
+    airKnockBack: 0.1
+    guardKnockBack: 0.1
     hitEffects: []
     isDown: 0
     isThrow: 0
     isThrowGroundDamage: 0
     isThrowGroundAnimEnd: 0
-    airDamageMovements: []
+    airDamageMovements:
+    - isGravityInvaid: 0
+      isResetStartGravity: 1
+      isResetEndGravity: 0
+      isImpact: 0
+      isBound: 0
+      boundMovements: []
+      movement: {x: 0, y: 0, z: 0}
+      startFrame: 0
     throwGroundDamage: 0
     throwSkill: {fileID: 0}
     enemyThrowSkill: {fileID: 0}
@@ -79,12 +101,12 @@ MonoBehaviour:
     gravityMoves: []
     isFaceDown: 0
     isPassiveNotPossible: 0
-    hitRigor: 0
-    guardHitRigor: 0
-    plusGauge: 0
-    enemyPlusGauge: 0
+    hitRigor: 15
+    guardHitRigor: 15
+    plusGauge: 3
+    enemyPlusGauge: 2
   isContinue: 0
-  isMoveContinue: 0
+  isMoveContinue: 1
   movements: []
   gravityMoves: []
   timeStops:

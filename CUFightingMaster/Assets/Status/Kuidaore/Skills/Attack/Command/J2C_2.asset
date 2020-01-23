@@ -16,7 +16,15 @@ MonoBehaviour:
   animationClip: {fileID: 7400000, guid: df109694f35a8e945b637dd258167985, type: 2}
   animationSpeed: 1
   status: 1
-  frameEffects: []
+  frameEffects:
+  - frame: 0
+    effect: {fileID: 7994553803698580067, guid: 9ff1d0ad705eded4b8fc49fc1a22034f,
+      type: 3}
+    childFlag: 0
+    worldPositionFlag: 0
+    isDeleteObj: 0
+    isScaled: 0
+    position: {x: 0, y: 0, z: 0}
   frameBullets: []
   cancelFrag: 1
   endNextAnimation: {fileID: 0}
@@ -39,9 +47,25 @@ MonoBehaviour:
   plusGrabHitBox: []
   plusPushingHitBox: []
   customHitBox: []
-  isContinue: 0
+  isContinue: 1
   isMoveContinue: 0
-  movements: []
+  movements:
+  - isGravityInvaid: 0
+    isResetStartGravity: 1
+    isResetEndGravity: 0
+    isImpact: 0
+    isBound: 0
+    boundMovements: []
+    movement: {x: 0, y: 1.5, z: 0}
+    startFrame: 0
+  - isGravityInvaid: 0
+    isResetStartGravity: 0
+    isResetEndGravity: 0
+    isImpact: 0
+    isBound: 0
+    boundMovements: []
+    movement: {x: 0, y: -3, z: 0}
+    startFrame: 14
   gravityMoves: []
   timeStops:
     startFrame: 0
