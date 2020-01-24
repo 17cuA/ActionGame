@@ -51,7 +51,7 @@ MonoBehaviour:
     hitStop: 0
     hitPoint: 0
     hitStrength: 2
-    damage: 750
+    damage: 500
     stanDamage: 0
     knockBack: 1.5
     airKnockBack: 0.2
@@ -76,7 +76,15 @@ MonoBehaviour:
     isThrow: 0
     isThrowGroundDamage: 0
     isThrowGroundAnimEnd: 0
-    airDamageMovements: []
+    airDamageMovements:
+    - isGravityInvaid: 0
+      isResetStartGravity: 1
+      isResetEndGravity: 0
+      isImpact: 0
+      isBound: 0
+      boundMovements: []
+      movement: {x: 0, y: 5, z: 0}
+      startFrame: 0
     throwGroundDamage: 0
     throwSkill: {fileID: 0}
     enemyThrowSkill: {fileID: 0}
