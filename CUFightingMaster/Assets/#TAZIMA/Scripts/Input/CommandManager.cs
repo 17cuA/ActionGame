@@ -83,7 +83,7 @@ public class CommandManager :MonoBehaviour
 							if (attackParameters[i].checkCommadStr.Length > 0 && attackParameters[i].nowMissInput < attackParameters[i].ignoredMissInput)
 							{
 								attackParameters[i].nowMissInput++;
-								Debug.Log(attackParameters[i].commandName + " ミス " + attackParameters[i].nowMissInput);
+								//Debug.Log(attackParameters[i].commandName + " ミス " + attackParameters[i].nowMissInput);
 							}
 							else
 							{
