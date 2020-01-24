@@ -31,7 +31,7 @@ public class ResultManager : MonoBehaviour
 	public GameObject[] cameras = new GameObject[4];
 	public GameObject[] timelines = new GameObject[4];
 
-    public GameObject[] animationUIManagers = new GameObject[2];
+    //public GameObject[] animationUIManagers = new GameObject[2];
     public GameObject[] winOrlose = new GameObject[2];
     public Sprite win;
     public Sprite lose;
@@ -227,10 +227,10 @@ public class ResultManager : MonoBehaviour
         }
 		time -= Time.deltaTime;
 
-		if (time < 0)
-		{
-			currentUpdate = DownCurtain;
-		}
+		//if (time < 0)
+		//{
+		//	currentUpdate = DownCurtain;
+		//}
 	}
 
     void DownCurtain()
