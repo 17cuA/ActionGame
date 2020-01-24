@@ -20,9 +20,6 @@ using UnityEngine.Timeline;
 
 public class ResultManager_ : MonoBehaviour
 {
-	[SerializeField] PlayableDirector timeLine_1;
-	[SerializeField] PlayableDirector timeLine_2;
-
 	[SerializeField] GameDataStrage gameDataStrage;
 	[SerializeField] FighterCreater fighterCreater;
 	[SerializeField] CanvasController_Result canvasController_Result;
@@ -37,7 +34,7 @@ public class ResultManager_ : MonoBehaviour
 
 	void TimelineSet()
 	{
-		resultTimelineController.TrackSet();
+		
 	}
 
 	// Start is called before the first frame update
@@ -48,22 +45,19 @@ public class ResultManager_ : MonoBehaviour
 
 		//キャラクターの生成
 		fighterCreater.FighterCreate();
-		fighter1 = fighterCreater.Fighter1;
-		fighter2 = fighterCreater.Fighter2;
 
-		//タイムラインに、動かすモデルのAnimatorをセット
-		resultTimelineController.SetAnimator(fighter1.GetComponentInChildren<Animator>(), fighter2.GetComponentInChildren<Animator>());
+		//タイムラインの生成
+		resultTimelineController.CreateTimeline();
 
-		resultTimelineController.TrackSet();
+		//タイムラインへの参照
+		resultTimelineController.RefTimeline();
+
 	}
+
 
     // Update is called once per frame
     void Update()
     {
-		if (!Application.isPlaying)
-		{
-			resultTimelineController.MuteTrack();
-			Debug.Log("a");
-		}
+
 	}
 }

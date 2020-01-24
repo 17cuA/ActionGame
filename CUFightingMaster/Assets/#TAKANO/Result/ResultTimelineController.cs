@@ -7,43 +7,47 @@ using Cinemachine;
 using System.Linq;
 public class ResultTimelineController : MonoBehaviour
 {
-	[SerializeField] ResultTrackChanger resultTrackChanger;
-	[SerializeField] TrackUnmute[] trackUnmutes = new TrackUnmute[2];
-	[SerializeField] AnimaitonBindController[] animaitonBindControllers = new AnimaitonBindController[2];
+	[SerializeField] ResultTimelineCreater resultTimelineCreater;
+
+	[SerializeField] FighterCreater fighterCreater;
+
+	[SerializeField] ResultNomalAnimationController resultNomalAnimationController;
+
+	[SerializeField] CinemasceneBrainRefGetter[] CinemaSceneBrainRefGetters = new CinemasceneBrainRefGetter[2];
+
+	public PlayableDirector[] playableDirector = new PlayableDirector[2];
 
 	/// <summary>
-	/// タイムラインのトラックを更新する
+	/// タイムラインを作成する
 	/// </summary>
-	public void TrackSet()
+	public void CreateTimeline()
 	{
-		//二人分のタイムラインを更新する
+		//二人分のタイムライン生成する
 		for (int i = 0; i < 2; i++)
 		{
-			//選択されていたファイターの種類から、バインドするAnimationClipを取得する
-			animaitonBindControllers[i].AnimationClip = resultTrackChanger.GetTrack((int)GameDataStrage.Instance.matchResult[i],
-				GameDataStrage.Instance.fighterStatuses[i].PlayerID);
+			var obj = resultTimelineCreater.CreateTimeline(i);
 
-			animaitonBindControllers[i].BindAnimation();
-
-			//このfighterの勝敗の結果から、UnMuteするChinemaChineTrackを取得する
-		trackUnmutes[i].UnMuteTrack(resultTrackChanger.GetCameraTrackName((int)GameDataStrage.Instance.matchResult[i],
-				GameDataStrage.Instance.fighterStatuses[i].PlayerID));
+			//参照するのに使う
+			playableDirector[i] = obj.GetComponent<PlayableDirector>();
 		}
 	}
-	
-	public void SetAnimator(Animator _animator_1, Animator _animator_2)
-	{
-		animaitonBindControllers[0].FigterAnimator = _animator_1;
-		animaitonBindControllers[1].FigterAnimator = _animator_2;
-	}
 
-	public void MuteTrack()
+	public void RefTimeline()
 	{
 		for (int i = 0; i < 2; i++)
 		{
-			//このfighterの勝敗の結果から、MuteするChinemaChineTrackを取得する
-			trackUnmutes[i].MuteTrack(resultTrackChanger.GetCameraTrackName((int)GameDataStrage.Instance.matchResult[i],
-				GameDataStrage.Instance.fighterStatuses[i].PlayerID));
+			//TimelineからAnimaiton Trackを取得
+			var animatonTrack = playableDirector[i].playableAsset.outputs.First(c => c.streamName == "Animation Track");
+			//TimelineからCinemaScene Trackを取得
+			var chinemaSceneTrack = playableDirector[i].playableAsset.outputs.First(c => c.streamName == "Cinemascene Track");
+
+			//Animation TrackにAnimatorの参照を追加
+			playableDirector[i].SetGenericBinding(animatonTrack.sourceObject, fighterCreater.GetRefAnimator(i));
+			//CinemaSceneTrackにCinemaSceneBrainの参照を追加
+			playableDirector[i].SetGenericBinding(chinemaSceneTrack.sourceObject, CinemaSceneBrainRefGetters[i].getRefCinemaSceneBrain());
+
+			resultNomalAnimationController.SetNomalAnimation();
 		}
 	}
 }
+
