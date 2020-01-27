@@ -16,7 +16,15 @@ MonoBehaviour:
   animationClip: {fileID: 7400000, guid: 7ee8c6ed7b07fda4a850b74d33495773, type: 2}
   animationSpeed: 1
   status: 1
-  frameEffects: []
+  frameEffects:
+  - frame: 0
+    effect: {fileID: 8756019462223372814, guid: 6e98c6fac04092c4b94f21c4a4d8f8be,
+      type: 3}
+    childFlag: 1
+    worldPositionFlag: 0
+    isDeleteObj: 0
+    isScaled: 0
+    position: {x: 0, y: 2, z: 0}
   frameBullets: []
   cancelFrag: 0
   endNextAnimation: {fileID: 0}
@@ -44,56 +52,56 @@ MonoBehaviour:
     - isFalse: 0
       isInfinityFrame: 0
       hitBox:
-        size: {x: 5, y: 2, z: 1}
+        size: {x: 2.5, y: 2, z: 1}
         localPosition: {x: 0, y: 1, z: 0}
       startFrame: 0
       endFrame: 5
     - isFalse: 0
       isInfinityFrame: 0
       hitBox:
-        size: {x: 10, y: 4, z: 1}
+        size: {x: 5, y: 4, z: 1}
         localPosition: {x: 0, y: 2, z: 0}
       startFrame: 5
       endFrame: 10
     - isFalse: 0
       isInfinityFrame: 0
       hitBox:
-        size: {x: 15, y: 6, z: 1}
+        size: {x: 7.5, y: 6, z: 1}
         localPosition: {x: 0, y: 3, z: 0}
       startFrame: 10
       endFrame: 15
     - isFalse: 0
       isInfinityFrame: 0
       hitBox:
-        size: {x: 20, y: 8, z: 1}
+        size: {x: 10, y: 8, z: 1}
         localPosition: {x: 0, y: 4, z: 0}
       startFrame: 15
       endFrame: 20
     - isFalse: 0
       isInfinityFrame: 0
       hitBox:
-        size: {x: 5, y: 2, z: 1}
+        size: {x: 3.75, y: 2, z: 1}
         localPosition: {x: 0, y: 1, z: 0}
       startFrame: 20
       endFrame: 25
     - isFalse: 0
       isInfinityFrame: 0
       hitBox:
-        size: {x: 10, y: 4, z: 1}
+        size: {x: 7.5, y: 4, z: 1}
         localPosition: {x: 0, y: 2, z: 0}
       startFrame: 25
       endFrame: 30
     - isFalse: 0
       isInfinityFrame: 0
       hitBox:
-        size: {x: 15, y: 6, z: 1}
+        size: {x: 11.25, y: 6, z: 1}
         localPosition: {x: 0, y: 3, z: 0}
       startFrame: 30
       endFrame: 35
     - isFalse: 0
       isInfinityFrame: 0
       hitBox:
-        size: {x: 20, y: 8, z: 1}
+        size: {x: 15, y: 8, z: 1}
         localPosition: {x: 0, y: 4, z: 0}
       startFrame: 35
       endFrame: 40
@@ -174,7 +182,7 @@ MonoBehaviour:
     - isFalse: 0
       isInfinityFrame: 0
       hitBox:
-        size: {x: 25, y: 10, z: 1}
+        size: {x: 20, y: 10, z: 1}
         localPosition: {x: 0, y: 5, z: 0}
       startFrame: 60
       endFrame: 71
