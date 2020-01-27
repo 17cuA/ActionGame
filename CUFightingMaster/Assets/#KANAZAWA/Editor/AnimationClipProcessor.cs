@@ -2,6 +2,8 @@
 using UnityEditor;
 using System.IO;
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 
 public class AnimationClipProcessor : AssetPostprocessor
 {
@@ -54,8 +56,6 @@ public class AnimationClipProcessor : AssetPostprocessor
                 clip.keepOriginalPositionY = true;
             }
             list.Add(clip);
-            //FighterSkill fighterSkill = Resources.Load<FighterSkill>("Skills/Idle");
-            //fighterSkill.animationClip = clip;
         }
         // 引数のオブジェクトのClipAnimationを変更
         _importer.clipAnimations = (ModelImporterClipAnimation[])
@@ -66,11 +66,17 @@ public class AnimationClipProcessor : AssetPostprocessor
         _importer.animationType = ModelImporterAnimationType.Human;
     }
 
-    /// <summary>
-    ///  FBXを選択した時のみ実行可能にする
-    /// </summary>
-    /// <returns>選択したオブジェクトの形式が.fbxか</returns>
-    [MenuItem("Assets/Set Animation Options", validate = true)]
+	static void SetAnimationClipToSkill(IEnumerable<AnimationClip> clips)
+	{
+		//FighterSkill fighterSkill = Resources.Load<FighterSkill>("Skills/Idle");
+		//fighterSkill.animationClip = aaa;
+	}
+
+	/// <summary>
+	///  FBXを選択した時のみ実行可能にする
+	/// </summary>
+	/// <returns>選択したオブジェクトの形式が.fbxか</returns>
+	[MenuItem("Assets/Set Animation Options", validate = true)]
     private static bool ShowMenu()
     {
         return Path.GetExtension(AssetDatabase.GetAssetPath(Selection.activeObject)).ToLower() == ".fbx";
@@ -88,7 +94,9 @@ public class AnimationClipProcessor : AssetPostprocessor
         AssetImporter importer = AssetImporter.GetAtPath(path);
         // 取得したAssetImporterのModelImporterを渡して関数呼び出し
         SetModelImportSettings(importer as ModelImporter);
-        // オブジェクトの情報を更新？
-        AssetDatabase.ImportAsset(path);
+		var clips = AssetDatabase.LoadAllAssetsAtPath(path).OfType<AnimationClip>();
+		SetAnimationClipToSkill(clips);
+		// オブジェクトの情報を更新？
+		AssetDatabase.ImportAsset(path);
     }
 }
