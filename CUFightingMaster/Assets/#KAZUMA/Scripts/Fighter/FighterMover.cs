@@ -157,7 +157,8 @@ public class FighterMover
                 if (moves.Count > 0)
                 {
                     var _mo = new List<FighterSkill.Move>();
-                    _mo.Add(moves[nowPlayMoveNumber]);
+					Debug.Log(nowPlayMoveNumber);
+					_mo.Add(moves[nowPlayMoveNumber]);
                     while (moves.Count > nowPlayMoveNumber + 1)
                     {
                         if (moves[nowPlayMoveNumber].startFrame == moves[nowPlayMoveNumber + 1].startFrame)
