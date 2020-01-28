@@ -39,22 +39,21 @@ public class CharacterSelectPlayer
 #region カーソルのオブジェクト
 // カーソルの位置を変更するクラス
 [System.Serializable]
-public class CursolObject<T,T2>
+public class CursolObject
 {
 	[SerializeField]
 	private bool activeFlag ;					// カーソルを動かすかどうかのフラグ
 	public bool ActiveFlag	{ get { return activeFlag; } set{activeFlag = value;}	}
-	public CursolFunc<T, T2> cursolFunc = new CursolFunc<T, T2>();
 	
 	public delegate void AnotherClassMethod(Type _type);
 
 	public delegate void dfasdfa(Type sdf, Type sdfa);
 	public AnotherClassMethod[] anotherClassMethods;
-	//public delegate void AcceptMethod(int _selectCharaNumber);	// キャラが決定されたときの別オブジェクトの処理を委譲
-	//public AcceptMethod acceptMthod;				// キャラ決定時の処理の本体
+	public delegate void AcceptMethod(int _selectCharaNumber);	// キャラが決定されたときの別オブジェクトの処理を委譲
+	public AcceptMethod acceptMthod;				// キャラ決定時の処理の本体
 
-	//public delegate void ColorChangeMethod();		// キャラの色が変更されたときの別オブジェクトの処理を委譲
-	//ColorChangeMethod changeMethod;     // 色変更時の処理の本体
+	public delegate void ColorChangeMethod();		// キャラの色が変更されたときの別オブジェクトの処理を委譲
+	ColorChangeMethod changeMethod;     // 色変更時の処理の本体
 
 	List<CharacterSelectObjectData> characterSelectObjectDatas;     // キャラクターオブジェクトのデータ
 	public Vector2 inputDeirection;		// 移動の移動の方向
@@ -73,7 +72,7 @@ public class CursolObject<T,T2>
 	/// <param name="_characterSelectObjectDatas">このゲームに使う全キャラクターのデータ</param>
 	/// <param name="_acceptMthod">決定した時の処理、キャンセルした時の処理</param>
 	/// <param name="_changeMthod">カラーを変更する時の処理</param>
-	public virtual void CursolInit(List<CharacterSelectObjectData> _characterSelectObjectDatas, AnotherClassMethod _acceptMthod, anotherClassMethods _changeMthod)
+	public virtual void CursolInit(List<CharacterSelectObjectData> _characterSelectObjectDatas, AcceptMethod _acceptMthod, ColorChangeMethod _changeMthod)
 	{
 		ActiveFlag = true;
 		var controllerNames = Input.GetJoystickNames();
