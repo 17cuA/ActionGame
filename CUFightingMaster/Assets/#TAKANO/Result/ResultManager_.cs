@@ -25,6 +25,8 @@ public class ResultManager_ : MonoBehaviour
 	[SerializeField] CanvasController_Result canvasController_Result;
 	[SerializeField] ResultTimelineController resultTimelineController;
 
+	[SerializeField] UIMover UIMover;
+
 	private Action currentUpdate;
 
 	[SerializeField] private GameObject fighter1;
@@ -53,11 +55,10 @@ public class ResultManager_ : MonoBehaviour
 		resultTimelineController.RefTimeline();
 
 	}
-
-
     // Update is called once per frame
     void Update()
     {
-
+		UIMover.Group1Move();
+		UIMover.Group2Move();
 	}
 }

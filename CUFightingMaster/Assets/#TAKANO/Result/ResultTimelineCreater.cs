@@ -29,7 +29,7 @@ public class ResultTimelineCreater : MonoBehaviour
 		return timeLineList[fighterNum[i]].trackList[fighterNum[i]].loopAnimatoinClip;
 	}
 
-	private void Start()
+	private void Awake()
 	{
 		//勝敗情報を取得
 		for (int i = 0; i < 2; i++)

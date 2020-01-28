@@ -46,7 +46,7 @@ public class ResultTimelineController : MonoBehaviour
 			//CinemaSceneTrackにCinemaSceneBrainの参照を追加
 			playableDirector[i].SetGenericBinding(chinemaSceneTrack.sourceObject, CinemaSceneBrainRefGetters[i].getRefCinemaSceneBrain());
 
-			resultNomalAnimationController.SetNomalAnimation();
+			resultNomalAnimationController.DisabledNomalAnimation();
 		}
 	}
 }

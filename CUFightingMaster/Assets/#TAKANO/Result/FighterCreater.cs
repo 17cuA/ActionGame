@@ -26,6 +26,9 @@ public class FighterCreater : MonoBehaviour
 	{
 		FighterModels[0] = Instantiate(GameDataStrage.Instance.fighterStatuses[(int)PlayerNumber.Player1].PlayerModel, player1CreatePos.transform.position, transform.rotation);
 		FighterModels[1] = Instantiate(GameDataStrage.Instance.fighterStatuses[(int)PlayerNumber.Player2].PlayerModel, player2CreatePos.transform.position, transform.rotation);
+		//レイヤーをそれぞれの画面に映るように
+		FighterModels[0].SetLayerRecursively(10);　//Player1:10
+		FighterModels[1].SetLayerRecursively(11); //Player2:11
 	}
 
 	/// <summary>

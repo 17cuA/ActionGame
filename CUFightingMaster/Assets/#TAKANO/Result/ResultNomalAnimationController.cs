@@ -8,9 +8,8 @@ public class ResultNomalAnimationController : MonoBehaviour
 	[SerializeField] FighterCreater fighterCreater;
 	public NomalAnimationPlayer[] nomalAnimationPlayers = new NomalAnimationPlayer[2];
 
-	public void SetNomalAnimation()
+	public void DisabledNomalAnimation()
 	{
-		//二人分のタイムライン生成する
 		for (int i = 0; i < 2; i++)
 		{
 			nomalAnimationPlayers[i] = fighterCreater.GeReftNomalAnimationPlayer(i);
