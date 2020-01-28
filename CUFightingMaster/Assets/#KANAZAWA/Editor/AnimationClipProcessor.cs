@@ -15,6 +15,7 @@ public class AnimationClipProcessor : AssetPostprocessor
         lastFrame,
         isLoop,
     }
+	private static bool success = true;
 
     /// <summary>
     /// モデルのImportSettingを設定する
@@ -25,26 +26,32 @@ public class AnimationClipProcessor : AssetPostprocessor
         var list = new ArrayList();
         var text = new TextLoader();
         // 読み込むテキストファイルのパスを渡す
-        string[,] AnimationClipList = text.GetText("Animation/AnimationClipList");
+        string[,] animationClipList = text.GetText("Animation/AnimationClipList");
+		if (animationClipList == null)
+		{
+			EditorUtility.DisplayDialog("Error", "\"AnimationClipList\" not found.", "OK");
+			success = false;
+			return;
+		}
         // リストに項目を追加
-        for (int i = 0; i < AnimationClipList.GetLength(0); i++)
+        for (int i = 0; i < animationClipList.GetLength(0); i++)
         {
             var clip = new ModelImporterClipAnimation();
-            for (int j = 0; j < AnimationClipList.GetLength(1); j++)
+            for (int j = 0; j < animationClipList.GetLength(1); j++)
             {
                 switch(j)
                 {
                     case (int)EAnimationClipInfo.name:
-                        clip.name = AnimationClipList[i, j];
+                        clip.name = animationClipList[i, j];
                         break;
                     case (int)EAnimationClipInfo.firstFrame:
-                        clip.firstFrame = int.Parse(AnimationClipList[i, j]);
+                        clip.firstFrame = int.Parse(animationClipList[i, j]);
                         break;
                     case (int)EAnimationClipInfo.lastFrame:
-                        clip.lastFrame = int.Parse(AnimationClipList[i, j]);
+                        clip.lastFrame = int.Parse(animationClipList[i, j]);
                         break;
                     case (int)EAnimationClipInfo.isLoop:
-                        if (int.Parse(AnimationClipList[i, j]) == 0) clip.loopTime = false;
+                        if (int.Parse(animationClipList[i, j]) == 0) clip.loopTime = false;
                         else clip.loopTime = true;
                         break;
                 }
@@ -66,10 +73,17 @@ public class AnimationClipProcessor : AssetPostprocessor
         _importer.animationType = ModelImporterAnimationType.Human;
     }
 
-	static void SetAnimationClipToSkill(IEnumerable<AnimationClip> clips)
+	static void SetAnimationClipToSkill(Object obj)
 	{
-		//FighterSkill fighterSkill = Resources.Load<FighterSkill>("Skills/Idle");
-		//fighterSkill.animationClip = aaa;
+		var clipList = new List<AnimationClip>();
+		clipList.Clear();
+		var clip = obj as AnimationClip;
+		if (clip != null)
+		{
+			//clipList.Add(clip);
+		}
+		FighterSkill fighterSkill = Resources.Load<FighterSkill>("Skills/Idle");
+		//fighterSkill.animationClip = clip;
 	}
 
 	/// <summary>
@@ -88,15 +102,16 @@ public class AnimationClipProcessor : AssetPostprocessor
     [MenuItem("Assets/Set Animation Options")]
     static void SetAnimationOptions()
     {
+		var obj = Selection.activeObject;
         // 選択したオブジェクトのファイルパスを取得
-        string path = AssetDatabase.GetAssetPath(Selection.activeObject);
+        string path = AssetDatabase.GetAssetPath(obj);
         // 取得したパスからオブジェクトのAssetImporterを取得
         AssetImporter importer = AssetImporter.GetAtPath(path);
         // 取得したAssetImporterのModelImporterを渡して関数呼び出し
         SetModelImportSettings(importer as ModelImporter);
-		var clips = AssetDatabase.LoadAllAssetsAtPath(path).OfType<AnimationClip>();
-		SetAnimationClipToSkill(clips);
-		// オブジェクトの情報を更新？
-		AssetDatabase.ImportAsset(path);
-    }
+		// エラーが出なかった場合のみ読み込む
+		if (success) AssetDatabase.ImportAsset(path);
+
+		//SetAnimationClipToSkill(obj);
+	}
 }

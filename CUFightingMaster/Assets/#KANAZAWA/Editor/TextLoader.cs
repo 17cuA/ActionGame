@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class TextLoader : MonoBehaviour
 {
-    private string[,] textWords; 
-    private string[] textMessage;
-    private int rowLength;
-    private int columnLength;
+    private string[,] textWords = null;
+    private string[] textMessage = null;
+    private int rowLength = 0;
+    private int columnLength = 0;
 
     /// <summary>
     /// テキストファイルの読み込み
@@ -19,7 +19,6 @@ public class TextLoader : MonoBehaviour
         textAsset = Resources.Load<TextAsset>(fileName);
         if (textAsset == null)
         {
-            Debug.LogError("テキストファイルが見つかりませんでした。");
             return;
         }
         // 取得したファイルを改行で分割
