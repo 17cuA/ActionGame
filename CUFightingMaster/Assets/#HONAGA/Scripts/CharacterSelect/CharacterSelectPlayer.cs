@@ -67,7 +67,7 @@ public class CursolObject
 	/// <param name="_characterSelectObjectDatas">このゲームに使う全キャラクターのデータ</param>
 	/// <param name="_acceptMthod">決定した時の処理、キャンセルした時の処理</param>
 	/// <param name="_changeMthod">カラーを変更する時の処理</param>
-	public virtual void CursolInit(List<CharacterSelectObjectData> _characterSelectObjectDatas, AcceptMethod _acceptMthod, ColorChangeMethod _changeMthod)
+	public void CursolInit(List<CharacterSelectObjectData> _characterSelectObjectDatas, AcceptMethod _acceptMthod, ColorChangeMethod _changeMthod)
 	{
 		ActiveFlag = true;
 		var controllerNames = Input.GetJoystickNames();
@@ -85,7 +85,7 @@ public class CursolObject
 	/// <summary>
 	/// CursorのUpdateの処理、使用する場面ごとにoverrideで処理を変える
 	/// </summary>
-	public virtual void Update()
+	public void Update()
 	{
 		// カーソルが動けない場合早期リターンで処理を止める
 		if (ActiveFlag == false) return;
