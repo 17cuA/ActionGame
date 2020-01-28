@@ -133,9 +133,10 @@ public class InputControl : MonoBehaviour {
 
 	public void SetAxis()
 	{
-        //X,Yそれぞれの入力を保存
-        inputDirection.x = Input.GetAxisRaw (controllerName + player + "Horizontal");
-		inputDirection.y = Input.GetAxisRaw (controllerName + player + "Vertical");
+		//X,Yそれぞれの入力を保存
+		inputDirection.x = (Input.GetAxisRaw(controllerName + player + "Horizontal") == 1 || Input.GetAxisRaw(controllerName + player + "Horizontal") == -1) ? Input.GetAxisRaw(controllerName + player + "Horizontal") : 0;
+		inputDirection.y = (Input.GetAxisRaw(controllerName + player + "Vertical") == 1 || Input.GetAxisRaw(controllerName + player + "Vertical") == -1) ? Input.GetAxisRaw(controllerName + player + "Vertical") : 0;
+		Debug.Log("X " + inputDirection.x + "Y " + inputDirection.y);
 	}
 	public void SetDirection()
 	{
