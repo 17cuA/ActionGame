@@ -182,7 +182,7 @@ public class CharacterselectObjectManager : MonoBehaviour
 			}
 			if (CanvasController_CharacterSelect.CanvasControllerInstance.DownCurtain())
 			{
-				SceneManager.LoadScene("Battle");
+				SceneManager.LoadScene("StageSelect");
 			}
 		}
 	}
