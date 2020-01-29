@@ -25,8 +25,6 @@ public class ResultManager_ : MonoBehaviour
 	[SerializeField] CanvasController_Result canvasController_Result;
 	[SerializeField] ResultTimelineController resultTimelineController;
 
-	[SerializeField] UIMover UIMover;
-
 	private Action currentUpdate;
 
 	[SerializeField] private GameObject fighter1;
@@ -34,9 +32,14 @@ public class ResultManager_ : MonoBehaviour
 
 	private int[] elementNum = new int[2];
 
-	void TimelineSet()
+	private void MoveUIGroup1()
 	{
-		
+		canvasController_Result.MoveUIGroup1();
+	}
+
+	private void MoveUIGroup2()
+	{
+
 	}
 
 	// Start is called before the first frame update
@@ -58,7 +61,6 @@ public class ResultManager_ : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-		UIMover.Group1Move();
-		UIMover.Group2Move();
+		Invoke("MoveUIGroup1",0.75f);
 	}
 }

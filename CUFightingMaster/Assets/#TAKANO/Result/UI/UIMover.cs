@@ -42,7 +42,7 @@ public class UIMover : MonoBehaviour
 	{
 		if(group1Parent.transform.position.x <= group1InitPos.x)
 		{
-			group1Parent.transform.position = LeftMover(group1Parent.transform.position, 10.0f);
+			group1Parent.transform.position = LeftMover(group1Parent.transform.position, 50.0f);
 			return false;
 		}
 		return true;
@@ -52,7 +52,7 @@ public class UIMover : MonoBehaviour
 	{
 		if (group2Parent.transform.position.x <= group2InitPos.x)
 		{
-			group2Parent.transform.position = LeftMover(group2Parent.transform.position, 10.0f);
+			group2Parent.transform.position = LeftMover(group2Parent.transform.position, 50.0f);
 			return false;
 		}
 		return true;

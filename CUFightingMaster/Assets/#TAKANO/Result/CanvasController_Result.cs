@@ -13,6 +13,8 @@ public class CanvasController_Result : MonoBehaviour
     [SerializeField] private CurtainMover curtainMover_2;
     [SerializeField] private AnimationUIManager UIAnimator_1;
     [SerializeField] private AnimationUIManager UIAnimator_2;
+	[SerializeField] private UIMover UIMover_1;
+	[SerializeField] private UIMover UIMover_2;
 
     private void Awake()
     {
@@ -102,4 +104,16 @@ public class CanvasController_Result : MonoBehaviour
             return true;
         return false;
     }
+
+	public void MoveUIGroup1()
+	{
+		UIMover_1.Group1Move();
+		UIMover_2.Group1Move();
+	}
+
+	public void MoveUIGroup2()
+	{
+		UIMover_1.Group2Move();
+		UIMover_2.Group2Move();
+	}
 }
