@@ -59,7 +59,8 @@ public class StageSelectCursol
 		DOUTONBORI,
 	}
 	public Vector2 inputDeirection;     // 移動の移動の方向
-	public GameObject[] mskObject;
+	public GameObject[] stagePanels;
+	public GameObject[] stageObjects;
 
 	public int playerNumber = 0;        // プレイヤーの番号(Inspecterでインスタンスごとに設定)
 	public string controllerName;       // コントローラーの名前(自動設定)
@@ -87,7 +88,7 @@ public class StageSelectCursol
 		{
 			moveCursorFrame = 1.0f;
 		}
-		Mask();
+		StageChange();
 		CustomButtonMethod(controllerName, playerNumber);
 	}
 
@@ -96,17 +97,21 @@ public class StageSelectCursol
 		inputDeirection.y = Input.GetAxisRaw(string.Format("{0}Player{1}_Vertical", controllerName, playerNumber));
 		inputDeirection.x = Input.GetAxisRaw(string.Format("{0}Player{1}_Horizontal", controllerName, playerNumber));
 	}
-	public void Mask()
+	public void StageChange()
 	{
 		if (currentStage == StageNumber.SINSEKAI)
 		{
-			mskObject[1].active = true;
-			mskObject[0].active = false;
+			stagePanels[0].transform.position = new Vector3(stagePanels[0].transform.position.x, stagePanels[0].transform.position.y, -3.0f);
+			stagePanels[1].transform.position = new Vector3(stagePanels[1].transform.position.x, stagePanels[1].transform.position.y, -0.8f);
+			stageObjects[0].active = true;
+			stageObjects[1].active = false;
 		}
 		else if (currentStage == StageNumber.DOUTONBORI)
 		{
-			mskObject[0].active = true;
-			mskObject[1].active = false;
+			stagePanels[1].transform.position = new Vector3(stagePanels[1].transform.position.x, stagePanels[0].transform.position.y, -3.0f);
+			stagePanels[0].transform.position = new Vector3(stagePanels[0].transform.position.x, stagePanels[1].transform.position.y, -0.8f);
+			stageObjects[0].active = false;
+			stageObjects[1].active = true;
 		}
 	}
 	public virtual void InputCursolDirection(StageNumber _selectStage, Vector2 _inputDir)
@@ -114,7 +119,7 @@ public class StageSelectCursol
 		Sound.LoadSE("Menu_MoveCursor", "Se_menu_moveCursor");
 		Sound.PlaySE("Menu_MoveCursor", 1, 0.8f);
 
-		_selectStage += (int)_inputDir.y;
+		_selectStage += (int)_inputDir.x * -1;
 
 		if (_selectStage < (StageNumber)0)
 		{
