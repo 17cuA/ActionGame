@@ -32,6 +32,9 @@ public class CanvasController : MonoBehaviour
     [SerializeField] private CurtainMover curtainMover_1;
     [SerializeField] private CurtainMover curtainMover_2;
 
+	public GameObject inGameUI_1;
+	public GameObject inGameUI_2;
+
     // 取得
     void Awake()
 	{
@@ -302,5 +305,14 @@ public class CanvasController : MonoBehaviour
         curtainMover_1.InitDownCurtain();
         curtainMover_2.InitDownCurtain();
     }
+
+	private void Update()
+	{
+		if (Input.GetKeyDown(KeyCode.F7))
+		{
+			inGameUI_1.SetActive(!inGameUI_1.active);
+			inGameUI_2.SetActive(!inGameUI_2.active);
+		}
+	}
 
 }
