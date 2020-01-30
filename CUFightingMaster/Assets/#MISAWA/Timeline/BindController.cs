@@ -1,5 +1,5 @@
 ﻿//---------------------------------------------------------------
-// 登場シーンをプレイヤーごとに変更
+// TimelineのcinemaSceneCameraのトラックを上書きする
 //---------------------------------------------------------------
 // 作成者:三沢
 // 作成日:2019.07.12
@@ -8,7 +8,7 @@
 // 2019.07.12 登場シーンをプレイヤーごとに変更できるかテスト
 //-----------------------------------------------------
 // 仕様
-// トラックを取得し、クリップを上書き
+// トラックを取得し、クリップを上書き(カメラだけ)
 //-----------------------------------------------------
 // MEMO
 // 再生中のTimeLineは動的に更新できない
@@ -28,7 +28,8 @@ using System.Linq;
 public class BindController : MonoBehaviour
 {
 	[SerializeField] PlayableDirector director;
-	[SerializeField] int PlayerNum;
+	[SerializeField] int PlayerNum;		//0
+	[SerializeField] int trackNum;		//バインドするトラックの数
     public int PlayerNum_
     {
         set { PlayerNum = value; }

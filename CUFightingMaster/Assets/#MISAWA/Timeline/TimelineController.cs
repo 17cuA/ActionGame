@@ -8,5 +8,7 @@ public class TimelineController : MonoBehaviour
 	public PlayableDirector Admissiondirector;
 	public PlayableDirector ClicoSpdirector;
 
-
+	private void Update()
+	{
+	}
 }

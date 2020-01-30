@@ -4,8 +4,6 @@ using UnityEngine;
 
 public enum MatchResult
 {
-	PLAYER1WON,
-	PLAYER2WON,
-	DRAW,
-	NONE,
+	WIN,
+	LOSE,
 }

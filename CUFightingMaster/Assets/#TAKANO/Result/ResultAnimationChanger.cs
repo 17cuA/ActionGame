@@ -1,37 +1,35 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;	
+using UnityEngine;
+using Cinemachine;
 public class ResultAnimationChanger : MonoBehaviour
 {
 	//		    | 勝った(0) |    負けた(1)   | 勝ったループ(2) | 負けたループ(3) |
-	// glico(0) | anime    |     anime      |    anime    |    anime       |
-	// oba  (1) | anime    |     anime      |    anime    |    anime       |
+	// clico(0) | tracks    |     tracks      |    tracks    |    tracks       |
+	// oba  (1) | tracks    |     tracks      |    tracks    |    tracks       |
 
-	[SerializeField] private ResultAnimationPlayer resultAnimationPlayer_1;
-	[SerializeField] private ResultAnimationPlayer resultAnimationPlayer_2;
 
-	[SerializeField] private List<ResultAnimationList> animeList = new List<ResultAnimationList>();
-
+	[SerializeField] private List<ResultTrackList> resultTrackList = new List<ResultTrackList>();
 
 	/// <summary>
-	/// リザルト用アニメーションをセット_1
+	/// リザルト用アニメーションをゲット
 	/// </summary>
 	/// <param name="_fighterNun">PlayerID</param>
 	/// <param name="_victoryNum">1=win,2=lose</param>
 	/// <returns></returns>
-	public void SetAnimation_1( int _fighterNun , int _victoryNum)
+	public AnimationClip GetTrack( int _fighterNun , int _victoryNum)
 	{
-		resultAnimationPlayer_1.SetAnimetion(animeList[_fighterNun].animeList[_victoryNum]);
+		return resultTrackList[_fighterNun].trackList[_victoryNum].AnimationClip;
 	}
 
 	/// <summary>
-	/// リザルト用アニメーションをセット_2
+	/// リザルト用カメラをゲット
 	/// </summary>
-	/// <param name="_fighterNun">PlayerID</param>
-	/// <param name="_victoryNum">1=win,2=lose</param>
+	/// <param name="_fighterNun"></param>
+	/// <param name="_victoryNum"></param>
 	/// <returns></returns>
-	public void SetAnimation_2(int _fighterNun, int _victoryNum)
+	public CinemachineBrain GetCinemachineBrain( int _fighterNun , int _victoryNum)
 	{
-		resultAnimationPlayer_2.SetAnimetion(animeList[_fighterNun].animeList[_victoryNum]);
+		return resultTrackList[_fighterNun].trackList[_victoryNum].CinemachineBrain;
 	}
 }

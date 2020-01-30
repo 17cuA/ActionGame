@@ -68,7 +68,7 @@ public class GameDataStrage : MonoBehaviour
 	public bool winFlag_PlayerOne;
 	public bool winFlag_PlayerTwo;
 
-	public MatchResult matchResult = MatchResult.NONE;
+	public MatchResult[] matchResult = new MatchResult[2];
 
 	//デバッグ用のダメージ
 	public void SetPlusDamage(PlayerNumber _num,int _dam)

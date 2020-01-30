@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Thrown
   m_EditorClassIdentifier: 
   skillLayer: 0
-  animationClip: {fileID: 0}
+  animationClip: {fileID: 7400000, guid: b0b8033b40033e642a4980ff4e9b39c8, type: 2}
   animationSpeed: 1
-  status: 16
+  status: 1
   frameEffects: []
   frameBullets: []
   cancelFrag: 1
@@ -41,8 +41,35 @@ MonoBehaviour:
   customHitBox: []
   isContinue: 0
   isMoveContinue: 0
-  movements: []
-  gravityMoves: []
+  movements:
+  - isGravityInvaid: 1
+    isResetStartGravity: 0
+    isResetEndGravity: 0
+    isImpact: 0
+    isBound: 0
+    boundMovements: []
+    movement: {x: 0, y: 0.01, z: 0}
+    startFrame: 0
+  - isGravityInvaid: 1
+    isResetStartGravity: 0
+    isResetEndGravity: 0
+    isImpact: 0
+    isBound: 0
+    boundMovements: []
+    movement: {x: 0, y: 0, z: 0}
+    startFrame: 20
+  - isGravityInvaid: 0
+    isResetStartGravity: 1
+    isResetEndGravity: 0
+    isImpact: 0
+    isBound: 0
+    boundMovements: []
+    movement: {x: 0, y: 2, z: 0}
+    startFrame: 20
+  gravityMoves:
+  - movement: {x: -5, y: -0.15, z: 0}
+    limitMove: {x: -5, y: -20, z: 0}
+    startFrame: 21
   timeStops:
     startFrame: 0
     endFrame: 0
