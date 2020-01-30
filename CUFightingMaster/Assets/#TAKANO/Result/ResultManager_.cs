@@ -24,6 +24,7 @@ public class ResultManager_ : MonoBehaviour
 	[SerializeField] FighterCreater fighterCreater;
 	[SerializeField] CanvasController_Result canvasController_Result;
 	[SerializeField] ResultTimelineController resultTimelineController;
+	[SerializeField] ResultNomalAnimationController resultNomalAnimationController;
 
 	private Action currentUpdate;
 
@@ -32,14 +33,33 @@ public class ResultManager_ : MonoBehaviour
 
 	private int[] elementNum = new int[2];
 
+	/// <summary>
+	/// UIの移動を開始
+	/// </summary>
+	private void StartMoveUI_1()
+	{
+		Invoke("MoveUIGroup1", 0.75f);
+	}
+	/// <summary>
+	/// UIの移動を開始
+	/// </summary>
+	private void StartMoveUI_2()
+	{
+		Invoke("MoveUIGroup2", 0.75f);
+	}
+	/// <summary>
+	/// UIの移動
+	/// </summary>
 	private void MoveUIGroup1()
 	{
 		canvasController_Result.MoveUIGroup1();
 	}
-
+	/// <summary>
+	/// UIの移動
+	/// </summary>
 	private void MoveUIGroup2()
 	{
-
+		canvasController_Result.MoveUIGroup2();
 	}
 
 	// Start is called before the first frame update
@@ -57,10 +77,33 @@ public class ResultManager_ : MonoBehaviour
 		//タイムラインへの参照
 		resultTimelineController.RefTimeline();
 
+		//NomalAniamitonPlayerをDisabled
+		//resultNomalAnimationController.Disabled();
+
+
+
 	}
     // Update is called once per frame
     void Update()
     {
-		Invoke("MoveUIGroup1",0.75f);
+		
+
+		//UI_1の移動を開始
+		StartMoveUI_1();
+
+		//タイムラインの再生が終わった
+		if (resultTimelineController.isEndPlayTimelines())
+		{
+			//Ui_2の移動を開始
+			StartMoveUI_2();
+
+			resultNomalAnimationController.EnabledLoser();
+		}
+
+		else
+		{
+			resultNomalAnimationController.Disabled();
+		}
+
 	}
 }

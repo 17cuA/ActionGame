@@ -23,7 +23,7 @@ public class UIMover : MonoBehaviour
 		group1InitPos = group1Parent.transform.position;
 		group2InitPos = group2Parent.transform.position;
 		group1CurrentPos = group1InitPos;
-		group1CurrentPos = group2InitPos;
+		group2CurrentPos = group2InitPos;
 
 		//画面外へUIを配置
 		group1CurrentPos.x -= 1000;
@@ -40,7 +40,9 @@ public class UIMover : MonoBehaviour
 
 	public bool Group1Move()
 	{
-		if(group1Parent.transform.position.x <= group1InitPos.x)
+		RectTransform rect = RectTransformEx.ToRectTransform(group1Parent.transform);
+
+		if (rect.position.x <= group1InitPos.x)
 		{
 			group1Parent.transform.position = LeftMover(group1Parent.transform.position, 50.0f);
 			return false;
@@ -52,7 +54,7 @@ public class UIMover : MonoBehaviour
 	{
 		if (group2Parent.transform.position.x <= group2InitPos.x)
 		{
-			group2Parent.transform.position = LeftMover(group2Parent.transform.position, 50.0f);
+			group2Parent.transform.position = LeftMover(group2Parent.transform.position, 100.0f);
 			return false;
 		}
 		return true;

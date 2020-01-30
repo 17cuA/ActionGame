@@ -52,4 +52,10 @@ public class FighterCreater : MonoBehaviour
 
 		return nomalAnimationPlayer;
 	}
+
+	public Animationdata GetRefAnimatondata(int _index)
+	{
+		Animationdata animationdata = FighterModels[_index].GetComponentInChildren<Animationdata>();
+		return animationdata;
+	}
 }

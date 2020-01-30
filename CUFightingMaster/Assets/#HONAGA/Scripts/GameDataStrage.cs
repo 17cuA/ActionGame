@@ -97,8 +97,7 @@ public class GameDataStrage : MonoBehaviour
 	public void Start()
 	{
 		//DEBUG
-		matchResult[0] = MatchResult.WIN;
-		matchResult[1] = MatchResult.LOSE;
-
+		//matchResult[0] = MatchResult.WIN;
+		//matchResult[1] = MatchResult.LOSE;
 	}
 }

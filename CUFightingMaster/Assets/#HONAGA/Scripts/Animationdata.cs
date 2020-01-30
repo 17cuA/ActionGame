@@ -19,7 +19,7 @@ public class Animationdata : MonoBehaviour
 	{
 		if (animationData != null && resultFlag ==false)
 		{
-			animationData.SetPlayAnimation(animationClip[0], animationSpeed, 0);
+			animationData.SetPlayAnimation(animationClip[0], 0.5f, 0);
 		}
 	}
 

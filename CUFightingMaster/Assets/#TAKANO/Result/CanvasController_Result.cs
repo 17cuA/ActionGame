@@ -105,10 +105,14 @@ public class CanvasController_Result : MonoBehaviour
         return false;
     }
 
-	public void MoveUIGroup1()
+	public bool MoveUIGroup1()
 	{
-		UIMover_1.Group1Move();
-		UIMover_2.Group1Move();
+		bool isEnd1= UIMover_1.Group1Move();
+		bool isEnd2 = UIMover_2.Group1Move();
+
+		if (isEnd1 && isEnd2)
+			return true;
+		return false;
 	}
 
 	public void MoveUIGroup2()
