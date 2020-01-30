@@ -3,24 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Profiling;
 
-public class tetetest : MonoBehaviour
+namespace TestInput
 {
-	private int xx = -1;
-    // Start is called before the first frame update
-    void Start()
-    {
-		Profiler.BeginSample("#### System.Math.Abs ####");
-		for (int i = 0; i < 10000; i++)
+	public class tetetest
+	{
+		public static float TestGetAxisRaw(float _f)
 		{
-			System.Math.Abs(xx);
+			return System.Math.Abs(_f);
 		}
-		Profiler.EndSample();
-
-		Profiler.BeginSample("#### UnityEngine.Mathf.Abs ####");
-		for (int i = 0; i < 10000; i++)
-		{
-			Mathf.Abs(xx);
-		}
-		Profiler.EndSample();
 	}
 }
+

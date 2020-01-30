@@ -9,7 +9,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
-
+using UnityEngine.Profiling;
 
 public class InputControl : MonoBehaviour {
 
@@ -134,6 +134,7 @@ public class InputControl : MonoBehaviour {
 
 	public void SetAxis()
 	{
+		Profiler.EndSample();
 		//X,Yそれぞれの入力を保存
 		inputDirection.x = (Math.Abs(Input.GetAxisRaw(controllerName + player + "Horizontal")) == 1) ? Input.GetAxisRaw(controllerName + player + "Horizontal") : 0;
 		inputDirection.y = (Math.Abs(Input.GetAxisRaw(controllerName + player + "Vertical")) == 1) ? Input.GetAxisRaw(controllerName + player + "Vertical") : 0;
