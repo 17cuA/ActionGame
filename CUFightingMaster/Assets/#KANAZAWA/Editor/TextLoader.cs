@@ -9,20 +9,18 @@ public class TextLoader : MonoBehaviour
     private int rowLength = 0;
     private int columnLength = 0;
 
-    /// <summary>
-    /// テキストファイルの読み込み
-    /// </summary>
-    /// <param name="fileName">テキストファイルの名前(パス)</param>
-    public void LoadText(string fileName)
+	/// <summary>
+	/// テキストファイルの読み込み
+	/// </summary>
+	/// <param name="_textAsset">テキストファイル</param>
+	public void LoadText(TextAsset _textAsset)
     {
-        var textAsset = new TextAsset();
-        textAsset = Resources.Load<TextAsset>(fileName);
-        if (textAsset == null)
+        if (_textAsset == null)
         {
             return;
         }
         // 取得したファイルを改行で分割
-        textMessage = textAsset.text.Split('\n');
+        textMessage = _textAsset.text.Split('\n');
         // 改行した数から列数を取得
         rowLength = textMessage.Length;
         // 一行目のテキストを[,]で分割し行数を取得
@@ -38,14 +36,14 @@ public class TextLoader : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// テキストファイルを読み込み、配列にして返す
-    /// </summary>
-    /// <param name="fileName">テキストファイルの名前(パス)</param>
-    /// <returns></returns>
-    public string[,] GetText(string fileName)
+	/// <summary>
+	/// テキストファイルを読み込み、配列にして返す
+	/// </summary>
+	/// <param name="_textAsset">テキストファイル</param>
+	/// <returns>テキストの配列</returns>
+	public string[,] GetText(TextAsset _textAsset)
     {
-        LoadText(fileName);
+        LoadText(_textAsset);
         return textWords;
     }
 }

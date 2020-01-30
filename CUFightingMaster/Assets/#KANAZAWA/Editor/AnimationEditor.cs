@@ -1,29 +1,36 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿#if UNITY_EDITOR
 using System.IO;
 using UnityEngine;
 using UnityEditor;
 
-public class AnimationProcessor : EditorWindow
+
+public class AnimationEditor : EditorWindow
 {
     public Object fbx = null;
     public TextAsset animationClipList = null;
 
-    [MenuItem("Editor/AnimationProcessor")]
+    [MenuItem("Editor/AnimationClipSetter")]
     public static void Open()
     {
-        GetWindow<AnimationProcessor>();
+        var window = GetWindow<AnimationEditor>();
+		window.minSize = new Vector2(300, 55);
     }
 
     private void OnGUI()
     {
         // FBX
         fbx = EditorGUILayout.ObjectField("FBX", fbx, typeof(Object), false);
-        // FBX以外入らないようにする(もっといい方法ありますよね)
+        // FBX以外入らないようにする
         if(Path.GetExtension(AssetDatabase.GetAssetPath(fbx).ToLower()) != ".fbx") fbx = null;
         // テキストファイル
         animationClipList = EditorGUILayout.ObjectField("AnimationClipList", animationClipList, typeof(TextAsset), false) as TextAsset;
-        EditorGUILayout.Space();
-        GUILayout.Button("Split AnimationClip", GUILayout.Height(20), GUILayout.ExpandWidth(true));
+        if (GUILayout.Button("Set AnimationClip", GUILayout.Height(20), GUILayout.ExpandWidth(true)))
+		{
+			if (fbx && animationClipList)
+			{
+				AnimationClipProcessor.SetModelImportSettings(fbx, animationClipList);
+			}
+		}
     }
 }
+#endif

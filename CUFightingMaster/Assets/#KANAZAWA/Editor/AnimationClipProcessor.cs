@@ -1,9 +1,7 @@
-﻿using UnityEngine;
-using UnityEditor;
-using System.IO;
+﻿#if UNITY_EDITOR
 using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
+using UnityEngine;
+using UnityEditor;
 
 public class AnimationClipProcessor : AssetPostprocessor
 {
@@ -17,19 +15,24 @@ public class AnimationClipProcessor : AssetPostprocessor
     }
 	private static bool success = true;
 
-    /// <summary>
-    /// モデルのImportSettingを設定する
-    /// </summary>
-    /// <param name="_importer">選択したモデルのModelImporter</param>
-    static void SetModelImportSettings(ModelImporter _importer)
+	/// <summary>
+	/// モデルのImportSettingを設定
+	/// </summary>
+	/// <param name="_fbx">設定するFBX</param>
+	/// <param name="_clipList">Clipの切り取りが記載されているテキストファイル</param>
+    public static void SetModelImportSettings(Object _fbx, TextAsset _clipList)
     {
         var list = new ArrayList();
         var text = new TextLoader();
-        // 読み込むテキストファイルのパスを渡す
-        string[,] animationClipList = text.GetText("Animation/AnimationClipList");
+
+		string path = AssetDatabase.GetAssetPath(_fbx);
+		// 取得したパスからオブジェクトのAssetImporterを取得
+		ModelImporter importer = AssetImporter.GetAtPath(path) as ModelImporter;
+		// 読み込むテキストファイルを渡し、情報を受け取る
+		string[,] animationClipList = text.GetText(_clipList);
 		if (animationClipList == null)
 		{
-			EditorUtility.DisplayDialog("Error", "\"AnimationClipList\" not found.", "OK");
+			EditorUtility.DisplayDialog("Error", "TextFile not found.", "OK");
 			success = false;
 			return;
 		}
@@ -65,53 +68,14 @@ public class AnimationClipProcessor : AssetPostprocessor
             list.Add(clip);
         }
         // 引数のオブジェクトのClipAnimationを変更
-        _importer.clipAnimations = (ModelImporterClipAnimation[])
+        importer.clipAnimations = (ModelImporterClipAnimation[])
         // リストを配列(ClipAnimation)に変更
         list.ToArray(typeof(ModelImporterClipAnimation));
-
         // Humanoidに設定
-        _importer.animationType = ModelImporterAnimationType.Human;
-    }
+        importer.animationType = ModelImporterAnimationType.Human;
 
-	static void SetAnimationClipToSkill(Object obj)
-	{
-		var clipList = new List<AnimationClip>();
-		clipList.Clear();
-		var clip = obj as AnimationClip;
-		if (clip != null)
-		{
-			//clipList.Add(clip);
-		}
-		FighterSkill fighterSkill = Resources.Load<FighterSkill>("Skills/Idle");
-		//fighterSkill.animationClip = clip;
-	}
-
-	/// <summary>
-	///  FBXを選択した時のみ実行可能にする
-	/// </summary>
-	/// <returns>選択したオブジェクトの形式が.fbxか</returns>
-	[MenuItem("Assets/Set Animation Options", validate = true)]
-    private static bool ShowMenu()
-    {
-        return Path.GetExtension(AssetDatabase.GetAssetPath(Selection.activeObject)).ToLower() == ".fbx";
-    }
-
-    /// <summary>
-    /// 選択したオブジェクトの情報を取得し、ImportSettingsを設定する
-    /// </summary>
-    [MenuItem("Assets/Set Animation Options")]
-    static void SetAnimationOptions()
-    {
-		var obj = Selection.activeObject;
-        // 選択したオブジェクトのファイルパスを取得
-        string path = AssetDatabase.GetAssetPath(obj);
-        // 取得したパスからオブジェクトのAssetImporterを取得
-        AssetImporter importer = AssetImporter.GetAtPath(path);
-        // 取得したAssetImporterのModelImporterを渡して関数呼び出し
-        SetModelImportSettings(importer as ModelImporter);
 		// エラーが出なかった場合のみ読み込む
 		if (success) AssetDatabase.ImportAsset(path);
-
-		//SetAnimationClipToSkill(obj);
 	}
 }
+#endif
