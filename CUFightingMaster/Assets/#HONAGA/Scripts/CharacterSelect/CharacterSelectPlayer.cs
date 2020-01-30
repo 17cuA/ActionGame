@@ -82,7 +82,9 @@ public class CursolObject
 		acceptMthod = _acceptMthod;
 		characterSelectObjectDatas = _characterSelectObjectDatas;
 	}
-	// CursolのUpdateの処理
+	/// <summary>
+	/// CursorのUpdateの処理、使用する場面ごとにoverrideで処理を変える
+	/// </summary>
 	public void Update()
 	{
 		// カーソルが動けない場合早期リターンで処理を止める
@@ -90,23 +92,9 @@ public class CursolObject
 		// カーソルが動いた後のクールタイム
 		moveCursorFrame += Time.deltaTime;
 
-		// 入力ごとの処理-------------------------------------------------------------------------------------------------------------------
-		if (Input.GetButtonDown(string.Format("{0}Player{1}_Attack1", controllerName, playerNumber)))
-		{
-			AcceptButton(acceptMthod);
-		}
-		if (Input.GetButtonDown(string.Format("{0}Player{1}_Attack2", controllerName, playerNumber)))
-		{
-			CanselButton(acceptMthod);
-		}
-		if (Input.GetButtonDown(string.Format("{0}Player{1}_Attack3", controllerName, playerNumber))&&AcceptFlag == false)
-		{
-			changeMethod();
-		}
-		//-------------------------------------------------------------------------------------------------------------------------------------
+		CustomButtonMethod(controllerName,playerNumber);
 
-		inputDeirection.y = Input.GetAxisRaw(string.Format("{0}Player{1}_Vertical", controllerName, playerNumber));
-		inputDeirection.x = Input.GetAxisRaw(string.Format("{0}Player{1}_Horizontal", controllerName, playerNumber));
+		InputCursol();
 
 		// 入力があり、決定していない時のみカーソルを動かす
 		if (inputDeirection != Vector2.zero && AcceptFlag == false)
@@ -122,6 +110,11 @@ public class CursolObject
 		{
 			moveCursorFrame = 1.0f;
 		}
+	}
+	public void InputCursol()
+	{
+		inputDeirection.y = Input.GetAxisRaw(string.Format("{0}Player{1}_Vertical", controllerName, playerNumber));
+		inputDeirection.x = Input.GetAxisRaw(string.Format("{0}Player{1}_Horizontal", controllerName, playerNumber));
 	}
 	/// <summary>
 	/// キャラを決定した時の処理
@@ -163,7 +156,7 @@ public class CursolObject
 	/// <param name="_selectCharacter">選択しているキャラのID</param>
 	/// <param name="_inputDir">移動する方向</param>
 	/// <returns></returns>
-	public void InputCursolDirection(ECharacterID _selectCharacter, Vector2 _inputDir)
+	public virtual void InputCursolDirection(ECharacterID _selectCharacter, Vector2 _inputDir)
 	{
 		if (playerNumber == 1) _inputDir *= -1;
 		Sound.LoadSE("Menu_MoveCursor", "Se_menu_moveCursor");
@@ -183,7 +176,30 @@ public class CursolObject
 		moveCursorFrame = 0;
 		currentCharacter = _selectCharacter;
 	}
+	/// <summary>
+	/// ボタンの入力ごとの処理、overrideで上書きすれば動き替えられる
+	/// </summary>
+	/// <param name="_controllerName">プロパティのcontrollerNameを渡す</param>
+	/// <param name="_playerNumber">プロパティのplayerNumberを渡す</param>
+	public virtual void CustomButtonMethod(string _controllerName,int _playerNumber)
+	{
+		// 入力ごとの処理-------------------------------------------------------------------------------------------------------------------
+		if (Input.GetButtonDown(string.Format("{0}Player{1}_Attack1", _controllerName, _playerNumber)))
+		{
+			AcceptButton(acceptMthod);
+		}
+		if (Input.GetButtonDown(string.Format("{0}Player{1}_Attack2", _controllerName, _playerNumber)))
+		{
+			CanselButton(acceptMthod);
+		}
+		if (Input.GetButtonDown(string.Format("{0}Player{1}_Attack3", _controllerName, _playerNumber)) && AcceptFlag == false)
+		{
+			changeMethod();
+		}
+		//-------------------------------------------------------------------------------------------------------------------------------------
+	}
 }
+
 #endregion
 
 
