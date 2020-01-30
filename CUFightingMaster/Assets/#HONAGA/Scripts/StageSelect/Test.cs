@@ -1,15 +1,16 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class Test : MonoBehaviour
+public enum Edata
 {
-	private enum Edata
-	{
-		aoki,
-		kanazawa,
-		yokoyama,
-	}
+	aoki,
+	kanazawa,
+	yokoyama,
+}
+public class Test : asdf<Edata>
+{
+
 	Edata edata;
 	Dictionary<Edata, string> keyValuePairs = new Dictionary<Edata, string>();
 
@@ -24,9 +25,28 @@ public class Test : MonoBehaviour
 	// Update is called once per frame
 	void Update()
     {
-     for(int i = 0;i< System.Enum.GetNames(typeof(Edata)).Length;i++)
+		aewsdf(Edata.yokoyama);
+	}
+}
+public class asdf<T>:MonoBehaviour where T:System.Enum
+{
+	public T currentNumber;
+	public void aewsdf(T sef)
+	{
+		// Enumの要素をArray型に変換する
+		var tempEnumValueArray = System.Enum.GetValues(typeof(T));
+		// T
+		int currentNumberInt = Convert.ToInt32(sef);
+		int valueNumberPosition = 0;
+		// 今選択しているキャラの番号を一致させる
+		foreach (int tempInt in tempEnumValueArray)
 		{
-			Debug.Log(keyValuePairs[edata+i]);
+			if (tempInt == currentNumberInt) break;
+			valueNumberPosition++;
 		}
-    }
+		// tempEnumValueArrayの一致している要素名をストリングに変換し、Parseメソッドを使用してEnumに変換する
+		currentNumber = (T)System.Enum.Parse(typeof(T), tempEnumValueArray.GetValue(valueNumberPosition).ToString());
+		Debug.Log(currentNumber);
+		//(moveobject as GameObject).transform.position = _movePosition.transform.position;
+	}
 }
