@@ -11,6 +11,9 @@ public class StageSelectManager : MonoBehaviour
 	// Start is called before the first frame update
 	void Start()
 	{
+		StageSelectCursol.acceptFlag = false;
+		stageSelectCursol_1P.InitCursol();
+		stageSelectCursol_2P.InitCursol();
 		Sound.LoadBGM("BGM_Menu", "BGM_Menu");
 		Sound.PlayBGM("BGM_Menu", 1, 1.0f, true);
 		// カーテンを一気に下す処理
@@ -70,6 +73,17 @@ public class StageSelectCursol
 	public static bool acceptFlag = false;
 	public static StageNumber currentStage;
 
+	public void InitCursol()
+	{
+		var controllerNames = Input.GetJoystickNames();
+		if (playerNumber < controllerNames.Length)
+		{
+			if (controllerNames[playerNumber] != "")
+			{
+				controllerName = string.Format("{0}_", controllerNames[playerNumber]);
+			}
+		}
+	}
 	public void CursolUpdate()
 	{
 		InputCursol();
@@ -137,6 +151,8 @@ public class StageSelectCursol
 		// 入力ごとの処理-------------------------------------------------------------------------------------------------------------------
 		if (Input.GetButtonDown(string.Format("{0}Player{1}_Attack1", _controllerName, _playerNumber)))
 		{
+			Sound.LoadSE("Menu_Decision", "Se_menu_decision");
+			Sound.PlaySE("Menu_Decision", 1, 1);
 			acceptFlag = !acceptFlag;
 		}
 		//-------------------------------------------------------------------------------------------------------------------------------------

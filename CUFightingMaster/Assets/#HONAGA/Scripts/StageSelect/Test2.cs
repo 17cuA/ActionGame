@@ -24,6 +24,6 @@ public class Test2 : CursolBase<test,GameObject>
     // Update is called once per frame
     void Update()
     {
-		InputCursolDirection(movePos);
+		CursolUpdate(movePos);
 	}
 }
