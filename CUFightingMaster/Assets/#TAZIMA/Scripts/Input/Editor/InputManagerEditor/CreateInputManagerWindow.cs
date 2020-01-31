@@ -19,7 +19,7 @@ public class CreateInputManagerWindow : EditorWindow
     /// <summary>
     /// ScriptableInputManagerの変数
     /// </summary>
-    private ScriptableInputManager  _obj = null, _saveObj = null;	//設定用変数、保存用変数
+    private ScriptableInputManager  _obj = null;	//設定用変数、保存用変数
     Vector2 scrollPos = Vector2.zero;								//スクロールバー用位置変数
 	private string[] playerTab = { "プレイヤー1", "プレイヤー2" };	//設定するプレイヤーを変更する為の変数
 	private int playerTabNum = 0;
@@ -46,7 +46,6 @@ public class CreateInputManagerWindow : EditorWindow
         {
             //読み込み
             Import();
-            //_obj.InputControllers = null;
         }
 
         Color defaultColor = GUI.backgroundColor;
@@ -113,8 +112,8 @@ public class CreateInputManagerWindow : EditorWindow
             GUI.backgroundColor = defaultColor;
 
             _obj.ControllerName = EditorGUILayout.TextField("コントローラー名", _obj.ControllerName);
-            _obj.ButtonNum = EditorGUILayout.IntField("ボタン設定数", _obj.ButtonNum);
-            _obj.PlayerNum = EditorGUILayout.IntField("プレイヤー数", _obj.PlayerNum);
+			_obj.PlayerNum = EditorGUILayout.IntField("プレイヤー数", _obj.PlayerNum);
+			_obj.ButtonNum = EditorGUILayout.IntField("ボタン設定数", _obj.ButtonNum);
 			_obj.IsSetStick = EditorGUILayout.ToggleLeft("設定時に入力軸の設定を自動追加", _obj.IsSetStick);
 
             //コントローラー名表示ボタン
@@ -253,7 +252,6 @@ public class CreateInputManagerWindow : EditorWindow
 
 		}
 
-		#region 初期化変更頑張る
 		if (_obj.InputControllers == null || _obj.PlayerNum != _obj.SetPlayerNum || _obj.ButtonNum != _obj.SetButtonNum)
         {
             //設定用変数に入力用変数の値を格納
@@ -278,7 +276,6 @@ public class CreateInputManagerWindow : EditorWindow
 			}
             _obj.InputControllers = controllerList;
         }
-		#endregion
 	}
 #endregion
 	#region ロード
@@ -291,10 +288,6 @@ public class CreateInputManagerWindow : EditorWindow
 		{
 			_obj = CreateInstance<ScriptableInputManager>();
 		}
-		if (_saveObj == null)
-        {
-            _saveObj = CreateInstance<ScriptableInputManager>();
-        }
 
 		ScriptableInputManager sample = AssetDatabase.LoadAssetAtPath<ScriptableInputManager>(ASSET_PATH);
 		//ファイルが存在しない場合作成する
@@ -307,7 +300,9 @@ public class CreateInputManagerWindow : EditorWindow
 			return;
 		}
 		//コピーする
-		_saveObj.Copy(sample);
+		_obj.Copy(sample);
+		isOpen = new bool[_obj.SetPlayerNum, _obj.SetButtonNum];
+		Debug.Log("ロード完了");
 	}
     #endregion
     #region 保存
@@ -336,8 +331,7 @@ public class CreateInputManagerWindow : EditorWindow
         }
 
 		//コピー
-		_saveObj.Copy(_obj);
-		sample.Copy(_saveObj);
+		sample.Copy(_obj);
 
 		////インスペクターから設定できないようにする
 		sample.hideFlags = HideFlags.NotEditable;
@@ -347,6 +341,7 @@ public class CreateInputManagerWindow : EditorWindow
 		AssetDatabase.SaveAssets();
 		//エディタを最新の状態にする
 		AssetDatabase.Refresh();
+		Debug.Log("セーブ完了");
 	}
     #endregion
 }

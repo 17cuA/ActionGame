@@ -98,9 +98,23 @@ public class ScriptableInputManager : ScriptableObject
         _setPlayerNum = sobj.SetPlayerNum;
         _buttonNum = sobj.ButtonNum;
         _setButtonNum = sobj.SetButtonNum;
-		_inputControllers = sobj.InputControllers;
 		_isSetStick = sobj.IsSetStick;
-
+		if ( _inputControllers != null)	_inputControllers.Clear();
+		_inputControllers = new List<SettingControllerClass>();
+		for (int i = 0; i < sobj.SetPlayerNum; i++)
+		{
+			_inputControllers.Add(new SettingControllerClass());
+			_inputControllers[i].Buttons = new List<SettingButtonClass>();
+			int j;
+			for (j = 0; j < sobj.SetButtonNum; j++)
+			{
+				_inputControllers[i].Buttons.Add(new SettingButtonClass());
+				_inputControllers[i].Buttons[j].Name = sobj.InputControllers[i].Buttons[j].Name;
+				_inputControllers[i].Buttons[j].InputButtonNum = sobj.InputControllers[i].Buttons[j].InputButtonNum;
+				_inputControllers[i].Buttons[j].AltButton = sobj.InputControllers[i].Buttons[j].AltButton;
+			}
+			j = 0;
+		}
 	}
 #endif
 	#endregion
