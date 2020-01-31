@@ -31,8 +31,10 @@ public class CursolBase<TEnum, TGameObject> : MonoBehaviour where TEnum : System
 	// コントローラーの名前
 	public string controllerName;
 	// カーソルの待機時間
+	[SerializeField]
 	private float moveCursorFrame;
 	// カーソルの最大待機時間(この時間を超えたら移動できる)
+	[SerializeField]
 	private float limitCursorFrame;
 
 	private SEnum<TEnum> currentNumber;
@@ -48,8 +50,9 @@ public class CursolBase<TEnum, TGameObject> : MonoBehaviour where TEnum : System
 	/// <param name="_limitCursolFrame">カーソルが動くまでの待機時間</param>
 	/// <param name="_enum">ジェネリックのEnum。上位クラスで宣言したEnumの型にする</param>
 	/// <param name="_moveObject">カーソルとして動かすオブジェクト(基本GameObject型で動かす)</param>
-	public void InitCursol(bool _inputFlagY, bool _inputFlagX, int _playerNumber, string _controllerName, float _limitCursolFrame,TEnum _enum,GameObject _moveObject)
+	public void InitCursol(bool _inputFlagY, bool _inputFlagX, int _playerNumber, string _controllerName, float _limitCursolFrame, TEnum _enum, GameObject _moveObject)
 	{
+		AcceptFlag = false;
 		activeFlag = true;
 		InputFlagDirectionY = _inputFlagY;
 		InputFlagDirectionX = _inputFlagX;
@@ -58,6 +61,24 @@ public class CursolBase<TEnum, TGameObject> : MonoBehaviour where TEnum : System
 		currentNumber = new SEnum<TEnum>(_enum);
 		moveobject = _moveObject as TGameObject;
 		SetController();
+	}
+
+	public void CursolUpdate(GameObject[] _movePosition)
+	{
+		moveCursorFrame += Time.deltaTime;
+
+		InputCursol();
+		if (inputDirection != Vector2.zero && AcceptFlag == false)
+		{
+			if (moveCursorFrame >= limitCursorFrame)
+			{
+				InputCursolDirection(_movePosition);
+			}
+		}
+		if (Input.GetButtonDown(string.Format("{0}Player{1}_Attack1", controllerName, playerNumber)))
+		{
+			AcceptButton();
+		}
 	}
 	/// <summary>
 	///	プレイヤーごとにコントローラーをセット
@@ -78,16 +99,40 @@ public class CursolBase<TEnum, TGameObject> : MonoBehaviour where TEnum : System
 	/// </summary>
 	public void InputCursol()
 	{
+		moveCursorFrame += Time.deltaTime;
+
 		if (InputFlagDirectionX == true) inputDirection.x = Input.GetAxisRaw(string.Format("{0}Player{1}_Horizontal", controllerName, playerNumber));
 		if (InputFlagDirectionY == true) inputDirection.y = Input.GetAxisRaw(string.Format("{0}Player{1}_Vertical", controllerName, playerNumber));
+
+		// オーバーフロー防止
+		if (moveCursorFrame > 1.0f)
+		{
+			moveCursorFrame = 1.0f;
+		}
 	}
 
 	public void InputCursolDirection(GameObject[] _movePosition)
 	{
-		InputCursol();
-		if (inputDirection.x == 1 || inputDirection.y == 1) currentNumber++;
-		if (inputDirection.x == -1 || inputDirection.y == -1) currentNumber--;
+		if (inputDirection.x > 0)
+		{
+			currentNumber++;
+		}
+		else if (inputDirection.x < 0)
+		{
+			currentNumber--;
+		}
+
+		if (inputDirection.y > 0)
+		{
+			currentNumber++;
+		}
+		else if (inputDirection.y < 0)
+		{
+			currentNumber--;
+		}
 		CursolMove(_movePosition[Convert.ToInt32(currentNumber.currentNumber)]);
+
+		moveCursorFrame = 0.0f;
 	}
 
 	/// <summary>
@@ -96,9 +141,20 @@ public class CursolBase<TEnum, TGameObject> : MonoBehaviour where TEnum : System
 	/// <param name="_characterSelectObjectData">キャラデータ(設定されているキャラごとのパネルの位置へ移動させる)</param>
 	public void CursolMove(GameObject _movePosition)
 	{
+		Debug.Log("move");
 		(moveobject as GameObject).transform.position = _movePosition.transform.position;
 		Sound.LoadSE("Menu_MoveCursor", "Se_menu_moveCursor");
 		Sound.PlaySE("Menu_MoveCursor", 1, 0.8f);
+	}
+	/// <summary>
+	/// 決定の処理(クラスごとに処理書き換えて使う)
+	/// </summary>
+	public virtual void AcceptButton()
+	{
+		if (AcceptFlag == true) return; // 既に決定していた場合早期リターン
+		Sound.LoadSE("Menu_Decision", "Se_menu_decision");
+		Sound.PlaySE("Menu_Decision", 1, 1);
+		AcceptFlag = true;
 	}
 }
 
@@ -134,7 +190,10 @@ class SEnum<T> where T : System.Enum
 		}
 		// tempEnumValueArrayの一致している要素名をストリングに変換し、Parseメソッドを使用してEnumに変換する
 		// この時Arrayの要素を一つずらしているので次の要素を返す
-		if(valueNumberPosition + 1 > tempEnumValueArray.Length) valueNumberPosition = tempEnumValueArray.Length -1; // 念のためEnumの要素数を超えないよう
+		if (valueNumberPosition >= tempEnumValueArray.Length - 1)
+		{
+			valueNumberPosition--;
+		}
 		sEnum.currentNumber = (T)System.Enum.Parse(typeof(T), tempEnumValueArray.GetValue(valueNumberPosition + 1).ToString());
 		return sEnum;
 	}
@@ -158,7 +217,10 @@ class SEnum<T> where T : System.Enum
 		}
 		// tempEnumValueArrayの一致している要素名をストリングに変換し、Parseメソッドを使用してEnumに変換する
 		// この時Arrayの要素を一つずらしているので次の要素を返す
-		if (valueNumberPosition - 1 < 0) valueNumberPosition = 1;	// 念のため0より下の数字にならないよう
+		if (valueNumberPosition == 0)
+		{
+			valueNumberPosition++;
+		}
 		sEnum.currentNumber = (T)System.Enum.Parse(typeof(T), tempEnumValueArray.GetValue(valueNumberPosition - 1).ToString());
 		return sEnum;
 	}
