@@ -16,7 +16,7 @@ MonoBehaviour:
   isLoop: 0
   isOffset: 1
   isNotEnemyOffset: 0
-  isInvincibleDis: 1
+  isInvincibleDis: 0
   offsetEffects:
   - isEnemyPos: 0
     isParant: 0
@@ -36,9 +36,9 @@ MonoBehaviour:
       startFrame: 0
       endFrame: 100
     hitStop: 0
-    hitPoint: 1
+    hitPoint: 0
     hitStrength: 0
-    damage: 150
+    damage: 500
     stanDamage: 0
     knockBack: 0.8
     airKnockBack: 1
@@ -69,13 +69,13 @@ MonoBehaviour:
     throwSkill: {fileID: 0}
     enemyThrowSkill: {fileID: 0}
     throwDamages: []
-    isJumpCancel: 1
+    isJumpCancel: 0
     isContinue: 0
     movements: []
     gravityMoves: []
     isFaceDown: 0
     isPassiveNotPossible: 0
-    hitRigor: 40
-    guardHitRigor: 15
+    hitRigor: 20
+    guardHitRigor: 1
     plusGauge: 1
     enemyPlusGauge: 2

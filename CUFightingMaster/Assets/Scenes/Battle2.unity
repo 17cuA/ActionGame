@@ -943,11 +943,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 8909664302368228206, guid: bec4ef309491e0f429b3e4259289abc9,
-        type: 3}
-      propertyPath: direction
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8909664302368228193, guid: bec4ef309491e0f429b3e4259289abc9,
         type: 3}
       propertyPath: m_Name
@@ -956,6 +951,11 @@ PrefabInstance:
     - target: {fileID: 8909664302368228193, guid: bec4ef309491e0f429b3e4259289abc9,
         type: 3}
       propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8909664302368228206, guid: bec4ef309491e0f429b3e4259289abc9,
+        type: 3}
+      propertyPath: direction
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7392943948987115118, guid: bec4ef309491e0f429b3e4259289abc9,
@@ -14894,21 +14894,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 1464744823899539958, guid: 56df0c221d7f4654da0cd97050089080,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1464744823899539958, guid: 56df0c221d7f4654da0cd97050089080,
-        type: 3}
-      propertyPath: m_CustomBlends
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 1464744823899539958, guid: 56df0c221d7f4654da0cd97050089080,
-        type: 3}
-      propertyPath: m_UpdateMethod
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1464744824716727719, guid: 56df0c221d7f4654da0cd97050089080,
         type: 3}
       propertyPath: m_IsActive
@@ -15248,6 +15233,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Depth
       value: -5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1464744823899539958, guid: 56df0c221d7f4654da0cd97050089080,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1464744823899539958, guid: 56df0c221d7f4654da0cd97050089080,
+        type: 3}
+      propertyPath: m_CustomBlends
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1464744823899539958, guid: 56df0c221d7f4654da0cd97050089080,
+        type: 3}
+      propertyPath: m_UpdateMethod
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1464744823371362828, guid: 56df0c221d7f4654da0cd97050089080,
         type: 3}
@@ -16145,7 +16145,7 @@ PrefabInstance:
     - target: {fileID: 7058429913981595859, guid: c5f12dd7295986d4b81440a1b5865431,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1965715640223580897, guid: c5f12dd7295986d4b81440a1b5865431,
         type: 3}
@@ -17195,6 +17195,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1754969951}
     m_Modifications:
+    - target: {fileID: 1094768540677155773, guid: a83932a86c972a641b380d484b5afc15,
+        type: 3}
+      propertyPath: m_Name
+      value: Curtain
+      objectReference: {fileID: 0}
     - target: {fileID: 1094768540677155762, guid: a83932a86c972a641b380d484b5afc15,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -17299,11 +17304,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1094768540677155773, guid: a83932a86c972a641b380d484b5afc15,
-        type: 3}
-      propertyPath: m_Name
-      value: Curtain
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a83932a86c972a641b380d484b5afc15, type: 3}
@@ -24094,6 +24094,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1102976124}
     m_Modifications:
+    - target: {fileID: 1094768540677155773, guid: a83932a86c972a641b380d484b5afc15,
+        type: 3}
+      propertyPath: m_Name
+      value: Curtain
+      objectReference: {fileID: 0}
     - target: {fileID: 1094768540677155762, guid: a83932a86c972a641b380d484b5afc15,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -24198,11 +24203,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1094768540677155773, guid: a83932a86c972a641b380d484b5afc15,
-        type: 3}
-      propertyPath: m_Name
-      value: Curtain
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a83932a86c972a641b380d484b5afc15, type: 3}
@@ -29294,7 +29294,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1376612666}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -21.5, y: 5.5, z: 0}
+  m_LocalPosition: {x: -25, y: 5.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1421011676}
@@ -31581,7 +31581,7 @@ PrefabInstance:
     - target: {fileID: 5790784241146373815, guid: 3675bb66787ecc6469940247d95302d8,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2422742550461402308, guid: 3675bb66787ecc6469940247d95302d8,
         type: 3}

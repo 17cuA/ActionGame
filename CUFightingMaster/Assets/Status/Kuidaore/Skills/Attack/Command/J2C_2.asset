@@ -18,8 +18,7 @@ MonoBehaviour:
   status: 1
   frameEffects:
   - frame: 0
-    effect: {fileID: 7994553803698580067, guid: 9ff1d0ad705eded4b8fc49fc1a22034f,
-      type: 3}
+    effect: {fileID: 114260363516865620, guid: bc60746118ab6894b96755f747b90124, type: 3}
     childFlag: 0
     worldPositionFlag: 0
     isDeleteObj: 0
@@ -46,7 +45,60 @@ MonoBehaviour:
   plusFootHitBox: []
   plusGrabHitBox: []
   plusPushingHitBox: []
-  customHitBox: []
+  customHitBox:
+  - mode: 0
+    frameHitBoxes:
+    - isFalse: 0
+      isInfinityFrame: 0
+      hitBox:
+        size: {x: 5, y: 2, z: 0}
+        localPosition: {x: 0, y: 0.5, z: 0}
+      startFrame: 0
+      endFrame: 19
+    hitStop: 0
+    hitPoint: 0
+    hitStrength: 0
+    damage: 100
+    stanDamage: 0
+    knockBack: 0
+    airKnockBack: 0
+    guardKnockBack: 0
+    hitEffects:
+    - isEnemyPos: 1
+      isParant: 0
+      isEnemyParant: 0
+      effect: {fileID: 1722284782620667795, guid: fc923a13308d53749ac62f505c756f19,
+        type: 3}
+      guardEffect: {fileID: 822153979730028474, guid: 062c122a40345df47aff4840e9096438,
+        type: 3}
+      position: {x: 0, y: 1, z: 0}
+    isDown: 1
+    isThrow: 0
+    isThrowGroundDamage: 0
+    isThrowGroundAnimEnd: 0
+    airDamageMovements: []
+    throwGroundDamage: 0
+    throwSkill: {fileID: 0}
+    enemyThrowSkill: {fileID: 0}
+    throwDamages: []
+    isJumpCancel: 0
+    isContinue: 0
+    movements:
+    - isGravityInvaid: 0
+      isResetStartGravity: 1
+      isResetEndGravity: 0
+      isImpact: 0
+      isBound: 0
+      boundMovements: []
+      movement: {x: -3, y: 1, z: 0}
+      startFrame: 0
+    gravityMoves: []
+    isFaceDown: 0
+    isPassiveNotPossible: 0
+    hitRigor: 0
+    guardHitRigor: 0
+    plusGauge: 1
+    enemyPlusGauge: 1
   isContinue: 1
   isMoveContinue: 0
   movements:
@@ -70,8 +122,8 @@ MonoBehaviour:
   timeStops:
     startFrame: 0
     endFrame: 0
-  headFlag: 1
+  headFlag: 0
   bodyFlag: 1
-  footFlag: 1
-  grabFlag: 1
-  pushingFlag: 1
+  footFlag: 0
+  grabFlag: 0
+  pushingFlag: 0

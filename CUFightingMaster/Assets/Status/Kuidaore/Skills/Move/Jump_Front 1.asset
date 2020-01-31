@@ -34,10 +34,24 @@ MonoBehaviour:
     leftCamera: {fileID: 0}
   isInvincibleBullet: 0
   plusHeadHitBox: []
-  plusBodyHitBox: []
+  plusBodyHitBox:
+  - isFalse: 0
+    isInfinityFrame: 0
+    hitBox:
+      size: {x: 0, y: 1, z: 0}
+      localPosition: {x: 0, y: -0.5, z: 0}
+    startFrame: 0
+    endFrame: 46
   plusFootHitBox: []
   plusGrabHitBox: []
-  plusPushingHitBox: []
+  plusPushingHitBox:
+  - isFalse: 0
+    isInfinityFrame: 0
+    hitBox:
+      size: {x: -0.5, y: -1.5, z: 0}
+      localPosition: {x: 0, y: 0.5, z: 0}
+    startFrame: 0
+    endFrame: 46
   customHitBox: []
   isContinue: 0
   isMoveContinue: 0
@@ -57,8 +71,8 @@ MonoBehaviour:
   timeStops:
     startFrame: 0
     endFrame: 0
-  headFlag: 1
+  headFlag: 0
   bodyFlag: 1
-  footFlag: 1
-  grabFlag: 1
+  footFlag: 0
+  grabFlag: 0
   pushingFlag: 1
