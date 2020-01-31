@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// 
+/// カーソルのベースクラス。これを継承させてアップデートすればカーソルを作れる
 /// </summary>
 /// <typeparam name="T">Enumで属性を作る</typeparam>
 /// <typeparam name="Gamobject">動かしたいオブジェクトの型を入れる(基本GameObjectで大丈夫)</typeparam>
@@ -62,7 +62,10 @@ public class CursolBase<TEnum, TGameObject> : MonoBehaviour where TEnum : System
 		moveobject = _moveObject as TGameObject;
 		SetController();
 	}
-
+	/// <summary>
+	/// カーソルのアップデート(このメソッドを毎フレーム呼び出す)
+	/// </summary>
+	/// <param name="_movePosition">動かす位置のオブジェクト</param>
 	public void CursolUpdate(GameObject[] _movePosition)
 	{
 		moveCursorFrame += Time.deltaTime;
@@ -110,7 +113,10 @@ public class CursolBase<TEnum, TGameObject> : MonoBehaviour where TEnum : System
 			moveCursorFrame = 1.0f;
 		}
 	}
-
+	/// <summary>
+	/// カーソルを移動させる核になる
+	/// </summary>
+	/// <param name="_movePosition">動かす位置になるオブジェクト</param>
 	public void InputCursolDirection(GameObject[] _movePosition)
 	{
 		if (inputDirection.x > 0)
@@ -134,7 +140,6 @@ public class CursolBase<TEnum, TGameObject> : MonoBehaviour where TEnum : System
 
 		moveCursorFrame = 0.0f;
 	}
-
 	/// <summary>
 	/// カーソルの位置(posirion)を移動させる
 	/// </summary>
@@ -169,7 +174,6 @@ class SEnum<T> where T : System.Enum
 	{
 		currentNumber = _initNumber;
 	}
-
 	/// <summary>
 	/// インクリメント(++)
 	/// </summary>
