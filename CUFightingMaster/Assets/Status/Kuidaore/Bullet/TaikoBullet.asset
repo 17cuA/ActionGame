@@ -106,7 +106,15 @@ MonoBehaviour:
     isThrow: 0
     isThrowGroundDamage: 0
     isThrowGroundAnimEnd: 0
-    airDamageMovements: []
+    airDamageMovements:
+    - isGravityInvaid: 0
+      isResetStartGravity: 1
+      isResetEndGravity: 0
+      isImpact: 1
+      isBound: 0
+      boundMovements: []
+      movement: {x: 0, y: 0, z: 0}
+      startFrame: 0
     throwGroundDamage: 0
     throwSkill: {fileID: 0}
     enemyThrowSkill: {fileID: 0}
@@ -117,7 +125,7 @@ MonoBehaviour:
     gravityMoves: []
     isFaceDown: 0
     isPassiveNotPossible: 0
-    hitRigor: 25
+    hitRigor: 35
     guardHitRigor: 10
     plusGauge: 1
     enemyPlusGauge: 2

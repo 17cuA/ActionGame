@@ -18,7 +18,7 @@ MonoBehaviour:
   status: 1
   frameEffects: []
   frameBullets: []
-  cancelFrag: 11
+  cancelFrag: 10
   endNextAnimation: {fileID: 0}
   endNextWeight: 0
   groundLandingSkill: {fileID: 0}
@@ -53,8 +53,8 @@ MonoBehaviour:
     hitStrength: 2
     damage: 500
     stanDamage: 0
-    knockBack: 1.5
-    airKnockBack: 0.2
+    knockBack: 1
+    airKnockBack: 1
     guardKnockBack: 1.2
     hitEffects:
     - isEnemyPos: 0
@@ -80,10 +80,10 @@ MonoBehaviour:
     - isGravityInvaid: 0
       isResetStartGravity: 1
       isResetEndGravity: 0
-      isImpact: 0
+      isImpact: 1
       isBound: 0
       boundMovements: []
-      movement: {x: 0, y: 5, z: 0}
+      movement: {x: 0, y: 3, z: 0}
       startFrame: 0
     throwGroundDamage: 0
     throwSkill: {fileID: 0}
