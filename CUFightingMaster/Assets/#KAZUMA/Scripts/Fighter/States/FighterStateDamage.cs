@@ -171,10 +171,14 @@ public class FighterStateDamage : StateBaseScriptMonoBehaviour
         }
         //エフェクト再生
         BoxCollider _bCol = stateBase.core.GetDamageCollider;
-        Transform t = _bCol.gameObject.transform;
-        CreateHitEffects(_bCol, t,box);
-        //遠距離の場合は相手側ノックバックなし
-        if (box.mode != HitBoxMode.Bullet)
+		if (_bCol != null)
+		{
+			Transform t = _bCol.gameObject.transform;
+			CreateHitEffects(_bCol, t, box);
+		}
+
+		//遠距離の場合は相手側ノックバックなし
+		if (box.mode != HitBoxMode.Bullet)
         {
             stateBase.core.SetKnockBack(false, box.knockBack, stateBase.core.EnemyNumber, tmpDir);
         }
@@ -281,8 +285,11 @@ public class FighterStateDamage : StateBaseScriptMonoBehaviour
 
 		//エフェクト再生
 		BoxCollider _bCol = stateBase.core.GetDamageCollider;
-		Transform t = _bCol.gameObject.transform;
-        CreateHitEffects(_bCol, t,box);
+		if (_bCol != null)
+		{
+			Transform t = _bCol.gameObject.transform;
+			CreateHitEffects(_bCol, t, box);
+		}
 
 		//ノックバックのセット
 		//遠距離の場合は相手側ノックバックなし

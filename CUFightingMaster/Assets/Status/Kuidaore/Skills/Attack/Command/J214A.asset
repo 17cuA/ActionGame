@@ -1,0 +1,67 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fbd35985d310504d81036cc55356454, type: 3}
+  m_Name: J214A
+  m_EditorClassIdentifier: 
+  skillLayer: 0
+  animationClip: {fileID: 7400000, guid: 4edf78cfc11c4364b8a8c57eb62226ec, type: 2}
+  animationSpeed: 0.5
+  status: 2
+  frameEffects: []
+  frameBullets:
+  - frame: 0
+    bullet: {fileID: 2687894240240876429, guid: 2e0120bec8c8f174198c1e3bc6704de4,
+      type: 3}
+    childFlag: 0
+    worldPositionFlag: 0
+    position: {x: 1.5, y: 0, z: 0}
+  cancelFrag: 0
+  endNextAnimation: {fileID: 0}
+  endNextWeight: 0
+  groundLandingSkill: {fileID: 0}
+  groundLandingWeight: 0
+  isGroundEnd: 0
+  barrageCancelFrag: 0
+  cancelLayer: 
+  inBlend: 0
+  outBlend: 0
+  cameraPlay:
+    startFrame: 0
+    rightCamera: {fileID: 0}
+    leftCamera: {fileID: 0}
+  isInvincibleBullet: 0
+  plusHeadHitBox: []
+  plusBodyHitBox: []
+  plusFootHitBox: []
+  plusGrabHitBox: []
+  plusPushingHitBox: []
+  customHitBox: []
+  isContinue: 0
+  isMoveContinue: 0
+  movements:
+  - isGravityInvaid: 0
+    isResetStartGravity: 0
+    isResetEndGravity: 1
+    isImpact: 0
+    isBound: 0
+    boundMovements: []
+    movement: {x: -1, y: 3, z: 0}
+    startFrame: 0
+  gravityMoves: []
+  timeStops:
+    startFrame: 0
+    endFrame: 0
+  headFlag: 1
+  bodyFlag: 1
+  footFlag: 1
+  grabFlag: 1
+  pushingFlag: 1
