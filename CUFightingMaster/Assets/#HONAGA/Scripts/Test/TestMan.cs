@@ -4,7 +4,7 @@
 //using System
 //	;
 
-//public class TestMan:MonoBehaviour
+//public class TestMan : MonoBehaviour
 //{
 //	public enum EStatus
 //	{
@@ -15,19 +15,19 @@
 //	public AnimationClip stopAnimation;
 //	public AnimationClip walkingAnimation;
 
-//	public Dictionary<EStatus,TestBase> animationStatus = new Dictionary<EStatus, TestBase>();
+//	public Dictionary<EStatus, TestBase> animationStatus = new Dictionary<EStatus, TestBase>();
 
 //	public TestBase nowStatus;
 
 //	public void Awake()
 //	{
-//		animationStatus.Add(EStatus.stop,new Stop(stopAnimation));
-//		animationStatus.Add(EStatus.walking,new Walking(walkingAnimation));
+//		animationStatus.Add(EStatus.stop, new Stop(stopAnimation));
+//		animationStatus.Add(EStatus.walking, new Walking(walkingAnimation));
 //	}
 
 //	public void Update()
 //	{
-//		switch(/*ランダム*/)
+//		switch (Random())
 //		{
 //			case EStatus.stop:
 //				ChangeStatus(EStatus.stop);
@@ -49,10 +49,10 @@
 //	}
 //}
 
-//public class Stop:TestBase
+//public class Stop : TestBase
 //{
 
-//	public Stop(AnimationClip _animationClip):base(_animationClip)
+//	public Stop(AnimationClip _animationClip) : base(_animationClip)
 //	{
 //	}
 //	public override void TestMethod()
@@ -61,13 +61,13 @@
 //	}
 //}
 
-//public class Walking:TestBase
+//public class Walking : TestBase
 //{
-//	public Walking(AnimationClip _animationClip):base(_animationClip){}
+//	public Walking(AnimationClip _animationClip) : base(_animationClip) { }
 
 //	public override void TestMethod()
 //	{
-		
+
 //	}
 //}
 
@@ -79,6 +79,6 @@
 //	{
 //		animationClip = _animationClip;
 //	}
-	
+
 //	public abstract void TestMethod();
 //}
