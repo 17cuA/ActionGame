@@ -16,22 +16,7 @@ MonoBehaviour:
   animationClip: {fileID: 7400000, guid: e952b59fe00d579438cab7bf88b851ff, type: 2}
   animationSpeed: 1
   status: 16
-  frameEffects:
-  - frame: 0
-    effect: {fileID: 5180684279583988672, guid: 799edc26966f4d24c943430714006565,
-      type: 3}
-    childFlag: 1
-    worldPositionFlag: 0
-    isDeleteObj: 0
-    isScaled: 0
-    position: {x: 0, y: 1.85, z: 0}
-  - frame: 0
-    effect: {fileID: 0}
-    childFlag: 0
-    worldPositionFlag: 0
-    isDeleteObj: 0
-    isScaled: 0
-    position: {x: 0, y: 2.25, z: 0}
+  frameEffects: []
   frameBullets: []
   cancelFrag: 0
   endNextAnimation: {fileID: 0}
@@ -71,7 +56,14 @@ MonoBehaviour:
     knockBack: 0
     airKnockBack: 0
     guardKnockBack: 0
-    hitEffects: []
+    hitEffects:
+    - isEnemyPos: 0
+      isParant: 0
+      isEnemyParant: 0
+      effect: {fileID: 5180684279583988672, guid: 799edc26966f4d24c943430714006565,
+        type: 3}
+      guardEffect: {fileID: 0}
+      position: {x: -1.625, y: 0, z: 0}
     isDown: 0
     isThrow: 1
     isThrowGroundDamage: 1
