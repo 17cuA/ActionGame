@@ -9,21 +9,24 @@ public class ResultNomalAnimationController : MonoBehaviour
 	public NomalAnimationPlayer[] nomalAnimationPlayers = new NomalAnimationPlayer[2];
 	private Animationdata[] animationdatas = new Animationdata[2];
 
-	public void Disabled()
+	/// <summary>
+	/// モデルについてるNomalAniamitonとAnimatondataを操作する、
+	/// </summary>
+	/// 勝った方のモデルは無効化、負けた方はループアニメするため、AnimatonDataだけ無効化
+	public void DisabledNomalAnimationModels ()
 	{
 		for (int i = 0; i < 2; i++)
 		{
-			animationdatas[i].enabled = false;
-		}
-	}
-
-	public void EnabledLoser()
-	{
-		for (int i = 0; i < 2; i++)
-		{
-			if(GameDataStrage.Instance.matchResult[i] == MatchResult.WIN)
+			if (GameDataStrage.Instance.matchResult[i] == MatchResult.WIN)
 			{
+				//animationdatas[i].enabled = true;
 				nomalAnimationPlayers[i].enabled = false;
+				animationdatas[i].enabled = false;
+			}
+			else
+			{
+				animationdatas[i].enabled = false;
+				nomalAnimationPlayers[i].SetIdling(resultTimelineCreater.GetAnimationClip(i),0.3f);
 			}
 		}
 	}
@@ -34,7 +37,7 @@ public class ResultNomalAnimationController : MonoBehaviour
 		{
 			nomalAnimationPlayers[i] = fighterCreater.GeReftNomalAnimationPlayer(i);
 			animationdatas[i] = fighterCreater.GetRefAnimatondata(i);
-			nomalAnimationPlayers[i].SetIdling(resultTimelineCreater.GetAnimationClip(i), 0.5f);
+			nomalAnimationPlayers[i].SetIdling(resultTimelineCreater.GetAnimationClip(i), 0.3f);
 		}
 	}
 }

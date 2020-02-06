@@ -15,8 +15,16 @@ public class CanvasController_Result : MonoBehaviour
     [SerializeField] private AnimationUIManager UIAnimator_2;
 	[SerializeField] private UIMover UIMover_1;
 	[SerializeField] private UIMover UIMover_2;
+	[SerializeField] private WinOrLoseDisplay winOrLoseDisplay_1;
+	[SerializeField] private WinOrLoseDisplay winOrLoseDisplay_2;
+	[SerializeField] private RoundGetDisplay roundGetDisplay_1;
+	[SerializeField] private RoundGetDisplay roundGetDisplay_2;
+	[SerializeField] private ScoreDisplay scoreDisplay_damage_1;
+	[SerializeField] private ScoreDisplay scoreDisplay_damage_2;
+	[SerializeField] private ScoreDisplay scoreDisplay_HP_1;
+	[SerializeField] private ScoreDisplay scoreDisplay_HP_2;
 
-    private void Awake()
+	private void Awake()
     {
         if (canvas_Display1 == null || canvas_Display2 == null)
             Debug.LogError("参照ミス : CanvacControllerにCanvasを追加してください");
@@ -90,34 +98,51 @@ public class CanvasController_Result : MonoBehaviour
         return false;
     }
 
-    public void PlayUIAnime()
-    {
-        UIAnimator_1.isStart = true;
-        UIAnimator_2.isStart = true;
-    }
-    public bool IsEndUIAnime()
-    {
-        bool isEnd1 = UIAnimator_1.isStart;
-        bool isEnd2 = UIAnimator_2.isStart;
-
-        if (isEnd1 == false && isEnd2 == false)
-            return true;
-        return false;
-    }
-
-	public bool MoveUIGroup1()
+	public void MoveUIGroup1()
 	{
-		bool isEnd1= UIMover_1.Group1Move();
-		bool isEnd2 = UIMover_2.Group1Move();
-
-		if (isEnd1 && isEnd2)
-			return true;
-		return false;
+		UIMover_1.Move(0);
+		UIMover_2.Move(0);
 	}
 
 	public void MoveUIGroup2()
 	{
-		UIMover_1.Group2Move();
-		UIMover_2.Group2Move();
+		UIMover_1.Move(1);
+		UIMover_2.Move(1);
+	}
+
+	public void MoveUIGroup3()
+	{
+		UIMover_1.Move(2);
+		UIMover_2.Move(2);
+	}
+	public void MoveUIGroup4()
+	{
+		UIMover_1.Move(3);
+		UIMover_2.Move(3);
+	}
+
+	public void P1WinDisplay()
+	{
+		winOrLoseDisplay_1.P1WinDisplay();
+		winOrLoseDisplay_2.P1WinDisplay();
+	}
+
+	public void P2WinDisplay()
+	{
+		winOrLoseDisplay_1.P2WinDisplay();
+		winOrLoseDisplay_2.P2WinDisplay();
+	}
+	public void RoundGetDisplay()
+	{
+		roundGetDisplay_1.Display();
+		roundGetDisplay_2.Display();
+	}
+
+	public void PassHPtoScore()
+	{
+		scoreDisplay_HP_1.num = GameDataStrage.Instance.remainingHp[(int)PlayerNumber.Player1];
+		scoreDisplay_HP_2.num = GameDataStrage.Instance.remainingHp[(int)PlayerNumber.Player2];
+		scoreDisplay_damage_1.num = GameDataStrage.Instance.givenDamage[(int)PlayerNumber.Player1];
+		scoreDisplay_damage_2.num = GameDataStrage.Instance.givenDamage[(int)PlayerNumber.Player2];
 	}
 }

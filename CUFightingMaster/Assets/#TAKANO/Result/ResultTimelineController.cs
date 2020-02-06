@@ -53,7 +53,7 @@ public class ResultTimelineController : MonoBehaviour
 	}
 
 	/// <summary>
-	/// それぞれのタイムラインが停止したか
+	/// 二つのタイムラインが停止したか
 	/// </summary>
 	/// <returns></returns>
 	public bool isEndPlayTimelines()
@@ -63,6 +63,10 @@ public class ResultTimelineController : MonoBehaviour
 		return false;
 	}
 
+	/// <summary>
+	/// タイムライン終了時にイベントを追加する
+	/// </summary>
+	/// <param name="_director"></param>
 	public void OnPlayableDirector1Stopped(PlayableDirector _director)
 	{
 		isEndTimeline_1 = true;
@@ -71,7 +75,6 @@ public class ResultTimelineController : MonoBehaviour
 	{
 		isEndTimeline_2 = true;
 	}
-
 
 	public void Start()
 	{

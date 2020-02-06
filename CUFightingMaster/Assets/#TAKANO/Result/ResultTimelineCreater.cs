@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Playables;
 using UnityEngine.Timeline;
+using Cinemachine;
 
 //		    | 勝った(0) |    負けた(1)     |
 // clico(0) | tracks    |     tracks      |
@@ -11,8 +12,8 @@ using UnityEngine.Timeline;
 public class ResultTimelineCreater : MonoBehaviour
 {
 	[SerializeField] private List<TimeLineElements> timeLineList = new List<TimeLineElements>();
-	int[] fighterNum = new int[2];
-	int[] victoryNum = new int[2];
+	public int[] fighterNum = new int[2];
+	public int[] victoryNum = new int[2];
 
 	public GameObject CreateTimeline(int i)
 	{

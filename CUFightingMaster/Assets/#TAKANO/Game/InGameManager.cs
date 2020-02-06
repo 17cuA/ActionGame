@@ -156,23 +156,34 @@ public class InGameManager : SingletonMono<InGameManager>
                 if (GameManager.Instance.Player_one.HP > GameManager.Instance.Player_two.HP)
                 {
                     getRoundCount[0] += "1";
-                    gameRoundCount++;
+					GameDataStrage.Instance.roundResult[gameRoundCount] = RoundResult.P1WIN;
+					gameRoundCount++;
+
                 }
                 else if (GameManager.Instance.Player_one.HP < GameManager.Instance.Player_two.HP)
                 {
                     getRoundCount[1] += "1";
-                    gameRoundCount++;
+					GameDataStrage.Instance.roundResult[gameRoundCount] = RoundResult.P2WIN;
+					gameRoundCount++;
                 }
                 else
                 {
                     //DoubleKO
                     getRoundCount[0] += "2";
                     getRoundCount[1] += "2";
-                    gameRoundCount++;
+					GameDataStrage.Instance.roundResult[gameRoundCount] = RoundResult.DRAW;
+					gameRoundCount++;
                 }
-                currentUpdate = FinishRound_KO;
                 GameManager.Instance.isStartGame = false;
-            }
+
+				//ResultのためにHPほぞん
+				GameDataStrage.Instance.remainingHp[0] += GameManager.Instance.Player_one.HP;
+				GameDataStrage.Instance.remainingHp[1] += GameManager.Instance.Player_two.HP;
+				GameDataStrage.Instance.givenDamage[0] += GameManager.Instance.Player_two.Status.HP - GameManager.Instance.Player_two.HP;
+				GameDataStrage.Instance.givenDamage[1] += GameManager.Instance.Player_one.Status.HP - GameManager.Instance.Player_one.HP;
+
+				currentUpdate = FinishRound_KO;
+			}
             //TimeOverになったら
             else if (canvasController.Call_DoEndCountDown() == false)
             {
@@ -180,22 +191,32 @@ public class InGameManager : SingletonMono<InGameManager>
                 if (GameManager.Instance.Player_one.HP > GameManager.Instance.Player_two.HP)
                 {
                     getRoundCount[0] += "3";
-                    gameRoundCount++;
+					GameDataStrage.Instance.roundResult[gameRoundCount] = RoundResult.P1WIN;
+					gameRoundCount++;
                 }
                 else if (GameManager.Instance.Player_one.HP < GameManager.Instance.Player_two.HP)
                 {
                     getRoundCount[1] += "3";
-                    gameRoundCount++;
+					GameDataStrage.Instance.roundResult[gameRoundCount] = RoundResult.P2WIN;
+					gameRoundCount++;
                 }
                 else
                 {
-                    getRoundCount[0] += "3";
+					GameDataStrage.Instance.roundResult[gameRoundCount] = RoundResult.DRAW;
+					getRoundCount[0] += "3";
                     getRoundCount[1] += "3";
                     gameRoundCount++;
                 }
-                currentUpdate = FinishRound_TimeOver;
-                GameManager.Instance.isStartGame = false;
-            }
+               
+				//Resultのためにhp保存
+				GameDataStrage.Instance.remainingHp[0] += GameManager.Instance.Player_one.HP;
+				GameDataStrage.Instance.remainingHp[1] += GameManager.Instance.Player_two.HP;
+				GameDataStrage.Instance.givenDamage[0] += GameManager.Instance.Player_two.Status.HP - GameManager.Instance.Player_two.HP;
+				GameDataStrage.Instance.givenDamage[1] += GameManager.Instance.Player_one.Status.HP - GameManager.Instance.Player_one.HP;
+
+				GameManager.Instance.isStartGame = false;
+				currentUpdate = FinishRound_TimeOver;
+			}
         }
     }
 	#endregion
@@ -249,7 +270,7 @@ public class InGameManager : SingletonMono<InGameManager>
         }
     }
 	#endregion
-
+	 
 	#region 各パラメータのリセット
 	/// <summary>
 	/// 各パラメータのリセット
@@ -361,6 +382,7 @@ public class InGameManager : SingletonMono<InGameManager>
         currentUpdate = StartGame;
         Sound.PlayBGM("BGM_Battle", 1, 1.0f, true);
 
+		
 	}
 
     void Update()
