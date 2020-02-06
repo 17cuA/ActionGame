@@ -13,7 +13,7 @@ public class AnimationEditor : EditorWindow
     public static void Open()
     {
         var window = GetWindow<AnimationEditor>();
-		window.minSize = new Vector2(300, 55);
+		window.minSize = new Vector2(300, 75);
     }
 
     private void OnGUI()
@@ -23,21 +23,24 @@ public class AnimationEditor : EditorWindow
         // FBX以外入らないようにする
 		string path = AssetDatabase.GetAssetPath(fbx);
 		if (Path.GetExtension(path.ToLower()) != ".fbx") fbx = null;
-		// 取得したパスからオブジェクトのAssetImporterを取得
-		ModelImporter importer = AssetImporter.GetAtPath(path) as ModelImporter;
 		// テキストファイル
-		animationClipList = EditorGUILayout.ObjectField("AnimationClipList", animationClipList, typeof(TextAsset), false) as TextAsset;
-        if (GUILayout.Button("Set AnimationClip", GUILayout.Height(20), GUILayout.ExpandWidth(true)))
+		animationClipList = EditorGUILayout.ObjectField("AnimationClipのリスト", animationClipList, typeof(TextAsset), false) as TextAsset;
+		// AnimationClipの分割
+        if (GUILayout.Button("AnimationClipの分割", GUILayout.Height(20), GUILayout.ExpandWidth(true)))
 		{
 			if (fbx && animationClipList)
 			{
-				AnimationClipProcessor.SetModelImportSettings(importer, animationClipList);
+				AnimationClipProcessor.SetModelImportSettings(path, animationClipList);
 			}
 		}
-		if (GUILayout.Button("Set FighterSkill", GUILayout.Height(20), GUILayout.ExpandWidth(true)))
+		// FighterSkillへのアタッチ
+		if (GUILayout.Button("FighterSkillに設定", GUILayout.Height(20), GUILayout.ExpandWidth(true)))
 		{
-			AnimationClipSetter.SetAnimationClipToFighterSkill(path);
+			if (fbx)
+			{
+				AnimationClipSetter.SetAnimationClipToFighterSkill(path);
+			}
 		}
-    }
+	}
 }
 #endif

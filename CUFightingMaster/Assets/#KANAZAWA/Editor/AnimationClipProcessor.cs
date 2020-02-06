@@ -20,10 +20,11 @@ public class AnimationClipProcessor : AssetPostprocessor
 	/// </summary>
 	/// <param name="_fbx">設定するFBX</param>
 	/// <param name="_clipList">Clipの切り取りが記載されているテキストファイル</param>
-    public static void SetModelImportSettings(ModelImporter _importer, TextAsset _clipList)
+    public static void SetModelImportSettings(string _path, TextAsset _clipList)
     {
         var list = new ArrayList();
-        var text = new TextLoader();
+		var text = new TextLoader();
+		ModelImporter importer = AssetImporter.GetAtPath(_path) as ModelImporter;
 
 		// 読み込むテキストファイルを渡し、情報を受け取る
 		string[,] animationClipList = text.GetText(_clipList);
@@ -65,12 +66,12 @@ public class AnimationClipProcessor : AssetPostprocessor
             list.Add(clip);
         }
 		// 引数のオブジェクトのClipAnimationを変更
-		_importer.clipAnimations = (ModelImporterClipAnimation[])list.ToArray(typeof(ModelImporterClipAnimation));
+		importer.clipAnimations = (ModelImporterClipAnimation[])list.ToArray(typeof(ModelImporterClipAnimation));
 		// Humanoidに設定
-		_importer.animationType = ModelImporterAnimationType.Human;
+		importer.animationType = ModelImporterAnimationType.Human;
 
 		// エラーが出なかった場合のみ読み込む
-		if (success) AssetDatabase.ImportAsset(AssetDatabase.GetAssetPath(_importer));
+		if (success) AssetDatabase.ImportAsset(AssetDatabase.GetAssetPath(importer));
 	}
 }
 #endif
