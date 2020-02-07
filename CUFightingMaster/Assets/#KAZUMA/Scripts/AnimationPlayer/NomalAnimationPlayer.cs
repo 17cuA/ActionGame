@@ -14,7 +14,7 @@ public class NomalAnimationPlayer : AnimationPlayerBase
         {
             if(EndAnimFrag)
             {
-                SetPlayAnimation(idlingAnimation, 1, 0);
+                SetPlayAnimation(idlingAnimation, 0.5f, 0);
             }
         }
 	}

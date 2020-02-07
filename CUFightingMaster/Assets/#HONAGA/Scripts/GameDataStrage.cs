@@ -36,8 +36,6 @@ public class GameDataStrage : MonoBehaviour
 		// 他のゲームオブジェクトにアタッチされているか調べる
 		// アタッチされている場合は破棄する
 		CheckInstance();
-
-
 	}
 
 	protected bool CheckInstance()
@@ -65,10 +63,11 @@ public class GameDataStrage : MonoBehaviour
 	public int plusAttackDamage_One = 0;
 	public int plusAttackDamage_Two = 0;
 
-	public bool winFlag_PlayerOne;
-	public bool winFlag_PlayerTwo;
-
+	public RoundResult[] roundResult = new RoundResult[3];
 	public MatchResult[] matchResult = new MatchResult[2];
+
+	public int[] remainingHp = new int[2];
+	public int[] givenDamage = new int[2];
 
 	//デバッグ用のダメージ
 	public void SetPlusDamage(PlayerNumber _num,int _dam)
@@ -92,5 +91,10 @@ public class GameDataStrage : MonoBehaviour
 			return plusAttackDamage_Two;
 		}
 		return 0;
+	}
+
+	public void Start()
+	{
+
 	}
 }

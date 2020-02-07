@@ -15,59 +15,178 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.Playables;
+using UnityEngine.Timeline;
+using Cinemachine;
+using UnityEngine.SceneManagement;
 
 public class ResultManager_ : MonoBehaviour
 {
-	enum FighterType
-	{
-		CLICO,		//0
-		OBACHAN,	//1
-	}
-
 	[SerializeField] GameDataStrage gameDataStrage;
 	[SerializeField] FighterCreater fighterCreater;
-	[SerializeField] ResultTrackChanger resultTrackChanger;
 	[SerializeField] CanvasController_Result canvasController_Result;
-	[SerializeField] AnimaitonBindController animaitonBindController;
-	[SerializeField] CameraBindController cameraBindController;
+	[SerializeField] ResultTimelineController resultTimelineController;
+	[SerializeField] ResultNomalAnimationController resultNomalAnimationController;
 
-	private Action currentUpdate;
+	[SerializeField] private Action alreadyOneUpdate;
 
-	private GameObject fighter1;
-	private GameObject fighter2;
+
+	[SerializeField] private GameObject fighter1;
+	[SerializeField] private GameObject fighter2;
 
 	private int[] elementNum = new int[2];
 
-	private const int CLICO = 0;
-	private const int OBACHAN = 1;
-	private const int WIN = 0;
-	private const int LOSE = 1;
+	[SerializeField] private float waitTime;
 
-	void BindTimeline()
+	//てきとう
+	[SerializeField] CinemachineBrain cinemachineBrain1;
+	[SerializeField] CinemachineBrain cinemachineBrain2;
+
+	/// <summary>
+	/// UIの移動を開始
+	/// </summary>
+	private void StartMoveUI_1()
 	{
-		for(int i = 0; i < 2; i++ )
+		Invoke("MoveUIGroup1", 1.5f);
+	}
+	/// <summary>
+	/// UIの移動を開始
+	/// </summary>
+	private void StartMoveUI_2()
+	{
+		Invoke("MoveUIGroup2", 0.75f);
+		Invoke("MoveUIGroup3", 0.85f);
+		Invoke("MoveUIGroup4", 0.95f);
+	}
+	/// <summary>
+	/// UIの移動
+	/// </summary>
+	private void MoveUIGroup1()
+	{
+		canvasController_Result.MoveUIGroup1();
+	}
+	/// <summary>
+	/// UIの移動
+	/// </summary>
+	private void MoveUIGroup2()
+	{
+		canvasController_Result.MoveUIGroup2();
+	}
+	/// <summary>
+	/// UIの移動
+	/// </summary>
+	private void MoveUIGroup3()
+	{
+		canvasController_Result.MoveUIGroup3();
+	}
+	/// <summary>
+	/// UIの移動
+	/// </summary>
+	private void MoveUIGroup4()
+	{
+		canvasController_Result.MoveUIGroup4();
+	}
+	/// <summary>
+	/// Curtainが上に
+	/// </summary>
+	private void MoveUpCurtain()
+	{
+		if (canvasController_Result.UpCurtain())
+			alreadyOneUpdate = DisabledNomalAnimetion;
+	}
+	/// <summary>
+	/// 入力待ち
+	/// </summary>
+	void WaitInput()
+	{
+		if (Input.anyKeyDown && !Input.GetKeyDown(KeyCode.Escape) && !Input.GetKeyDown(KeyCode.F1) && !Input.GetKeyDown(KeyCode.F2) && !Input.GetKeyDown(KeyCode.F3) && !Input.GetKeyDown(KeyCode.F4))
 		{
-			animaitonBindController.AnimationClip = resultTrackChanger.GetTrack((int)GameDataStrage.Instance.matchResult[0],
-				GameDataStrage.Instance.fighterStatuses[0].PlayerID); 
-			cameraBindController.cinemachineBrain = resultTrackChanger.GetCinemachineBrain((int)GameDataStrage.Instance.matchResult[0],
-				GameDataStrage.Instance.fighterStatuses[0].PlayerID);
+			alreadyOneUpdate = DownCurtain;
+		}
+		waitTime -= Time.deltaTime;
+
+		if (waitTime < 0)
+		{
+			alreadyOneUpdate = DownCurtain;
+		}
+	}
+	/// <summary>
+	/// Curtainが下にCurtainが下に
+	/// </summary>
+	void DownCurtain()
+	{
+		Debug.Log("c");
+		if (canvasController_Result.DownCurtain())
+		{
+			Debug.Log("g");
+			alreadyOneUpdate = FadeOut;
+		}
+	}
+	/// <summary>
+	/// FadeOut
+	/// </summary>
+	void FadeOut()
+	{
+		if (canvasController_Result.StartFadeOut())
+		{
+			SceneManager.LoadScene("JECLogo");
 		}
 	}
 
+	private void DisabledNomalAnimetion()
+	{
+		resultNomalAnimationController.DisabledNomalAnimationModels();
+		alreadyOneUpdate = WaitInput;
+	}
 	// Start is called before the first frame update
 	void Start()
     {
+
+		Sound.PlayBGM("BGM_Result", 1, 1.0f, true);
 		//カーテンを閉じる
-		//canvasController_Result.InitDownCurtain();
+		canvasController_Result.InitDownCurtain();
+
 		//キャラクターの生成
 		fighterCreater.FighterCreate();
-		fighter1 = fighterCreater.Fighter1;
-		fighter2 = fighterCreater.Fighter2;
-	}
+		
+		//タイムラインの生成
+		resultTimelineController.CreateTimeline();
 
+		//タイムラインへの参照
+		resultTimelineController.RefTimeline();
+
+		//Curtainを上に
+		alreadyOneUpdate = MoveUpCurtain;
+		//UIの表示を更新
+
+		canvasController_Result.RoundGetDisplay();
+		canvasController_Result.PassHPtoScore();
+
+		//どちらのPlayerが勝ったかを取得、それらの処理
+		if(GameDataStrage.Instance.matchResult[0] == MatchResult.WIN)
+		{
+			canvasController_Result.P1WinDisplay();
+			cinemachineBrain2.enabled = false;
+		}
+		else
+		{
+			canvasController_Result.P2WinDisplay();
+			cinemachineBrain1.enabled = false;
+		}
+	}
     // Update is called once per frame
     void Update()
     {
-		currentUpdate();
-    }
+		alreadyOneUpdate();
+
+		//UI_1の移動を開始
+		StartMoveUI_1();
+
+		//タイムラインの再生が終わった
+		if (resultTimelineController.isEndPlayTimelines())
+		{
+			//Ui_2の移動を開始
+			StartMoveUI_2();
+		}
+	}
 }
