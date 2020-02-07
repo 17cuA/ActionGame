@@ -29,11 +29,11 @@
 //	{
 //		switch (Random())
 //		{
-//			case EStatus.stop:
+//			case (int)EStatus.stop:
 //				ChangeStatus(EStatus.stop);
 //				break;
 
-//			case EStatus.walking:
+//			case (int)EStatus.walking:
 //				ChangeStatus(EStatus.walking);
 //				break;
 //		}
@@ -51,7 +51,6 @@
 
 //public class Stop : TestBase
 //{
-
 //	public Stop(AnimationClip _animationClip) : base(_animationClip)
 //	{
 //	}
