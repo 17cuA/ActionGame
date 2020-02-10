@@ -6,10 +6,20 @@ using UnityEditor;
 
 public class AnimationEditor : EditorWindow
 {
-    public Object fbx = null;
-    public TextAsset animationClipList = null;
+    private Object fbx = null;
 
-    [MenuItem("Editor/AnimationClipSetter")]
+	public Object FBX
+	{
+		set
+		{
+			if (Path.GetExtension(AssetDatabase.GetAssetPath(value)) == ".FBX") fbx = value;
+		}
+		get { return fbx; }
+	}
+	public TextAsset AnimationClipList { set; get; } = null;
+	public string FilePath { set; get; } = null;
+
+	[MenuItem("Editor/AnimationClipSetter")]
     public static void Open()
     {
         var window = GetWindow<AnimationEditor>();
@@ -19,26 +29,25 @@ public class AnimationEditor : EditorWindow
     private void OnGUI()
     {
         // FBX
-        fbx = EditorGUILayout.ObjectField("FBX", fbx, typeof(Object), false);
-        // FBX以外入らないようにする
-		string path = AssetDatabase.GetAssetPath(fbx);
-		if (Path.GetExtension(path.ToLower()) != ".fbx") fbx = null;
+        FBX = EditorGUILayout.ObjectField("FBX", FBX, typeof(Object), false);
+        // FBXのパス獲得
+		FilePath = AssetDatabase.GetAssetPath(FBX);
 		// テキストファイル
-		animationClipList = EditorGUILayout.ObjectField("AnimationClipのリスト", animationClipList, typeof(TextAsset), false) as TextAsset;
+		AnimationClipList = EditorGUILayout.ObjectField("AnimationClipのリスト", AnimationClipList, typeof(TextAsset), false) as TextAsset;
 		// AnimationClipの分割
         if (GUILayout.Button("AnimationClipの分割", GUILayout.Height(20), GUILayout.ExpandWidth(true)))
 		{
-			if (fbx && animationClipList)
+			if (FBX && AnimationClipList)
 			{
-				AnimationClipProcessor.SetModelImportSettings(path, animationClipList);
+				AnimationClipProcessor.SetModelImportSettings(FilePath, AnimationClipList);
 			}
 		}
 		// FighterSkillへのアタッチ
 		if (GUILayout.Button("FighterSkillに設定", GUILayout.Height(20), GUILayout.ExpandWidth(true)))
 		{
-			if (fbx)
+			if (FBX)
 			{
-				AnimationClipSetter.SetAnimationClipToFighterSkill(path);
+				AnimationClipSetter.SetAnimationClipToFighterSkill(FilePath);
 			}
 		}
 	}

@@ -13,7 +13,6 @@ public class AnimationClipProcessor : AssetPostprocessor
         lastFrame,
         isLoop,
     }
-	private static bool success = true;
 
 	/// <summary>
 	/// モデルのImportSettingを設定
@@ -27,11 +26,10 @@ public class AnimationClipProcessor : AssetPostprocessor
 		ModelImporter importer = AssetImporter.GetAtPath(_path) as ModelImporter;
 
 		// 読み込むテキストファイルを渡し、情報を受け取る
-		string[,] animationClipList = text.GetText(_clipList);
+		string[,] animationClipList = text.LoadText(_clipList);
 		if (animationClipList == null)
 		{
 			EditorUtility.DisplayDialog("Error", "TextFile not found.", "OK");
-			success = false;
 			return;
 		}
         // リストに項目を追加
@@ -71,7 +69,7 @@ public class AnimationClipProcessor : AssetPostprocessor
 		importer.animationType = ModelImporterAnimationType.Human;
 
 		// エラーが出なかった場合のみ読み込む
-		if (success) AssetDatabase.ImportAsset(AssetDatabase.GetAssetPath(importer));
+		AssetDatabase.ImportAsset(AssetDatabase.GetAssetPath(importer));
 	}
 }
 #endif
