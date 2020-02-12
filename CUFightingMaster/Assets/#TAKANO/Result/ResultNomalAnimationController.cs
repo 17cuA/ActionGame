@@ -38,7 +38,7 @@ public class ResultNomalAnimationController : MonoBehaviour
 		{
 			nomalAnimationPlayers[i] = fighterCreater.GeReftNomalAnimationPlayer(i);
 			//animationdatas[i] = fighterCreater.GetRefAnimatondata(i);
-			nomalAnimationPlayers[i].SetIdling(resultTimelineCreater.GetAnimationClip(i), 0.3f);
+			//nomalAnimationPlayers[i].SetIdling(loseLoopAnimaton, 0.3f);
 		}
 	}
 }

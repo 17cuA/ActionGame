@@ -36,6 +36,9 @@ public class GameDataStrage : MonoBehaviour
 		// 他のゲームオブジェクトにアタッチされているか調べる
 		// アタッチされている場合は破棄する
 		CheckInstance();
+
+		matchResult[0] = MatchResult.WIN;
+		matchResult[1] = MatchResult.LOSE;
 	}
 
 	protected bool CheckInstance()
