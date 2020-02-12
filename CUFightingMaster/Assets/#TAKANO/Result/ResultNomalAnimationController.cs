@@ -8,6 +8,7 @@ public class ResultNomalAnimationController : MonoBehaviour
 	[SerializeField] FighterCreater fighterCreater;
 	public NomalAnimationPlayer[] nomalAnimationPlayers = new NomalAnimationPlayer[2];
 	private Animationdata[] animationdatas = new Animationdata[2];
+	[SerializeField] AnimationClip loseLoopAnimaton;
 
 	/// <summary>
 	/// モデルについてるNomalAniamitonとAnimatondataを操作する、
@@ -21,12 +22,12 @@ public class ResultNomalAnimationController : MonoBehaviour
 			{
 				//animationdatas[i].enabled = true;
 				nomalAnimationPlayers[i].enabled = false;
-				animationdatas[i].enabled = false;
+				//animationdatas[i].enabled = false;
 			}
 			else
 			{
-				animationdatas[i].enabled = false;
-				nomalAnimationPlayers[i].SetIdling(resultTimelineCreater.GetAnimationClip(i),0.3f);
+				//animationdatas[i].enabled = false;
+				nomalAnimationPlayers[i].SetIdling(loseLoopAnimaton, 0.3f);
 			}
 		}
 	}
@@ -36,8 +37,8 @@ public class ResultNomalAnimationController : MonoBehaviour
 		for (int i = 0; i < 2; i++)
 		{
 			nomalAnimationPlayers[i] = fighterCreater.GeReftNomalAnimationPlayer(i);
-			animationdatas[i] = fighterCreater.GetRefAnimatondata(i);
-			nomalAnimationPlayers[i].SetIdling(resultTimelineCreater.GetAnimationClip(i), 0.3f);
+			//animationdatas[i] = fighterCreater.GetRefAnimatondata(i);
+			//nomalAnimationPlayers[i].SetIdling(loseLoopAnimaton, 0.3f);
 		}
 	}
 }

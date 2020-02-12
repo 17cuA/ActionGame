@@ -36,6 +36,9 @@ public class GameDataStrage : MonoBehaviour
 		// 他のゲームオブジェクトにアタッチされているか調べる
 		// アタッチされている場合は破棄する
 		CheckInstance();
+
+		matchResult[0] = MatchResult.WIN;
+		matchResult[1] = MatchResult.LOSE;
 	}
 
 	protected bool CheckInstance()
@@ -63,8 +66,8 @@ public class GameDataStrage : MonoBehaviour
 	public int plusAttackDamage_One = 0;
 	public int plusAttackDamage_Two = 0;
 
-	public RoundResult[] roundResult = new RoundResult[3];
-	public MatchResult[] matchResult = new MatchResult[2];
+	[NonSerialized]public RoundResult[] roundResult = new RoundResult[3];
+	[NonSerialized] public MatchResult[] matchResult = new MatchResult[2];
 
 	public int[] remainingHp = new int[2];
 	public int[] givenDamage = new int[2];
