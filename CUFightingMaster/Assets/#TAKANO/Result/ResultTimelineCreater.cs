@@ -25,10 +25,10 @@ public class ResultTimelineCreater : MonoBehaviour
 		return timeLineList[fighterNum[i]].trackList[fighterNum[i]].timeLine;
 	}
 
-	public AnimationClip GetAnimationClip(int i)
-	{
-		return timeLineList[fighterNum[i]].trackList[fighterNum[i]].loopAnimatoinClip;
-	}
+	//public AnimationClip GetAnimationClip(int i)
+	//{
+	//	return timeLineList[fighterNum[i]].trackList[fighterNum[i]].loopAnimatoinClip;
+	//}
 
 	private void Awake()
 	{

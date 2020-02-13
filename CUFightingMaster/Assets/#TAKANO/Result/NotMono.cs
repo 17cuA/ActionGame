@@ -15,7 +15,7 @@ public class TimeLineElements
 public class TimeLineElement
 {
 	public GameObject timeLine;
-	public AnimationClip loopAnimatoinClip;
-	public CinemachineBrain cinemachineBrain;
+	//public AnimationClip loopAnimatoinClip;
+	//public CinemachineBrain cinemachineBrain;
 }
 
