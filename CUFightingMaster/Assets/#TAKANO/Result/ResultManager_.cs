@@ -141,7 +141,8 @@ public class ResultManager_ : MonoBehaviour
 	// Start is called before the first frame update
 	void Start()
     {
-
+		//Curtainを上に
+		alreadyOneUpdate = MoveUpCurtain;
 		Sound.PlayBGM("BGM_Result", 1, 1.0f, true);
 		//カーテンを閉じる
 		canvasController_Result.InitDownCurtain();
@@ -155,8 +156,7 @@ public class ResultManager_ : MonoBehaviour
 		//タイムラインへの参照
 		resultTimelineController.RefTimeline();
 
-		//Curtainを上に
-		alreadyOneUpdate = MoveUpCurtain;
+		
 		//UIの表示を更新
 
 		canvasController_Result.RoundGetDisplay();

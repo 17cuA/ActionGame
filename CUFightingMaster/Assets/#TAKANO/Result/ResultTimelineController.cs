@@ -44,7 +44,8 @@ public class ResultTimelineController : MonoBehaviour
 			var animatonTrack = playableDirector[i].playableAsset.outputs.First(c => c.streamName == "Animation Track");
 			//TimelineからCinemaScene Trackを取得
 			var chinemaSceneTrack = playableDirector[i].playableAsset.outputs.First(c => c.streamName == "Cinemascene Track");
-
+			Debug.Log(animatonTrack);
+			Debug.Log(chinemaSceneTrack);
 			//Animation TrackにAnimatorの参照を追加
 			playableDirector[i].SetGenericBinding(animatonTrack.sourceObject, fighterCreater.GetRefAnimator(i));
 			//CinemaSceneTrackにCinemaSceneBrainの参照を追加
