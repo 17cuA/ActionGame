@@ -96,6 +96,16 @@ public class GameDataStrage : MonoBehaviour
 		return 0;
 	}
 
+	public void ResetPassResultPalameter()
+	{
+		for(int playerNum = 0; playerNum < 2; playerNum++)
+		{
+			remainingHp[playerNum] = 0;
+			givenDamage[playerNum] = 0;
+		}
+
+	}
+
 	public void Start()
 	{
 

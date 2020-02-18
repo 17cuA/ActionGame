@@ -59,6 +59,7 @@ public class InGameManager : SingletonMono<InGameManager>
     /// </summary>
     private void StartGame()
     {
+		GameDataStrage.Instance.ResetPassResultPalameter();
         if(Input.GetKeyDown(KeyCode.F10))
         {
             skipInGame = true;

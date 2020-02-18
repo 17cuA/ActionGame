@@ -140,9 +140,9 @@ public class CanvasController_Result : MonoBehaviour
 
 	public void PassHPtoScore()
 	{
-		scoreDisplay_HP_1.num = GameDataStrage.Instance.remainingHp[(int)PlayerNumber.Player1];
-		scoreDisplay_HP_2.num = GameDataStrage.Instance.remainingHp[(int)PlayerNumber.Player2];
-		scoreDisplay_damage_1.num = GameDataStrage.Instance.givenDamage[(int)PlayerNumber.Player1];
-		scoreDisplay_damage_2.num = GameDataStrage.Instance.givenDamage[(int)PlayerNumber.Player2];
+		scoreDisplay_HP_1.num = GameDataStrage.Instance.remainingHp[(int)PlayerNumber.Player1] * 10000;
+		scoreDisplay_HP_2.num = GameDataStrage.Instance.remainingHp[(int)PlayerNumber.Player2]  *10000;
+		scoreDisplay_damage_1.num = GameDataStrage.Instance.givenDamage[(int)PlayerNumber.Player1] * 10000;
+		scoreDisplay_damage_2.num = GameDataStrage.Instance.givenDamage[(int)PlayerNumber.Player2] * 10000;
 	}
 }
