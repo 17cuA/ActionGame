@@ -158,7 +158,6 @@ public class ResultManager_ : MonoBehaviour
 
 		
 		//UIの表示を更新
-
 		canvasController_Result.RoundGetDisplay();
 		canvasController_Result.PassHPtoScore();
 
