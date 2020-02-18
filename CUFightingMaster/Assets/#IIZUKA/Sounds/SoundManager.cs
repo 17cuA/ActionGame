@@ -203,7 +203,28 @@ public class Sound
         Sound.LoadSE("Oba_Thrown", "Cv_Oba_Thrown");
         Sound.LoadSE("Oba_RoundStart", "Cv_Oba_RoundStart");
 
-        Sound.LoadSE("SE_Beams", "SE_Beams");
+		// キャラボイス食い倒れ
+		Sound.LoadSE("Kuidaore_CharacterSelect", "Cv_Kuidaore_CharacterSelect");
+		Sound.LoadSE("Kuidaore_GetUp_DownCancel", "Cv_Kuidaore_GetUp_DownCancel");
+		Sound.LoadSE("Kuidaore_HitL", "Cv_Kuidaore_HitL");
+		Sound.LoadSE("Kuidaore_HitM", "Cv_Kuidaore_HitM");
+		Sound.LoadSE("Kuidaore_HitS_Down", "Cv_Kuidaore_HitS_Down");
+		Sound.LoadSE("Kuidaore_JobL", "Cv_Kuidaore_JobL");
+		Sound.LoadSE("Kuidaore_JobM_Throw", "Cv_Kuidaore_JobM_Throw");
+		Sound.LoadSE("Kuidaore_JobS", "Cv_Kuidaore_JobS");
+		Sound.LoadSE("Kuidaore_Jump_Step", "Cv_Kuidaore_Jump_Step");
+		Sound.LoadSE("Kuidaore_RoundDraw", "Cv_Kuidaore_RoundDraw");
+		Sound.LoadSE("Kuidaore_RoundLoss", "Cv_Kuidaore_RoundLoss");
+		Sound.LoadSE("Kuidaore_RoundWin", "Cv_Kuidaore_RoundWin");
+		Sound.LoadSE("Kuidaore_Special1", "Cv_Kuidaore_Special1");
+		Sound.LoadSE("Kuidaore_Special2", "Cv_Kuidaore_Special2");
+		Sound.LoadSE("Kuidaore_Special3", "Cv_Kuidaore_Special3");
+		Sound.LoadSE("Kuidaore_Special4", "Cv_Kuidaore_Special4");
+		Sound.LoadSE("Kuidaore_Thrown", "Cv_Kuidaore_Thrown");
+		Sound.LoadSE("Kuidaore_RoundStart", "Cv_Kuidaore_RoundStart");
+		Sound.LoadSE("Kuidaore_Tackle", "CV_Kuidaore_Tackle");
+
+		Sound.LoadSE("SE_Beams", "SE_Beams");
         Sound.LoadSE("SV_Nice", "SV_Nice");
         Sound.LoadSE("SV_Great", "SV_Great");
         Sound.LoadSE("SV_Excellent", "SV_Excellent");
