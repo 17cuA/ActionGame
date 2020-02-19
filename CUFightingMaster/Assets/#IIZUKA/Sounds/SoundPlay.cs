@@ -293,7 +293,62 @@ public class SoundPlay : MonoBehaviour
 				case SoundsType.Clico_Tackle:
 					Sound.PlaySE("Clico_Tackle", 19, 0.5f, 1);
 					break;
-                case SoundsType.Beams:
+				case SoundsType.Kuidaore_CharacterSelect:
+					Sound.PlaySE("Kuidaore_CharacterSelect", 1, 1f, 1);
+					break;
+				case SoundsType.Kuidaore_GetUp_DownCancel:
+					Sound.PlaySE("Kuidaore_GetUp_DownCancel", 12, 1f, 1);
+					break;
+				case SoundsType.Kuidaore_HitL:
+					Sound.PlaySE("Kuidaore_HitL", 13, 1f, 1);
+					break;
+				case SoundsType.Kuidaore_HitM:
+					Sound.PlaySE("Kuidaore_HitM", 13, 1f, 1);
+					break;
+				case SoundsType.Kuidaore_HitS_Down:
+					Sound.PlaySE("Kuidaore_HitS_Down", 13, 1f, 1);
+					break;
+				case SoundsType.Kuidaore_JobL:
+					Sound.PlaySE("Kuidaore_JobL", 14, 1f, 1);
+					break;
+				case SoundsType.Kuidaore_JobM_Throw:
+					Sound.PlaySE("Kuidaore_JobM_Throw", 14, 1f, 1);
+					break;
+				case SoundsType.Kuidaore_JobS:
+					Sound.PlaySE("Kuidaore_JobS", 14, 1f, 1);
+					break;
+				case SoundsType.Kuidaore_Jump_Step:
+					Sound.PlaySE("Kuidaore_Jump_Step", 15, 1f, 1);
+					break;
+				case SoundsType.Kuidaore_RoundDraw:
+					Sound.PlaySE("Kuidaore_RoundDraw", 16, 1f, 1);
+					break;
+				case SoundsType.Kuidaore_RoundLoss:
+					Sound.PlaySE("Kuidaore_RoundLoss", 16, 1, 1);
+					break;
+				case SoundsType.Kuidaore_RoundWin:
+					Sound.PlaySE("Kuidaore_RoundWin", 16, 1f, 1);
+					break;
+				case SoundsType.Kuidaore_Special1:
+					Sound.PlaySE("Kuidaore_Special1", 17, 1f, 1);
+					break;
+				case SoundsType.Kuidaore_Special2:
+					Sound.PlaySE("Kuidaore_Special2", 17, 1f, 1);
+					break;
+				case SoundsType.Kuidaore_Special3:
+					Sound.PlaySE("Kuidaore_Special3", 17, 1f, 1);
+					break;
+				case SoundsType.Kuidaore_Special4:
+					Sound.PlaySE("Kuidaore_Special4", 17, 1f, 1);
+					break;
+				case SoundsType.Kuidaore_Thrown:
+					Sound.PlaySE("Kuidaore_Thrown", 18, 1f, 1);
+					break;
+				case SoundsType.Kuidaore_RoundStart:
+					Sound.PlaySE("Kuidaore_RoundStart", 18, 1, 1);
+					break;
+
+				case SoundsType.Beams:
                     Sound.PlaySE("SE_Beams", 18, 0.5f, 1);
                     break;
                 case SoundsType.Nice:
