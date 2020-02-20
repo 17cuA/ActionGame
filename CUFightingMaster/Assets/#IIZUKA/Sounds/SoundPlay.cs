@@ -174,7 +174,7 @@ public class SoundPlay : MonoBehaviour
                     Sound.PlaySE("Ca_Hit", 11, 0.5f, 1);
                     break;
 
-
+				//おばちゃん
                 case SoundsType.Oba_CharacterSelect:
                     Sound.PlaySE("Oba_CharacterSelect", 1, 0.5f, 1);
                     break;
@@ -190,12 +190,9 @@ public class SoundPlay : MonoBehaviour
                 case SoundsType.Oba_HitS_Down:
                     Sound.PlaySE("HitS", 13, 1, 1);
                     break;
-
 				case SoundsType.Oba_Hit:
 					Sound.PlaySE("Oba_HitS_Down", 13, 0.3f, 1);
 					break;
-
-
 				case SoundsType.Oba_JobL:
 					Sound.PlaySE("Oba_JobL", 14, 0.5f, 1);
 					break;
@@ -236,6 +233,7 @@ public class SoundPlay : MonoBehaviour
 						Sound.PlaySE("Oba_RoundStart", 19, 1, 1);
                     break;
 
+				//クリコ
                 case SoundsType.Clico_CharacterSelect:
                     Sound.PlaySE("Clico_CharacterSelect", 1, 0.5f, 1);
                     break;
@@ -293,6 +291,8 @@ public class SoundPlay : MonoBehaviour
 				case SoundsType.Clico_Tackle:
 					Sound.PlaySE("Clico_Tackle", 19, 0.5f, 1);
 					break;
+
+				//食い倒れ
 				case SoundsType.Kuidaore_CharacterSelect:
 					Sound.PlaySE("Kuidaore_CharacterSelect", 1, 1f, 1);
 					break;
