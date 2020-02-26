@@ -15,7 +15,7 @@ public class StageSelectManager : MonoBehaviour
 		stageSelectCursol_1P.InitCursol();
 		stageSelectCursol_2P.InitCursol();
 		Sound.LoadBGM("BGM_Menu", "BGM_Menu");
-		Sound.PlayBGM("BGM_Menu", 1, 1.0f, true);
+		Sound.PlayBGM("BGM_Menu", 0.3f, 1.0f, true);
 		// カーテンを一気に下す処理
 		CanvasController_CharacterSelect.CanvasControllerInstance.InitDownCurtain();
 	}

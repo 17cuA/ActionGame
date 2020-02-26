@@ -123,8 +123,31 @@ public class CursolObject
 	public void AcceptButton(AcceptMethod _func)
 	{
 		if (AcceptFlag == true) return;	// 既に決定していた場合早期リターン
+		switch(currentCharacter)
+		{
+			case ECharacterID.CLICO:
+				//Sound.LoadSE("Menu_Decision", "Se_menu_decision");
+				//Sound.PlaySE("Menu_Decision", 1, 1);
+				Sound.LoadSE("CharaVoice_Clico", "CharaVoice_Clico");
+				Sound.PlaySE("CharaVoice_Clico", 1, 0.7f);
+				break;
+
+			case ECharacterID.OBACHAN:
+				//Sound.LoadSE("Menu_Decision", "Se_menu_decision");
+				//Sound.PlaySE("Menu_Decision", 1, 1);
+				Sound.LoadSE("CharaVoice_Oba", "CharaVoice_Oba");
+				Sound.PlaySE("CharaVoice_Oba", 1, 0.7f);
+				break;
+
+			case ECharacterID.KUIDAORE:
+				//Sound.LoadSE("Menu_Decision", "Se_menu_decision");
+				//Sound.PlaySE("Menu_Decision", 1, 1);
+				Sound.LoadSE("CharaVoice_Kuidaore", "CharaVoice_Kuidaore");
+				Sound.PlaySE("CharaVoice_Kuidaore", 1, 0.7f);
+				break;
+		}
 		Sound.LoadSE("Menu_Decision", "Se_menu_decision");
-		Sound.PlaySE("Menu_Decision", 1, 1);
+		Sound.PlaySE("Menu_Decision", 2, 0.1f);
 		AcceptFlag = true;
 		if(_func != null) _func((int)currentCharacter);
 	}
@@ -136,7 +159,7 @@ public class CursolObject
 	{
 		if (AcceptFlag == false) return;
 		Sound.LoadSE("Menu_Cancel", "Se_menu_cancel");
-		Sound.PlaySE("Menu_Cancel", 1, 1);
+		Sound.PlaySE("Menu_Cancel", 1, 0.1f);
 		AcceptFlag = false;
 		if (_func != null) _func((int)currentCharacter);
 	}
@@ -160,7 +183,7 @@ public class CursolObject
 	{
 		if (playerNumber == 1) _inputDir *= -1;
 		Sound.LoadSE("Menu_MoveCursor", "Se_menu_moveCursor");
-		Sound.PlaySE("Menu_MoveCursor", 1, 0.8f);
+		Sound.PlaySE("Menu_MoveCursor", 1, 0.1f);
 		//左右移動（-1が左、1が右）
 		_selectCharacter += (int)_inputDir.x;
 		// 左端のキャラを選択しているときに、左の入力があった場合、右端のキャラにする

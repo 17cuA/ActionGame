@@ -158,6 +158,8 @@ public class Sound
         //まだ未使用組
         Sound.LoadSE("Ko2", "Voice_K.O.2");
         Sound.LoadSE("ADrunk", "CharaVoice_ADrunk");
+
+		// キャラセレクトシステムボイス
         Sound.LoadSE("Clico", "CharaVoice_Clico");
         Sound.LoadSE("Kuidaore", "CharaVoice_Kuidaore");
         Sound.LoadSE("Obachan", "CharaVoice_Oba");
@@ -223,6 +225,30 @@ public class Sound
 		Sound.LoadSE("Kuidaore_Thrown", "Cv_Kuidaore_Thrown");
 		Sound.LoadSE("Kuidaore_RoundStart", "Cv_Kuidaore_RoundStart");
 		Sound.LoadSE("Kuidaore_Tackle", "CV_Kuidaore_Tackle");
+
+		// EVA_Voise
+		Sound.LoadSE("EV_ATField", "EV_ATField");
+		Sound.LoadSE("EV_NextStage", "EV_NextStage");
+		Sound.LoadSE("EV_EVA_Attack1", "EV_EVA_Attack1");
+		Sound.LoadSE("EV_EVA_Attack2", "EV_EVA_Attack2");
+		Sound.LoadSE("EV_EVA_Attack3", "EV_EVA_Attack3");
+		Sound.LoadSE("EV_EVA_Attack4", "EV_EVA_Attack4");
+		Sound.LoadSE("EV_EVA_Command1", "EV_EVA_Command1");
+		Sound.LoadSE("EV_EVA_Command2", "EV_EVA_Command2");
+		Sound.LoadSE("EV_EVA_Deathblow", "EV_EVA_Deathblow");
+		Sound.LoadSE("EV_EVA_Guard", "EV_EVA_Guard");
+		Sound.LoadSE("EV_EVA_Start", "EV_EVA_Start");
+		Sound.LoadSE("EV_EVA_Victory", "EV_EVA_Victory");
+		Sound.LoadSE("EV_SHITO_Attack1", "EV_SHITO_Attack1");
+		Sound.LoadSE("EV_SHITO_Attack2", "EV_SHITO_Attack2");
+		Sound.LoadSE("EV_SHITO_Attack3", "EV_SHITO_Attack3");
+		Sound.LoadSE("EV_SHITO_Command1", "EV_SHITO_Command1");
+		Sound.LoadSE("EV_SHITO_Command2", "EV_SHITO_Command2");
+		Sound.LoadSE("EV_SHITO_Command3", "EV_SHITO_Command3");
+		Sound.LoadSE("EV_SHITO_Deathblow", "EV_SHITO_Deathblow");
+		Sound.LoadSE("EV_SHITO_Start", "EV_SHITO_Start");
+		Sound.LoadSE("EV_SHITO_Victory", "EV_SHITO_Victory");
+		Sound.LoadSE("EV_Shinji_RoundStart", "EV_Shinji_RoundStart");
 
 		Sound.LoadSE("SE_Beams", "SE_Beams");
         Sound.LoadSE("SV_Nice", "SV_Nice");

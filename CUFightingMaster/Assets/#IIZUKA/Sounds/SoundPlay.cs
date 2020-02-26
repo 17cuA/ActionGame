@@ -27,9 +27,12 @@ public class SoundPlay : MonoBehaviour
         Special1,
         Special1_Hit,
         Ca_Hit,
+		Menu_MoveCursor,
+		Menu_Cancel,
+		Menu_Decision,
 
-        // CV_Oba
-        Oba_CharacterSelect,
+		// CV_Oba
+		Oba_CharacterSelect,
         Oba_GetUp_DownCancel,
         Oba_HitL,
         Oba_HitM,
@@ -88,6 +91,30 @@ public class SoundPlay : MonoBehaviour
 		Kuidaore_Thrown,
 		Kuidaore_RoundStart,
 
+		// EVA
+		EV_ATField,
+		EV_NExtStage,
+		EV_EVA_Attack1,
+		EV_EVA_Attack2,
+		EV_EVA_Attack3,
+		EV_EVA_Attack4,
+		EV_EVA_Command1,
+		EV_EVA_Command2,
+		EV_EVA_Deathblow,
+		EV_EVA_Guard,
+		EV_EVA_Start,
+		EV_EVA_Victory,
+		EV_SHITO_Attack1,
+		EV_SHITO_Attack2,
+		EV_SHITO_Attack3,
+		EV_SHITO_Command1,
+		EV_SHITO_Command2,
+		EV_SHITO_Command3,
+		EV_SHITO_Deathblow,
+		EV_SHITO_Start,
+		EV_SHITO_Victory,
+		EV_Shinji_RoundStart,
+
 		Oba_Hit,
 		Clico_Tackle,
         Beams,
@@ -95,7 +122,11 @@ public class SoundPlay : MonoBehaviour
         Great,
         Excellent,
 
-    }
+		CharaVoice_Clico,
+		CharaVoice_Oba,
+		CharaVoice_Kuidaore
+
+	}
     public SoundsType soundsType;
 
     int i = 0;
@@ -156,7 +187,7 @@ public class SoundPlay : MonoBehaviour
                     Sound.PlaySE("Down", 6, 1, 1);
                     break;
                 case SoundsType.DownCancel:
-                    Sound.PlaySE("DownCancel", 7, 0.6f, 1);
+                    Sound.PlaySE("DownCancel", 7, 1.0f, 1);
                     break;
                 case SoundsType.GetUp:
                     Sound.PlaySE("GetUp", 8, 0.6f, 1);
@@ -173,9 +204,9 @@ public class SoundPlay : MonoBehaviour
                 case SoundsType.Ca_Hit:
                     Sound.PlaySE("Ca_Hit", 11, 0.5f, 1);
                     break;
-
+				
 				//おばちゃん
-                case SoundsType.Oba_CharacterSelect:
+				case SoundsType.Oba_CharacterSelect:
                     Sound.PlaySE("Oba_CharacterSelect", 1, 0.5f, 1);
                     break;
                 case SoundsType.Oba_GetUp_DownCancel:
@@ -346,6 +377,78 @@ public class SoundPlay : MonoBehaviour
 					break;
 				case SoundsType.Kuidaore_RoundStart:
 					Sound.PlaySE("Kuidaore_RoundStart", 18, 1, 1);
+					break;
+
+				//Evangerion
+				case SoundsType.EV_ATField:
+					Sound.PlaySE("EV_ATField", 2, 1, 1);
+					break;
+				case SoundsType.EV_EVA_Attack1:
+					Sound.PlaySE("EV_EVA_Attack1", 14, 1, 1);
+					break;
+				case SoundsType.EV_EVA_Attack2:
+					Sound.PlaySE("EV_EVA_Attack2", 14, 1, 1);
+					break;
+				case SoundsType.EV_EVA_Attack3:
+					Sound.PlaySE("EV_EVA_Attack3", 14, 1, 1);
+					break;
+				case SoundsType.EV_EVA_Attack4:
+					Sound.PlaySE("EV_EVA_Attack4", 14, 1, 1);
+					break;
+				case SoundsType.EV_EVA_Deathblow:
+					Sound.PlaySE("EV_EVA_Deathblow", 16, 1, 1);
+					break;
+				case SoundsType.EV_EVA_Victory:
+					Sound.PlaySE("EV_EVA_Victory", 16, 1, 1);
+					break;
+				case SoundsType.EV_EVA_Command1:
+					Sound.PlaySE("EV_EVA_Command1", 17, 1, 1);
+					break;
+				case SoundsType.EV_EVA_Command2:
+					Sound.PlaySE("EV_EVA_Command2", 17, 1, 1);
+					break;
+				case SoundsType.EV_EVA_Start:
+					Sound.PlaySE("EV_EVA_Start", 19, 1, 1);
+					break;
+				case SoundsType.EV_SHITO_Attack1:
+					Sound.PlaySE("EV_SHITO_Attack1", 14, 0.6f, 1);
+					break;
+				case SoundsType.EV_SHITO_Attack2:
+					Sound.PlaySE("EV_SHITO_Attack2", 14, 0.6f, 1);
+					break;
+				case SoundsType.EV_SHITO_Attack3:
+					Sound.PlaySE("EV_SHITO_Attack3", 14, 0.6f, 1);
+					break;
+				case SoundsType.EV_SHITO_Deathblow:
+					Sound.PlaySE("EV_SHITO_Deathblow", 16, 0.6f, 1);
+					break;
+				case SoundsType.EV_SHITO_Victory:
+					Sound.PlaySE("EV_SHITO_Victory", 16, 0.6f, 1);
+					break;
+				case SoundsType.EV_SHITO_Command1:
+					Sound.PlaySE("EV_SHITO_Command1", 17, 0.6f, 1);
+					break;
+				case SoundsType.EV_SHITO_Command2:
+					Sound.PlaySE("EV_SHITO_Command2", 17, 0.6f, 1);
+					break;
+				case SoundsType.EV_SHITO_Command3:
+					Sound.PlaySE("EV_SHITO_Command3", 17, 0.6f, 1);
+					break;
+				case SoundsType.EV_SHITO_Start:
+					Sound.PlaySE("EV_SHITO_Start", 19, 0.6f, 1);
+					break;
+				case SoundsType.EV_Shinji_RoundStart:
+					Sound.PlaySE("EV_Shinji_RoundStart", 18, 3, 1);
+					break;
+
+				case SoundsType.CharaVoice_Clico:
+					Sound.PlaySE("CharaVoice_Clico", 1, 0.6f, 1);
+					break;
+				case SoundsType.CharaVoice_Oba:
+					Sound.PlaySE("CharaVoice_Oba", 1, 0.6f, 1);
+					break;
+				case SoundsType.CharaVoice_Kuidaore:
+					Sound.PlaySE("CharaVoice_Kuidaore", 1, 0.6f, 1);
 					break;
 
 				case SoundsType.Beams:

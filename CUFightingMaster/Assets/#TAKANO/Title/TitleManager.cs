@@ -61,7 +61,7 @@ public class TitleManager : MonoBehaviour
 			//Logoアニメーションの初期化
 			//BGMの再生開始
 			Sound.LoadBGM("BGM_Title", "BGM_Title");
-			Sound.PlayBGM("BGM_Title", 1, 1, true);
+			Sound.PlayBGM("BGM_Title", 0.7f, 1, true);
 			
 			currentUpdate = TitleUpdate;	
 		}
