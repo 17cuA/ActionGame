@@ -1,0 +1,97 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fbd35985d310504d81036cc55356454, type: 3}
+  m_Name: SpecialSkill
+  m_EditorClassIdentifier: 
+  skillLayer: 0
+  animationClip: {fileID: 7400000, guid: 9f8317c26fbb4504e89ce49e9fed9471, type: 2}
+  animationSpeed: 0.65
+  status: 8
+  frameEffects:
+  - frame: 0
+    effect: {fileID: 4176766471126924168, guid: df720043f6ea5f54b89f097335ab544a,
+      type: 3}
+    childFlag: 0
+    worldPositionFlag: 0
+    isDeleteObj: 0
+    isScaled: 0
+    position: {x: 0, y: 0, z: 0}
+  - frame: 0
+    effect: {fileID: 870786675971927454, guid: 30e867faa9cadd14bb26f73e8ff8de49, type: 3}
+    childFlag: 1
+    worldPositionFlag: 0
+    isDeleteObj: 0
+    isScaled: 0
+    position: {x: -2.5, y: 6.25, z: -1}
+  frameBullets:
+  - frame: 0
+    bullet: {fileID: 2978368632912520433, guid: 2ecf66a408be7934ea1d9c89c33b8074,
+      type: 3}
+    childFlag: 0
+    worldPositionFlag: 0
+    position: {x: -60, y: 16, z: 0}
+  cancelFrag: 0
+  endNextAnimation: {fileID: 0}
+  endNextWeight: 0
+  groundLandingSkill: {fileID: 0}
+  groundLandingWeight: 0
+  isGroundEnd: 0
+  barrageCancelFrag: 0
+  cancelLayer: 
+  inBlend: 0
+  outBlend: 0
+  cameraPlay:
+    startFrame: 0
+    rightCamera: {fileID: 3064135552986576744, guid: fa9e759f406dc5347a6ed503a8f8749f,
+      type: 3}
+    leftCamera: {fileID: 3064135552986576744, guid: e1fb08d82633bdd4885472b6c58ceffd,
+      type: 3}
+  isInvincibleBullet: 1
+  plusHeadHitBox: []
+  plusBodyHitBox:
+  - isFalse: 1
+    isInfinityFrame: 0
+    hitBox:
+      size: {x: 0, y: 0, z: 0}
+      localPosition: {x: 0.71, y: 0, z: 0}
+    startFrame: 0
+    endFrame: 62
+  - isFalse: 0
+    isInfinityFrame: 0
+    hitBox:
+      size: {x: 0.48, y: 0, z: 0}
+      localPosition: {x: 0.83, y: -0.7, z: 0}
+    startFrame: 63
+    endFrame: 70
+  - isFalse: 1
+    isInfinityFrame: 0
+    hitBox:
+      size: {x: 0, y: 0, z: 0}
+      localPosition: {x: 0, y: 0, z: 0}
+    startFrame: 71
+    endFrame: 129
+  plusFootHitBox: []
+  plusGrabHitBox: []
+  plusPushingHitBox: []
+  customHitBox: []
+  isContinue: 0
+  isMoveContinue: 0
+  movements: []
+  gravityMoves: []
+  timeStops:
+    startFrame: 0
+    endFrame: 75
+  headFlag: 1
+  bodyFlag: 1
+  footFlag: 1
+  grabFlag: 1
+  pushingFlag: 1

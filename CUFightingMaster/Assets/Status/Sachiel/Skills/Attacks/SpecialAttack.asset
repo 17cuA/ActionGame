@@ -1,0 +1,176 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fbd35985d310504d81036cc55356454, type: 3}
+  m_Name: SpecialAttack
+  m_EditorClassIdentifier: 
+  skillLayer: 0
+  animationClip: {fileID: 7400000, guid: 7ee8c6ed7b07fda4a850b74d33495773, type: 2}
+  animationSpeed: 0.5
+  status: 8
+  frameEffects:
+  - frame: 0
+    effect: {fileID: 4454486613128836364, guid: ba59ee9a491289c4d99c95bcf0b1718c,
+      type: 3}
+    childFlag: 1
+    worldPositionFlag: 0
+    isDeleteObj: 1
+    isScaled: 0
+    position: {x: 1.71, y: 1.44, z: 0}
+  - frame: 0
+    effect: {fileID: 7980079320965224730, guid: 9048982fc7a3f664ca6d64c9c427ff25,
+      type: 3}
+    childFlag: 0
+    worldPositionFlag: 0
+    isDeleteObj: 0
+    isScaled: 0
+    position: {x: 0, y: 0, z: 0}
+  frameBullets: []
+  cancelFrag: 0
+  endNextAnimation: {fileID: 0}
+  endNextWeight: 0
+  groundLandingSkill: {fileID: 0}
+  groundLandingWeight: 0
+  isGroundEnd: 0
+  barrageCancelFrag: 0
+  cancelLayer: 
+  inBlend: 0
+  outBlend: 0
+  cameraPlay:
+    startFrame: 0
+    rightCamera: {fileID: 3064135552986576744, guid: 2d745aea3727f4e489399e262303de85,
+      type: 3}
+    leftCamera: {fileID: 3064135552986576744, guid: 7b1b755003f661a4db5527db38966712,
+      type: 3}
+  isInvincibleBullet: 0
+  plusHeadHitBox: []
+  plusBodyHitBox: []
+  plusFootHitBox: []
+  plusGrabHitBox: []
+  plusPushingHitBox: []
+  customHitBox:
+  - mode: 0
+    frameHitBoxes:
+    - isFalse: 0
+      isInfinityFrame: 0
+      hitBox:
+        size: {x: 14, y: 2.5, z: 1}
+        localPosition: {x: 7, y: 2.8, z: 0}
+      startFrame: 78
+      endFrame: 84
+    - isFalse: 0
+      isInfinityFrame: 0
+      hitBox:
+        size: {x: 20, y: 2.5, z: 1}
+        localPosition: {x: 10, y: 2.8, z: 0}
+      startFrame: 85
+      endFrame: 91
+    - isFalse: 0
+      isInfinityFrame: 0
+      hitBox:
+        size: {x: 20, y: 2.5, z: 1}
+        localPosition: {x: 10, y: 2.8, z: 0}
+      startFrame: 92
+      endFrame: 98
+    - isFalse: 0
+      isInfinityFrame: 0
+      hitBox:
+        size: {x: 20, y: 2.5, z: 1}
+        localPosition: {x: 10, y: 2.8, z: 0}
+      startFrame: 99
+      endFrame: 105
+    - isFalse: 0
+      isInfinityFrame: 0
+      hitBox:
+        size: {x: 20, y: 2.5, z: 1}
+        localPosition: {x: 10, y: 2.8, z: 0}
+      startFrame: 106
+      endFrame: 112
+    - isFalse: 0
+      isInfinityFrame: 0
+      hitBox:
+        size: {x: 20, y: 2.5, z: 1}
+        localPosition: {x: 10, y: 2.8, z: 0}
+      startFrame: 113
+      endFrame: 120
+    hitStop: 1
+    hitPoint: 0
+    hitStrength: 2
+    damage: 750
+    stanDamage: 0
+    knockBack: 1
+    airKnockBack: 1
+    guardKnockBack: 1
+    hitEffects:
+    - isEnemyPos: 0
+      isParant: 0
+      isEnemyParant: 0
+      effect: {fileID: 1722284782620667795, guid: fc923a13308d53749ac62f505c756f19,
+        type: 3}
+      guardEffect: {fileID: 0}
+      position: {x: 0, y: 0, z: 0}
+    - isEnemyPos: 1
+      isParant: 0
+      isEnemyParant: 1
+      effect: {fileID: 0}
+      guardEffect: {fileID: 6532350964205856054, guid: 8eea3721bc3fc884eafd65d00f7413aa,
+        type: 3}
+      position: {x: -0.39, y: 1.54, z: 0}
+    isDown: 1
+    isThrow: 0
+    isThrowGroundDamage: 0
+    isThrowGroundAnimEnd: 0
+    airDamageMovements:
+    - isGravityInvaid: 0
+      isResetStartGravity: 1
+      isResetEndGravity: 0
+      isImpact: 0
+      isBound: 0
+      boundMovements: []
+      movement: {x: 0, y: 2, z: 0}
+      startFrame: 0
+    throwGroundDamage: 0
+    throwSkill: {fileID: 0}
+    enemyThrowSkill: {fileID: 0}
+    throwDamages: []
+    isJumpCancel: 0
+    isContinue: 0
+    movements:
+    - isGravityInvaid: 0
+      isResetStartGravity: 1
+      isResetEndGravity: 0
+      isImpact: 0
+      isBound: 0
+      boundMovements: []
+      movement: {x: 0, y: 2, z: 0}
+      startFrame: 0
+    gravityMoves:
+    - movement: {x: -2, y: 0, z: 0}
+      limitMove: {x: -2, y: 0, z: 0}
+      startFrame: 0
+    isFaceDown: 0
+    isPassiveNotPossible: 0
+    hitRigor: 50
+    guardHitRigor: 30
+    plusGauge: 0
+    enemyPlusGauge: 2
+  isContinue: 0
+  isMoveContinue: 0
+  movements: []
+  gravityMoves: []
+  timeStops:
+    startFrame: 0
+    endFrame: 77
+  headFlag: 1
+  bodyFlag: 1
+  footFlag: 1
+  grabFlag: 1
+  pushingFlag: 1
