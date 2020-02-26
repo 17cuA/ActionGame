@@ -6,39 +6,39 @@ public class ResultNomalAnimationController : MonoBehaviour
 {
 	[SerializeField]ResultTimelineCreater resultTimelineCreater;
 	[SerializeField] FighterCreater fighterCreater;
-	public NomalAnimationPlayer[] nomalAnimationPlayers = new NomalAnimationPlayer[2];
-	private Animationdata[] animationdatas = new Animationdata[2];
 	[SerializeField] AnimationClip loseLoopAnimaton;
 
+	private NomalAnimationPlayer[] nomalAnimationPlayers = new NomalAnimationPlayer[2];
+	private Animationdata[] animationdatas = new Animationdata[2];
+	
 	/// <summary>
 	/// モデルについてるNomalAniamitonとAnimatondataを操作する、
 	/// </summary>
 	/// 勝った方のモデルは無効化、負けた方はループアニメするため、AnimatonDataだけ無効化
 	public void DisabledNomalAnimationModels ()
 	{
-		for (int i = 0; i < 2; i++)
+		for (int playerNum = 0; playerNum < 2; playerNum++)
 		{
-			if (GameDataStrage.Instance.matchResult[i] == MatchResult.WIN)
+			if (GameDataStrage.Instance.matchResult[playerNum] == MatchResult.WIN)
 			{
 				//animationdatas[i].enabled = true;
-				nomalAnimationPlayers[i].enabled = false;
+				nomalAnimationPlayers[playerNum].enabled = false;
 				//animationdatas[i].enabled = false;
 			}
 			else
 			{
 				//animationdatas[i].enabled = false;
-				nomalAnimationPlayers[i].SetIdling(loseLoopAnimaton, 0.3f);
+				nomalAnimationPlayers[playerNum].SetIdling(loseLoopAnimaton, 0.3f);
 			}
 		}
 	}
 
 	private void Start()
 	{
-		for (int i = 0; i < 2; i++)
+		//nomalAniamtionPlayerを取得取得
+		for (int playerNum = 0; playerNum < 2; playerNum++)
 		{
-			nomalAnimationPlayers[i] = fighterCreater.GeReftNomalAnimationPlayer(i);
-			//animationdatas[i] = fighterCreater.GetRefAnimatondata(i);
-			//nomalAnimationPlayers[i].SetIdling(loseLoopAnimaton, 0.3f);
+			nomalAnimationPlayers[playerNum] = fighterCreater.GeReftNomalAnimationPlayer(playerNum);
 		}
 	}
 }

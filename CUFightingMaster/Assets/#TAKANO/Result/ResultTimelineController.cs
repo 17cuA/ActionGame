@@ -8,15 +8,13 @@ using System.Linq;
 public class ResultTimelineController : MonoBehaviour
 {
 	[SerializeField] ResultTimelineCreater resultTimelineCreater;
-
 	[SerializeField] FighterCreater fighterCreater;
-
 	[SerializeField] CinemasceneBrainRefGetter[] CinemaSceneBrainRefGetters = new CinemasceneBrainRefGetter[2];
 
-	public PlayableDirector[] playableDirector = new PlayableDirector[2];
+	private PlayableDirector[] playableDirector = new PlayableDirector[2];
 
-	public bool isEndTimeline_1;
-	public bool isEndTimeline_2;
+	[SerializeField] private bool isEndTimeline_1;
+	[SerializeField] private bool isEndTimeline_2;
 
 	/// <summary>
 	/// タイムラインを作成する
@@ -24,17 +22,17 @@ public class ResultTimelineController : MonoBehaviour
 	public void CreateTimeline()
 	{
 		//二人分のタイムライン生成する
-		for (int i = 0; i < 2; i++)
+		for (int playerNum = 0; playerNum < 2; playerNum++)
 		{
-			var obj = resultTimelineCreater.CreateTimeline(i);
+			var obj = resultTimelineCreater.CreateTimeline(playerNum);
 
 			//参照するのに使う
-			playableDirector[i] = obj.GetComponent<PlayableDirector>();
+			playableDirector[playerNum] = obj.GetComponent<PlayableDirector>();
 		}
 	}
 
 	/// <summary>
-	/// タイムラインの参照を取得する
+	/// タイムラインのTruckに必要な情報を渡す
 	/// </summary>
 	public void RefTimeline()
 	{
@@ -42,12 +40,13 @@ public class ResultTimelineController : MonoBehaviour
 		{
 			//TimelineからAnimaiton Trackを取得
 			var animatonTrack = playableDirector[i].playableAsset.outputs.First(c => c.streamName == "Animation Track");
+			
 			//TimelineからCinemaScene Trackを取得
 			var chinemaSceneTrack = playableDirector[i].playableAsset.outputs.First(c => c.streamName == "Cinemascene Track");
-			Debug.Log(animatonTrack);
-			Debug.Log(chinemaSceneTrack);
+			
 			//Animation TrackにAnimatorの参照を追加
 			playableDirector[i].SetGenericBinding(animatonTrack.sourceObject, fighterCreater.GetRefAnimator(i));
+			
 			//CinemaSceneTrackにCinemaSceneBrainの参照を追加
 			playableDirector[i].SetGenericBinding(chinemaSceneTrack.sourceObject, CinemaSceneBrainRefGetters[i].getRefCinemaSceneBrain());
 		}

@@ -12,23 +12,23 @@ using Cinemachine;
 public class ResultTimelineCreater : MonoBehaviour
 {
 	[SerializeField] private List<TimeLineElements> timeLineList = new List<TimeLineElements>();
-	public int[] fighterNum = new int[2];
-	public int[] victoryNum = new int[2];
 
-	public GameObject CreateTimeline(int i)
-	{
-		return Instantiate(timeLineList[fighterNum[i]].trackList[victoryNum[i]].timeLine);
-	}
-	
-	public GameObject GetTimeLineObject(int i)
-	{
-		return timeLineList[fighterNum[i]].trackList[fighterNum[i]].timeLine;
-	}
+	[SerializeField]private int[] fighterNum = new int[2];
+	[SerializeField]private int[] victoryNum = new int[2];
 
-	//public AnimationClip GetAnimationClip(int i)
-	//{
-	//	return timeLineList[fighterNum[i]].trackList[fighterNum[i]].loopAnimatoinClip;
-	//}
+	/// <summary>
+	/// タイムラインを生成する
+	/// </summary>
+	/// <param name="_playerNum">PlayerNum</param>
+	/// <returns></returns>
+	public GameObject CreateTimeline(int _playerNum)
+	{
+		return Instantiate(timeLineList[fighterNum[_playerNum]].trackList[victoryNum[_playerNum]].timeLine);
+	}
+	public GameObject GetTimeLineObject(int _playerNum)
+	{
+		return timeLineList[fighterNum[_playerNum]].trackList[fighterNum[_playerNum]].timeLine;
+	}
 
 	private void Awake()
 	{

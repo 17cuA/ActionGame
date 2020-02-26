@@ -27,21 +27,19 @@ public class ResultManager_ : MonoBehaviour
 	[SerializeField] CanvasController_Result canvasController_Result;
 	[SerializeField] ResultTimelineController resultTimelineController;
 	[SerializeField] ResultNomalAnimationController resultNomalAnimationController;
+	[SerializeField] CinemachineBrain cinemachineBrain1;
+	[SerializeField] CinemachineBrain cinemachineBrain2;
+	private Action alreadyOneUpdate;
 
-	[SerializeField] private Action alreadyOneUpdate;
-
-
-	[SerializeField] private GameObject fighter1;
-	[SerializeField] private GameObject fighter2;
+	private GameObject fighter1;
+	private GameObject fighter2;
 
 	private int[] elementNum = new int[2];
 
+	//最初のシーンへ戻る時間(sec)
 	[SerializeField] private float waitTime;
 
-	//てきとう
-	[SerializeField] CinemachineBrain cinemachineBrain1;
-	[SerializeField] CinemachineBrain cinemachineBrain2;
-
+	#region UIの移動
 	/// <summary>
 	/// UIの移動を開始
 	/// </summary>
@@ -86,6 +84,8 @@ public class ResultManager_ : MonoBehaviour
 	{
 		canvasController_Result.MoveUIGroup4();
 	}
+	#endregion
+	#region カーテンの移動
 	/// <summary>
 	/// Curtainが上に
 	/// </summary>
@@ -94,6 +94,17 @@ public class ResultManager_ : MonoBehaviour
 		if (canvasController_Result.UpCurtain())
 			alreadyOneUpdate = DisabledNomalAnimetion;
 	}
+	/// <summary>
+	/// Curtainが下にCurtainが下に
+	/// </summary>
+	void DownCurtain()
+	{
+		if (canvasController_Result.DownCurtain())
+		{
+			alreadyOneUpdate = FadeOut;
+		}
+	}
+	#endregion
 	/// <summary>
 	/// 入力待ち
 	/// </summary>
@@ -111,18 +122,6 @@ public class ResultManager_ : MonoBehaviour
 		}
 	}
 	/// <summary>
-	/// Curtainが下にCurtainが下に
-	/// </summary>
-	void DownCurtain()
-	{
-		Debug.Log("c");
-		if (canvasController_Result.DownCurtain())
-		{
-			Debug.Log("g");
-			alreadyOneUpdate = FadeOut;
-		}
-	}
-	/// <summary>
 	/// FadeOut
 	/// </summary>
 	void FadeOut()
@@ -132,19 +131,25 @@ public class ResultManager_ : MonoBehaviour
 			SceneManager.LoadScene("JECLogo");
 		}
 	}
-
+	/// <summary>
+	/// AnimationDataを無効化する
+	/// </summary>
 	private void DisabledNomalAnimetion()
 	{
 		resultNomalAnimationController.DisabledNomalAnimationModels();
 		alreadyOneUpdate = WaitInput;
 	}
-	// Start is called before the first frame update
+
 	void Start()
     {
 		//Curtainを上に
 		alreadyOneUpdate = MoveUpCurtain;
+
+		//BGM再生
+		Sound.LoadBGM("BGM_Result", "BGM_Result");
 		Sound.PlayBGM("BGM_Result", 1, 1.0f, true);
-		//カーテンを閉じる
+
+		//カーテンを閉じた状態にする
 		canvasController_Result.InitDownCurtain();
 
 		//キャラクターの生成
@@ -156,16 +161,15 @@ public class ResultManager_ : MonoBehaviour
 		//タイムラインへの参照
 		resultTimelineController.RefTimeline();
 
-		
-		//UIの表示を更新
+		//試合結果を表示するUIの更新
 		canvasController_Result.RoundGetDisplay();
+		//与えたダメージと残ったHPを表示するUIの更新
 		canvasController_Result.PassHPtoScore();
-
-		//どちらのPlayerが勝ったかを取得、それらの処理
+		//どちらのPlayerが勝ったかを取得
 		if(GameDataStrage.Instance.matchResult[0] == MatchResult.WIN)
 		{
-			canvasController_Result.P1WinDisplay();
-			cinemachineBrain2.enabled = false;
+			canvasController_Result.P1WinDisplay();	//表示するUIを切り変える
+			cinemachineBrain2.enabled = false;		//負けたほうのsinemaSchineBrainを無効化する
 		}
 		else
 		{
