@@ -77,7 +77,7 @@ public class CharacterselectObjectManager : MonoBehaviour
 		selectFlag = new bool[players.Length];
 
 		Sound.LoadBGM("BGM_Menu", "BGM_Menu");
-		Sound.PlayBGM("BGM_Menu", 0.3f, 1.0f, true);
+		Sound.PlayBGM("BGM_Menu", 0.6f, 1.0f, true);
 
 		// キャラクターごとに追加
 		characterSelectObjectDatas.Add(new CharacterSelectObjectData("cliko", ECharacterID.CLICO, clicoStatus, clikoNamePanel, clicoPanel));

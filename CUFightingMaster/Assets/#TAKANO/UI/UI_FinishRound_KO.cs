@@ -42,7 +42,7 @@ public class UI_FinishRound_KO: MonoBehaviour
     {
 		// 飯塚追加-------------------------------------------
         Sound.LoadSE("Ko", "Voice_K.O");
-        Sound.PlaySE("Ko", 19, 1);
+        Sound.PlaySE("Ko", 19, 0.5f);
         // ---------------------------------------------------
         isPlay = true;
 		ko.GetComponent<AnimationUIManager>().isStart = true;

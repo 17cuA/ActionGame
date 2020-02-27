@@ -82,7 +82,7 @@ public class TitleManager : MonoBehaviour
             if (pressAnykey[0].activeSelf == true && pressAnykey[1].activeSelf == true)
 			{
 				Sound.LoadSE("Menu_Decision", "Se_menu_decision");
-				Sound.PlaySE("Menu_Decision", 1, 1);
+				Sound.PlaySE("Menu_Decision", 1, 0.1f);
 				currentUpdate = DownCurtain;
 			}
 		}

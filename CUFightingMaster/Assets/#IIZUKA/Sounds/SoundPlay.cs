@@ -213,13 +213,13 @@ public class SoundPlay : MonoBehaviour
                     Sound.PlaySE("Oba_GetUp_DownCancel", 12, 0.5f, 1);
                     break;
                 case SoundsType.Oba_HitL:
-                    Sound.PlaySE("HitS", 13, 1, 1);
+                    Sound.PlaySE("Oba_HitL", 13, 1, 1);
                     break;
                 case SoundsType.Oba_HitM:
-                    Sound.PlaySE("HitS", 13, 1, 1);
+                    Sound.PlaySE("Oba_HitM", 13, 1, 1);
 					break;
                 case SoundsType.Oba_HitS_Down:
-                    Sound.PlaySE("HitS", 13, 1, 1);
+                    Sound.PlaySE("Oba_HitS_Down", 13, 1, 1);
                     break;
 				case SoundsType.Oba_Hit:
 					Sound.PlaySE("Oba_HitS_Down", 13, 0.3f, 1);
@@ -261,7 +261,7 @@ public class SoundPlay : MonoBehaviour
                     Sound.PlaySE("Oba_Thrown", 18, 0.5f, 1);
                     break;
                 case SoundsType.Oba_RoundStart:
-						Sound.PlaySE("Oba_RoundStart", 19, 1, 1);
+						Sound.PlaySE("Oba_RoundStart", 19, 0.5f, 1);
                     break;
 
 				//クリコ
@@ -272,34 +272,34 @@ public class SoundPlay : MonoBehaviour
                     Sound.PlaySE("Clico_GetUp_DownCancel", 12, 0.5f, 1);
                     break;
                 case SoundsType.Clico_HitL:
-                    Sound.PlaySE("Clico_HitL", 13, 0.3f, 1);
+                    Sound.PlaySE("Clico_HitL", 13, 0.15f, 1);
                     break;
                 case SoundsType.Clico_HitM:
-                    Sound.PlaySE("Clico_HitM", 13, 0.3f, 1);
+                    Sound.PlaySE("Clico_HitM", 13, 0.15f, 1);
                     break;
                 case SoundsType.Clico_HitS_Down:
-                    Sound.PlaySE("Clico_HitS_Down", 13, 0.3f, 1);
+                    Sound.PlaySE("Clico_HitS_Down", 13, 0.15f, 1);
                     break;
                 case SoundsType.Clico_JobL:
-                    Sound.PlaySE("Clico_JobL", 14, 0.5f, 1);
+                    Sound.PlaySE("Clico_JobL", 14, 0.2f, 1);
                     break;
                 case SoundsType.Clico_JobM_Throw:
-                    Sound.PlaySE("Clico_JobM_Throw", 14, 0.5f, 1);
+                    Sound.PlaySE("Clico_JobM_Throw", 14, 0.2f, 1);
                     break;
                 case SoundsType.Clico_JobS:
-                    Sound.PlaySE("Clico_JobS", 14, 0.5f, 1);
+                    Sound.PlaySE("Clico_JobS", 14, 0.2f, 1);
                     break;
                 case SoundsType.Clico_Jump_Step:
-                    Sound.PlaySE("Clico_Jump_Step", 15, 0.5f, 1);
+                    Sound.PlaySE("Clico_Jump_Step", 15, 0.2f, 1);
                     break;
                 case SoundsType.Clico_RoundDraw:
-                    Sound.PlaySE("Clico_RoundDraw", 16, 0.5f, 1);
+                    Sound.PlaySE("Clico_RoundDraw", 16, 0.2f, 1);
                     break;
                 case SoundsType.Clico_RoundLoss:
-                    Sound.PlaySE("Clico_RoundLoss", 16, 1, 1);
+                    Sound.PlaySE("Clico_RoundLoss", 16, 0.5f, 1);
                     break;
                 case SoundsType.Clico_RoundWin:
-                    Sound.PlaySE("Clico_RoundWin", 16, 0.5f, 1);
+                    Sound.PlaySE("Clico_RoundWin", 16, 0.2f, 1);
 					break;
                 case SoundsType.Clico_Special1:
                     Sound.PlaySE("Clico_Special1", 17, 0.7f, 1);

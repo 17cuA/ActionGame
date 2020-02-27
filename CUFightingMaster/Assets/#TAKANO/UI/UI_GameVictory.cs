@@ -41,7 +41,7 @@ public class UI_GameVictory : MonoBehaviour
         if (flag)
         {
             Sound.LoadSE("PlayerOneWin", "Voice_Player1_Win");
-            Sound.PlaySE("PlayerOneWin", 3, 1);
+            Sound.PlaySE("PlayerOneWin", 3, 0.5f);
             flag = false;
         }
 		// ---------------------------------------------------
@@ -56,7 +56,7 @@ public class UI_GameVictory : MonoBehaviour
         if (flag)
         {
             Sound.LoadSE("Voice_PlayerTwoWin", "Voice_Player2_Win");
-            Sound.PlaySE("Voice_PlayerTwoWin", 3, 1);
+            Sound.PlaySE("Voice_PlayerTwoWin", 3, 0.5f);
             flag = false;
         }
 		// ---------------------------------------------------

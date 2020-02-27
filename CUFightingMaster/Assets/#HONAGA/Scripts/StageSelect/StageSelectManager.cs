@@ -15,7 +15,7 @@ public class StageSelectManager : MonoBehaviour
 		stageSelectCursol_1P.InitCursol();
 		stageSelectCursol_2P.InitCursol();
 		Sound.LoadBGM("BGM_Menu", "BGM_Menu");
-		Sound.PlayBGM("BGM_Menu", 0.3f, 1.0f, true);
+		Sound.PlayBGM("BGM_Menu", 0.6f, 1.0f, true);
 		// カーテンを一気に下す処理
 		CanvasController_CharacterSelect.CanvasControllerInstance.InitDownCurtain();
 	}
@@ -131,7 +131,7 @@ public class StageSelectCursol
 	public virtual void InputCursolDirection(StageNumber _selectStage, Vector2 _inputDir)
 	{
 		Sound.LoadSE("Menu_MoveCursor", "Se_menu_moveCursor");
-		Sound.PlaySE("Menu_MoveCursor", 1, 0.8f);
+		Sound.PlaySE("Menu_MoveCursor", 1, 0.1f);
 
 		_selectStage += (int)_inputDir.x * -1;
 
@@ -152,7 +152,7 @@ public class StageSelectCursol
 		if (Input.GetButtonDown(string.Format("{0}Player{1}_Attack1", _controllerName, _playerNumber)))
 		{
 			Sound.LoadSE("Menu_Decision", "Se_menu_decision");
-			Sound.PlaySE("Menu_Decision", 1, 1);
+			Sound.PlaySE("Menu_Decision", 1, 0.1f);
 			acceptFlag = !acceptFlag;
 		}
 		//-------------------------------------------------------------------------------------------------------------------------------------
