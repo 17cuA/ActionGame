@@ -18,6 +18,8 @@ public class StageSelectManager : MonoBehaviour
 		Sound.PlayBGM("BGM_Menu", 0.6f, 1.0f, true);
 		// カーテンを一気に下す処理
 		CanvasController_CharacterSelect.CanvasControllerInstance.InitDownCurtain();
+		//ステージ選択カーソルの初期化
+		StageSelectCursol.currentStage = StageSelectCursol.StageNumber.SINSEKAI;
 	}
 
 	// Update is called once per frame
@@ -153,7 +155,8 @@ public class StageSelectCursol
 		{
 			Sound.LoadSE("Menu_Decision", "Se_menu_decision");
 			Sound.PlaySE("Menu_Decision", 1, 0.1f);
-			acceptFlag = !acceptFlag;
+			//ステージ移行のフラグがfalseだったらステージ移行のフラグをtrueにする
+			if (!acceptFlag) acceptFlag = !acceptFlag;
 		}
 		//-------------------------------------------------------------------------------------------------------------------------------------
 	}
