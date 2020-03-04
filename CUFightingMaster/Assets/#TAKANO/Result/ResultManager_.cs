@@ -143,7 +143,8 @@ public class ResultManager_ : MonoBehaviour
     {
 		//Curtainを上に
 		alreadyOneUpdate = MoveUpCurtain;
-		Sound.PlayBGM("BGM_Result", 1, 1.0f, true);
+		Sound.LoadBGM("BGM_Result", "BGM_Result");
+		Sound.PlayBGM("BGM_Result", 0.5f, 1, true);
 		//カーテンを閉じる
 		canvasController_Result.InitDownCurtain();
 
@@ -162,7 +163,7 @@ public class ResultManager_ : MonoBehaviour
 		canvasController_Result.PassHPtoScore();
 
 		//どちらのPlayerが勝ったかを取得、それらの処理
-		if(GameDataStrage.Instance.matchResult[0] == MatchResult.WIN)
+		if (GameDataStrage.Instance.matchResult[0] == MatchResult.WIN)
 		{
 			canvasController_Result.P1WinDisplay();
 			cinemachineBrain2.enabled = false;

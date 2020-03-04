@@ -174,9 +174,9 @@ public class Sound
         Sound.LoadSE("Clico_JobM_Throw", "Cv_Clico_JobM_Throw");
         Sound.LoadSE("Clico_JobS", "Cv_Clico_JobS");
         Sound.LoadSE("Clico_Jump_Step", "Cv_Clico_Jump_Step");
-        Sound.LoadSE("Clico_RoundDraw", "Cv_Clico_RoundDraw");
+        Sound.LoadSE("Clico_BattleDraw", "Cv_Clico_BattleDraw");
         Sound.LoadSE("Clico_RoundLoss", "Cv_Clico_RoundLoss");
-        Sound.LoadSE("Clico_RoundWin", "Cv_Clico_RoundWin");
+        Sound.LoadSE("Clico_BattleWin", "Cv_Clico_BattleWin");
         Sound.LoadSE("Clico_Special1", "Cv_Clico_Special1");
         Sound.LoadSE("Clico_Special2", "Cv_Clico_Special2");
         Sound.LoadSE("Clico_Special3", "Cv_Clico_Special3");
@@ -195,9 +195,9 @@ public class Sound
         Sound.LoadSE("Oba_JobM_Throw", "Cv_Oba_JobM_Throw");
         Sound.LoadSE("Oba_JobS", "Cv_Oba_JobS");
         Sound.LoadSE("Oba_Jump_Step", "Cv_Oba_Jump_Step");
-        Sound.LoadSE("Oba_RoundDraw", "Cv_Oba_RoundDraw");
+        Sound.LoadSE("Oba_Battleraw", "Cv_Oba_BattleDraw");
         Sound.LoadSE("Oba_RoundLoss", "Cv_Oba_RoundLoss");
-        Sound.LoadSE("Oba_RoundWin", "Cv_Oba_RoundWin");
+        Sound.LoadSE("Oba_BattleWin", "Cv_Oba_BattleWin");
         Sound.LoadSE("Oba_Special1", "Cv_Oba_Special1");
         Sound.LoadSE("Oba_Special2", "Cv_Oba_Special2");
         Sound.LoadSE("Oba_Special3", "Cv_Oba_Special3");
@@ -215,9 +215,9 @@ public class Sound
 		Sound.LoadSE("Kuidaore_JobM_Throw", "Cv_Kuidaore_JobM_Throw");
 		Sound.LoadSE("Kuidaore_JobS", "Cv_Kuidaore_JobS");
 		Sound.LoadSE("Kuidaore_Jump_Step", "Cv_Kuidaore_Jump_Step");
-		Sound.LoadSE("Kuidaore_RoundDraw", "Cv_Kuidaore_RoundDraw");
+		Sound.LoadSE("Kuidaore_RoundDraw", "Cv_Kuidaore_BattleDraw");
 		Sound.LoadSE("Kuidaore_RoundLoss", "Cv_Kuidaore_RoundLoss");
-		Sound.LoadSE("Kuidaore_RoundWin", "Cv_Kuidaore_RoundWin");
+		Sound.LoadSE("Kuidaore_RoundWin", "Cv_Kuidaore_BattleWin");
 		Sound.LoadSE("Kuidaore_Special1", "Cv_Kuidaore_Special1");
 		Sound.LoadSE("Kuidaore_Special2", "Cv_Kuidaore_Special2");
 		Sound.LoadSE("Kuidaore_Special3", "Cv_Kuidaore_Special3");
